@@ -4,7 +4,7 @@
 <img src="images/octomap_core.png" alt="OctoMap Core" width="900">
 </div>
 
-A Python wrapper for the C++ OctoMap library. It provides Python bindings to the OctoMap C++ library and is intended to be distributed via PyPI (Linux first; Windows support is planned next).
+A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 3D occupancy mapping capabilities for robotics and computer vision applications. This modernized binding offers enhanced performance, bundled shared libraries for easy deployment, and seamless integration with the Python scientific ecosystem. The package is designed for distribution via PyPI with initial Linux support, followed by Windows compatibility in future releases.
 
 ## Features
 
@@ -18,6 +18,7 @@ A Python wrapper for the C++ OctoMap library. It provides Python bindings to the
 - **Linux-first**: Designed for Linux wheels; Windows support is planned next
 
 ## Installation
+A Python wrapper for the C++ OctoMap library. It provides Python bindings to the OctoMap C++ library and is intended to be distributed via PyPI (Linux first; Windows support is planned next).
 
 **Linux:**
 ```bash
@@ -318,11 +319,11 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 
 ## Acknowledgments
 
-- Previous work: [`wkentaro/octomap-python`](https://github.com/wkentaro/octomap-python)
-- Based on the [OctoMap library](https://octomap.github.io/)
-- Built with Cython for Python integration
-- Open3D used for visualization in demos: [`https://www.open3d.org/`](https://www.open3d.org/)
-- This work was supported by the French National Research Agency under the France 2030 program project IRT Nanoelec (ANR-10-AIRT-05).
+- **Previous work**: [`wkentaro/octomap-python`](https://github.com/wkentaro/octomap-python) - This project builds upon and modernizes the original Python bindings
+- **Core library**: [OctoMap](https://octomap.github.io/) - An efficient probabilistic 3D mapping framework based on octrees
+- **Build system**: Built with Cython for seamless Python-C++ integration and performance
+- **Visualization**: [Open3D](https://www.open3d.org/) - Used for 3D visualization capabilities in demonstration scripts
+- **Research support**: Development of this enhanced Python wrapper was supported by the French National Research Agency (ANR) under the France 2030 program, specifically the IRT Nanoelec project (ANR-10-AIRT-05), advancing robotics and 3D mapping research capabilities.
 
 ## Contact
 
