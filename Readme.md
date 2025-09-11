@@ -322,6 +322,7 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 - Based on the [OctoMap library](https://octomap.github.io/)
 - Built with Cython for Python integration
 - Open3D used for visualization in demos: [`https://www.open3d.org/`](https://www.open3d.org/)
+- This work was supported by the French National Research Agency under the France 2030 program project IRT Nanoelec (ANR-10-AIRT-05).
 
 ## Contact
 
