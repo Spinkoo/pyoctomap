@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*/** __pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.pyzw
+*.pyzwz
+*.pyzwzw
+*.pyzwzwzw
+
+#local builds
+build/
+dist/
+*.egg-info/
+
+#Open3D
+Open3D/
+Open3D/build/
+Open3D/dist/
+Open3D/Open3D.egg-info/
+Open3D/Open3D.egg-info/
+#octomap2python
+octomap2python.egg-info/
+octomap2python.egg-info/
+#octomap
+octomap/build/
+octomap/dist/
+octomap/octomap.egg-info/
+octomap/octomap.egg-info/
+Prompet for readme.md
+
+#environments
+testenv/

@@ -1,0 +1,77 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "wheel",
+    "cython>=0.29.0",
+    "numpy>=1.16.0"
+]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "octomap2python"
+dynamic = ["version"]
+description = "Python binding of the OctoMap library with bundled shared libraries."
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Spinkoo", email = "lespinkoo@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+keywords = ["octomap", "occupancy", "mapping", "robotics", "3d", "bundled-libs", "python"]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.16.0"
+]
+
+[project.optional-dependencies]
+visualization = [
+    "matplotlib>=3.0.0",
+    "open3d>=0.13.0"
+]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov",
+    "black",
+    "flake8",
+    "mypy",
+    "twine",
+    "build"
+]
+
+[project.urls]
+Homepage = "https://github.com/Spinkoo/octomap2python"
+Repository = "https://github.com/Spinkoo/octomap2python"
+Documentation = "https://github.com/Spinkoo/octomap2python#readme"
+"Bug Tracker" = "https://github.com/Spinkoo/octomap2python/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["octomap*"]
+exclude = ["tests*", "examples*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "octomap.__version__"}
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]

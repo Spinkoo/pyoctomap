@@ -1,0 +1,13 @@
+include README.md
+include LICENSE
+include pyproject.toml
+include setup.cfg
+include setup.py
+recursive-include octomap *.pyx *.pxd *.cpp *.h
+recursive-include src *.so *.a *.h *.hpp *.hxx
+recursive-include examples *.py
+# Exclude build artifacts and external dependencies
+prune build
+prune dist
+prune *.egg-info
+# Note: NumPy headers are build dependencies, not source dependencies

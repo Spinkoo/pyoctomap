@@ -1,0 +1,13 @@
+# Ignore external dependencies that can't be included in source distributions
+**/site-packages/**
+**/numpy/**
+**/cython/**
+**/__pycache__/**
+*.pyc
+*.pyo
+*.egg-info/**
+build/**
+dist/**
+.git/**
+.pytest_cache/**
+.mypy_cache/**
