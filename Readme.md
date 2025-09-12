@@ -4,7 +4,7 @@
 <img src="images/octomap_core.png" alt="OctoMap Core" width="900">
 </div>
 
-A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 3D occupancy mapping capabilities for robotics and computer vision applications. This modernized binding offers enhanced performance, bundled shared libraries for easy deployment, and seamless integration with the Python scientific ecosystem. The package is designed for distribution via PyPI with initial Linux support, followed by Windows compatibility in future releases.
+A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 3D occupancy mapping capabilities for robotics and computer vision applications. This modernized binding offers enhanced performance, bundled shared libraries for easy deployment, and seamless integration with the Python scientific ecosystem. The package is designed for distribution via PyPI with initial Linux support and has been tested under WSL (Windows Subsystem for Linux), making it effectively compatible with both Linux and Windows operating systems.
 
 ## Features
 
@@ -15,12 +15,11 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 - **Bundled Libraries**: No external dependencies - all C++ libraries included
 - **Python Integration**: Clean Python interface with NumPy support
 - **Wheel Distribution**: Self-contained wheel packages with bundled shared libraries
-- **Linux-first**: Designed for Linux wheels; Windows support is planned next
+- **Cross-Platform**: Linux native support with Windows compatibility via WSL (Windows Subsystem for Linux)
 
 ## Installation
-A Python wrapper for the C++ OctoMap library. It provides Python bindings to the OctoMap C++ library and is intended to be distributed via PyPI (Linux first; Windows support is planned next).
 
-**Linux:**
+**Linux / WSL (Windows Subsystem for Linux):**
 ```bash
 # Clone the repository with submodules
 git clone --recursive https://github.com/Spinkoo/octomap2python.git
@@ -39,6 +38,8 @@ cd ../../..
 chmod +x build.sh
 ./build.sh
 ```
+
+> **Note for Windows users**: Install [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install) to run these Linux commands on Windows. The library has been tested and works seamlessly in WSL environments.
 
 For more details on building OctoMap (including Windows instructions), see the [official OctoMap repository](https://github.com/OctoMap/octomap).
 
