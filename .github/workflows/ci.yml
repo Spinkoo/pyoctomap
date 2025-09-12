@@ -60,9 +60,10 @@ jobs:
     
     - name: Run comprehensive tests
       run: |
-        # Run from /tmp to avoid source directory shadowing
-        cd /tmp
-        python -m pytest /home/runner/work/octomap2python/octomap2python/unit_test/test_build.py -v
+        # Temporarily rename source directory to avoid import shadowing
+        mv octomap _octomap_source
+        python -m pytest unit_test/test_build.py -v
+        mv _octomap_source octomap
     
     - name: Run additional unit tests
       run: |
