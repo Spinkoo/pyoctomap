@@ -72,7 +72,7 @@ jobs:
         echo "✅ PyPI README with converted URLs created during build"
     
     - name: Upload PyPI README
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: pypi-readme
         path: README_PyPI.md

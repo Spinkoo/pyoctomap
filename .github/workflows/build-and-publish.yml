@@ -138,7 +138,7 @@ jobs:
         twine check dist/*
     
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: distributions
         path: dist/
@@ -211,7 +211,7 @@ jobs:
         "
     
     - name: Upload PyPI README artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: readme-pypi
         path: README_PyPI.md
