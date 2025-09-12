@@ -116,22 +116,17 @@ jobs:
         CIBW_PLATFORM: linux
         CIBW_BUILD: cp39-*
         CIBW_ARCHS: x86_64
-        # Use manylinux2014 for GCC compatibility (manylinux2010 has GCC 8.3, NumPy needs 8.4+)
-        CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
-        # Install system dependencies before build
+        # Use manylinux_2_28 for modern package management and GCC
+        CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+        # Install system dependencies before build  
         CIBW_BEFORE_ALL_LINUX: |
-          # manylinux2014 should have cmake available, let's check what's available
-          which cmake || which cmake3 || echo "No cmake found, trying to install..."
-          
-          # If no cmake, try to install with fallback methods
-          if ! which cmake && ! which cmake3; then
-            # Try using pre-built cmake if available
-            curl -L https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.tar.gz | tar -xz -C /opt/
-            export PATH="/opt/cmake-3.20.0-linux-x86_64/bin:$PATH"
-          else
-            # Use existing cmake or cmake3
-            which cmake3 && ln -sf $(which cmake3) /usr/local/bin/cmake || true
-          fi
+          # manylinux_2_28 uses AlmaLinux 8, should have modern package management
+          dnf install -y cmake || yum install -y cmake3 || {
+            echo "Installing cmake from binary..."
+            cd /tmp
+            curl -L https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.tar.gz | tar -xz
+            cp -r cmake-3.20.0-linux-x86_64/* /usr/local/
+          }
           
           cmake --version
           cd src/octomap &&
