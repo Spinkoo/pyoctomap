@@ -98,131 +98,64 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
+    container: quay.io/pypa/manylinux2010_x86_64
     
     steps:
     - uses: actions/checkout@v4
       with:
         submodules: recursive
     
-    - name: Build manylinux wheels
-      uses: docker://quay.io/pypa/manylinux2010_x86_64
-      with:
-        args: |
-          bash -c "
-          # Set up Python 3.9 from manylinux
-          export PATH=\"/opt/python/cp39-cp39/bin:\$PATH\"
-          python --version
-          
-          # Install system dependencies
-          yum install -y cmake3
-          ln -sf /usr/bin/cmake3 /usr/bin/cmake
-          
-          # Build OctoMap C++ library
-          cd src/octomap
-          mkdir -p build && cd build
-          cmake ..
-          make -j\$(nproc)
-          make install
-          ldconfig
-          cd ../../..
-          
-          # Install Python dependencies
-          pip install --upgrade pip
-          pip install build wheel setuptools numpy cython auditwheel
-          
-          # Build wheel
-          python -m build --wheel
-          
-          # Repair wheel for manylinux
-          mkdir -p wheelhouse
-          for wheel in dist/*.whl; do
-            auditwheel repair \$wheel -w wheelhouse/
-          done
-          
-          # Replace with manylinux wheel
-          rm -f dist/*.whl
-          cp wheelhouse/*.whl dist/
-          
-          echo 'Manylinux wheels built successfully:'
-          ls -la dist/
-          "
-    
-    - name: Cache OctoMap C++ build
-      uses: actions/cache@v3
-      with:
-        path: src/octomap/build
-        key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
-        restore-keys: |
-          octomap-cpp-${{ runner.os }}-
-    
-    - name: Cache Python dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: pip-${{ runner.os }}-${{ hashFiles('**/requirements.txt', '**/pyproject.toml', '**/setup.py') }}
-        restore-keys: |
-          pip-${{ runner.os }}-
+    - name: Set up manylinux environment
+      run: |
+        # Use Python 3.9 from manylinux2010
+        export PATH="/opt/python/cp39-cp39/bin:$PATH"
+        echo "PATH=/opt/python/cp39-cp39/bin:$PATH" >> $GITHUB_ENV
+        python --version
+        pip --version
     
     - name: Install system dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake build-essential
+        yum install -y cmake3
+        ln -sf /usr/bin/cmake3 /usr/bin/cmake
     
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
-        if [ ! -d "build" ] || [ ! -f "build/lib/liboctomap.so" ]; then
-          echo "🔨 Building OctoMap C++ library..."
-          mkdir -p build
-          cd build
-          cmake ..
-          make -j$(nproc)
-          sudo make install
-          sudo ldconfig
-        else
-          echo "✅ Using cached OctoMap C++ build"
-          cd build
-          sudo make install
-          sudo ldconfig
-        fi
+        mkdir -p build && cd build
+        cmake ..
+        make -j$(nproc)
+        make install
+        ldconfig
+        cd ../../..
     
-    - name: Install build dependencies
+    - name: Install Python build dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install build twine setuptools wheel numpy cython
+        pip install --upgrade pip
+        pip install build wheel setuptools numpy cython auditwheel
     
-    - name: Build distributions
+    - name: Build and repair wheels
       run: |
         # Clean any previous builds
         rm -rf build/ dist/ *.egg-info/
-        # Build using modern build tools that properly read pyproject.toml
-        python -m build
         
-        # Fix platform tags for PyPI compatibility using auditwheel
-        pip install auditwheel
+        # Build wheel
+        python -m build --wheel
         
-        # Create repaired wheels directory
+        # Also build sdist
+        python -m build --sdist
+        
+        # Repair wheel for manylinux2010
         mkdir -p wheelhouse
-        
-        # Repair wheels for manylinux compatibility
         for wheel in dist/*.whl; do
-          if [[ -f "$wheel" ]]; then
-            echo "Repairing wheel: $wheel"
-            auditwheel repair "$wheel" -w wheelhouse/ || {
-              echo "auditwheel failed, trying manual tag fix..."
-              cp "$wheel" wheelhouse/
-              cd wheelhouse
-              python -c "import os; [os.rename(f, f.replace('linux_x86_64', 'manylinux1_x86_64')) for f in os.listdir('.') if f.endswith('.whl') and 'linux_x86_64' in f]; print('Fixed platform tags')"
-              cd ..
-            }
-          fi
+          echo "Repairing wheel: $wheel"
+          auditwheel repair "$wheel" -w wheelhouse/
         done
         
-        # Replace original wheels with repaired ones
+        # Replace with manylinux wheels
         rm -f dist/*.whl
-        cp wheelhouse/*.whl dist/ 2>/dev/null || echo "No wheels to copy"
+        cp wheelhouse/*.whl dist/
         
-        echo "Final distributions:"
+        echo "=== Final distributions ==="
         ls -la dist/
     
     - name: Check distributions
@@ -238,7 +171,7 @@ jobs:
   publish-test:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')
     
     steps:
     - name: Set up Python
