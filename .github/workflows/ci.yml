@@ -60,7 +60,9 @@ jobs:
     
     - name: Run comprehensive tests
       run: |
-        python -m pytest unit_test/test_build.py -v
+        # Run from /tmp to avoid source directory shadowing
+        cd /tmp
+        python -m pytest /home/runner/work/octomap2python/octomap2python/unit_test/test_build.py -v
     
     - name: Run additional unit tests
       run: |
