@@ -174,14 +174,7 @@ jobs:
               echo "auditwheel failed, trying manual tag fix..."
               cp "$wheel" wheelhouse/
               cd wheelhouse
-              python -c "
-import os
-for f in os.listdir('.'):
-    if f.endswith('.whl') and 'linux_x86_64' in f:
-        new_name = f.replace('linux_x86_64', 'manylinux1_x86_64')
-        os.rename(f, new_name)
-        print(f'Renamed {f} to {new_name}')
-"
+              python -c "import os; [os.rename(f, f.replace('linux_x86_64', 'manylinux1_x86_64')) for f in os.listdir('.') if f.endswith('.whl') and 'linux_x86_64' in f]; print('Fixed platform tags')"
               cd ..
             }
           fi
