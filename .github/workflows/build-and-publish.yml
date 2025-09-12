@@ -162,6 +162,10 @@ jobs:
         password: ${{ secrets.TEST_PYPI_API_TOKEN }}
         repository-url: https://test.pypi.org/legacy/
         skip-existing: true
+        verbose: true
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
 
   publish-pypi:
     needs: build
