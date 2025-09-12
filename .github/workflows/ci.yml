@@ -25,6 +25,14 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     
+    - name: Cache OctoMap C++ build
+      uses: actions/cache@v3
+      with:
+        path: src/octomap/build
+        key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
+        restore-keys: |
+          octomap-cpp-${{ runner.os }}-
+    
     - name: Install system dependencies
       run: |
         sudo apt-get update
@@ -33,12 +41,20 @@ jobs:
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
-        mkdir -p build
-        cd build
-        cmake ..
-        make -j$(nproc)
-        sudo make install
-        sudo ldconfig
+        if [ ! -d "build" ] || [ ! -f "build/lib/liboctomap.so" ]; then
+          echo "🔨 Building OctoMap C++ library..."
+          mkdir -p build
+          cd build
+          cmake ..
+          make -j$(nproc)
+          sudo make install
+          sudo ldconfig
+        else
+          echo "✅ Using cached OctoMap C++ build"
+          cd build
+          sudo make install
+          sudo ldconfig
+        fi
     
     - name: Install Python build dependencies
       run: |

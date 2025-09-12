@@ -109,6 +109,22 @@ jobs:
       with:
         python-version: "3.9"
     
+    - name: Cache OctoMap C++ build
+      uses: actions/cache@v3
+      with:
+        path: src/octomap/build
+        key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
+        restore-keys: |
+          octomap-cpp-${{ runner.os }}-
+    
+    - name: Cache Python dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: pip-${{ runner.os }}-${{ hashFiles('**/requirements.txt', '**/pyproject.toml', '**/setup.py') }}
+        restore-keys: |
+          pip-${{ runner.os }}-
+    
     - name: Install system dependencies
       run: |
         sudo apt-get update
@@ -117,12 +133,20 @@ jobs:
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
-        mkdir build
-        cd build
-        cmake ..
-        make -j$(nproc)
-        sudo make install
-        sudo ldconfig
+        if [ ! -d "build" ] || [ ! -f "build/lib/liboctomap.so" ]; then
+          echo "🔨 Building OctoMap C++ library..."
+          mkdir -p build
+          cd build
+          cmake ..
+          make -j$(nproc)
+          sudo make install
+          sudo ldconfig
+        else
+          echo "✅ Using cached OctoMap C++ build"
+          cd build
+          sudo make install
+          sudo ldconfig
+        fi
     
     - name: Install build dependencies
       run: |
@@ -156,13 +180,18 @@ jobs:
         path: dist/
     
     - name: Publish to Test PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: __token__
-        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-        repository-url: https://test.pypi.org/legacy/
-        skip-existing: true
-        verbose: true
+      run: |
+        echo "📦 Publishing to TestPyPI using twine..."
+        # Create .pypirc for testpypi
+        cat > ~/.pypirc << EOF
+        [distutils]
+        index-servers = testpypi
+        
+        [testpypi]
+        repository = https://test.pypi.org/legacy/
+        username = __token__
+        EOF
+        python -m twine upload --repository testpypi --skip-existing --verbose dist/*
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
