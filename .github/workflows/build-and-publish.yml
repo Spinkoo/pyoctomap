@@ -128,9 +128,9 @@ jobs:
           make -j$(nproc) &&
           make install &&
           ldconfig
-        # Install Python dependencies
+        # Install Python dependencies (pin NumPy for manylinux2010 compatibility)
         CIBW_BEFORE_BUILD: |
-          pip install numpy cython setuptools wheel
+          pip install "numpy<2.0" cython setuptools wheel
         # Skip tests for now (we test in the test job)
         CIBW_TEST_SKIP: "*"
     

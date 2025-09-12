@@ -1,9 +1,9 @@
 [build-system]
 requires = [
-    "setuptools>=61.0",
+    "setuptools>=45.0",
     "wheel",
     "cython>=0.29.0",
-    "numpy>=1.16.0"
+    "numpy>=1.16.0,<2.0"
 ]
 build-backend = "setuptools.build_meta"
 
@@ -34,7 +34,7 @@ classifiers = [
 keywords = ["octomap", "occupancy", "mapping", "robotics", "3d", "bundled-libs", "python"]
 requires-python = ">=3.9"
 dependencies = [
-    "numpy>=1.16.0"
+    "numpy>=1.16.0,<2.0"
 ]
 
 [project.optional-dependencies]
