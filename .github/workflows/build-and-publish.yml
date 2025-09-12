@@ -147,8 +147,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    permissions:
-      id-token: write
     
     steps:
     - name: Download artifacts
@@ -160,6 +158,7 @@ jobs:
     - name: Publish to Test PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
+        user: __token__
         password: ${{ secrets.TEST_PYPI_API_TOKEN }}
         repository-url: https://test.pypi.org/legacy/
         skip-existing: true
@@ -169,8 +168,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'release' && github.event.action == 'published'
     environment: release
-    permissions:
-      id-token: write
     
     steps:
     - name: Download artifacts
@@ -182,6 +179,7 @@ jobs:
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
+        user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
 
   update-readme:
