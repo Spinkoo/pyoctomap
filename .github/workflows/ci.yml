@@ -72,6 +72,10 @@ jobs:
         python -m pytest unit_test/ --ignore=unit_test/test_build.py -v --tb=short
         mv _octomap_source octomap
     
+    - name: Install visualization dependencies for examples
+      run: |
+        pip install open3d matplotlib
+    
     - name: Test examples (if they exist)
       run: |
         if [ -f "examples/basic_test.py" ]; then
