@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.9"]  # Focus on 3.9 for faster CI, expand later
     
     steps:
     - uses: actions/checkout@v4
@@ -120,6 +120,9 @@ jobs:
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
         # Install system dependencies before build
         CIBW_BEFORE_ALL_LINUX: |
+          # Fix CentOS 7 EOL mirror issues
+          sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* &&
+          sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-* &&
           yum install -y cmake3 &&
           ln -sf /usr/bin/cmake3 /usr/bin/cmake &&
           cd src/octomap &&
