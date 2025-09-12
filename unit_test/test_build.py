@@ -51,7 +51,7 @@ def test_github2pypi():
         import os
         
         # Add github2pypi to path
-        github2pypi_path = os.path.join(os.path.dirname(__file__), 'github2pypi')
+        github2pypi_path = os.path.join(os.path.dirname(__file__), '../github2pypi')
         sys.path.insert(0, github2pypi_path)
         
         from replace_url import replace_url
