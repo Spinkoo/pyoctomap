@@ -47,8 +47,9 @@ jobs:
     
     - name: Build and install package
       run: |
-        python setup.py build_ext --inplace
-        pip install -e .
+        # Build wheel and install it
+        python setup.py bdist_wheel
+        pip install dist/*.whl
     
     - name: Run comprehensive tests
       run: |
