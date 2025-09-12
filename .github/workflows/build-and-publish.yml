@@ -1,10 +1,10 @@
 name: Build and Publish to PyPI
 
 on:
-  # Trigger on pushes to main branch
+  # Trigger on pushes to main and dev branches
   push:
-    branches: [ main ]
-  # Trigger on pull requests
+    branches: [ main, dev ]
+  # Trigger on pull requests to main
   pull_request:
     branches: [ main ]
   # Trigger on releases
@@ -104,10 +104,48 @@ jobs:
       with:
         submodules: recursive
     
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Build manylinux wheels
+      uses: docker://quay.io/pypa/manylinux2010_x86_64
       with:
-        python-version: "3.9"
+        args: |
+          bash -c "
+          # Set up Python 3.9 from manylinux
+          export PATH=\"/opt/python/cp39-cp39/bin:\$PATH\"
+          python --version
+          
+          # Install system dependencies
+          yum install -y cmake3
+          ln -sf /usr/bin/cmake3 /usr/bin/cmake
+          
+          # Build OctoMap C++ library
+          cd src/octomap
+          mkdir -p build && cd build
+          cmake ..
+          make -j\$(nproc)
+          make install
+          ldconfig
+          cd ../../..
+          
+          # Install Python dependencies
+          pip install --upgrade pip
+          pip install build wheel setuptools numpy cython auditwheel
+          
+          # Build wheel
+          python -m build --wheel
+          
+          # Repair wheel for manylinux
+          mkdir -p wheelhouse
+          for wheel in dist/*.whl; do
+            auditwheel repair \$wheel -w wheelhouse/
+          done
+          
+          # Replace with manylinux wheel
+          rm -f dist/*.whl
+          cp wheelhouse/*.whl dist/
+          
+          echo 'Manylinux wheels built successfully:'
+          ls -la dist/
+          "
     
     - name: Cache OctoMap C++ build
       uses: actions/cache@v3
