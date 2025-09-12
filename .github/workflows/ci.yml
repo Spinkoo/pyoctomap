@@ -68,14 +68,19 @@ jobs:
     - name: Run additional unit tests
       run: |
         # Run other unit tests (excluding test_build.py which we already ran)
+        mv octomap _octomap_source
         python -m pytest unit_test/ --ignore=unit_test/test_build.py -v --tb=short
+        mv _octomap_source octomap
     
     - name: Test examples (if they exist)
       run: |
         if [ -f "examples/basic_test.py" ]; then
           echo "🧪 Testing basic example..."
+          mv octomap _octomap_source
           cd examples
           python basic_test.py
+          cd ..
+          mv _octomap_source octomap
         else
           echo "ℹ️  No basic test example found"
         fi
