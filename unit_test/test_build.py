@@ -56,34 +56,5 @@ def test_github2pypi():
     
     print("✅ github2pypi URL conversion working correctly")
 
-def main():
-    """Run all tests."""
-    print("🧪 Running build tests...")
-    
-    tests = [
-        ("Import test", test_import),
-        ("Functionality test", test_basic_functionality),
-        ("github2pypi test", test_github2pypi),
-    ]
-    
-    passed = 0
-    total = len(tests)
-    
-    for name, test_func in tests:
-        print(f"\n🔍 {name}:")
-        if test_func():
-            passed += 1
-        else:
-            print(f"❌ {name} FAILED")
-    
-    print(f"\n📊 Results: {passed}/{total} tests passed")
-    
-    if passed == total:
-        print("🎉 All tests passed!")
-        return 0
-    else:
-        print("💥 Some tests failed!")
-        return 1
-
-if __name__ == "__main__":
-    exit(main())
+# This file is now a proper pytest module
+# Run with: python -m pytest unit_test/test_build.py -v
