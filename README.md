@@ -45,7 +45,11 @@ For more details on building OctoMap (including Windows instructions), see the [
 
 When published on PyPI (Linux):
 ```bash
+# Basic installation
 pip install octomap2python
+
+# Install with visualization tools (includes matplotlib + Open3D)
+pip install octomap2python[visualization]
 ```
 
 The build scripts will automatically:
@@ -78,11 +82,15 @@ pip install dist/octomap2python-1.1.0-cp312-cp312-linux_x86_64.whl
 
 Install visualization packages for the demo scripts:
 ```bash
-# For 2D occupancy grid visualization
-pip install matplotlib
+# Option 1: Install extras (recommended)
+pip install octomap2python[visualization]
 
-# For 3D visualization with Open3D
-pip install open3d
+# Option 2: Install manually
+pip install matplotlib  # For 2D occupancy grid visualization
+pip install open3d      # For 3D visualization with Open3D
+
+# Option 3: Install both at once
+pip install matplotlib open3d
 ```
 - For building Open3D from source, **Windows GPU builds using WSL, see [Open3D on WSL](https://github.com/Spinkoo/Open3DWSL).**
 
