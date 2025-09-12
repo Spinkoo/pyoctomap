@@ -120,11 +120,20 @@ jobs:
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
         # Install system dependencies before build
         CIBW_BEFORE_ALL_LINUX: |
-          # Fix CentOS 7 EOL mirror issues
-          sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* &&
-          sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-* &&
-          yum install -y cmake3 &&
-          ln -sf /usr/bin/cmake3 /usr/bin/cmake &&
+          # manylinux2014 should have cmake available, let's check what's available
+          which cmake || which cmake3 || echo "No cmake found, trying to install..."
+          
+          # If no cmake, try to install with fallback methods
+          if ! which cmake && ! which cmake3; then
+            # Try using pre-built cmake if available
+            curl -L https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.tar.gz | tar -xz -C /opt/
+            export PATH="/opt/cmake-3.20.0-linux-x86_64/bin:$PATH"
+          else
+            # Use existing cmake or cmake3
+            which cmake3 && ln -sf $(which cmake3) /usr/local/bin/cmake || true
+          fi
+          
+          cmake --version
           cd src/octomap &&
           mkdir -p build && cd build &&
           cmake .. &&
