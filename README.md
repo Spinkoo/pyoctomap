@@ -21,6 +21,10 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 
 **Linux / WSL (Windows Subsystem for Linux):**
 ```bash
+# Install system dependencies (ensure compatible libstdc++ version)
+sudo apt-get update
+sudo apt-get install libstdc++6 cmake build-essential -y
+
 # Clone the repository with submodules
 git clone --recursive https://github.com/Spinkoo/octomap2python.git
 cd octomap2python
@@ -45,7 +49,11 @@ For more details on building OctoMap (including Windows instructions), see the [
 
 When published on PyPI (Linux):
 ```bash
+# Basic installation
 pip install octomap2python
+
+# Install with visualization tools (includes matplotlib + Open3D)
+pip install octomap2python[visualization]
 ```
 
 The build scripts will automatically:
@@ -59,11 +67,15 @@ The build scripts will automatically:
 ### Manual Installation
 
 ```bash
+# Install system dependencies first
+sudo apt-get update
+sudo apt-get install libstdc++6 cmake build-essential -y
+
 # Clone the repository
 git clone https://github.com/Spinkoo/octomap2python.git
 cd octomap2python
 
-# Install dependencies
+# Install Python dependencies
 pip install setuptools numpy cython
 
 # For Linux: Install auditwheel for library bundling
@@ -78,16 +90,26 @@ pip install dist/octomap2python-1.1.0-cp312-cp312-linux_x86_64.whl
 
 Install visualization packages for the demo scripts:
 ```bash
-# For 2D occupancy grid visualization
-pip install matplotlib
+# Option 1: Install extras (recommended)
+pip install octomap2python[visualization]
 
-# For 3D visualization with Open3D
-pip install open3d
+# Option 2: Install manually
+pip install matplotlib  # For 2D occupancy grid visualization
+pip install open3d      # For 3D visualization with Open3D
+
+# Option 3: Install both at once
+pip install matplotlib open3d
 ```
 - For building Open3D from source, **Windows GPU builds using WSL, see [Open3D on WSL](https://github.com/Spinkoo/Open3DWSL).**
 
 ### Requirements
 
+**System Dependencies:**
+- `libstdc++6` - Modern C++ standard library (fixes glibc compatibility issues)
+- `cmake` - Build system for OctoMap C++ library
+- `build-essential` - GCC compiler and build tools
+
+**Python Dependencies:**
 - Python 3.9+
 - setuptools
 - NumPy
