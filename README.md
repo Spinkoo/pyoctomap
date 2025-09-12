@@ -21,6 +21,10 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 
 **Linux / WSL (Windows Subsystem for Linux):**
 ```bash
+# Install system dependencies (ensure compatible libstdc++ version)
+sudo apt-get update
+sudo apt-get install libstdc++6 cmake build-essential -y
+
 # Clone the repository with submodules
 git clone --recursive https://github.com/Spinkoo/octomap2python.git
 cd octomap2python
@@ -63,11 +67,15 @@ The build scripts will automatically:
 ### Manual Installation
 
 ```bash
+# Install system dependencies first
+sudo apt-get update
+sudo apt-get install libstdc++6 cmake build-essential -y
+
 # Clone the repository
 git clone https://github.com/Spinkoo/octomap2python.git
 cd octomap2python
 
-# Install dependencies
+# Install Python dependencies
 pip install setuptools numpy cython
 
 # For Linux: Install auditwheel for library bundling
@@ -96,6 +104,12 @@ pip install matplotlib open3d
 
 ### Requirements
 
+**System Dependencies:**
+- `libstdc++6` - Modern C++ standard library (fixes glibc compatibility issues)
+- `cmake` - Build system for OctoMap C++ library
+- `build-essential` - GCC compiler and build tools
+
+**Python Dependencies:**
 - Python 3.9+
 - setuptools
 - NumPy
