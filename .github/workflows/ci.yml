@@ -49,7 +49,18 @@ jobs:
       run: |
         # Build wheel and install it
         python setup.py bdist_wheel
+        
+        # Debug: Check what was built
+        echo "=== Checking built wheel ==="
+        ls -la dist/
+        unzip -l dist/*.whl | grep -E '\.(so|dylib|dll)' || echo "No shared libraries found in wheel"
+        
         pip install dist/*.whl
+        
+        # Debug: Check installation
+        echo "=== Checking installed package ==="
+        python -c "import sys; print('Python path:', sys.path)"
+        find $(python -c "import site; print(' '.join(site.getsitepackages()))") -name "octomap*" -type d || echo "No octomap directories found"
     
     - name: Run comprehensive tests
       run: |
