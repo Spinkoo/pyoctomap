@@ -98,65 +98,46 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2010_x86_64
     
     steps:
     - uses: actions/checkout@v4
       with:
         submodules: recursive
     
-    - name: Set up manylinux environment
-      run: |
-        # Use Python 3.9 from manylinux2010
-        export PATH="/opt/python/cp39-cp39/bin:$PATH"
-        echo "PATH=/opt/python/cp39-cp39/bin:$PATH" >> $GITHUB_ENV
-        python --version
-        pip --version
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
     
-    - name: Install system dependencies
-      run: |
-        yum install -y cmake3
-        ln -sf /usr/bin/cmake3 /usr/bin/cmake
+    - name: Build manylinux wheels using cibuildwheel
+      uses: pypa/cibuildwheel@v2.16.2
+      env:
+        # Build only for Linux x86_64, Python 3.9
+        CIBW_PLATFORM: linux
+        CIBW_BUILD: cp39-*
+        CIBW_ARCHS: x86_64
+        # Use manylinux2010 for broad compatibility
+        CIBW_MANYLINUX_X86_64_IMAGE: manylinux2010
+        # Install system dependencies before build
+        CIBW_BEFORE_ALL_LINUX: |
+          yum install -y cmake3 &&
+          ln -sf /usr/bin/cmake3 /usr/bin/cmake &&
+          cd src/octomap &&
+          mkdir -p build && cd build &&
+          cmake .. &&
+          make -j$(nproc) &&
+          make install &&
+          ldconfig
+        # Install Python dependencies
+        CIBW_BEFORE_BUILD: |
+          pip install numpy cython setuptools wheel
+        # Skip tests for now (we test in the test job)
+        CIBW_TEST_SKIP: "*"
     
-    - name: Build OctoMap C++ library
+    - name: Build source distribution
       run: |
-        cd src/octomap
-        mkdir -p build && cd build
-        cmake ..
-        make -j$(nproc)
-        make install
-        ldconfig
-        cd ../../..
-    
-    - name: Install Python build dependencies
-      run: |
-        pip install --upgrade pip
-        pip install build wheel setuptools numpy cython auditwheel
-    
-    - name: Build and repair wheels
-      run: |
-        # Clean any previous builds
-        rm -rf build/ dist/ *.egg-info/
-        
-        # Build wheel
-        python -m build --wheel
-        
-        # Also build sdist
+        python -m pip install --upgrade pip build
         python -m build --sdist
-        
-        # Repair wheel for manylinux2010
-        mkdir -p wheelhouse
-        for wheel in dist/*.whl; do
-          echo "Repairing wheel: $wheel"
-          auditwheel repair "$wheel" -w wheelhouse/
-        done
-        
-        # Replace with manylinux wheels
-        rm -f dist/*.whl
-        cp wheelhouse/*.whl dist/
-        
-        echo "=== Final distributions ==="
-        ls -la dist/
     
     - name: Check distributions
       run: |
