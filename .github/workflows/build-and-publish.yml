@@ -116,8 +116,8 @@ jobs:
         CIBW_PLATFORM: linux
         CIBW_BUILD: cp39-*
         CIBW_ARCHS: x86_64
-        # Use manylinux2010 for broad compatibility
-        CIBW_MANYLINUX_X86_64_IMAGE: manylinux2010
+        # Use manylinux2014 for GCC compatibility (manylinux2010 has GCC 8.3, NumPy needs 8.4+)
+        CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
         # Install system dependencies before build
         CIBW_BEFORE_ALL_LINUX: |
           yum install -y cmake3 &&
@@ -128,9 +128,9 @@ jobs:
           make -j$(nproc) &&
           make install &&
           ldconfig
-        # Install Python dependencies (pin NumPy for manylinux2010 compatibility)
+        # Install Python dependencies
         CIBW_BEFORE_BUILD: |
-          pip install "numpy<2.0" cython setuptools wheel
+          pip install numpy cython setuptools wheel
         # Skip tests for now (we test in the test job)
         CIBW_TEST_SKIP: "*"
     
