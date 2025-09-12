@@ -15,9 +15,9 @@ from replace_url import replace_url
 
 def test_image_replacement():
     """Test image URL replacement"""
-    content = "![Example](examples/visualization.png)"
+    content = "![Example](images/octomap_core.png)"
     result = replace_url("Spinkoo/octomap2python", content)
-    expected = "![Example](https://github.com/Spinkoo/octomap2python/blob/main/examples/visualization.png?raw=true)"
+    expected = "![Example](https://github.com/Spinkoo/octomap2python/blob/main/images/octomap_core.png?raw=true)"
     
     print("Test: Image URL replacement")
     print(f"Input:    {content}")
@@ -31,9 +31,9 @@ def test_image_replacement():
 
 def test_link_replacement():
     """Test link URL replacement"""
-    content = "[Documentation](docs/README.md)"
+    content = "[Documentation](Readme.md)"
     result = replace_url("Spinkoo/octomap2python", content)
-    expected = "[Documentation](https://github.com/Spinkoo/octomap2python/blob/main/docs/README.md)"
+    expected = "[Documentation](https://github.com/Spinkoo/octomap2python/blob/main/Readme.md)"
     
     print("Test: Link URL replacement")
     print(f"Input:    {content}")
@@ -47,7 +47,7 @@ def test_link_replacement():
 
 def test_absolute_url_unchanged():
     """Test that absolute URLs are not changed"""
-    content = "![Example](https://example.com/image.png)"
+    content = "![Example](https://github.com/Spinkoo/octomap2python/blob/main/images/octomap_core.png?raw=true)"
     result = replace_url("Spinkoo/octomap2python", content)
     expected = content  # Should remain unchanged
     
@@ -66,24 +66,24 @@ def test_multiple_replacements():
     content = """
 # OctoMap2Python
 
-![Example](examples/demo.png)
+![Example](images/octomap_core.png)
 
-See the [documentation](docs/usage.md) for more details.
+See the [documentation](Readme.md) for more details.
 
-![Another](images/octree.jpg)
+![Another](images/occupancy_grid.png)
 """
     
     result = replace_url("Spinkoo/octomap2python", content)
     
     # Check that all relative URLs were replaced
     success = (
-        "https://github.com/Spinkoo/octomap2python/blob/main/examples/demo.png?raw=true" in result and
-        "https://github.com/Spinkoo/octomap2python/blob/main/docs/usage.md" in result and
-        "https://github.com/Spinkoo/octomap2python/blob/main/images/octree.jpg?raw=true" in result
+        "https://github.com/Spinkoo/octomap2python/blob/main/images/octomap_core.png?raw=true" in result and
+        "https://github.com/Spinkoo/octomap2python/blob/main/Readme.md" in result and
+        "https://github.com/Spinkoo/octomap2python/blob/main/images/occupancy_grid.png?raw=true" in result
     )
     
     print("Test: Multiple URL replacements")
-    print(f"Input contains: examples/demo.png, docs/usage.md, images/octree.jpg")
+    print(f"Input contains: images/octomap_core.png, Readme.md, images/occupancy_grid.png")
     print(f"All converted: {'✅ PASS' if success else '❌ FAIL'}")
     print()
     
@@ -92,9 +92,9 @@ See the [documentation](docs/usage.md) for more details.
 
 def test_custom_branch():
     """Test custom branch specification"""
-    content = "![Example](examples/demo.png)"
+    content = "![Example](images/octomap_core.png)"
     result = replace_url("Spinkoo/octomap2python", content, branch="develop")
-    expected = "![Example](https://github.com/Spinkoo/octomap2python/blob/develop/examples/demo.png?raw=true)"
+    expected = "![Example](https://github.com/Spinkoo/octomap2python/blob/develop/images/octomap_core.png?raw=true)"
     
     print("Test: Custom branch")
     print(f"Input:    {content}")

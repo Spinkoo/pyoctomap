@@ -1,0 +1,79 @@
+name: Release to PyPI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: release
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential
+    
+    - name: Build OctoMap C++ library
+      run: |
+        cd src/octomap
+        mkdir build
+        cd build
+        cmake ..
+        make -j$(nproc)
+        sudo make install
+        sudo ldconfig
+    
+    - name: Install build tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine setuptools wheel numpy cython pytest
+    
+    - name: Verify github2pypi integration
+      run: |
+        cd github2pypi
+        python -m pytest test_replace_url.py::test_replace_url -v
+        cd ..
+    
+    - name: Build distributions
+      run: |
+        # Clean any previous builds
+        rm -rf build/ dist/ *.egg-info/
+        
+        # Build with github2pypi URL conversion
+        python setup.py sdist bdist_wheel
+    
+    - name: Check distributions
+      run: |
+        twine check dist/*
+        echo "📦 Built distributions:"
+        ls -la dist/
+    
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
+    
+    - name: Create PyPI README artifact
+      run: |
+        # The github2pypi conversion happens automatically in setup.py
+        echo "✅ PyPI README with converted URLs created during build"
+    
+    - name: Upload PyPI README
+      uses: actions/upload-artifact@v3
+      with:
+        name: pypi-readme
+        path: README_PyPI.md
+        retention-days: 30

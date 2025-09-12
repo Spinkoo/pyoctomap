@@ -12,6 +12,27 @@ from setuptools.command.build_ext import build_ext
 from setuptools.command.install import install
 from setuptools.command.develop import develop
 
+# Import github2pypi for PyPI README conversion
+try:
+    from github2pypi import replace_url
+    
+    def get_long_description():
+        """Get long description with GitHub URLs for PyPI compatibility."""
+        with open("README.md", encoding="utf-8") as f:
+            content = f.read()
+        
+        # Convert relative URLs to absolute GitHub URLs
+        return replace_url(
+            slug="Spinkoo/octomap2python", 
+            content=content,
+            branch="main"
+        )
+except ImportError:
+    def get_long_description():
+        """Fallback long description if github2pypi is not available."""
+        with open("README.md", encoding="utf-8") as f:
+            return f.read()
+
 
 def get_lib_files():
     """Get the appropriate library files for the current platform"""
@@ -210,6 +231,8 @@ def main():
         packages=["octomap"],
         package_data=package_data,
         data_files=data_files,
+        long_description=get_long_description(),
+        long_description_content_type="text/markdown",
         cmdclass={
             "build_ext": CustomBuildExt,
             "install": CustomInstall,

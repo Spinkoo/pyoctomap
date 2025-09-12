@@ -21,9 +21,9 @@ def replace_url(slug, content, branch='main'):
         str: Content with relative URLs converted to absolute GitHub URLs
         
     Example:
-        >>> content = "![Example](examples/image.png)"
+        >>> content = "![Example](images/octomap_core.png)"
         >>> replace_url("Spinkoo/octomap2python", content)
-        "![Example](https://github.com/Spinkoo/octomap2python/blob/main/examples/image.png?raw=true)"
+        "![Example](https://github.com/Spinkoo/octomap2python/blob/main/images/octomap_core.png?raw=true)"
     """
 
     def repl(match):

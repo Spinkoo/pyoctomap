@@ -1,0 +1,74 @@
+name: CI Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive  # Fetch OctoMap submodule
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential pkg-config
+    
+    - name: Build OctoMap C++ library
+      run: |
+        cd src/octomap
+        mkdir -p build
+        cd build
+        cmake ..
+        make -j$(nproc)
+        sudo make install
+        sudo ldconfig
+    
+    - name: Install Python build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel numpy cython pytest
+    
+    - name: Build Python extension
+      run: |
+        python setup.py build_ext --inplace
+    
+    - name: Run comprehensive tests
+      run: |
+        python test_build.py
+    
+    - name: Run unit tests
+      run: |
+        if [ -d "unit_test" ]; then
+          # Install pytest if tests exist
+          pip install pytest
+          python -m pytest unit_test/ -v --tb=short
+        else
+          echo "ℹ️  No unit tests directory found, skipping pytest"
+        fi
+    
+    - name: Test examples (if they exist)
+      run: |
+        if [ -f "examples/basic_test.py" ]; then
+          echo "🧪 Testing basic example..."
+          cd examples
+          python basic_test.py
+        else
+          echo "ℹ️  No basic test example found"
+        fi
