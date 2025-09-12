@@ -71,6 +71,7 @@ jobs:
     
     - name: Test import
       run: |
+        mv octomap _octomap_source
         python -c "
         import octomap
         print('✅ OctoMap import successful!')
@@ -82,11 +83,14 @@ jobs:
         else:
             raise Exception('Basic functionality test failed!')
         "
+        mv _octomap_source octomap
     
     - name: Run unit tests (if they exist)
       run: |
         if [ -d "unit_test" ]; then
+          mv octomap _octomap_source
           python -m pytest unit_test/ -v
+          mv _octomap_source octomap
         else
           echo "No unit tests found, skipping..."
         fi
