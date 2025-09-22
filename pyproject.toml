@@ -71,7 +71,8 @@ line-length = 88
 target-version = ['py38']
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["unit_test"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+norecursedirs = ["github2pypi", "examples", "src"]
