@@ -18,7 +18,7 @@ authors = [
     {name = "Spinkoo", email = "lespinkoo@gmail.com"}
 ]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
     "Natural Language :: English",
@@ -75,4 +75,5 @@ testpaths = ["unit_test"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
-norecursedirs = ["github2pypi", "examples", "src"]
+norecursedirs = ["github2pypi", "examples", "src", "build", "dist", "*.egg-info"]
+addopts = "--ignore=github2pypi"
