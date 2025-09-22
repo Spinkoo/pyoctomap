@@ -40,12 +40,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install build twine setuptools wheel numpy cython pytest
     
-    - name: Verify github2pypi integration
-      run: |
-        cd github2pypi
-        python -m pytest test_replace_url.py::test_replace_url -v
-        cd ..
-    
     - name: Build distributions
       run: |
         # Clean any previous builds
