@@ -59,6 +59,24 @@ jobs:
         # Build with github2pypi URL conversion
         python setup.py sdist bdist_wheel
     
+    - name: Repair wheels for PyPI
+      run: |
+        python -m pip install auditwheel
+        mkdir -p wheelhouse
+        for whl in dist/*.whl; do
+          if [[ "$whl" == *"linux_x86_64"* ]]; then
+            echo "Repairing $whl for PyPI compatibility..."
+            auditwheel repair "$whl" --plat-tag manylinux2014_x86_64 -w wheelhouse/
+          else
+            cp "$whl" wheelhouse/
+          fi
+        done
+        # Replace original wheels with repaired ones
+        rm -f dist/*.whl
+        cp wheelhouse/*.whl dist/
+        echo "📦 Repaired wheels:"
+        ls -la dist/
+    
     - name: Check distributions
       run: |
         twine check dist/*
