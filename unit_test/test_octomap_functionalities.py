@@ -188,7 +188,7 @@ def test_iterators(octree):
         # Test leaf iterator
         print("Testing leaf iterator...")
         leaf_count = 0
-        for leaf in octree.begin_leafs(maxDepth=3):
+        for leaf in octree.begin_leafs(maxDepth=0):
             coord = leaf.getCoordinate()
             size = leaf.getSize()
             print(f"Leaf {leaf_count}: coord={coord}, size={size}")
