@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9"]  # Focus on 3.9 for faster CI, expand later
+        python-version: ["3.9", "3.10", "3.11", "3.12"]  # Focus on 3.9 for faster CI, expand later
     
     steps:
     - uses: actions/checkout@v4
@@ -107,7 +107,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.9"
+        python-version: "3.11"  # Use a single stable version
     
     - name: Install system dependencies
       run: |
@@ -185,7 +185,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.9"
+        python-version: "3.11"  # Use a single stable version
     
     - name: Install twine
       run: |
@@ -242,7 +242,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.9"
+        python-version: "3.11"  # Use a single stable version
     
     - name: Generate PyPI-ready README
       run: |
