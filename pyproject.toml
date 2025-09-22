@@ -64,7 +64,7 @@ include = ["octomap*"]
 exclude = ["tests*", "examples*"]
 
 [tool.setuptools.dynamic]
-version = {attr = "octomap.__version__"}
+version = {file = "octomap/__init__.py", pattern = r'__version__\s*=\s*["\']([^"\']+)["\']'}
 
 [tool.black]
 line-length = 88

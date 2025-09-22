@@ -34,6 +34,19 @@ except ImportError:
             return f.read()
 
 
+def get_version():
+    """Get version from octomap/__init__.py without importing the module."""
+    version_file = os.path.join(os.path.dirname(__file__), "octomap", "__init__.py")
+    try:
+        with open(version_file, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("__version__"):
+                    return line.split("=")[1].strip().strip('"').strip("'")
+    except (FileNotFoundError, IOError) as e:
+        print(f"Warning: Could not read version from {version_file}: {e}")
+    return "0.0.0"
+
+
 def get_lib_files():
     """Get the appropriate library files for the current platform"""
     lib_dir = "src/octomap/lib"
