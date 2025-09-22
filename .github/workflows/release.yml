@@ -49,6 +49,15 @@ jobs:
         converted = replace_url('Spinkoo/octomap2python', content)
         print('✅ GitHub2PyPI conversion successful')
         print(f'Converted {len(content)} chars to {len(converted)} chars')
+        
+        # Check if images are properly converted
+        import re
+        images = re.findall(r'!\[.*?\]\((.*?)\)', converted)
+        print(f'Found {len(images)} images:')
+        for img in images:
+            print(f'  - {img}')
+            if 'raw=true' not in img and 'github.com' in img:
+                print(f'  ⚠️  WARNING: {img} missing raw=true parameter')
         "
     
     - name: Build distributions
@@ -58,6 +67,33 @@ jobs:
         
         # Build with github2pypi URL conversion
         python setup.py sdist bdist_wheel
+    
+    - name: Build wheel and fix platform tag
+      run: |
+        # Build wheel and source distribution
+        python -m build --wheel
+        python -m build --sdist
+        
+        echo "Original wheels:"
+        ls -la dist/
+    
+    - name: Repair wheels for PyPI
+      run: |
+        python -m pip install auditwheel
+        mkdir -p wheelhouse
+        for whl in dist/*.whl; do
+          if [[ "$whl" == *"linux_x86_64"* ]]; then
+            echo "Repairing $whl for PyPI compatibility..."
+            auditwheel repair "$whl" --plat-tag manylinux2014_x86_64 -w wheelhouse/
+          else
+            cp "$whl" wheelhouse/
+          fi
+        done
+        # Replace original wheels with repaired ones
+        rm -f dist/*.whl
+        cp wheelhouse/*.whl dist/
+        echo "📦 Repaired wheels:"
+        ls -la dist/
     
     - name: Check distributions
       run: |
