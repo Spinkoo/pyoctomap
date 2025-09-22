@@ -12,7 +12,7 @@ build-backend = "setuptools.build_meta"
 name = "octomap2python"
 dynamic = ["version"]
 description = "Python binding of the OctoMap library with bundled shared libraries."
-readme = "README.md"
+readme = "README_pypi_preview.md"
 license = {file = "LICENSE"}
 authors = [
     {name = "Spinkoo", email = "lespinkoo@gmail.com"}
