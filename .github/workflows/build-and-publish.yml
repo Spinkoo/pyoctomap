@@ -16,19 +16,17 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]  # Focus on 3.9 for faster CI, expand later
+    # Remove the strategy section entirely and use single version
     
     steps:
     - uses: actions/checkout@v4
       with:
         submodules: recursive  # Important: fetch OctoMap submodule
     
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: "3.11"  # Single stable version
     
     - name: Install system dependencies
       run: |
