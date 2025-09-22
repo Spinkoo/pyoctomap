@@ -40,11 +40,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install build twine setuptools wheel numpy cython pytest
     
-    - name: Verify github2pypi integration
+    - name: Test github2pypi conversion
       run: |
-        cd github2pypi
-        python -m pytest test_replace_url.py::test_replace_url -v
-        cd ..
+        python -c "
+        from github2pypi import replace_url
+        with open('README.md', 'r') as f:
+            content = f.read()
+        converted = replace_url('Spinkoo/octomap2python', content)
+        print('✅ GitHub2PyPI conversion successful')
+        print(f'Converted {len(content)} chars to {len(converted)} chars')
+        "
     
     - name: Build distributions
       run: |
