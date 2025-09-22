@@ -49,6 +49,15 @@ jobs:
         converted = replace_url('Spinkoo/octomap2python', content)
         print('✅ GitHub2PyPI conversion successful')
         print(f'Converted {len(content)} chars to {len(converted)} chars')
+        
+        # Check if images are properly converted
+        import re
+        images = re.findall(r'!\[.*?\]\((.*?)\)', converted)
+        print(f'Found {len(images)} images:')
+        for img in images:
+            print(f'  - {img}')
+            if 'raw=true' not in img and 'github.com' in img:
+                print(f'  ⚠️  WARNING: {img} missing raw=true parameter')
         "
     
     - name: Build distributions
