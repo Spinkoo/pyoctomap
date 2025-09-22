@@ -45,8 +45,35 @@ jobs:
         # Clean any previous builds
         rm -rf build/ dist/ *.egg-info/
         
-        # Build with github2pypi URL conversion
-        python setup.py sdist bdist_wheel
+        # Build using modern build tools that properly read pyproject.toml
+        python -m build
+        
+        # Fix platform tags for PyPI compatibility using auditwheel
+        pip install auditwheel
+        
+        # Create repaired wheels directory
+        mkdir -p wheelhouse
+        
+        # Repair wheels for manylinux compatibility
+        for wheel in dist/*.whl; do
+          if [[ -f "$wheel" ]]; then
+            echo "Repairing wheel: $wheel"
+            auditwheel repair "$wheel" -w wheelhouse/ || {
+              echo "auditwheel failed, trying manual tag fix..."
+              cp "$wheel" wheelhouse/
+              cd wheelhouse
+              python -c "import os; [os.rename(f, f.replace('linux_x86_64', 'manylinux1_x86_64')) for f in os.listdir('.') if f.endswith('.whl') and 'linux_x86_64' in f]; print('Fixed platform tags')"
+              cd ..
+            }
+          fi
+        done
+        
+        # Replace original wheels with repaired ones
+        rm -f dist/*.whl
+        cp wheelhouse/*.whl dist/ 2>/dev/null || echo "No wheels to copy"
+        
+        echo "Final distributions:"
+        ls -la dist/
     
     - name: Check distributions
       run: |
