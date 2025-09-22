@@ -38,7 +38,7 @@ def replace_url(slug, content, branch='main'):
             'https://github.com/{slug}/blob/{branch}/{url}'
             .format(slug=slug, branch=branch, url=url)
         )
-        if re.match(r'.*[\.jpg|\.png]$', url_new):
+        if re.match(r'.*\.(jpg|jpeg|png|gif|svg)$', url_new, re.IGNORECASE):
             url_new += '?raw=true'
 
         start0, end0 = match.regs[0]
