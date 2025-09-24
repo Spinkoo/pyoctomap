@@ -43,7 +43,9 @@ jobs:
     - name: Cache OctoMap C++ build
       uses: actions/cache@v3
       with:
-        path: src/octomap/build
+        path: |
+          src/octomap/build
+          src/octomap/lib
         key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
         restore-keys: |
           octomap-cpp-${{ runner.os }}-
