@@ -20,29 +20,23 @@ jobs:
       options: --user root
     
     steps:
-    - name: Checkout code
+    - name: Install Git and other dependencies
+      run: |
+        apt-get update
+        apt-get install -y git build-essential cmake pkg-config \
+          libqt5opengl5-dev libqglviewer-dev-qt5 libeigen3-dev \
+          libboost-all-dev liboctomap-dev liboctomap2.4
+    
+    - name: Checkout code with submodules
       uses: actions/checkout@v4
       with:
-        submodules: recursive  # Fetch OctoMap submodule
+        submodules: recursive
+        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    
-    - name: Install system dependencies (including OctoMap)
-      run: |
-        apt-get update
-        apt-get install -y \
-          build-essential \
-          cmake \
-          pkg-config \
-          libqt5opengl5-dev \
-          libqglviewer-dev-qt5 \
-          libeigen3-dev \
-          libboost-all-dev \
-          liboctomap-dev \
-          liboctomap2.4
     
     - name: Install Python build dependencies
       run: |
