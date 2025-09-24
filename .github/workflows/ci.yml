@@ -53,7 +53,7 @@ jobs:
     - name: Build OctoMap from source
       run: |
         cd src/octomap
-        if [ ! -d "build" ] || [ ! -f "lib/liboctomap.so" ] || [ ! -f "lib/libdynamicedt3d.so" ]; then
+        if [ ! -d "build" ] || [ ! -f "build/CMakeCache.txt" ]; then
           echo "🔨 Building OctoMap C++ library..."
           mkdir -p build
           cd build
