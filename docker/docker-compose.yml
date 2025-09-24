@@ -2,9 +2,11 @@ version: '3.8'
 
 services:
   octomap-dev:
-    build: .
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.ci
     volumes:
-      - .:/home/octomap
+      - ..:/home/octomap
       - /home/octomap/__pycache__
     working_dir: /home/octomap
     command: /bin/bash

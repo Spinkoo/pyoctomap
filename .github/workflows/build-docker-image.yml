@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches: [ main ]
-    paths: [ 'Dockerfile.ci' ]
+    paths: [ 'docker/Dockerfile.ci' ]
   workflow_dispatch:
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        file: ./Dockerfile.ci
+        file: ./docker/Dockerfile.ci
         push: true
         tags: |
           ghcr.io/${{ github.repository }}/octomap-ci:latest

@@ -16,7 +16,7 @@ jobs:
     
     # Use Ubuntu 24.04 container with newer GLIBC
     container:
-      image: ubuntu:24.04
+      image: ghcr.io/${{ github.repository }}/octomap-ci:latest
       options: --user root
     
     steps:
