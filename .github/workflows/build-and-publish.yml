@@ -7,9 +7,6 @@ on:
   # Trigger on pull requests
   pull_request:
     branches: [ main ]
-  # Trigger on releases
-  release:
-    types: [published]
   # Allow manual trigger
   workflow_dispatch:
 
@@ -230,25 +227,6 @@ jobs:
           --skip-existing \
           --verbose \
           dist/*
-
-  publish-pypi:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.event_name == 'release' && github.event.action == 'published'
-    environment: release
-    
-    steps:
-    - name: Download artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: distributions
-        path: dist/
-    
-    - name: Publish to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
 
   update-readme:
     needs: build
