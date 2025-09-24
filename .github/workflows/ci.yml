@@ -2,9 +2,9 @@ name: CI Tests
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, Lisa ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, develop, Lisa ]
 
 jobs:
   test:
@@ -14,46 +14,57 @@ jobs:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12"]
     
+    # Use Ubuntu 24.04 container with newer GLIBC
+    container:
+      image: ubuntu:24.04
+      options: --user root
+    
     steps:
-    - name: Checkout code
+    - name: Install system dependencies and Python
+      run: |
+        apt-get update
+        apt-get install -y git build-essential cmake pkg-config \
+          libqt5opengl5-dev libqglviewer-dev-qt5 libeigen3-dev \
+          libboost-all-dev \
+          python3 python3-pip python3-dev python3-venv
+    
+    - name: Set up Python virtual environment
+      run: |
+        python3 -m venv /opt/venv
+        echo "/opt/venv/bin" >> $GITHUB_PATH
+        echo "VIRTUAL_ENV=/opt/venv" >> $GITHUB_ENV
+    
+    - name: Checkout code with submodules
       uses: actions/checkout@v4
       with:
-        submodules: recursive  # Fetch OctoMap submodule
-    
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
+        submodules: recursive
+        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Cache OctoMap C++ build
       uses: actions/cache@v3
       with:
-        path: src/octomap/build
+        path: |
+          src/octomap/build
+          src/octomap/lib
         key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
         restore-keys: |
           octomap-cpp-${{ runner.os }}-
     
-    - name: Install system dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake build-essential pkg-config
-    
-    - name: Build OctoMap C++ library
+    - name: Build OctoMap from source
       run: |
         cd src/octomap
-        if [ ! -d "build" ] || [ ! -f "build/lib/liboctomap.so" ]; then
+        if [ ! -d "build" ] || [ ! -f "build/CMakeCache.txt" ]; then
           echo "🔨 Building OctoMap C++ library..."
           mkdir -p build
           cd build
-          cmake ..
+          cmake .. -DCMAKE_BUILD_TYPE=Release
           make -j$(nproc)
-          sudo make install
-          sudo ldconfig
+          make install
+          ldconfig
         else
           echo "✅ Using cached OctoMap C++ build"
-          cd build
-          sudo make install
-          sudo ldconfig
+          # Skip build entirely - just install the cached libraries
+          echo "Skipping build - using cached libraries"
         fi
     
     - name: Install Python build dependencies
@@ -73,7 +84,6 @@ jobs:
         
         pip install dist/*.whl
 
-    
     - name: Run comprehensive tests
       run: |
         # Temporarily rename source directory to avoid import shadowing
