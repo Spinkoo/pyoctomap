@@ -14,6 +14,11 @@ jobs:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12"]
     
+    # Use Docker container with OctoMap pre-installed
+    container:
+      image: ubuntu:22.04
+      options: --user root
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -25,36 +30,19 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     
-    - name: Cache OctoMap C++ build
-      uses: actions/cache@v3
-      with:
-        path: src/octomap/build
-        key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
-        restore-keys: |
-          octomap-cpp-${{ runner.os }}-
-    
-    - name: Install system dependencies
+    - name: Install system dependencies (including OctoMap)
       run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake build-essential pkg-config
-    
-    - name: Build OctoMap C++ library
-      run: |
-        cd src/octomap
-        if [ ! -d "build" ] || [ ! -f "build/lib/liboctomap.so" ]; then
-          echo "🔨 Building OctoMap C++ library..."
-          mkdir -p build
-          cd build
-          cmake ..
-          make -j$(nproc)
-          sudo make install
-          sudo ldconfig
-        else
-          echo "✅ Using cached OctoMap C++ build"
-          cd build
-          sudo make install
-          sudo ldconfig
-        fi
+        apt-get update
+        apt-get install -y \
+          build-essential \
+          cmake \
+          pkg-config \
+          libqt5opengl5-dev \
+          libqglviewer-dev-qt5 \
+          libeigen3-dev \
+          libboost-all-dev \
+          liboctomap-dev \
+          liboctomap2.4
     
     - name: Install Python build dependencies
       run: |
@@ -73,7 +61,6 @@ jobs:
         
         pip install dist/*.whl
 
-    
     - name: Run comprehensive tests
       run: |
         # Temporarily rename source directory to avoid import shadowing
