@@ -1,36 +1,117 @@
-name: Build and Push Docker Image
+name: CI Tests
 
 on:
   push:
-    branches: [ main ]
-    paths: [ 'docker/Dockerfile.ci' ]
-  workflow_dispatch:
+    branches: [ main, develop, Lisa ]
+  pull_request:
+    branches: [ main, develop, Lisa ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    
+    # Use Ubuntu 24.04 container with newer GLIBC
+    container:
+      image: ubuntu:24.04
+      options: --user root
+    
     steps:
-    - name: Checkout code
+    - name: Install system dependencies and Python
+      run: |
+        apt-get update
+        apt-get install -y git build-essential cmake pkg-config \
+          libqt5opengl5-dev libqglviewer-dev-qt5 libeigen3-dev \
+          libboost-all-dev \
+          python3 python3-pip python3-dev python3-venv
+    
+    - name: Set up Python virtual environment
+      run: |
+        python3 -m venv /opt/venv
+        echo "/opt/venv/bin" >> $GITHUB_PATH
+        echo "VIRTUAL_ENV=/opt/venv" >> $GITHUB_ENV
+    
+    - name: Checkout code with submodules
       uses: actions/checkout@v4
-    
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-    
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v3
       with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        submodules: recursive
+        token: ${{ secrets.GITHUB_TOKEN }}
     
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v5
+    - name: Cache OctoMap C++ build
+      uses: actions/cache@v3
       with:
-        context: .
-        file: ./docker/Dockerfile.ci
-        push: true
-        tags: |
-          ghcr.io/spinkoo/octomap2python/octomap-ci:latest
-          ghcr.io/spinkoo/octomap2python/octomap-ci:${{ github.sha }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+        path: |
+          src/octomap/build
+          src/octomap/lib
+        key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
+        restore-keys: |
+          octomap-cpp-${{ runner.os }}-
+    
+    - name: Build OctoMap from source
+      run: |
+        cd src/octomap
+        if [ ! -d "build" ] || [ ! -f "build/CMakeCache.txt" ]; then
+          echo "🔨 Building OctoMap C++ library..."
+          mkdir -p build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          make -j$(nproc)
+          make install
+          ldconfig
+        else
+          echo "✅ Using cached OctoMap C++ build"
+          # Skip build entirely - just install the cached libraries
+          echo "Skipping build - using cached libraries"
+        fi
+    
+    - name: Install Python build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel numpy cython pytest
+    
+    - name: Build and install package
+      run: |
+        # Build wheel and install it
+        python setup.py bdist_wheel
+        
+        # Debug: Check what was built
+        echo "=== Checking built wheel ==="
+        ls -la dist/
+        unzip -l dist/*.whl | grep -E '\.(so|dylib|dll)' || echo "No shared libraries found in wheel"
+        
+        pip install dist/*.whl
+
+    - name: Run comprehensive tests
+      run: |
+        # Temporarily rename source directory to avoid import shadowing
+        mv octomap _octomap_source
+        python -m pytest unit_test/test_build.py -v
+        mv _octomap_source octomap
+    
+    - name: Run additional unit tests
+      run: |
+        # Run other unit tests (excluding test_build.py which we already ran)
+        mv octomap _octomap_source
+        python -m pytest unit_test/ --ignore=unit_test/test_build.py -v --tb=short
+        mv _octomap_source octomap
+    
+    - name: Install visualization dependencies for examples
+      run: |
+        pip install open3d matplotlib
+    
+    - name: Test examples (if they exist)
+      run: |
+        if [ -f "examples/basic_test.py" ]; then
+          echo "🧪 Testing basic example..."
+          mv octomap _octomap_source
+          cd examples
+          python basic_test.py
+          cd ..
+          mv _octomap_source octomap
+        else
+          echo "ℹ️  No basic test example found"
+        fi
