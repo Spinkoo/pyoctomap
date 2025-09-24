@@ -25,7 +25,7 @@ jobs:
         apt-get update
         apt-get install -y git build-essential cmake pkg-config \
           libqt5opengl5-dev libqglviewer-dev-qt5 libeigen3-dev \
-          libboost-all-dev liboctomap-dev liboctomap2.4
+          libboost-all-dev liboctomap-dev
     
     - name: Checkout code with submodules
       uses: actions/checkout@v4
