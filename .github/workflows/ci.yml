@@ -63,9 +63,8 @@ jobs:
           ldconfig
         else
           echo "✅ Using cached OctoMap C++ build"
-          cd build
-          make install
-          ldconfig
+          # Skip build entirely - just install the cached libraries
+          echo "Skipping build - using cached libraries"
         fi
     
     - name: Install Python build dependencies
