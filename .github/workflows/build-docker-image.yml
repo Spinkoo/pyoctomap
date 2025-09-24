@@ -8,8 +8,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-
-    
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
