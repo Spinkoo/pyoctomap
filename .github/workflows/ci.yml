@@ -20,7 +20,7 @@ jobs:
       options: --user root
     
     steps:
-    - name: Install Git and other dependencies
+    - name: Install system dependencies
       run: |
         apt-get update
         apt-get install -y git build-essential cmake pkg-config \
@@ -40,8 +40,8 @@ jobs:
     
     - name: Install Python build dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install setuptools wheel numpy cython pytest
+        python -m pip install --upgrade pip --root-user-action=ignore
+        pip install setuptools wheel numpy cython pytest --root-user-action=ignore
     
     - name: Build and install package
       run: |
@@ -53,7 +53,7 @@ jobs:
         ls -la dist/
         unzip -l dist/*.whl | grep -E '\.(so|dylib|dll)' || echo "No shared libraries found in wheel"
         
-        pip install dist/*.whl
+        pip install dist/*.whl --root-user-action=ignore
 
     - name: Run comprehensive tests
       run: |
@@ -71,7 +71,7 @@ jobs:
     
     - name: Install visualization dependencies for examples
       run: |
-        pip install open3d matplotlib
+        pip install open3d matplotlib --root-user-action=ignore
     
     - name: Test examples (if they exist)
       run: |
