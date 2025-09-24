@@ -14,9 +14,9 @@ jobs:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12"]
     
-    # Use Docker container with OctoMap pre-installed
+    # Use Ubuntu 24.04 container with newer GLIBC
     container:
-      image: ubuntu:22.04
+      image: ubuntu:24.04
       options: --user root
     
     steps:
