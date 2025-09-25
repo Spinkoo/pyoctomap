@@ -35,3 +35,5 @@ Prompet for readme.md
 
 #environments
 testenv/
+Lisa/
+unit_test/test_ray_casting.py
