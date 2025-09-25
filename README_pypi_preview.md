@@ -183,25 +183,89 @@ print(f"Tree size: {tree.size()} nodes")
 ### Path Planning
 
 ```python
-def is_path_clear(start, end, tree, steps=50):
-    """Simple ray casting for path planning"""
-    for i in range(steps + 1):
-        t = i / steps
-        point = [
-            start[0] + t * (end[0] - start[0]),
-            start[1] + t * (end[1] - start[1]),
-            start[2] + t * (end[2] - start[2])
-        ]
-        node = tree.search(point)
-        if node and tree.isNodeOccupied(node):
-            return False, point
-    return True, None
+import octomap
+import numpy as np
+
+# Create an octree for path planning
+tree = octomap.OcTree(0.1)  # 10cm resolution
+
+# Add some obstacles to the map
+obstacles = [
+    [1.0, 1.0, 0.5],  # Wall at (1,1)
+    [1.5, 1.5, 0.5],  # Another obstacle
+    [2.0, 1.0, 0.5],  # Wall at (2,1)
+]
+
+for obstacle in obstacles:
+    tree.updateNode(obstacle, True)
+
+def is_path_clear(start, end, tree):
+    """Efficient ray casting for path planning using OctoMap's built-in castRay"""
+    start = np.array(start, dtype=np.float64)
+    end = np.array(end, dtype=np.float64)
+    
+    # Calculate direction vector
+    direction = end - start
+    ray_length = np.linalg.norm(direction)
+    
+    if ray_length == 0:
+        return True, None
+    
+    # Normalize direction
+    direction = direction / ray_length
+    
+    # Use OctoMap's efficient castRay method
+    end_point = np.zeros(3, dtype=np.float64)
+    hit = tree.castRay(start, direction, end_point, 
+                      ignoreUnknownCells=True, 
+                      maxRange=ray_length)
+    
+    if hit:
+        # Ray hit an obstacle - path is blocked
+        return False, end_point
+    else:
+        # No obstacle found - path is clear
+        return True, None
 
 # Check if path is clear
 start = [0.5, 2.0, 0.5]
 end = [2.0, 2.0, 0.5]
 clear, obstacle = is_path_clear(start, end, tree)
-print(f"Path clear: {clear}")
+if clear:
+    print("✅ Path is clear!")
+else:
+    print(f"❌ Path blocked at: {obstacle}")
+
+# Advanced path planning with multiple waypoints
+def plan_path(waypoints, tree):
+    """Plan a path through multiple waypoints using ray casting"""
+    path_clear = True
+    obstacles = []
+    
+    for i in range(len(waypoints) - 1):
+        start = waypoints[i]
+        end = waypoints[i + 1]
+        clear, obstacle = is_path_clear(start, end, tree)
+        
+        if not clear:
+            path_clear = False
+            obstacles.append((i, i+1, obstacle))
+    
+    return path_clear, obstacles
+
+# Example: Plan path through multiple waypoints
+waypoints = [
+    [0.0, 0.0, 0.5],
+    [1.0, 1.0, 0.5], 
+    [2.0, 2.0, 0.5],
+    [3.0, 3.0, 0.5]
+]
+
+path_clear, obstacles = plan_path(waypoints, tree)
+if path_clear:
+    print("✅ Complete path is clear!")
+else:
+    print(f"❌ Path blocked at segments: {obstacles}")
 ```
 
 ### Iterator Operations
