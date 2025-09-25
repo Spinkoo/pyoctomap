@@ -10,11 +10,11 @@
             ]
         ],
         "depends": [
-            "/mnt/c/Users/lespi/OneDrive/Desktop/Code/octomap2python/testenv/lib/python3.12/site-packages/numpy/_core/include/numpy/arrayobject.h",
-            "/mnt/c/Users/lespi/OneDrive/Desktop/Code/octomap2python/testenv/lib/python3.12/site-packages/numpy/_core/include/numpy/arrayscalars.h",
-            "/mnt/c/Users/lespi/OneDrive/Desktop/Code/octomap2python/testenv/lib/python3.12/site-packages/numpy/_core/include/numpy/ndarrayobject.h",
-            "/mnt/c/Users/lespi/OneDrive/Desktop/Code/octomap2python/testenv/lib/python3.12/site-packages/numpy/_core/include/numpy/ndarraytypes.h",
-            "/mnt/c/Users/lespi/OneDrive/Desktop/Code/octomap2python/testenv/lib/python3.12/site-packages/numpy/_core/include/numpy/ufuncobject.h",
+            "/home/lespi/octenv/lib/python3.12/site-packages/numpy/_core/include/numpy/arrayobject.h",
+            "/home/lespi/octenv/lib/python3.12/site-packages/numpy/_core/include/numpy/arrayscalars.h",
+            "/home/lespi/octenv/lib/python3.12/site-packages/numpy/_core/include/numpy/ndarrayobject.h",
+            "/home/lespi/octenv/lib/python3.12/site-packages/numpy/_core/include/numpy/ndarraytypes.h",
+            "/home/lespi/octenv/lib/python3.12/site-packages/numpy/_core/include/numpy/ufuncobject.h",
             "octomap/include_and_setting.h",
             "src/octomap/dynamicEDT3D/include/dynamicEDT3D/dynamicEDTOctomap.h",
             "src/octomap/octomap/include/octomap/OcTree.h",
@@ -41,7 +41,7 @@
             "src/octomap/octomap/include",
             "src/octomap/octomap/include/octomap",
             "src/octomap/dynamicEDT3D/include",
-            "/mnt/c/Users/lespi/OneDrive/Desktop/Code/octomap2python/testenv/lib/python3.12/site-packages/numpy/_core/include"
+            "/home/lespi/octenv/lib/python3.12/site-packages/numpy/_core/include"
         ],
         "language": "c++",
         "libraries": [
@@ -1451,8 +1451,8 @@ static const char *__pyx_filename;
 static const char* const __pyx_f[] = {
   "octomap/octomap.pyx",
   "<stringsource>",
-  "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd",
-  "testenv/lib/python3.12/site-packages/Cython/Includes/cpython/type.pxd",
+  "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd",
+  "cpython/type.pxd",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* Atomics.proto */
@@ -1651,7 +1651,7 @@ typedef struct {
 
 /* #### Code section: numeric_typedefs ### */
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":743
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":743
  * # in Cython to enable them only on the right systems.
  * 
  * ctypedef npy_int8       int8_t             # <<<<<<<<<<<<<<
@@ -1660,7 +1660,7 @@ typedef struct {
 */
 typedef npy_int8 __pyx_t_5numpy_int8_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":744
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":744
  * 
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t             # <<<<<<<<<<<<<<
@@ -1669,7 +1669,7 @@ typedef npy_int8 __pyx_t_5numpy_int8_t;
 */
 typedef npy_int16 __pyx_t_5numpy_int16_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":745
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":745
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t             # <<<<<<<<<<<<<<
@@ -1678,7 +1678,7 @@ typedef npy_int16 __pyx_t_5numpy_int16_t;
 */
 typedef npy_int32 __pyx_t_5numpy_int32_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":746
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":746
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t
  * ctypedef npy_int64      int64_t             # <<<<<<<<<<<<<<
@@ -1687,7 +1687,7 @@ typedef npy_int32 __pyx_t_5numpy_int32_t;
 */
 typedef npy_int64 __pyx_t_5numpy_int64_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":748
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":748
  * ctypedef npy_int64      int64_t
  * 
  * ctypedef npy_uint8      uint8_t             # <<<<<<<<<<<<<<
@@ -1696,7 +1696,7 @@ typedef npy_int64 __pyx_t_5numpy_int64_t;
 */
 typedef npy_uint8 __pyx_t_5numpy_uint8_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":749
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":749
  * 
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t             # <<<<<<<<<<<<<<
@@ -1705,7 +1705,7 @@ typedef npy_uint8 __pyx_t_5numpy_uint8_t;
 */
 typedef npy_uint16 __pyx_t_5numpy_uint16_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":750
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":750
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t             # <<<<<<<<<<<<<<
@@ -1714,7 +1714,7 @@ typedef npy_uint16 __pyx_t_5numpy_uint16_t;
 */
 typedef npy_uint32 __pyx_t_5numpy_uint32_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":751
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":751
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t
  * ctypedef npy_uint64     uint64_t             # <<<<<<<<<<<<<<
@@ -1723,7 +1723,7 @@ typedef npy_uint32 __pyx_t_5numpy_uint32_t;
 */
 typedef npy_uint64 __pyx_t_5numpy_uint64_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":753
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":753
  * ctypedef npy_uint64     uint64_t
  * 
  * ctypedef npy_float32    float32_t             # <<<<<<<<<<<<<<
@@ -1732,7 +1732,7 @@ typedef npy_uint64 __pyx_t_5numpy_uint64_t;
 */
 typedef npy_float32 __pyx_t_5numpy_float32_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":754
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":754
  * 
  * ctypedef npy_float32    float32_t
  * ctypedef npy_float64    float64_t             # <<<<<<<<<<<<<<
@@ -1741,7 +1741,7 @@ typedef npy_float32 __pyx_t_5numpy_float32_t;
 */
 typedef npy_float64 __pyx_t_5numpy_float64_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":761
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":761
  * ctypedef double complex complex128_t
  * 
  * ctypedef npy_longlong   longlong_t             # <<<<<<<<<<<<<<
@@ -1750,7 +1750,7 @@ typedef npy_float64 __pyx_t_5numpy_float64_t;
 */
 typedef npy_longlong __pyx_t_5numpy_longlong_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":762
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":762
  * 
  * ctypedef npy_longlong   longlong_t
  * ctypedef npy_ulonglong  ulonglong_t             # <<<<<<<<<<<<<<
@@ -1759,7 +1759,7 @@ typedef npy_longlong __pyx_t_5numpy_longlong_t;
 */
 typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":764
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":764
  * ctypedef npy_ulonglong  ulonglong_t
  * 
  * ctypedef npy_intp       intp_t             # <<<<<<<<<<<<<<
@@ -1768,7 +1768,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
 */
 typedef npy_intp __pyx_t_5numpy_intp_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":765
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":765
  * 
  * ctypedef npy_intp       intp_t
  * ctypedef npy_uintp      uintp_t             # <<<<<<<<<<<<<<
@@ -1777,7 +1777,7 @@ typedef npy_intp __pyx_t_5numpy_intp_t;
 */
 typedef npy_uintp __pyx_t_5numpy_uintp_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":767
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":767
  * ctypedef npy_uintp      uintp_t
  * 
  * ctypedef npy_double     float_t             # <<<<<<<<<<<<<<
@@ -1786,7 +1786,7 @@ typedef npy_uintp __pyx_t_5numpy_uintp_t;
 */
 typedef npy_double __pyx_t_5numpy_float_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":768
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":768
  * 
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t             # <<<<<<<<<<<<<<
@@ -1795,7 +1795,7 @@ typedef npy_double __pyx_t_5numpy_float_t;
 */
 typedef npy_double __pyx_t_5numpy_double_t;
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":769
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":769
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t
  * ctypedef npy_longdouble longdouble_t             # <<<<<<<<<<<<<<
@@ -1952,8 +1952,8 @@ struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator {
 };
 
 
-/* "octomap/octomap.pyx":347
- *         return 0
+/* "octomap/octomap.pyx":334
+ *         return self._current_node
  * 
  * cdef class SimpleLeafBBXIterator:             # <<<<<<<<<<<<<<
  *     """
@@ -1972,7 +1972,7 @@ struct __pyx_obj_7octomap_7octomap_SimpleLeafBBXIterator {
 };
 
 
-/* "octomap/octomap.pyx":462
+/* "octomap/octomap.pyx":449
  *     return tree
  * 
  * cdef class OcTree:             # <<<<<<<<<<<<<<
@@ -3227,7 +3227,7 @@ static PyObject *__pyx_builtin_round;
 static PyObject *__pyx_builtin_ImportError;
 /* #### Code section: string_decls ### */
 static const char __pyx_k_[] = ", ";
-static const char __pyx_k_1[] = "\320\004#\2401\340\010\017\320\017!\240\021\240&\250\001";
+static const char __pyx_k_1[] = "\320\004#\2401\360@\001\000\t\020\320\017!\240\021\240&\250\001";
 static const char __pyx_k_A[] = "\200A";
 static const char __pyx_k_Q[] = "\200\001\330\004\n\210+\220Q";
 static const char __pyx_k_a[] = "a";
@@ -3355,7 +3355,6 @@ static const char __pyx_k_maxdist[] = "maxdist";
 static const char __pyx_k_nonzero[] = "nonzero";
 static const char __pyx_k_numbers[] = "numbers";
 static const char __pyx_k_prepare[] = "__prepare__";
-static const char __pyx_k_A_4q_1_q[] = "\200A\340\010\013\2104\210q\330\014\023\2201\330\010\017\210q";
 static const char __pyx_k_A_4q_4wk[] = "\200A\330\010\013\2104\210q\330\014\023\2204\220w\230k\250\021\340\014\022\220!";
 static const char __pyx_k_A_4q_4xy[] = "\200A\330\010\013\2104\210q\330\014\023\2204\220x\230y\250\001\340\014\022\220!";
 static const char __pyx_k_A_4q_waz[] = "\200A\330\010\013\2104\210q\330\014\020\220\007\220w\230a\230z\250\021\340\014\022\220!";
@@ -3443,7 +3442,6 @@ static const char __pyx_k_setProbMiss[] = "setProbMiss";
 static const char __pyx_k_updateNodes[] = "updateNodes";
 static const char __pyx_k_useBBXLimit[] = "useBBXLimit";
 static const char __pyx_k_writeBinary[] = "writeBinary";
-static const char __pyx_k_A_4q_4v_3b_q[] = "\200A\340\010\013\2104\210q\340\014\023\2204\220v\230^\2503\250b\260\001\330\010\017\210q";
 static const char __pyx_k_OcTree_clear[] = "OcTree.clear";
 static const char __pyx_k_OcTree_inBBX[] = "OcTree.inBBX";
 static const char __pyx_k_OcTree_write[] = "OcTree.write";
@@ -3719,10 +3717,8 @@ static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_10getCoordinate
 static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_12getSize(struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_14getDepth(struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_12current_node___get__(struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_16getSize(struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_18getDepth(struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_16__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_18__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struct __pyx_obj_7octomap_7octomap_SimpleLeafBBXIterator *__pyx_v_self); /* proto */
 static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_2__cinit__(struct __pyx_obj_7octomap_7octomap_SimpleLeafBBXIterator *__pyx_v_self); /* proto */
 static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct __pyx_obj_7octomap_7octomap_SimpleLeafBBXIterator *__pyx_v_self, struct __pyx_obj_7octomap_7octomap_OcTree *__pyx_v_tree, PyArrayObject *__pyx_v_bbx_min, PyArrayObject *__pyx_v_bbx_max, PyObject *__pyx_v_maxDepth); /* proto */
@@ -3894,12 +3890,11 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   PyObject *__pyx_slice[1];
   PyObject *__pyx_tuple[7];
-  PyObject *__pyx_codeobj_tab[117];
+  PyObject *__pyx_codeobj_tab[115];
   PyObject *__pyx_string_tab[364];
   PyObject *__pyx_float_0_0;
   PyObject *__pyx_float_0_1;
   PyObject *__pyx_float_1_0;
-  PyObject *__pyx_float_2_0;
   PyObject *__pyx_float_neg_1_;
   PyObject *__pyx_float_neg_1_0;
   PyObject *__pyx_int_0;
@@ -4357,12 +4352,11 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_type_7octomap_7octomap_OcTree);
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_slice[i]); }
   for (int i=0; i<7; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<117; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<115; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
   for (int i=0; i<364; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   Py_CLEAR(clear_module_state->__pyx_float_0_0);
   Py_CLEAR(clear_module_state->__pyx_float_0_1);
   Py_CLEAR(clear_module_state->__pyx_float_1_0);
-  Py_CLEAR(clear_module_state->__pyx_float_2_0);
   Py_CLEAR(clear_module_state->__pyx_float_neg_1_);
   Py_CLEAR(clear_module_state->__pyx_float_neg_1_0);
   Py_CLEAR(clear_module_state->__pyx_int_0);
@@ -4419,12 +4413,11 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_type_7octomap_7octomap_OcTree);
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_slice[i]); }
   for (int i=0; i<7; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<117; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<115; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
   for (int i=0; i<364; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_0_0);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_0_1);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_1_0);
-  __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_2_0);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_neg_1_);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_neg_1_0);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_0);
@@ -4505,7 +4498,7 @@ static std::string __pyx_convert_string_from_py_6libcpp_6string_std__in_string(P
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":242
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":242
  *         cdef int type_num
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4516,7 +4509,7 @@ static std::string __pyx_convert_string_from_py_6libcpp_6string_std__in_string(P
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_Descr *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":244
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":244
  *         @property
  *         cdef inline npy_intp itemsize(self) noexcept nogil:
  *             return PyDataType_ELSIZE(self)             # <<<<<<<<<<<<<<
@@ -4526,7 +4519,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_D
   __pyx_r = PyDataType_ELSIZE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":242
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":242
  *         cdef int type_num
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4539,7 +4532,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_D
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":246
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":246
  *             return PyDataType_ELSIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4550,7 +4543,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_D
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_9alignment_alignment(PyArray_Descr *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":248
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":248
  *         @property
  *         cdef inline npy_intp alignment(self) noexcept nogil:
  *             return PyDataType_ALIGNMENT(self)             # <<<<<<<<<<<<<<
@@ -4560,7 +4553,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_9alignment_alignment(PyArray
   __pyx_r = PyDataType_ALIGNMENT(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":246
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":246
  *             return PyDataType_ELSIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4573,7 +4566,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_9alignment_alignment(PyArray
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":252
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":252
  *         # Use fields/names with care as they may be NULL.  You must check
  *         # for this using PyDataType_HASFIELDS.
  *         @property             # <<<<<<<<<<<<<<
@@ -4587,7 +4580,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_6fields_fields(PyArray_Desc
   PyObject *__pyx_t_1;
   __Pyx_RefNannySetupContext("fields", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":254
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":254
  *         @property
  *         cdef inline object fields(self):
  *             return <object>PyDataType_FIELDS(self)             # <<<<<<<<<<<<<<
@@ -4600,7 +4593,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_6fields_fields(PyArray_Desc
   __pyx_r = ((PyObject *)__pyx_t_1);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":252
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":252
  *         # Use fields/names with care as they may be NULL.  You must check
  *         # for this using PyDataType_HASFIELDS.
  *         @property             # <<<<<<<<<<<<<<
@@ -4615,7 +4608,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_6fields_fields(PyArray_Desc
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":256
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":256
  *             return <object>PyDataType_FIELDS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4629,7 +4622,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
   PyObject *__pyx_t_1;
   __Pyx_RefNannySetupContext("names", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":258
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":258
  *         @property
  *         cdef inline tuple names(self):
  *             return <tuple>PyDataType_NAMES(self)             # <<<<<<<<<<<<<<
@@ -4642,7 +4635,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
   __pyx_r = ((PyObject*)__pyx_t_1);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":256
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":256
  *             return <object>PyDataType_FIELDS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4657,7 +4650,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":263
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":263
  *         # valid (the pointer can be NULL). Most users should access
  *         # this field via the inline helper method PyDataType_SHAPE.
  *         @property             # <<<<<<<<<<<<<<
@@ -4668,7 +4661,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
 static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarray(PyArray_Descr *__pyx_v_self) {
   PyArray_ArrayDescr *__pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":265
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":265
  *         @property
  *         cdef inline PyArray_ArrayDescr* subarray(self) noexcept nogil:
  *             return PyDataType_SUBARRAY(self)             # <<<<<<<<<<<<<<
@@ -4678,7 +4671,7 @@ static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarra
   __pyx_r = PyDataType_SUBARRAY(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":263
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":263
  *         # valid (the pointer can be NULL). Most users should access
  *         # this field via the inline helper method PyDataType_SHAPE.
  *         @property             # <<<<<<<<<<<<<<
@@ -4691,7 +4684,7 @@ static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarra
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":267
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":267
  *             return PyDataType_SUBARRAY(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4702,7 +4695,7 @@ static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarra
 static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr *__pyx_v_self) {
   npy_uint64 __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":270
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":270
  *         cdef inline npy_uint64 flags(self) noexcept nogil:
  *             """The data types flags."""
  *             return PyDataType_FLAGS(self)             # <<<<<<<<<<<<<<
@@ -4712,7 +4705,7 @@ static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr
   __pyx_r = PyDataType_FLAGS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":267
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":267
  *             return PyDataType_SUBARRAY(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4725,7 +4718,7 @@ static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":279
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":279
  *     ctypedef class numpy.broadcast [object PyArrayMultiIterObject, check_size ignore]:
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4736,7 +4729,7 @@ static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr
 static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMultiIterObject *__pyx_v_self) {
   int __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":282
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":282
  *         cdef inline int numiter(self) noexcept nogil:
  *             """The number of arrays that need to be broadcast to the same shape."""
  *             return PyArray_MultiIter_NUMITER(self)             # <<<<<<<<<<<<<<
@@ -4746,7 +4739,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMulti
   __pyx_r = PyArray_MultiIter_NUMITER(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":279
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":279
  *     ctypedef class numpy.broadcast [object PyArrayMultiIterObject, check_size ignore]:
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4759,7 +4752,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMulti
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":284
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":284
  *             return PyArray_MultiIter_NUMITER(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4770,7 +4763,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMulti
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiIterObject *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":287
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":287
  *         cdef inline npy_intp size(self) noexcept nogil:
  *             """The total broadcasted size."""
  *             return PyArray_MultiIter_SIZE(self)             # <<<<<<<<<<<<<<
@@ -4780,7 +4773,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiI
   __pyx_r = PyArray_MultiIter_SIZE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":284
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":284
  *             return PyArray_MultiIter_NUMITER(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4793,7 +4786,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiI
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":289
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":289
  *             return PyArray_MultiIter_SIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4804,7 +4797,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiI
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMultiIterObject *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":292
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":292
  *         cdef inline npy_intp index(self) noexcept nogil:
  *             """The current (1-d) index into the broadcasted result."""
  *             return PyArray_MultiIter_INDEX(self)             # <<<<<<<<<<<<<<
@@ -4814,7 +4807,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMult
   __pyx_r = PyArray_MultiIter_INDEX(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":289
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":289
  *             return PyArray_MultiIter_SIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4827,7 +4820,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMult
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":294
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":294
  *             return PyArray_MultiIter_INDEX(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4838,7 +4831,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMult
 static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject *__pyx_v_self) {
   int __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":297
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":297
  *         cdef inline int nd(self) noexcept nogil:
  *             """The number of dimensions in the broadcasted result."""
  *             return PyArray_MultiIter_NDIM(self)             # <<<<<<<<<<<<<<
@@ -4848,7 +4841,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject
   __pyx_r = PyArray_MultiIter_NDIM(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":294
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":294
  *             return PyArray_MultiIter_INDEX(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4861,7 +4854,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":299
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":299
  *             return PyArray_MultiIter_NDIM(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4872,7 +4865,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions(PyArrayMultiIterObject *__pyx_v_self) {
   npy_intp *__pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":302
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":302
  *         cdef inline npy_intp* dimensions(self) noexcept nogil:
  *             """The shape of the broadcasted result."""
  *             return PyArray_MultiIter_DIMS(self)             # <<<<<<<<<<<<<<
@@ -4882,7 +4875,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions
   __pyx_r = PyArray_MultiIter_DIMS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":299
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":299
  *             return PyArray_MultiIter_NDIM(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4895,7 +4888,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":304
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":304
  *             return PyArray_MultiIter_DIMS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4906,7 +4899,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions
 static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiIterObject *__pyx_v_self) {
   void **__pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":308
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":308
  *             """An array of iterator objects that holds the iterators for the arrays to be broadcast together.
  *             On return, the iterators are adjusted for broadcasting."""
  *             return PyArray_MultiIter_ITERS(self)             # <<<<<<<<<<<<<<
@@ -4916,7 +4909,7 @@ static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiI
   __pyx_r = PyArray_MultiIter_ITERS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":304
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":304
  *             return PyArray_MultiIter_DIMS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4929,7 +4922,7 @@ static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiI
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":322
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":322
  *         # Instead, we use properties that map to the corresponding C-API functions.
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4940,7 +4933,7 @@ static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiI
 static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject *__pyx_v_self) {
   PyObject *__pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":326
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":326
  *             """Returns a borrowed reference to the object owning the data/memory.
  *             """
  *             return PyArray_BASE(self)             # <<<<<<<<<<<<<<
@@ -4950,7 +4943,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject 
   __pyx_r = PyArray_BASE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":322
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":322
  *         # Instead, we use properties that map to the corresponding C-API functions.
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4963,7 +4956,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject 
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":328
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":328
  *             return PyArray_BASE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -4977,7 +4970,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   PyArray_Descr *__pyx_t_1;
   __Pyx_RefNannySetupContext("descr", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":332
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":332
  *             """Returns an owned reference to the dtype of the array.
  *             """
  *             return <dtype>PyArray_DESCR(self)             # <<<<<<<<<<<<<<
@@ -4990,7 +4983,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   __pyx_r = ((PyArray_Descr *)__pyx_t_1);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":328
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":328
  *             return PyArray_BASE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -5005,7 +4998,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":334
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":334
  *             return <dtype>PyArray_DESCR(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -5016,7 +5009,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
 static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx_v_self) {
   int __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":338
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":338
  *             """Returns the number of dimensions in the array.
  *             """
  *             return PyArray_NDIM(self)             # <<<<<<<<<<<<<<
@@ -5026,7 +5019,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
   __pyx_r = PyArray_NDIM(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":334
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":334
  *             return <dtype>PyArray_DESCR(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -5039,7 +5032,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":340
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":340
  *             return PyArray_NDIM(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -5050,7 +5043,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObject *__pyx_v_self) {
   npy_intp *__pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":346
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":346
  *             Can return NULL for 0-dimensional arrays.
  *             """
  *             return PyArray_DIMS(self)             # <<<<<<<<<<<<<<
@@ -5060,7 +5053,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
   __pyx_r = PyArray_DIMS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":340
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":340
  *             return PyArray_NDIM(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -5073,7 +5066,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":348
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":348
  *             return PyArray_DIMS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -5084,7 +5077,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayObject *__pyx_v_self) {
   npy_intp *__pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":353
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":353
  *             The number of elements matches the number of dimensions of the array (ndim).
  *             """
  *             return PyArray_STRIDES(self)             # <<<<<<<<<<<<<<
@@ -5094,7 +5087,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
   __pyx_r = PyArray_STRIDES(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":348
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":348
  *             return PyArray_DIMS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -5107,7 +5100,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":355
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":355
  *             return PyArray_STRIDES(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -5118,7 +5111,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":359
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":359
  *             """Returns the total size (in number of elements) of the array.
  *             """
  *             return PyArray_SIZE(self)             # <<<<<<<<<<<<<<
@@ -5128,7 +5121,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
   __pyx_r = PyArray_SIZE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":355
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":355
  *             return PyArray_STRIDES(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -5141,7 +5134,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":361
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":361
  *             return PyArray_SIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -5152,7 +5145,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
 static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__pyx_v_self) {
   char *__pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":368
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":368
  *             of `PyArray_DATA()` instead, which returns a 'void*'.
  *             """
  *             return PyArray_BYTES(self)             # <<<<<<<<<<<<<<
@@ -5162,7 +5155,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__p
   __pyx_r = PyArray_BYTES(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":361
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":361
  *             return PyArray_SIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -5175,7 +5168,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__p
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":776
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":776
  * ctypedef long double complex clongdouble_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -5192,7 +5185,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew1", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":777
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":777
  * 
  * cdef inline object PyArray_MultiIterNew1(a):
  *     return PyArray_MultiIterNew(1, <void*>a)             # <<<<<<<<<<<<<<
@@ -5206,7 +5199,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":776
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":776
  * ctypedef long double complex clongdouble_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -5225,7 +5218,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":779
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":779
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -5242,7 +5235,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew2", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":780
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":780
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)             # <<<<<<<<<<<<<<
@@ -5256,7 +5249,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":779
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":779
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -5275,7 +5268,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":782
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":782
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -5292,7 +5285,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew3", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":783
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":783
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)             # <<<<<<<<<<<<<<
@@ -5306,7 +5299,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":782
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":782
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -5325,7 +5318,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":785
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":785
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -5342,7 +5335,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew4", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":786
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":786
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)             # <<<<<<<<<<<<<<
@@ -5356,7 +5349,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":785
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":785
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -5375,7 +5368,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":788
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":788
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -5392,7 +5385,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew5", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":789
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":789
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)             # <<<<<<<<<<<<<<
@@ -5406,7 +5399,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":788
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":788
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -5425,7 +5418,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":791
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":791
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -5440,7 +5433,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   PyObject *__pyx_t_2;
   __Pyx_RefNannySetupContext("PyDataType_SHAPE", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":792
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":792
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -5450,7 +5443,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   __pyx_t_1 = PyDataType_HASSUBARRAY(__pyx_v_d);
   if (__pyx_t_1) {
 
-    /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":793
+    /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":793
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):
  *         return <tuple>d.subarray.shape             # <<<<<<<<<<<<<<
@@ -5463,7 +5456,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     __pyx_r = ((PyObject*)__pyx_t_2);
     goto __pyx_L0;
 
-    /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":792
+    /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":792
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -5472,7 +5465,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
 */
   }
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":795
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":795
  *         return <tuple>d.subarray.shape
  *     else:
  *         return ()             # <<<<<<<<<<<<<<
@@ -5486,7 +5479,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     goto __pyx_L0;
   }
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":791
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":791
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -5501,7 +5494,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":994
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":994
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base) except *:             # <<<<<<<<<<<<<<
@@ -5515,7 +5508,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":995
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":995
  * 
  * cdef inline void set_array_base(ndarray arr, object base) except *:
  *     Py_INCREF(base) # important to do this before stealing the reference below!             # <<<<<<<<<<<<<<
@@ -5524,7 +5517,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
 */
   Py_INCREF(__pyx_v_base);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":996
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":996
  * cdef inline void set_array_base(ndarray arr, object base) except *:
  *     Py_INCREF(base) # important to do this before stealing the reference below!
  *     PyArray_SetBaseObject(arr, base)             # <<<<<<<<<<<<<<
@@ -5533,7 +5526,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
 */
   __pyx_t_1 = PyArray_SetBaseObject(__pyx_v_arr, __pyx_v_base); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(2, 996, __pyx_L1_error)
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":994
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":994
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base) except *:             # <<<<<<<<<<<<<<
@@ -5548,7 +5541,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __pyx_L0:;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":998
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":998
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -5563,7 +5556,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":999
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":999
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)             # <<<<<<<<<<<<<<
@@ -5572,7 +5565,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
 */
   __pyx_v_base = PyArray_BASE(__pyx_v_arr);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1000
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1000
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -5582,7 +5575,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_t_1 = (__pyx_v_base == NULL);
   if (__pyx_t_1) {
 
-    /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1001
+    /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1001
  *     base = PyArray_BASE(arr)
  *     if base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -5593,7 +5586,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1000
+    /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1000
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -5602,7 +5595,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
 */
   }
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1002
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1002
  *     if base is NULL:
  *         return None
  *     return <object>base             # <<<<<<<<<<<<<<
@@ -5614,7 +5607,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_r = ((PyObject *)__pyx_v_base);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":998
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":998
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -5629,7 +5622,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1006
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1006
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -5656,7 +5649,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_array", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1007
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1007
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5672,7 +5665,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1008
+      /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1008
  * cdef inline int import_array() except -1:
  *     try:
  *         __pyx_import_array()             # <<<<<<<<<<<<<<
@@ -5681,7 +5674,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
 */
       __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 1008, __pyx_L3_error)
 
-      /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1007
+      /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1007
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5695,7 +5688,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1009
+    /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1009
  *     try:
  *         __pyx_import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -5710,7 +5703,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_7);
 
-      /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1010
+      /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1010
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy._core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -5735,7 +5728,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     }
     goto __pyx_L5_except_error;
 
-    /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1007
+    /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1007
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5751,7 +5744,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1006
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1006
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -5776,7 +5769,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1012
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1012
  *         raise ImportError("numpy._core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -5803,7 +5796,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_umath", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1013
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1013
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5819,7 +5812,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1014
+      /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1014
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -5828,7 +5821,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
 */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 1014, __pyx_L3_error)
 
-      /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1013
+      /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1013
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5842,7 +5835,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1015
+    /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1015
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -5857,7 +5850,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_7);
 
-      /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1016
+      /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1016
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy._core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -5882,7 +5875,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     }
     goto __pyx_L5_except_error;
 
-    /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1013
+    /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1013
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5898,7 +5891,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1012
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1012
  *         raise ImportError("numpy._core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -5923,7 +5916,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1018
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1018
  *         raise ImportError("numpy._core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -5950,7 +5943,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_ufunc", 0);
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1019
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1019
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5966,7 +5959,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1020
+      /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1020
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -5975,7 +5968,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
 */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 1020, __pyx_L3_error)
 
-      /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1019
+      /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1019
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5989,7 +5982,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1021
+    /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1021
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -6004,7 +5997,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_7);
 
-      /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1022
+      /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1022
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy._core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -6029,7 +6022,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     }
     goto __pyx_L5_except_error;
 
-    /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1019
+    /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1019
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -6045,7 +6038,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1018
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1018
  *         raise ImportError("numpy._core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -6070,7 +6063,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1025
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1025
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -6081,7 +6074,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
 static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_obj) {
   int __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1037
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1037
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyTimedeltaArrType_Type)             # <<<<<<<<<<<<<<
@@ -6091,7 +6084,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyTimedeltaArrType_Type));
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1025
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1025
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -6104,7 +6097,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1040
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1040
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -6115,7 +6108,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
 static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_obj) {
   int __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1052
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1052
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyDatetimeArrType_Type)             # <<<<<<<<<<<<<<
@@ -6125,7 +6118,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyDatetimeArrType_Type));
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1040
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1040
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -6138,7 +6131,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1055
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1055
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -6149,7 +6142,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
 static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *__pyx_v_obj) {
   npy_datetime __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1062
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1062
  *     also needed.  That can be found using `get_datetime64_unit`.
  *     """
  *     return (<PyDatetimeScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -6159,7 +6152,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   __pyx_r = ((PyDatetimeScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1055
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1055
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -6172,7 +6165,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1065
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1065
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -6183,7 +6176,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
 static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject *__pyx_v_obj) {
   npy_timedelta __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1069
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1069
  *     returns the int64 value underlying scalar numpy timedelta64 object
  *     """
  *     return (<PyTimedeltaScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -6193,7 +6186,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   __pyx_r = ((PyTimedeltaScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1065
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1065
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -6206,7 +6199,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   return __pyx_r;
 }
 
-/* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1072
+/* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1072
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -6217,7 +6210,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
 static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObject *__pyx_v_obj) {
   NPY_DATETIMEUNIT __pyx_r;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1076
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1076
  *     returns the unit part of the dtype for a numpy datetime64 object.
  *     """
  *     return <NPY_DATETIMEUNIT>(<PyDatetimeScalarObject*>obj).obmeta.base             # <<<<<<<<<<<<<<
@@ -6227,7 +6220,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   __pyx_r = ((NPY_DATETIMEUNIT)((PyDatetimeScalarObject *)__pyx_v_obj)->obmeta.base);
   goto __pyx_L0;
 
-  /* "testenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1072
+  /* "../../../../../../../../home/lespi/octenv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1072
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -12544,7 +12537,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_12current_node_
  *     def current_node(self):
  *         return self._current_node             # <<<<<<<<<<<<<<
  * 
- *     def getSize(self):
+ * cdef class SimpleLeafBBXIterator:
 */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_self->_current_node);
@@ -12566,266 +12559,6 @@ static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_12current_node_
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":334
- *         return self._current_node
- * 
- *     def getSize(self):             # <<<<<<<<<<<<<<
- *         """Get the size of the current node"""
- *         if self._current_node:
-*/
-
-/* Python wrapper */
-static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_17getSize(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_7octomap_7octomap_18SimpleLeafIterator_16getSize, "Get the size of the current node");
-static PyMethodDef __pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_17getSize = {"getSize", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_17getSize, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_7octomap_7octomap_18SimpleLeafIterator_16getSize};
-static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_17getSize(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("getSize (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  if (unlikely(__pyx_nargs > 0)) { __Pyx_RaiseArgtupleInvalid("getSize", 1, 0, 0, __pyx_nargs); return NULL; }
-  const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-  if (unlikely(__pyx_kwds_len < 0)) return NULL;
-  if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("getSize", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_7octomap_7octomap_18SimpleLeafIterator_16getSize(((struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_16getSize(struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  size_t __pyx_t_4;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("getSize", 0);
-
-  /* "octomap/octomap.pyx":336
- *     def getSize(self):
- *         """Get the size of the current node"""
- *         if self._current_node:             # <<<<<<<<<<<<<<
- *             # Return a more reasonable size based on the tree resolution
- *             return self._tree.getResolution() * 2.0  # Simplified: 2x resolution
-*/
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_self->_current_node); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 336, __pyx_L1_error)
-  if (__pyx_t_1) {
-
-    /* "octomap/octomap.pyx":338
- *         if self._current_node:
- *             # Return a more reasonable size based on the tree resolution
- *             return self._tree.getResolution() * 2.0  # Simplified: 2x resolution             # <<<<<<<<<<<<<<
- *         return 0.0
- * 
-*/
-    __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __pyx_v_self->_tree;
-    __Pyx_INCREF(__pyx_t_3);
-    __pyx_t_4 = 0;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
-      __pyx_t_2 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_getResolution, __pyx_callargs+__pyx_t_4, (1-__pyx_t_4) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 338, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_mstate_global->__pyx_float_2_0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 338, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
-    goto __pyx_L0;
-
-    /* "octomap/octomap.pyx":336
- *     def getSize(self):
- *         """Get the size of the current node"""
- *         if self._current_node:             # <<<<<<<<<<<<<<
- *             # Return a more reasonable size based on the tree resolution
- *             return self._tree.getResolution() * 2.0  # Simplified: 2x resolution
-*/
-  }
-
-  /* "octomap/octomap.pyx":339
- *             # Return a more reasonable size based on the tree resolution
- *             return self._tree.getResolution() * 2.0  # Simplified: 2x resolution
- *         return 0.0             # <<<<<<<<<<<<<<
- * 
- *     def getDepth(self):
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_mstate_global->__pyx_float_0_0);
-  __pyx_r = __pyx_mstate_global->__pyx_float_0_0;
-  goto __pyx_L0;
-
-  /* "octomap/octomap.pyx":334
- *         return self._current_node
- * 
- *     def getSize(self):             # <<<<<<<<<<<<<<
- *         """Get the size of the current node"""
- *         if self._current_node:
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("octomap.octomap.SimpleLeafIterator.getSize", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "octomap/octomap.pyx":341
- *         return 0.0
- * 
- *     def getDepth(self):             # <<<<<<<<<<<<<<
- *         """Get the depth of the current node"""
- *         if self._current_node:
-*/
-
-/* Python wrapper */
-static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_19getDepth(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_7octomap_7octomap_18SimpleLeafIterator_18getDepth, "Get the depth of the current node");
-static PyMethodDef __pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_19getDepth = {"getDepth", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_19getDepth, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_7octomap_7octomap_18SimpleLeafIterator_18getDepth};
-static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_19getDepth(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("getDepth (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  if (unlikely(__pyx_nargs > 0)) { __Pyx_RaiseArgtupleInvalid("getDepth", 1, 0, 0, __pyx_nargs); return NULL; }
-  const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-  if (unlikely(__pyx_kwds_len < 0)) return NULL;
-  if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("getDepth", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_7octomap_7octomap_18SimpleLeafIterator_18getDepth(((struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_18getDepth(struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("getDepth", 0);
-
-  /* "octomap/octomap.pyx":343
- *     def getDepth(self):
- *         """Get the depth of the current node"""
- *         if self._current_node:             # <<<<<<<<<<<<<<
- *             return 0  # This would need to be tracked properly
- *         return 0
-*/
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_self->_current_node); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 343, __pyx_L1_error)
-  if (__pyx_t_1) {
-
-    /* "octomap/octomap.pyx":344
- *         """Get the depth of the current node"""
- *         if self._current_node:
- *             return 0  # This would need to be tracked properly             # <<<<<<<<<<<<<<
- *         return 0
- * 
-*/
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_INCREF(__pyx_mstate_global->__pyx_int_0);
-    __pyx_r = __pyx_mstate_global->__pyx_int_0;
-    goto __pyx_L0;
-
-    /* "octomap/octomap.pyx":343
- *     def getDepth(self):
- *         """Get the depth of the current node"""
- *         if self._current_node:             # <<<<<<<<<<<<<<
- *             return 0  # This would need to be tracked properly
- *         return 0
-*/
-  }
-
-  /* "octomap/octomap.pyx":345
- *         if self._current_node:
- *             return 0  # This would need to be tracked properly
- *         return 0             # <<<<<<<<<<<<<<
- * 
- * cdef class SimpleLeafBBXIterator:
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_mstate_global->__pyx_int_0);
-  __pyx_r = __pyx_mstate_global->__pyx_int_0;
-  goto __pyx_L0;
-
-  /* "octomap/octomap.pyx":341
- *         return 0.0
- * 
- *     def getDepth(self):             # <<<<<<<<<<<<<<
- *         """Get the depth of the current node"""
- *         if self._current_node:
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("octomap.octomap.SimpleLeafIterator.getDepth", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
 /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
@@ -12833,15 +12566,15 @@ static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_18getDepth(stru
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_21__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_17__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_21__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_21__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_21__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_17__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_17__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_17__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -12867,14 +12600,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__reduce_cython__", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_7octomap_7octomap_18SimpleLeafIterator_20__reduce_cython__(((struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7octomap_7octomap_18SimpleLeafIterator_16__reduce_cython__(((struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self) {
+static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_16__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -12914,15 +12647,15 @@ static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_20__reduce_cyth
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_23__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_19__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_23__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_23__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_23__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_19__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_19__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_19__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -12988,7 +12721,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7octomap_7octomap_18SimpleLeafIterator_22__setstate_cython__(((struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_7octomap_7octomap_18SimpleLeafIterator_18__setstate_cython__(((struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -12998,7 +12731,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_18__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -13030,7 +12763,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_18SimpleLeafIterator_22__setstate_cy
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":362
+/* "octomap/octomap.pyx":349
  *     cdef int _current_depth
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -13056,7 +12789,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "octomap/octomap.pyx":363
+  /* "octomap/octomap.pyx":350
  * 
  *     def __dealloc__(self):
  *         if self._it != NULL:             # <<<<<<<<<<<<<<
@@ -13066,7 +12799,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
   __pyx_t_1 = (__pyx_v_self->_it != NULL);
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":364
+    /* "octomap/octomap.pyx":351
  *     def __dealloc__(self):
  *         if self._it != NULL:
  *             del self._it             # <<<<<<<<<<<<<<
@@ -13075,7 +12808,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
 */
     delete __pyx_v_self->_it;
 
-    /* "octomap/octomap.pyx":365
+    /* "octomap/octomap.pyx":352
  *         if self._it != NULL:
  *             del self._it
  *             self._it = NULL             # <<<<<<<<<<<<<<
@@ -13084,7 +12817,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
 */
     __pyx_v_self->_it = NULL;
 
-    /* "octomap/octomap.pyx":363
+    /* "octomap/octomap.pyx":350
  * 
  *     def __dealloc__(self):
  *         if self._it != NULL:             # <<<<<<<<<<<<<<
@@ -13093,7 +12826,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
 */
   }
 
-  /* "octomap/octomap.pyx":366
+  /* "octomap/octomap.pyx":353
  *             del self._it
  *             self._it = NULL
  *         if self._end != NULL:             # <<<<<<<<<<<<<<
@@ -13103,7 +12836,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
   __pyx_t_1 = (__pyx_v_self->_end != NULL);
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":367
+    /* "octomap/octomap.pyx":354
  *             self._it = NULL
  *         if self._end != NULL:
  *             del self._end             # <<<<<<<<<<<<<<
@@ -13112,7 +12845,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
 */
     delete __pyx_v_self->_end;
 
-    /* "octomap/octomap.pyx":368
+    /* "octomap/octomap.pyx":355
  *         if self._end != NULL:
  *             del self._end
  *             self._end = NULL             # <<<<<<<<<<<<<<
@@ -13121,7 +12854,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
 */
     __pyx_v_self->_end = NULL;
 
-    /* "octomap/octomap.pyx":366
+    /* "octomap/octomap.pyx":353
  *             del self._it
  *             self._it = NULL
  *         if self._end != NULL:             # <<<<<<<<<<<<<<
@@ -13130,7 +12863,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
 */
   }
 
-  /* "octomap/octomap.pyx":369
+  /* "octomap/octomap.pyx":356
  *             del self._end
  *             self._end = NULL
  *         self._tree = None             # <<<<<<<<<<<<<<
@@ -13143,7 +12876,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
   __Pyx_DECREF(__pyx_v_self->_tree);
   __pyx_v_self->_tree = Py_None;
 
-  /* "octomap/octomap.pyx":370
+  /* "octomap/octomap.pyx":357
  *             self._end = NULL
  *         self._tree = None
  *         self._current_node = None             # <<<<<<<<<<<<<<
@@ -13156,7 +12889,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
   __Pyx_DECREF(__pyx_v_self->_current_node);
   __pyx_v_self->_current_node = Py_None;
 
-  /* "octomap/octomap.pyx":362
+  /* "octomap/octomap.pyx":349
  *     cdef int _current_depth
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -13168,7 +12901,7 @@ static void __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator___dealloc__(struc
   __Pyx_RefNannyFinishContext();
 }
 
-/* "octomap/octomap.pyx":372
+/* "octomap/octomap.pyx":359
  *         self._current_node = None
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -13206,7 +12939,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_2__cinit__(struct 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "octomap/octomap.pyx":373
+  /* "octomap/octomap.pyx":360
  * 
  *     def __cinit__(self):
  *         self._tree = None             # <<<<<<<<<<<<<<
@@ -13219,7 +12952,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_2__cinit__(struct 
   __Pyx_DECREF(__pyx_v_self->_tree);
   __pyx_v_self->_tree = Py_None;
 
-  /* "octomap/octomap.pyx":374
+  /* "octomap/octomap.pyx":361
  *     def __cinit__(self):
  *         self._tree = None
  *         self._it = NULL             # <<<<<<<<<<<<<<
@@ -13228,7 +12961,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_2__cinit__(struct 
 */
   __pyx_v_self->_it = NULL;
 
-  /* "octomap/octomap.pyx":375
+  /* "octomap/octomap.pyx":362
  *         self._tree = None
  *         self._it = NULL
  *         self._end = NULL             # <<<<<<<<<<<<<<
@@ -13237,7 +12970,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_2__cinit__(struct 
 */
   __pyx_v_self->_end = NULL;
 
-  /* "octomap/octomap.pyx":376
+  /* "octomap/octomap.pyx":363
  *         self._it = NULL
  *         self._end = NULL
  *         self._is_end = True             # <<<<<<<<<<<<<<
@@ -13246,7 +12979,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_2__cinit__(struct 
 */
   __pyx_v_self->_is_end = 1;
 
-  /* "octomap/octomap.pyx":377
+  /* "octomap/octomap.pyx":364
  *         self._end = NULL
  *         self._is_end = True
  *         self._current_node = None             # <<<<<<<<<<<<<<
@@ -13259,7 +12992,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_2__cinit__(struct 
   __Pyx_DECREF(__pyx_v_self->_current_node);
   __pyx_v_self->_current_node = Py_None;
 
-  /* "octomap/octomap.pyx":378
+  /* "octomap/octomap.pyx":365
  *         self._is_end = True
  *         self._current_node = None
  *         self._current_coord = None             # <<<<<<<<<<<<<<
@@ -13272,7 +13005,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_2__cinit__(struct 
   __Pyx_DECREF(__pyx_v_self->_current_coord);
   __pyx_v_self->_current_coord = ((PyObject*)Py_None);
 
-  /* "octomap/octomap.pyx":379
+  /* "octomap/octomap.pyx":366
  *         self._current_node = None
  *         self._current_coord = None
  *         self._current_size = 0.0             # <<<<<<<<<<<<<<
@@ -13281,7 +13014,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_2__cinit__(struct 
 */
   __pyx_v_self->_current_size = 0.0;
 
-  /* "octomap/octomap.pyx":380
+  /* "octomap/octomap.pyx":367
  *         self._current_coord = None
  *         self._current_size = 0.0
  *         self._current_depth = 0             # <<<<<<<<<<<<<<
@@ -13290,7 +13023,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_2__cinit__(struct 
 */
   __pyx_v_self->_current_depth = 0;
 
-  /* "octomap/octomap.pyx":372
+  /* "octomap/octomap.pyx":359
  *         self._current_node = None
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -13304,7 +13037,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_2__cinit__(struct 
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":382
+/* "octomap/octomap.pyx":369
  *         self._current_depth = 0
  * 
  *     def __init__(self, OcTree tree, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):             # <<<<<<<<<<<<<<
@@ -13337,47 +13070,47 @@ static int __pyx_pw_7octomap_7octomap_21SimpleLeafBBXIterator_5__init__(PyObject
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_tree,&__pyx_mstate_global->__pyx_n_u_bbx_min,&__pyx_mstate_global->__pyx_n_u_bbx_max,&__pyx_mstate_global->__pyx_n_u_maxDepth,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 382, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 369, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_VARARGS(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 382, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 369, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_VARARGS(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 382, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 369, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_VARARGS(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 382, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 369, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 382, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 369, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < 0) __PYX_ERR(0, 382, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < 0) __PYX_ERR(0, 369, __pyx_L3_error)
       if (!values[3]) values[3] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_int_0));
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, i); __PYX_ERR(0, 382, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, i); __PYX_ERR(0, 369, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_VARARGS(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 382, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 369, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_VARARGS(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 382, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 369, __pyx_L3_error)
         values[1] = __Pyx_ArgRef_VARARGS(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 382, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 369, __pyx_L3_error)
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 382, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 369, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -13390,7 +13123,7 @@ static int __pyx_pw_7octomap_7octomap_21SimpleLeafBBXIterator_5__init__(PyObject
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, __pyx_nargs); __PYX_ERR(0, 382, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, __pyx_nargs); __PYX_ERR(0, 369, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -13401,9 +13134,9 @@ static int __pyx_pw_7octomap_7octomap_21SimpleLeafBBXIterator_5__init__(PyObject
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tree), __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, 1, "tree", 0))) __PYX_ERR(0, 382, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_min), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_min", 0))) __PYX_ERR(0, 382, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_max), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_max", 0))) __PYX_ERR(0, 382, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tree), __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, 1, "tree", 0))) __PYX_ERR(0, 369, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_min), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_min", 0))) __PYX_ERR(0, 369, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_max), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_max", 0))) __PYX_ERR(0, 369, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(((struct __pyx_obj_7octomap_7octomap_SimpleLeafBBXIterator *)__pyx_v_self), __pyx_v_tree, __pyx_v_bbx_min, __pyx_v_bbx_max, __pyx_v_maxDepth);
 
   /* function exit code */
@@ -13459,16 +13192,16 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
   __pyx_pybuffernd_bbx_max.rcbuffer = &__pyx_pybuffer_bbx_max;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_min.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_min, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 382, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_min.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_min, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 369, __pyx_L1_error)
   }
   __pyx_pybuffernd_bbx_min.diminfo[0].strides = __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_bbx_min.diminfo[0].shape = __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_max.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_max, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 382, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_max.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_max, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 369, __pyx_L1_error)
   }
   __pyx_pybuffernd_bbx_max.diminfo[0].strides = __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_bbx_max.diminfo[0].shape = __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.shape[0];
 
-  /* "octomap/octomap.pyx":383
+  /* "octomap/octomap.pyx":370
  * 
  *     def __init__(self, OcTree tree, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):
  *         if tree is None or tree.thisptr == NULL:             # <<<<<<<<<<<<<<
@@ -13486,7 +13219,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":384
+    /* "octomap/octomap.pyx":371
  *     def __init__(self, OcTree tree, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):
  *         if tree is None or tree.thisptr == NULL:
  *             self._is_end = True             # <<<<<<<<<<<<<<
@@ -13495,7 +13228,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
 */
     __pyx_v_self->_is_end = 1;
 
-    /* "octomap/octomap.pyx":385
+    /* "octomap/octomap.pyx":372
  *         if tree is None or tree.thisptr == NULL:
  *             self._is_end = True
  *             return             # <<<<<<<<<<<<<<
@@ -13505,7 +13238,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "octomap/octomap.pyx":383
+    /* "octomap/octomap.pyx":370
  * 
  *     def __init__(self, OcTree tree, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):
  *         if tree is None or tree.thisptr == NULL:             # <<<<<<<<<<<<<<
@@ -13514,7 +13247,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
 */
   }
 
-  /* "octomap/octomap.pyx":386
+  /* "octomap/octomap.pyx":373
  *             self._is_end = True
  *             return
  *         self._tree = tree             # <<<<<<<<<<<<<<
@@ -13527,7 +13260,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
   __Pyx_DECREF(__pyx_v_self->_tree);
   __pyx_v_self->_tree = ((PyObject *)__pyx_v_tree);
 
-  /* "octomap/octomap.pyx":387
+  /* "octomap/octomap.pyx":374
  *             return
  *         self._tree = tree
  *         cdef defs.point3d pmin = defs.point3d(<float?>bbx_min[0], <float?>bbx_min[1], <float?>bbx_min[2])             # <<<<<<<<<<<<<<
@@ -13542,7 +13275,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
   } else if (unlikely(__pyx_t_3 >= __pyx_pybuffernd_bbx_min.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 387, __pyx_L1_error)
+    __PYX_ERR(0, 374, __pyx_L1_error)
   }
   __pyx_t_5 = 1;
   __pyx_t_4 = -1;
@@ -13552,7 +13285,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
   } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_bbx_min.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 387, __pyx_L1_error)
+    __PYX_ERR(0, 374, __pyx_L1_error)
   }
   __pyx_t_6 = 2;
   __pyx_t_4 = -1;
@@ -13562,17 +13295,17 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_bbx_min.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 387, __pyx_L1_error)
+    __PYX_ERR(0, 374, __pyx_L1_error)
   }
   try {
     __pyx_t_7 = octomap::point3d(((float)(*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.buf, __pyx_t_3, __pyx_pybuffernd_bbx_min.diminfo[0].strides))), ((float)(*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.buf, __pyx_t_5, __pyx_pybuffernd_bbx_min.diminfo[0].strides))), ((float)(*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_bbx_min.diminfo[0].strides))));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 387, __pyx_L1_error)
+    __PYX_ERR(0, 374, __pyx_L1_error)
   }
   __pyx_v_pmin = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_7);
 
-  /* "octomap/octomap.pyx":388
+  /* "octomap/octomap.pyx":375
  *         self._tree = tree
  *         cdef defs.point3d pmin = defs.point3d(<float?>bbx_min[0], <float?>bbx_min[1], <float?>bbx_min[2])
  *         cdef defs.point3d pmax = defs.point3d(<float?>bbx_max[0], <float?>bbx_max[1], <float?>bbx_max[2])             # <<<<<<<<<<<<<<
@@ -13587,7 +13320,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_bbx_max.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 388, __pyx_L1_error)
+    __PYX_ERR(0, 375, __pyx_L1_error)
   }
   __pyx_t_5 = 1;
   __pyx_t_4 = -1;
@@ -13597,7 +13330,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
   } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_bbx_max.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 388, __pyx_L1_error)
+    __PYX_ERR(0, 375, __pyx_L1_error)
   }
   __pyx_t_3 = 2;
   __pyx_t_4 = -1;
@@ -13607,27 +13340,27 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
   } else if (unlikely(__pyx_t_3 >= __pyx_pybuffernd_bbx_max.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 388, __pyx_L1_error)
+    __PYX_ERR(0, 375, __pyx_L1_error)
   }
   try {
     __pyx_t_7 = octomap::point3d(((float)(*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_bbx_max.diminfo[0].strides))), ((float)(*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.buf, __pyx_t_5, __pyx_pybuffernd_bbx_max.diminfo[0].strides))), ((float)(*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.buf, __pyx_t_3, __pyx_pybuffernd_bbx_max.diminfo[0].strides))));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 388, __pyx_L1_error)
+    __PYX_ERR(0, 375, __pyx_L1_error)
   }
   __pyx_v_pmax = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_7);
 
-  /* "octomap/octomap.pyx":389
+  /* "octomap/octomap.pyx":376
  *         cdef defs.point3d pmin = defs.point3d(<float?>bbx_min[0], <float?>bbx_min[1], <float?>bbx_min[2])
  *         cdef defs.point3d pmax = defs.point3d(<float?>bbx_max[0], <float?>bbx_max[1], <float?>bbx_max[2])
  *         cdef unsigned char depth = <unsigned char?>maxDepth             # <<<<<<<<<<<<<<
  *         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator tmp_it = tree.thisptr.begin_leafs_bbx(pmin, pmax, depth)
  *         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator tmp_end = tree.thisptr.end_leafs_bbx()
 */
-  __pyx_t_8 = __Pyx_PyLong_As_unsigned_char(__pyx_v_maxDepth); if (unlikely((__pyx_t_8 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 389, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyLong_As_unsigned_char(__pyx_v_maxDepth); if (unlikely((__pyx_t_8 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 376, __pyx_L1_error)
   __pyx_v_depth = ((unsigned char)__pyx_t_8);
 
-  /* "octomap/octomap.pyx":390
+  /* "octomap/octomap.pyx":377
  *         cdef defs.point3d pmax = defs.point3d(<float?>bbx_max[0], <float?>bbx_max[1], <float?>bbx_max[2])
  *         cdef unsigned char depth = <unsigned char?>maxDepth
  *         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator tmp_it = tree.thisptr.begin_leafs_bbx(pmin, pmax, depth)             # <<<<<<<<<<<<<<
@@ -13638,11 +13371,11 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
     __pyx_t_9 = __pyx_v_tree->thisptr->begin_leafs_bbx(__pyx_v_pmin, __pyx_v_pmax, __pyx_v_depth);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 390, __pyx_L1_error)
+    __PYX_ERR(0, 377, __pyx_L1_error)
   }
   __pyx_v_tmp_it = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_9);
 
-  /* "octomap/octomap.pyx":391
+  /* "octomap/octomap.pyx":378
  *         cdef unsigned char depth = <unsigned char?>maxDepth
  *         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator tmp_it = tree.thisptr.begin_leafs_bbx(pmin, pmax, depth)
  *         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator tmp_end = tree.thisptr.end_leafs_bbx()             # <<<<<<<<<<<<<<
@@ -13653,11 +13386,11 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
     __pyx_t_9 = __pyx_v_tree->thisptr->end_leafs_bbx();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 391, __pyx_L1_error)
+    __PYX_ERR(0, 378, __pyx_L1_error)
   }
   __pyx_v_tmp_end = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_9);
 
-  /* "octomap/octomap.pyx":392
+  /* "octomap/octomap.pyx":379
  *         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator tmp_it = tree.thisptr.begin_leafs_bbx(pmin, pmax, depth)
  *         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator tmp_end = tree.thisptr.end_leafs_bbx()
  *         self._it = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator(tmp_it)             # <<<<<<<<<<<<<<
@@ -13668,11 +13401,11 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
     __pyx_t_10 = new octomap::OccupancyOcTreeBase<octomap::OcTreeNode> ::leaf_bbx_iterator(__pyx_v_tmp_it);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 392, __pyx_L1_error)
+    __PYX_ERR(0, 379, __pyx_L1_error)
   }
   __pyx_v_self->_it = __pyx_t_10;
 
-  /* "octomap/octomap.pyx":393
+  /* "octomap/octomap.pyx":380
  *         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator tmp_end = tree.thisptr.end_leafs_bbx()
  *         self._it = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator(tmp_it)
  *         self._end = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator(tmp_end)             # <<<<<<<<<<<<<<
@@ -13683,11 +13416,11 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
     __pyx_t_10 = new octomap::OccupancyOcTreeBase<octomap::OcTreeNode> ::leaf_bbx_iterator(__pyx_v_tmp_end);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 393, __pyx_L1_error)
+    __PYX_ERR(0, 380, __pyx_L1_error)
   }
   __pyx_v_self->_end = __pyx_t_10;
 
-  /* "octomap/octomap.pyx":394
+  /* "octomap/octomap.pyx":381
  *         self._it = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator(tmp_it)
  *         self._end = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator(tmp_end)
  *         self._is_end = False             # <<<<<<<<<<<<<<
@@ -13696,7 +13429,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
 */
   __pyx_v_self->_is_end = 0;
 
-  /* "octomap/octomap.pyx":382
+  /* "octomap/octomap.pyx":369
  *         self._current_depth = 0
  * 
  *     def __init__(self, OcTree tree, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):             # <<<<<<<<<<<<<<
@@ -13726,7 +13459,7 @@ static int __pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_4__init__(struct _
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":396
+/* "octomap/octomap.pyx":383
  *         self._is_end = False
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -13754,7 +13487,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_6__iter__(st
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__iter__", 0);
 
-  /* "octomap/octomap.pyx":397
+  /* "octomap/octomap.pyx":384
  * 
  *     def __iter__(self):
  *         return self             # <<<<<<<<<<<<<<
@@ -13766,7 +13499,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_6__iter__(st
   __pyx_r = ((PyObject *)__pyx_v_self);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":396
+  /* "octomap/octomap.pyx":383
  *         self._is_end = False
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -13781,7 +13514,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_6__iter__(st
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":399
+/* "octomap/octomap.pyx":386
  *         return self
  * 
  *     def __next__(self):             # <<<<<<<<<<<<<<
@@ -13830,7 +13563,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
   __pyx_pybuffernd__pt3.data = NULL;
   __pyx_pybuffernd__pt3.rcbuffer = &__pyx_pybuffer__pt3;
 
-  /* "octomap/octomap.pyx":400
+  /* "octomap/octomap.pyx":387
  * 
  *     def __next__(self):
  *         if self._is_end or self._it == NULL or self._end == NULL:             # <<<<<<<<<<<<<<
@@ -13853,7 +13586,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
   __pyx_L4_bool_binop_done:;
   if (unlikely(__pyx_t_1)) {
 
-    /* "octomap/octomap.pyx":401
+    /* "octomap/octomap.pyx":388
  *     def __next__(self):
  *         if self._is_end or self._it == NULL or self._end == NULL:
  *             raise StopIteration             # <<<<<<<<<<<<<<
@@ -13863,7 +13596,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
     __pyx_error_without_exception = 1;
     goto __pyx_L1_error;;
 
-    /* "octomap/octomap.pyx":400
+    /* "octomap/octomap.pyx":387
  * 
  *     def __next__(self):
  *         if self._is_end or self._it == NULL or self._end == NULL:             # <<<<<<<<<<<<<<
@@ -13872,7 +13605,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
 */
   }
 
-  /* "octomap/octomap.pyx":402
+  /* "octomap/octomap.pyx":389
  *         if self._is_end or self._it == NULL or self._end == NULL:
  *             raise StopIteration
  *         if deref(self._it) == deref(self._end):             # <<<<<<<<<<<<<<
@@ -13882,7 +13615,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
   __pyx_t_1 = (((*__pyx_v_self->_it) == (*__pyx_v_self->_end)) != 0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "octomap/octomap.pyx":403
+    /* "octomap/octomap.pyx":390
  *             raise StopIteration
  *         if deref(self._it) == deref(self._end):
  *             self._is_end = True             # <<<<<<<<<<<<<<
@@ -13891,7 +13624,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
 */
     __pyx_v_self->_is_end = 1;
 
-    /* "octomap/octomap.pyx":404
+    /* "octomap/octomap.pyx":391
  *         if deref(self._it) == deref(self._end):
  *             self._is_end = True
  *             raise StopIteration             # <<<<<<<<<<<<<<
@@ -13901,7 +13634,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
     __pyx_error_without_exception = 1;
     goto __pyx_L1_error;;
 
-    /* "octomap/octomap.pyx":402
+    /* "octomap/octomap.pyx":389
  *         if self._is_end or self._it == NULL or self._end == NULL:
  *             raise StopIteration
  *         if deref(self._it) == deref(self._end):             # <<<<<<<<<<<<<<
@@ -13910,7 +13643,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
 */
   }
 
-  /* "octomap/octomap.pyx":407
+  /* "octomap/octomap.pyx":394
  * 
  *         # Snapshot
  *         cdef defs.point3d p = deref(self._it).getCoordinate()             # <<<<<<<<<<<<<<
@@ -13919,27 +13652,27 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
 */
   __pyx_v_p = (*__pyx_v_self->_it).getCoordinate();
 
-  /* "octomap/octomap.pyx":408
+  /* "octomap/octomap.pyx":395
  *         # Snapshot
  *         cdef defs.point3d p = deref(self._it).getCoordinate()
  *         self._current_coord = [p.x(), p.y(), p.z()]             # <<<<<<<<<<<<<<
  *         self._current_size = deref(self._it).getSize()
  *         self._current_depth = <int?>deref(self._it).getDepth()
 */
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 408, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 408, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 408, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyList_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 408, __pyx_L1_error)
+  __pyx_t_6 = PyList_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 408, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 395, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 408, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 395, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 2, __pyx_t_5) != (0)) __PYX_ERR(0, 408, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 2, __pyx_t_5) != (0)) __PYX_ERR(0, 395, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
   __pyx_t_5 = 0;
@@ -13949,7 +13682,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
   __pyx_v_self->_current_coord = ((PyObject*)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "octomap/octomap.pyx":409
+  /* "octomap/octomap.pyx":396
  *         cdef defs.point3d p = deref(self._it).getCoordinate()
  *         self._current_coord = [p.x(), p.y(), p.z()]
  *         self._current_size = deref(self._it).getSize()             # <<<<<<<<<<<<<<
@@ -13960,11 +13693,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
     __pyx_t_7 = (*__pyx_v_self->_it).getSize();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 409, __pyx_L1_error)
+    __PYX_ERR(0, 396, __pyx_L1_error)
   }
   __pyx_v_self->_current_size = __pyx_t_7;
 
-  /* "octomap/octomap.pyx":410
+  /* "octomap/octomap.pyx":397
  *         self._current_coord = [p.x(), p.y(), p.z()]
  *         self._current_size = deref(self._it).getSize()
  *         self._current_depth = <int?>deref(self._it).getDepth()             # <<<<<<<<<<<<<<
@@ -13973,7 +13706,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
 */
   __pyx_v_self->_current_depth = ((int)(*__pyx_v_self->_it).getDepth());
 
-  /* "octomap/octomap.pyx":412
+  /* "octomap/octomap.pyx":399
  *         self._current_depth = <int?>deref(self._it).getDepth()
  * 
  *         cdef np.ndarray[DOUBLE_t, ndim=1] _pt3 = np.array(self._current_coord, dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -13981,14 +13714,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
  * 
 */
   __pyx_t_5 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_9 = 1;
@@ -14005,30 +13738,30 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_5, __pyx_v_self->_current_coord};
-    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 412, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 399, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 412, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_8, __pyx_t_4, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 399, __pyx_L1_error)
     __pyx_t_6 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_3, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 412, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 399, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
   }
-  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 412, __pyx_L1_error)
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 399, __pyx_L1_error)
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd__pt3.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_6), &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v__pt3 = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd__pt3.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 412, __pyx_L1_error)
+      __PYX_ERR(0, 399, __pyx_L1_error)
     } else {__pyx_pybuffernd__pt3.diminfo[0].strides = __pyx_pybuffernd__pt3.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd__pt3.diminfo[0].shape = __pyx_pybuffernd__pt3.rcbuffer->pybuffer.shape[0];
     }
   }
   __pyx_v__pt3 = ((PyArrayObject *)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "octomap/octomap.pyx":413
+  /* "octomap/octomap.pyx":400
  * 
  *         cdef np.ndarray[DOUBLE_t, ndim=1] _pt3 = np.array(self._current_coord, dtype=np.float64)
  *         self._current_node = self._tree.search(_pt3)             # <<<<<<<<<<<<<<
@@ -14042,7 +13775,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
     PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v__pt3)};
     __pyx_t_6 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_search, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 413, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 400, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
   }
   __Pyx_GIVEREF(__pyx_t_6);
@@ -14051,7 +13784,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
   __pyx_v_self->_current_node = __pyx_t_6;
   __pyx_t_6 = 0;
 
-  /* "octomap/octomap.pyx":415
+  /* "octomap/octomap.pyx":402
  *         self._current_node = self._tree.search(_pt3)
  * 
  *         inc(deref(self._it))             # <<<<<<<<<<<<<<
@@ -14060,7 +13793,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
 */
   (void)((++(*__pyx_v_self->_it)));
 
-  /* "octomap/octomap.pyx":416
+  /* "octomap/octomap.pyx":403
  * 
  *         inc(deref(self._it))
  *         return self             # <<<<<<<<<<<<<<
@@ -14072,7 +13805,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
   __pyx_r = ((PyObject *)__pyx_v_self);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":399
+  /* "octomap/octomap.pyx":386
  *         return self
  * 
  *     def __next__(self):             # <<<<<<<<<<<<<<
@@ -14107,7 +13840,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_8__next__(st
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":418
+/* "octomap/octomap.pyx":405
  *         return self
  * 
  *     def getCoordinate(self):             # <<<<<<<<<<<<<<
@@ -14167,7 +13900,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_10getCoordin
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getCoordinate", 0);
 
-  /* "octomap/octomap.pyx":419
+  /* "octomap/octomap.pyx":406
  * 
  *     def getCoordinate(self):
  *         if self._current_coord is not None:             # <<<<<<<<<<<<<<
@@ -14177,7 +13910,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_10getCoordin
   __pyx_t_1 = (__pyx_v_self->_current_coord != ((PyObject*)Py_None));
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":420
+    /* "octomap/octomap.pyx":407
  *     def getCoordinate(self):
  *         if self._current_coord is not None:
  *             return self._current_coord             # <<<<<<<<<<<<<<
@@ -14189,7 +13922,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_10getCoordin
     __pyx_r = __pyx_v_self->_current_coord;
     goto __pyx_L0;
 
-    /* "octomap/octomap.pyx":419
+    /* "octomap/octomap.pyx":406
  * 
  *     def getCoordinate(self):
  *         if self._current_coord is not None:             # <<<<<<<<<<<<<<
@@ -14198,7 +13931,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_10getCoordin
 */
   }
 
-  /* "octomap/octomap.pyx":421
+  /* "octomap/octomap.pyx":408
  *         if self._current_coord is not None:
  *             return self._current_coord
  *         return [0.0, 0.0, 0.0]             # <<<<<<<<<<<<<<
@@ -14206,22 +13939,22 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_10getCoordin
  *     def getSize(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 408, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_mstate_global->__pyx_float_0_0);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_float_0_0);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 408, __pyx_L1_error);
   __Pyx_INCREF(__pyx_mstate_global->__pyx_float_0_0);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_float_0_0);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 408, __pyx_L1_error);
   __Pyx_INCREF(__pyx_mstate_global->__pyx_float_0_0);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_float_0_0);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 408, __pyx_L1_error);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":418
+  /* "octomap/octomap.pyx":405
  *         return self
  * 
  *     def getCoordinate(self):             # <<<<<<<<<<<<<<
@@ -14240,7 +13973,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_10getCoordin
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":423
+/* "octomap/octomap.pyx":410
  *         return [0.0, 0.0, 0.0]
  * 
  *     def getSize(self):             # <<<<<<<<<<<<<<
@@ -14299,7 +14032,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_12getSize(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getSize", 0);
 
-  /* "octomap/octomap.pyx":424
+  /* "octomap/octomap.pyx":411
  * 
  *     def getSize(self):
  *         return self._current_size             # <<<<<<<<<<<<<<
@@ -14307,13 +14040,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_12getSize(st
  *     def getDepth(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_current_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_current_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 411, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":423
+  /* "octomap/octomap.pyx":410
  *         return [0.0, 0.0, 0.0]
  * 
  *     def getSize(self):             # <<<<<<<<<<<<<<
@@ -14332,7 +14065,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_12getSize(st
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":426
+/* "octomap/octomap.pyx":413
  *         return self._current_size
  * 
  *     def getDepth(self):             # <<<<<<<<<<<<<<
@@ -14391,7 +14124,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_14getDepth(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getDepth", 0);
 
-  /* "octomap/octomap.pyx":427
+  /* "octomap/octomap.pyx":414
  * 
  *     def getDepth(self):
  *         return self._current_depth             # <<<<<<<<<<<<<<
@@ -14399,13 +14132,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_14getDepth(s
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_From_int(__pyx_v_self->_current_depth); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_From_int(__pyx_v_self->_current_depth); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 414, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":426
+  /* "octomap/octomap.pyx":413
  *         return self._current_size
  * 
  *     def getDepth(self):             # <<<<<<<<<<<<<<
@@ -14424,7 +14157,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_14getDepth(s
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":429
+/* "octomap/octomap.pyx":416
  *         return self._current_depth
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -14452,7 +14185,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_12current_no
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "octomap/octomap.pyx":431
+  /* "octomap/octomap.pyx":418
  *     @property
  *     def current_node(self):
  *         return self._current_node             # <<<<<<<<<<<<<<
@@ -14464,7 +14197,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_12current_no
   __pyx_r = __pyx_v_self->_current_node;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":429
+  /* "octomap/octomap.pyx":416
  *         return self._current_depth
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -14479,7 +14212,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_12current_no
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":433
+/* "octomap/octomap.pyx":420
  *         return self._current_node
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -14511,7 +14244,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_6is_end___ge
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "octomap/octomap.pyx":435
+  /* "octomap/octomap.pyx":422
  *     @property
  *     def is_end(self):
  *         return self._is_end             # <<<<<<<<<<<<<<
@@ -14519,13 +14252,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_6is_end___ge
  * def _octree_read(filename):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->_is_end); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->_is_end); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":433
+  /* "octomap/octomap.pyx":420
  *         return self._current_node
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -14748,7 +14481,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_21SimpleLeafBBXIterator_18__setstate
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":437
+/* "octomap/octomap.pyx":424
  *         return self._is_end
  * 
  * def _octree_read(filename):             # <<<<<<<<<<<<<<
@@ -14796,32 +14529,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_filename,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 437, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 424, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 437, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 424, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "_octree_read", 0) < 0) __PYX_ERR(0, 437, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "_octree_read", 0) < 0) __PYX_ERR(0, 424, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("_octree_read", 1, 1, 1, i); __PYX_ERR(0, 437, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("_octree_read", 1, 1, 1, i); __PYX_ERR(0, 424, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 437, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 424, __pyx_L3_error)
     }
     __pyx_v_filename = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_octree_read", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 437, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_octree_read", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 424, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -14862,7 +14595,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_octree_read", 0);
 
-  /* "octomap/octomap.pyx":443
+  /* "octomap/octomap.pyx":430
  *     """
  *     cdef defs.istringstream iss
  *     cdef OcTree tree = OcTree(0.1)             # <<<<<<<<<<<<<<
@@ -14878,13 +14611,13 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 443, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 430, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_v_tree = ((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":444
+  /* "octomap/octomap.pyx":431
  *     cdef defs.istringstream iss
  *     cdef OcTree tree = OcTree(0.1)
  *     cdef string c_filename = filename.encode('utf-8')             # <<<<<<<<<<<<<<
@@ -14898,14 +14631,14 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_utf_8};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_encode, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 431, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_5 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_5 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c_filename = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_5);
 
-  /* "octomap/octomap.pyx":445
+  /* "octomap/octomap.pyx":432
  *     cdef OcTree tree = OcTree(0.1)
  *     cdef string c_filename = filename.encode('utf-8')
  *     cdef defs.OcTree* new_tree = NULL             # <<<<<<<<<<<<<<
@@ -14914,7 +14647,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
 */
   __pyx_v_new_tree = NULL;
 
-  /* "octomap/octomap.pyx":447
+  /* "octomap/octomap.pyx":434
  *     cdef defs.OcTree* new_tree = NULL
  * 
  *     if filename.startswith(b"# Octomap OcTree file"):             # <<<<<<<<<<<<<<
@@ -14928,31 +14661,31 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_b_Octomap_OcTree_file};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_startswith, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 434, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 447, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 434, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_6) {
 
-    /* "octomap/octomap.pyx":448
+    /* "octomap/octomap.pyx":435
  * 
  *     if filename.startswith(b"# Octomap OcTree file"):
  *         iss.str(string(<char*?>filename, len(filename)))             # <<<<<<<<<<<<<<
  *         new_tree = <defs.OcTree*>tree.thisptr.read(<defs.istream&?>iss)
  *     else:
 */
-    __pyx_t_7 = __Pyx_PyObject_AsWritableString(__pyx_v_filename); if (unlikely((!__pyx_t_7) && PyErr_Occurred())) __PYX_ERR(0, 448, __pyx_L1_error)
-    __pyx_t_8 = PyObject_Length(__pyx_v_filename); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 448, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_AsWritableString(__pyx_v_filename); if (unlikely((!__pyx_t_7) && PyErr_Occurred())) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_8 = PyObject_Length(__pyx_v_filename); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 435, __pyx_L1_error)
     try {
       __pyx_t_5 = std::string(((char *)__pyx_t_7), __pyx_t_8);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 448, __pyx_L1_error)
+      __PYX_ERR(0, 435, __pyx_L1_error)
     }
     __pyx_v_iss.str(__pyx_t_5);
 
-    /* "octomap/octomap.pyx":449
+    /* "octomap/octomap.pyx":436
  *     if filename.startswith(b"# Octomap OcTree file"):
  *         iss.str(string(<char*?>filename, len(filename)))
  *         new_tree = <defs.OcTree*>tree.thisptr.read(<defs.istream&?>iss)             # <<<<<<<<<<<<<<
@@ -14961,7 +14694,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
 */
     __pyx_v_new_tree = ((octomap::OcTree *)__pyx_v_tree->thisptr->read(((std::istream &)__pyx_v_iss)));
 
-    /* "octomap/octomap.pyx":447
+    /* "octomap/octomap.pyx":434
  *     cdef defs.OcTree* new_tree = NULL
  * 
  *     if filename.startswith(b"# Octomap OcTree file"):             # <<<<<<<<<<<<<<
@@ -14971,7 +14704,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
     goto __pyx_L3;
   }
 
-  /* "octomap/octomap.pyx":451
+  /* "octomap/octomap.pyx":438
  *         new_tree = <defs.OcTree*>tree.thisptr.read(<defs.istream&?>iss)
  *     else:
  *         new_tree = <defs.OcTree*>tree.thisptr.read(c_filename)             # <<<<<<<<<<<<<<
@@ -14983,7 +14716,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
   }
   __pyx_L3:;
 
-  /* "octomap/octomap.pyx":453
+  /* "octomap/octomap.pyx":440
  *         new_tree = <defs.OcTree*>tree.thisptr.read(c_filename)
  * 
  *     if new_tree != NULL:             # <<<<<<<<<<<<<<
@@ -14993,7 +14726,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
   __pyx_t_6 = (__pyx_v_new_tree != NULL);
   if (__pyx_t_6) {
 
-    /* "octomap/octomap.pyx":455
+    /* "octomap/octomap.pyx":442
  *     if new_tree != NULL:
  *         # Clean up the original tree and replace with the loaded one
  *         if tree.thisptr != NULL:             # <<<<<<<<<<<<<<
@@ -15003,7 +14736,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
     __pyx_t_6 = (__pyx_v_tree->thisptr != NULL);
     if (__pyx_t_6) {
 
-      /* "octomap/octomap.pyx":456
+      /* "octomap/octomap.pyx":443
  *         # Clean up the original tree and replace with the loaded one
  *         if tree.thisptr != NULL:
  *             del tree.thisptr             # <<<<<<<<<<<<<<
@@ -15012,7 +14745,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
 */
       delete __pyx_v_tree->thisptr;
 
-      /* "octomap/octomap.pyx":455
+      /* "octomap/octomap.pyx":442
  *     if new_tree != NULL:
  *         # Clean up the original tree and replace with the loaded one
  *         if tree.thisptr != NULL:             # <<<<<<<<<<<<<<
@@ -15021,7 +14754,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
 */
     }
 
-    /* "octomap/octomap.pyx":457
+    /* "octomap/octomap.pyx":444
  *         if tree.thisptr != NULL:
  *             del tree.thisptr
  *         tree.thisptr = new_tree             # <<<<<<<<<<<<<<
@@ -15030,7 +14763,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
 */
     __pyx_v_tree->thisptr = __pyx_v_new_tree;
 
-    /* "octomap/octomap.pyx":458
+    /* "octomap/octomap.pyx":445
  *             del tree.thisptr
  *         tree.thisptr = new_tree
  *         tree.owner = True             # <<<<<<<<<<<<<<
@@ -15039,7 +14772,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
 */
     __pyx_v_tree->owner = 1;
 
-    /* "octomap/octomap.pyx":453
+    /* "octomap/octomap.pyx":440
  *         new_tree = <defs.OcTree*>tree.thisptr.read(c_filename)
  * 
  *     if new_tree != NULL:             # <<<<<<<<<<<<<<
@@ -15048,7 +14781,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
 */
   }
 
-  /* "octomap/octomap.pyx":460
+  /* "octomap/octomap.pyx":447
  *         tree.owner = True
  * 
  *     return tree             # <<<<<<<<<<<<<<
@@ -15060,7 +14793,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
   __pyx_r = ((PyObject *)__pyx_v_tree);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":437
+  /* "octomap/octomap.pyx":424
  *         return self._is_end
  * 
  * def _octree_read(filename):             # <<<<<<<<<<<<<<
@@ -15082,7 +14815,7 @@ static PyObject *__pyx_pf_7octomap_7octomap__octree_read(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":470
+/* "octomap/octomap.pyx":457
  *     cdef bint owner
  * 
  *     def __cinit__(self, arg):             # <<<<<<<<<<<<<<
@@ -15112,32 +14845,32 @@ static int __pyx_pw_7octomap_7octomap_6OcTree_1__cinit__(PyObject *__pyx_v_self,
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_arg,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 470, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 457, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 470, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 457, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__cinit__", 0) < 0) __PYX_ERR(0, 470, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__cinit__", 0) < 0) __PYX_ERR(0, 457, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, i); __PYX_ERR(0, 470, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, i); __PYX_ERR(0, 457, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 470, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 457, __pyx_L3_error)
     }
     __pyx_v_arg = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 470, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 457, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -15173,19 +14906,19 @@ static int __pyx_pf_7octomap_7octomap_6OcTree___cinit__(struct __pyx_obj_7octoma
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "octomap/octomap.pyx":471
+  /* "octomap/octomap.pyx":458
  * 
  *     def __cinit__(self, arg):
  *         import numbers             # <<<<<<<<<<<<<<
  *         self.owner = True
  *         self.edtptr = NULL  # Initialize to NULL
 */
-  __pyx_t_1 = __Pyx_ImportDottedModule(__pyx_mstate_global->__pyx_n_u_numbers, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 471, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportDottedModule(__pyx_mstate_global->__pyx_n_u_numbers, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 458, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_numbers = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":472
+  /* "octomap/octomap.pyx":459
  *     def __cinit__(self, arg):
  *         import numbers
  *         self.owner = True             # <<<<<<<<<<<<<<
@@ -15194,7 +14927,7 @@ static int __pyx_pf_7octomap_7octomap_6OcTree___cinit__(struct __pyx_obj_7octoma
 */
   __pyx_v_self->owner = 1;
 
-  /* "octomap/octomap.pyx":473
+  /* "octomap/octomap.pyx":460
  *         import numbers
  *         self.owner = True
  *         self.edtptr = NULL  # Initialize to NULL             # <<<<<<<<<<<<<<
@@ -15203,36 +14936,36 @@ static int __pyx_pf_7octomap_7octomap_6OcTree___cinit__(struct __pyx_obj_7octoma
 */
   __pyx_v_self->edtptr = NULL;
 
-  /* "octomap/octomap.pyx":474
+  /* "octomap/octomap.pyx":461
  *         self.owner = True
  *         self.edtptr = NULL  # Initialize to NULL
  *         if isinstance(arg, numbers.Number):             # <<<<<<<<<<<<<<
  *             self.thisptr = new defs.OcTree(<double?>arg)
  *         else:
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_numbers, __pyx_mstate_global->__pyx_n_u_Number); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 474, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_numbers, __pyx_mstate_global->__pyx_n_u_Number); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 461, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_IsInstance(__pyx_v_arg, __pyx_t_1); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 474, __pyx_L1_error)
+  __pyx_t_2 = PyObject_IsInstance(__pyx_v_arg, __pyx_t_1); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 461, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "octomap/octomap.pyx":475
+    /* "octomap/octomap.pyx":462
  *         self.edtptr = NULL  # Initialize to NULL
  *         if isinstance(arg, numbers.Number):
  *             self.thisptr = new defs.OcTree(<double?>arg)             # <<<<<<<<<<<<<<
  *         else:
  *             self.thisptr = new defs.OcTree(string(<char*?>arg))
 */
-    __pyx_t_3 = __Pyx_PyFloat_AsDouble(__pyx_v_arg); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 475, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFloat_AsDouble(__pyx_v_arg); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 462, __pyx_L1_error)
     try {
       __pyx_t_4 = new octomap::OcTree(((double)__pyx_t_3));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 475, __pyx_L1_error)
+      __PYX_ERR(0, 462, __pyx_L1_error)
     }
     __pyx_v_self->thisptr = __pyx_t_4;
 
-    /* "octomap/octomap.pyx":474
+    /* "octomap/octomap.pyx":461
  *         self.owner = True
  *         self.edtptr = NULL  # Initialize to NULL
  *         if isinstance(arg, numbers.Number):             # <<<<<<<<<<<<<<
@@ -15242,7 +14975,7 @@ static int __pyx_pf_7octomap_7octomap_6OcTree___cinit__(struct __pyx_obj_7octoma
     goto __pyx_L3;
   }
 
-  /* "octomap/octomap.pyx":477
+  /* "octomap/octomap.pyx":464
  *             self.thisptr = new defs.OcTree(<double?>arg)
  *         else:
  *             self.thisptr = new defs.OcTree(string(<char*?>arg))             # <<<<<<<<<<<<<<
@@ -15250,24 +14983,24 @@ static int __pyx_pf_7octomap_7octomap_6OcTree___cinit__(struct __pyx_obj_7octoma
  *     def __dealloc__(self):
 */
   /*else*/ {
-    __pyx_t_5 = __Pyx_PyObject_AsWritableString(__pyx_v_arg); if (unlikely((!__pyx_t_5) && PyErr_Occurred())) __PYX_ERR(0, 477, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_AsWritableString(__pyx_v_arg); if (unlikely((!__pyx_t_5) && PyErr_Occurred())) __PYX_ERR(0, 464, __pyx_L1_error)
     try {
       __pyx_t_6 = std::string(((char *)__pyx_t_5));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 477, __pyx_L1_error)
+      __PYX_ERR(0, 464, __pyx_L1_error)
     }
     try {
       __pyx_t_4 = new octomap::OcTree(__pyx_t_6);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 477, __pyx_L1_error)
+      __PYX_ERR(0, 464, __pyx_L1_error)
     }
     __pyx_v_self->thisptr = __pyx_t_4;
   }
   __pyx_L3:;
 
-  /* "octomap/octomap.pyx":470
+  /* "octomap/octomap.pyx":457
  *     cdef bint owner
  * 
  *     def __cinit__(self, arg):             # <<<<<<<<<<<<<<
@@ -15288,7 +15021,7 @@ static int __pyx_pf_7octomap_7octomap_6OcTree___cinit__(struct __pyx_obj_7octoma
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":479
+/* "octomap/octomap.pyx":466
  *             self.thisptr = new defs.OcTree(string(<char*?>arg))
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -15313,7 +15046,7 @@ static void __pyx_pf_7octomap_7octomap_6OcTree_2__dealloc__(struct __pyx_obj_7oc
   int __pyx_t_1;
   int __pyx_t_2;
 
-  /* "octomap/octomap.pyx":481
+  /* "octomap/octomap.pyx":468
  *     def __dealloc__(self):
  *         # Clean up DynamicEDT first (it may reference the tree)
  *         if self.edtptr != NULL:             # <<<<<<<<<<<<<<
@@ -15323,7 +15056,7 @@ static void __pyx_pf_7octomap_7octomap_6OcTree_2__dealloc__(struct __pyx_obj_7oc
   __pyx_t_1 = (__pyx_v_self->edtptr != NULL);
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":482
+    /* "octomap/octomap.pyx":469
  *         # Clean up DynamicEDT first (it may reference the tree)
  *         if self.edtptr != NULL:
  *             del self.edtptr             # <<<<<<<<<<<<<<
@@ -15332,7 +15065,7 @@ static void __pyx_pf_7octomap_7octomap_6OcTree_2__dealloc__(struct __pyx_obj_7oc
 */
     delete __pyx_v_self->edtptr;
 
-    /* "octomap/octomap.pyx":483
+    /* "octomap/octomap.pyx":470
  *         if self.edtptr != NULL:
  *             del self.edtptr
  *             self.edtptr = NULL             # <<<<<<<<<<<<<<
@@ -15341,7 +15074,7 @@ static void __pyx_pf_7octomap_7octomap_6OcTree_2__dealloc__(struct __pyx_obj_7oc
 */
     __pyx_v_self->edtptr = NULL;
 
-    /* "octomap/octomap.pyx":481
+    /* "octomap/octomap.pyx":468
  *     def __dealloc__(self):
  *         # Clean up DynamicEDT first (it may reference the tree)
  *         if self.edtptr != NULL:             # <<<<<<<<<<<<<<
@@ -15350,7 +15083,7 @@ static void __pyx_pf_7octomap_7octomap_6OcTree_2__dealloc__(struct __pyx_obj_7oc
 */
   }
 
-  /* "octomap/octomap.pyx":486
+  /* "octomap/octomap.pyx":473
  * 
  *         # Then clean up the OcTree itself
  *         if self.owner and self.thisptr != NULL:             # <<<<<<<<<<<<<<
@@ -15367,7 +15100,7 @@ static void __pyx_pf_7octomap_7octomap_6OcTree_2__dealloc__(struct __pyx_obj_7oc
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":487
+    /* "octomap/octomap.pyx":474
  *         # Then clean up the OcTree itself
  *         if self.owner and self.thisptr != NULL:
  *             del self.thisptr             # <<<<<<<<<<<<<<
@@ -15376,7 +15109,7 @@ static void __pyx_pf_7octomap_7octomap_6OcTree_2__dealloc__(struct __pyx_obj_7oc
 */
     delete __pyx_v_self->thisptr;
 
-    /* "octomap/octomap.pyx":488
+    /* "octomap/octomap.pyx":475
  *         if self.owner and self.thisptr != NULL:
  *             del self.thisptr
  *             self.thisptr = NULL             # <<<<<<<<<<<<<<
@@ -15385,7 +15118,7 @@ static void __pyx_pf_7octomap_7octomap_6OcTree_2__dealloc__(struct __pyx_obj_7oc
 */
     __pyx_v_self->thisptr = NULL;
 
-    /* "octomap/octomap.pyx":486
+    /* "octomap/octomap.pyx":473
  * 
  *         # Then clean up the OcTree itself
  *         if self.owner and self.thisptr != NULL:             # <<<<<<<<<<<<<<
@@ -15394,7 +15127,7 @@ static void __pyx_pf_7octomap_7octomap_6OcTree_2__dealloc__(struct __pyx_obj_7oc
 */
   }
 
-  /* "octomap/octomap.pyx":479
+  /* "octomap/octomap.pyx":466
  *             self.thisptr = new defs.OcTree(string(<char*?>arg))
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -15405,7 +15138,7 @@ static void __pyx_pf_7octomap_7octomap_6OcTree_2__dealloc__(struct __pyx_obj_7oc
   /* function exit code */
 }
 
-/* "octomap/octomap.pyx":490
+/* "octomap/octomap.pyx":477
  *             self.thisptr = NULL
  * 
  *     def adjustKeyAtDepth(self, OcTreeKey key, depth):             # <<<<<<<<<<<<<<
@@ -15453,39 +15186,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,&__pyx_mstate_global->__pyx_n_u_depth,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 490, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 477, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 490, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 477, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 490, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 477, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "adjustKeyAtDepth", 0) < 0) __PYX_ERR(0, 490, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "adjustKeyAtDepth", 0) < 0) __PYX_ERR(0, 477, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("adjustKeyAtDepth", 1, 2, 2, i); __PYX_ERR(0, 490, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("adjustKeyAtDepth", 1, 2, 2, i); __PYX_ERR(0, 477, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 490, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 477, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 490, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 477, __pyx_L3_error)
     }
     __pyx_v_key = ((struct __pyx_obj_7octomap_7octomap_OcTreeKey *)values[0]);
     __pyx_v_depth = values[1];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("adjustKeyAtDepth", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 490, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("adjustKeyAtDepth", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 477, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -15496,7 +15229,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_key), __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeKey, 1, "key", 0))) __PYX_ERR(0, 490, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_key), __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeKey, 1, "key", 0))) __PYX_ERR(0, 477, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_4adjustKeyAtDepth(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_key, __pyx_v_depth);
 
   /* function exit code */
@@ -15534,7 +15267,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_4adjustKeyAtDepth(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("adjustKeyAtDepth", 0);
 
-  /* "octomap/octomap.pyx":491
+  /* "octomap/octomap.pyx":478
  * 
  *     def adjustKeyAtDepth(self, OcTreeKey key, depth):
  *         cdef defs.OcTreeKey key_in = defs.OcTreeKey()             # <<<<<<<<<<<<<<
@@ -15545,60 +15278,60 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_4adjustKeyAtDepth(struct __p
     __pyx_t_1 = octomap::OcTreeKey();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 491, __pyx_L1_error)
+    __PYX_ERR(0, 478, __pyx_L1_error)
   }
   __pyx_v_key_in = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_1);
 
-  /* "octomap/octomap.pyx":492
+  /* "octomap/octomap.pyx":479
  *     def adjustKeyAtDepth(self, OcTreeKey key, depth):
  *         cdef defs.OcTreeKey key_in = defs.OcTreeKey()
  *         key_in[0] = key[0]             # <<<<<<<<<<<<<<
  *         key_in[1] = key[1]
  *         key_in[2] = key[2]
 */
-  __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 492, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 479, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 492, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 479, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   (__pyx_v_key_in[0]) = __pyx_t_3;
 
-  /* "octomap/octomap.pyx":493
+  /* "octomap/octomap.pyx":480
  *         cdef defs.OcTreeKey key_in = defs.OcTreeKey()
  *         key_in[0] = key[0]
  *         key_in[1] = key[1]             # <<<<<<<<<<<<<<
  *         key_in[2] = key[2]
  *         cdef defs.OcTreeKey key_out = self.thisptr.adjustKeyAtDepth(key_in, <int?>depth)
 */
-  __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 493, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 480, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 493, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 480, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   (__pyx_v_key_in[1]) = __pyx_t_3;
 
-  /* "octomap/octomap.pyx":494
+  /* "octomap/octomap.pyx":481
  *         key_in[0] = key[0]
  *         key_in[1] = key[1]
  *         key_in[2] = key[2]             # <<<<<<<<<<<<<<
  *         cdef defs.OcTreeKey key_out = self.thisptr.adjustKeyAtDepth(key_in, <int?>depth)
  *         res = OcTreeKey()
 */
-  __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 494, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 481, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 494, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 481, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   (__pyx_v_key_in[2]) = __pyx_t_3;
 
-  /* "octomap/octomap.pyx":495
+  /* "octomap/octomap.pyx":482
  *         key_in[1] = key[1]
  *         key_in[2] = key[2]
  *         cdef defs.OcTreeKey key_out = self.thisptr.adjustKeyAtDepth(key_in, <int?>depth)             # <<<<<<<<<<<<<<
  *         res = OcTreeKey()
  *         res[0] = key_out[0]
 */
-  __pyx_t_4 = __Pyx_PyLong_As_int(__pyx_v_depth); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 495, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_As_int(__pyx_v_depth); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 482, __pyx_L1_error)
   __pyx_v_key_out = __pyx_v_self->thisptr->adjustKeyAtDepth(__pyx_v_key_in, ((int)__pyx_t_4));
 
-  /* "octomap/octomap.pyx":496
+  /* "octomap/octomap.pyx":483
  *         key_in[2] = key[2]
  *         cdef defs.OcTreeKey key_out = self.thisptr.adjustKeyAtDepth(key_in, <int?>depth)
  *         res = OcTreeKey()             # <<<<<<<<<<<<<<
@@ -15614,49 +15347,49 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_4adjustKeyAtDepth(struct __p
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+__pyx_t_7, (1-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 496, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 483, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_2);
   }
   __pyx_v_res = ((struct __pyx_obj_7octomap_7octomap_OcTreeKey *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "octomap/octomap.pyx":497
+  /* "octomap/octomap.pyx":484
  *         cdef defs.OcTreeKey key_out = self.thisptr.adjustKeyAtDepth(key_in, <int?>depth)
  *         res = OcTreeKey()
  *         res[0] = key_out[0]             # <<<<<<<<<<<<<<
  *         res[1] = key_out[1]
  *         res[2] = key_out[2]
 */
-  __pyx_t_2 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key_out[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 497, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key_out[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 0, __pyx_t_2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 497, __pyx_L1_error)
+  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 0, __pyx_t_2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 484, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "octomap/octomap.pyx":498
+  /* "octomap/octomap.pyx":485
  *         res = OcTreeKey()
  *         res[0] = key_out[0]
  *         res[1] = key_out[1]             # <<<<<<<<<<<<<<
  *         res[2] = key_out[2]
  *         return res
 */
-  __pyx_t_2 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key_out[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 498, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key_out[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 485, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 1, __pyx_t_2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 498, __pyx_L1_error)
+  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 1, __pyx_t_2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 485, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "octomap/octomap.pyx":499
+  /* "octomap/octomap.pyx":486
  *         res[0] = key_out[0]
  *         res[1] = key_out[1]
  *         res[2] = key_out[2]             # <<<<<<<<<<<<<<
  *         return res
  * 
 */
-  __pyx_t_2 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key_out[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 499, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key_out[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 486, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 2, __pyx_t_2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 499, __pyx_L1_error)
+  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 2, __pyx_t_2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 486, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "octomap/octomap.pyx":500
+  /* "octomap/octomap.pyx":487
  *         res[1] = key_out[1]
  *         res[2] = key_out[2]
  *         return res             # <<<<<<<<<<<<<<
@@ -15668,7 +15401,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_4adjustKeyAtDepth(struct __p
   __pyx_r = ((PyObject *)__pyx_v_res);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":490
+  /* "octomap/octomap.pyx":477
  *             self.thisptr = NULL
  * 
  *     def adjustKeyAtDepth(self, OcTreeKey key, depth):             # <<<<<<<<<<<<<<
@@ -15690,7 +15423,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_4adjustKeyAtDepth(struct __p
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":502
+/* "octomap/octomap.pyx":489
  *         return res
  * 
  *     def bbxSet(self):             # <<<<<<<<<<<<<<
@@ -15749,7 +15482,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_6bbxSet(struct __pyx_obj_7oc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("bbxSet", 0);
 
-  /* "octomap/octomap.pyx":503
+  /* "octomap/octomap.pyx":490
  * 
  *     def bbxSet(self):
  *         return self.thisptr.bbxSet()             # <<<<<<<<<<<<<<
@@ -15757,13 +15490,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_6bbxSet(struct __pyx_obj_7oc
  *     def calcNumNodes(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->bbxSet()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 503, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->bbxSet()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 490, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":502
+  /* "octomap/octomap.pyx":489
  *         return res
  * 
  *     def bbxSet(self):             # <<<<<<<<<<<<<<
@@ -15782,7 +15515,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_6bbxSet(struct __pyx_obj_7oc
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":505
+/* "octomap/octomap.pyx":492
  *         return self.thisptr.bbxSet()
  * 
  *     def calcNumNodes(self):             # <<<<<<<<<<<<<<
@@ -15841,7 +15574,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_8calcNumNodes(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calcNumNodes", 0);
 
-  /* "octomap/octomap.pyx":506
+  /* "octomap/octomap.pyx":493
  * 
  *     def calcNumNodes(self):
  *         return self.thisptr.calcNumNodes()             # <<<<<<<<<<<<<<
@@ -15849,13 +15582,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_8calcNumNodes(struct __pyx_o
  *     def clear(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_FromSize_t(__pyx_v_self->thisptr->calcNumNodes()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 506, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_FromSize_t(__pyx_v_self->thisptr->calcNumNodes()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 493, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":505
+  /* "octomap/octomap.pyx":492
  *         return self.thisptr.bbxSet()
  * 
  *     def calcNumNodes(self):             # <<<<<<<<<<<<<<
@@ -15874,7 +15607,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_8calcNumNodes(struct __pyx_o
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":508
+/* "octomap/octomap.pyx":495
  *         return self.thisptr.calcNumNodes()
  * 
  *     def clear(self):             # <<<<<<<<<<<<<<
@@ -15929,7 +15662,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_10clear(struct __pyx_obj_7oc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("clear", 0);
 
-  /* "octomap/octomap.pyx":509
+  /* "octomap/octomap.pyx":496
  * 
  *     def clear(self):
  *         self.thisptr.clear()             # <<<<<<<<<<<<<<
@@ -15938,7 +15671,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_10clear(struct __pyx_obj_7oc
 */
   __pyx_v_self->thisptr->clear();
 
-  /* "octomap/octomap.pyx":508
+  /* "octomap/octomap.pyx":495
  *         return self.thisptr.calcNumNodes()
  * 
  *     def clear(self):             # <<<<<<<<<<<<<<
@@ -15953,7 +15686,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_10clear(struct __pyx_obj_7oc
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":511
+/* "octomap/octomap.pyx":498
  *         self.thisptr.clear()
  * 
  *     def coordToKey(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):             # <<<<<<<<<<<<<<
@@ -16001,35 +15734,35 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_coord,&__pyx_mstate_global->__pyx_n_u_depth,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 511, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 498, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 511, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 498, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 511, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 498, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "coordToKey", 0) < 0) __PYX_ERR(0, 511, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "coordToKey", 0) < 0) __PYX_ERR(0, 498, __pyx_L3_error)
       if (!values[1]) values[1] = __Pyx_NewRef(((PyObject *)Py_None));
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("coordToKey", 0, 1, 2, i); __PYX_ERR(0, 511, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("coordToKey", 0, 1, 2, i); __PYX_ERR(0, 498, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 511, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 498, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 511, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 498, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -16040,7 +15773,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("coordToKey", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 511, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("coordToKey", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 498, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -16051,7 +15784,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coord), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coord", 0))) __PYX_ERR(0, 511, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coord), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coord", 0))) __PYX_ERR(0, 498, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_coord, __pyx_v_depth);
 
   /* function exit code */
@@ -16099,11 +15832,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
   __pyx_pybuffernd_coord.rcbuffer = &__pyx_pybuffer_coord;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coord.rcbuffer->pybuffer, (PyObject*)__pyx_v_coord, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 511, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coord.rcbuffer->pybuffer, (PyObject*)__pyx_v_coord, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 498, __pyx_L1_error)
   }
   __pyx_pybuffernd_coord.diminfo[0].strides = __pyx_pybuffernd_coord.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coord.diminfo[0].shape = __pyx_pybuffernd_coord.rcbuffer->pybuffer.shape[0];
 
-  /* "octomap/octomap.pyx":513
+  /* "octomap/octomap.pyx":500
  *     def coordToKey(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):
  *         cdef defs.OcTreeKey key
  *         if depth is None:             # <<<<<<<<<<<<<<
@@ -16113,7 +15846,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
   __pyx_t_1 = (__pyx_v_depth == Py_None);
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":514
+    /* "octomap/octomap.pyx":501
  *         cdef defs.OcTreeKey key
  *         if depth is None:
  *             key = self.thisptr.coordToKey(defs.point3d(coord[0],             # <<<<<<<<<<<<<<
@@ -16128,10 +15861,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
     } else if (unlikely(__pyx_t_2 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 514, __pyx_L1_error)
+      __PYX_ERR(0, 501, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":515
+    /* "octomap/octomap.pyx":502
  *         if depth is None:
  *             key = self.thisptr.coordToKey(defs.point3d(coord[0],
  *                                                        coord[1],             # <<<<<<<<<<<<<<
@@ -16146,10 +15879,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
     } else if (unlikely(__pyx_t_4 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 515, __pyx_L1_error)
+      __PYX_ERR(0, 502, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":516
+    /* "octomap/octomap.pyx":503
  *             key = self.thisptr.coordToKey(defs.point3d(coord[0],
  *                                                        coord[1],
  *                                                        coord[2]))             # <<<<<<<<<<<<<<
@@ -16164,10 +15897,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
     } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 516, __pyx_L1_error)
+      __PYX_ERR(0, 503, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":514
+    /* "octomap/octomap.pyx":501
  *         cdef defs.OcTreeKey key
  *         if depth is None:
  *             key = self.thisptr.coordToKey(defs.point3d(coord[0],             # <<<<<<<<<<<<<<
@@ -16178,11 +15911,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
       __pyx_t_6 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_2, __pyx_pybuffernd_coord.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_coord.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_5, __pyx_pybuffernd_coord.diminfo[0].strides)));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 514, __pyx_L1_error)
+      __PYX_ERR(0, 501, __pyx_L1_error)
     }
     __pyx_v_key = __pyx_v_self->thisptr->coordToKey(__pyx_t_6);
 
-    /* "octomap/octomap.pyx":513
+    /* "octomap/octomap.pyx":500
  *     def coordToKey(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):
  *         cdef defs.OcTreeKey key
  *         if depth is None:             # <<<<<<<<<<<<<<
@@ -16192,7 +15925,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
     goto __pyx_L3;
   }
 
-  /* "octomap/octomap.pyx":518
+  /* "octomap/octomap.pyx":505
  *                                                        coord[2]))
  *         else:
  *             key = self.thisptr.coordToKey(defs.point3d(coord[0],             # <<<<<<<<<<<<<<
@@ -16208,10 +15941,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
     } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 518, __pyx_L1_error)
+      __PYX_ERR(0, 505, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":519
+    /* "octomap/octomap.pyx":506
  *         else:
  *             key = self.thisptr.coordToKey(defs.point3d(coord[0],
  *                                                        coord[1],             # <<<<<<<<<<<<<<
@@ -16226,10 +15959,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
     } else if (unlikely(__pyx_t_4 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 519, __pyx_L1_error)
+      __PYX_ERR(0, 506, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":520
+    /* "octomap/octomap.pyx":507
  *             key = self.thisptr.coordToKey(defs.point3d(coord[0],
  *                                                        coord[1],
  *                                                        coord[2]),             # <<<<<<<<<<<<<<
@@ -16244,10 +15977,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
     } else if (unlikely(__pyx_t_2 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 520, __pyx_L1_error)
+      __PYX_ERR(0, 507, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":518
+    /* "octomap/octomap.pyx":505
  *                                                        coord[2]))
  *         else:
  *             key = self.thisptr.coordToKey(defs.point3d(coord[0],             # <<<<<<<<<<<<<<
@@ -16258,19 +15991,19 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
       __pyx_t_6 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_5, __pyx_pybuffernd_coord.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_coord.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_2, __pyx_pybuffernd_coord.diminfo[0].strides)));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 518, __pyx_L1_error)
+      __PYX_ERR(0, 505, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":521
+    /* "octomap/octomap.pyx":508
  *                                                        coord[1],
  *                                                        coord[2]),
  *                                           <unsigned int?>depth)             # <<<<<<<<<<<<<<
  *         res = OcTreeKey()
  *         res[0] = key[0]
 */
-    __pyx_t_7 = __Pyx_PyLong_As_unsigned_int(__pyx_v_depth); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 521, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyLong_As_unsigned_int(__pyx_v_depth); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 508, __pyx_L1_error)
 
-    /* "octomap/octomap.pyx":518
+    /* "octomap/octomap.pyx":505
  *                                                        coord[2]))
  *         else:
  *             key = self.thisptr.coordToKey(defs.point3d(coord[0],             # <<<<<<<<<<<<<<
@@ -16281,7 +16014,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
   }
   __pyx_L3:;
 
-  /* "octomap/octomap.pyx":522
+  /* "octomap/octomap.pyx":509
  *                                                        coord[2]),
  *                                           <unsigned int?>depth)
  *         res = OcTreeKey()             # <<<<<<<<<<<<<<
@@ -16297,49 +16030,49 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
     __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_10, __pyx_callargs+__pyx_t_11, (1-__pyx_t_11) | (__pyx_t_11*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 522, __pyx_L1_error)
+    if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 509, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_8);
   }
   __pyx_v_res = ((struct __pyx_obj_7octomap_7octomap_OcTreeKey *)__pyx_t_8);
   __pyx_t_8 = 0;
 
-  /* "octomap/octomap.pyx":523
+  /* "octomap/octomap.pyx":510
  *                                           <unsigned int?>depth)
  *         res = OcTreeKey()
  *         res[0] = key[0]             # <<<<<<<<<<<<<<
  *         res[1] = key[1]
  *         res[2] = key[2]
 */
-  __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 523, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 510, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 0, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 523, __pyx_L1_error)
+  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 0, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 510, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "octomap/octomap.pyx":524
+  /* "octomap/octomap.pyx":511
  *         res = OcTreeKey()
  *         res[0] = key[0]
  *         res[1] = key[1]             # <<<<<<<<<<<<<<
  *         res[2] = key[2]
  *         return res
 */
-  __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[1])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 524, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[1])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 511, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 1, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 524, __pyx_L1_error)
+  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 1, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 511, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "octomap/octomap.pyx":525
+  /* "octomap/octomap.pyx":512
  *         res[0] = key[0]
  *         res[1] = key[1]
  *         res[2] = key[2]             # <<<<<<<<<<<<<<
  *         return res
  * 
 */
-  __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[2])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 525, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[2])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 512, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 2, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 525, __pyx_L1_error)
+  if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 2, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 512, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "octomap/octomap.pyx":526
+  /* "octomap/octomap.pyx":513
  *         res[1] = key[1]
  *         res[2] = key[2]
  *         return res             # <<<<<<<<<<<<<<
@@ -16351,7 +16084,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
   __pyx_r = ((PyObject *)__pyx_v_res);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":511
+  /* "octomap/octomap.pyx":498
  *         self.thisptr.clear()
  * 
  *     def coordToKey(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):             # <<<<<<<<<<<<<<
@@ -16382,7 +16115,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_12coordToKey(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":528
+/* "octomap/octomap.pyx":515
  *         return res
  * 
  *     def coordToKeyChecked(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):             # <<<<<<<<<<<<<<
@@ -16430,35 +16163,35 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_coord,&__pyx_mstate_global->__pyx_n_u_depth,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 528, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 515, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 528, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 515, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 528, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 515, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "coordToKeyChecked", 0) < 0) __PYX_ERR(0, 528, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "coordToKeyChecked", 0) < 0) __PYX_ERR(0, 515, __pyx_L3_error)
       if (!values[1]) values[1] = __Pyx_NewRef(((PyObject *)Py_None));
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("coordToKeyChecked", 0, 1, 2, i); __PYX_ERR(0, 528, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("coordToKeyChecked", 0, 1, 2, i); __PYX_ERR(0, 515, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 528, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 515, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 528, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 515, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -16469,7 +16202,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("coordToKeyChecked", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 528, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("coordToKeyChecked", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 515, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -16480,7 +16213,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coord), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coord", 0))) __PYX_ERR(0, 528, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_coord), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "coord", 0))) __PYX_ERR(0, 515, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_coord, __pyx_v_depth);
 
   /* function exit code */
@@ -16529,11 +16262,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
   __pyx_pybuffernd_coord.rcbuffer = &__pyx_pybuffer_coord;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coord.rcbuffer->pybuffer, (PyObject*)__pyx_v_coord, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 528, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coord.rcbuffer->pybuffer, (PyObject*)__pyx_v_coord, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 515, __pyx_L1_error)
   }
   __pyx_pybuffernd_coord.diminfo[0].strides = __pyx_pybuffernd_coord.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coord.diminfo[0].shape = __pyx_pybuffernd_coord.rcbuffer->pybuffer.shape[0];
 
-  /* "octomap/octomap.pyx":531
+  /* "octomap/octomap.pyx":518
  *         cdef defs.OcTreeKey key
  *         cdef cppbool chk
  *         if depth is None:             # <<<<<<<<<<<<<<
@@ -16543,7 +16276,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
   __pyx_t_1 = (__pyx_v_depth == Py_None);
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":532
+    /* "octomap/octomap.pyx":519
  *         cdef cppbool chk
  *         if depth is None:
  *             chk = self.thisptr.coordToKeyChecked(defs.point3d(coord[0],             # <<<<<<<<<<<<<<
@@ -16558,10 +16291,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
     } else if (unlikely(__pyx_t_2 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 532, __pyx_L1_error)
+      __PYX_ERR(0, 519, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":533
+    /* "octomap/octomap.pyx":520
  *         if depth is None:
  *             chk = self.thisptr.coordToKeyChecked(defs.point3d(coord[0],
  *                                                               coord[1],             # <<<<<<<<<<<<<<
@@ -16576,10 +16309,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
     } else if (unlikely(__pyx_t_4 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 533, __pyx_L1_error)
+      __PYX_ERR(0, 520, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":534
+    /* "octomap/octomap.pyx":521
  *             chk = self.thisptr.coordToKeyChecked(defs.point3d(coord[0],
  *                                                               coord[1],
  *                                                               coord[2]),             # <<<<<<<<<<<<<<
@@ -16594,10 +16327,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
     } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 534, __pyx_L1_error)
+      __PYX_ERR(0, 521, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":532
+    /* "octomap/octomap.pyx":519
  *         cdef cppbool chk
  *         if depth is None:
  *             chk = self.thisptr.coordToKeyChecked(defs.point3d(coord[0],             # <<<<<<<<<<<<<<
@@ -16608,10 +16341,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
       __pyx_t_6 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_2, __pyx_pybuffernd_coord.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_coord.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_5, __pyx_pybuffernd_coord.diminfo[0].strides)));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 532, __pyx_L1_error)
+      __PYX_ERR(0, 519, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":535
+    /* "octomap/octomap.pyx":522
  *                                                               coord[1],
  *                                                               coord[2]),
  *                                                  key)             # <<<<<<<<<<<<<<
@@ -16620,7 +16353,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
 */
     __pyx_v_chk = __pyx_v_self->thisptr->coordToKeyChecked(__pyx_t_6, __pyx_v_key);
 
-    /* "octomap/octomap.pyx":531
+    /* "octomap/octomap.pyx":518
  *         cdef defs.OcTreeKey key
  *         cdef cppbool chk
  *         if depth is None:             # <<<<<<<<<<<<<<
@@ -16630,7 +16363,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
     goto __pyx_L3;
   }
 
-  /* "octomap/octomap.pyx":537
+  /* "octomap/octomap.pyx":524
  *                                                  key)
  *         else:
  *             chk = self.thisptr.coordToKeyChecked(defs.point3d(coord[0],             # <<<<<<<<<<<<<<
@@ -16646,10 +16379,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
     } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 537, __pyx_L1_error)
+      __PYX_ERR(0, 524, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":538
+    /* "octomap/octomap.pyx":525
  *         else:
  *             chk = self.thisptr.coordToKeyChecked(defs.point3d(coord[0],
  *                                                               coord[1],             # <<<<<<<<<<<<<<
@@ -16664,10 +16397,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
     } else if (unlikely(__pyx_t_4 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 538, __pyx_L1_error)
+      __PYX_ERR(0, 525, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":539
+    /* "octomap/octomap.pyx":526
  *             chk = self.thisptr.coordToKeyChecked(defs.point3d(coord[0],
  *                                                               coord[1],
  *                                                               coord[2]),             # <<<<<<<<<<<<<<
@@ -16682,10 +16415,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
     } else if (unlikely(__pyx_t_2 >= __pyx_pybuffernd_coord.diminfo[0].shape)) __pyx_t_3 = 0;
     if (unlikely(__pyx_t_3 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 539, __pyx_L1_error)
+      __PYX_ERR(0, 526, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":537
+    /* "octomap/octomap.pyx":524
  *                                                  key)
  *         else:
  *             chk = self.thisptr.coordToKeyChecked(defs.point3d(coord[0],             # <<<<<<<<<<<<<<
@@ -16696,19 +16429,19 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
       __pyx_t_6 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_5, __pyx_pybuffernd_coord.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_coord.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_coord.rcbuffer->pybuffer.buf, __pyx_t_2, __pyx_pybuffernd_coord.diminfo[0].strides)));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 537, __pyx_L1_error)
+      __PYX_ERR(0, 524, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":540
+    /* "octomap/octomap.pyx":527
  *                                                               coord[1],
  *                                                               coord[2]),
  *                                                  <unsigned int?>depth,             # <<<<<<<<<<<<<<
  *                                                  key)
  *         if chk:
 */
-    __pyx_t_7 = __Pyx_PyLong_As_unsigned_int(__pyx_v_depth); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 540, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyLong_As_unsigned_int(__pyx_v_depth); if (unlikely((__pyx_t_7 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 527, __pyx_L1_error)
 
-    /* "octomap/octomap.pyx":537
+    /* "octomap/octomap.pyx":524
  *                                                  key)
  *         else:
  *             chk = self.thisptr.coordToKeyChecked(defs.point3d(coord[0],             # <<<<<<<<<<<<<<
@@ -16719,7 +16452,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
   }
   __pyx_L3:;
 
-  /* "octomap/octomap.pyx":542
+  /* "octomap/octomap.pyx":529
  *                                                  <unsigned int?>depth,
  *                                                  key)
  *         if chk:             # <<<<<<<<<<<<<<
@@ -16729,7 +16462,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
   __pyx_t_1 = (__pyx_v_chk != 0);
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":543
+    /* "octomap/octomap.pyx":530
  *                                                  key)
  *         if chk:
  *             res = OcTreeKey()             # <<<<<<<<<<<<<<
@@ -16745,49 +16478,49 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
       __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_10, __pyx_callargs+__pyx_t_11, (1-__pyx_t_11) | (__pyx_t_11*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 543, __pyx_L1_error)
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 530, __pyx_L1_error)
       __Pyx_GOTREF((PyObject *)__pyx_t_8);
     }
     __pyx_v_res = ((struct __pyx_obj_7octomap_7octomap_OcTreeKey *)__pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "octomap/octomap.pyx":544
+    /* "octomap/octomap.pyx":531
  *         if chk:
  *             res = OcTreeKey()
  *             res[0] = key[0]             # <<<<<<<<<<<<<<
  *             res[1] = key[1]
  *             res[2] = key[2]
 */
-    __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 544, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 531, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 0, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 544, __pyx_L1_error)
+    if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 0, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 531, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "octomap/octomap.pyx":545
+    /* "octomap/octomap.pyx":532
  *             res = OcTreeKey()
  *             res[0] = key[0]
  *             res[1] = key[1]             # <<<<<<<<<<<<<<
  *             res[2] = key[2]
  *             return chk, res
 */
-    __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[1])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 545, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[1])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 532, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 1, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 545, __pyx_L1_error)
+    if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 1, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 532, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "octomap/octomap.pyx":546
+    /* "octomap/octomap.pyx":533
  *             res[0] = key[0]
  *             res[1] = key[1]
  *             res[2] = key[2]             # <<<<<<<<<<<<<<
  *             return chk, res
  *         else:
 */
-    __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[2])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 546, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyLong_From_unsigned_short((__pyx_v_key[2])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 533, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 2, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 546, __pyx_L1_error)
+    if (unlikely((__Pyx_SetItemInt(((PyObject *)__pyx_v_res), 2, __pyx_t_8, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1) < 0))) __PYX_ERR(0, 533, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "octomap/octomap.pyx":547
+    /* "octomap/octomap.pyx":534
  *             res[1] = key[1]
  *             res[2] = key[2]
  *             return chk, res             # <<<<<<<<<<<<<<
@@ -16795,21 +16528,21 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
  *             return chk, None
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_8 = __Pyx_PyBool_FromLong(__pyx_v_chk); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 547, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyBool_FromLong(__pyx_v_chk); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 534, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 547, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 534, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_GIVEREF(__pyx_t_8);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8) != (0)) __PYX_ERR(0, 547, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8) != (0)) __PYX_ERR(0, 534, __pyx_L1_error);
     __Pyx_INCREF((PyObject *)__pyx_v_res);
     __Pyx_GIVEREF((PyObject *)__pyx_v_res);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, ((PyObject *)__pyx_v_res)) != (0)) __PYX_ERR(0, 547, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, ((PyObject *)__pyx_v_res)) != (0)) __PYX_ERR(0, 534, __pyx_L1_error);
     __pyx_t_8 = 0;
     __pyx_r = __pyx_t_10;
     __pyx_t_10 = 0;
     goto __pyx_L0;
 
-    /* "octomap/octomap.pyx":542
+    /* "octomap/octomap.pyx":529
  *                                                  <unsigned int?>depth,
  *                                                  key)
  *         if chk:             # <<<<<<<<<<<<<<
@@ -16818,7 +16551,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
 */
   }
 
-  /* "octomap/octomap.pyx":549
+  /* "octomap/octomap.pyx":536
  *             return chk, res
  *         else:
  *             return chk, None             # <<<<<<<<<<<<<<
@@ -16827,22 +16560,22 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
 */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_10 = __Pyx_PyBool_FromLong(__pyx_v_chk); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 549, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyBool_FromLong(__pyx_v_chk); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 536, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 549, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 536, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_10);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_10) != (0)) __PYX_ERR(0, 549, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_10) != (0)) __PYX_ERR(0, 536, __pyx_L1_error);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_8, 1, Py_None) != (0)) __PYX_ERR(0, 549, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_8, 1, Py_None) != (0)) __PYX_ERR(0, 536, __pyx_L1_error);
     __pyx_t_10 = 0;
     __pyx_r = __pyx_t_8;
     __pyx_t_8 = 0;
     goto __pyx_L0;
   }
 
-  /* "octomap/octomap.pyx":528
+  /* "octomap/octomap.pyx":515
  *         return res
  * 
  *     def coordToKeyChecked(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):             # <<<<<<<<<<<<<<
@@ -16873,7 +16606,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_14coordToKeyChecked(struct _
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":551
+/* "octomap/octomap.pyx":538
  *             return chk, None
  * 
  *     def deleteNode(self, np.ndarray[DOUBLE_t, ndim=1] value, depth=1):             # <<<<<<<<<<<<<<
@@ -16921,35 +16654,35 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_value,&__pyx_mstate_global->__pyx_n_u_depth,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 551, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 538, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 551, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 538, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 551, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 538, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "deleteNode", 0) < 0) __PYX_ERR(0, 551, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "deleteNode", 0) < 0) __PYX_ERR(0, 538, __pyx_L3_error)
       if (!values[1]) values[1] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_int_1));
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("deleteNode", 0, 1, 2, i); __PYX_ERR(0, 551, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("deleteNode", 0, 1, 2, i); __PYX_ERR(0, 538, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 551, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 538, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 551, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 538, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -16960,7 +16693,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("deleteNode", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 551, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("deleteNode", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 538, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -16971,7 +16704,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_value), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "value", 0))) __PYX_ERR(0, 551, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_value), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "value", 0))) __PYX_ERR(0, 538, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_16deleteNode(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_value, __pyx_v_depth);
 
   /* function exit code */
@@ -17012,11 +16745,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_16deleteNode(struct __pyx_ob
   __pyx_pybuffernd_value.rcbuffer = &__pyx_pybuffer_value;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_value.rcbuffer->pybuffer, (PyObject*)__pyx_v_value, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 551, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_value.rcbuffer->pybuffer, (PyObject*)__pyx_v_value, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 538, __pyx_L1_error)
   }
   __pyx_pybuffernd_value.diminfo[0].strides = __pyx_pybuffernd_value.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_value.diminfo[0].shape = __pyx_pybuffernd_value.rcbuffer->pybuffer.shape[0];
 
-  /* "octomap/octomap.pyx":552
+  /* "octomap/octomap.pyx":539
  * 
  *     def deleteNode(self, np.ndarray[DOUBLE_t, ndim=1] value, depth=1):
  *         return self.thisptr.deleteNode(defs.point3d(value[0],             # <<<<<<<<<<<<<<
@@ -17032,10 +16765,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_16deleteNode(struct __pyx_ob
   } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_value.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 552, __pyx_L1_error)
+    __PYX_ERR(0, 539, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":553
+  /* "octomap/octomap.pyx":540
  *     def deleteNode(self, np.ndarray[DOUBLE_t, ndim=1] value, depth=1):
  *         return self.thisptr.deleteNode(defs.point3d(value[0],
  *                                                     value[1],             # <<<<<<<<<<<<<<
@@ -17050,10 +16783,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_16deleteNode(struct __pyx_ob
   } else if (unlikely(__pyx_t_3 >= __pyx_pybuffernd_value.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 553, __pyx_L1_error)
+    __PYX_ERR(0, 540, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":554
+  /* "octomap/octomap.pyx":541
  *         return self.thisptr.deleteNode(defs.point3d(value[0],
  *                                                     value[1],
  *                                                     value[2]),             # <<<<<<<<<<<<<<
@@ -17068,10 +16801,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_16deleteNode(struct __pyx_ob
   } else if (unlikely(__pyx_t_4 >= __pyx_pybuffernd_value.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 554, __pyx_L1_error)
+    __PYX_ERR(0, 541, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":552
+  /* "octomap/octomap.pyx":539
  * 
  *     def deleteNode(self, np.ndarray[DOUBLE_t, ndim=1] value, depth=1):
  *         return self.thisptr.deleteNode(defs.point3d(value[0],             # <<<<<<<<<<<<<<
@@ -17082,32 +16815,32 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_16deleteNode(struct __pyx_ob
     __pyx_t_5 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_value.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_value.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_value.rcbuffer->pybuffer.buf, __pyx_t_3, __pyx_pybuffernd_value.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_value.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_value.diminfo[0].strides)));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 552, __pyx_L1_error)
+    __PYX_ERR(0, 539, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":555
+  /* "octomap/octomap.pyx":542
  *                                                     value[1],
  *                                                     value[2]),
  *                                        <int?>depth)             # <<<<<<<<<<<<<<
  * 
  *     def castRay(self, np.ndarray[DOUBLE_t, ndim=1] origin,
 */
-  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_v_depth); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 555, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_v_depth); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 542, __pyx_L1_error)
 
-  /* "octomap/octomap.pyx":552
+  /* "octomap/octomap.pyx":539
  * 
  *     def deleteNode(self, np.ndarray[DOUBLE_t, ndim=1] value, depth=1):
  *         return self.thisptr.deleteNode(defs.point3d(value[0],             # <<<<<<<<<<<<<<
  *                                                     value[1],
  *                                                     value[2]),
 */
-  __pyx_t_6 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->deleteNode(__pyx_t_5, ((int)__pyx_t_2))); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 552, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->deleteNode(__pyx_t_5, ((int)__pyx_t_2))); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 539, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":551
+  /* "octomap/octomap.pyx":538
  *             return chk, None
  * 
  *     def deleteNode(self, np.ndarray[DOUBLE_t, ndim=1] value, depth=1):             # <<<<<<<<<<<<<<
@@ -17135,7 +16868,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_16deleteNode(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":557
+/* "octomap/octomap.pyx":544
  *                                        <int?>depth)
  * 
  *     def castRay(self, np.ndarray[DOUBLE_t, ndim=1] origin,             # <<<<<<<<<<<<<<
@@ -17187,36 +16920,36 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_origin,&__pyx_mstate_global->__pyx_n_u_direction,&__pyx_mstate_global->__pyx_n_u_end,&__pyx_mstate_global->__pyx_n_u_ignoreUnknownCells,&__pyx_mstate_global->__pyx_n_u_maxRange,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 557, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 544, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  5:
         values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 557, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 544, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 557, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 544, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 557, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 544, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 557, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 544, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 557, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 544, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "castRay", 0) < 0) __PYX_ERR(0, 557, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "castRay", 0) < 0) __PYX_ERR(0, 544, __pyx_L3_error)
 
-      /* "octomap/octomap.pyx":560
+      /* "octomap/octomap.pyx":547
  *                 np.ndarray[DOUBLE_t, ndim=1] direction,
  *                 np.ndarray[DOUBLE_t, ndim=1] end,
  *                 ignoreUnknownCells=False,             # <<<<<<<<<<<<<<
@@ -17226,25 +16959,25 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       if (!values[3]) values[3] = __Pyx_NewRef(((PyObject *)Py_False));
       if (!values[4]) values[4] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_float_neg_1_0));
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("castRay", 0, 3, 5, i); __PYX_ERR(0, 557, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("castRay", 0, 3, 5, i); __PYX_ERR(0, 544, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  5:
         values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 557, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 544, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 557, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 544, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 557, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 544, __pyx_L3_error)
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 557, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 544, __pyx_L3_error)
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 557, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 544, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -17259,7 +16992,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("castRay", 0, 3, 5, __pyx_nargs); __PYX_ERR(0, 557, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("castRay", 0, 3, 5, __pyx_nargs); __PYX_ERR(0, 544, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -17270,12 +17003,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_origin), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "origin", 0))) __PYX_ERR(0, 557, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_direction), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "direction", 0))) __PYX_ERR(0, 558, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_end), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "end", 0))) __PYX_ERR(0, 559, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_origin), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "origin", 0))) __PYX_ERR(0, 544, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_direction), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "direction", 0))) __PYX_ERR(0, 545, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_end), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "end", 0))) __PYX_ERR(0, 546, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_18castRay(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_origin, __pyx_v_direction, __pyx_v_end, __pyx_v_ignoreUnknownCells, __pyx_v_maxRange);
 
-  /* "octomap/octomap.pyx":557
+  /* "octomap/octomap.pyx":544
  *                                        <int?>depth)
  * 
  *     def castRay(self, np.ndarray[DOUBLE_t, ndim=1] origin,             # <<<<<<<<<<<<<<
@@ -17341,21 +17074,21 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
   __pyx_pybuffernd_end.rcbuffer = &__pyx_pybuffer_end;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_origin.rcbuffer->pybuffer, (PyObject*)__pyx_v_origin, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 557, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_origin.rcbuffer->pybuffer, (PyObject*)__pyx_v_origin, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 544, __pyx_L1_error)
   }
   __pyx_pybuffernd_origin.diminfo[0].strides = __pyx_pybuffernd_origin.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_origin.diminfo[0].shape = __pyx_pybuffernd_origin.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_direction.rcbuffer->pybuffer, (PyObject*)__pyx_v_direction, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 557, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_direction.rcbuffer->pybuffer, (PyObject*)__pyx_v_direction, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 544, __pyx_L1_error)
   }
   __pyx_pybuffernd_direction.diminfo[0].strides = __pyx_pybuffernd_direction.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_direction.diminfo[0].shape = __pyx_pybuffernd_direction.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_end.rcbuffer->pybuffer, (PyObject*)__pyx_v_end, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 557, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_end.rcbuffer->pybuffer, (PyObject*)__pyx_v_end, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 544, __pyx_L1_error)
   }
   __pyx_pybuffernd_end.diminfo[0].strides = __pyx_pybuffernd_end.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_end.diminfo[0].shape = __pyx_pybuffernd_end.rcbuffer->pybuffer.shape[0];
 
-  /* "octomap/octomap.pyx":571
+  /* "octomap/octomap.pyx":558
  *         cdef cppbool hit
  *         hit = self.thisptr.castRay(
  *             defs.point3d(origin[0], origin[1], origin[2]),             # <<<<<<<<<<<<<<
@@ -17370,7 +17103,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
   } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_origin.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 571, __pyx_L1_error)
+    __PYX_ERR(0, 558, __pyx_L1_error)
   }
   __pyx_t_3 = 1;
   __pyx_t_2 = -1;
@@ -17380,7 +17113,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
   } else if (unlikely(__pyx_t_3 >= __pyx_pybuffernd_origin.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 571, __pyx_L1_error)
+    __PYX_ERR(0, 558, __pyx_L1_error)
   }
   __pyx_t_4 = 2;
   __pyx_t_2 = -1;
@@ -17390,16 +17123,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
   } else if (unlikely(__pyx_t_4 >= __pyx_pybuffernd_origin.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 571, __pyx_L1_error)
+    __PYX_ERR(0, 558, __pyx_L1_error)
   }
   try {
     __pyx_t_5 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_origin.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_origin.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_origin.rcbuffer->pybuffer.buf, __pyx_t_3, __pyx_pybuffernd_origin.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_origin.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_origin.diminfo[0].strides)));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 571, __pyx_L1_error)
+    __PYX_ERR(0, 558, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":572
+  /* "octomap/octomap.pyx":559
  *         hit = self.thisptr.castRay(
  *             defs.point3d(origin[0], origin[1], origin[2]),
  *             defs.point3d(direction[0], direction[1], direction[2]),             # <<<<<<<<<<<<<<
@@ -17414,7 +17147,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
   } else if (unlikely(__pyx_t_4 >= __pyx_pybuffernd_direction.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 572, __pyx_L1_error)
+    __PYX_ERR(0, 559, __pyx_L1_error)
   }
   __pyx_t_3 = 1;
   __pyx_t_2 = -1;
@@ -17424,7 +17157,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
   } else if (unlikely(__pyx_t_3 >= __pyx_pybuffernd_direction.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 572, __pyx_L1_error)
+    __PYX_ERR(0, 559, __pyx_L1_error)
   }
   __pyx_t_1 = 2;
   __pyx_t_2 = -1;
@@ -17434,34 +17167,34 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
   } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_direction.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 572, __pyx_L1_error)
+    __PYX_ERR(0, 559, __pyx_L1_error)
   }
   try {
     __pyx_t_6 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_direction.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_direction.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_direction.rcbuffer->pybuffer.buf, __pyx_t_3, __pyx_pybuffernd_direction.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_direction.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_direction.diminfo[0].strides)));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 572, __pyx_L1_error)
+    __PYX_ERR(0, 559, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":574
+  /* "octomap/octomap.pyx":561
  *             defs.point3d(direction[0], direction[1], direction[2]),
  *             e,
  *             bool(ignoreUnknownCells),             # <<<<<<<<<<<<<<
  *             <double?>maxRange
  *         )
 */
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v_ignoreUnknownCells); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 574, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v_ignoreUnknownCells); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 561, __pyx_L1_error)
 
-  /* "octomap/octomap.pyx":575
+  /* "octomap/octomap.pyx":562
  *             e,
  *             bool(ignoreUnknownCells),
  *             <double?>maxRange             # <<<<<<<<<<<<<<
  *         )
  *         if hit:
 */
-  __pyx_t_8 = __Pyx_PyFloat_AsDouble(__pyx_v_maxRange); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 575, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyFloat_AsDouble(__pyx_v_maxRange); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 562, __pyx_L1_error)
 
-  /* "octomap/octomap.pyx":570
+  /* "octomap/octomap.pyx":557
  *         cdef defs.point3d e
  *         cdef cppbool hit
  *         hit = self.thisptr.castRay(             # <<<<<<<<<<<<<<
@@ -17470,7 +17203,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
 */
   __pyx_v_hit = __pyx_v_self->thisptr->castRay(__pyx_t_5, __pyx_t_6, __pyx_v_e, (!(!__pyx_t_7)), ((double)__pyx_t_8));
 
-  /* "octomap/octomap.pyx":577
+  /* "octomap/octomap.pyx":564
  *             <double?>maxRange
  *         )
  *         if hit:             # <<<<<<<<<<<<<<
@@ -17480,34 +17213,34 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
   __pyx_t_7 = (__pyx_v_hit != 0);
   if (__pyx_t_7) {
 
-    /* "octomap/octomap.pyx":578
+    /* "octomap/octomap.pyx":565
  *         )
  *         if hit:
  *             end[0:3] = e.x(), e.y(), e.z()             # <<<<<<<<<<<<<<
  *         return hit
  * 
 */
-    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_e.x()); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 578, __pyx_L1_error)
+    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_e.x()); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 565, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_e.y()); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 578, __pyx_L1_error)
+    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_e.y()); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 565, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_11 = PyFloat_FromDouble(__pyx_v_e.z()); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 578, __pyx_L1_error)
+    __pyx_t_11 = PyFloat_FromDouble(__pyx_v_e.z()); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 565, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_12 = PyTuple_New(3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 578, __pyx_L1_error)
+    __pyx_t_12 = PyTuple_New(3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 565, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_GIVEREF(__pyx_t_9);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_9) != (0)) __PYX_ERR(0, 578, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_9) != (0)) __PYX_ERR(0, 565, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_10);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_10) != (0)) __PYX_ERR(0, 578, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_10) != (0)) __PYX_ERR(0, 565, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_11);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_t_11) != (0)) __PYX_ERR(0, 578, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_t_11) != (0)) __PYX_ERR(0, 565, __pyx_L1_error);
     __pyx_t_9 = 0;
     __pyx_t_10 = 0;
     __pyx_t_11 = 0;
-    if (unlikely((PyObject_SetItem(((PyObject *)__pyx_v_end), __pyx_mstate_global->__pyx_slice[0], __pyx_t_12) < 0))) __PYX_ERR(0, 578, __pyx_L1_error)
+    if (unlikely((PyObject_SetItem(((PyObject *)__pyx_v_end), __pyx_mstate_global->__pyx_slice[0], __pyx_t_12) < 0))) __PYX_ERR(0, 565, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-    /* "octomap/octomap.pyx":577
+    /* "octomap/octomap.pyx":564
  *             <double?>maxRange
  *         )
  *         if hit:             # <<<<<<<<<<<<<<
@@ -17516,7 +17249,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
 */
   }
 
-  /* "octomap/octomap.pyx":579
+  /* "octomap/octomap.pyx":566
  *         if hit:
  *             end[0:3] = e.x(), e.y(), e.z()
  *         return hit             # <<<<<<<<<<<<<<
@@ -17524,13 +17257,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
  *     def read(self, filename):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_12 = __Pyx_PyBool_FromLong(__pyx_v_hit); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyBool_FromLong(__pyx_v_hit); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __pyx_r = __pyx_t_12;
   __pyx_t_12 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":557
+  /* "octomap/octomap.pyx":544
  *                                        <int?>depth)
  * 
  *     def castRay(self, np.ndarray[DOUBLE_t, ndim=1] origin,             # <<<<<<<<<<<<<<
@@ -17565,7 +17298,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_18castRay(struct __pyx_obj_7
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":581
+/* "octomap/octomap.pyx":568
  *         return hit
  * 
  *     def read(self, filename):             # <<<<<<<<<<<<<<
@@ -17612,32 +17345,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_filename,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 581, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 568, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 581, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 568, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "read", 0) < 0) __PYX_ERR(0, 581, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "read", 0) < 0) __PYX_ERR(0, 568, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("read", 1, 1, 1, i); __PYX_ERR(0, 581, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("read", 1, 1, 1, i); __PYX_ERR(0, 568, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 581, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 568, __pyx_L3_error)
     }
     __pyx_v_filename = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("read", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 581, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("read", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 568, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -17675,7 +17408,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_20read(struct __pyx_obj_7oct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("read", 0);
 
-  /* "octomap/octomap.pyx":582
+  /* "octomap/octomap.pyx":569
  * 
  *     def read(self, filename):
  *         cdef string c_filename = filename.encode('utf-8')             # <<<<<<<<<<<<<<
@@ -17689,14 +17422,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_20read(struct __pyx_obj_7oct
     PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_utf_8};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_encode, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 582, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 569, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_4 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 582, __pyx_L1_error)
+  __pyx_t_4 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 569, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c_filename = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_4);
 
-  /* "octomap/octomap.pyx":584
+  /* "octomap/octomap.pyx":571
  *         cdef string c_filename = filename.encode('utf-8')
  *         cdef defs.OcTree* result
  *         result = <defs.OcTree*>self.thisptr.read(c_filename)             # <<<<<<<<<<<<<<
@@ -17705,7 +17438,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_20read(struct __pyx_obj_7oct
 */
   __pyx_v_result = ((octomap::OcTree *)__pyx_v_self->thisptr->read(__pyx_v_c_filename));
 
-  /* "octomap/octomap.pyx":585
+  /* "octomap/octomap.pyx":572
  *         cdef defs.OcTree* result
  *         result = <defs.OcTree*>self.thisptr.read(c_filename)
  *         if result != NULL:             # <<<<<<<<<<<<<<
@@ -17715,7 +17448,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_20read(struct __pyx_obj_7oct
   __pyx_t_5 = (__pyx_v_result != NULL);
   if (__pyx_t_5) {
 
-    /* "octomap/octomap.pyx":587
+    /* "octomap/octomap.pyx":574
  *         if result != NULL:
  *             # Create new OcTree instance with the loaded data
  *             new_tree = OcTree(0.1)  # Temporary resolution, will be overwritten             # <<<<<<<<<<<<<<
@@ -17731,13 +17464,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_20read(struct __pyx_obj_7oct
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 587, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 574, __pyx_L1_error)
       __Pyx_GOTREF((PyObject *)__pyx_t_1);
     }
     __pyx_v_new_tree = ((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "octomap/octomap.pyx":588
+    /* "octomap/octomap.pyx":575
  *             # Create new OcTree instance with the loaded data
  *             new_tree = OcTree(0.1)  # Temporary resolution, will be overwritten
  *             new_tree.thisptr = result             # <<<<<<<<<<<<<<
@@ -17746,7 +17479,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_20read(struct __pyx_obj_7oct
 */
     __pyx_v_new_tree->thisptr = __pyx_v_result;
 
-    /* "octomap/octomap.pyx":589
+    /* "octomap/octomap.pyx":576
  *             new_tree = OcTree(0.1)  # Temporary resolution, will be overwritten
  *             new_tree.thisptr = result
  *             new_tree.owner = True             # <<<<<<<<<<<<<<
@@ -17755,7 +17488,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_20read(struct __pyx_obj_7oct
 */
     __pyx_v_new_tree->owner = 1;
 
-    /* "octomap/octomap.pyx":590
+    /* "octomap/octomap.pyx":577
  *             new_tree.thisptr = result
  *             new_tree.owner = True
  *             return new_tree             # <<<<<<<<<<<<<<
@@ -17767,7 +17500,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_20read(struct __pyx_obj_7oct
     __pyx_r = ((PyObject *)__pyx_v_new_tree);
     goto __pyx_L0;
 
-    /* "octomap/octomap.pyx":585
+    /* "octomap/octomap.pyx":572
  *         cdef defs.OcTree* result
  *         result = <defs.OcTree*>self.thisptr.read(c_filename)
  *         if result != NULL:             # <<<<<<<<<<<<<<
@@ -17776,7 +17509,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_20read(struct __pyx_obj_7oct
 */
   }
 
-  /* "octomap/octomap.pyx":591
+  /* "octomap/octomap.pyx":578
  *             new_tree.owner = True
  *             return new_tree
  *         return None             # <<<<<<<<<<<<<<
@@ -17787,7 +17520,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_20read(struct __pyx_obj_7oct
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":581
+  /* "octomap/octomap.pyx":568
  *         return hit
  * 
  *     def read(self, filename):             # <<<<<<<<<<<<<<
@@ -17809,7 +17542,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_20read(struct __pyx_obj_7oct
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":593
+/* "octomap/octomap.pyx":580
  *         return None
  * 
  *     def write(self, filename=None):             # <<<<<<<<<<<<<<
@@ -17857,24 +17590,24 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_filename,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 593, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 580, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 593, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 580, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "write", 0) < 0) __PYX_ERR(0, 593, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "write", 0) < 0) __PYX_ERR(0, 580, __pyx_L3_error)
       if (!values[0]) values[0] = __Pyx_NewRef(((PyObject *)Py_None));
     } else {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 593, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 580, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
@@ -17885,7 +17618,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("write", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 593, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("write", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 580, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -17922,7 +17655,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_22write(struct __pyx_obj_7oc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("write", 0);
 
-  /* "octomap/octomap.pyx":599
+  /* "octomap/octomap.pyx":586
  *         cdef defs.ostringstream oss
  *         cdef string c_filename
  *         if not filename is None:             # <<<<<<<<<<<<<<
@@ -17932,7 +17665,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_22write(struct __pyx_obj_7oc
   __pyx_t_1 = (__pyx_v_filename != Py_None);
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":600
+    /* "octomap/octomap.pyx":587
  *         cdef string c_filename
  *         if not filename is None:
  *             c_filename = filename.encode('utf-8')             # <<<<<<<<<<<<<<
@@ -17946,14 +17679,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_22write(struct __pyx_obj_7oc
       PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_utf_8};
       __pyx_t_2 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_encode, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 600, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 587, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    __pyx_t_5 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 600, __pyx_L1_error)
+    __pyx_t_5 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 587, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_c_filename = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_5);
 
-    /* "octomap/octomap.pyx":601
+    /* "octomap/octomap.pyx":588
  *         if not filename is None:
  *             c_filename = filename.encode('utf-8')
  *             return self.thisptr.write(c_filename)             # <<<<<<<<<<<<<<
@@ -17961,13 +17694,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_22write(struct __pyx_obj_7oc
  *             ret = self.thisptr.write(<defs.ostream&?>oss)
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->write(__pyx_v_c_filename)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 601, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->write(__pyx_v_c_filename)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 588, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "octomap/octomap.pyx":599
+    /* "octomap/octomap.pyx":586
  *         cdef defs.ostringstream oss
  *         cdef string c_filename
  *         if not filename is None:             # <<<<<<<<<<<<<<
@@ -17976,7 +17709,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_22write(struct __pyx_obj_7oc
 */
   }
 
-  /* "octomap/octomap.pyx":603
+  /* "octomap/octomap.pyx":590
  *             return self.thisptr.write(c_filename)
  *         else:
  *             ret = self.thisptr.write(<defs.ostream&?>oss)             # <<<<<<<<<<<<<<
@@ -17986,7 +17719,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_22write(struct __pyx_obj_7oc
   /*else*/ {
     __pyx_v_ret = __pyx_v_self->thisptr->write(((std::ostream &)__pyx_v_oss));
 
-    /* "octomap/octomap.pyx":604
+    /* "octomap/octomap.pyx":591
  *         else:
  *             ret = self.thisptr.write(<defs.ostream&?>oss)
  *             if ret:             # <<<<<<<<<<<<<<
@@ -17996,7 +17729,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_22write(struct __pyx_obj_7oc
     __pyx_t_1 = (__pyx_v_ret != 0);
     if (__pyx_t_1) {
 
-      /* "octomap/octomap.pyx":605
+      /* "octomap/octomap.pyx":592
  *             ret = self.thisptr.write(<defs.ostream&?>oss)
  *             if ret:
  *                 return oss.str().c_str()[:oss.str().length()]             # <<<<<<<<<<<<<<
@@ -18004,13 +17737,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_22write(struct __pyx_obj_7oc
  *                 return False
 */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_2 = __Pyx_PyBytes_FromStringAndSize(__pyx_v_oss.str().c_str() + 0, __pyx_v_oss.str().length() - 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 605, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyBytes_FromStringAndSize(__pyx_v_oss.str().c_str() + 0, __pyx_v_oss.str().length() - 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 592, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_r = __pyx_t_2;
       __pyx_t_2 = 0;
       goto __pyx_L0;
 
-      /* "octomap/octomap.pyx":604
+      /* "octomap/octomap.pyx":591
  *         else:
  *             ret = self.thisptr.write(<defs.ostream&?>oss)
  *             if ret:             # <<<<<<<<<<<<<<
@@ -18019,7 +17752,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_22write(struct __pyx_obj_7oc
 */
     }
 
-    /* "octomap/octomap.pyx":607
+    /* "octomap/octomap.pyx":594
  *                 return oss.str().c_str()[:oss.str().length()]
  *             else:
  *                 return False             # <<<<<<<<<<<<<<
@@ -18034,7 +17767,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_22write(struct __pyx_obj_7oc
     }
   }
 
-  /* "octomap/octomap.pyx":593
+  /* "octomap/octomap.pyx":580
  *         return None
  * 
  *     def write(self, filename=None):             # <<<<<<<<<<<<<<
@@ -18054,7 +17787,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_22write(struct __pyx_obj_7oc
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":609
+/* "octomap/octomap.pyx":596
  *                 return False
  * 
  *     def readBinary(self, filename):             # <<<<<<<<<<<<<<
@@ -18101,32 +17834,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_filename,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 609, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 596, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 609, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 596, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "readBinary", 0) < 0) __PYX_ERR(0, 609, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "readBinary", 0) < 0) __PYX_ERR(0, 596, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("readBinary", 1, 1, 1, i); __PYX_ERR(0, 609, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("readBinary", 1, 1, 1, i); __PYX_ERR(0, 596, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 609, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 596, __pyx_L3_error)
     }
     __pyx_v_filename = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("readBinary", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 609, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("readBinary", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 596, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -18160,7 +17893,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_24readBinary(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("readBinary", 0);
 
-  /* "octomap/octomap.pyx":612
+  /* "octomap/octomap.pyx":599
  *         # Treat input as a filesystem path; accept str or bytes
  *         cdef string c_filename
  *         if isinstance(filename, (bytes, bytearray)):             # <<<<<<<<<<<<<<
@@ -18178,7 +17911,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_24readBinary(struct __pyx_ob
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":613
+    /* "octomap/octomap.pyx":600
  *         cdef string c_filename
  *         if isinstance(filename, (bytes, bytearray)):
  *             c_filename = (<bytes>filename).decode('utf-8')             # <<<<<<<<<<<<<<
@@ -18187,15 +17920,15 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_24readBinary(struct __pyx_ob
 */
     if (unlikely(__pyx_v_filename == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "decode");
-      __PYX_ERR(0, 613, __pyx_L1_error)
+      __PYX_ERR(0, 600, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_decode_bytes(((PyObject*)__pyx_v_filename), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_decode_bytes(((PyObject*)__pyx_v_filename), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 600, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 613, __pyx_L1_error)
+    __pyx_t_4 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 600, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_c_filename = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_4);
 
-    /* "octomap/octomap.pyx":612
+    /* "octomap/octomap.pyx":599
  *         # Treat input as a filesystem path; accept str or bytes
  *         cdef string c_filename
  *         if isinstance(filename, (bytes, bytearray)):             # <<<<<<<<<<<<<<
@@ -18205,7 +17938,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_24readBinary(struct __pyx_ob
     goto __pyx_L3;
   }
 
-  /* "octomap/octomap.pyx":615
+  /* "octomap/octomap.pyx":602
  *             c_filename = (<bytes>filename).decode('utf-8')
  *         else:
  *             c_filename = (<str>filename).encode('utf-8')             # <<<<<<<<<<<<<<
@@ -18215,17 +17948,17 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_24readBinary(struct __pyx_ob
   /*else*/ {
     if (unlikely(__pyx_v_filename == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
-      __PYX_ERR(0, 615, __pyx_L1_error)
+      __PYX_ERR(0, 602, __pyx_L1_error)
     }
-    __pyx_t_3 = PyUnicode_AsUTF8String(((PyObject*)__pyx_v_filename)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
+    __pyx_t_3 = PyUnicode_AsUTF8String(((PyObject*)__pyx_v_filename)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 602, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 615, __pyx_L1_error)
+    __pyx_t_4 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 602, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_c_filename = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_4);
   }
   __pyx_L3:;
 
-  /* "octomap/octomap.pyx":616
+  /* "octomap/octomap.pyx":603
  *         else:
  *             c_filename = (<str>filename).encode('utf-8')
  *         return self.thisptr.readBinary(c_filename)             # <<<<<<<<<<<<<<
@@ -18233,13 +17966,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_24readBinary(struct __pyx_ob
  *     def writeBinary(self, filename=None):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->readBinary(__pyx_v_c_filename)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 616, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->readBinary(__pyx_v_c_filename)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 603, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":609
+  /* "octomap/octomap.pyx":596
  *                 return False
  * 
  *     def readBinary(self, filename):             # <<<<<<<<<<<<<<
@@ -18258,7 +17991,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_24readBinary(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":618
+/* "octomap/octomap.pyx":605
  *         return self.thisptr.readBinary(c_filename)
  * 
  *     def writeBinary(self, filename=None):             # <<<<<<<<<<<<<<
@@ -18305,24 +18038,24 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_filename,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 618, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 605, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 618, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 605, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "writeBinary", 0) < 0) __PYX_ERR(0, 618, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "writeBinary", 0) < 0) __PYX_ERR(0, 605, __pyx_L3_error)
       if (!values[0]) values[0] = __Pyx_NewRef(((PyObject *)Py_None));
     } else {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 618, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 605, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
@@ -18333,7 +18066,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("writeBinary", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 618, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("writeBinary", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 605, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -18370,7 +18103,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_26writeBinary(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("writeBinary", 0);
 
-  /* "octomap/octomap.pyx":621
+  /* "octomap/octomap.pyx":608
  *         cdef defs.ostringstream oss
  *         cdef string c_filename
  *         if not filename is None:             # <<<<<<<<<<<<<<
@@ -18380,7 +18113,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_26writeBinary(struct __pyx_o
   __pyx_t_1 = (__pyx_v_filename != Py_None);
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":622
+    /* "octomap/octomap.pyx":609
  *         cdef string c_filename
  *         if not filename is None:
  *             c_filename = filename.encode('utf-8')             # <<<<<<<<<<<<<<
@@ -18394,14 +18127,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_26writeBinary(struct __pyx_o
       PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_utf_8};
       __pyx_t_2 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_encode, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 622, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 609, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    __pyx_t_5 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 622, __pyx_L1_error)
+    __pyx_t_5 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 609, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_c_filename = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_5);
 
-    /* "octomap/octomap.pyx":623
+    /* "octomap/octomap.pyx":610
  *         if not filename is None:
  *             c_filename = filename.encode('utf-8')
  *             return self.thisptr.writeBinary(c_filename)             # <<<<<<<<<<<<<<
@@ -18409,13 +18142,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_26writeBinary(struct __pyx_o
  *             ret = self.thisptr.writeBinary(<defs.ostream&?>oss)
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->writeBinary(__pyx_v_c_filename)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 623, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->writeBinary(__pyx_v_c_filename)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "octomap/octomap.pyx":621
+    /* "octomap/octomap.pyx":608
  *         cdef defs.ostringstream oss
  *         cdef string c_filename
  *         if not filename is None:             # <<<<<<<<<<<<<<
@@ -18424,7 +18157,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_26writeBinary(struct __pyx_o
 */
   }
 
-  /* "octomap/octomap.pyx":625
+  /* "octomap/octomap.pyx":612
  *             return self.thisptr.writeBinary(c_filename)
  *         else:
  *             ret = self.thisptr.writeBinary(<defs.ostream&?>oss)             # <<<<<<<<<<<<<<
@@ -18434,7 +18167,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_26writeBinary(struct __pyx_o
   /*else*/ {
     __pyx_v_ret = __pyx_v_self->thisptr->writeBinary(((std::ostream &)__pyx_v_oss));
 
-    /* "octomap/octomap.pyx":626
+    /* "octomap/octomap.pyx":613
  *         else:
  *             ret = self.thisptr.writeBinary(<defs.ostream&?>oss)
  *             if ret:             # <<<<<<<<<<<<<<
@@ -18444,7 +18177,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_26writeBinary(struct __pyx_o
     __pyx_t_1 = (__pyx_v_ret != 0);
     if (__pyx_t_1) {
 
-      /* "octomap/octomap.pyx":627
+      /* "octomap/octomap.pyx":614
  *             ret = self.thisptr.writeBinary(<defs.ostream&?>oss)
  *             if ret:
  *                 return oss.str().c_str()[:oss.str().length()]             # <<<<<<<<<<<<<<
@@ -18452,13 +18185,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_26writeBinary(struct __pyx_o
  *                 return False
 */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_2 = __Pyx_PyBytes_FromStringAndSize(__pyx_v_oss.str().c_str() + 0, __pyx_v_oss.str().length() - 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 627, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyBytes_FromStringAndSize(__pyx_v_oss.str().c_str() + 0, __pyx_v_oss.str().length() - 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 614, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_r = __pyx_t_2;
       __pyx_t_2 = 0;
       goto __pyx_L0;
 
-      /* "octomap/octomap.pyx":626
+      /* "octomap/octomap.pyx":613
  *         else:
  *             ret = self.thisptr.writeBinary(<defs.ostream&?>oss)
  *             if ret:             # <<<<<<<<<<<<<<
@@ -18467,7 +18200,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_26writeBinary(struct __pyx_o
 */
     }
 
-    /* "octomap/octomap.pyx":629
+    /* "octomap/octomap.pyx":616
  *                 return oss.str().c_str()[:oss.str().length()]
  *             else:
  *                 return False             # <<<<<<<<<<<<<<
@@ -18482,7 +18215,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_26writeBinary(struct __pyx_o
     }
   }
 
-  /* "octomap/octomap.pyx":618
+  /* "octomap/octomap.pyx":605
  *         return self.thisptr.readBinary(c_filename)
  * 
  *     def writeBinary(self, filename=None):             # <<<<<<<<<<<<<<
@@ -18502,7 +18235,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_26writeBinary(struct __pyx_o
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":631
+/* "octomap/octomap.pyx":618
  *                 return False
  * 
  *     def isNodeOccupied(self, node):             # <<<<<<<<<<<<<<
@@ -18549,32 +18282,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_node,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 631, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 618, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 631, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 618, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "isNodeOccupied", 0) < 0) __PYX_ERR(0, 631, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "isNodeOccupied", 0) < 0) __PYX_ERR(0, 618, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("isNodeOccupied", 1, 1, 1, i); __PYX_ERR(0, 631, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("isNodeOccupied", 1, 1, 1, i); __PYX_ERR(0, 618, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 631, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 618, __pyx_L3_error)
     }
     __pyx_v_node = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("isNodeOccupied", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 631, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("isNodeOccupied", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 618, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -18611,7 +18344,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("isNodeOccupied", 0);
 
-  /* "octomap/octomap.pyx":632
+  /* "octomap/octomap.pyx":619
  * 
  *     def isNodeOccupied(self, node):
  *         if isinstance(node, OcTreeNode):             # <<<<<<<<<<<<<<
@@ -18621,7 +18354,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
   __pyx_t_1 = __Pyx_TypeCheck(__pyx_v_node, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeNode); 
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":633
+    /* "octomap/octomap.pyx":620
  *     def isNodeOccupied(self, node):
  *         if isinstance(node, OcTreeNode):
  *             if (<OcTreeNode>node).thisptr:             # <<<<<<<<<<<<<<
@@ -18631,7 +18364,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
     __pyx_t_1 = (((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr != 0);
     if (likely(__pyx_t_1)) {
 
-      /* "octomap/octomap.pyx":634
+      /* "octomap/octomap.pyx":621
  *         if isinstance(node, OcTreeNode):
  *             if (<OcTreeNode>node).thisptr:
  *                 return self.thisptr.isNodeOccupied(deref((<OcTreeNode>node).thisptr))             # <<<<<<<<<<<<<<
@@ -18639,13 +18372,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
  *                 raise NullPointerException
 */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->isNodeOccupied((*((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 634, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->isNodeOccupied((*((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 621, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_r = __pyx_t_2;
       __pyx_t_2 = 0;
       goto __pyx_L0;
 
-      /* "octomap/octomap.pyx":633
+      /* "octomap/octomap.pyx":620
  *     def isNodeOccupied(self, node):
  *         if isinstance(node, OcTreeNode):
  *             if (<OcTreeNode>node).thisptr:             # <<<<<<<<<<<<<<
@@ -18654,7 +18387,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
 */
     }
 
-    /* "octomap/octomap.pyx":636
+    /* "octomap/octomap.pyx":623
  *                 return self.thisptr.isNodeOccupied(deref((<OcTreeNode>node).thisptr))
  *             else:
  *                 raise NullPointerException             # <<<<<<<<<<<<<<
@@ -18662,14 +18395,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
  *             # Handle iterator case - get the current node from the iterator
 */
     /*else*/ {
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 636, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 623, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 636, __pyx_L1_error)
+      __PYX_ERR(0, 623, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":632
+    /* "octomap/octomap.pyx":619
  * 
  *     def isNodeOccupied(self, node):
  *         if isinstance(node, OcTreeNode):             # <<<<<<<<<<<<<<
@@ -18678,7 +18411,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
 */
   }
 
-  /* "octomap/octomap.pyx":637
+  /* "octomap/octomap.pyx":624
  *             else:
  *                 raise NullPointerException
  *         elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):             # <<<<<<<<<<<<<<
@@ -18702,20 +18435,20 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
   __pyx_L5_bool_binop_done:;
   if (likely(__pyx_t_1)) {
 
-    /* "octomap/octomap.pyx":639
+    /* "octomap/octomap.pyx":626
  *         elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):
  *             # Handle iterator case - get the current node from the iterator
  *             if hasattr(node, '_current_node') and node._current_node is not None:             # <<<<<<<<<<<<<<
  *                 if isinstance(node._current_node, OcTreeNode) and (<OcTreeNode>node._current_node).thisptr:
  *                     return self.thisptr.isNodeOccupied(deref((<OcTreeNode>node._current_node).thisptr))
 */
-    __pyx_t_3 = __Pyx_HasAttr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 639, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_HasAttr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 626, __pyx_L1_error)
     if (__pyx_t_3) {
     } else {
       __pyx_t_1 = __pyx_t_3;
       goto __pyx_L9_bool_binop_done;
     }
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 639, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 626, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_3 = (__pyx_t_2 != Py_None);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -18723,14 +18456,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
     __pyx_L9_bool_binop_done:;
     if (likely(__pyx_t_1)) {
 
-      /* "octomap/octomap.pyx":640
+      /* "octomap/octomap.pyx":627
  *             # Handle iterator case - get the current node from the iterator
  *             if hasattr(node, '_current_node') and node._current_node is not None:
  *                 if isinstance(node._current_node, OcTreeNode) and (<OcTreeNode>node._current_node).thisptr:             # <<<<<<<<<<<<<<
  *                     return self.thisptr.isNodeOccupied(deref((<OcTreeNode>node._current_node).thisptr))
  *                 else:
 */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 640, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 627, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_3 = __Pyx_TypeCheck(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeNode); 
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -18739,7 +18472,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
         __pyx_t_1 = __pyx_t_3;
         goto __pyx_L12_bool_binop_done;
       }
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 640, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 627, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_3 = (((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_2)->thisptr != 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -18747,7 +18480,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
       __pyx_L12_bool_binop_done:;
       if (likely(__pyx_t_1)) {
 
-        /* "octomap/octomap.pyx":641
+        /* "octomap/octomap.pyx":628
  *             if hasattr(node, '_current_node') and node._current_node is not None:
  *                 if isinstance(node._current_node, OcTreeNode) and (<OcTreeNode>node._current_node).thisptr:
  *                     return self.thisptr.isNodeOccupied(deref((<OcTreeNode>node._current_node).thisptr))             # <<<<<<<<<<<<<<
@@ -18755,16 +18488,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
  *                     raise NullPointerException
 */
         __Pyx_XDECREF(__pyx_r);
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 628, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->isNodeOccupied((*((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_2)->thisptr))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 641, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->isNodeOccupied((*((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_2)->thisptr))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 628, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_4;
         __pyx_t_4 = 0;
         goto __pyx_L0;
 
-        /* "octomap/octomap.pyx":640
+        /* "octomap/octomap.pyx":627
  *             # Handle iterator case - get the current node from the iterator
  *             if hasattr(node, '_current_node') and node._current_node is not None:
  *                 if isinstance(node._current_node, OcTreeNode) and (<OcTreeNode>node._current_node).thisptr:             # <<<<<<<<<<<<<<
@@ -18773,7 +18506,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
 */
       }
 
-      /* "octomap/octomap.pyx":643
+      /* "octomap/octomap.pyx":630
  *                     return self.thisptr.isNodeOccupied(deref((<OcTreeNode>node._current_node).thisptr))
  *                 else:
  *                     raise NullPointerException             # <<<<<<<<<<<<<<
@@ -18781,14 +18514,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
  *                 # Iterator doesn't have a valid current node
 */
       /*else*/ {
-        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 643, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 630, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_Raise(__pyx_t_4, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __PYX_ERR(0, 643, __pyx_L1_error)
+        __PYX_ERR(0, 630, __pyx_L1_error)
       }
 
-      /* "octomap/octomap.pyx":639
+      /* "octomap/octomap.pyx":626
  *         elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):
  *             # Handle iterator case - get the current node from the iterator
  *             if hasattr(node, '_current_node') and node._current_node is not None:             # <<<<<<<<<<<<<<
@@ -18797,7 +18530,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
 */
     }
 
-    /* "octomap/octomap.pyx":646
+    /* "octomap/octomap.pyx":633
  *             else:
  *                 # Iterator doesn't have a valid current node
  *                 raise RuntimeError("Iterator has no current node - ensure iterator is properly initialized and advanced")             # <<<<<<<<<<<<<<
@@ -18814,15 +18547,15 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
         __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 646, __pyx_L1_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 633, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
       }
       __Pyx_Raise(__pyx_t_4, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __PYX_ERR(0, 646, __pyx_L1_error)
+      __PYX_ERR(0, 633, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":637
+    /* "octomap/octomap.pyx":624
  *             else:
  *                 raise NullPointerException
  *         elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):             # <<<<<<<<<<<<<<
@@ -18831,7 +18564,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
 */
   }
 
-  /* "octomap/octomap.pyx":648
+  /* "octomap/octomap.pyx":635
  *                 raise RuntimeError("Iterator has no current node - ensure iterator is properly initialized and advanced")
  *         else:
  *             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")             # <<<<<<<<<<<<<<
@@ -18842,9 +18575,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
     __pyx_t_5 = NULL;
     __Pyx_INCREF(__pyx_builtin_TypeError);
     __pyx_t_2 = __pyx_builtin_TypeError; 
-    __pyx_t_7 = __Pyx_PyObject_FormatSimple(((PyObject *)Py_TYPE(__pyx_v_node)), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 648, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_FormatSimple(((PyObject *)Py_TYPE(__pyx_v_node)), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 635, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Expected_OcTreeNode_or_iterator, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 648, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Expected_OcTreeNode_or_iterator, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 635, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_6 = 1;
@@ -18854,15 +18587,15 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 648, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 635, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 648, __pyx_L1_error)
+    __PYX_ERR(0, 635, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":631
+  /* "octomap/octomap.pyx":618
  *                 return False
  * 
  *     def isNodeOccupied(self, node):             # <<<<<<<<<<<<<<
@@ -18885,7 +18618,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_28isNodeOccupied(struct __py
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":650
+/* "octomap/octomap.pyx":637
  *             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")
  * 
  *     def isNodeAtThreshold(self, node):             # <<<<<<<<<<<<<<
@@ -18932,32 +18665,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_node,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 650, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 637, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 650, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 637, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "isNodeAtThreshold", 0) < 0) __PYX_ERR(0, 650, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "isNodeAtThreshold", 0) < 0) __PYX_ERR(0, 637, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("isNodeAtThreshold", 1, 1, 1, i); __PYX_ERR(0, 650, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("isNodeAtThreshold", 1, 1, 1, i); __PYX_ERR(0, 637, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 650, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 637, __pyx_L3_error)
     }
     __pyx_v_node = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("isNodeAtThreshold", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 650, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("isNodeAtThreshold", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 637, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -18994,7 +18727,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("isNodeAtThreshold", 0);
 
-  /* "octomap/octomap.pyx":651
+  /* "octomap/octomap.pyx":638
  * 
  *     def isNodeAtThreshold(self, node):
  *         if isinstance(node, OcTreeNode):             # <<<<<<<<<<<<<<
@@ -19004,7 +18737,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
   __pyx_t_1 = __Pyx_TypeCheck(__pyx_v_node, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeNode); 
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":652
+    /* "octomap/octomap.pyx":639
  *     def isNodeAtThreshold(self, node):
  *         if isinstance(node, OcTreeNode):
  *             if (<OcTreeNode>node).thisptr:             # <<<<<<<<<<<<<<
@@ -19014,7 +18747,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
     __pyx_t_1 = (((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr != 0);
     if (likely(__pyx_t_1)) {
 
-      /* "octomap/octomap.pyx":653
+      /* "octomap/octomap.pyx":640
  *         if isinstance(node, OcTreeNode):
  *             if (<OcTreeNode>node).thisptr:
  *                 return self.thisptr.isNodeAtThreshold(deref((<OcTreeNode>node).thisptr))             # <<<<<<<<<<<<<<
@@ -19022,13 +18755,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
  *                 raise NullPointerException
 */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->isNodeAtThreshold((*((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 653, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->isNodeAtThreshold((*((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 640, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_r = __pyx_t_2;
       __pyx_t_2 = 0;
       goto __pyx_L0;
 
-      /* "octomap/octomap.pyx":652
+      /* "octomap/octomap.pyx":639
  *     def isNodeAtThreshold(self, node):
  *         if isinstance(node, OcTreeNode):
  *             if (<OcTreeNode>node).thisptr:             # <<<<<<<<<<<<<<
@@ -19037,7 +18770,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
 */
     }
 
-    /* "octomap/octomap.pyx":655
+    /* "octomap/octomap.pyx":642
  *                 return self.thisptr.isNodeAtThreshold(deref((<OcTreeNode>node).thisptr))
  *             else:
  *                 raise NullPointerException             # <<<<<<<<<<<<<<
@@ -19045,14 +18778,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
  *             # Handle iterator case - get the current node from the iterator
 */
     /*else*/ {
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 655, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 642, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 655, __pyx_L1_error)
+      __PYX_ERR(0, 642, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":651
+    /* "octomap/octomap.pyx":638
  * 
  *     def isNodeAtThreshold(self, node):
  *         if isinstance(node, OcTreeNode):             # <<<<<<<<<<<<<<
@@ -19061,7 +18794,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
 */
   }
 
-  /* "octomap/octomap.pyx":656
+  /* "octomap/octomap.pyx":643
  *             else:
  *                 raise NullPointerException
  *         elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):             # <<<<<<<<<<<<<<
@@ -19085,20 +18818,20 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
   __pyx_L5_bool_binop_done:;
   if (likely(__pyx_t_1)) {
 
-    /* "octomap/octomap.pyx":658
+    /* "octomap/octomap.pyx":645
  *         elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):
  *             # Handle iterator case - get the current node from the iterator
  *             if hasattr(node, '_current_node') and node._current_node is not None:             # <<<<<<<<<<<<<<
  *                 if isinstance(node._current_node, OcTreeNode) and (<OcTreeNode>node._current_node).thisptr:
  *                     return self.thisptr.isNodeAtThreshold(deref((<OcTreeNode>node._current_node).thisptr))
 */
-    __pyx_t_3 = __Pyx_HasAttr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 658, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_HasAttr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 645, __pyx_L1_error)
     if (__pyx_t_3) {
     } else {
       __pyx_t_1 = __pyx_t_3;
       goto __pyx_L9_bool_binop_done;
     }
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 658, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 645, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_3 = (__pyx_t_2 != Py_None);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -19106,14 +18839,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
     __pyx_L9_bool_binop_done:;
     if (likely(__pyx_t_1)) {
 
-      /* "octomap/octomap.pyx":659
+      /* "octomap/octomap.pyx":646
  *             # Handle iterator case - get the current node from the iterator
  *             if hasattr(node, '_current_node') and node._current_node is not None:
  *                 if isinstance(node._current_node, OcTreeNode) and (<OcTreeNode>node._current_node).thisptr:             # <<<<<<<<<<<<<<
  *                     return self.thisptr.isNodeAtThreshold(deref((<OcTreeNode>node._current_node).thisptr))
  *                 else:
 */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 659, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_3 = __Pyx_TypeCheck(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeNode); 
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -19122,7 +18855,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
         __pyx_t_1 = __pyx_t_3;
         goto __pyx_L12_bool_binop_done;
       }
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 659, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_3 = (((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_2)->thisptr != 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -19130,7 +18863,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
       __pyx_L12_bool_binop_done:;
       if (likely(__pyx_t_1)) {
 
-        /* "octomap/octomap.pyx":660
+        /* "octomap/octomap.pyx":647
  *             if hasattr(node, '_current_node') and node._current_node is not None:
  *                 if isinstance(node._current_node, OcTreeNode) and (<OcTreeNode>node._current_node).thisptr:
  *                     return self.thisptr.isNodeAtThreshold(deref((<OcTreeNode>node._current_node).thisptr))             # <<<<<<<<<<<<<<
@@ -19138,16 +18871,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
  *                     raise NullPointerException
 */
         __Pyx_XDECREF(__pyx_r);
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 660, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_mstate_global->__pyx_n_u_current_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 647, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->isNodeAtThreshold((*((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_2)->thisptr))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 660, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->isNodeAtThreshold((*((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_2)->thisptr))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 647, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_4;
         __pyx_t_4 = 0;
         goto __pyx_L0;
 
-        /* "octomap/octomap.pyx":659
+        /* "octomap/octomap.pyx":646
  *             # Handle iterator case - get the current node from the iterator
  *             if hasattr(node, '_current_node') and node._current_node is not None:
  *                 if isinstance(node._current_node, OcTreeNode) and (<OcTreeNode>node._current_node).thisptr:             # <<<<<<<<<<<<<<
@@ -19156,7 +18889,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
 */
       }
 
-      /* "octomap/octomap.pyx":662
+      /* "octomap/octomap.pyx":649
  *                     return self.thisptr.isNodeAtThreshold(deref((<OcTreeNode>node._current_node).thisptr))
  *                 else:
  *                     raise NullPointerException             # <<<<<<<<<<<<<<
@@ -19164,14 +18897,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
  *                 # Iterator doesn't have a valid current node
 */
       /*else*/ {
-        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 662, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 649, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_Raise(__pyx_t_4, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __PYX_ERR(0, 662, __pyx_L1_error)
+        __PYX_ERR(0, 649, __pyx_L1_error)
       }
 
-      /* "octomap/octomap.pyx":658
+      /* "octomap/octomap.pyx":645
  *         elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):
  *             # Handle iterator case - get the current node from the iterator
  *             if hasattr(node, '_current_node') and node._current_node is not None:             # <<<<<<<<<<<<<<
@@ -19180,7 +18913,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
 */
     }
 
-    /* "octomap/octomap.pyx":665
+    /* "octomap/octomap.pyx":652
  *             else:
  *                 # Iterator doesn't have a valid current node
  *                 raise RuntimeError("Iterator has no current node - ensure iterator is properly initialized and advanced")             # <<<<<<<<<<<<<<
@@ -19197,15 +18930,15 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
         __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 665, __pyx_L1_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 652, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
       }
       __Pyx_Raise(__pyx_t_4, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __PYX_ERR(0, 665, __pyx_L1_error)
+      __PYX_ERR(0, 652, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":656
+    /* "octomap/octomap.pyx":643
  *             else:
  *                 raise NullPointerException
  *         elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):             # <<<<<<<<<<<<<<
@@ -19214,7 +18947,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
 */
   }
 
-  /* "octomap/octomap.pyx":667
+  /* "octomap/octomap.pyx":654
  *                 raise RuntimeError("Iterator has no current node - ensure iterator is properly initialized and advanced")
  *         else:
  *             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")             # <<<<<<<<<<<<<<
@@ -19225,9 +18958,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
     __pyx_t_5 = NULL;
     __Pyx_INCREF(__pyx_builtin_TypeError);
     __pyx_t_2 = __pyx_builtin_TypeError; 
-    __pyx_t_7 = __Pyx_PyObject_FormatSimple(((PyObject *)Py_TYPE(__pyx_v_node)), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 667, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_FormatSimple(((PyObject *)Py_TYPE(__pyx_v_node)), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 654, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Expected_OcTreeNode_or_iterator, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 667, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Expected_OcTreeNode_or_iterator, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 654, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_6 = 1;
@@ -19237,15 +18970,15 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 667, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 654, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 667, __pyx_L1_error)
+    __PYX_ERR(0, 654, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":650
+  /* "octomap/octomap.pyx":637
  *             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")
  * 
  *     def isNodeAtThreshold(self, node):             # <<<<<<<<<<<<<<
@@ -19268,7 +19001,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_30isNodeAtThreshold(struct _
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":669
+/* "octomap/octomap.pyx":656
  *             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")
  * 
  *     def getLabels(self, np.ndarray[DOUBLE_t, ndim=2] points):             # <<<<<<<<<<<<<<
@@ -19315,32 +19048,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_points,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 669, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 656, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 669, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 656, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "getLabels", 0) < 0) __PYX_ERR(0, 669, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "getLabels", 0) < 0) __PYX_ERR(0, 656, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("getLabels", 1, 1, 1, i); __PYX_ERR(0, 669, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("getLabels", 1, 1, 1, i); __PYX_ERR(0, 656, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 669, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 656, __pyx_L3_error)
     }
     __pyx_v_points = ((PyArrayObject *)values[0]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("getLabels", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 669, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("getLabels", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 656, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -19351,7 +19084,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_points), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "points", 0))) __PYX_ERR(0, 669, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_points), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "points", 0))) __PYX_ERR(0, 656, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_32getLabels(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_points);
 
   /* function exit code */
@@ -19420,11 +19153,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
   __pyx_pybuffernd_points.rcbuffer = &__pyx_pybuffer_points;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_points, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 669, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_points, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 656, __pyx_L1_error)
   }
   __pyx_pybuffernd_points.diminfo[0].strides = __pyx_pybuffernd_points.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_points.diminfo[0].shape = __pyx_pybuffernd_points.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_points.diminfo[1].strides = __pyx_pybuffernd_points.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_points.diminfo[1].shape = __pyx_pybuffernd_points.rcbuffer->pybuffer.shape[1];
 
-  /* "octomap/octomap.pyx":676
+  /* "octomap/octomap.pyx":663
  *         # -1: unknown, 0: empty, 1: occupied
  *         cdef np.ndarray[np.int32_t, ndim=1] labels = \
  *             np.full((points.shape[0],), -1, dtype=np.int32)             # <<<<<<<<<<<<<<
@@ -19432,21 +19165,21 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
  *             key = self.coordToKey(pt)
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 676, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 663, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 676, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 663, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyLong_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_points))[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 676, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_points))[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 663, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 676, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 663, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 676, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 663, __pyx_L1_error);
   __pyx_t_3 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 676, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 663, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_int32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 676, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_int32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 663, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_7 = 1;
@@ -19463,31 +19196,31 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
   #endif
   {
     PyObject *__pyx_callargs[3 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_5, __pyx_mstate_global->__pyx_int_neg_1};
-    __pyx_t_3 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 676, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 663, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_6, __pyx_t_3, __pyx_callargs+3, 0) < 0) __PYX_ERR(0, 676, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_6, __pyx_t_3, __pyx_callargs+3, 0) < 0) __PYX_ERR(0, 663, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_4, __pyx_callargs+__pyx_t_7, (3-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 676, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 663, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 676, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 663, __pyx_L1_error)
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_labels.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_1), &__Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_labels = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_labels.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 675, __pyx_L1_error)
+      __PYX_ERR(0, 662, __pyx_L1_error)
     } else {__pyx_pybuffernd_labels.diminfo[0].strides = __pyx_pybuffernd_labels.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_labels.diminfo[0].shape = __pyx_pybuffernd_labels.rcbuffer->pybuffer.shape[0];
     }
   }
   __pyx_v_labels = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":677
+  /* "octomap/octomap.pyx":664
  *         cdef np.ndarray[np.int32_t, ndim=1] labels = \
  *             np.full((points.shape[0],), -1, dtype=np.int32)
  *         for i, pt in enumerate(points):             # <<<<<<<<<<<<<<
@@ -19500,9 +19233,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
     __pyx_t_9 = 0;
     __pyx_t_10 = NULL;
   } else {
-    __pyx_t_9 = -1; __pyx_t_1 = PyObject_GetIter(((PyObject *)__pyx_v_points)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 677, __pyx_L1_error)
+    __pyx_t_9 = -1; __pyx_t_1 = PyObject_GetIter(((PyObject *)__pyx_v_points)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 664, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_10 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 677, __pyx_L1_error)
+    __pyx_t_10 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 664, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_10)) {
@@ -19510,7 +19243,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 677, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 664, __pyx_L1_error)
           #endif
           if (__pyx_t_9 >= __pyx_temp) break;
         }
@@ -19520,7 +19253,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 677, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 664, __pyx_L1_error)
           #endif
           if (__pyx_t_9 >= __pyx_temp) break;
         }
@@ -19531,20 +19264,20 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
         #endif
         ++__pyx_t_9;
       }
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 677, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 664, __pyx_L1_error)
     } else {
       __pyx_t_4 = __pyx_t_10(__pyx_t_1);
       if (unlikely(!__pyx_t_4)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 677, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 664, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
       }
     }
     __Pyx_GOTREF(__pyx_t_4);
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 677, __pyx_L1_error)
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 664, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_pt.rcbuffer->pybuffer);
@@ -19560,14 +19293,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
         __pyx_t_12 = __pyx_t_13 = __pyx_t_14 = 0;
       }
       __pyx_pybuffernd_pt.diminfo[0].strides = __pyx_pybuffernd_pt.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_pt.diminfo[0].shape = __pyx_pybuffernd_pt.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 677, __pyx_L1_error)
+      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 664, __pyx_L1_error)
     }
     __Pyx_XDECREF_SET(__pyx_v_pt, ((PyArrayObject *)__pyx_t_4));
     __pyx_t_4 = 0;
     __pyx_v_i = __pyx_t_8;
     __pyx_t_8 = (__pyx_t_8 + 1);
 
-    /* "octomap/octomap.pyx":678
+    /* "octomap/octomap.pyx":665
  *             np.full((points.shape[0],), -1, dtype=np.int32)
  *         for i, pt in enumerate(points):
  *             key = self.coordToKey(pt)             # <<<<<<<<<<<<<<
@@ -19581,14 +19314,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
       PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_pt)};
       __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_coordToKey, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 678, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 665, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeKey))))) __PYX_ERR(0, 678, __pyx_L1_error)
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeKey))))) __PYX_ERR(0, 665, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_key, ((struct __pyx_obj_7octomap_7octomap_OcTreeKey *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "octomap/octomap.pyx":679
+    /* "octomap/octomap.pyx":666
  *         for i, pt in enumerate(points):
  *             key = self.coordToKey(pt)
  *             node = self.search(key)             # <<<<<<<<<<<<<<
@@ -19602,14 +19335,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
       PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_key)};
       __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_search, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 679, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 666, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeNode))))) __PYX_ERR(0, 679, __pyx_L1_error)
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeNode))))) __PYX_ERR(0, 666, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_node, ((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "octomap/octomap.pyx":680
+    /* "octomap/octomap.pyx":667
  *             key = self.coordToKey(pt)
  *             node = self.search(key)
  *             if node is None:             # <<<<<<<<<<<<<<
@@ -19619,7 +19352,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
     __pyx_t_15 = (((PyObject *)__pyx_v_node) == Py_None);
     if (__pyx_t_15) {
 
-      /* "octomap/octomap.pyx":681
+      /* "octomap/octomap.pyx":668
  *             node = self.search(key)
  *             if node is None:
  *                 labels[i] = -1             # <<<<<<<<<<<<<<
@@ -19634,11 +19367,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
       } else if (unlikely(__pyx_t_16 >= __pyx_pybuffernd_labels.diminfo[0].shape)) __pyx_t_11 = 0;
       if (unlikely(__pyx_t_11 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_11);
-        __PYX_ERR(0, 681, __pyx_L1_error)
+        __PYX_ERR(0, 668, __pyx_L1_error)
       }
       *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_labels.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_labels.diminfo[0].strides) = -1;
 
-      /* "octomap/octomap.pyx":680
+      /* "octomap/octomap.pyx":667
  *             key = self.coordToKey(pt)
  *             node = self.search(key)
  *             if node is None:             # <<<<<<<<<<<<<<
@@ -19648,7 +19381,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
       goto __pyx_L5;
     }
 
-    /* "octomap/octomap.pyx":683
+    /* "octomap/octomap.pyx":670
  *                 labels[i] = -1
  *             else:
  *                 try:             # <<<<<<<<<<<<<<
@@ -19665,7 +19398,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
         __Pyx_XGOTREF(__pyx_t_12);
         /*try:*/ {
 
-          /* "octomap/octomap.pyx":684
+          /* "octomap/octomap.pyx":671
  *             else:
  *                 try:
  *                     labels[i] = 1 if self.isNodeOccupied(node) else 0             # <<<<<<<<<<<<<<
@@ -19679,10 +19412,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
             PyObject *__pyx_callargs[2] = {__pyx_t_3, ((PyObject *)__pyx_v_node)};
             __pyx_t_4 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_isNodeOccupied, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-            if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 684, __pyx_L6_error)
+            if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 671, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_4);
           }
-          __pyx_t_15 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_15 < 0))) __PYX_ERR(0, 684, __pyx_L6_error)
+          __pyx_t_15 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_15 < 0))) __PYX_ERR(0, 671, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           if (__pyx_t_15) {
             __pyx_t_17 = 1;
@@ -19697,11 +19430,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
           } else if (unlikely(__pyx_t_16 >= __pyx_pybuffernd_labels.diminfo[0].shape)) __pyx_t_11 = 0;
           if (unlikely(__pyx_t_11 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_11);
-            __PYX_ERR(0, 684, __pyx_L6_error)
+            __PYX_ERR(0, 671, __pyx_L6_error)
           }
           *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_labels.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_labels.diminfo[0].strides) = __pyx_t_17;
 
-          /* "octomap/octomap.pyx":683
+          /* "octomap/octomap.pyx":670
  *                 labels[i] = -1
  *             else:
  *                 try:             # <<<<<<<<<<<<<<
@@ -19720,7 +19453,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":685
+        /* "octomap/octomap.pyx":672
  *                 try:
  *                     labels[i] = 1 if self.isNodeOccupied(node) else 0
  *                 except Exception:             # <<<<<<<<<<<<<<
@@ -19730,12 +19463,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
         __pyx_t_11 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_Exception))));
         if (__pyx_t_11) {
           __Pyx_AddTraceback("octomap.octomap.OcTree.getLabels", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_3, &__pyx_t_6) < 0) __PYX_ERR(0, 685, __pyx_L8_except_error)
+          if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_3, &__pyx_t_6) < 0) __PYX_ERR(0, 672, __pyx_L8_except_error)
           __Pyx_XGOTREF(__pyx_t_4);
           __Pyx_XGOTREF(__pyx_t_3);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "octomap/octomap.pyx":686
+          /* "octomap/octomap.pyx":673
  *                     labels[i] = 1 if self.isNodeOccupied(node) else 0
  *                 except Exception:
  *                     labels[i] = -1             # <<<<<<<<<<<<<<
@@ -19750,7 +19483,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
           } else if (unlikely(__pyx_t_16 >= __pyx_pybuffernd_labels.diminfo[0].shape)) __pyx_t_11 = 0;
           if (unlikely(__pyx_t_11 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_11);
-            __PYX_ERR(0, 686, __pyx_L8_except_error)
+            __PYX_ERR(0, 673, __pyx_L8_except_error)
           }
           *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_labels.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_labels.diminfo[0].strides) = -1;
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -19760,7 +19493,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
         }
         goto __pyx_L8_except_error;
 
-        /* "octomap/octomap.pyx":683
+        /* "octomap/octomap.pyx":670
  *                 labels[i] = -1
  *             else:
  *                 try:             # <<<<<<<<<<<<<<
@@ -19783,7 +19516,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
     }
     __pyx_L5:;
 
-    /* "octomap/octomap.pyx":677
+    /* "octomap/octomap.pyx":664
  *         cdef np.ndarray[np.int32_t, ndim=1] labels = \
  *             np.full((points.shape[0],), -1, dtype=np.int32)
  *         for i, pt in enumerate(points):             # <<<<<<<<<<<<<<
@@ -19793,7 +19526,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":687
+  /* "octomap/octomap.pyx":674
  *                 except Exception:
  *                     labels[i] = -1
  *         return labels             # <<<<<<<<<<<<<<
@@ -19805,7 +19538,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
   __pyx_r = ((PyObject *)__pyx_v_labels);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":669
+  /* "octomap/octomap.pyx":656
  *             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")
  * 
  *     def getLabels(self, np.ndarray[DOUBLE_t, ndim=2] points):             # <<<<<<<<<<<<<<
@@ -19846,7 +19579,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_32getLabels(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":689
+/* "octomap/octomap.pyx":676
  *         return labels
  * 
  *     def extractPointCloud(self):             # <<<<<<<<<<<<<<
@@ -19979,7 +19712,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
   __pyx_pybuffernd_empty_arr.data = NULL;
   __pyx_pybuffernd_empty_arr.rcbuffer = &__pyx_pybuffer_empty_arr;
 
-  /* "octomap/octomap.pyx":690
+  /* "octomap/octomap.pyx":677
  * 
  *     def extractPointCloud(self):
  *         cdef float resolution = self.getResolution()             # <<<<<<<<<<<<<<
@@ -19993,38 +19726,38 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_getResolution, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 690, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 677, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_4 = __Pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_4 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 690, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_4 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_resolution = __pyx_t_4;
 
-  /* "octomap/octomap.pyx":692
+  /* "octomap/octomap.pyx":679
  *         cdef float resolution = self.getResolution()
  * 
  *         cdef list occupied = []             # <<<<<<<<<<<<<<
  *         cdef list empty = []
  *         cdef SimpleLeafIterator it
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 692, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_occupied = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":693
+  /* "octomap/octomap.pyx":680
  * 
  *         cdef list occupied = []
  *         cdef list empty = []             # <<<<<<<<<<<<<<
  *         cdef SimpleLeafIterator it
  *         cdef float size
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 693, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_empty = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":703
+  /* "octomap/octomap.pyx":690
  *         cdef np.ndarray keep
  *         cdef int dimension
  *         for it in self.begin_leafs():             # <<<<<<<<<<<<<<
@@ -20038,7 +19771,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_begin_leafs, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 703, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 690, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
@@ -20046,9 +19779,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 703, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 690, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 703, __pyx_L1_error)
+    __pyx_t_6 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 690, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -20057,7 +19790,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 703, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 690, __pyx_L1_error)
           #endif
           if (__pyx_t_5 >= __pyx_temp) break;
         }
@@ -20067,7 +19800,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 703, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 690, __pyx_L1_error)
           #endif
           if (__pyx_t_5 >= __pyx_temp) break;
         }
@@ -20078,24 +19811,24 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         #endif
         ++__pyx_t_5;
       }
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 703, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 690, __pyx_L1_error)
     } else {
       __pyx_t_1 = __pyx_t_6(__pyx_t_2);
       if (unlikely(!__pyx_t_1)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 703, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 690, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
       }
     }
     __Pyx_GOTREF(__pyx_t_1);
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafIterator))))) __PYX_ERR(0, 703, __pyx_L1_error)
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafIterator))))) __PYX_ERR(0, 690, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_it, ((struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "octomap/octomap.pyx":705
+    /* "octomap/octomap.pyx":692
  *         for it in self.begin_leafs():
  *             # Try to get occupancy status from the iterator
  *             try:             # <<<<<<<<<<<<<<
@@ -20111,7 +19844,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       __Pyx_XGOTREF(__pyx_t_9);
       /*try:*/ {
 
-        /* "octomap/octomap.pyx":706
+        /* "octomap/octomap.pyx":693
  *             # Try to get occupancy status from the iterator
  *             try:
  *                 is_occupied = self.isNodeOccupied(it)             # <<<<<<<<<<<<<<
@@ -20125,14 +19858,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
           PyObject *__pyx_callargs[2] = {__pyx_t_10, ((PyObject *)__pyx_v_it)};
           __pyx_t_1 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_isNodeOccupied, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L5_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 693, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_1);
         }
-        __pyx_t_11 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 706, __pyx_L5_error)
+        __pyx_t_11 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 693, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_v_is_occupied = __pyx_t_11;
 
-        /* "octomap/octomap.pyx":705
+        /* "octomap/octomap.pyx":692
  *         for it in self.begin_leafs():
  *             # Try to get occupancy status from the iterator
  *             try:             # <<<<<<<<<<<<<<
@@ -20148,7 +19881,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-      /* "octomap/octomap.pyx":707
+      /* "octomap/octomap.pyx":694
  *             try:
  *                 is_occupied = self.isNodeOccupied(it)
  *             except:             # <<<<<<<<<<<<<<
@@ -20157,12 +19890,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
 */
       /*except:*/ {
         __Pyx_AddTraceback("octomap.octomap.OcTree.extractPointCloud", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_10, &__pyx_t_12) < 0) __PYX_ERR(0, 707, __pyx_L7_except_error)
+        if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_10, &__pyx_t_12) < 0) __PYX_ERR(0, 694, __pyx_L7_except_error)
         __Pyx_XGOTREF(__pyx_t_1);
         __Pyx_XGOTREF(__pyx_t_10);
         __Pyx_XGOTREF(__pyx_t_12);
 
-        /* "octomap/octomap.pyx":709
+        /* "octomap/octomap.pyx":696
  *             except:
  *                 # Fallback: assume occupied if we can't determine status
  *                 is_occupied = True             # <<<<<<<<<<<<<<
@@ -20176,7 +19909,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         goto __pyx_L6_exception_handled;
       }
 
-      /* "octomap/octomap.pyx":705
+      /* "octomap/octomap.pyx":692
  *         for it in self.begin_leafs():
  *             # Try to get occupancy status from the iterator
  *             try:             # <<<<<<<<<<<<<<
@@ -20197,7 +19930,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       __pyx_L12_try_end:;
     }
 
-    /* "octomap/octomap.pyx":710
+    /* "octomap/octomap.pyx":697
  *                 # Fallback: assume occupied if we can't determine status
  *                 is_occupied = True
  *             size = it.getSize()             # <<<<<<<<<<<<<<
@@ -20211,14 +19944,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       PyObject *__pyx_callargs[2] = {__pyx_t_10, NULL};
       __pyx_t_12 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_getSize, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 710, __pyx_L1_error)
+      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 697, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
     }
-    __pyx_t_4 = __Pyx_PyFloat_AsFloat(__pyx_t_12); if (unlikely((__pyx_t_4 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 710, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFloat_AsFloat(__pyx_t_12); if (unlikely((__pyx_t_4 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 697, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     __pyx_v_size = __pyx_t_4;
 
-    /* "octomap/octomap.pyx":711
+    /* "octomap/octomap.pyx":698
  *                 is_occupied = True
  *             size = it.getSize()
  *             center = np.array(it.getCoordinate(), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -20226,9 +19959,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
  *             # Limit dimension to prevent memory issues
 */
     __pyx_t_10 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 711, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 698, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 711, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 698, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_14 = ((PyObject *)__pyx_v_it);
@@ -20238,12 +19971,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       PyObject *__pyx_callargs[2] = {__pyx_t_14, NULL};
       __pyx_t_1 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_getCoordinate, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 711, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 698, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 711, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 698, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 711, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 698, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_t_3 = 1;
@@ -20260,19 +19993,19 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_10, __pyx_t_1};
-      __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 711, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 698, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_15, __pyx_t_14, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 711, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_15, __pyx_t_14, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 698, __pyx_L1_error)
       __pyx_t_12 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_13, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_14);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 711, __pyx_L1_error)
+      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 698, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
     }
-    if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 711, __pyx_L1_error)
+    if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 698, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_center.rcbuffer->pybuffer);
@@ -20288,12 +20021,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         __pyx_t_9 = __pyx_t_8 = __pyx_t_7 = 0;
       }
       __pyx_pybuffernd_center.diminfo[0].strides = __pyx_pybuffernd_center.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_center.diminfo[0].shape = __pyx_pybuffernd_center.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 711, __pyx_L1_error)
+      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 698, __pyx_L1_error)
     }
     __Pyx_XDECREF_SET(__pyx_v_center, ((PyArrayObject *)__pyx_t_12));
     __pyx_t_12 = 0;
 
-    /* "octomap/octomap.pyx":714
+    /* "octomap/octomap.pyx":701
  * 
  *             # Limit dimension to prevent memory issues
  *             raw_dimension = max(1, round(it.getSize() / resolution))             # <<<<<<<<<<<<<<
@@ -20310,12 +20043,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
       __pyx_t_15 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_getSize, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 714, __pyx_L1_error)
+      if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 701, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
     }
-    __pyx_t_1 = PyFloat_FromDouble(__pyx_v_resolution); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 714, __pyx_L1_error)
+    __pyx_t_1 = PyFloat_FromDouble(__pyx_v_resolution); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 701, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_10 = __Pyx_PyNumber_Divide(__pyx_t_15, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 714, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyNumber_Divide(__pyx_t_15, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 701, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -20326,21 +20059,21 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 714, __pyx_L1_error)
+      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 701, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
     }
     __pyx_t_16 = 1;
-    __pyx_t_10 = __Pyx_PyLong_From_long(__pyx_t_16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 714, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyLong_From_long(__pyx_t_16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 701, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_13 = PyObject_RichCompare(__pyx_t_12, __pyx_t_10, Py_GT); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 714, __pyx_L1_error)
+    __pyx_t_13 = PyObject_RichCompare(__pyx_t_12, __pyx_t_10, Py_GT); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 701, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely((__pyx_t_17 < 0))) __PYX_ERR(0, 714, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely((__pyx_t_17 < 0))) __PYX_ERR(0, 701, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     if (__pyx_t_17) {
       __Pyx_INCREF(__pyx_t_12);
       __pyx_t_14 = __pyx_t_12;
     } else {
-      __pyx_t_13 = __Pyx_PyLong_From_long(__pyx_t_16); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 714, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyLong_From_long(__pyx_t_16); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 701, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __pyx_t_14 = __pyx_t_13;
       __pyx_t_13 = 0;
@@ -20352,7 +20085,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     __Pyx_XDECREF_SET(__pyx_v_raw_dimension, __pyx_t_12);
     __pyx_t_12 = 0;
 
-    /* "octomap/octomap.pyx":715
+    /* "octomap/octomap.pyx":702
  *             # Limit dimension to prevent memory issues
  *             raw_dimension = max(1, round(it.getSize() / resolution))
  *             dimension = min(raw_dimension, 100)  # Cap at 100 to prevent memory issues             # <<<<<<<<<<<<<<
@@ -20362,14 +20095,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     __pyx_t_16 = 0x64;
     __Pyx_INCREF(__pyx_v_raw_dimension);
     __pyx_t_12 = __pyx_v_raw_dimension;
-    __pyx_t_13 = __Pyx_PyLong_From_long(__pyx_t_16); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 715, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyLong_From_long(__pyx_t_16); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 702, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_10 = PyObject_RichCompare(__pyx_t_13, __pyx_t_12, Py_LT); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 715, __pyx_L1_error)
+    __pyx_t_10 = PyObject_RichCompare(__pyx_t_13, __pyx_t_12, Py_LT); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 702, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-    __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely((__pyx_t_17 < 0))) __PYX_ERR(0, 715, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely((__pyx_t_17 < 0))) __PYX_ERR(0, 702, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     if (__pyx_t_17) {
-      __pyx_t_10 = __Pyx_PyLong_From_long(__pyx_t_16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 715, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyLong_From_long(__pyx_t_16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 702, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_14 = __pyx_t_10;
       __pyx_t_10 = 0;
@@ -20378,23 +20111,23 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       __pyx_t_14 = __pyx_t_12;
     }
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __pyx_t_11 = __Pyx_PyLong_As_int(__pyx_t_14); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 715, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyLong_As_int(__pyx_t_14); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 702, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_v_dimension = __pyx_t_11;
 
-    /* "octomap/octomap.pyx":716
+    /* "octomap/octomap.pyx":703
  *             raw_dimension = max(1, round(it.getSize() / resolution))
  *             dimension = min(raw_dimension, 100)  # Cap at 100 to prevent memory issues
  *             origin = center - (dimension / 2 - 0.5) * resolution             # <<<<<<<<<<<<<<
  *             indices = np.column_stack(np.nonzero(np.ones((dimension, dimension, dimension))))
  *             points = origin + indices * np.array(resolution)
 */
-    __pyx_t_14 = PyFloat_FromDouble((((((double)__pyx_v_dimension) / 2.0) - 0.5) * __pyx_v_resolution)); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 716, __pyx_L1_error)
+    __pyx_t_14 = PyFloat_FromDouble((((((double)__pyx_v_dimension) / 2.0) - 0.5) * __pyx_v_resolution)); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 703, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_12 = PyNumber_Subtract(((PyObject *)__pyx_v_center), __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 716, __pyx_L1_error)
+    __pyx_t_12 = PyNumber_Subtract(((PyObject *)__pyx_v_center), __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 703, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 716, __pyx_L1_error)
+    if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 703, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_origin.rcbuffer->pybuffer);
@@ -20410,12 +20143,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         __pyx_t_7 = __pyx_t_8 = __pyx_t_9 = 0;
       }
       __pyx_pybuffernd_origin.diminfo[0].strides = __pyx_pybuffernd_origin.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_origin.diminfo[0].shape = __pyx_pybuffernd_origin.rcbuffer->pybuffer.shape[0];
-      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 716, __pyx_L1_error)
+      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 703, __pyx_L1_error)
     }
     __Pyx_XDECREF_SET(__pyx_v_origin, ((PyArrayObject *)__pyx_t_12));
     __pyx_t_12 = 0;
 
-    /* "octomap/octomap.pyx":717
+    /* "octomap/octomap.pyx":704
  *             dimension = min(raw_dimension, 100)  # Cap at 100 to prevent memory issues
  *             origin = center - (dimension / 2 - 0.5) * resolution
  *             indices = np.column_stack(np.nonzero(np.ones((dimension, dimension, dimension))))             # <<<<<<<<<<<<<<
@@ -20423,37 +20156,37 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
  * 
 */
     __pyx_t_14 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_column_stack); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_column_stack); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_t_1 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_nonzero); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_nonzero); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
     __pyx_t_19 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_20, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_20, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_20);
-    __pyx_t_21 = __Pyx_PyObject_GetAttrStr(__pyx_t_20, __pyx_mstate_global->__pyx_n_u_ones); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_21 = __Pyx_PyObject_GetAttrStr(__pyx_t_20, __pyx_mstate_global->__pyx_n_u_ones); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_21);
     __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-    __pyx_t_20 = __Pyx_PyLong_From_int(__pyx_v_dimension); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_20 = __Pyx_PyLong_From_int(__pyx_v_dimension); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_20);
-    __pyx_t_22 = __Pyx_PyLong_From_int(__pyx_v_dimension); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_22 = __Pyx_PyLong_From_int(__pyx_v_dimension); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_22);
-    __pyx_t_23 = __Pyx_PyLong_From_int(__pyx_v_dimension); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_23 = __Pyx_PyLong_From_int(__pyx_v_dimension); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_23);
-    __pyx_t_24 = PyTuple_New(3); if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_24 = PyTuple_New(3); if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_24);
     __Pyx_GIVEREF(__pyx_t_20);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_24, 0, __pyx_t_20) != (0)) __PYX_ERR(0, 717, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_24, 0, __pyx_t_20) != (0)) __PYX_ERR(0, 704, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_22);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_24, 1, __pyx_t_22) != (0)) __PYX_ERR(0, 717, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_24, 1, __pyx_t_22) != (0)) __PYX_ERR(0, 704, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_23);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_24, 2, __pyx_t_23) != (0)) __PYX_ERR(0, 717, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_24, 2, __pyx_t_23) != (0)) __PYX_ERR(0, 704, __pyx_L1_error);
     __pyx_t_20 = 0;
     __pyx_t_22 = 0;
     __pyx_t_23 = 0;
@@ -20475,7 +20208,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
       __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-      if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 717, __pyx_L1_error)
+      if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 704, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
     }
     __pyx_t_3 = 1;
@@ -20496,7 +20229,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 717, __pyx_L1_error)
+      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 704, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
     }
     __pyx_t_3 = 1;
@@ -20517,10 +20250,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 717, __pyx_L1_error)
+      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 704, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
     }
-    if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 717, __pyx_L1_error)
+    if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 704, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_indices.rcbuffer->pybuffer);
@@ -20536,12 +20269,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         __pyx_t_9 = __pyx_t_8 = __pyx_t_7 = 0;
       }
       __pyx_pybuffernd_indices.diminfo[0].strides = __pyx_pybuffernd_indices.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_indices.diminfo[0].shape = __pyx_pybuffernd_indices.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_indices.diminfo[1].strides = __pyx_pybuffernd_indices.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_indices.diminfo[1].shape = __pyx_pybuffernd_indices.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 717, __pyx_L1_error)
+      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 704, __pyx_L1_error)
     }
     __Pyx_XDECREF_SET(__pyx_v_indices, ((PyArrayObject *)__pyx_t_12));
     __pyx_t_12 = 0;
 
-    /* "octomap/octomap.pyx":718
+    /* "octomap/octomap.pyx":705
  *             origin = center - (dimension / 2 - 0.5) * resolution
  *             indices = np.column_stack(np.nonzero(np.ones((dimension, dimension, dimension))))
  *             points = origin + indices * np.array(resolution)             # <<<<<<<<<<<<<<
@@ -20549,12 +20282,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
  *             if is_occupied:
 */
     __pyx_t_13 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 718, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 705, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 718, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 705, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_resolution); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 718, __pyx_L1_error)
+    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_resolution); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 705, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_3 = 1;
     #if CYTHON_UNPACK_METHODS
@@ -20574,16 +20307,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 718, __pyx_L1_error)
+      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 705, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
     }
-    __pyx_t_14 = PyNumber_Multiply(((PyObject *)__pyx_v_indices), __pyx_t_12); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 718, __pyx_L1_error)
+    __pyx_t_14 = PyNumber_Multiply(((PyObject *)__pyx_v_indices), __pyx_t_12); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 705, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __pyx_t_12 = PyNumber_Add(((PyObject *)__pyx_v_origin), __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 718, __pyx_L1_error)
+    __pyx_t_12 = PyNumber_Add(((PyObject *)__pyx_v_origin), __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 705, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 718, __pyx_L1_error)
+    if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 705, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_points.rcbuffer->pybuffer);
@@ -20599,12 +20332,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         __pyx_t_7 = __pyx_t_8 = __pyx_t_9 = 0;
       }
       __pyx_pybuffernd_points.diminfo[0].strides = __pyx_pybuffernd_points.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_points.diminfo[0].shape = __pyx_pybuffernd_points.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_points.diminfo[1].strides = __pyx_pybuffernd_points.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_points.diminfo[1].shape = __pyx_pybuffernd_points.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 718, __pyx_L1_error)
+      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 705, __pyx_L1_error)
     }
     __Pyx_XDECREF_SET(__pyx_v_points, ((PyArrayObject *)__pyx_t_12));
     __pyx_t_12 = 0;
 
-    /* "octomap/octomap.pyx":720
+    /* "octomap/octomap.pyx":707
  *             points = origin + indices * np.array(resolution)
  * 
  *             if is_occupied:             # <<<<<<<<<<<<<<
@@ -20614,16 +20347,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     __pyx_t_17 = (__pyx_v_is_occupied != 0);
     if (__pyx_t_17) {
 
-      /* "octomap/octomap.pyx":721
+      /* "octomap/octomap.pyx":708
  * 
  *             if is_occupied:
  *                 occupied.append(points)             # <<<<<<<<<<<<<<
  *             else:
  *                 empty.append(points)
 */
-      __pyx_t_25 = __Pyx_PyList_Append(__pyx_v_occupied, ((PyObject *)__pyx_v_points)); if (unlikely(__pyx_t_25 == ((int)-1))) __PYX_ERR(0, 721, __pyx_L1_error)
+      __pyx_t_25 = __Pyx_PyList_Append(__pyx_v_occupied, ((PyObject *)__pyx_v_points)); if (unlikely(__pyx_t_25 == ((int)-1))) __PYX_ERR(0, 708, __pyx_L1_error)
 
-      /* "octomap/octomap.pyx":720
+      /* "octomap/octomap.pyx":707
  *             points = origin + indices * np.array(resolution)
  * 
  *             if is_occupied:             # <<<<<<<<<<<<<<
@@ -20633,7 +20366,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
       goto __pyx_L15;
     }
 
-    /* "octomap/octomap.pyx":723
+    /* "octomap/octomap.pyx":710
  *                 occupied.append(points)
  *             else:
  *                 empty.append(points)             # <<<<<<<<<<<<<<
@@ -20641,11 +20374,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
  *         cdef np.ndarray[DOUBLE_t, ndim=2] occupied_arr
 */
     /*else*/ {
-      __pyx_t_25 = __Pyx_PyList_Append(__pyx_v_empty, ((PyObject *)__pyx_v_points)); if (unlikely(__pyx_t_25 == ((int)-1))) __PYX_ERR(0, 723, __pyx_L1_error)
+      __pyx_t_25 = __Pyx_PyList_Append(__pyx_v_empty, ((PyObject *)__pyx_v_points)); if (unlikely(__pyx_t_25 == ((int)-1))) __PYX_ERR(0, 710, __pyx_L1_error)
     }
     __pyx_L15:;
 
-    /* "octomap/octomap.pyx":703
+    /* "octomap/octomap.pyx":690
  *         cdef np.ndarray keep
  *         cdef int dimension
  *         for it in self.begin_leafs():             # <<<<<<<<<<<<<<
@@ -20655,18 +20388,18 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "octomap/octomap.pyx":727
+  /* "octomap/octomap.pyx":714
  *         cdef np.ndarray[DOUBLE_t, ndim=2] occupied_arr
  *         cdef np.ndarray[DOUBLE_t, ndim=2] empty_arr
  *         if len(occupied) == 0:             # <<<<<<<<<<<<<<
  *             occupied_arr = np.zeros((0, 3), dtype=float)
  *         else:
 */
-  __pyx_t_5 = __Pyx_PyList_GET_SIZE(__pyx_v_occupied); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 727, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyList_GET_SIZE(__pyx_v_occupied); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 714, __pyx_L1_error)
   __pyx_t_17 = (__pyx_t_5 == 0);
   if (__pyx_t_17) {
 
-    /* "octomap/octomap.pyx":728
+    /* "octomap/octomap.pyx":715
  *         cdef np.ndarray[DOUBLE_t, ndim=2] empty_arr
  *         if len(occupied) == 0:
  *             occupied_arr = np.zeros((0, 3), dtype=float)             # <<<<<<<<<<<<<<
@@ -20674,9 +20407,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
  *             occupied_arr = np.concatenate(occupied, axis=0)
 */
     __pyx_t_12 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 728, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 728, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_t_3 = 1;
@@ -20693,17 +20426,17 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_12, __pyx_mstate_global->__pyx_tuple[0]};
-      __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 728, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 715, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_14, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 728, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_14, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 715, __pyx_L1_error)
       __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_10, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_14);
       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 715, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 728, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 715, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_occupied_arr.rcbuffer->pybuffer);
@@ -20719,12 +20452,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         __pyx_t_9 = __pyx_t_8 = __pyx_t_7 = 0;
       }
       __pyx_pybuffernd_occupied_arr.diminfo[0].strides = __pyx_pybuffernd_occupied_arr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_occupied_arr.diminfo[0].shape = __pyx_pybuffernd_occupied_arr.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_occupied_arr.diminfo[1].strides = __pyx_pybuffernd_occupied_arr.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_occupied_arr.diminfo[1].shape = __pyx_pybuffernd_occupied_arr.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 728, __pyx_L1_error)
+      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 715, __pyx_L1_error)
     }
     __pyx_v_occupied_arr = ((PyArrayObject *)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "octomap/octomap.pyx":727
+    /* "octomap/octomap.pyx":714
  *         cdef np.ndarray[DOUBLE_t, ndim=2] occupied_arr
  *         cdef np.ndarray[DOUBLE_t, ndim=2] empty_arr
  *         if len(occupied) == 0:             # <<<<<<<<<<<<<<
@@ -20734,7 +20467,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     goto __pyx_L17;
   }
 
-  /* "octomap/octomap.pyx":730
+  /* "octomap/octomap.pyx":717
  *             occupied_arr = np.zeros((0, 3), dtype=float)
  *         else:
  *             occupied_arr = np.concatenate(occupied, axis=0)             # <<<<<<<<<<<<<<
@@ -20743,9 +20476,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
 */
   /*else*/ {
     __pyx_t_10 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 730, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 717, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_concatenate); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 730, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_concatenate); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 717, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_t_3 = 1;
@@ -20762,17 +20495,17 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_10, __pyx_v_occupied};
-      __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 730, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 717, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_axis, __pyx_mstate_global->__pyx_int_0, __pyx_t_14, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 730, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_axis, __pyx_mstate_global->__pyx_int_0, __pyx_t_14, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 717, __pyx_L1_error)
       __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_12, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_14);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 730, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 717, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 730, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 717, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_occupied_arr.rcbuffer->pybuffer);
@@ -20788,25 +20521,25 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         __pyx_t_7 = __pyx_t_8 = __pyx_t_9 = 0;
       }
       __pyx_pybuffernd_occupied_arr.diminfo[0].strides = __pyx_pybuffernd_occupied_arr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_occupied_arr.diminfo[0].shape = __pyx_pybuffernd_occupied_arr.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_occupied_arr.diminfo[1].strides = __pyx_pybuffernd_occupied_arr.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_occupied_arr.diminfo[1].shape = __pyx_pybuffernd_occupied_arr.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 730, __pyx_L1_error)
+      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 717, __pyx_L1_error)
     }
     __pyx_v_occupied_arr = ((PyArrayObject *)__pyx_t_2);
     __pyx_t_2 = 0;
   }
   __pyx_L17:;
 
-  /* "octomap/octomap.pyx":731
+  /* "octomap/octomap.pyx":718
  *         else:
  *             occupied_arr = np.concatenate(occupied, axis=0)
  *         if len(empty) == 0:             # <<<<<<<<<<<<<<
  *             empty_arr = np.zeros((0, 3), dtype=float)
  *         else:
 */
-  __pyx_t_5 = __Pyx_PyList_GET_SIZE(__pyx_v_empty); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 731, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyList_GET_SIZE(__pyx_v_empty); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 718, __pyx_L1_error)
   __pyx_t_17 = (__pyx_t_5 == 0);
   if (__pyx_t_17) {
 
-    /* "octomap/octomap.pyx":732
+    /* "octomap/octomap.pyx":719
  *             occupied_arr = np.concatenate(occupied, axis=0)
  *         if len(empty) == 0:
  *             empty_arr = np.zeros((0, 3), dtype=float)             # <<<<<<<<<<<<<<
@@ -20814,9 +20547,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
  *             empty_arr = np.concatenate(empty, axis=0)
 */
     __pyx_t_12 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 732, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 719, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 732, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 719, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_t_3 = 1;
@@ -20833,17 +20566,17 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_12, __pyx_mstate_global->__pyx_tuple[0]};
-      __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 732, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 719, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_14, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 732, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_14, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 719, __pyx_L1_error)
       __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_10, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_14);
       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 732, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 719, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 732, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 719, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_empty_arr.rcbuffer->pybuffer);
@@ -20859,12 +20592,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         __pyx_t_9 = __pyx_t_8 = __pyx_t_7 = 0;
       }
       __pyx_pybuffernd_empty_arr.diminfo[0].strides = __pyx_pybuffernd_empty_arr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_empty_arr.diminfo[0].shape = __pyx_pybuffernd_empty_arr.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_empty_arr.diminfo[1].strides = __pyx_pybuffernd_empty_arr.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_empty_arr.diminfo[1].shape = __pyx_pybuffernd_empty_arr.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 732, __pyx_L1_error)
+      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 719, __pyx_L1_error)
     }
     __pyx_v_empty_arr = ((PyArrayObject *)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "octomap/octomap.pyx":731
+    /* "octomap/octomap.pyx":718
  *         else:
  *             occupied_arr = np.concatenate(occupied, axis=0)
  *         if len(empty) == 0:             # <<<<<<<<<<<<<<
@@ -20874,7 +20607,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     goto __pyx_L18;
   }
 
-  /* "octomap/octomap.pyx":734
+  /* "octomap/octomap.pyx":721
  *             empty_arr = np.zeros((0, 3), dtype=float)
  *         else:
  *             empty_arr = np.concatenate(empty, axis=0)             # <<<<<<<<<<<<<<
@@ -20883,9 +20616,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
 */
   /*else*/ {
     __pyx_t_10 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 734, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 721, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_concatenate); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 734, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_concatenate); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 721, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_t_3 = 1;
@@ -20902,17 +20635,17 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_10, __pyx_v_empty};
-      __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 734, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 721, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_axis, __pyx_mstate_global->__pyx_int_0, __pyx_t_14, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 734, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_axis, __pyx_mstate_global->__pyx_int_0, __pyx_t_14, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 721, __pyx_L1_error)
       __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_12, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_14);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 734, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 721, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 734, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 721, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_empty_arr.rcbuffer->pybuffer);
@@ -20928,14 +20661,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
         __pyx_t_7 = __pyx_t_8 = __pyx_t_9 = 0;
       }
       __pyx_pybuffernd_empty_arr.diminfo[0].strides = __pyx_pybuffernd_empty_arr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_empty_arr.diminfo[0].shape = __pyx_pybuffernd_empty_arr.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_empty_arr.diminfo[1].strides = __pyx_pybuffernd_empty_arr.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_empty_arr.diminfo[1].shape = __pyx_pybuffernd_empty_arr.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 734, __pyx_L1_error)
+      if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 721, __pyx_L1_error)
     }
     __pyx_v_empty_arr = ((PyArrayObject *)__pyx_t_2);
     __pyx_t_2 = 0;
   }
   __pyx_L18:;
 
-  /* "octomap/octomap.pyx":735
+  /* "octomap/octomap.pyx":722
  *         else:
  *             empty_arr = np.concatenate(empty, axis=0)
  *         return occupied_arr, empty_arr             # <<<<<<<<<<<<<<
@@ -20943,19 +20676,19 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
  *     def insertPointCloud(self,
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 735, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF((PyObject *)__pyx_v_occupied_arr);
   __Pyx_GIVEREF((PyObject *)__pyx_v_occupied_arr);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_occupied_arr)) != (0)) __PYX_ERR(0, 735, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_occupied_arr)) != (0)) __PYX_ERR(0, 722, __pyx_L1_error);
   __Pyx_INCREF((PyObject *)__pyx_v_empty_arr);
   __Pyx_GIVEREF((PyObject *)__pyx_v_empty_arr);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, ((PyObject *)__pyx_v_empty_arr)) != (0)) __PYX_ERR(0, 735, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, ((PyObject *)__pyx_v_empty_arr)) != (0)) __PYX_ERR(0, 722, __pyx_L1_error);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":689
+  /* "octomap/octomap.pyx":676
  *         return labels
  * 
  *     def extractPointCloud(self):             # <<<<<<<<<<<<<<
@@ -21016,7 +20749,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_34extractPointCloud(struct _
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":737
+/* "octomap/octomap.pyx":724
  *         return occupied_arr, empty_arr
  * 
  *     def insertPointCloud(self,             # <<<<<<<<<<<<<<
@@ -21068,37 +20801,37 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_pointcloud,&__pyx_mstate_global->__pyx_n_u_origin,&__pyx_mstate_global->__pyx_n_u_maxrange,&__pyx_mstate_global->__pyx_n_u_lazy_eval,&__pyx_mstate_global->__pyx_n_u_discretize,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 737, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 724, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  5:
         values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 737, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 724, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 737, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 724, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 737, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 724, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 737, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 724, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 737, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 724, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "insertPointCloud", 0) < 0) __PYX_ERR(0, 737, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "insertPointCloud", 0) < 0) __PYX_ERR(0, 724, __pyx_L3_error)
       if (!values[2]) values[2] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_float_neg_1_));
 
-      /* "octomap/octomap.pyx":741
+      /* "octomap/octomap.pyx":728
  *                          np.ndarray[DOUBLE_t, ndim=1] origin,
  *                          maxrange=-1.,
  *                          lazy_eval=False,             # <<<<<<<<<<<<<<
@@ -21107,7 +20840,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 */
       if (!values[3]) values[3] = __Pyx_NewRef(((PyObject *)Py_False));
 
-      /* "octomap/octomap.pyx":742
+      /* "octomap/octomap.pyx":729
  *                          maxrange=-1.,
  *                          lazy_eval=False,
  *                          discretize=False):             # <<<<<<<<<<<<<<
@@ -21116,33 +20849,33 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 */
       if (!values[4]) values[4] = __Pyx_NewRef(((PyObject *)Py_False));
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("insertPointCloud", 0, 2, 5, i); __PYX_ERR(0, 737, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("insertPointCloud", 0, 2, 5, i); __PYX_ERR(0, 724, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  5:
         values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 737, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 724, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 737, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 724, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 737, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 724, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 737, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 724, __pyx_L3_error)
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 737, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 724, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
       if (!values[2]) values[2] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_float_neg_1_));
 
-      /* "octomap/octomap.pyx":741
+      /* "octomap/octomap.pyx":728
  *                          np.ndarray[DOUBLE_t, ndim=1] origin,
  *                          maxrange=-1.,
  *                          lazy_eval=False,             # <<<<<<<<<<<<<<
@@ -21151,7 +20884,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 */
       if (!values[3]) values[3] = __Pyx_NewRef(((PyObject *)Py_False));
 
-      /* "octomap/octomap.pyx":742
+      /* "octomap/octomap.pyx":729
  *                          maxrange=-1.,
  *                          lazy_eval=False,
  *                          discretize=False):             # <<<<<<<<<<<<<<
@@ -21168,7 +20901,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("insertPointCloud", 0, 2, 5, __pyx_nargs); __PYX_ERR(0, 737, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("insertPointCloud", 0, 2, 5, __pyx_nargs); __PYX_ERR(0, 724, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21179,11 +20912,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pointcloud), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "pointcloud", 0))) __PYX_ERR(0, 738, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_origin), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "origin", 0))) __PYX_ERR(0, 739, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pointcloud), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "pointcloud", 0))) __PYX_ERR(0, 725, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_origin), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "origin", 0))) __PYX_ERR(0, 726, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_pointcloud, __pyx_v_origin, __pyx_v_maxrange, __pyx_v_lazy_eval, __pyx_v_discretize);
 
-  /* "octomap/octomap.pyx":737
+  /* "octomap/octomap.pyx":724
  *         return occupied_arr, empty_arr
  * 
  *     def insertPointCloud(self,             # <<<<<<<<<<<<<<
@@ -21247,16 +20980,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
   __pyx_pybuffernd_origin.rcbuffer = &__pyx_pybuffer_origin;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_pointcloud.rcbuffer->pybuffer, (PyObject*)__pyx_v_pointcloud, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 737, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_pointcloud.rcbuffer->pybuffer, (PyObject*)__pyx_v_pointcloud, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 724, __pyx_L1_error)
   }
   __pyx_pybuffernd_pointcloud.diminfo[0].strides = __pyx_pybuffernd_pointcloud.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_pointcloud.diminfo[0].shape = __pyx_pybuffernd_pointcloud.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_pointcloud.diminfo[1].strides = __pyx_pybuffernd_pointcloud.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_pointcloud.diminfo[1].shape = __pyx_pybuffernd_pointcloud.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_origin.rcbuffer->pybuffer, (PyObject*)__pyx_v_origin, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 737, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_origin.rcbuffer->pybuffer, (PyObject*)__pyx_v_origin, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 724, __pyx_L1_error)
   }
   __pyx_pybuffernd_origin.diminfo[0].strides = __pyx_pybuffernd_origin.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_origin.diminfo[0].shape = __pyx_pybuffernd_origin.rcbuffer->pybuffer.shape[0];
 
-  /* "octomap/octomap.pyx":755
+  /* "octomap/octomap.pyx":742
  *         This speeds up the insertion, but you need to call updateInnerOccupancy() when done.
  *         """
  *         cdef defs.Pointcloud pc = defs.Pointcloud()             # <<<<<<<<<<<<<<
@@ -21267,11 +21000,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
     __pyx_t_1 = octomap::Pointcloud();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 755, __pyx_L1_error)
+    __PYX_ERR(0, 742, __pyx_L1_error)
   }
   __pyx_v_pc = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_1);
 
-  /* "octomap/octomap.pyx":756
+  /* "octomap/octomap.pyx":743
  *         """
  *         cdef defs.Pointcloud pc = defs.Pointcloud()
  *         for p in pointcloud:             # <<<<<<<<<<<<<<
@@ -21283,9 +21016,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
     __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(((PyObject *)__pyx_v_pointcloud)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 756, __pyx_L1_error)
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(((PyObject *)__pyx_v_pointcloud)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 743, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 756, __pyx_L1_error)
+    __pyx_t_4 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 743, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_4)) {
@@ -21293,7 +21026,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 756, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 743, __pyx_L1_error)
           #endif
           if (__pyx_t_3 >= __pyx_temp) break;
         }
@@ -21303,7 +21036,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 756, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 743, __pyx_L1_error)
           #endif
           if (__pyx_t_3 >= __pyx_temp) break;
         }
@@ -21314,13 +21047,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
         #endif
         ++__pyx_t_3;
       }
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 756, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 743, __pyx_L1_error)
     } else {
       __pyx_t_5 = __pyx_t_4(__pyx_t_2);
       if (unlikely(!__pyx_t_5)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 756, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 743, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -21330,43 +21063,43 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
     __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "octomap/octomap.pyx":757
+    /* "octomap/octomap.pyx":744
  *         cdef defs.Pointcloud pc = defs.Pointcloud()
  *         for p in pointcloud:
  *             pc.push_back(<float>p[0],             # <<<<<<<<<<<<<<
  *                          <float>p[1],
  *                          <float>p[2])
 */
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_p, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 757, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_p, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 744, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 757, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 744, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "octomap/octomap.pyx":758
+    /* "octomap/octomap.pyx":745
  *         for p in pointcloud:
  *             pc.push_back(<float>p[0],
  *                          <float>p[1],             # <<<<<<<<<<<<<<
  *                          <float>p[2])
  * 
 */
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_p, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 758, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_p, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 745, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_7 = __Pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 758, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 745, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "octomap/octomap.pyx":759
+    /* "octomap/octomap.pyx":746
  *             pc.push_back(<float>p[0],
  *                          <float>p[1],
  *                          <float>p[2])             # <<<<<<<<<<<<<<
  * 
  *         self.thisptr.insertPointCloud(pc,
 */
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_p, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 759, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_p, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 746, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_8 = __Pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_8 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 759, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_8 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 746, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "octomap/octomap.pyx":757
+    /* "octomap/octomap.pyx":744
  *         cdef defs.Pointcloud pc = defs.Pointcloud()
  *         for p in pointcloud:
  *             pc.push_back(<float>p[0],             # <<<<<<<<<<<<<<
@@ -21375,7 +21108,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
 */
     __pyx_v_pc.push_back(((float)__pyx_t_6), ((float)__pyx_t_7), ((float)__pyx_t_8));
 
-    /* "octomap/octomap.pyx":756
+    /* "octomap/octomap.pyx":743
  *         """
  *         cdef defs.Pointcloud pc = defs.Pointcloud()
  *         for p in pointcloud:             # <<<<<<<<<<<<<<
@@ -21385,7 +21118,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "octomap/octomap.pyx":762
+  /* "octomap/octomap.pyx":749
  * 
  *         self.thisptr.insertPointCloud(pc,
  *                                       defs.Vector3(<float>origin[0],             # <<<<<<<<<<<<<<
@@ -21400,10 +21133,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
   } else if (unlikely(__pyx_t_9 >= __pyx_pybuffernd_origin.diminfo[0].shape)) __pyx_t_10 = 0;
   if (unlikely(__pyx_t_10 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_10);
-    __PYX_ERR(0, 762, __pyx_L1_error)
+    __PYX_ERR(0, 749, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":763
+  /* "octomap/octomap.pyx":750
  *         self.thisptr.insertPointCloud(pc,
  *                                       defs.Vector3(<float>origin[0],
  *                                                    <float>origin[1],             # <<<<<<<<<<<<<<
@@ -21418,10 +21151,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
   } else if (unlikely(__pyx_t_11 >= __pyx_pybuffernd_origin.diminfo[0].shape)) __pyx_t_10 = 0;
   if (unlikely(__pyx_t_10 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_10);
-    __PYX_ERR(0, 763, __pyx_L1_error)
+    __PYX_ERR(0, 750, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":764
+  /* "octomap/octomap.pyx":751
  *                                       defs.Vector3(<float>origin[0],
  *                                                    <float>origin[1],
  *                                                    <float>origin[2]),             # <<<<<<<<<<<<<<
@@ -21436,10 +21169,10 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
   } else if (unlikely(__pyx_t_12 >= __pyx_pybuffernd_origin.diminfo[0].shape)) __pyx_t_10 = 0;
   if (unlikely(__pyx_t_10 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_10);
-    __PYX_ERR(0, 764, __pyx_L1_error)
+    __PYX_ERR(0, 751, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":762
+  /* "octomap/octomap.pyx":749
  * 
  *         self.thisptr.insertPointCloud(pc,
  *                                       defs.Vector3(<float>origin[0],             # <<<<<<<<<<<<<<
@@ -21450,37 +21183,37 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
     __pyx_t_13 = octomath::Vector3(((float)(*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_origin.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_origin.diminfo[0].strides))), ((float)(*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_origin.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_origin.diminfo[0].strides))), ((float)(*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_origin.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_origin.diminfo[0].strides))));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 762, __pyx_L1_error)
+    __PYX_ERR(0, 749, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":765
+  /* "octomap/octomap.pyx":752
  *                                                    <float>origin[1],
  *                                                    <float>origin[2]),
  *                                       <double?>maxrange,             # <<<<<<<<<<<<<<
  *                                       bool(lazy_eval),
  *                                       bool(discretize))
 */
-  __pyx_t_14 = __Pyx_PyFloat_AsDouble(__pyx_v_maxrange); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 765, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyFloat_AsDouble(__pyx_v_maxrange); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 752, __pyx_L1_error)
 
-  /* "octomap/octomap.pyx":766
+  /* "octomap/octomap.pyx":753
  *                                                    <float>origin[2]),
  *                                       <double?>maxrange,
  *                                       bool(lazy_eval),             # <<<<<<<<<<<<<<
  *                                       bool(discretize))
  * 
 */
-  __pyx_t_15 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_15 < 0))) __PYX_ERR(0, 766, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_15 < 0))) __PYX_ERR(0, 753, __pyx_L1_error)
 
-  /* "octomap/octomap.pyx":767
+  /* "octomap/octomap.pyx":754
  *                                       <double?>maxrange,
  *                                       bool(lazy_eval),
  *                                       bool(discretize))             # <<<<<<<<<<<<<<
  * 
  *     def begin_tree(self, maxDepth=0):
 */
-  __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_v_discretize); if (unlikely((__pyx_t_16 < 0))) __PYX_ERR(0, 767, __pyx_L1_error)
+  __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_v_discretize); if (unlikely((__pyx_t_16 < 0))) __PYX_ERR(0, 754, __pyx_L1_error)
 
-  /* "octomap/octomap.pyx":761
+  /* "octomap/octomap.pyx":748
  *                          <float>p[2])
  * 
  *         self.thisptr.insertPointCloud(pc,             # <<<<<<<<<<<<<<
@@ -21489,7 +21222,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
 */
   __pyx_v_self->thisptr->insertPointCloud(__pyx_v_pc, __pyx_t_13, ((double)__pyx_t_14), (!(!__pyx_t_15)), (!(!__pyx_t_16)));
 
-  /* "octomap/octomap.pyx":737
+  /* "octomap/octomap.pyx":724
  *         return occupied_arr, empty_arr
  * 
  *     def insertPointCloud(self,             # <<<<<<<<<<<<<<
@@ -21523,7 +21256,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_36insertPointCloud(struct __
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":769
+/* "octomap/octomap.pyx":756
  *                                       bool(discretize))
  * 
  *     def begin_tree(self, maxDepth=0):             # <<<<<<<<<<<<<<
@@ -21571,24 +21304,24 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_maxDepth,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 769, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 756, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 769, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 756, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "begin_tree", 0) < 0) __PYX_ERR(0, 769, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "begin_tree", 0) < 0) __PYX_ERR(0, 756, __pyx_L3_error)
       if (!values[0]) values[0] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_int_0));
     } else {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 769, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 756, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
@@ -21599,7 +21332,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("begin_tree", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 769, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("begin_tree", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 756, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21632,7 +21365,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_38begin_tree(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("begin_tree", 0);
 
-  /* "octomap/octomap.pyx":771
+  /* "octomap/octomap.pyx":758
  *     def begin_tree(self, maxDepth=0):
  *         """Return a simplified tree iterator"""
  *         return SimpleTreeIterator(self, maxDepth)             # <<<<<<<<<<<<<<
@@ -21649,14 +21382,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_38begin_tree(struct __pyx_ob
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (3-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 771, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 758, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_r = ((PyObject *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":769
+  /* "octomap/octomap.pyx":756
  *                                       bool(discretize))
  * 
  *     def begin_tree(self, maxDepth=0):             # <<<<<<<<<<<<<<
@@ -21677,12 +21410,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_38begin_tree(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":773
+/* "octomap/octomap.pyx":760
  *         return SimpleTreeIterator(self, maxDepth)
  * 
  *     def begin_leafs(self, maxDepth=0):             # <<<<<<<<<<<<<<
- *         """Return a simplified leaf iterator"""
- *         return SimpleLeafIterator(self, maxDepth)
+ *         """
+ *         Return a simplified leaf iterator
 */
 
 /* Python wrapper */
@@ -21693,7 +21426,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_7octomap_7octomap_6OcTree_40begin_leafs, "Return a simplified leaf iterator");
+PyDoc_STRVAR(__pyx_doc_7octomap_7octomap_6OcTree_40begin_leafs, "\n        Return a simplified leaf iterator\n        \n        Args:\n            maxDepth (int): Maximum depth for iteration\n                - 0 (default): Iterate through all actual leaf nodes at any depth.\n                              This is the recommended setting for most use cases.\n                - N > 0: Iterate through nodes specifically at depth N.\n                        Note: These may be internal nodes with larger sizes,\n                        not necessarily leaf nodes. Use this for multi-resolution\n                        processing or level-of-detail operations.\n        \n        Returns:\n            SimpleLeafIterator: Iterator for traversing nodes\n            \n        Example:\n            # Iterate through all actual leaves (recommended)\n            for leaf in octree.begin_leafs():\n                coord = leaf.getCoordinate()\n                size = leaf.getSize()\n                \n            # Iterate through nodes at depth 2 (larger cells)\n            for node in octree.begin_leafs(maxDepth=2):\n                coord = node.getCoordinate()  # Larger coordinate values\n                size = node.getSize()         # Larger size values\n        \n        Note:\n            When maxDepth > 0, the returned nodes represent cells at that specific\n            depth level in the octree hierarchy, with sizes = resolution * (2^maxDepth).\n            This follows OctoMap's standard behavior for hierarchical processing.\n        ");
 static PyMethodDef __pyx_mdef_7octomap_7octomap_6OcTree_41begin_leafs = {"begin_leafs", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_6OcTree_41begin_leafs, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_7octomap_7octomap_6OcTree_40begin_leafs};
 static PyObject *__pyx_pw_7octomap_7octomap_6OcTree_41begin_leafs(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
@@ -21725,24 +21458,24 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_maxDepth,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 773, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 760, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 773, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 760, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "begin_leafs", 0) < 0) __PYX_ERR(0, 773, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "begin_leafs", 0) < 0) __PYX_ERR(0, 760, __pyx_L3_error)
       if (!values[0]) values[0] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_int_0));
     } else {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 773, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 760, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
@@ -21753,7 +21486,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("begin_leafs", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 773, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("begin_leafs", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 760, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21786,9 +21519,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_40begin_leafs(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("begin_leafs", 0);
 
-  /* "octomap/octomap.pyx":775
- *     def begin_leafs(self, maxDepth=0):
- *         """Return a simplified leaf iterator"""
+  /* "octomap/octomap.pyx":792
+ *             This follows OctoMap's standard behavior for hierarchical processing.
+ *         """
  *         return SimpleLeafIterator(self, maxDepth)             # <<<<<<<<<<<<<<
  * 
  *     def begin_leafs_bbx(self, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):
@@ -21803,19 +21536,19 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_40begin_leafs(struct __pyx_o
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (3-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 775, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 792, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_r = ((PyObject *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":773
+  /* "octomap/octomap.pyx":760
  *         return SimpleTreeIterator(self, maxDepth)
  * 
  *     def begin_leafs(self, maxDepth=0):             # <<<<<<<<<<<<<<
- *         """Return a simplified leaf iterator"""
- *         return SimpleLeafIterator(self, maxDepth)
+ *         """
+ *         Return a simplified leaf iterator
 */
 
   /* function exit code */
@@ -21831,7 +21564,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_40begin_leafs(struct __pyx_o
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":777
+/* "octomap/octomap.pyx":794
  *         return SimpleLeafIterator(self, maxDepth)
  * 
  *     def begin_leafs_bbx(self, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):             # <<<<<<<<<<<<<<
@@ -21881,41 +21614,41 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_bbx_min,&__pyx_mstate_global->__pyx_n_u_bbx_max,&__pyx_mstate_global->__pyx_n_u_maxDepth,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 777, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 794, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 777, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 794, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 777, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 794, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 777, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 794, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "begin_leafs_bbx", 0) < 0) __PYX_ERR(0, 777, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "begin_leafs_bbx", 0) < 0) __PYX_ERR(0, 794, __pyx_L3_error)
       if (!values[2]) values[2] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_int_0));
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("begin_leafs_bbx", 0, 2, 3, i); __PYX_ERR(0, 777, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("begin_leafs_bbx", 0, 2, 3, i); __PYX_ERR(0, 794, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 777, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 794, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 777, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 794, __pyx_L3_error)
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 777, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 794, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -21927,7 +21660,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("begin_leafs_bbx", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 777, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("begin_leafs_bbx", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 794, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21938,8 +21671,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_min), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_min", 0))) __PYX_ERR(0, 777, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_max), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_max", 0))) __PYX_ERR(0, 777, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_min), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_min", 0))) __PYX_ERR(0, 794, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_max), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_max", 0))) __PYX_ERR(0, 794, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_42begin_leafs_bbx(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_bbx_min, __pyx_v_bbx_max, __pyx_v_maxDepth);
 
   /* function exit code */
@@ -21984,16 +21717,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_42begin_leafs_bbx(struct __p
   __pyx_pybuffernd_bbx_max.rcbuffer = &__pyx_pybuffer_bbx_max;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_min.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_min, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 777, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_min.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_min, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 794, __pyx_L1_error)
   }
   __pyx_pybuffernd_bbx_min.diminfo[0].strides = __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_bbx_min.diminfo[0].shape = __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_max.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_max, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 777, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_max.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_max, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 794, __pyx_L1_error)
   }
   __pyx_pybuffernd_bbx_max.diminfo[0].strides = __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_bbx_max.diminfo[0].shape = __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.shape[0];
 
-  /* "octomap/octomap.pyx":779
+  /* "octomap/octomap.pyx":796
  *     def begin_leafs_bbx(self, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):
  *         """Return a simplified leaf iterator for a bounding box"""
  *         return SimpleLeafBBXIterator(self, bbx_min, bbx_max, maxDepth)             # <<<<<<<<<<<<<<
@@ -22010,14 +21743,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_42begin_leafs_bbx(struct __p
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (5-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 779, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 796, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_r = ((PyObject *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":777
+  /* "octomap/octomap.pyx":794
  *         return SimpleLeafIterator(self, maxDepth)
  * 
  *     def begin_leafs_bbx(self, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):             # <<<<<<<<<<<<<<
@@ -22049,7 +21782,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_42begin_leafs_bbx(struct __p
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":781
+/* "octomap/octomap.pyx":798
  *         return SimpleLeafBBXIterator(self, bbx_min, bbx_max, maxDepth)
  * 
  *     def end_tree(self):             # <<<<<<<<<<<<<<
@@ -22113,7 +21846,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_44end_tree(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("end_tree", 0);
 
-  /* "octomap/octomap.pyx":783
+  /* "octomap/octomap.pyx":800
  *     def end_tree(self):
  *         """Return an end iterator for tree traversal"""
  *         itr = SimpleTreeIterator(self)             # <<<<<<<<<<<<<<
@@ -22129,13 +21862,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_44end_tree(struct __pyx_obj_
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 783, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 800, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_v_itr = ((struct __pyx_obj_7octomap_7octomap_SimpleTreeIterator *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":784
+  /* "octomap/octomap.pyx":801
  *         """Return an end iterator for tree traversal"""
  *         itr = SimpleTreeIterator(self)
  *         itr._is_end = True             # <<<<<<<<<<<<<<
@@ -22144,7 +21877,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_44end_tree(struct __pyx_obj_
 */
   __pyx_v_itr->_is_end = 1;
 
-  /* "octomap/octomap.pyx":785
+  /* "octomap/octomap.pyx":802
  *         itr = SimpleTreeIterator(self)
  *         itr._is_end = True
  *         return itr             # <<<<<<<<<<<<<<
@@ -22156,7 +21889,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_44end_tree(struct __pyx_obj_
   __pyx_r = ((PyObject *)__pyx_v_itr);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":781
+  /* "octomap/octomap.pyx":798
  *         return SimpleLeafBBXIterator(self, bbx_min, bbx_max, maxDepth)
  * 
  *     def end_tree(self):             # <<<<<<<<<<<<<<
@@ -22178,7 +21911,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_44end_tree(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":787
+/* "octomap/octomap.pyx":804
  *         return itr
  * 
  *     def end_leafs(self):             # <<<<<<<<<<<<<<
@@ -22242,7 +21975,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_46end_leafs(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("end_leafs", 0);
 
-  /* "octomap/octomap.pyx":789
+  /* "octomap/octomap.pyx":806
  *     def end_leafs(self):
  *         """Return an end iterator for leaf traversal"""
  *         itr = SimpleLeafIterator(self)             # <<<<<<<<<<<<<<
@@ -22258,13 +21991,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_46end_leafs(struct __pyx_obj
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 789, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 806, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_v_itr = ((struct __pyx_obj_7octomap_7octomap_SimpleLeafIterator *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":790
+  /* "octomap/octomap.pyx":807
  *         """Return an end iterator for leaf traversal"""
  *         itr = SimpleLeafIterator(self)
  *         itr._is_end = True             # <<<<<<<<<<<<<<
@@ -22273,7 +22006,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_46end_leafs(struct __pyx_obj
 */
   __pyx_v_itr->_is_end = 1;
 
-  /* "octomap/octomap.pyx":791
+  /* "octomap/octomap.pyx":808
  *         itr = SimpleLeafIterator(self)
  *         itr._is_end = True
  *         return itr             # <<<<<<<<<<<<<<
@@ -22285,7 +22018,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_46end_leafs(struct __pyx_obj
   __pyx_r = ((PyObject *)__pyx_v_itr);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":787
+  /* "octomap/octomap.pyx":804
  *         return itr
  * 
  *     def end_leafs(self):             # <<<<<<<<<<<<<<
@@ -22307,7 +22040,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_46end_leafs(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":793
+/* "octomap/octomap.pyx":810
  *         return itr
  * 
  *     def end_leafs_bbx(self):             # <<<<<<<<<<<<<<
@@ -22378,7 +22111,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_48end_leafs_bbx(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("end_leafs_bbx", 0);
 
-  /* "octomap/octomap.pyx":795
+  /* "octomap/octomap.pyx":812
  *     def end_leafs_bbx(self):
  *         """Return an end iterator for leaf bounding box traversal"""
  *         itr = SimpleLeafBBXIterator(self, np.array([0.0, 0.0, 0.0], dtype=np.float64), np.array([1.0, 1.0, 1.0], dtype=np.float64))             # <<<<<<<<<<<<<<
@@ -22389,25 +22122,25 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_48end_leafs_bbx(struct __pyx
   __Pyx_INCREF((PyObject *)__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator);
   __pyx_t_3 = ((PyObject *)__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator); 
   __pyx_t_5 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 795, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 812, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 795, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 812, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyList_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 795, __pyx_L1_error)
+  __pyx_t_6 = PyList_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 812, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_mstate_global->__pyx_float_0_0);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_float_0_0);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 0, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 795, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 0, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 812, __pyx_L1_error);
   __Pyx_INCREF(__pyx_mstate_global->__pyx_float_0_0);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_float_0_0);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 1, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 795, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 1, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 812, __pyx_L1_error);
   __Pyx_INCREF(__pyx_mstate_global->__pyx_float_0_0);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_float_0_0);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 2, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 795, __pyx_L1_error);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 795, __pyx_L1_error)
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 2, __pyx_mstate_global->__pyx_float_0_0) != (0)) __PYX_ERR(0, 812, __pyx_L1_error);
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 812, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 795, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 812, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_10 = 1;
@@ -22424,38 +22157,38 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_48end_leafs_bbx(struct __pyx
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_5, __pyx_t_6};
-    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 795, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 812, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_9, __pyx_t_8, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 795, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_9, __pyx_t_8, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 812, __pyx_L1_error)
     __pyx_t_4 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_7, __pyx_callargs+__pyx_t_10, (2-__pyx_t_10) | (__pyx_t_10*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_8);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 795, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 812, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_t_8 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 795, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 812, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 795, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 812, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = PyList_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 795, __pyx_L1_error)
+  __pyx_t_9 = PyList_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 812, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_INCREF(__pyx_mstate_global->__pyx_float_1_0);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_float_1_0);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_9, 0, __pyx_mstate_global->__pyx_float_1_0) != (0)) __PYX_ERR(0, 795, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_9, 0, __pyx_mstate_global->__pyx_float_1_0) != (0)) __PYX_ERR(0, 812, __pyx_L1_error);
   __Pyx_INCREF(__pyx_mstate_global->__pyx_float_1_0);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_float_1_0);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_9, 1, __pyx_mstate_global->__pyx_float_1_0) != (0)) __PYX_ERR(0, 795, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_9, 1, __pyx_mstate_global->__pyx_float_1_0) != (0)) __PYX_ERR(0, 812, __pyx_L1_error);
   __Pyx_INCREF(__pyx_mstate_global->__pyx_float_1_0);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_float_1_0);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_9, 2, __pyx_mstate_global->__pyx_float_1_0) != (0)) __PYX_ERR(0, 795, __pyx_L1_error);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 795, __pyx_L1_error)
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_9, 2, __pyx_mstate_global->__pyx_float_1_0) != (0)) __PYX_ERR(0, 812, __pyx_L1_error);
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 812, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 795, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_float64); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 812, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_10 = 1;
@@ -22472,16 +22205,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_48end_leafs_bbx(struct __pyx
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_8, __pyx_t_9};
-    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 795, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 812, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_11, __pyx_t_5, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 795, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_11, __pyx_t_5, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 812, __pyx_L1_error)
     __pyx_t_7 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_6, __pyx_callargs+__pyx_t_10, (2-__pyx_t_10) | (__pyx_t_10*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 795, __pyx_L1_error)
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 812, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
   }
   __pyx_t_10 = 1;
@@ -22492,13 +22225,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_48end_leafs_bbx(struct __pyx
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 795, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 812, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_v_itr = ((struct __pyx_obj_7octomap_7octomap_SimpleLeafBBXIterator *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":796
+  /* "octomap/octomap.pyx":813
  *         """Return an end iterator for leaf bounding box traversal"""
  *         itr = SimpleLeafBBXIterator(self, np.array([0.0, 0.0, 0.0], dtype=np.float64), np.array([1.0, 1.0, 1.0], dtype=np.float64))
  *         itr._is_end = True             # <<<<<<<<<<<<<<
@@ -22507,19 +22240,19 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_48end_leafs_bbx(struct __pyx
 */
   __pyx_v_itr->_is_end = 1;
 
-  /* "octomap/octomap.pyx":797
+  /* "octomap/octomap.pyx":814
  *         itr = SimpleLeafBBXIterator(self, np.array([0.0, 0.0, 0.0], dtype=np.float64), np.array([1.0, 1.0, 1.0], dtype=np.float64))
  *         itr._is_end = True
  *         itr._sampled_points = []  # Clear sampled points to ensure it's empty             # <<<<<<<<<<<<<<
  *         return itr
  * 
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 797, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 814, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_itr), __pyx_mstate_global->__pyx_n_u_sampled_points, __pyx_t_1) < 0) __PYX_ERR(0, 797, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_itr), __pyx_mstate_global->__pyx_n_u_sampled_points, __pyx_t_1) < 0) __PYX_ERR(0, 814, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":798
+  /* "octomap/octomap.pyx":815
  *         itr._is_end = True
  *         itr._sampled_points = []  # Clear sampled points to ensure it's empty
  *         return itr             # <<<<<<<<<<<<<<
@@ -22531,7 +22264,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_48end_leafs_bbx(struct __pyx
   __pyx_r = ((PyObject *)__pyx_v_itr);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":793
+  /* "octomap/octomap.pyx":810
  *         return itr
  * 
  *     def end_leafs_bbx(self):             # <<<<<<<<<<<<<<
@@ -22560,7 +22293,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_48end_leafs_bbx(struct __pyx
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":800
+/* "octomap/octomap.pyx":817
  *         return itr
  * 
  *     def getBBXBounds(self):             # <<<<<<<<<<<<<<
@@ -22627,7 +22360,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_50getBBXBounds(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getBBXBounds", 0);
 
-  /* "octomap/octomap.pyx":801
+  /* "octomap/octomap.pyx":818
  * 
  *     def getBBXBounds(self):
  *         cdef defs.point3d p = self.thisptr.getBBXBounds()             # <<<<<<<<<<<<<<
@@ -22636,7 +22369,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_50getBBXBounds(struct __pyx_
 */
   __pyx_v_p = __pyx_v_self->thisptr->getBBXBounds();
 
-  /* "octomap/octomap.pyx":802
+  /* "octomap/octomap.pyx":819
  *     def getBBXBounds(self):
  *         cdef defs.point3d p = self.thisptr.getBBXBounds()
  *         return np.array((p.x(), p.y(), p.z()))             # <<<<<<<<<<<<<<
@@ -22645,25 +22378,25 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_50getBBXBounds(struct __pyx_
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 802, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 802, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 802, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 802, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 802, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 802, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 802, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 819, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 802, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 819, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 802, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 819, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
@@ -22685,14 +22418,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_50getBBXBounds(struct __pyx_
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 802, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 819, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":800
+  /* "octomap/octomap.pyx":817
  *         return itr
  * 
  *     def getBBXBounds(self):             # <<<<<<<<<<<<<<
@@ -22717,7 +22450,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_50getBBXBounds(struct __pyx_
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":804
+/* "octomap/octomap.pyx":821
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getBBXCenter(self):             # <<<<<<<<<<<<<<
@@ -22784,7 +22517,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_52getBBXCenter(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getBBXCenter", 0);
 
-  /* "octomap/octomap.pyx":805
+  /* "octomap/octomap.pyx":822
  * 
  *     def getBBXCenter(self):
  *         cdef defs.point3d p = self.thisptr.getBBXCenter()             # <<<<<<<<<<<<<<
@@ -22793,7 +22526,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_52getBBXCenter(struct __pyx_
 */
   __pyx_v_p = __pyx_v_self->thisptr->getBBXCenter();
 
-  /* "octomap/octomap.pyx":806
+  /* "octomap/octomap.pyx":823
  *     def getBBXCenter(self):
  *         cdef defs.point3d p = self.thisptr.getBBXCenter()
  *         return np.array((p.x(), p.y(), p.z()))             # <<<<<<<<<<<<<<
@@ -22802,25 +22535,25 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_52getBBXCenter(struct __pyx_
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 806, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 823, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 806, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 823, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 806, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 823, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 806, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 823, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 806, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 823, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 806, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 823, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 806, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 823, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 806, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 823, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 806, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 823, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
@@ -22842,14 +22575,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_52getBBXCenter(struct __pyx_
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 806, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 823, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":804
+  /* "octomap/octomap.pyx":821
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getBBXCenter(self):             # <<<<<<<<<<<<<<
@@ -22874,7 +22607,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_52getBBXCenter(struct __pyx_
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":808
+/* "octomap/octomap.pyx":825
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getBBXMax(self):             # <<<<<<<<<<<<<<
@@ -22941,7 +22674,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_54getBBXMax(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getBBXMax", 0);
 
-  /* "octomap/octomap.pyx":809
+  /* "octomap/octomap.pyx":826
  * 
  *     def getBBXMax(self):
  *         cdef defs.point3d p = self.thisptr.getBBXMax()             # <<<<<<<<<<<<<<
@@ -22950,7 +22683,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_54getBBXMax(struct __pyx_obj
 */
   __pyx_v_p = __pyx_v_self->thisptr->getBBXMax();
 
-  /* "octomap/octomap.pyx":810
+  /* "octomap/octomap.pyx":827
  *     def getBBXMax(self):
  *         cdef defs.point3d p = self.thisptr.getBBXMax()
  *         return np.array((p.x(), p.y(), p.z()))             # <<<<<<<<<<<<<<
@@ -22959,25 +22692,25 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_54getBBXMax(struct __pyx_obj
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 810, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 827, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 810, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 827, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 810, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 827, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 810, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 827, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 810, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 827, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 810, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 827, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 810, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 827, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 810, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 827, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 810, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 827, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
@@ -22999,14 +22732,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_54getBBXMax(struct __pyx_obj
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 810, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 827, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":808
+  /* "octomap/octomap.pyx":825
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getBBXMax(self):             # <<<<<<<<<<<<<<
@@ -23031,7 +22764,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_54getBBXMax(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":812
+/* "octomap/octomap.pyx":829
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getBBXMin(self):             # <<<<<<<<<<<<<<
@@ -23098,7 +22831,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_56getBBXMin(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getBBXMin", 0);
 
-  /* "octomap/octomap.pyx":813
+  /* "octomap/octomap.pyx":830
  * 
  *     def getBBXMin(self):
  *         cdef defs.point3d p = self.thisptr.getBBXMin()             # <<<<<<<<<<<<<<
@@ -23107,7 +22840,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_56getBBXMin(struct __pyx_obj
 */
   __pyx_v_p = __pyx_v_self->thisptr->getBBXMin();
 
-  /* "octomap/octomap.pyx":814
+  /* "octomap/octomap.pyx":831
  *     def getBBXMin(self):
  *         cdef defs.point3d p = self.thisptr.getBBXMin()
  *         return np.array((p.x(), p.y(), p.z()))             # <<<<<<<<<<<<<<
@@ -23116,25 +22849,25 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_56getBBXMin(struct __pyx_obj
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 814, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 831, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 814, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 831, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 814, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 831, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 814, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 831, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 814, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 831, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 814, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 831, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 814, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 831, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 814, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 831, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 814, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 831, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
@@ -23156,14 +22889,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_56getBBXMin(struct __pyx_obj
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 814, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 831, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":812
+  /* "octomap/octomap.pyx":829
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getBBXMin(self):             # <<<<<<<<<<<<<<
@@ -23188,7 +22921,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_56getBBXMin(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":816
+/* "octomap/octomap.pyx":833
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getRoot(self):             # <<<<<<<<<<<<<<
@@ -23251,7 +22984,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_58getRoot(struct __pyx_obj_7
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getRoot", 0);
 
-  /* "octomap/octomap.pyx":817
+  /* "octomap/octomap.pyx":834
  * 
  *     def getRoot(self):
  *         node = OcTreeNode()             # <<<<<<<<<<<<<<
@@ -23267,13 +23000,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_58getRoot(struct __pyx_obj_7
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (1-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 817, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 834, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_v_node = ((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":818
+  /* "octomap/octomap.pyx":835
  *     def getRoot(self):
  *         node = OcTreeNode()
  *         node.thisptr = self.thisptr.getRoot()             # <<<<<<<<<<<<<<
@@ -23282,7 +23015,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_58getRoot(struct __pyx_obj_7
 */
   __pyx_v_node->thisptr = __pyx_v_self->thisptr->getRoot();
 
-  /* "octomap/octomap.pyx":819
+  /* "octomap/octomap.pyx":836
  *         node = OcTreeNode()
  *         node.thisptr = self.thisptr.getRoot()
  *         return node             # <<<<<<<<<<<<<<
@@ -23294,7 +23027,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_58getRoot(struct __pyx_obj_7
   __pyx_r = ((PyObject *)__pyx_v_node);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":816
+  /* "octomap/octomap.pyx":833
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getRoot(self):             # <<<<<<<<<<<<<<
@@ -23316,7 +23049,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_58getRoot(struct __pyx_obj_7
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":821
+/* "octomap/octomap.pyx":838
  *         return node
  * 
  *     def getNumLeafNodes(self):             # <<<<<<<<<<<<<<
@@ -23375,7 +23108,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_60getNumLeafNodes(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getNumLeafNodes", 0);
 
-  /* "octomap/octomap.pyx":822
+  /* "octomap/octomap.pyx":839
  * 
  *     def getNumLeafNodes(self):
  *         return self.thisptr.getNumLeafNodes()             # <<<<<<<<<<<<<<
@@ -23383,13 +23116,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_60getNumLeafNodes(struct __p
  *     def getResolution(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_FromSize_t(__pyx_v_self->thisptr->getNumLeafNodes()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 822, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_FromSize_t(__pyx_v_self->thisptr->getNumLeafNodes()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 839, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":821
+  /* "octomap/octomap.pyx":838
  *         return node
  * 
  *     def getNumLeafNodes(self):             # <<<<<<<<<<<<<<
@@ -23408,7 +23141,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_60getNumLeafNodes(struct __p
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":824
+/* "octomap/octomap.pyx":841
  *         return self.thisptr.getNumLeafNodes()
  * 
  *     def getResolution(self):             # <<<<<<<<<<<<<<
@@ -23467,7 +23200,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_62getResolution(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getResolution", 0);
 
-  /* "octomap/octomap.pyx":825
+  /* "octomap/octomap.pyx":842
  * 
  *     def getResolution(self):
  *         return self.thisptr.getResolution()             # <<<<<<<<<<<<<<
@@ -23475,13 +23208,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_62getResolution(struct __pyx
  *     def getTreeDepth(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getResolution()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 825, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getResolution()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 842, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":824
+  /* "octomap/octomap.pyx":841
  *         return self.thisptr.getNumLeafNodes()
  * 
  *     def getResolution(self):             # <<<<<<<<<<<<<<
@@ -23500,7 +23233,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_62getResolution(struct __pyx
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":827
+/* "octomap/octomap.pyx":844
  *         return self.thisptr.getResolution()
  * 
  *     def getTreeDepth(self):             # <<<<<<<<<<<<<<
@@ -23559,7 +23292,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_64getTreeDepth(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getTreeDepth", 0);
 
-  /* "octomap/octomap.pyx":828
+  /* "octomap/octomap.pyx":845
  * 
  *     def getTreeDepth(self):
  *         return self.thisptr.getTreeDepth()             # <<<<<<<<<<<<<<
@@ -23567,13 +23300,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_64getTreeDepth(struct __pyx_
  *     def getTreeType(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_From_unsigned_int(__pyx_v_self->thisptr->getTreeDepth()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 828, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_From_unsigned_int(__pyx_v_self->thisptr->getTreeDepth()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 845, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":827
+  /* "octomap/octomap.pyx":844
  *         return self.thisptr.getResolution()
  * 
  *     def getTreeDepth(self):             # <<<<<<<<<<<<<<
@@ -23592,7 +23325,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_64getTreeDepth(struct __pyx_
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":830
+/* "octomap/octomap.pyx":847
  *         return self.thisptr.getTreeDepth()
  * 
  *     def getTreeType(self):             # <<<<<<<<<<<<<<
@@ -23651,7 +23384,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_66getTreeType(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getTreeType", 0);
 
-  /* "octomap/octomap.pyx":831
+  /* "octomap/octomap.pyx":848
  * 
  *     def getTreeType(self):
  *         return self.thisptr.getTreeType().c_str()             # <<<<<<<<<<<<<<
@@ -23659,13 +23392,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_66getTreeType(struct __pyx_o
  *     def inBBX(self, np.ndarray[DOUBLE_t, ndim=1] p):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBytes_FromString(__pyx_v_self->thisptr->getTreeType().c_str()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 831, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBytes_FromString(__pyx_v_self->thisptr->getTreeType().c_str()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 848, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":830
+  /* "octomap/octomap.pyx":847
  *         return self.thisptr.getTreeDepth()
  * 
  *     def getTreeType(self):             # <<<<<<<<<<<<<<
@@ -23684,7 +23417,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_66getTreeType(struct __pyx_o
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":833
+/* "octomap/octomap.pyx":850
  *         return self.thisptr.getTreeType().c_str()
  * 
  *     def inBBX(self, np.ndarray[DOUBLE_t, ndim=1] p):             # <<<<<<<<<<<<<<
@@ -23731,32 +23464,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_p,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 833, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 850, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 833, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 850, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "inBBX", 0) < 0) __PYX_ERR(0, 833, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "inBBX", 0) < 0) __PYX_ERR(0, 850, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("inBBX", 1, 1, 1, i); __PYX_ERR(0, 833, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("inBBX", 1, 1, 1, i); __PYX_ERR(0, 850, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 833, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 850, __pyx_L3_error)
     }
     __pyx_v_p = ((PyArrayObject *)values[0]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("inBBX", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 833, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("inBBX", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 850, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -23767,7 +23500,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "p", 0))) __PYX_ERR(0, 833, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "p", 0))) __PYX_ERR(0, 850, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_68inBBX(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_p);
 
   /* function exit code */
@@ -23808,11 +23541,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_68inBBX(struct __pyx_obj_7oc
   __pyx_pybuffernd_p.rcbuffer = &__pyx_pybuffer_p;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_p.rcbuffer->pybuffer, (PyObject*)__pyx_v_p, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 833, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_p.rcbuffer->pybuffer, (PyObject*)__pyx_v_p, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 850, __pyx_L1_error)
   }
   __pyx_pybuffernd_p.diminfo[0].strides = __pyx_pybuffernd_p.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_p.diminfo[0].shape = __pyx_pybuffernd_p.rcbuffer->pybuffer.shape[0];
 
-  /* "octomap/octomap.pyx":834
+  /* "octomap/octomap.pyx":851
  * 
  *     def inBBX(self, np.ndarray[DOUBLE_t, ndim=1] p):
  *         return self.thisptr.inBBX(defs.point3d(p[0], p[1], p[2]))             # <<<<<<<<<<<<<<
@@ -23828,7 +23561,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_68inBBX(struct __pyx_obj_7oc
   } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_p.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 834, __pyx_L1_error)
+    __PYX_ERR(0, 851, __pyx_L1_error)
   }
   __pyx_t_3 = 1;
   __pyx_t_2 = -1;
@@ -23838,7 +23571,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_68inBBX(struct __pyx_obj_7oc
   } else if (unlikely(__pyx_t_3 >= __pyx_pybuffernd_p.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 834, __pyx_L1_error)
+    __PYX_ERR(0, 851, __pyx_L1_error)
   }
   __pyx_t_4 = 2;
   __pyx_t_2 = -1;
@@ -23848,21 +23581,21 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_68inBBX(struct __pyx_obj_7oc
   } else if (unlikely(__pyx_t_4 >= __pyx_pybuffernd_p.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 834, __pyx_L1_error)
+    __PYX_ERR(0, 851, __pyx_L1_error)
   }
   try {
     __pyx_t_5 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_p.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_p.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_p.rcbuffer->pybuffer.buf, __pyx_t_3, __pyx_pybuffernd_p.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_p.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_p.diminfo[0].strides)));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 834, __pyx_L1_error)
+    __PYX_ERR(0, 851, __pyx_L1_error)
   }
-  __pyx_t_6 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->inBBX(__pyx_t_5)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 834, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->inBBX(__pyx_t_5)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 851, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":833
+  /* "octomap/octomap.pyx":850
  *         return self.thisptr.getTreeType().c_str()
  * 
  *     def inBBX(self, np.ndarray[DOUBLE_t, ndim=1] p):             # <<<<<<<<<<<<<<
@@ -23890,7 +23623,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_68inBBX(struct __pyx_obj_7oc
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":836
+/* "octomap/octomap.pyx":853
  *         return self.thisptr.inBBX(defs.point3d(p[0], p[1], p[2]))
  * 
  *     def keyToCoord(self, OcTreeKey key, depth=None):             # <<<<<<<<<<<<<<
@@ -23938,35 +23671,35 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_key,&__pyx_mstate_global->__pyx_n_u_depth,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 836, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 853, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 836, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 853, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 836, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 853, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "keyToCoord", 0) < 0) __PYX_ERR(0, 836, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "keyToCoord", 0) < 0) __PYX_ERR(0, 853, __pyx_L3_error)
       if (!values[1]) values[1] = __Pyx_NewRef(((PyObject *)Py_None));
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("keyToCoord", 0, 1, 2, i); __PYX_ERR(0, 836, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("keyToCoord", 0, 1, 2, i); __PYX_ERR(0, 853, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 836, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 853, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 836, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 853, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -23977,7 +23710,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("keyToCoord", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 836, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("keyToCoord", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 853, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -23988,7 +23721,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_key), __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeKey, 1, "key", 0))) __PYX_ERR(0, 836, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_key), __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeKey, 1, "key", 0))) __PYX_ERR(0, 853, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_70keyToCoord(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_key, __pyx_v_depth);
 
   /* function exit code */
@@ -24031,7 +23764,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_70keyToCoord(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("keyToCoord", 0);
 
-  /* "octomap/octomap.pyx":837
+  /* "octomap/octomap.pyx":854
  * 
  *     def keyToCoord(self, OcTreeKey key, depth=None):
  *         cdef defs.OcTreeKey key_in = defs.OcTreeKey()             # <<<<<<<<<<<<<<
@@ -24042,11 +23775,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_70keyToCoord(struct __pyx_ob
     __pyx_t_1 = octomap::OcTreeKey();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 837, __pyx_L1_error)
+    __PYX_ERR(0, 854, __pyx_L1_error)
   }
   __pyx_v_key_in = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_1);
 
-  /* "octomap/octomap.pyx":838
+  /* "octomap/octomap.pyx":855
  *     def keyToCoord(self, OcTreeKey key, depth=None):
  *         cdef defs.OcTreeKey key_in = defs.OcTreeKey()
  *         cdef defs.point3d p = defs.point3d()             # <<<<<<<<<<<<<<
@@ -24057,50 +23790,50 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_70keyToCoord(struct __pyx_ob
     __pyx_t_2 = octomap::point3d();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 838, __pyx_L1_error)
+    __PYX_ERR(0, 855, __pyx_L1_error)
   }
   __pyx_v_p = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_2);
 
-  /* "octomap/octomap.pyx":839
+  /* "octomap/octomap.pyx":856
  *         cdef defs.OcTreeKey key_in = defs.OcTreeKey()
  *         cdef defs.point3d p = defs.point3d()
  *         key_in[0] = key[0]             # <<<<<<<<<<<<<<
  *         key_in[1] = key[1]
  *         key_in[2] = key[2]
 */
-  __pyx_t_3 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 839, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 856, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_As_unsigned_short(__pyx_t_3); if (unlikely((__pyx_t_4 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 839, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_As_unsigned_short(__pyx_t_3); if (unlikely((__pyx_t_4 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 856, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_key_in[0]) = __pyx_t_4;
 
-  /* "octomap/octomap.pyx":840
+  /* "octomap/octomap.pyx":857
  *         cdef defs.point3d p = defs.point3d()
  *         key_in[0] = key[0]
  *         key_in[1] = key[1]             # <<<<<<<<<<<<<<
  *         key_in[2] = key[2]
  *         if depth is None:
 */
-  __pyx_t_3 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 840, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 857, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_As_unsigned_short(__pyx_t_3); if (unlikely((__pyx_t_4 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 840, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_As_unsigned_short(__pyx_t_3); if (unlikely((__pyx_t_4 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 857, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_key_in[1]) = __pyx_t_4;
 
-  /* "octomap/octomap.pyx":841
+  /* "octomap/octomap.pyx":858
  *         key_in[0] = key[0]
  *         key_in[1] = key[1]
  *         key_in[2] = key[2]             # <<<<<<<<<<<<<<
  *         if depth is None:
  *             p = self.thisptr.keyToCoord(key_in)
 */
-  __pyx_t_3 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 841, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(((PyObject *)__pyx_v_key), 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 858, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_As_unsigned_short(__pyx_t_3); if (unlikely((__pyx_t_4 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 841, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_As_unsigned_short(__pyx_t_3); if (unlikely((__pyx_t_4 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 858, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_key_in[2]) = __pyx_t_4;
 
-  /* "octomap/octomap.pyx":842
+  /* "octomap/octomap.pyx":859
  *         key_in[1] = key[1]
  *         key_in[2] = key[2]
  *         if depth is None:             # <<<<<<<<<<<<<<
@@ -24110,7 +23843,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_70keyToCoord(struct __pyx_ob
   __pyx_t_5 = (__pyx_v_depth == Py_None);
   if (__pyx_t_5) {
 
-    /* "octomap/octomap.pyx":843
+    /* "octomap/octomap.pyx":860
  *         key_in[2] = key[2]
  *         if depth is None:
  *             p = self.thisptr.keyToCoord(key_in)             # <<<<<<<<<<<<<<
@@ -24119,7 +23852,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_70keyToCoord(struct __pyx_ob
 */
     __pyx_v_p = __pyx_v_self->thisptr->keyToCoord(__pyx_v_key_in);
 
-    /* "octomap/octomap.pyx":842
+    /* "octomap/octomap.pyx":859
  *         key_in[1] = key[1]
  *         key_in[2] = key[2]
  *         if depth is None:             # <<<<<<<<<<<<<<
@@ -24129,7 +23862,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_70keyToCoord(struct __pyx_ob
     goto __pyx_L3;
   }
 
-  /* "octomap/octomap.pyx":845
+  /* "octomap/octomap.pyx":862
  *             p = self.thisptr.keyToCoord(key_in)
  *         else:
  *             p = self.thisptr.keyToCoord(key_in, <int?>depth)             # <<<<<<<<<<<<<<
@@ -24137,12 +23870,12 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_70keyToCoord(struct __pyx_ob
  * 
 */
   /*else*/ {
-    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_v_depth); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 845, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_v_depth); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 862, __pyx_L1_error)
     __pyx_v_p = __pyx_v_self->thisptr->keyToCoord(__pyx_v_key_in, ((int)__pyx_t_6));
   }
   __pyx_L3:;
 
-  /* "octomap/octomap.pyx":846
+  /* "octomap/octomap.pyx":863
  *         else:
  *             p = self.thisptr.keyToCoord(key_in, <int?>depth)
  *         return np.array((p.x(), p.y(), p.z()))             # <<<<<<<<<<<<<<
@@ -24151,25 +23884,25 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_70keyToCoord(struct __pyx_ob
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_7 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 846, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 863, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 846, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 863, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 846, __pyx_L1_error)
+  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_p.x()); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 863, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_10 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 846, __pyx_L1_error)
+  __pyx_t_10 = PyFloat_FromDouble(__pyx_v_p.y()); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 863, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_11 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 846, __pyx_L1_error)
+  __pyx_t_11 = PyFloat_FromDouble(__pyx_v_p.z()); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 863, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_12 = PyTuple_New(3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 846, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_New(3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 863, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_GIVEREF(__pyx_t_8);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_8) != (0)) __PYX_ERR(0, 846, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_8) != (0)) __PYX_ERR(0, 863, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_10);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_10) != (0)) __PYX_ERR(0, 846, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_10) != (0)) __PYX_ERR(0, 863, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_11);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_t_11) != (0)) __PYX_ERR(0, 846, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_t_11) != (0)) __PYX_ERR(0, 863, __pyx_L1_error);
   __pyx_t_8 = 0;
   __pyx_t_10 = 0;
   __pyx_t_11 = 0;
@@ -24191,14 +23924,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_70keyToCoord(struct __pyx_ob
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 846, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 863, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":836
+  /* "octomap/octomap.pyx":853
  *         return self.thisptr.inBBX(defs.point3d(p[0], p[1], p[2]))
  * 
  *     def keyToCoord(self, OcTreeKey key, depth=None):             # <<<<<<<<<<<<<<
@@ -24223,7 +23956,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_70keyToCoord(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":848
+/* "octomap/octomap.pyx":865
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def memoryFullGrid(self):             # <<<<<<<<<<<<<<
@@ -24282,7 +24015,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_72memoryFullGrid(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("memoryFullGrid", 0);
 
-  /* "octomap/octomap.pyx":849
+  /* "octomap/octomap.pyx":866
  * 
  *     def memoryFullGrid(self):
  *         return self.thisptr.memoryFullGrid()             # <<<<<<<<<<<<<<
@@ -24290,13 +24023,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_72memoryFullGrid(struct __py
  *     def memoryUsage(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_From_unsigned_PY_LONG_LONG(__pyx_v_self->thisptr->memoryFullGrid()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 849, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_From_unsigned_PY_LONG_LONG(__pyx_v_self->thisptr->memoryFullGrid()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 866, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":848
+  /* "octomap/octomap.pyx":865
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def memoryFullGrid(self):             # <<<<<<<<<<<<<<
@@ -24315,7 +24048,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_72memoryFullGrid(struct __py
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":851
+/* "octomap/octomap.pyx":868
  *         return self.thisptr.memoryFullGrid()
  * 
  *     def memoryUsage(self):             # <<<<<<<<<<<<<<
@@ -24374,7 +24107,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_74memoryUsage(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("memoryUsage", 0);
 
-  /* "octomap/octomap.pyx":852
+  /* "octomap/octomap.pyx":869
  * 
  *     def memoryUsage(self):
  *         return self.thisptr.memoryUsage()             # <<<<<<<<<<<<<<
@@ -24382,13 +24115,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_74memoryUsage(struct __pyx_o
  *     def memoryUsageNode(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_FromSize_t(__pyx_v_self->thisptr->memoryUsage()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 852, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_FromSize_t(__pyx_v_self->thisptr->memoryUsage()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 869, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":851
+  /* "octomap/octomap.pyx":868
  *         return self.thisptr.memoryFullGrid()
  * 
  *     def memoryUsage(self):             # <<<<<<<<<<<<<<
@@ -24407,7 +24140,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_74memoryUsage(struct __pyx_o
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":854
+/* "octomap/octomap.pyx":871
  *         return self.thisptr.memoryUsage()
  * 
  *     def memoryUsageNode(self):             # <<<<<<<<<<<<<<
@@ -24466,7 +24199,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_76memoryUsageNode(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("memoryUsageNode", 0);
 
-  /* "octomap/octomap.pyx":855
+  /* "octomap/octomap.pyx":872
  * 
  *     def memoryUsageNode(self):
  *         return self.thisptr.memoryUsageNode()             # <<<<<<<<<<<<<<
@@ -24474,13 +24207,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_76memoryUsageNode(struct __p
  *     def resetChangeDetection(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_FromSize_t(__pyx_v_self->thisptr->memoryUsageNode()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 855, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_FromSize_t(__pyx_v_self->thisptr->memoryUsageNode()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 872, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":854
+  /* "octomap/octomap.pyx":871
  *         return self.thisptr.memoryUsage()
  * 
  *     def memoryUsageNode(self):             # <<<<<<<<<<<<<<
@@ -24499,7 +24232,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_76memoryUsageNode(struct __p
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":857
+/* "octomap/octomap.pyx":874
  *         return self.thisptr.memoryUsageNode()
  * 
  *     def resetChangeDetection(self):             # <<<<<<<<<<<<<<
@@ -24555,7 +24288,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_78resetChangeDetection(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("resetChangeDetection", 0);
 
-  /* "octomap/octomap.pyx":861
+  /* "octomap/octomap.pyx":878
  *         Reset the set of changed keys. Call this after you obtained all changed nodes.
  *         """
  *         self.thisptr.resetChangeDetection()             # <<<<<<<<<<<<<<
@@ -24564,7 +24297,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_78resetChangeDetection(struc
 */
   __pyx_v_self->thisptr->resetChangeDetection();
 
-  /* "octomap/octomap.pyx":857
+  /* "octomap/octomap.pyx":874
  *         return self.thisptr.memoryUsageNode()
  * 
  *     def resetChangeDetection(self):             # <<<<<<<<<<<<<<
@@ -24579,7 +24312,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_78resetChangeDetection(struc
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":865
+/* "octomap/octomap.pyx":882
  * 
  * 
  *     def search(self, value, depth=0):             # <<<<<<<<<<<<<<
@@ -24627,35 +24360,35 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_value,&__pyx_mstate_global->__pyx_n_u_depth,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 865, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 882, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 865, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 882, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 865, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 882, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "search", 0) < 0) __PYX_ERR(0, 865, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "search", 0) < 0) __PYX_ERR(0, 882, __pyx_L3_error)
       if (!values[1]) values[1] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_int_0));
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("search", 0, 1, 2, i); __PYX_ERR(0, 865, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("search", 0, 1, 2, i); __PYX_ERR(0, 882, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 865, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 882, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 865, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 882, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -24666,7 +24399,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("search", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 865, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("search", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 882, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -24709,7 +24442,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("search", 0);
 
-  /* "octomap/octomap.pyx":866
+  /* "octomap/octomap.pyx":883
  * 
  *     def search(self, value, depth=0):
  *         node = OcTreeNode()             # <<<<<<<<<<<<<<
@@ -24725,13 +24458,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (1-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 866, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 883, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_v_node = ((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":867
+  /* "octomap/octomap.pyx":884
  *     def search(self, value, depth=0):
  *         node = OcTreeNode()
  *         if isinstance(value, OcTreeKey):             # <<<<<<<<<<<<<<
@@ -24741,43 +24474,43 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
   __pyx_t_5 = __Pyx_TypeCheck(__pyx_v_value, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeKey); 
   if (__pyx_t_5) {
 
-    /* "octomap/octomap.pyx":868
+    /* "octomap/octomap.pyx":885
  *         node = OcTreeNode()
  *         if isinstance(value, OcTreeKey):
  *             node.thisptr = self.thisptr.search(defs.OcTreeKey(<unsigned short int>value[0],             # <<<<<<<<<<<<<<
  *                                                               <unsigned short int>value[1],
  *                                                               <unsigned short int>value[2]),
 */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 868, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 885, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_6 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 868, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_6 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 885, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "octomap/octomap.pyx":869
+    /* "octomap/octomap.pyx":886
  *         if isinstance(value, OcTreeKey):
  *             node.thisptr = self.thisptr.search(defs.OcTreeKey(<unsigned short int>value[0],
  *                                                               <unsigned short int>value[1],             # <<<<<<<<<<<<<<
  *                                                               <unsigned short int>value[2]),
  *                                                <unsigned int?>depth)
 */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 869, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 886, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_7 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 869, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_7 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 886, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "octomap/octomap.pyx":870
+    /* "octomap/octomap.pyx":887
  *             node.thisptr = self.thisptr.search(defs.OcTreeKey(<unsigned short int>value[0],
  *                                                               <unsigned short int>value[1],
  *                                                               <unsigned short int>value[2]),             # <<<<<<<<<<<<<<
  *                                                <unsigned int?>depth)
  *         else:
 */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 870, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 887, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_8 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 870, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_8 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 887, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "octomap/octomap.pyx":868
+    /* "octomap/octomap.pyx":885
  *         node = OcTreeNode()
  *         if isinstance(value, OcTreeKey):
  *             node.thisptr = self.thisptr.search(defs.OcTreeKey(<unsigned short int>value[0],             # <<<<<<<<<<<<<<
@@ -24788,19 +24521,19 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
       __pyx_t_9 = octomap::OcTreeKey(((unsigned short)__pyx_t_6), ((unsigned short)__pyx_t_7), ((unsigned short)__pyx_t_8));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 868, __pyx_L1_error)
+      __PYX_ERR(0, 885, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":871
+    /* "octomap/octomap.pyx":888
  *                                                               <unsigned short int>value[1],
  *                                                               <unsigned short int>value[2]),
  *                                                <unsigned int?>depth)             # <<<<<<<<<<<<<<
  *         else:
  *             node.thisptr = self.thisptr.search(<double>value[0],
 */
-    __pyx_t_10 = __Pyx_PyLong_As_unsigned_int(__pyx_v_depth); if (unlikely((__pyx_t_10 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 871, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyLong_As_unsigned_int(__pyx_v_depth); if (unlikely((__pyx_t_10 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 888, __pyx_L1_error)
 
-    /* "octomap/octomap.pyx":868
+    /* "octomap/octomap.pyx":885
  *         node = OcTreeNode()
  *         if isinstance(value, OcTreeKey):
  *             node.thisptr = self.thisptr.search(defs.OcTreeKey(<unsigned short int>value[0],             # <<<<<<<<<<<<<<
@@ -24809,7 +24542,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
 */
     __pyx_v_node->thisptr = __pyx_v_self->thisptr->search(__pyx_t_9, ((unsigned int)__pyx_t_10));
 
-    /* "octomap/octomap.pyx":867
+    /* "octomap/octomap.pyx":884
  *     def search(self, value, depth=0):
  *         node = OcTreeNode()
  *         if isinstance(value, OcTreeKey):             # <<<<<<<<<<<<<<
@@ -24819,7 +24552,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
     goto __pyx_L3;
   }
 
-  /* "octomap/octomap.pyx":873
+  /* "octomap/octomap.pyx":890
  *                                                <unsigned int?>depth)
  *         else:
  *             node.thisptr = self.thisptr.search(<double>value[0],             # <<<<<<<<<<<<<<
@@ -24827,45 +24560,45 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
  *                                                <double>value[2],
 */
   /*else*/ {
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 873, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 890, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_11 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 873, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 890, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "octomap/octomap.pyx":874
+    /* "octomap/octomap.pyx":891
  *         else:
  *             node.thisptr = self.thisptr.search(<double>value[0],
  *                                                <double>value[1],             # <<<<<<<<<<<<<<
  *                                                <double>value[2],
  *                                                <unsigned int?>depth)
 */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 874, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 891, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_12 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 874, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 891, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "octomap/octomap.pyx":875
+    /* "octomap/octomap.pyx":892
  *             node.thisptr = self.thisptr.search(<double>value[0],
  *                                                <double>value[1],
  *                                                <double>value[2],             # <<<<<<<<<<<<<<
  *                                                <unsigned int?>depth)
  *         # Return None if the search failed (thisptr is NULL)
 */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 875, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 892, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_13 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_13 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 875, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_13 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 892, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "octomap/octomap.pyx":876
+    /* "octomap/octomap.pyx":893
  *                                                <double>value[1],
  *                                                <double>value[2],
  *                                                <unsigned int?>depth)             # <<<<<<<<<<<<<<
  *         # Return None if the search failed (thisptr is NULL)
  *         if node.thisptr == NULL:
 */
-    __pyx_t_10 = __Pyx_PyLong_As_unsigned_int(__pyx_v_depth); if (unlikely((__pyx_t_10 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 876, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyLong_As_unsigned_int(__pyx_v_depth); if (unlikely((__pyx_t_10 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 893, __pyx_L1_error)
 
-    /* "octomap/octomap.pyx":873
+    /* "octomap/octomap.pyx":890
  *                                                <unsigned int?>depth)
  *         else:
  *             node.thisptr = self.thisptr.search(<double>value[0],             # <<<<<<<<<<<<<<
@@ -24876,7 +24609,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
   }
   __pyx_L3:;
 
-  /* "octomap/octomap.pyx":878
+  /* "octomap/octomap.pyx":895
  *                                                <unsigned int?>depth)
  *         # Return None if the search failed (thisptr is NULL)
  *         if node.thisptr == NULL:             # <<<<<<<<<<<<<<
@@ -24886,7 +24619,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
   __pyx_t_5 = (__pyx_v_node->thisptr == NULL);
   if (__pyx_t_5) {
 
-    /* "octomap/octomap.pyx":879
+    /* "octomap/octomap.pyx":896
  *         # Return None if the search failed (thisptr is NULL)
  *         if node.thisptr == NULL:
  *             return None             # <<<<<<<<<<<<<<
@@ -24897,7 +24630,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "octomap/octomap.pyx":878
+    /* "octomap/octomap.pyx":895
  *                                                <unsigned int?>depth)
  *         # Return None if the search failed (thisptr is NULL)
  *         if node.thisptr == NULL:             # <<<<<<<<<<<<<<
@@ -24906,7 +24639,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
 */
   }
 
-  /* "octomap/octomap.pyx":880
+  /* "octomap/octomap.pyx":897
  *         if node.thisptr == NULL:
  *             return None
  *         return node             # <<<<<<<<<<<<<<
@@ -24918,7 +24651,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
   __pyx_r = ((PyObject *)__pyx_v_node);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":865
+  /* "octomap/octomap.pyx":882
  * 
  * 
  *     def search(self, value, depth=0):             # <<<<<<<<<<<<<<
@@ -24940,7 +24673,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_80search(struct __pyx_obj_7o
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":882
+/* "octomap/octomap.pyx":899
  *         return node
  * 
  *     def setBBXMax(self, np.ndarray[DOUBLE_t, ndim=1] max):             # <<<<<<<<<<<<<<
@@ -24988,32 +24721,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_max,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 882, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 899, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 882, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 899, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setBBXMax", 0) < 0) __PYX_ERR(0, 882, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setBBXMax", 0) < 0) __PYX_ERR(0, 899, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setBBXMax", 1, 1, 1, i); __PYX_ERR(0, 882, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setBBXMax", 1, 1, 1, i); __PYX_ERR(0, 899, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 882, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 899, __pyx_L3_error)
     }
     __pyx_v_max = ((PyArrayObject *)values[0]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setBBXMax", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 882, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setBBXMax", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 899, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -25024,7 +24757,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_max), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "max", 0))) __PYX_ERR(0, 882, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_max), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "max", 0))) __PYX_ERR(0, 899, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_82setBBXMax(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_max);
 
   /* function exit code */
@@ -25064,11 +24797,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_82setBBXMax(struct __pyx_obj
   __pyx_pybuffernd_max.rcbuffer = &__pyx_pybuffer_max;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_max.rcbuffer->pybuffer, (PyObject*)__pyx_v_max, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 882, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_max.rcbuffer->pybuffer, (PyObject*)__pyx_v_max, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 899, __pyx_L1_error)
   }
   __pyx_pybuffernd_max.diminfo[0].strides = __pyx_pybuffernd_max.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_max.diminfo[0].shape = __pyx_pybuffernd_max.rcbuffer->pybuffer.shape[0];
 
-  /* "octomap/octomap.pyx":886
+  /* "octomap/octomap.pyx":903
  *         sets the maximum for a query bounding box to use
  *         """
  *         self.thisptr.setBBXMax(defs.point3d(max[0], max[1], max[2]))             # <<<<<<<<<<<<<<
@@ -25083,7 +24816,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_82setBBXMax(struct __pyx_obj
   } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_max.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 886, __pyx_L1_error)
+    __PYX_ERR(0, 903, __pyx_L1_error)
   }
   __pyx_t_3 = 1;
   __pyx_t_2 = -1;
@@ -25093,7 +24826,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_82setBBXMax(struct __pyx_obj
   } else if (unlikely(__pyx_t_3 >= __pyx_pybuffernd_max.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 886, __pyx_L1_error)
+    __PYX_ERR(0, 903, __pyx_L1_error)
   }
   __pyx_t_4 = 2;
   __pyx_t_2 = -1;
@@ -25103,17 +24836,17 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_82setBBXMax(struct __pyx_obj
   } else if (unlikely(__pyx_t_4 >= __pyx_pybuffernd_max.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 886, __pyx_L1_error)
+    __PYX_ERR(0, 903, __pyx_L1_error)
   }
   try {
     __pyx_t_5 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_max.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_max.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_max.rcbuffer->pybuffer.buf, __pyx_t_3, __pyx_pybuffernd_max.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_max.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_max.diminfo[0].strides)));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 886, __pyx_L1_error)
+    __PYX_ERR(0, 903, __pyx_L1_error)
   }
   __pyx_v_self->thisptr->setBBXMax(__pyx_t_5);
 
-  /* "octomap/octomap.pyx":882
+  /* "octomap/octomap.pyx":899
  *         return node
  * 
  *     def setBBXMax(self, np.ndarray[DOUBLE_t, ndim=1] max):             # <<<<<<<<<<<<<<
@@ -25142,7 +24875,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_82setBBXMax(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":888
+/* "octomap/octomap.pyx":905
  *         self.thisptr.setBBXMax(defs.point3d(max[0], max[1], max[2]))
  * 
  *     def setBBXMin(self, np.ndarray[DOUBLE_t, ndim=1] min):             # <<<<<<<<<<<<<<
@@ -25190,32 +24923,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_min,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 888, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 905, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 888, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 905, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setBBXMin", 0) < 0) __PYX_ERR(0, 888, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setBBXMin", 0) < 0) __PYX_ERR(0, 905, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setBBXMin", 1, 1, 1, i); __PYX_ERR(0, 888, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setBBXMin", 1, 1, 1, i); __PYX_ERR(0, 905, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 888, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 905, __pyx_L3_error)
     }
     __pyx_v_min = ((PyArrayObject *)values[0]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setBBXMin", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 888, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setBBXMin", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 905, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -25226,7 +24959,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_min), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "min", 0))) __PYX_ERR(0, 888, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_min), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "min", 0))) __PYX_ERR(0, 905, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_84setBBXMin(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_min);
 
   /* function exit code */
@@ -25266,11 +24999,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_84setBBXMin(struct __pyx_obj
   __pyx_pybuffernd_min.rcbuffer = &__pyx_pybuffer_min;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_min.rcbuffer->pybuffer, (PyObject*)__pyx_v_min, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 888, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_min.rcbuffer->pybuffer, (PyObject*)__pyx_v_min, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 905, __pyx_L1_error)
   }
   __pyx_pybuffernd_min.diminfo[0].strides = __pyx_pybuffernd_min.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_min.diminfo[0].shape = __pyx_pybuffernd_min.rcbuffer->pybuffer.shape[0];
 
-  /* "octomap/octomap.pyx":892
+  /* "octomap/octomap.pyx":909
  *         sets the minimum for a query bounding box to use
  *         """
  *         self.thisptr.setBBXMin(defs.point3d(min[0], min[1], min[2]))             # <<<<<<<<<<<<<<
@@ -25285,7 +25018,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_84setBBXMin(struct __pyx_obj
   } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_min.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 892, __pyx_L1_error)
+    __PYX_ERR(0, 909, __pyx_L1_error)
   }
   __pyx_t_3 = 1;
   __pyx_t_2 = -1;
@@ -25295,7 +25028,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_84setBBXMin(struct __pyx_obj
   } else if (unlikely(__pyx_t_3 >= __pyx_pybuffernd_min.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 892, __pyx_L1_error)
+    __PYX_ERR(0, 909, __pyx_L1_error)
   }
   __pyx_t_4 = 2;
   __pyx_t_2 = -1;
@@ -25305,17 +25038,17 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_84setBBXMin(struct __pyx_obj
   } else if (unlikely(__pyx_t_4 >= __pyx_pybuffernd_min.diminfo[0].shape)) __pyx_t_2 = 0;
   if (unlikely(__pyx_t_2 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(0, 892, __pyx_L1_error)
+    __PYX_ERR(0, 909, __pyx_L1_error)
   }
   try {
     __pyx_t_5 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_min.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_min.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_min.rcbuffer->pybuffer.buf, __pyx_t_3, __pyx_pybuffernd_min.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_min.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_min.diminfo[0].strides)));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 892, __pyx_L1_error)
+    __PYX_ERR(0, 909, __pyx_L1_error)
   }
   __pyx_v_self->thisptr->setBBXMin(__pyx_t_5);
 
-  /* "octomap/octomap.pyx":888
+  /* "octomap/octomap.pyx":905
  *         self.thisptr.setBBXMax(defs.point3d(max[0], max[1], max[2]))
  * 
  *     def setBBXMin(self, np.ndarray[DOUBLE_t, ndim=1] min):             # <<<<<<<<<<<<<<
@@ -25344,7 +25077,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_84setBBXMin(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":894
+/* "octomap/octomap.pyx":911
  *         self.thisptr.setBBXMin(defs.point3d(min[0], min[1], min[2]))
  * 
  *     def setResolution(self, double r):             # <<<<<<<<<<<<<<
@@ -25392,32 +25125,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_r,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 894, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 911, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 894, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 911, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setResolution", 0) < 0) __PYX_ERR(0, 894, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setResolution", 0) < 0) __PYX_ERR(0, 911, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setResolution", 1, 1, 1, i); __PYX_ERR(0, 894, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setResolution", 1, 1, 1, i); __PYX_ERR(0, 911, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 894, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 911, __pyx_L3_error)
     }
-    __pyx_v_r = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_r == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 894, __pyx_L3_error)
+    __pyx_v_r = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_r == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 911, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setResolution", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 894, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setResolution", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 911, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -25443,7 +25176,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_86setResolution(struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setResolution", 0);
 
-  /* "octomap/octomap.pyx":898
+  /* "octomap/octomap.pyx":915
  *         Change the resolution of the octree, scaling all voxels. This will not preserve the (metric) scale!
  *         """
  *         self.thisptr.setResolution(r)             # <<<<<<<<<<<<<<
@@ -25452,7 +25185,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_86setResolution(struct __pyx
 */
   __pyx_v_self->thisptr->setResolution(__pyx_v_r);
 
-  /* "octomap/octomap.pyx":894
+  /* "octomap/octomap.pyx":911
  *         self.thisptr.setBBXMin(defs.point3d(min[0], min[1], min[2]))
  * 
  *     def setResolution(self, double r):             # <<<<<<<<<<<<<<
@@ -25467,7 +25200,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_86setResolution(struct __pyx
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":900
+/* "octomap/octomap.pyx":917
  *         self.thisptr.setResolution(r)
  * 
  *     def size(self):             # <<<<<<<<<<<<<<
@@ -25526,7 +25259,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_88size(struct __pyx_obj_7oct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("size", 0);
 
-  /* "octomap/octomap.pyx":901
+  /* "octomap/octomap.pyx":918
  * 
  *     def size(self):
  *         return self.thisptr.size()             # <<<<<<<<<<<<<<
@@ -25534,13 +25267,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_88size(struct __pyx_obj_7oct
  *     def toMaxLikelihood(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_FromSize_t(__pyx_v_self->thisptr->size()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 901, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_FromSize_t(__pyx_v_self->thisptr->size()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 918, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":900
+  /* "octomap/octomap.pyx":917
  *         self.thisptr.setResolution(r)
  * 
  *     def size(self):             # <<<<<<<<<<<<<<
@@ -25559,7 +25292,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_88size(struct __pyx_obj_7oct
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":903
+/* "octomap/octomap.pyx":920
  *         return self.thisptr.size()
  * 
  *     def toMaxLikelihood(self):             # <<<<<<<<<<<<<<
@@ -25615,7 +25348,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_90toMaxLikelihood(struct __p
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("toMaxLikelihood", 0);
 
-  /* "octomap/octomap.pyx":908
+  /* "octomap/octomap.pyx":925
  *         setting their occupancy to the corresponding occupancy thresholds.
  *         """
  *         self.thisptr.toMaxLikelihood()             # <<<<<<<<<<<<<<
@@ -25624,7 +25357,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_90toMaxLikelihood(struct __p
 */
   __pyx_v_self->thisptr->toMaxLikelihood();
 
-  /* "octomap/octomap.pyx":903
+  /* "octomap/octomap.pyx":920
  *         return self.thisptr.size()
  * 
  *     def toMaxLikelihood(self):             # <<<<<<<<<<<<<<
@@ -25639,7 +25372,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_90toMaxLikelihood(struct __p
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":910
+/* "octomap/octomap.pyx":927
  *         self.thisptr.toMaxLikelihood()
  * 
  *     def updateNodes(self, values, update, lazy_eval=False):             # <<<<<<<<<<<<<<
@@ -25689,41 +25422,41 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_values,&__pyx_mstate_global->__pyx_n_u_update,&__pyx_mstate_global->__pyx_n_u_lazy_eval,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 910, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 927, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 910, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 927, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 910, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 927, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 910, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 927, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "updateNodes", 0) < 0) __PYX_ERR(0, 910, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "updateNodes", 0) < 0) __PYX_ERR(0, 927, __pyx_L3_error)
       if (!values[2]) values[2] = __Pyx_NewRef(((PyObject *)Py_False));
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("updateNodes", 0, 2, 3, i); __PYX_ERR(0, 910, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("updateNodes", 0, 2, 3, i); __PYX_ERR(0, 927, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 910, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 927, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 910, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 927, __pyx_L3_error)
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 910, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 927, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -25735,7 +25468,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("updateNodes", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 910, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("updateNodes", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 927, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -25781,7 +25514,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("updateNodes", 0);
 
-  /* "octomap/octomap.pyx":914
+  /* "octomap/octomap.pyx":931
  *         Integrate occupancy measurements and Manipulate log_odds value of voxel directly.
  *         """
  *         if values is None or len(values) == 0:             # <<<<<<<<<<<<<<
@@ -25794,13 +25527,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
     __pyx_t_1 = __pyx_t_2;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = PyObject_Length(__pyx_v_values); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 914, __pyx_L1_error)
+  __pyx_t_3 = PyObject_Length(__pyx_v_values); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 931, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_3 == 0);
   __pyx_t_1 = __pyx_t_2;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":915
+    /* "octomap/octomap.pyx":932
  *         """
  *         if values is None or len(values) == 0:
  *             return             # <<<<<<<<<<<<<<
@@ -25811,7 +25544,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "octomap/octomap.pyx":914
+    /* "octomap/octomap.pyx":931
  *         Integrate occupancy measurements and Manipulate log_odds value of voxel directly.
  *         """
  *         if values is None or len(values) == 0:             # <<<<<<<<<<<<<<
@@ -25820,20 +25553,20 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
 */
   }
 
-  /* "octomap/octomap.pyx":916
+  /* "octomap/octomap.pyx":933
  *         if values is None or len(values) == 0:
  *             return
  *         if isinstance(values[0], OcTreeKey):             # <<<<<<<<<<<<<<
  *             if isinstance(update, bool):
  *                 for v in values:
 */
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_values, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 916, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_values, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 933, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_1 = __Pyx_TypeCheck(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeKey); 
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":917
+    /* "octomap/octomap.pyx":934
  *             return
  *         if isinstance(values[0], OcTreeKey):
  *             if isinstance(update, bool):             # <<<<<<<<<<<<<<
@@ -25842,11 +25575,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
 */
     __pyx_t_4 = ((PyObject*)&PyBool_Type);
     __Pyx_INCREF(__pyx_t_4);
-    __pyx_t_1 = PyObject_IsInstance(__pyx_v_update, __pyx_t_4); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 917, __pyx_L1_error)
+    __pyx_t_1 = PyObject_IsInstance(__pyx_v_update, __pyx_t_4); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 934, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_1) {
 
-      /* "octomap/octomap.pyx":918
+      /* "octomap/octomap.pyx":935
  *         if isinstance(values[0], OcTreeKey):
  *             if isinstance(update, bool):
  *                 for v in values:             # <<<<<<<<<<<<<<
@@ -25858,9 +25591,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
         __pyx_t_3 = 0;
         __pyx_t_5 = NULL;
       } else {
-        __pyx_t_3 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_values); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 918, __pyx_L1_error)
+        __pyx_t_3 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_values); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 935, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 918, __pyx_L1_error)
+        __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 935, __pyx_L1_error)
       }
       for (;;) {
         if (likely(!__pyx_t_5)) {
@@ -25868,7 +25601,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_4);
               #if !CYTHON_ASSUME_SAFE_SIZE
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 918, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 935, __pyx_L1_error)
               #endif
               if (__pyx_t_3 >= __pyx_temp) break;
             }
@@ -25878,7 +25611,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_4);
               #if !CYTHON_ASSUME_SAFE_SIZE
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 918, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 935, __pyx_L1_error)
               #endif
               if (__pyx_t_3 >= __pyx_temp) break;
             }
@@ -25889,13 +25622,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             #endif
             ++__pyx_t_3;
           }
-          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 918, __pyx_L1_error)
+          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 935, __pyx_L1_error)
         } else {
           __pyx_t_6 = __pyx_t_5(__pyx_t_4);
           if (unlikely(!__pyx_t_6)) {
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
-              if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 918, __pyx_L1_error)
+              if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 935, __pyx_L1_error)
               PyErr_Clear();
             }
             break;
@@ -25905,43 +25638,43 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
         __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_6);
         __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":919
+        /* "octomap/octomap.pyx":936
  *             if isinstance(update, bool):
  *                 for v in values:
  *                     self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],             # <<<<<<<<<<<<<<
  *                                                            <unsigned short int>v[1],
  *                                                            <unsigned short int>v[2]),
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 919, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 936, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_7 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_7 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 919, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_7 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 936, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":920
+        /* "octomap/octomap.pyx":937
  *                 for v in values:
  *                     self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],
  *                                                            <unsigned short int>v[1],             # <<<<<<<<<<<<<<
  *                                                            <unsigned short int>v[2]),
  *                                             <cppbool>update,
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 920, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 937, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_8 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_8 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 920, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_8 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 937, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":921
+        /* "octomap/octomap.pyx":938
  *                     self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],
  *                                                            <unsigned short int>v[1],
  *                                                            <unsigned short int>v[2]),             # <<<<<<<<<<<<<<
  *                                             <cppbool>update,
  *                                             <cppbool?>lazy_eval)
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 921, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 938, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_9 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_9 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 921, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_9 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 938, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":919
+        /* "octomap/octomap.pyx":936
  *             if isinstance(update, bool):
  *                 for v in values:
  *                     self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],             # <<<<<<<<<<<<<<
@@ -25952,28 +25685,28 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
           __pyx_t_10 = octomap::OcTreeKey(((unsigned short)__pyx_t_7), ((unsigned short)__pyx_t_8), ((unsigned short)__pyx_t_9));
         } catch(...) {
           __Pyx_CppExn2PyErr();
-          __PYX_ERR(0, 919, __pyx_L1_error)
+          __PYX_ERR(0, 936, __pyx_L1_error)
         }
 
-        /* "octomap/octomap.pyx":922
+        /* "octomap/octomap.pyx":939
  *                                                            <unsigned short int>v[1],
  *                                                            <unsigned short int>v[2]),
  *                                             <cppbool>update,             # <<<<<<<<<<<<<<
  *                                             <cppbool?>lazy_eval)
  *             else:
 */
-        __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_update); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 922, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_update); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 939, __pyx_L1_error)
 
-        /* "octomap/octomap.pyx":923
+        /* "octomap/octomap.pyx":940
  *                                                            <unsigned short int>v[2]),
  *                                             <cppbool>update,
  *                                             <cppbool?>lazy_eval)             # <<<<<<<<<<<<<<
  *             else:
  *                 for v in values:
 */
-        __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 923, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 940, __pyx_L1_error)
 
-        /* "octomap/octomap.pyx":919
+        /* "octomap/octomap.pyx":936
  *             if isinstance(update, bool):
  *                 for v in values:
  *                     self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],             # <<<<<<<<<<<<<<
@@ -25982,7 +25715,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
 */
         (void)(__pyx_v_self->thisptr->updateNode(__pyx_t_10, ((bool)__pyx_t_11), ((bool)__pyx_t_12)));
 
-        /* "octomap/octomap.pyx":918
+        /* "octomap/octomap.pyx":935
  *         if isinstance(values[0], OcTreeKey):
  *             if isinstance(update, bool):
  *                 for v in values:             # <<<<<<<<<<<<<<
@@ -25992,7 +25725,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "octomap/octomap.pyx":917
+      /* "octomap/octomap.pyx":934
  *             return
  *         if isinstance(values[0], OcTreeKey):
  *             if isinstance(update, bool):             # <<<<<<<<<<<<<<
@@ -26002,7 +25735,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
       goto __pyx_L7;
     }
 
-    /* "octomap/octomap.pyx":925
+    /* "octomap/octomap.pyx":942
  *                                             <cppbool?>lazy_eval)
  *             else:
  *                 for v in values:             # <<<<<<<<<<<<<<
@@ -26015,9 +25748,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
         __pyx_t_3 = 0;
         __pyx_t_5 = NULL;
       } else {
-        __pyx_t_3 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_values); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 925, __pyx_L1_error)
+        __pyx_t_3 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_values); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 942, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 925, __pyx_L1_error)
+        __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 942, __pyx_L1_error)
       }
       for (;;) {
         if (likely(!__pyx_t_5)) {
@@ -26025,7 +25758,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_4);
               #if !CYTHON_ASSUME_SAFE_SIZE
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 925, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 942, __pyx_L1_error)
               #endif
               if (__pyx_t_3 >= __pyx_temp) break;
             }
@@ -26035,7 +25768,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_4);
               #if !CYTHON_ASSUME_SAFE_SIZE
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 925, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 942, __pyx_L1_error)
               #endif
               if (__pyx_t_3 >= __pyx_temp) break;
             }
@@ -26046,13 +25779,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             #endif
             ++__pyx_t_3;
           }
-          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 925, __pyx_L1_error)
+          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 942, __pyx_L1_error)
         } else {
           __pyx_t_6 = __pyx_t_5(__pyx_t_4);
           if (unlikely(!__pyx_t_6)) {
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
-              if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 925, __pyx_L1_error)
+              if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 942, __pyx_L1_error)
               PyErr_Clear();
             }
             break;
@@ -26062,43 +25795,43 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
         __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_6);
         __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":926
+        /* "octomap/octomap.pyx":943
  *             else:
  *                 for v in values:
  *                     self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],             # <<<<<<<<<<<<<<
  *                                                            <unsigned short int>v[1],
  *                                                            <unsigned short int>v[2]),
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 926, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 943, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_9 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_9 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 926, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_9 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 943, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":927
+        /* "octomap/octomap.pyx":944
  *                 for v in values:
  *                     self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],
  *                                                            <unsigned short int>v[1],             # <<<<<<<<<<<<<<
  *                                                            <unsigned short int>v[2]),
  *                                             <float?>update,
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 927, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 944, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_8 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_8 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 927, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_8 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 944, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":928
+        /* "octomap/octomap.pyx":945
  *                     self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],
  *                                                            <unsigned short int>v[1],
  *                                                            <unsigned short int>v[2]),             # <<<<<<<<<<<<<<
  *                                             <float?>update,
  *                                             <cppbool?>lazy_eval)
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 928, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 945, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_7 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_7 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 928, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyLong_As_unsigned_short(__pyx_t_6); if (unlikely((__pyx_t_7 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 945, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":926
+        /* "octomap/octomap.pyx":943
  *             else:
  *                 for v in values:
  *                     self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],             # <<<<<<<<<<<<<<
@@ -26109,28 +25842,28 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
           __pyx_t_10 = octomap::OcTreeKey(((unsigned short)__pyx_t_9), ((unsigned short)__pyx_t_8), ((unsigned short)__pyx_t_7));
         } catch(...) {
           __Pyx_CppExn2PyErr();
-          __PYX_ERR(0, 926, __pyx_L1_error)
+          __PYX_ERR(0, 943, __pyx_L1_error)
         }
 
-        /* "octomap/octomap.pyx":929
+        /* "octomap/octomap.pyx":946
  *                                                            <unsigned short int>v[1],
  *                                                            <unsigned short int>v[2]),
  *                                             <float?>update,             # <<<<<<<<<<<<<<
  *                                             <cppbool?>lazy_eval)
  *         else:
 */
-        __pyx_t_13 = __Pyx_PyFloat_AsFloat(__pyx_v_update); if (unlikely((__pyx_t_13 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 929, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyFloat_AsFloat(__pyx_v_update); if (unlikely((__pyx_t_13 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 946, __pyx_L1_error)
 
-        /* "octomap/octomap.pyx":930
+        /* "octomap/octomap.pyx":947
  *                                                            <unsigned short int>v[2]),
  *                                             <float?>update,
  *                                             <cppbool?>lazy_eval)             # <<<<<<<<<<<<<<
  *         else:
  *             if isinstance(update, bool):
 */
-        __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 930, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 947, __pyx_L1_error)
 
-        /* "octomap/octomap.pyx":926
+        /* "octomap/octomap.pyx":943
  *             else:
  *                 for v in values:
  *                     self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],             # <<<<<<<<<<<<<<
@@ -26139,7 +25872,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
 */
         (void)(__pyx_v_self->thisptr->updateNode(__pyx_t_10, ((float)__pyx_t_13), ((bool)__pyx_t_12)));
 
-        /* "octomap/octomap.pyx":925
+        /* "octomap/octomap.pyx":942
  *                                             <cppbool?>lazy_eval)
  *             else:
  *                 for v in values:             # <<<<<<<<<<<<<<
@@ -26151,7 +25884,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
     }
     __pyx_L7:;
 
-    /* "octomap/octomap.pyx":916
+    /* "octomap/octomap.pyx":933
  *         if values is None or len(values) == 0:
  *             return
  *         if isinstance(values[0], OcTreeKey):             # <<<<<<<<<<<<<<
@@ -26161,7 +25894,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
     goto __pyx_L6;
   }
 
-  /* "octomap/octomap.pyx":932
+  /* "octomap/octomap.pyx":949
  *                                             <cppbool?>lazy_eval)
  *         else:
  *             if isinstance(update, bool):             # <<<<<<<<<<<<<<
@@ -26171,11 +25904,11 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
   /*else*/ {
     __pyx_t_4 = ((PyObject*)&PyBool_Type);
     __Pyx_INCREF(__pyx_t_4);
-    __pyx_t_1 = PyObject_IsInstance(__pyx_v_update, __pyx_t_4); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 932, __pyx_L1_error)
+    __pyx_t_1 = PyObject_IsInstance(__pyx_v_update, __pyx_t_4); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 949, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_1) {
 
-      /* "octomap/octomap.pyx":933
+      /* "octomap/octomap.pyx":950
  *         else:
  *             if isinstance(update, bool):
  *                 for v in values:             # <<<<<<<<<<<<<<
@@ -26187,9 +25920,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
         __pyx_t_3 = 0;
         __pyx_t_5 = NULL;
       } else {
-        __pyx_t_3 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_values); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 933, __pyx_L1_error)
+        __pyx_t_3 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_values); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 950, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 933, __pyx_L1_error)
+        __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 950, __pyx_L1_error)
       }
       for (;;) {
         if (likely(!__pyx_t_5)) {
@@ -26197,7 +25930,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_4);
               #if !CYTHON_ASSUME_SAFE_SIZE
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 933, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 950, __pyx_L1_error)
               #endif
               if (__pyx_t_3 >= __pyx_temp) break;
             }
@@ -26207,7 +25940,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_4);
               #if !CYTHON_ASSUME_SAFE_SIZE
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 933, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 950, __pyx_L1_error)
               #endif
               if (__pyx_t_3 >= __pyx_temp) break;
             }
@@ -26218,13 +25951,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             #endif
             ++__pyx_t_3;
           }
-          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 933, __pyx_L1_error)
+          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 950, __pyx_L1_error)
         } else {
           __pyx_t_6 = __pyx_t_5(__pyx_t_4);
           if (unlikely(!__pyx_t_6)) {
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
-              if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 933, __pyx_L1_error)
+              if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 950, __pyx_L1_error)
               PyErr_Clear();
             }
             break;
@@ -26234,61 +25967,61 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
         __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_6);
         __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":934
+        /* "octomap/octomap.pyx":951
  *             if isinstance(update, bool):
  *                 for v in values:
  *                     self.thisptr.updateNode(<double?>v[0],             # <<<<<<<<<<<<<<
  *                                             <double?>v[1],
  *                                             <double?>v[2],
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 934, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 951, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_14 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 934, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 951, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":935
+        /* "octomap/octomap.pyx":952
  *                 for v in values:
  *                     self.thisptr.updateNode(<double?>v[0],
  *                                             <double?>v[1],             # <<<<<<<<<<<<<<
  *                                             <double?>v[2],
  *                                             <cppbool>update,
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 935, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 952, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_15 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_15 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 935, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_15 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 952, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":936
+        /* "octomap/octomap.pyx":953
  *                     self.thisptr.updateNode(<double?>v[0],
  *                                             <double?>v[1],
  *                                             <double?>v[2],             # <<<<<<<<<<<<<<
  *                                             <cppbool>update,
  *                                             <cppbool?>lazy_eval)
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 936, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 953, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_16 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_16 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 936, __pyx_L1_error)
+        __pyx_t_16 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_16 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 953, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":937
+        /* "octomap/octomap.pyx":954
  *                                             <double?>v[1],
  *                                             <double?>v[2],
  *                                             <cppbool>update,             # <<<<<<<<<<<<<<
  *                                             <cppbool?>lazy_eval)
  *             else:
 */
-        __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_v_update); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 937, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_v_update); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 954, __pyx_L1_error)
 
-        /* "octomap/octomap.pyx":938
+        /* "octomap/octomap.pyx":955
  *                                             <double?>v[2],
  *                                             <cppbool>update,
  *                                             <cppbool?>lazy_eval)             # <<<<<<<<<<<<<<
  *             else:
  *                 for v in values:
 */
-        __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 938, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 955, __pyx_L1_error)
 
-        /* "octomap/octomap.pyx":934
+        /* "octomap/octomap.pyx":951
  *             if isinstance(update, bool):
  *                 for v in values:
  *                     self.thisptr.updateNode(<double?>v[0],             # <<<<<<<<<<<<<<
@@ -26297,7 +26030,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
 */
         (void)(__pyx_v_self->thisptr->updateNode(((double)__pyx_t_14), ((double)__pyx_t_15), ((double)__pyx_t_16), ((bool)__pyx_t_12), ((bool)__pyx_t_11)));
 
-        /* "octomap/octomap.pyx":933
+        /* "octomap/octomap.pyx":950
  *         else:
  *             if isinstance(update, bool):
  *                 for v in values:             # <<<<<<<<<<<<<<
@@ -26307,7 +26040,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "octomap/octomap.pyx":932
+      /* "octomap/octomap.pyx":949
  *                                             <cppbool?>lazy_eval)
  *         else:
  *             if isinstance(update, bool):             # <<<<<<<<<<<<<<
@@ -26317,7 +26050,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
       goto __pyx_L14;
     }
 
-    /* "octomap/octomap.pyx":940
+    /* "octomap/octomap.pyx":957
  *                                             <cppbool?>lazy_eval)
  *             else:
  *                 for v in values:             # <<<<<<<<<<<<<<
@@ -26330,9 +26063,9 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
         __pyx_t_3 = 0;
         __pyx_t_5 = NULL;
       } else {
-        __pyx_t_3 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_values); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 940, __pyx_L1_error)
+        __pyx_t_3 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_values); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 957, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 940, __pyx_L1_error)
+        __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 957, __pyx_L1_error)
       }
       for (;;) {
         if (likely(!__pyx_t_5)) {
@@ -26340,7 +26073,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_4);
               #if !CYTHON_ASSUME_SAFE_SIZE
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 940, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 957, __pyx_L1_error)
               #endif
               if (__pyx_t_3 >= __pyx_temp) break;
             }
@@ -26350,7 +26083,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_4);
               #if !CYTHON_ASSUME_SAFE_SIZE
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 940, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 957, __pyx_L1_error)
               #endif
               if (__pyx_t_3 >= __pyx_temp) break;
             }
@@ -26361,13 +26094,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
             #endif
             ++__pyx_t_3;
           }
-          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 940, __pyx_L1_error)
+          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 957, __pyx_L1_error)
         } else {
           __pyx_t_6 = __pyx_t_5(__pyx_t_4);
           if (unlikely(!__pyx_t_6)) {
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
-              if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 940, __pyx_L1_error)
+              if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 957, __pyx_L1_error)
               PyErr_Clear();
             }
             break;
@@ -26377,61 +26110,61 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
         __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_6);
         __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":941
+        /* "octomap/octomap.pyx":958
  *             else:
  *                 for v in values:
  *                     self.thisptr.updateNode(<double?>v[0],             # <<<<<<<<<<<<<<
  *                                             <double?>v[1],
  *                                             <double?>v[2],
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 941, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 958, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_16 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_16 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 941, __pyx_L1_error)
+        __pyx_t_16 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_16 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 958, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":942
+        /* "octomap/octomap.pyx":959
  *                 for v in values:
  *                     self.thisptr.updateNode(<double?>v[0],
  *                                             <double?>v[1],             # <<<<<<<<<<<<<<
  *                                             <double?>v[2],
  *                                             <float?>update,
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 942, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 959, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_15 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_15 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 942, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_15 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 959, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":943
+        /* "octomap/octomap.pyx":960
  *                     self.thisptr.updateNode(<double?>v[0],
  *                                             <double?>v[1],
  *                                             <double?>v[2],             # <<<<<<<<<<<<<<
  *                                             <float?>update,
  *                                             <cppbool?>lazy_eval)
 */
-        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 943, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_v, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 960, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_14 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 943, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 960, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "octomap/octomap.pyx":944
+        /* "octomap/octomap.pyx":961
  *                                             <double?>v[1],
  *                                             <double?>v[2],
  *                                             <float?>update,             # <<<<<<<<<<<<<<
  *                                             <cppbool?>lazy_eval)
  * 
 */
-        __pyx_t_13 = __Pyx_PyFloat_AsFloat(__pyx_v_update); if (unlikely((__pyx_t_13 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 944, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyFloat_AsFloat(__pyx_v_update); if (unlikely((__pyx_t_13 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 961, __pyx_L1_error)
 
-        /* "octomap/octomap.pyx":945
+        /* "octomap/octomap.pyx":962
  *                                             <double?>v[2],
  *                                             <float?>update,
  *                                             <cppbool?>lazy_eval)             # <<<<<<<<<<<<<<
  * 
  *     def updateNode(self, value, update, lazy_eval=False):
 */
-        __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 945, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 962, __pyx_L1_error)
 
-        /* "octomap/octomap.pyx":941
+        /* "octomap/octomap.pyx":958
  *             else:
  *                 for v in values:
  *                     self.thisptr.updateNode(<double?>v[0],             # <<<<<<<<<<<<<<
@@ -26440,7 +26173,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
 */
         (void)(__pyx_v_self->thisptr->updateNode(((double)__pyx_t_16), ((double)__pyx_t_15), ((double)__pyx_t_14), ((float)__pyx_t_13), ((bool)__pyx_t_11)));
 
-        /* "octomap/octomap.pyx":940
+        /* "octomap/octomap.pyx":957
  *                                             <cppbool?>lazy_eval)
  *             else:
  *                 for v in values:             # <<<<<<<<<<<<<<
@@ -26454,7 +26187,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
   }
   __pyx_L6:;
 
-  /* "octomap/octomap.pyx":910
+  /* "octomap/octomap.pyx":927
  *         self.thisptr.toMaxLikelihood()
  * 
  *     def updateNodes(self, values, update, lazy_eval=False):             # <<<<<<<<<<<<<<
@@ -26477,7 +26210,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_92updateNodes(struct __pyx_o
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":947
+/* "octomap/octomap.pyx":964
  *                                             <cppbool?>lazy_eval)
  * 
  *     def updateNode(self, value, update, lazy_eval=False):             # <<<<<<<<<<<<<<
@@ -26527,41 +26260,41 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_value,&__pyx_mstate_global->__pyx_n_u_update,&__pyx_mstate_global->__pyx_n_u_lazy_eval,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 947, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 964, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 947, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 964, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 947, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 964, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 947, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 964, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "updateNode", 0) < 0) __PYX_ERR(0, 947, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "updateNode", 0) < 0) __PYX_ERR(0, 964, __pyx_L3_error)
       if (!values[2]) values[2] = __Pyx_NewRef(((PyObject *)Py_False));
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("updateNode", 0, 2, 3, i); __PYX_ERR(0, 947, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("updateNode", 0, 2, 3, i); __PYX_ERR(0, 964, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 947, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 964, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 947, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 964, __pyx_L3_error)
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 947, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 964, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -26573,7 +26306,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("updateNode", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 947, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("updateNode", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 964, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -26618,7 +26351,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("updateNode", 0);
 
-  /* "octomap/octomap.pyx":951
+  /* "octomap/octomap.pyx":968
  *         Integrate occupancy measurement and Manipulate log_odds value of voxel directly.
  *         """
  *         node = OcTreeNode()             # <<<<<<<<<<<<<<
@@ -26634,13 +26367,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (1-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 951, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 968, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_v_node = ((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":952
+  /* "octomap/octomap.pyx":969
  *         """
  *         node = OcTreeNode()
  *         if isinstance(value, OcTreeKey):             # <<<<<<<<<<<<<<
@@ -26650,7 +26383,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
   __pyx_t_5 = __Pyx_TypeCheck(__pyx_v_value, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeKey); 
   if (__pyx_t_5) {
 
-    /* "octomap/octomap.pyx":953
+    /* "octomap/octomap.pyx":970
  *         node = OcTreeNode()
  *         if isinstance(value, OcTreeKey):
  *             if isinstance(update, bool):             # <<<<<<<<<<<<<<
@@ -26659,47 +26392,47 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
 */
     __pyx_t_1 = ((PyObject*)&PyBool_Type);
     __Pyx_INCREF(__pyx_t_1);
-    __pyx_t_5 = PyObject_IsInstance(__pyx_v_update, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 953, __pyx_L1_error)
+    __pyx_t_5 = PyObject_IsInstance(__pyx_v_update, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 970, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_5) {
 
-      /* "octomap/octomap.pyx":954
+      /* "octomap/octomap.pyx":971
  *         if isinstance(value, OcTreeKey):
  *             if isinstance(update, bool):
  *                 node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],             # <<<<<<<<<<<<<<
  *                                                                       <unsigned short int>value[1],
  *                                                                       <unsigned short int>value[2]),
 */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 954, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 971, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_6 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_6 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 954, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_6 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 971, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":955
+      /* "octomap/octomap.pyx":972
  *             if isinstance(update, bool):
  *                 node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],
  *                                                                       <unsigned short int>value[1],             # <<<<<<<<<<<<<<
  *                                                                       <unsigned short int>value[2]),
  *                                                        <cppbool>update,
 */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 955, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 972, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_7 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 955, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_7 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 972, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":956
+      /* "octomap/octomap.pyx":973
  *                 node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],
  *                                                                       <unsigned short int>value[1],
  *                                                                       <unsigned short int>value[2]),             # <<<<<<<<<<<<<<
  *                                                        <cppbool>update,
  *                                                        <cppbool?>lazy_eval)
 */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 956, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 973, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_8 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_8 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 956, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_8 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 973, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":954
+      /* "octomap/octomap.pyx":971
  *         if isinstance(value, OcTreeKey):
  *             if isinstance(update, bool):
  *                 node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],             # <<<<<<<<<<<<<<
@@ -26710,28 +26443,28 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
         __pyx_t_9 = octomap::OcTreeKey(((unsigned short)__pyx_t_6), ((unsigned short)__pyx_t_7), ((unsigned short)__pyx_t_8));
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(0, 954, __pyx_L1_error)
+        __PYX_ERR(0, 971, __pyx_L1_error)
       }
 
-      /* "octomap/octomap.pyx":957
+      /* "octomap/octomap.pyx":974
  *                                                                       <unsigned short int>value[1],
  *                                                                       <unsigned short int>value[2]),
  *                                                        <cppbool>update,             # <<<<<<<<<<<<<<
  *                                                        <cppbool?>lazy_eval)
  *             else:
 */
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_update); if (unlikely((__pyx_t_10 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 957, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_update); if (unlikely((__pyx_t_10 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 974, __pyx_L1_error)
 
-      /* "octomap/octomap.pyx":958
+      /* "octomap/octomap.pyx":975
  *                                                                       <unsigned short int>value[2]),
  *                                                        <cppbool>update,
  *                                                        <cppbool?>lazy_eval)             # <<<<<<<<<<<<<<
  *             else:
  *                 node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],
 */
-      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 958, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 975, __pyx_L1_error)
 
-      /* "octomap/octomap.pyx":954
+      /* "octomap/octomap.pyx":971
  *         if isinstance(value, OcTreeKey):
  *             if isinstance(update, bool):
  *                 node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],             # <<<<<<<<<<<<<<
@@ -26740,7 +26473,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
 */
       __pyx_v_node->thisptr = __pyx_v_self->thisptr->updateNode(__pyx_t_9, ((bool)__pyx_t_10), ((bool)__pyx_t_11));
 
-      /* "octomap/octomap.pyx":953
+      /* "octomap/octomap.pyx":970
  *         node = OcTreeNode()
  *         if isinstance(value, OcTreeKey):
  *             if isinstance(update, bool):             # <<<<<<<<<<<<<<
@@ -26750,7 +26483,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
       goto __pyx_L4;
     }
 
-    /* "octomap/octomap.pyx":960
+    /* "octomap/octomap.pyx":977
  *                                                        <cppbool?>lazy_eval)
  *             else:
  *                 node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],             # <<<<<<<<<<<<<<
@@ -26758,36 +26491,36 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
  *                                                                       <unsigned short int>value[2]),
 */
     /*else*/ {
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 960, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 977, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_8 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_8 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 960, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_8 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 977, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":961
+      /* "octomap/octomap.pyx":978
  *             else:
  *                 node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],
  *                                                                       <unsigned short int>value[1],             # <<<<<<<<<<<<<<
  *                                                                       <unsigned short int>value[2]),
  *                                                        <float?>update,
 */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 961, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 978, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_7 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 961, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_7 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 978, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":962
+      /* "octomap/octomap.pyx":979
  *                 node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],
  *                                                                       <unsigned short int>value[1],
  *                                                                       <unsigned short int>value[2]),             # <<<<<<<<<<<<<<
  *                                                        <float?>update,
  *                                                        <cppbool?>lazy_eval)
 */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 962, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 979, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_6 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_6 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 962, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyLong_As_unsigned_short(__pyx_t_1); if (unlikely((__pyx_t_6 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 979, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":960
+      /* "octomap/octomap.pyx":977
  *                                                        <cppbool?>lazy_eval)
  *             else:
  *                 node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],             # <<<<<<<<<<<<<<
@@ -26798,28 +26531,28 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
         __pyx_t_9 = octomap::OcTreeKey(((unsigned short)__pyx_t_8), ((unsigned short)__pyx_t_7), ((unsigned short)__pyx_t_6));
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(0, 960, __pyx_L1_error)
+        __PYX_ERR(0, 977, __pyx_L1_error)
       }
 
-      /* "octomap/octomap.pyx":963
+      /* "octomap/octomap.pyx":980
  *                                                                       <unsigned short int>value[1],
  *                                                                       <unsigned short int>value[2]),
  *                                                        <float?>update,             # <<<<<<<<<<<<<<
  *                                                        <cppbool?>lazy_eval)
  *         else:
 */
-      __pyx_t_12 = __Pyx_PyFloat_AsFloat(__pyx_v_update); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 963, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyFloat_AsFloat(__pyx_v_update); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 980, __pyx_L1_error)
 
-      /* "octomap/octomap.pyx":964
+      /* "octomap/octomap.pyx":981
  *                                                                       <unsigned short int>value[2]),
  *                                                        <float?>update,
  *                                                        <cppbool?>lazy_eval)             # <<<<<<<<<<<<<<
  *         else:
  *             if isinstance(update, bool):
 */
-      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 964, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 981, __pyx_L1_error)
 
-      /* "octomap/octomap.pyx":960
+      /* "octomap/octomap.pyx":977
  *                                                        <cppbool?>lazy_eval)
  *             else:
  *                 node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],             # <<<<<<<<<<<<<<
@@ -26830,7 +26563,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
     }
     __pyx_L4:;
 
-    /* "octomap/octomap.pyx":952
+    /* "octomap/octomap.pyx":969
  *         """
  *         node = OcTreeNode()
  *         if isinstance(value, OcTreeKey):             # <<<<<<<<<<<<<<
@@ -26840,7 +26573,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
     goto __pyx_L3;
   }
 
-  /* "octomap/octomap.pyx":966
+  /* "octomap/octomap.pyx":983
  *                                                        <cppbool?>lazy_eval)
  *         else:
  *             if isinstance(update, bool):             # <<<<<<<<<<<<<<
@@ -26850,65 +26583,65 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
   /*else*/ {
     __pyx_t_1 = ((PyObject*)&PyBool_Type);
     __Pyx_INCREF(__pyx_t_1);
-    __pyx_t_5 = PyObject_IsInstance(__pyx_v_update, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 966, __pyx_L1_error)
+    __pyx_t_5 = PyObject_IsInstance(__pyx_v_update, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 983, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_5) {
 
-      /* "octomap/octomap.pyx":967
+      /* "octomap/octomap.pyx":984
  *         else:
  *             if isinstance(update, bool):
  *                 node.thisptr = self.thisptr.updateNode(<double?>value[0],             # <<<<<<<<<<<<<<
  *                                                        <double?>value[1],
  *                                                        <double?>value[2],
 */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 967, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 984, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_13 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_13 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 967, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_13 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 984, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":968
+      /* "octomap/octomap.pyx":985
  *             if isinstance(update, bool):
  *                 node.thisptr = self.thisptr.updateNode(<double?>value[0],
  *                                                        <double?>value[1],             # <<<<<<<<<<<<<<
  *                                                        <double?>value[2],
  *                                                        <cppbool>update,
 */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 968, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 985, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_14 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 968, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 985, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":969
+      /* "octomap/octomap.pyx":986
  *                 node.thisptr = self.thisptr.updateNode(<double?>value[0],
  *                                                        <double?>value[1],
  *                                                        <double?>value[2],             # <<<<<<<<<<<<<<
  *                                                        <cppbool>update,
  *                                                        <cppbool?>lazy_eval)
 */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 969, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 986, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_15 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_15 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 969, __pyx_L1_error)
+      __pyx_t_15 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_15 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 986, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":970
+      /* "octomap/octomap.pyx":987
  *                                                        <double?>value[1],
  *                                                        <double?>value[2],
  *                                                        <cppbool>update,             # <<<<<<<<<<<<<<
  *                                                        <cppbool?>lazy_eval)
  *             else:
 */
-      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_update); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 970, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_update); if (unlikely((__pyx_t_11 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 987, __pyx_L1_error)
 
-      /* "octomap/octomap.pyx":971
+      /* "octomap/octomap.pyx":988
  *                                                        <double?>value[2],
  *                                                        <cppbool>update,
  *                                                        <cppbool?>lazy_eval)             # <<<<<<<<<<<<<<
  *             else:
  *                 node.thisptr = self.thisptr.updateNode(<double?>value[0],
 */
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_10 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 971, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_10 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 988, __pyx_L1_error)
 
-      /* "octomap/octomap.pyx":967
+      /* "octomap/octomap.pyx":984
  *         else:
  *             if isinstance(update, bool):
  *                 node.thisptr = self.thisptr.updateNode(<double?>value[0],             # <<<<<<<<<<<<<<
@@ -26917,7 +26650,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
 */
       __pyx_v_node->thisptr = __pyx_v_self->thisptr->updateNode(((double)__pyx_t_13), ((double)__pyx_t_14), ((double)__pyx_t_15), ((bool)__pyx_t_11), ((bool)__pyx_t_10));
 
-      /* "octomap/octomap.pyx":966
+      /* "octomap/octomap.pyx":983
  *                                                        <cppbool?>lazy_eval)
  *         else:
  *             if isinstance(update, bool):             # <<<<<<<<<<<<<<
@@ -26927,7 +26660,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
       goto __pyx_L5;
     }
 
-    /* "octomap/octomap.pyx":973
+    /* "octomap/octomap.pyx":990
  *                                                        <cppbool?>lazy_eval)
  *             else:
  *                 node.thisptr = self.thisptr.updateNode(<double?>value[0],             # <<<<<<<<<<<<<<
@@ -26935,54 +26668,54 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
  *                                                        <double?>value[2],
 */
     /*else*/ {
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 973, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 990, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_15 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_15 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 973, __pyx_L1_error)
+      __pyx_t_15 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_15 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 990, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":974
+      /* "octomap/octomap.pyx":991
  *             else:
  *                 node.thisptr = self.thisptr.updateNode(<double?>value[0],
  *                                                        <double?>value[1],             # <<<<<<<<<<<<<<
  *                                                        <double?>value[2],
  *                                                        <float?>update,
 */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 974, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 991, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_14 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 974, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 991, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":975
+      /* "octomap/octomap.pyx":992
  *                 node.thisptr = self.thisptr.updateNode(<double?>value[0],
  *                                                        <double?>value[1],
  *                                                        <double?>value[2],             # <<<<<<<<<<<<<<
  *                                                        <float?>update,
  *                                                        <cppbool?>lazy_eval)
 */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 975, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 992, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_13 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_13 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 975, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_13 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 992, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "octomap/octomap.pyx":976
+      /* "octomap/octomap.pyx":993
  *                                                        <double?>value[1],
  *                                                        <double?>value[2],
  *                                                        <float?>update,             # <<<<<<<<<<<<<<
  *                                                        <cppbool?>lazy_eval)
  *         return node
 */
-      __pyx_t_12 = __Pyx_PyFloat_AsFloat(__pyx_v_update); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 976, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyFloat_AsFloat(__pyx_v_update); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 993, __pyx_L1_error)
 
-      /* "octomap/octomap.pyx":977
+      /* "octomap/octomap.pyx":994
  *                                                        <double?>value[2],
  *                                                        <float?>update,
  *                                                        <cppbool?>lazy_eval)             # <<<<<<<<<<<<<<
  *         return node
  * 
 */
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_10 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 977, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_lazy_eval); if (unlikely((__pyx_t_10 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 994, __pyx_L1_error)
 
-      /* "octomap/octomap.pyx":973
+      /* "octomap/octomap.pyx":990
  *                                                        <cppbool?>lazy_eval)
  *             else:
  *                 node.thisptr = self.thisptr.updateNode(<double?>value[0],             # <<<<<<<<<<<<<<
@@ -26995,7 +26728,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
   }
   __pyx_L3:;
 
-  /* "octomap/octomap.pyx":978
+  /* "octomap/octomap.pyx":995
  *                                                        <float?>update,
  *                                                        <cppbool?>lazy_eval)
  *         return node             # <<<<<<<<<<<<<<
@@ -27007,7 +26740,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
   __pyx_r = ((PyObject *)__pyx_v_node);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":947
+  /* "octomap/octomap.pyx":964
  *                                             <cppbool?>lazy_eval)
  * 
  *     def updateNode(self, value, update, lazy_eval=False):             # <<<<<<<<<<<<<<
@@ -27029,7 +26762,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_94updateNode(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":980
+/* "octomap/octomap.pyx":997
  *         return node
  * 
  *     def updateInnerOccupancy(self):             # <<<<<<<<<<<<<<
@@ -27085,7 +26818,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_96updateInnerOccupancy(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("updateInnerOccupancy", 0);
 
-  /* "octomap/octomap.pyx":984
+  /* "octomap/octomap.pyx":1001
  *         Updates the occupancy of all inner nodes to reflect their children's occupancy.
  *         """
  *         self.thisptr.updateInnerOccupancy()             # <<<<<<<<<<<<<<
@@ -27094,7 +26827,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_96updateInnerOccupancy(struc
 */
   __pyx_v_self->thisptr->updateInnerOccupancy();
 
-  /* "octomap/octomap.pyx":980
+  /* "octomap/octomap.pyx":997
  *         return node
  * 
  *     def updateInnerOccupancy(self):             # <<<<<<<<<<<<<<
@@ -27109,7 +26842,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_96updateInnerOccupancy(struc
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":986
+/* "octomap/octomap.pyx":1003
  *         self.thisptr.updateInnerOccupancy()
  * 
  *     def useBBXLimit(self, enable):             # <<<<<<<<<<<<<<
@@ -27157,32 +26890,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_enable,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 986, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1003, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 986, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1003, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "useBBXLimit", 0) < 0) __PYX_ERR(0, 986, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "useBBXLimit", 0) < 0) __PYX_ERR(0, 1003, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("useBBXLimit", 1, 1, 1, i); __PYX_ERR(0, 986, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("useBBXLimit", 1, 1, 1, i); __PYX_ERR(0, 1003, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 986, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1003, __pyx_L3_error)
     }
     __pyx_v_enable = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("useBBXLimit", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 986, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("useBBXLimit", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1003, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -27212,17 +26945,17 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_98useBBXLimit(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("useBBXLimit", 0);
 
-  /* "octomap/octomap.pyx":990
+  /* "octomap/octomap.pyx":1007
  *         use or ignore BBX limit (default: ignore)
  *         """
  *         self.thisptr.useBBXLimit(bool(enable))             # <<<<<<<<<<<<<<
  * 
  *     def volume(self):
 */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_enable); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 990, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_enable); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 1007, __pyx_L1_error)
   __pyx_v_self->thisptr->useBBXLimit((!(!__pyx_t_1)));
 
-  /* "octomap/octomap.pyx":986
+  /* "octomap/octomap.pyx":1003
  *         self.thisptr.updateInnerOccupancy()
  * 
  *     def useBBXLimit(self, enable):             # <<<<<<<<<<<<<<
@@ -27242,7 +26975,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_98useBBXLimit(struct __pyx_o
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":992
+/* "octomap/octomap.pyx":1009
  *         self.thisptr.useBBXLimit(bool(enable))
  * 
  *     def volume(self):             # <<<<<<<<<<<<<<
@@ -27301,7 +27034,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_100volume(struct __pyx_obj_7
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("volume", 0);
 
-  /* "octomap/octomap.pyx":993
+  /* "octomap/octomap.pyx":1010
  * 
  *     def volume(self):
  *         return self.thisptr.volume()             # <<<<<<<<<<<<<<
@@ -27309,13 +27042,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_100volume(struct __pyx_obj_7
  *     def getClampingThresMax(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->volume()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 993, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->volume()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1010, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":992
+  /* "octomap/octomap.pyx":1009
  *         self.thisptr.useBBXLimit(bool(enable))
  * 
  *     def volume(self):             # <<<<<<<<<<<<<<
@@ -27334,7 +27067,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_100volume(struct __pyx_obj_7
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":995
+/* "octomap/octomap.pyx":1012
  *         return self.thisptr.volume()
  * 
  *     def getClampingThresMax(self):             # <<<<<<<<<<<<<<
@@ -27393,7 +27126,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_102getClampingThresMax(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getClampingThresMax", 0);
 
-  /* "octomap/octomap.pyx":996
+  /* "octomap/octomap.pyx":1013
  * 
  *     def getClampingThresMax(self):
  *         return self.thisptr.getClampingThresMax()             # <<<<<<<<<<<<<<
@@ -27401,13 +27134,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_102getClampingThresMax(struc
  *     def getClampingThresMaxLog(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getClampingThresMax()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 996, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getClampingThresMax()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1013, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":995
+  /* "octomap/octomap.pyx":1012
  *         return self.thisptr.volume()
  * 
  *     def getClampingThresMax(self):             # <<<<<<<<<<<<<<
@@ -27426,7 +27159,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_102getClampingThresMax(struc
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":998
+/* "octomap/octomap.pyx":1015
  *         return self.thisptr.getClampingThresMax()
  * 
  *     def getClampingThresMaxLog(self):             # <<<<<<<<<<<<<<
@@ -27485,7 +27218,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_104getClampingThresMaxLog(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getClampingThresMaxLog", 0);
 
-  /* "octomap/octomap.pyx":999
+  /* "octomap/octomap.pyx":1016
  * 
  *     def getClampingThresMaxLog(self):
  *         return self.thisptr.getClampingThresMaxLog()             # <<<<<<<<<<<<<<
@@ -27493,13 +27226,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_104getClampingThresMaxLog(st
  *     def getClampingThresMin(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getClampingThresMaxLog()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 999, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getClampingThresMaxLog()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1016, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":998
+  /* "octomap/octomap.pyx":1015
  *         return self.thisptr.getClampingThresMax()
  * 
  *     def getClampingThresMaxLog(self):             # <<<<<<<<<<<<<<
@@ -27518,7 +27251,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_104getClampingThresMaxLog(st
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1001
+/* "octomap/octomap.pyx":1018
  *         return self.thisptr.getClampingThresMaxLog()
  * 
  *     def getClampingThresMin(self):             # <<<<<<<<<<<<<<
@@ -27577,7 +27310,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_106getClampingThresMin(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getClampingThresMin", 0);
 
-  /* "octomap/octomap.pyx":1002
+  /* "octomap/octomap.pyx":1019
  * 
  *     def getClampingThresMin(self):
  *         return self.thisptr.getClampingThresMin()             # <<<<<<<<<<<<<<
@@ -27585,13 +27318,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_106getClampingThresMin(struc
  *     def getClampingThresMinLog(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getClampingThresMin()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1002, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getClampingThresMin()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1019, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1001
+  /* "octomap/octomap.pyx":1018
  *         return self.thisptr.getClampingThresMaxLog()
  * 
  *     def getClampingThresMin(self):             # <<<<<<<<<<<<<<
@@ -27610,7 +27343,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_106getClampingThresMin(struc
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1004
+/* "octomap/octomap.pyx":1021
  *         return self.thisptr.getClampingThresMin()
  * 
  *     def getClampingThresMinLog(self):             # <<<<<<<<<<<<<<
@@ -27669,7 +27402,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_108getClampingThresMinLog(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getClampingThresMinLog", 0);
 
-  /* "octomap/octomap.pyx":1005
+  /* "octomap/octomap.pyx":1022
  * 
  *     def getClampingThresMinLog(self):
  *         return self.thisptr.getClampingThresMinLog()             # <<<<<<<<<<<<<<
@@ -27677,13 +27410,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_108getClampingThresMinLog(st
  *     def getOccupancyThres(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getClampingThresMinLog()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1005, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getClampingThresMinLog()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1022, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1004
+  /* "octomap/octomap.pyx":1021
  *         return self.thisptr.getClampingThresMin()
  * 
  *     def getClampingThresMinLog(self):             # <<<<<<<<<<<<<<
@@ -27702,7 +27435,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_108getClampingThresMinLog(st
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1007
+/* "octomap/octomap.pyx":1024
  *         return self.thisptr.getClampingThresMinLog()
  * 
  *     def getOccupancyThres(self):             # <<<<<<<<<<<<<<
@@ -27761,7 +27494,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_110getOccupancyThres(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getOccupancyThres", 0);
 
-  /* "octomap/octomap.pyx":1008
+  /* "octomap/octomap.pyx":1025
  * 
  *     def getOccupancyThres(self):
  *         return self.thisptr.getOccupancyThres()             # <<<<<<<<<<<<<<
@@ -27769,13 +27502,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_110getOccupancyThres(struct 
  *     def getOccupancyThresLog(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getOccupancyThres()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1008, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getOccupancyThres()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1025, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1007
+  /* "octomap/octomap.pyx":1024
  *         return self.thisptr.getClampingThresMinLog()
  * 
  *     def getOccupancyThres(self):             # <<<<<<<<<<<<<<
@@ -27794,7 +27527,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_110getOccupancyThres(struct 
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1010
+/* "octomap/octomap.pyx":1027
  *         return self.thisptr.getOccupancyThres()
  * 
  *     def getOccupancyThresLog(self):             # <<<<<<<<<<<<<<
@@ -27853,7 +27586,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_112getOccupancyThresLog(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getOccupancyThresLog", 0);
 
-  /* "octomap/octomap.pyx":1011
+  /* "octomap/octomap.pyx":1028
  * 
  *     def getOccupancyThresLog(self):
  *         return self.thisptr.getOccupancyThresLog()             # <<<<<<<<<<<<<<
@@ -27861,13 +27594,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_112getOccupancyThresLog(stru
  *     def getProbHit(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getOccupancyThresLog()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1011, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getOccupancyThresLog()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1028, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1010
+  /* "octomap/octomap.pyx":1027
  *         return self.thisptr.getOccupancyThres()
  * 
  *     def getOccupancyThresLog(self):             # <<<<<<<<<<<<<<
@@ -27886,7 +27619,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_112getOccupancyThresLog(stru
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1013
+/* "octomap/octomap.pyx":1030
  *         return self.thisptr.getOccupancyThresLog()
  * 
  *     def getProbHit(self):             # <<<<<<<<<<<<<<
@@ -27945,7 +27678,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_114getProbHit(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getProbHit", 0);
 
-  /* "octomap/octomap.pyx":1014
+  /* "octomap/octomap.pyx":1031
  * 
  *     def getProbHit(self):
  *         return self.thisptr.getProbHit()             # <<<<<<<<<<<<<<
@@ -27953,13 +27686,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_114getProbHit(struct __pyx_o
  *     def getProbHitLog(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getProbHit()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1014, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getProbHit()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1031, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1013
+  /* "octomap/octomap.pyx":1030
  *         return self.thisptr.getOccupancyThresLog()
  * 
  *     def getProbHit(self):             # <<<<<<<<<<<<<<
@@ -27978,7 +27711,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_114getProbHit(struct __pyx_o
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1016
+/* "octomap/octomap.pyx":1033
  *         return self.thisptr.getProbHit()
  * 
  *     def getProbHitLog(self):             # <<<<<<<<<<<<<<
@@ -28037,7 +27770,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_116getProbHitLog(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getProbHitLog", 0);
 
-  /* "octomap/octomap.pyx":1017
+  /* "octomap/octomap.pyx":1034
  * 
  *     def getProbHitLog(self):
  *         return self.thisptr.getProbHitLog()             # <<<<<<<<<<<<<<
@@ -28045,13 +27778,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_116getProbHitLog(struct __py
  *     def getProbMiss(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getProbHitLog()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1017, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getProbHitLog()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1034, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1016
+  /* "octomap/octomap.pyx":1033
  *         return self.thisptr.getProbHit()
  * 
  *     def getProbHitLog(self):             # <<<<<<<<<<<<<<
@@ -28070,7 +27803,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_116getProbHitLog(struct __py
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1019
+/* "octomap/octomap.pyx":1036
  *         return self.thisptr.getProbHitLog()
  * 
  *     def getProbMiss(self):             # <<<<<<<<<<<<<<
@@ -28129,7 +27862,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_118getProbMiss(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getProbMiss", 0);
 
-  /* "octomap/octomap.pyx":1020
+  /* "octomap/octomap.pyx":1037
  * 
  *     def getProbMiss(self):
  *         return self.thisptr.getProbMiss()             # <<<<<<<<<<<<<<
@@ -28137,13 +27870,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_118getProbMiss(struct __pyx_
  *     def getProbMissLog(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getProbMiss()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1020, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getProbMiss()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1037, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1019
+  /* "octomap/octomap.pyx":1036
  *         return self.thisptr.getProbHitLog()
  * 
  *     def getProbMiss(self):             # <<<<<<<<<<<<<<
@@ -28162,7 +27895,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_118getProbMiss(struct __pyx_
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1022
+/* "octomap/octomap.pyx":1039
  *         return self.thisptr.getProbMiss()
  * 
  *     def getProbMissLog(self):             # <<<<<<<<<<<<<<
@@ -28221,7 +27954,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_120getProbMissLog(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getProbMissLog", 0);
 
-  /* "octomap/octomap.pyx":1023
+  /* "octomap/octomap.pyx":1040
  * 
  *     def getProbMissLog(self):
  *         return self.thisptr.getProbMissLog()             # <<<<<<<<<<<<<<
@@ -28229,13 +27962,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_120getProbMissLog(struct __p
  *     def setClampingThresMax(self, double thresProb):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getProbMissLog()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1023, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getProbMissLog()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1040, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1022
+  /* "octomap/octomap.pyx":1039
  *         return self.thisptr.getProbMiss()
  * 
  *     def getProbMissLog(self):             # <<<<<<<<<<<<<<
@@ -28254,7 +27987,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_120getProbMissLog(struct __p
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1025
+/* "octomap/octomap.pyx":1042
  *         return self.thisptr.getProbMissLog()
  * 
  *     def setClampingThresMax(self, double thresProb):             # <<<<<<<<<<<<<<
@@ -28301,32 +28034,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_thresProb,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1025, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1042, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1025, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1042, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setClampingThresMax", 0) < 0) __PYX_ERR(0, 1025, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setClampingThresMax", 0) < 0) __PYX_ERR(0, 1042, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setClampingThresMax", 1, 1, 1, i); __PYX_ERR(0, 1025, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setClampingThresMax", 1, 1, 1, i); __PYX_ERR(0, 1042, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1025, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1042, __pyx_L3_error)
     }
-    __pyx_v_thresProb = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_thresProb == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1025, __pyx_L3_error)
+    __pyx_v_thresProb = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_thresProb == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1042, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setClampingThresMax", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1025, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setClampingThresMax", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1042, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28352,7 +28085,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_122setClampingThresMax(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setClampingThresMax", 0);
 
-  /* "octomap/octomap.pyx":1026
+  /* "octomap/octomap.pyx":1043
  * 
  *     def setClampingThresMax(self, double thresProb):
  *         self.thisptr.setClampingThresMax(thresProb)             # <<<<<<<<<<<<<<
@@ -28361,7 +28094,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_122setClampingThresMax(struc
 */
   __pyx_v_self->thisptr->setClampingThresMax(__pyx_v_thresProb);
 
-  /* "octomap/octomap.pyx":1025
+  /* "octomap/octomap.pyx":1042
  *         return self.thisptr.getProbMissLog()
  * 
  *     def setClampingThresMax(self, double thresProb):             # <<<<<<<<<<<<<<
@@ -28376,7 +28109,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_122setClampingThresMax(struc
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1028
+/* "octomap/octomap.pyx":1045
  *         self.thisptr.setClampingThresMax(thresProb)
  * 
  *     def setClampingThresMin(self, double thresProb):             # <<<<<<<<<<<<<<
@@ -28423,32 +28156,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_thresProb,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1028, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1045, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1028, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1045, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setClampingThresMin", 0) < 0) __PYX_ERR(0, 1028, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setClampingThresMin", 0) < 0) __PYX_ERR(0, 1045, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setClampingThresMin", 1, 1, 1, i); __PYX_ERR(0, 1028, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setClampingThresMin", 1, 1, 1, i); __PYX_ERR(0, 1045, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1028, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1045, __pyx_L3_error)
     }
-    __pyx_v_thresProb = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_thresProb == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1028, __pyx_L3_error)
+    __pyx_v_thresProb = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_thresProb == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1045, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setClampingThresMin", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1028, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setClampingThresMin", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1045, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28474,7 +28207,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_124setClampingThresMin(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setClampingThresMin", 0);
 
-  /* "octomap/octomap.pyx":1029
+  /* "octomap/octomap.pyx":1046
  * 
  *     def setClampingThresMin(self, double thresProb):
  *         self.thisptr.setClampingThresMin(thresProb)             # <<<<<<<<<<<<<<
@@ -28483,7 +28216,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_124setClampingThresMin(struc
 */
   __pyx_v_self->thisptr->setClampingThresMin(__pyx_v_thresProb);
 
-  /* "octomap/octomap.pyx":1028
+  /* "octomap/octomap.pyx":1045
  *         self.thisptr.setClampingThresMax(thresProb)
  * 
  *     def setClampingThresMin(self, double thresProb):             # <<<<<<<<<<<<<<
@@ -28498,7 +28231,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_124setClampingThresMin(struc
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1031
+/* "octomap/octomap.pyx":1048
  *         self.thisptr.setClampingThresMin(thresProb)
  * 
  *     def setOccupancyThres(self, double prob):             # <<<<<<<<<<<<<<
@@ -28545,32 +28278,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_prob,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1031, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1048, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1031, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1048, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setOccupancyThres", 0) < 0) __PYX_ERR(0, 1031, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setOccupancyThres", 0) < 0) __PYX_ERR(0, 1048, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setOccupancyThres", 1, 1, 1, i); __PYX_ERR(0, 1031, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setOccupancyThres", 1, 1, 1, i); __PYX_ERR(0, 1048, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1031, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1048, __pyx_L3_error)
     }
-    __pyx_v_prob = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_prob == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1031, __pyx_L3_error)
+    __pyx_v_prob = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_prob == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1048, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setOccupancyThres", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1031, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setOccupancyThres", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1048, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28596,7 +28329,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_126setOccupancyThres(struct 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setOccupancyThres", 0);
 
-  /* "octomap/octomap.pyx":1032
+  /* "octomap/octomap.pyx":1049
  * 
  *     def setOccupancyThres(self, double prob):
  *         self.thisptr.setOccupancyThres(prob)             # <<<<<<<<<<<<<<
@@ -28605,7 +28338,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_126setOccupancyThres(struct 
 */
   __pyx_v_self->thisptr->setOccupancyThres(__pyx_v_prob);
 
-  /* "octomap/octomap.pyx":1031
+  /* "octomap/octomap.pyx":1048
  *         self.thisptr.setClampingThresMin(thresProb)
  * 
  *     def setOccupancyThres(self, double prob):             # <<<<<<<<<<<<<<
@@ -28620,7 +28353,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_126setOccupancyThres(struct 
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1034
+/* "octomap/octomap.pyx":1051
  *         self.thisptr.setOccupancyThres(prob)
  * 
  *     def setProbHit(self, double prob):             # <<<<<<<<<<<<<<
@@ -28667,32 +28400,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_prob,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1034, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1051, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1034, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1051, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setProbHit", 0) < 0) __PYX_ERR(0, 1034, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setProbHit", 0) < 0) __PYX_ERR(0, 1051, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setProbHit", 1, 1, 1, i); __PYX_ERR(0, 1034, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setProbHit", 1, 1, 1, i); __PYX_ERR(0, 1051, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1034, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1051, __pyx_L3_error)
     }
-    __pyx_v_prob = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_prob == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1034, __pyx_L3_error)
+    __pyx_v_prob = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_prob == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1051, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setProbHit", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1034, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setProbHit", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1051, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28718,7 +28451,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_128setProbHit(struct __pyx_o
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setProbHit", 0);
 
-  /* "octomap/octomap.pyx":1035
+  /* "octomap/octomap.pyx":1052
  * 
  *     def setProbHit(self, double prob):
  *         self.thisptr.setProbHit(prob)             # <<<<<<<<<<<<<<
@@ -28727,7 +28460,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_128setProbHit(struct __pyx_o
 */
   __pyx_v_self->thisptr->setProbHit(__pyx_v_prob);
 
-  /* "octomap/octomap.pyx":1034
+  /* "octomap/octomap.pyx":1051
  *         self.thisptr.setOccupancyThres(prob)
  * 
  *     def setProbHit(self, double prob):             # <<<<<<<<<<<<<<
@@ -28742,7 +28475,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_128setProbHit(struct __pyx_o
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1037
+/* "octomap/octomap.pyx":1054
  *         self.thisptr.setProbHit(prob)
  * 
  *     def setProbMiss(self, double prob):             # <<<<<<<<<<<<<<
@@ -28789,32 +28522,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_prob,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1037, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1054, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1037, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1054, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setProbMiss", 0) < 0) __PYX_ERR(0, 1037, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setProbMiss", 0) < 0) __PYX_ERR(0, 1054, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setProbMiss", 1, 1, 1, i); __PYX_ERR(0, 1037, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setProbMiss", 1, 1, 1, i); __PYX_ERR(0, 1054, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1037, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1054, __pyx_L3_error)
     }
-    __pyx_v_prob = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_prob == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1037, __pyx_L3_error)
+    __pyx_v_prob = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_prob == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 1054, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setProbMiss", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1037, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setProbMiss", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1054, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28840,7 +28573,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_130setProbMiss(struct __pyx_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setProbMiss", 0);
 
-  /* "octomap/octomap.pyx":1038
+  /* "octomap/octomap.pyx":1055
  * 
  *     def setProbMiss(self, double prob):
  *         self.thisptr.setProbMiss(prob)             # <<<<<<<<<<<<<<
@@ -28849,7 +28582,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_130setProbMiss(struct __pyx_
 */
   __pyx_v_self->thisptr->setProbMiss(__pyx_v_prob);
 
-  /* "octomap/octomap.pyx":1037
+  /* "octomap/octomap.pyx":1054
  *         self.thisptr.setProbHit(prob)
  * 
  *     def setProbMiss(self, double prob):             # <<<<<<<<<<<<<<
@@ -28864,7 +28597,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_130setProbMiss(struct __pyx_
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1040
+/* "octomap/octomap.pyx":1057
  *         self.thisptr.setProbMiss(prob)
  * 
  *     def getMetricSize(self):             # <<<<<<<<<<<<<<
@@ -28933,7 +28666,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_132getMetricSize(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getMetricSize", 0);
 
-  /* "octomap/octomap.pyx":1041
+  /* "octomap/octomap.pyx":1058
  * 
  *     def getMetricSize(self):
  *         cdef double x = 0             # <<<<<<<<<<<<<<
@@ -28942,7 +28675,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_132getMetricSize(struct __py
 */
   __pyx_v_x = 0.0;
 
-  /* "octomap/octomap.pyx":1042
+  /* "octomap/octomap.pyx":1059
  *     def getMetricSize(self):
  *         cdef double x = 0
  *         cdef double y = 0             # <<<<<<<<<<<<<<
@@ -28951,7 +28684,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_132getMetricSize(struct __py
 */
   __pyx_v_y = 0.0;
 
-  /* "octomap/octomap.pyx":1043
+  /* "octomap/octomap.pyx":1060
  *         cdef double x = 0
  *         cdef double y = 0
  *         cdef double z = 0             # <<<<<<<<<<<<<<
@@ -28960,7 +28693,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_132getMetricSize(struct __py
 */
   __pyx_v_z = 0.0;
 
-  /* "octomap/octomap.pyx":1044
+  /* "octomap/octomap.pyx":1061
  *         cdef double y = 0
  *         cdef double z = 0
  *         self.thisptr.getMetricSize(x, y, z)             # <<<<<<<<<<<<<<
@@ -28969,7 +28702,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_132getMetricSize(struct __py
 */
   __pyx_v_self->thisptr->getMetricSize(__pyx_v_x, __pyx_v_y, __pyx_v_z);
 
-  /* "octomap/octomap.pyx":1045
+  /* "octomap/octomap.pyx":1062
  *         cdef double z = 0
  *         self.thisptr.getMetricSize(x, y, z)
  *         return np.array([x, y, z], dtype=float)             # <<<<<<<<<<<<<<
@@ -28978,25 +28711,25 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_132getMetricSize(struct __py
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1045, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1062, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1045, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1062, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1045, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1062, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1045, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1062, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_z); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1045, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_z); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1062, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyList_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1045, __pyx_L1_error)
+  __pyx_t_7 = PyList_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1062, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 1045, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 1062, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 1045, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 1062, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 1045, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 1062, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
@@ -29014,22 +28747,22 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_132getMetricSize(struct __py
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_7};
-    __pyx_t_6 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1045, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1062, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_6, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 1045, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_6, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 1062, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_4, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_6);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1045, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1062, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1040
+  /* "octomap/octomap.pyx":1057
  *         self.thisptr.setProbMiss(prob)
  * 
  *     def getMetricSize(self):             # <<<<<<<<<<<<<<
@@ -29054,7 +28787,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_132getMetricSize(struct __py
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1047
+/* "octomap/octomap.pyx":1064
  *         return np.array([x, y, z], dtype=float)
  * 
  *     def getMetricMin(self):             # <<<<<<<<<<<<<<
@@ -29123,7 +28856,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_134getMetricMin(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getMetricMin", 0);
 
-  /* "octomap/octomap.pyx":1048
+  /* "octomap/octomap.pyx":1065
  * 
  *     def getMetricMin(self):
  *         cdef double x = 0             # <<<<<<<<<<<<<<
@@ -29132,7 +28865,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_134getMetricMin(struct __pyx
 */
   __pyx_v_x = 0.0;
 
-  /* "octomap/octomap.pyx":1049
+  /* "octomap/octomap.pyx":1066
  *     def getMetricMin(self):
  *         cdef double x = 0
  *         cdef double y = 0             # <<<<<<<<<<<<<<
@@ -29141,7 +28874,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_134getMetricMin(struct __pyx
 */
   __pyx_v_y = 0.0;
 
-  /* "octomap/octomap.pyx":1050
+  /* "octomap/octomap.pyx":1067
  *         cdef double x = 0
  *         cdef double y = 0
  *         cdef double z = 0             # <<<<<<<<<<<<<<
@@ -29150,7 +28883,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_134getMetricMin(struct __pyx
 */
   __pyx_v_z = 0.0;
 
-  /* "octomap/octomap.pyx":1051
+  /* "octomap/octomap.pyx":1068
  *         cdef double y = 0
  *         cdef double z = 0
  *         self.thisptr.getMetricMin(x, y, z)             # <<<<<<<<<<<<<<
@@ -29159,7 +28892,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_134getMetricMin(struct __pyx
 */
   __pyx_v_self->thisptr->getMetricMin(__pyx_v_x, __pyx_v_y, __pyx_v_z);
 
-  /* "octomap/octomap.pyx":1052
+  /* "octomap/octomap.pyx":1069
  *         cdef double z = 0
  *         self.thisptr.getMetricMin(x, y, z)
  *         return np.array([x, y, z], dtype=float)             # <<<<<<<<<<<<<<
@@ -29168,25 +28901,25 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_134getMetricMin(struct __pyx
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1052, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1069, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1052, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1069, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1052, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1069, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1052, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1069, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_z); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1052, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_z); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1069, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyList_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1052, __pyx_L1_error)
+  __pyx_t_7 = PyList_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1069, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 1052, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 1069, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 1052, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 1069, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 1052, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 1069, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
@@ -29204,22 +28937,22 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_134getMetricMin(struct __pyx
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_7};
-    __pyx_t_6 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1052, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1069, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_6, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 1052, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_6, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 1069, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_4, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_6);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1052, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1069, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1047
+  /* "octomap/octomap.pyx":1064
  *         return np.array([x, y, z], dtype=float)
  * 
  *     def getMetricMin(self):             # <<<<<<<<<<<<<<
@@ -29244,7 +28977,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_134getMetricMin(struct __pyx
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1054
+/* "octomap/octomap.pyx":1071
  *         return np.array([x, y, z], dtype=float)
  * 
  *     def getMetricMax(self):             # <<<<<<<<<<<<<<
@@ -29313,7 +29046,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_136getMetricMax(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getMetricMax", 0);
 
-  /* "octomap/octomap.pyx":1055
+  /* "octomap/octomap.pyx":1072
  * 
  *     def getMetricMax(self):
  *         cdef double x = 0             # <<<<<<<<<<<<<<
@@ -29322,7 +29055,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_136getMetricMax(struct __pyx
 */
   __pyx_v_x = 0.0;
 
-  /* "octomap/octomap.pyx":1056
+  /* "octomap/octomap.pyx":1073
  *     def getMetricMax(self):
  *         cdef double x = 0
  *         cdef double y = 0             # <<<<<<<<<<<<<<
@@ -29331,7 +29064,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_136getMetricMax(struct __pyx
 */
   __pyx_v_y = 0.0;
 
-  /* "octomap/octomap.pyx":1057
+  /* "octomap/octomap.pyx":1074
  *         cdef double x = 0
  *         cdef double y = 0
  *         cdef double z = 0             # <<<<<<<<<<<<<<
@@ -29340,7 +29073,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_136getMetricMax(struct __pyx
 */
   __pyx_v_z = 0.0;
 
-  /* "octomap/octomap.pyx":1058
+  /* "octomap/octomap.pyx":1075
  *         cdef double y = 0
  *         cdef double z = 0
  *         self.thisptr.getMetricMax(x, y, z)             # <<<<<<<<<<<<<<
@@ -29349,7 +29082,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_136getMetricMax(struct __pyx
 */
   __pyx_v_self->thisptr->getMetricMax(__pyx_v_x, __pyx_v_y, __pyx_v_z);
 
-  /* "octomap/octomap.pyx":1059
+  /* "octomap/octomap.pyx":1076
  *         cdef double z = 0
  *         self.thisptr.getMetricMax(x, y, z)
  *         return np.array([x, y, z], dtype=float)             # <<<<<<<<<<<<<<
@@ -29358,25 +29091,25 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_136getMetricMax(struct __pyx
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1059, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1076, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1059, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1076, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1059, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1076, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1059, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_y); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1076, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_z); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1059, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_z); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1076, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyList_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1059, __pyx_L1_error)
+  __pyx_t_7 = PyList_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1076, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 1059, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 1076, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 1059, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 1076, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 1059, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 2, __pyx_t_6) != (0)) __PYX_ERR(0, 1076, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
@@ -29394,22 +29127,22 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_136getMetricMax(struct __pyx
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_7};
-    __pyx_t_6 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1059, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1076, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_6, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 1059, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_6, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 1076, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_4, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_6);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1059, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1076, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1054
+  /* "octomap/octomap.pyx":1071
  *         return np.array([x, y, z], dtype=float)
  * 
  *     def getMetricMax(self):             # <<<<<<<<<<<<<<
@@ -29434,7 +29167,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_136getMetricMax(struct __pyx
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1061
+/* "octomap/octomap.pyx":1078
  *         return np.array([x, y, z], dtype=float)
  * 
  *     def expandNode(self, node):             # <<<<<<<<<<<<<<
@@ -29481,32 +29214,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_node,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1061, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1078, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1061, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1078, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "expandNode", 0) < 0) __PYX_ERR(0, 1061, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "expandNode", 0) < 0) __PYX_ERR(0, 1078, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("expandNode", 1, 1, 1, i); __PYX_ERR(0, 1061, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("expandNode", 1, 1, 1, i); __PYX_ERR(0, 1078, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1061, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1078, __pyx_L3_error)
     }
     __pyx_v_node = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("expandNode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1061, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("expandNode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1078, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -29532,7 +29265,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_138expandNode(struct __pyx_o
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("expandNode", 0);
 
-  /* "octomap/octomap.pyx":1062
+  /* "octomap/octomap.pyx":1079
  * 
  *     def expandNode(self, node):
  *         self.thisptr.expandNode((<OcTreeNode>node).thisptr)             # <<<<<<<<<<<<<<
@@ -29541,7 +29274,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_138expandNode(struct __pyx_o
 */
   __pyx_v_self->thisptr->expandNode(((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr);
 
-  /* "octomap/octomap.pyx":1061
+  /* "octomap/octomap.pyx":1078
  *         return np.array([x, y, z], dtype=float)
  * 
  *     def expandNode(self, node):             # <<<<<<<<<<<<<<
@@ -29556,7 +29289,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_138expandNode(struct __pyx_o
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1064
+/* "octomap/octomap.pyx":1081
  *         self.thisptr.expandNode((<OcTreeNode>node).thisptr)
  * 
  *     def createNodeChild(self, node, int idx):             # <<<<<<<<<<<<<<
@@ -29604,39 +29337,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_node,&__pyx_mstate_global->__pyx_n_u_idx,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1064, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1081, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1064, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1081, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1064, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1081, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "createNodeChild", 0) < 0) __PYX_ERR(0, 1064, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "createNodeChild", 0) < 0) __PYX_ERR(0, 1081, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("createNodeChild", 1, 2, 2, i); __PYX_ERR(0, 1064, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("createNodeChild", 1, 2, 2, i); __PYX_ERR(0, 1081, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1064, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1081, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1064, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1081, __pyx_L3_error)
     }
     __pyx_v_node = values[0];
-    __pyx_v_idx = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_idx == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1064, __pyx_L3_error)
+    __pyx_v_idx = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_idx == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1081, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("createNodeChild", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 1064, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("createNodeChild", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 1081, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -29670,7 +29403,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_140createNodeChild(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("createNodeChild", 0);
 
-  /* "octomap/octomap.pyx":1065
+  /* "octomap/octomap.pyx":1082
  * 
  *     def createNodeChild(self, node, int idx):
  *         child = OcTreeNode()             # <<<<<<<<<<<<<<
@@ -29686,13 +29419,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_140createNodeChild(struct __
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (1-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1065, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1082, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_v_child = ((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":1066
+  /* "octomap/octomap.pyx":1083
  *     def createNodeChild(self, node, int idx):
  *         child = OcTreeNode()
  *         child.thisptr = self.thisptr.createNodeChild((<OcTreeNode>node).thisptr, idx)             # <<<<<<<<<<<<<<
@@ -29701,7 +29434,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_140createNodeChild(struct __
 */
   __pyx_v_child->thisptr = __pyx_v_self->thisptr->createNodeChild(((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr, __pyx_v_idx);
 
-  /* "octomap/octomap.pyx":1067
+  /* "octomap/octomap.pyx":1084
  *         child = OcTreeNode()
  *         child.thisptr = self.thisptr.createNodeChild((<OcTreeNode>node).thisptr, idx)
  *         return child             # <<<<<<<<<<<<<<
@@ -29713,7 +29446,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_140createNodeChild(struct __
   __pyx_r = ((PyObject *)__pyx_v_child);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1064
+  /* "octomap/octomap.pyx":1081
  *         self.thisptr.expandNode((<OcTreeNode>node).thisptr)
  * 
  *     def createNodeChild(self, node, int idx):             # <<<<<<<<<<<<<<
@@ -29735,7 +29468,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_140createNodeChild(struct __
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1069
+/* "octomap/octomap.pyx":1086
  *         return child
  * 
  *     def getNodeChild(self, node, int idx):             # <<<<<<<<<<<<<<
@@ -29783,39 +29516,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_node,&__pyx_mstate_global->__pyx_n_u_idx,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1069, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1086, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1069, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1086, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1069, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1086, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "getNodeChild", 0) < 0) __PYX_ERR(0, 1069, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "getNodeChild", 0) < 0) __PYX_ERR(0, 1086, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("getNodeChild", 1, 2, 2, i); __PYX_ERR(0, 1069, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("getNodeChild", 1, 2, 2, i); __PYX_ERR(0, 1086, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1069, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1086, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1069, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1086, __pyx_L3_error)
     }
     __pyx_v_node = values[0];
-    __pyx_v_idx = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_idx == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1069, __pyx_L3_error)
+    __pyx_v_idx = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_idx == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1086, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("getNodeChild", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 1069, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("getNodeChild", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 1086, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -29849,7 +29582,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_142getNodeChild(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getNodeChild", 0);
 
-  /* "octomap/octomap.pyx":1070
+  /* "octomap/octomap.pyx":1087
  * 
  *     def getNodeChild(self, node, int idx):
  *         child = OcTreeNode()             # <<<<<<<<<<<<<<
@@ -29865,13 +29598,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_142getNodeChild(struct __pyx
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_4, (1-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1070, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1087, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_v_child = ((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "octomap/octomap.pyx":1071
+  /* "octomap/octomap.pyx":1088
  *     def getNodeChild(self, node, int idx):
  *         child = OcTreeNode()
  *         child.thisptr = self.thisptr.getNodeChild((<OcTreeNode>node).thisptr, idx)             # <<<<<<<<<<<<<<
@@ -29880,7 +29613,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_142getNodeChild(struct __pyx
 */
   __pyx_v_child->thisptr = __pyx_v_self->thisptr->getNodeChild(((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr, __pyx_v_idx);
 
-  /* "octomap/octomap.pyx":1072
+  /* "octomap/octomap.pyx":1089
  *         child = OcTreeNode()
  *         child.thisptr = self.thisptr.getNodeChild((<OcTreeNode>node).thisptr, idx)
  *         return child             # <<<<<<<<<<<<<<
@@ -29892,7 +29625,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_142getNodeChild(struct __pyx
   __pyx_r = ((PyObject *)__pyx_v_child);
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1069
+  /* "octomap/octomap.pyx":1086
  *         return child
  * 
  *     def getNodeChild(self, node, int idx):             # <<<<<<<<<<<<<<
@@ -29914,7 +29647,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_142getNodeChild(struct __pyx
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1074
+/* "octomap/octomap.pyx":1091
  *         return child
  * 
  *     def isNodeCollapsible(self, node):             # <<<<<<<<<<<<<<
@@ -29961,32 +29694,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_node,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1074, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1091, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1074, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1091, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "isNodeCollapsible", 0) < 0) __PYX_ERR(0, 1074, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "isNodeCollapsible", 0) < 0) __PYX_ERR(0, 1091, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("isNodeCollapsible", 1, 1, 1, i); __PYX_ERR(0, 1074, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("isNodeCollapsible", 1, 1, 1, i); __PYX_ERR(0, 1091, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1074, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1091, __pyx_L3_error)
     }
     __pyx_v_node = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("isNodeCollapsible", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1074, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("isNodeCollapsible", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1091, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -30016,7 +29749,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_144isNodeCollapsible(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("isNodeCollapsible", 0);
 
-  /* "octomap/octomap.pyx":1075
+  /* "octomap/octomap.pyx":1092
  * 
  *     def isNodeCollapsible(self, node):
  *         return self.thisptr.isNodeCollapsible((<OcTreeNode>node).thisptr)             # <<<<<<<<<<<<<<
@@ -30024,13 +29757,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_144isNodeCollapsible(struct 
  *     def deleteNodeChild(self, node, int idx):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->isNodeCollapsible(((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1075, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->isNodeCollapsible(((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1092, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1074
+  /* "octomap/octomap.pyx":1091
  *         return child
  * 
  *     def isNodeCollapsible(self, node):             # <<<<<<<<<<<<<<
@@ -30049,7 +29782,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_144isNodeCollapsible(struct 
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1077
+/* "octomap/octomap.pyx":1094
  *         return self.thisptr.isNodeCollapsible((<OcTreeNode>node).thisptr)
  * 
  *     def deleteNodeChild(self, node, int idx):             # <<<<<<<<<<<<<<
@@ -30097,39 +29830,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_node,&__pyx_mstate_global->__pyx_n_u_idx,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1077, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1094, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1077, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1094, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1077, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1094, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "deleteNodeChild", 0) < 0) __PYX_ERR(0, 1077, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "deleteNodeChild", 0) < 0) __PYX_ERR(0, 1094, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("deleteNodeChild", 1, 2, 2, i); __PYX_ERR(0, 1077, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("deleteNodeChild", 1, 2, 2, i); __PYX_ERR(0, 1094, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1077, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1094, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1077, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1094, __pyx_L3_error)
     }
     __pyx_v_node = values[0];
-    __pyx_v_idx = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_idx == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1077, __pyx_L3_error)
+    __pyx_v_idx = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_idx == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1094, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("deleteNodeChild", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 1077, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("deleteNodeChild", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 1094, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -30155,7 +29888,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_146deleteNodeChild(struct __
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("deleteNodeChild", 0);
 
-  /* "octomap/octomap.pyx":1078
+  /* "octomap/octomap.pyx":1095
  * 
  *     def deleteNodeChild(self, node, int idx):
  *         self.thisptr.deleteNodeChild((<OcTreeNode>node).thisptr, idx)             # <<<<<<<<<<<<<<
@@ -30164,7 +29897,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_146deleteNodeChild(struct __
 */
   __pyx_v_self->thisptr->deleteNodeChild(((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr, __pyx_v_idx);
 
-  /* "octomap/octomap.pyx":1077
+  /* "octomap/octomap.pyx":1094
  *         return self.thisptr.isNodeCollapsible((<OcTreeNode>node).thisptr)
  * 
  *     def deleteNodeChild(self, node, int idx):             # <<<<<<<<<<<<<<
@@ -30179,7 +29912,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_146deleteNodeChild(struct __
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1080
+/* "octomap/octomap.pyx":1097
  *         self.thisptr.deleteNodeChild((<OcTreeNode>node).thisptr, idx)
  * 
  *     def pruneNode(self, node):             # <<<<<<<<<<<<<<
@@ -30226,32 +29959,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_node,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1080, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1097, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1080, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1097, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "pruneNode", 0) < 0) __PYX_ERR(0, 1080, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "pruneNode", 0) < 0) __PYX_ERR(0, 1097, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("pruneNode", 1, 1, 1, i); __PYX_ERR(0, 1080, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("pruneNode", 1, 1, 1, i); __PYX_ERR(0, 1097, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1080, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1097, __pyx_L3_error)
     }
     __pyx_v_node = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pruneNode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1080, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pruneNode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1097, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -30281,7 +30014,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_148pruneNode(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pruneNode", 0);
 
-  /* "octomap/octomap.pyx":1081
+  /* "octomap/octomap.pyx":1098
  * 
  *     def pruneNode(self, node):
  *         return self.thisptr.pruneNode((<OcTreeNode>node).thisptr)             # <<<<<<<<<<<<<<
@@ -30289,13 +30022,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_148pruneNode(struct __pyx_ob
  *     def nodeHasChildren(self, node):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->pruneNode(((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1081, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->pruneNode(((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1098, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "octomap/octomap.pyx":1080
+  /* "octomap/octomap.pyx":1097
  *         self.thisptr.deleteNodeChild((<OcTreeNode>node).thisptr, idx)
  * 
  *     def pruneNode(self, node):             # <<<<<<<<<<<<<<
@@ -30314,7 +30047,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_148pruneNode(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1083
+/* "octomap/octomap.pyx":1100
  *         return self.thisptr.pruneNode((<OcTreeNode>node).thisptr)
  * 
  *     def nodeHasChildren(self, node):             # <<<<<<<<<<<<<<
@@ -30362,32 +30095,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_node,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1083, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1100, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1083, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1100, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "nodeHasChildren", 0) < 0) __PYX_ERR(0, 1083, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "nodeHasChildren", 0) < 0) __PYX_ERR(0, 1100, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("nodeHasChildren", 1, 1, 1, i); __PYX_ERR(0, 1083, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("nodeHasChildren", 1, 1, 1, i); __PYX_ERR(0, 1100, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1083, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1100, __pyx_L3_error)
     }
     __pyx_v_node = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("nodeHasChildren", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1083, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("nodeHasChildren", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1100, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -30421,7 +30154,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_150nodeHasChildren(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nodeHasChildren", 0);
 
-  /* "octomap/octomap.pyx":1093
+  /* "octomap/octomap.pyx":1110
  *             bool: True if node has children, False otherwise
  *         """
  *         if isinstance(node, OcTreeNode):             # <<<<<<<<<<<<<<
@@ -30431,7 +30164,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_150nodeHasChildren(struct __
   __pyx_t_1 = __Pyx_TypeCheck(__pyx_v_node, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeNode); 
   if (likely(__pyx_t_1)) {
 
-    /* "octomap/octomap.pyx":1094
+    /* "octomap/octomap.pyx":1111
  *         """
  *         if isinstance(node, OcTreeNode):
  *             if (<OcTreeNode>node).thisptr:             # <<<<<<<<<<<<<<
@@ -30441,7 +30174,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_150nodeHasChildren(struct __
     __pyx_t_1 = (((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr != 0);
     if (likely(__pyx_t_1)) {
 
-      /* "octomap/octomap.pyx":1095
+      /* "octomap/octomap.pyx":1112
  *         if isinstance(node, OcTreeNode):
  *             if (<OcTreeNode>node).thisptr:
  *                 return self.thisptr.nodeHasChildren((<OcTreeNode>node).thisptr)             # <<<<<<<<<<<<<<
@@ -30449,13 +30182,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_150nodeHasChildren(struct __
  *                 raise NullPointerException
 */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->nodeHasChildren(((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1095, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->thisptr->nodeHasChildren(((struct __pyx_obj_7octomap_7octomap_OcTreeNode *)__pyx_v_node)->thisptr)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1112, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_r = __pyx_t_2;
       __pyx_t_2 = 0;
       goto __pyx_L0;
 
-      /* "octomap/octomap.pyx":1094
+      /* "octomap/octomap.pyx":1111
  *         """
  *         if isinstance(node, OcTreeNode):
  *             if (<OcTreeNode>node).thisptr:             # <<<<<<<<<<<<<<
@@ -30464,7 +30197,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_150nodeHasChildren(struct __
 */
     }
 
-    /* "octomap/octomap.pyx":1097
+    /* "octomap/octomap.pyx":1114
  *                 return self.thisptr.nodeHasChildren((<OcTreeNode>node).thisptr)
  *             else:
  *                 raise NullPointerException             # <<<<<<<<<<<<<<
@@ -30472,14 +30205,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_150nodeHasChildren(struct __
  *             raise TypeError("Expected OcTreeNode")
 */
     /*else*/ {
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1097, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1114, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 1097, __pyx_L1_error)
+      __PYX_ERR(0, 1114, __pyx_L1_error)
     }
 
-    /* "octomap/octomap.pyx":1093
+    /* "octomap/octomap.pyx":1110
  *             bool: True if node has children, False otherwise
  *         """
  *         if isinstance(node, OcTreeNode):             # <<<<<<<<<<<<<<
@@ -30488,7 +30221,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_150nodeHasChildren(struct __
 */
   }
 
-  /* "octomap/octomap.pyx":1099
+  /* "octomap/octomap.pyx":1116
  *                 raise NullPointerException
  *         else:
  *             raise TypeError("Expected OcTreeNode")             # <<<<<<<<<<<<<<
@@ -30505,15 +30238,15 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_150nodeHasChildren(struct __
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1099, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1116, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 1099, __pyx_L1_error)
+    __PYX_ERR(0, 1116, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":1083
+  /* "octomap/octomap.pyx":1100
  *         return self.thisptr.pruneNode((<OcTreeNode>node).thisptr)
  * 
  *     def nodeHasChildren(self, node):             # <<<<<<<<<<<<<<
@@ -30534,7 +30267,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_150nodeHasChildren(struct __
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1101
+/* "octomap/octomap.pyx":1118
  *             raise TypeError("Expected OcTreeNode")
  * 
  *     def dynamicEDT_generate(self, maxdist,             # <<<<<<<<<<<<<<
@@ -30584,32 +30317,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_maxdist,&__pyx_mstate_global->__pyx_n_u_bbx_min,&__pyx_mstate_global->__pyx_n_u_bbx_max,&__pyx_mstate_global->__pyx_n_u_treatUnknownAsOccupied,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1101, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1118, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 1101, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 1118, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 1101, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 1118, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1101, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1118, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1101, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1118, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "dynamicEDT_generate", 0) < 0) __PYX_ERR(0, 1101, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "dynamicEDT_generate", 0) < 0) __PYX_ERR(0, 1118, __pyx_L3_error)
 
-      /* "octomap/octomap.pyx":1104
+      /* "octomap/octomap.pyx":1121
  *                             np.ndarray[DOUBLE_t, ndim=1] bbx_min,
  *                             np.ndarray[DOUBLE_t, ndim=1] bbx_max,
  *                             treatUnknownAsOccupied=False):             # <<<<<<<<<<<<<<
@@ -30618,21 +30351,21 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 */
       if (!values[3]) values[3] = __Pyx_NewRef(((PyObject *)Py_False));
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("dynamicEDT_generate", 0, 3, 4, i); __PYX_ERR(0, 1101, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("dynamicEDT_generate", 0, 3, 4, i); __PYX_ERR(0, 1118, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 1101, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 1118, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 1101, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 1118, __pyx_L3_error)
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1101, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 1118, __pyx_L3_error)
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1101, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1118, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -30645,7 +30378,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("dynamicEDT_generate", 0, 3, 4, __pyx_nargs); __PYX_ERR(0, 1101, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("dynamicEDT_generate", 0, 3, 4, __pyx_nargs); __PYX_ERR(0, 1118, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -30656,11 +30389,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_min), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_min", 0))) __PYX_ERR(0, 1102, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_max), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_max", 0))) __PYX_ERR(0, 1103, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_min), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_min", 0))) __PYX_ERR(0, 1119, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bbx_max), __pyx_mstate_global->__pyx_ptype_5numpy_ndarray, 1, "bbx_max", 0))) __PYX_ERR(0, 1120, __pyx_L1_error)
   __pyx_r = __pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(((struct __pyx_obj_7octomap_7octomap_OcTree *)__pyx_v_self), __pyx_v_maxdist, __pyx_v_bbx_min, __pyx_v_bbx_max, __pyx_v_treatUnknownAsOccupied);
 
-  /* "octomap/octomap.pyx":1101
+  /* "octomap/octomap.pyx":1118
  *             raise TypeError("Expected OcTreeNode")
  * 
  *     def dynamicEDT_generate(self, maxdist,             # <<<<<<<<<<<<<<
@@ -30715,16 +30448,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
   __pyx_pybuffernd_bbx_max.rcbuffer = &__pyx_pybuffer_bbx_max;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_min.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_min, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 1101, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_min.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_min, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 1118, __pyx_L1_error)
   }
   __pyx_pybuffernd_bbx_min.diminfo[0].strides = __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_bbx_min.diminfo[0].shape = __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_max.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_max, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 1101, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bbx_max.rcbuffer->pybuffer, (PyObject*)__pyx_v_bbx_max, &__Pyx_TypeInfo_nn___pyx_t_7octomap_7octomap_DOUBLE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 1118, __pyx_L1_error)
   }
   __pyx_pybuffernd_bbx_max.diminfo[0].strides = __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_bbx_max.diminfo[0].shape = __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.shape[0];
 
-  /* "octomap/octomap.pyx":1106
+  /* "octomap/octomap.pyx":1123
  *                             treatUnknownAsOccupied=False):
  *         # Clean up existing DynamicEDT if it exists
  *         if self.edtptr != NULL:             # <<<<<<<<<<<<<<
@@ -30734,7 +30467,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
   __pyx_t_1 = (__pyx_v_self->edtptr != NULL);
   if (__pyx_t_1) {
 
-    /* "octomap/octomap.pyx":1107
+    /* "octomap/octomap.pyx":1124
  *         # Clean up existing DynamicEDT if it exists
  *         if self.edtptr != NULL:
  *             del self.edtptr             # <<<<<<<<<<<<<<
@@ -30743,7 +30476,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
 */
     delete __pyx_v_self->edtptr;
 
-    /* "octomap/octomap.pyx":1108
+    /* "octomap/octomap.pyx":1125
  *         if self.edtptr != NULL:
  *             del self.edtptr
  *             self.edtptr = NULL             # <<<<<<<<<<<<<<
@@ -30752,7 +30485,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
 */
     __pyx_v_self->edtptr = NULL;
 
-    /* "octomap/octomap.pyx":1106
+    /* "octomap/octomap.pyx":1123
  *                             treatUnknownAsOccupied=False):
  *         # Clean up existing DynamicEDT if it exists
  *         if self.edtptr != NULL:             # <<<<<<<<<<<<<<
@@ -30761,16 +30494,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
 */
   }
 
-  /* "octomap/octomap.pyx":1110
+  /* "octomap/octomap.pyx":1127
  *             self.edtptr = NULL
  * 
  *         self.edtptr = new edt.DynamicEDTOctomap(<float?>maxdist,             # <<<<<<<<<<<<<<
  *                                                 self.thisptr,
  *                                                 defs.point3d(bbx_min[0], bbx_min[1], bbx_min[2]),
 */
-  __pyx_t_2 = __Pyx_PyFloat_AsFloat(__pyx_v_maxdist); if (unlikely((__pyx_t_2 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1110, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyFloat_AsFloat(__pyx_v_maxdist); if (unlikely((__pyx_t_2 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1127, __pyx_L1_error)
 
-  /* "octomap/octomap.pyx":1112
+  /* "octomap/octomap.pyx":1129
  *         self.edtptr = new edt.DynamicEDTOctomap(<float?>maxdist,
  *                                                 self.thisptr,
  *                                                 defs.point3d(bbx_min[0], bbx_min[1], bbx_min[2]),             # <<<<<<<<<<<<<<
@@ -30785,7 +30518,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
   } else if (unlikely(__pyx_t_3 >= __pyx_pybuffernd_bbx_min.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 1112, __pyx_L1_error)
+    __PYX_ERR(0, 1129, __pyx_L1_error)
   }
   __pyx_t_5 = 1;
   __pyx_t_4 = -1;
@@ -30795,7 +30528,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
   } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_bbx_min.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 1112, __pyx_L1_error)
+    __PYX_ERR(0, 1129, __pyx_L1_error)
   }
   __pyx_t_6 = 2;
   __pyx_t_4 = -1;
@@ -30805,16 +30538,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_bbx_min.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 1112, __pyx_L1_error)
+    __PYX_ERR(0, 1129, __pyx_L1_error)
   }
   try {
     __pyx_t_7 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.buf, __pyx_t_3, __pyx_pybuffernd_bbx_min.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.buf, __pyx_t_5, __pyx_pybuffernd_bbx_min.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_min.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_bbx_min.diminfo[0].strides)));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 1112, __pyx_L1_error)
+    __PYX_ERR(0, 1129, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":1113
+  /* "octomap/octomap.pyx":1130
  *                                                 self.thisptr,
  *                                                 defs.point3d(bbx_min[0], bbx_min[1], bbx_min[2]),
  *                                                 defs.point3d(bbx_max[0], bbx_max[1], bbx_max[2]),             # <<<<<<<<<<<<<<
@@ -30829,7 +30562,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
   } else if (unlikely(__pyx_t_6 >= __pyx_pybuffernd_bbx_max.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 1113, __pyx_L1_error)
+    __PYX_ERR(0, 1130, __pyx_L1_error)
   }
   __pyx_t_5 = 1;
   __pyx_t_4 = -1;
@@ -30839,7 +30572,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
   } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_bbx_max.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 1113, __pyx_L1_error)
+    __PYX_ERR(0, 1130, __pyx_L1_error)
   }
   __pyx_t_3 = 2;
   __pyx_t_4 = -1;
@@ -30849,25 +30582,25 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
   } else if (unlikely(__pyx_t_3 >= __pyx_pybuffernd_bbx_max.diminfo[0].shape)) __pyx_t_4 = 0;
   if (unlikely(__pyx_t_4 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_4);
-    __PYX_ERR(0, 1113, __pyx_L1_error)
+    __PYX_ERR(0, 1130, __pyx_L1_error)
   }
   try {
     __pyx_t_8 = octomap::point3d((*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_bbx_max.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.buf, __pyx_t_5, __pyx_pybuffernd_bbx_max.diminfo[0].strides)), (*__Pyx_BufPtrStrided1d(__pyx_t_7octomap_7octomap_DOUBLE_t *, __pyx_pybuffernd_bbx_max.rcbuffer->pybuffer.buf, __pyx_t_3, __pyx_pybuffernd_bbx_max.diminfo[0].strides)));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 1113, __pyx_L1_error)
+    __PYX_ERR(0, 1130, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":1114
+  /* "octomap/octomap.pyx":1131
  *                                                 defs.point3d(bbx_min[0], bbx_min[1], bbx_min[2]),
  *                                                 defs.point3d(bbx_max[0], bbx_max[1], bbx_max[2]),
  *                                                 <cppbool?>treatUnknownAsOccupied)             # <<<<<<<<<<<<<<
  * 
  *     def dynamicEDT_checkConsistency(self):
 */
-  __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_v_treatUnknownAsOccupied); if (unlikely((__pyx_t_9 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 1114, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_v_treatUnknownAsOccupied); if (unlikely((__pyx_t_9 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 1131, __pyx_L1_error)
 
-  /* "octomap/octomap.pyx":1110
+  /* "octomap/octomap.pyx":1127
  *             self.edtptr = NULL
  * 
  *         self.edtptr = new edt.DynamicEDTOctomap(<float?>maxdist,             # <<<<<<<<<<<<<<
@@ -30876,7 +30609,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
 */
   __pyx_v_self->edtptr = new DynamicEDTOctomap(((float)__pyx_t_2), ((octomap::OcTree *)__pyx_v_self->thisptr), ((octomap::point3d &)__pyx_t_7), ((octomap::point3d &)__pyx_t_8), ((bool)__pyx_t_9));
 
-  /* "octomap/octomap.pyx":1101
+  /* "octomap/octomap.pyx":1118
  *             raise TypeError("Expected OcTreeNode")
  * 
  *     def dynamicEDT_generate(self, maxdist,             # <<<<<<<<<<<<<<
@@ -30907,7 +30640,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_152dynamicEDT_generate(struc
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1116
+/* "octomap/octomap.pyx":1133
  *                                                 <cppbool?>treatUnknownAsOccupied)
  * 
  *     def dynamicEDT_checkConsistency(self):             # <<<<<<<<<<<<<<
@@ -30967,7 +30700,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_154dynamicEDT_checkConsisten
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dynamicEDT_checkConsistency", 0);
 
-  /* "octomap/octomap.pyx":1117
+  /* "octomap/octomap.pyx":1134
  * 
  *     def dynamicEDT_checkConsistency(self):
  *         if self.edtptr:             # <<<<<<<<<<<<<<
@@ -30977,7 +30710,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_154dynamicEDT_checkConsisten
   __pyx_t_1 = (__pyx_v_self->edtptr != 0);
   if (likely(__pyx_t_1)) {
 
-    /* "octomap/octomap.pyx":1118
+    /* "octomap/octomap.pyx":1135
  *     def dynamicEDT_checkConsistency(self):
  *         if self.edtptr:
  *             return self.edtptr.checkConsistency()             # <<<<<<<<<<<<<<
@@ -30985,13 +30718,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_154dynamicEDT_checkConsisten
  *             raise NullPointerException
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->edtptr->checkConsistency()); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1118, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->edtptr->checkConsistency()); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1135, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "octomap/octomap.pyx":1117
+    /* "octomap/octomap.pyx":1134
  * 
  *     def dynamicEDT_checkConsistency(self):
  *         if self.edtptr:             # <<<<<<<<<<<<<<
@@ -31000,7 +30733,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_154dynamicEDT_checkConsisten
 */
   }
 
-  /* "octomap/octomap.pyx":1120
+  /* "octomap/octomap.pyx":1137
  *             return self.edtptr.checkConsistency()
  *         else:
  *             raise NullPointerException             # <<<<<<<<<<<<<<
@@ -31008,14 +30741,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_154dynamicEDT_checkConsisten
  *     def dynamicEDT_update(self, updateRealDist):
 */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1120, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1137, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 1120, __pyx_L1_error)
+    __PYX_ERR(0, 1137, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":1116
+  /* "octomap/octomap.pyx":1133
  *                                                 <cppbool?>treatUnknownAsOccupied)
  * 
  *     def dynamicEDT_checkConsistency(self):             # <<<<<<<<<<<<<<
@@ -31034,7 +30767,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_154dynamicEDT_checkConsisten
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1122
+/* "octomap/octomap.pyx":1139
  *             raise NullPointerException
  * 
  *     def dynamicEDT_update(self, updateRealDist):             # <<<<<<<<<<<<<<
@@ -31081,32 +30814,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_updateRealDist,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1122, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1139, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1122, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1139, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "dynamicEDT_update", 0) < 0) __PYX_ERR(0, 1122, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "dynamicEDT_update", 0) < 0) __PYX_ERR(0, 1139, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("dynamicEDT_update", 1, 1, 1, i); __PYX_ERR(0, 1122, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("dynamicEDT_update", 1, 1, 1, i); __PYX_ERR(0, 1139, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1122, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1139, __pyx_L3_error)
     }
     __pyx_v_updateRealDist = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("dynamicEDT_update", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1122, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("dynamicEDT_update", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1139, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -31138,7 +30871,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_156dynamicEDT_update(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dynamicEDT_update", 0);
 
-  /* "octomap/octomap.pyx":1123
+  /* "octomap/octomap.pyx":1140
  * 
  *     def dynamicEDT_update(self, updateRealDist):
  *         if self.edtptr:             # <<<<<<<<<<<<<<
@@ -31148,17 +30881,17 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_156dynamicEDT_update(struct 
   __pyx_t_1 = (__pyx_v_self->edtptr != 0);
   if (likely(__pyx_t_1)) {
 
-    /* "octomap/octomap.pyx":1124
+    /* "octomap/octomap.pyx":1141
  *     def dynamicEDT_update(self, updateRealDist):
  *         if self.edtptr:
  *             self.edtptr.update(<cppbool?>updateRealDist)             # <<<<<<<<<<<<<<
  *         else:
  *             raise NullPointerException
 */
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_updateRealDist); if (unlikely((__pyx_t_2 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 1124, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_updateRealDist); if (unlikely((__pyx_t_2 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 1141, __pyx_L1_error)
     __pyx_v_self->edtptr->update(((bool)__pyx_t_2));
 
-    /* "octomap/octomap.pyx":1123
+    /* "octomap/octomap.pyx":1140
  * 
  *     def dynamicEDT_update(self, updateRealDist):
  *         if self.edtptr:             # <<<<<<<<<<<<<<
@@ -31168,7 +30901,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_156dynamicEDT_update(struct 
     goto __pyx_L3;
   }
 
-  /* "octomap/octomap.pyx":1126
+  /* "octomap/octomap.pyx":1143
  *             self.edtptr.update(<cppbool?>updateRealDist)
  *         else:
  *             raise NullPointerException             # <<<<<<<<<<<<<<
@@ -31176,15 +30909,15 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_156dynamicEDT_update(struct 
  *     def dynamicEDT_getMaxDist(self):
 */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1126, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1143, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 1126, __pyx_L1_error)
+    __PYX_ERR(0, 1143, __pyx_L1_error)
   }
   __pyx_L3:;
 
-  /* "octomap/octomap.pyx":1122
+  /* "octomap/octomap.pyx":1139
  *             raise NullPointerException
  * 
  *     def dynamicEDT_update(self, updateRealDist):             # <<<<<<<<<<<<<<
@@ -31205,7 +30938,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_156dynamicEDT_update(struct 
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1128
+/* "octomap/octomap.pyx":1145
  *             raise NullPointerException
  * 
  *     def dynamicEDT_getMaxDist(self):             # <<<<<<<<<<<<<<
@@ -31265,7 +30998,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_158dynamicEDT_getMaxDist(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dynamicEDT_getMaxDist", 0);
 
-  /* "octomap/octomap.pyx":1129
+  /* "octomap/octomap.pyx":1146
  * 
  *     def dynamicEDT_getMaxDist(self):
  *         if self.edtptr:             # <<<<<<<<<<<<<<
@@ -31275,7 +31008,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_158dynamicEDT_getMaxDist(str
   __pyx_t_1 = (__pyx_v_self->edtptr != 0);
   if (likely(__pyx_t_1)) {
 
-    /* "octomap/octomap.pyx":1130
+    /* "octomap/octomap.pyx":1147
  *     def dynamicEDT_getMaxDist(self):
  *         if self.edtptr:
  *             return self.edtptr.getMaxDist()             # <<<<<<<<<<<<<<
@@ -31283,13 +31016,13 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_158dynamicEDT_getMaxDist(str
  *             raise NullPointerException
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->edtptr->getMaxDist()); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1130, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->edtptr->getMaxDist()); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1147, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "octomap/octomap.pyx":1129
+    /* "octomap/octomap.pyx":1146
  * 
  *     def dynamicEDT_getMaxDist(self):
  *         if self.edtptr:             # <<<<<<<<<<<<<<
@@ -31298,7 +31031,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_158dynamicEDT_getMaxDist(str
 */
   }
 
-  /* "octomap/octomap.pyx":1132
+  /* "octomap/octomap.pyx":1149
  *             return self.edtptr.getMaxDist()
  *         else:
  *             raise NullPointerException             # <<<<<<<<<<<<<<
@@ -31306,14 +31039,14 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_158dynamicEDT_getMaxDist(str
  *     def dynamicEDT_getDistance(self, p):
 */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1132, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 1132, __pyx_L1_error)
+    __PYX_ERR(0, 1149, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":1128
+  /* "octomap/octomap.pyx":1145
  *             raise NullPointerException
  * 
  *     def dynamicEDT_getMaxDist(self):             # <<<<<<<<<<<<<<
@@ -31332,7 +31065,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_158dynamicEDT_getMaxDist(str
   return __pyx_r;
 }
 
-/* "octomap/octomap.pyx":1134
+/* "octomap/octomap.pyx":1151
  *             raise NullPointerException
  * 
  *     def dynamicEDT_getDistance(self, p):             # <<<<<<<<<<<<<<
@@ -31379,32 +31112,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_p,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1134, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 1151, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1134, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1151, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "dynamicEDT_getDistance", 0) < 0) __PYX_ERR(0, 1134, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "dynamicEDT_getDistance", 0) < 0) __PYX_ERR(0, 1151, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("dynamicEDT_getDistance", 1, 1, 1, i); __PYX_ERR(0, 1134, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("dynamicEDT_getDistance", 1, 1, 1, i); __PYX_ERR(0, 1151, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1134, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 1151, __pyx_L3_error)
     }
     __pyx_v_p = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("dynamicEDT_getDistance", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1134, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("dynamicEDT_getDistance", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1151, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -31443,7 +31176,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_160dynamicEDT_getDistance(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dynamicEDT_getDistance", 0);
 
-  /* "octomap/octomap.pyx":1135
+  /* "octomap/octomap.pyx":1152
  * 
  *     def dynamicEDT_getDistance(self, p):
  *         if self.edtptr:             # <<<<<<<<<<<<<<
@@ -31453,7 +31186,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_160dynamicEDT_getDistance(st
   __pyx_t_1 = (__pyx_v_self->edtptr != 0);
   if (likely(__pyx_t_1)) {
 
-    /* "octomap/octomap.pyx":1136
+    /* "octomap/octomap.pyx":1153
  *     def dynamicEDT_getDistance(self, p):
  *         if self.edtptr:
  *             if isinstance(p, OcTreeKey):             # <<<<<<<<<<<<<<
@@ -31463,7 +31196,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_160dynamicEDT_getDistance(st
     __pyx_t_1 = __Pyx_TypeCheck(__pyx_v_p, __pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTreeKey); 
     if (__pyx_t_1) {
 
-      /* "octomap/octomap.pyx":1137
+      /* "octomap/octomap.pyx":1154
  *         if self.edtptr:
  *             if isinstance(p, OcTreeKey):
  *                 return self.edtptr.getDistance(edt.OcTreeKey(<unsigned short int>p[0],             # <<<<<<<<<<<<<<
@@ -31471,36 +31204,36 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_160dynamicEDT_getDistance(st
  *                                                              <unsigned short int>p[2]))
 */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1137, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1154, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 1137, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 1154, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "octomap/octomap.pyx":1138
+      /* "octomap/octomap.pyx":1155
  *             if isinstance(p, OcTreeKey):
  *                 return self.edtptr.getDistance(edt.OcTreeKey(<unsigned short int>p[0],
  *                                                              <unsigned short int>p[1],             # <<<<<<<<<<<<<<
  *                                                              <unsigned short int>p[2]))
  *             else:
 */
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1138, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1155, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_4 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 1138, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_4 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 1155, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "octomap/octomap.pyx":1139
+      /* "octomap/octomap.pyx":1156
  *                 return self.edtptr.getDistance(edt.OcTreeKey(<unsigned short int>p[0],
  *                                                              <unsigned short int>p[1],
  *                                                              <unsigned short int>p[2]))             # <<<<<<<<<<<<<<
  *             else:
  *                 return self.edtptr.getDistance(edt.point3d(<float?>p[0],
 */
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1139, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1156, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_5 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 1139, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyLong_As_unsigned_short(__pyx_t_2); if (unlikely((__pyx_t_5 == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 1156, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "octomap/octomap.pyx":1137
+      /* "octomap/octomap.pyx":1154
  *         if self.edtptr:
  *             if isinstance(p, OcTreeKey):
  *                 return self.edtptr.getDistance(edt.OcTreeKey(<unsigned short int>p[0],             # <<<<<<<<<<<<<<
@@ -31511,15 +31244,15 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_160dynamicEDT_getDistance(st
         __pyx_t_6 = octomap::OcTreeKey(((unsigned short)__pyx_t_3), ((unsigned short)__pyx_t_4), ((unsigned short)__pyx_t_5));
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(0, 1137, __pyx_L1_error)
+        __PYX_ERR(0, 1154, __pyx_L1_error)
       }
-      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->edtptr->getDistance(__PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_6))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1137, __pyx_L1_error)
+      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->edtptr->getDistance(__PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_6))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1154, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_r = __pyx_t_2;
       __pyx_t_2 = 0;
       goto __pyx_L0;
 
-      /* "octomap/octomap.pyx":1136
+      /* "octomap/octomap.pyx":1153
  *     def dynamicEDT_getDistance(self, p):
  *         if self.edtptr:
  *             if isinstance(p, OcTreeKey):             # <<<<<<<<<<<<<<
@@ -31528,7 +31261,7 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_160dynamicEDT_getDistance(st
 */
     }
 
-    /* "octomap/octomap.pyx":1141
+    /* "octomap/octomap.pyx":1158
  *                                                              <unsigned short int>p[2]))
  *             else:
  *                 return self.edtptr.getDistance(edt.point3d(<float?>p[0],             # <<<<<<<<<<<<<<
@@ -31537,36 +31270,36 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_160dynamicEDT_getDistance(st
 */
     /*else*/ {
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1141, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1158, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_7 = __Pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1141, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1158, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "octomap/octomap.pyx":1142
+      /* "octomap/octomap.pyx":1159
  *             else:
  *                 return self.edtptr.getDistance(edt.point3d(<float?>p[0],
  *                                                            <float?>p[1],             # <<<<<<<<<<<<<<
  *                                                            <float?>p[2]))
  *         else:
 */
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1142, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1159, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_8 = __Pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_8 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1142, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_8 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1159, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "octomap/octomap.pyx":1143
+      /* "octomap/octomap.pyx":1160
  *                 return self.edtptr.getDistance(edt.point3d(<float?>p[0],
  *                                                            <float?>p[1],
  *                                                            <float?>p[2]))             # <<<<<<<<<<<<<<
  *         else:
  *             raise NullPointerException
 */
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1143, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1160, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_9 = __Pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_9 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1143, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_9 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 1160, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "octomap/octomap.pyx":1141
+      /* "octomap/octomap.pyx":1158
  *                                                              <unsigned short int>p[2]))
  *             else:
  *                 return self.edtptr.getDistance(edt.point3d(<float?>p[0],             # <<<<<<<<<<<<<<
@@ -31577,16 +31310,16 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_160dynamicEDT_getDistance(st
         __pyx_t_10 = octomap::point3d(((float)__pyx_t_7), ((float)__pyx_t_8), ((float)__pyx_t_9));
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(0, 1141, __pyx_L1_error)
+        __PYX_ERR(0, 1158, __pyx_L1_error)
       }
-      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->edtptr->getDistance(__PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_10))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1141, __pyx_L1_error)
+      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->edtptr->getDistance(__PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_10))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1158, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_r = __pyx_t_2;
       __pyx_t_2 = 0;
       goto __pyx_L0;
     }
 
-    /* "octomap/octomap.pyx":1135
+    /* "octomap/octomap.pyx":1152
  * 
  *     def dynamicEDT_getDistance(self, p):
  *         if self.edtptr:             # <<<<<<<<<<<<<<
@@ -31595,20 +31328,20 @@ static PyObject *__pyx_pf_7octomap_7octomap_6OcTree_160dynamicEDT_getDistance(st
 */
   }
 
-  /* "octomap/octomap.pyx":1145
+  /* "octomap/octomap.pyx":1162
  *                                                            <float?>p[2]))
  *         else:
  *             raise NullPointerException             # <<<<<<<<<<<<<<
 */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1145, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_NullPointerException); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1162, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 1145, __pyx_L1_error)
+    __PYX_ERR(0, 1162, __pyx_L1_error)
   }
 
-  /* "octomap/octomap.pyx":1134
+  /* "octomap/octomap.pyx":1151
  *             raise NullPointerException
  * 
  *     def dynamicEDT_getDistance(self, p):             # <<<<<<<<<<<<<<
@@ -32497,10 +32230,8 @@ static PyMethodDef __pyx_methods_7octomap_7octomap_SimpleLeafIterator[] = {
   {"getCoordinate", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_11getCoordinate, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {"getSize", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_13getSize, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {"getDepth", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_15getDepth, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"getSize", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_17getSize, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_7octomap_7octomap_18SimpleLeafIterator_16getSize},
-  {"getDepth", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_19getDepth, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_7octomap_7octomap_18SimpleLeafIterator_18getDepth},
-  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_21__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_23__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_17__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_7octomap_7octomap_18SimpleLeafIterator_19__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
@@ -33180,41 +32911,41 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_SimpleLeafIterator, (PyObject *) __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafIterator) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
   if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafIterator) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_7octomap_7octomap_SimpleLeafBBXIterator_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator)) __PYX_ERR(0, 347, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_7octomap_7octomap_SimpleLeafBBXIterator_spec, __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator) < 0) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_7octomap_7octomap_SimpleLeafBBXIterator_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator)) __PYX_ERR(0, 334, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_7octomap_7octomap_SimpleLeafBBXIterator_spec, __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator) < 0) __PYX_ERR(0, 334, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator = &__pyx_type_7octomap_7octomap_SimpleLeafBBXIterator;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator) < 0) __PYX_ERR(0, 347, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator) < 0) __PYX_ERR(0, 334, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator->tp_dictoffset && __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator->tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator, (PyObject *) __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator) < 0) __PYX_ERR(0, 347, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator) < 0) __PYX_ERR(0, 347, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator, (PyObject *) __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator) < 0) __PYX_ERR(0, 334, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator) < 0) __PYX_ERR(0, 334, __pyx_L1_error)
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_7octomap_7octomap_OcTree_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree)) __PYX_ERR(0, 462, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_7octomap_7octomap_OcTree_spec, __pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree) < 0) __PYX_ERR(0, 462, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_7octomap_7octomap_OcTree_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree)) __PYX_ERR(0, 449, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_7octomap_7octomap_OcTree_spec, __pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree) < 0) __PYX_ERR(0, 449, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree = &__pyx_type_7octomap_7octomap_OcTree;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree) < 0) __PYX_ERR(0, 462, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree) < 0) __PYX_ERR(0, 449, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree->tp_dictoffset && __pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree->tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_OcTree, (PyObject *) __pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree) < 0) __PYX_ERR(0, 462, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree) < 0) __PYX_ERR(0, 462, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_OcTree, (PyObject *) __pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree) < 0) __PYX_ERR(0, 449, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_7octomap_7octomap_OcTree) < 0) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -34042,36 +33773,12 @@ __Pyx_RefNannySetupContext("PyInit_octomap", 0);
   if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafIterator, __pyx_mstate_global->__pyx_n_u_getDepth, __pyx_t_3) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":334
- *         return self._current_node
- * 
- *     def getSize(self):             # <<<<<<<<<<<<<<
- *         """Get the size of the current node"""
- *         if self._current_node:
-*/
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_17getSize, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafIterator_getSize, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[26])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 334, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafIterator, __pyx_mstate_global->__pyx_n_u_getSize, __pyx_t_3) < 0) __PYX_ERR(0, 334, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-  /* "octomap/octomap.pyx":341
- *         return 0.0
- * 
- *     def getDepth(self):             # <<<<<<<<<<<<<<
- *         """Get the depth of the current node"""
- *         if self._current_node:
-*/
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_19getDepth, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafIterator_getDepth, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[27])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 341, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafIterator, __pyx_mstate_global->__pyx_n_u_getDepth, __pyx_t_3) < 0) __PYX_ERR(0, 341, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_21__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafIterator___reduce_cyth, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[28])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_17__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafIterator___reduce_cyth, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[26])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_3) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -34082,45 +33789,45 @@ __Pyx_RefNannySetupContext("PyInit_octomap", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_23__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafIterator___setstate_cy, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[29])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_18SimpleLeafIterator_19__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafIterator___setstate_cy, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[27])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_3) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":418
+  /* "octomap/octomap.pyx":405
  *         return self
  * 
  *     def getCoordinate(self):             # <<<<<<<<<<<<<<
  *         if self._current_coord is not None:
  *             return self._current_coord
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_21SimpleLeafBBXIterator_11getCoordinate, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator_getCoordin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[30])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 418, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_21SimpleLeafBBXIterator_11getCoordinate, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator_getCoordin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[28])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 405, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator, __pyx_mstate_global->__pyx_n_u_getCoordinate, __pyx_t_3) < 0) __PYX_ERR(0, 418, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator, __pyx_mstate_global->__pyx_n_u_getCoordinate, __pyx_t_3) < 0) __PYX_ERR(0, 405, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":423
+  /* "octomap/octomap.pyx":410
  *         return [0.0, 0.0, 0.0]
  * 
  *     def getSize(self):             # <<<<<<<<<<<<<<
  *         return self._current_size
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_21SimpleLeafBBXIterator_13getSize, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator_getSize, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[31])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 423, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_21SimpleLeafBBXIterator_13getSize, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator_getSize, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[29])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator, __pyx_mstate_global->__pyx_n_u_getSize, __pyx_t_3) < 0) __PYX_ERR(0, 423, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator, __pyx_mstate_global->__pyx_n_u_getSize, __pyx_t_3) < 0) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":426
+  /* "octomap/octomap.pyx":413
  *         return self._current_size
  * 
  *     def getDepth(self):             # <<<<<<<<<<<<<<
  *         return self._current_depth
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_21SimpleLeafBBXIterator_15getDepth, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator_getDepth, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[32])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_21SimpleLeafBBXIterator_15getDepth, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator_getDepth, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[30])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 413, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator, __pyx_mstate_global->__pyx_n_u_getDepth, __pyx_t_3) < 0) __PYX_ERR(0, 426, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_SimpleLeafBBXIterator, __pyx_mstate_global->__pyx_n_u_getDepth, __pyx_t_3) < 0) __PYX_ERR(0, 413, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "(tree fragment)":1
@@ -34128,7 +33835,7 @@ __Pyx_RefNannySetupContext("PyInit_octomap", 0);
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_21SimpleLeafBBXIterator_17__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator___reduce_c, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[33])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_21SimpleLeafBBXIterator_17__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator___reduce_c, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[31])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_3) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -34139,984 +33846,984 @@ __Pyx_RefNannySetupContext("PyInit_octomap", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_21SimpleLeafBBXIterator_19__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator___setstate, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[34])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_21SimpleLeafBBXIterator_19__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_SimpleLeafBBXIterator___setstate, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[32])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_3) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":437
+  /* "octomap/octomap.pyx":424
  *         return self._is_end
  * 
  * def _octree_read(filename):             # <<<<<<<<<<<<<<
  *     """
  *     Read the file header, create the appropriate class and deserialize.
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_1_octree_read, 0, __pyx_mstate_global->__pyx_n_u_octree_read, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[35])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_1_octree_read, 0, __pyx_mstate_global->__pyx_n_u_octree_read, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[33])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 424, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_octree_read, __pyx_t_3) < 0) __PYX_ERR(0, 437, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_octree_read, __pyx_t_3) < 0) __PYX_ERR(0, 424, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":490
+  /* "octomap/octomap.pyx":477
  *             self.thisptr = NULL
  * 
  *     def adjustKeyAtDepth(self, OcTreeKey key, depth):             # <<<<<<<<<<<<<<
  *         cdef defs.OcTreeKey key_in = defs.OcTreeKey()
  *         key_in[0] = key[0]
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_5adjustKeyAtDepth, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_adjustKeyAtDepth, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[36])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 490, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_5adjustKeyAtDepth, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_adjustKeyAtDepth, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[34])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 477, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_adjustKeyAtDepth, __pyx_t_3) < 0) __PYX_ERR(0, 490, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_adjustKeyAtDepth, __pyx_t_3) < 0) __PYX_ERR(0, 477, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":502
+  /* "octomap/octomap.pyx":489
  *         return res
  * 
  *     def bbxSet(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.bbxSet()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_7bbxSet, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_bbxSet, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[37])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 502, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_7bbxSet, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_bbxSet, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[35])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 489, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_bbxSet, __pyx_t_3) < 0) __PYX_ERR(0, 502, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_bbxSet, __pyx_t_3) < 0) __PYX_ERR(0, 489, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":505
+  /* "octomap/octomap.pyx":492
  *         return self.thisptr.bbxSet()
  * 
  *     def calcNumNodes(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.calcNumNodes()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_9calcNumNodes, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_calcNumNodes, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[38])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 505, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_9calcNumNodes, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_calcNumNodes, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[36])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 492, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_calcNumNodes, __pyx_t_3) < 0) __PYX_ERR(0, 505, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_calcNumNodes, __pyx_t_3) < 0) __PYX_ERR(0, 492, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":508
+  /* "octomap/octomap.pyx":495
  *         return self.thisptr.calcNumNodes()
  * 
  *     def clear(self):             # <<<<<<<<<<<<<<
  *         self.thisptr.clear()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_11clear, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_clear, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[39])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 508, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_11clear, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_clear, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[37])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 495, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_clear, __pyx_t_3) < 0) __PYX_ERR(0, 508, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_clear, __pyx_t_3) < 0) __PYX_ERR(0, 495, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":511
+  /* "octomap/octomap.pyx":498
  *         self.thisptr.clear()
  * 
  *     def coordToKey(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):             # <<<<<<<<<<<<<<
  *         cdef defs.OcTreeKey key
  *         if depth is None:
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_13coordToKey, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_coordToKey, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[40])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 511, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_13coordToKey, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_coordToKey, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[38])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 498, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[1]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_coordToKey, __pyx_t_3) < 0) __PYX_ERR(0, 511, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_coordToKey, __pyx_t_3) < 0) __PYX_ERR(0, 498, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":528
+  /* "octomap/octomap.pyx":515
  *         return res
  * 
  *     def coordToKeyChecked(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):             # <<<<<<<<<<<<<<
  *         cdef defs.OcTreeKey key
  *         cdef cppbool chk
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_15coordToKeyChecked, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_coordToKeyChecked, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[41])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 528, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_15coordToKeyChecked, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_coordToKeyChecked, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[39])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 515, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[1]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_coordToKeyChecked, __pyx_t_3) < 0) __PYX_ERR(0, 528, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_coordToKeyChecked, __pyx_t_3) < 0) __PYX_ERR(0, 515, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":551
+  /* "octomap/octomap.pyx":538
  *             return chk, None
  * 
  *     def deleteNode(self, np.ndarray[DOUBLE_t, ndim=1] value, depth=1):             # <<<<<<<<<<<<<<
  *         return self.thisptr.deleteNode(defs.point3d(value[0],
  *                                                     value[1],
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_17deleteNode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_deleteNode, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[42])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_17deleteNode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_deleteNode, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[40])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 538, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[2]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_deleteNode, __pyx_t_3) < 0) __PYX_ERR(0, 551, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_deleteNode, __pyx_t_3) < 0) __PYX_ERR(0, 538, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":557
+  /* "octomap/octomap.pyx":544
  *                                        <int?>depth)
  * 
  *     def castRay(self, np.ndarray[DOUBLE_t, ndim=1] origin,             # <<<<<<<<<<<<<<
  *                 np.ndarray[DOUBLE_t, ndim=1] direction,
  *                 np.ndarray[DOUBLE_t, ndim=1] end,
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_19castRay, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_castRay, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[43])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 557, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_19castRay, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_castRay, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[41])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 544, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[3]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_castRay, __pyx_t_3) < 0) __PYX_ERR(0, 557, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_castRay, __pyx_t_3) < 0) __PYX_ERR(0, 544, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":581
+  /* "octomap/octomap.pyx":568
  *         return hit
  * 
  *     def read(self, filename):             # <<<<<<<<<<<<<<
  *         cdef string c_filename = filename.encode('utf-8')
  *         cdef defs.OcTree* result
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_21read, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_read, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[44])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 581, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_21read, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_read, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[42])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 568, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_read, __pyx_t_3) < 0) __PYX_ERR(0, 581, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_read, __pyx_t_3) < 0) __PYX_ERR(0, 568, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":593
+  /* "octomap/octomap.pyx":580
  *         return None
  * 
  *     def write(self, filename=None):             # <<<<<<<<<<<<<<
  *         """
  *         Write file header and complete tree to file/stream (serialization)
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_23write, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_write, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[45])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 593, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_23write, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_write, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[43])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[1]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_write, __pyx_t_3) < 0) __PYX_ERR(0, 593, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_write, __pyx_t_3) < 0) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":609
+  /* "octomap/octomap.pyx":596
  *                 return False
  * 
  *     def readBinary(self, filename):             # <<<<<<<<<<<<<<
  *         # Treat input as a filesystem path; accept str or bytes
  *         cdef string c_filename
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_25readBinary, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_readBinary, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[46])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 609, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_25readBinary, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_readBinary, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[44])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 596, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_readBinary, __pyx_t_3) < 0) __PYX_ERR(0, 609, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_readBinary, __pyx_t_3) < 0) __PYX_ERR(0, 596, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":618
+  /* "octomap/octomap.pyx":605
  *         return self.thisptr.readBinary(c_filename)
  * 
  *     def writeBinary(self, filename=None):             # <<<<<<<<<<<<<<
  *         cdef defs.ostringstream oss
  *         cdef string c_filename
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_27writeBinary, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_writeBinary, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[47])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_27writeBinary, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_writeBinary, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[45])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 605, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[1]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_writeBinary, __pyx_t_3) < 0) __PYX_ERR(0, 618, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_writeBinary, __pyx_t_3) < 0) __PYX_ERR(0, 605, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":631
+  /* "octomap/octomap.pyx":618
  *                 return False
  * 
  *     def isNodeOccupied(self, node):             # <<<<<<<<<<<<<<
  *         if isinstance(node, OcTreeNode):
  *             if (<OcTreeNode>node).thisptr:
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_29isNodeOccupied, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_isNodeOccupied, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[48])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 631, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_29isNodeOccupied, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_isNodeOccupied, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[46])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_isNodeOccupied, __pyx_t_3) < 0) __PYX_ERR(0, 631, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_isNodeOccupied, __pyx_t_3) < 0) __PYX_ERR(0, 618, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":650
+  /* "octomap/octomap.pyx":637
  *             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")
  * 
  *     def isNodeAtThreshold(self, node):             # <<<<<<<<<<<<<<
  *         if isinstance(node, OcTreeNode):
  *             if (<OcTreeNode>node).thisptr:
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_31isNodeAtThreshold, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_isNodeAtThreshold, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[49])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 650, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_31isNodeAtThreshold, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_isNodeAtThreshold, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[47])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 637, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_isNodeAtThreshold, __pyx_t_3) < 0) __PYX_ERR(0, 650, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_isNodeAtThreshold, __pyx_t_3) < 0) __PYX_ERR(0, 637, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":669
+  /* "octomap/octomap.pyx":656
  *             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")
  * 
  *     def getLabels(self, np.ndarray[DOUBLE_t, ndim=2] points):             # <<<<<<<<<<<<<<
  *         cdef int i
  *         cdef np.ndarray[DOUBLE_t, ndim=1] pt
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_33getLabels, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getLabels, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[50])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 669, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_33getLabels, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getLabels, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[48])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 656, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getLabels, __pyx_t_3) < 0) __PYX_ERR(0, 669, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getLabels, __pyx_t_3) < 0) __PYX_ERR(0, 656, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":689
+  /* "octomap/octomap.pyx":676
  *         return labels
  * 
  *     def extractPointCloud(self):             # <<<<<<<<<<<<<<
  *         cdef float resolution = self.getResolution()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_35extractPointCloud, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_extractPointCloud, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[51])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 689, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_35extractPointCloud, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_extractPointCloud, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[49])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 676, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_extractPointCloud, __pyx_t_3) < 0) __PYX_ERR(0, 689, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_extractPointCloud, __pyx_t_3) < 0) __PYX_ERR(0, 676, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":737
+  /* "octomap/octomap.pyx":724
  *         return occupied_arr, empty_arr
  * 
  *     def insertPointCloud(self,             # <<<<<<<<<<<<<<
  *                          np.ndarray[DOUBLE_t, ndim=2] pointcloud,
  *                          np.ndarray[DOUBLE_t, ndim=1] origin,
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_37insertPointCloud, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_insertPointCloud, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[52])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 737, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_37insertPointCloud, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_insertPointCloud, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[50])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 724, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[4]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_insertPointCloud, __pyx_t_3) < 0) __PYX_ERR(0, 737, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_insertPointCloud, __pyx_t_3) < 0) __PYX_ERR(0, 724, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":769
+  /* "octomap/octomap.pyx":756
  *                                       bool(discretize))
  * 
  *     def begin_tree(self, maxDepth=0):             # <<<<<<<<<<<<<<
  *         """Return a simplified tree iterator"""
  *         return SimpleTreeIterator(self, maxDepth)
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_39begin_tree, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_begin_tree, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[53])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 769, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_39begin_tree, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_begin_tree, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[51])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 756, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[5]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_begin_tree, __pyx_t_3) < 0) __PYX_ERR(0, 769, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_begin_tree, __pyx_t_3) < 0) __PYX_ERR(0, 756, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":773
+  /* "octomap/octomap.pyx":760
  *         return SimpleTreeIterator(self, maxDepth)
  * 
  *     def begin_leafs(self, maxDepth=0):             # <<<<<<<<<<<<<<
- *         """Return a simplified leaf iterator"""
- *         return SimpleLeafIterator(self, maxDepth)
+ *         """
+ *         Return a simplified leaf iterator
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_41begin_leafs, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_begin_leafs, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[54])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 773, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_41begin_leafs, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_begin_leafs, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[52])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 760, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[5]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_begin_leafs, __pyx_t_3) < 0) __PYX_ERR(0, 773, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_begin_leafs, __pyx_t_3) < 0) __PYX_ERR(0, 760, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":777
+  /* "octomap/octomap.pyx":794
  *         return SimpleLeafIterator(self, maxDepth)
  * 
  *     def begin_leafs_bbx(self, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):             # <<<<<<<<<<<<<<
  *         """Return a simplified leaf iterator for a bounding box"""
  *         return SimpleLeafBBXIterator(self, bbx_min, bbx_max, maxDepth)
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_43begin_leafs_bbx, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_begin_leafs_bbx, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[55])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 777, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_43begin_leafs_bbx, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_begin_leafs_bbx, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[53])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 794, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[5]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_begin_leafs_bbx, __pyx_t_3) < 0) __PYX_ERR(0, 777, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_begin_leafs_bbx, __pyx_t_3) < 0) __PYX_ERR(0, 794, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":781
+  /* "octomap/octomap.pyx":798
  *         return SimpleLeafBBXIterator(self, bbx_min, bbx_max, maxDepth)
  * 
  *     def end_tree(self):             # <<<<<<<<<<<<<<
  *         """Return an end iterator for tree traversal"""
  *         itr = SimpleTreeIterator(self)
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_45end_tree, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_end_tree, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[56])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 781, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_45end_tree, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_end_tree, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[54])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 798, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_end_tree, __pyx_t_3) < 0) __PYX_ERR(0, 781, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_end_tree, __pyx_t_3) < 0) __PYX_ERR(0, 798, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":787
+  /* "octomap/octomap.pyx":804
  *         return itr
  * 
  *     def end_leafs(self):             # <<<<<<<<<<<<<<
  *         """Return an end iterator for leaf traversal"""
  *         itr = SimpleLeafIterator(self)
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_47end_leafs, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_end_leafs, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[57])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 787, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_47end_leafs, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_end_leafs, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[55])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 804, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_end_leafs, __pyx_t_3) < 0) __PYX_ERR(0, 787, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_end_leafs, __pyx_t_3) < 0) __PYX_ERR(0, 804, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":793
+  /* "octomap/octomap.pyx":810
  *         return itr
  * 
  *     def end_leafs_bbx(self):             # <<<<<<<<<<<<<<
  *         """Return an end iterator for leaf bounding box traversal"""
  *         itr = SimpleLeafBBXIterator(self, np.array([0.0, 0.0, 0.0], dtype=np.float64), np.array([1.0, 1.0, 1.0], dtype=np.float64))
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_49end_leafs_bbx, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_end_leafs_bbx, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[58])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 793, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_49end_leafs_bbx, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_end_leafs_bbx, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[56])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 810, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_end_leafs_bbx, __pyx_t_3) < 0) __PYX_ERR(0, 793, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_end_leafs_bbx, __pyx_t_3) < 0) __PYX_ERR(0, 810, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":800
+  /* "octomap/octomap.pyx":817
  *         return itr
  * 
  *     def getBBXBounds(self):             # <<<<<<<<<<<<<<
  *         cdef defs.point3d p = self.thisptr.getBBXBounds()
  *         return np.array((p.x(), p.y(), p.z()))
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_51getBBXBounds, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getBBXBounds, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[59])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 800, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_51getBBXBounds, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getBBXBounds, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[57])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 817, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getBBXBounds, __pyx_t_3) < 0) __PYX_ERR(0, 800, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getBBXBounds, __pyx_t_3) < 0) __PYX_ERR(0, 817, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":804
+  /* "octomap/octomap.pyx":821
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getBBXCenter(self):             # <<<<<<<<<<<<<<
  *         cdef defs.point3d p = self.thisptr.getBBXCenter()
  *         return np.array((p.x(), p.y(), p.z()))
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_53getBBXCenter, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getBBXCenter, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[60])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 804, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_53getBBXCenter, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getBBXCenter, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[58])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getBBXCenter, __pyx_t_3) < 0) __PYX_ERR(0, 804, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getBBXCenter, __pyx_t_3) < 0) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":808
+  /* "octomap/octomap.pyx":825
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getBBXMax(self):             # <<<<<<<<<<<<<<
  *         cdef defs.point3d p = self.thisptr.getBBXMax()
  *         return np.array((p.x(), p.y(), p.z()))
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_55getBBXMax, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getBBXMax, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[61])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 808, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_55getBBXMax, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getBBXMax, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[59])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 825, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getBBXMax, __pyx_t_3) < 0) __PYX_ERR(0, 808, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getBBXMax, __pyx_t_3) < 0) __PYX_ERR(0, 825, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":812
+  /* "octomap/octomap.pyx":829
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getBBXMin(self):             # <<<<<<<<<<<<<<
  *         cdef defs.point3d p = self.thisptr.getBBXMin()
  *         return np.array((p.x(), p.y(), p.z()))
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_57getBBXMin, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getBBXMin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[62])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 812, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_57getBBXMin, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getBBXMin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[60])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 829, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getBBXMin, __pyx_t_3) < 0) __PYX_ERR(0, 812, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getBBXMin, __pyx_t_3) < 0) __PYX_ERR(0, 829, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":816
+  /* "octomap/octomap.pyx":833
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def getRoot(self):             # <<<<<<<<<<<<<<
  *         node = OcTreeNode()
  *         node.thisptr = self.thisptr.getRoot()
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_59getRoot, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getRoot, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[63])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 816, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_59getRoot, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getRoot, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[61])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 833, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getRoot, __pyx_t_3) < 0) __PYX_ERR(0, 816, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getRoot, __pyx_t_3) < 0) __PYX_ERR(0, 833, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":821
+  /* "octomap/octomap.pyx":838
  *         return node
  * 
  *     def getNumLeafNodes(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getNumLeafNodes()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_61getNumLeafNodes, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getNumLeafNodes, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[64])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 821, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_61getNumLeafNodes, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getNumLeafNodes, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[62])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 838, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getNumLeafNodes, __pyx_t_3) < 0) __PYX_ERR(0, 821, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getNumLeafNodes, __pyx_t_3) < 0) __PYX_ERR(0, 838, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":824
+  /* "octomap/octomap.pyx":841
  *         return self.thisptr.getNumLeafNodes()
  * 
  *     def getResolution(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getResolution()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_63getResolution, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getResolution, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[65])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_63getResolution, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getResolution, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[63])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 841, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getResolution, __pyx_t_3) < 0) __PYX_ERR(0, 824, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getResolution, __pyx_t_3) < 0) __PYX_ERR(0, 841, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":827
+  /* "octomap/octomap.pyx":844
  *         return self.thisptr.getResolution()
  * 
  *     def getTreeDepth(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getTreeDepth()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_65getTreeDepth, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getTreeDepth, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[66])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 827, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_65getTreeDepth, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getTreeDepth, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[64])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 844, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getTreeDepth, __pyx_t_3) < 0) __PYX_ERR(0, 827, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getTreeDepth, __pyx_t_3) < 0) __PYX_ERR(0, 844, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":830
+  /* "octomap/octomap.pyx":847
  *         return self.thisptr.getTreeDepth()
  * 
  *     def getTreeType(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getTreeType().c_str()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_67getTreeType, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getTreeType, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[67])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 830, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_67getTreeType, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getTreeType, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[65])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 847, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getTreeType, __pyx_t_3) < 0) __PYX_ERR(0, 830, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getTreeType, __pyx_t_3) < 0) __PYX_ERR(0, 847, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":833
+  /* "octomap/octomap.pyx":850
  *         return self.thisptr.getTreeType().c_str()
  * 
  *     def inBBX(self, np.ndarray[DOUBLE_t, ndim=1] p):             # <<<<<<<<<<<<<<
  *         return self.thisptr.inBBX(defs.point3d(p[0], p[1], p[2]))
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_69inBBX, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_inBBX, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[68])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 833, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_69inBBX, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_inBBX, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[66])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 850, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_inBBX, __pyx_t_3) < 0) __PYX_ERR(0, 833, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_inBBX, __pyx_t_3) < 0) __PYX_ERR(0, 850, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":836
+  /* "octomap/octomap.pyx":853
  *         return self.thisptr.inBBX(defs.point3d(p[0], p[1], p[2]))
  * 
  *     def keyToCoord(self, OcTreeKey key, depth=None):             # <<<<<<<<<<<<<<
  *         cdef defs.OcTreeKey key_in = defs.OcTreeKey()
  *         cdef defs.point3d p = defs.point3d()
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_71keyToCoord, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_keyToCoord, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[69])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 836, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_71keyToCoord, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_keyToCoord, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[67])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 853, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[1]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_keyToCoord, __pyx_t_3) < 0) __PYX_ERR(0, 836, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_keyToCoord, __pyx_t_3) < 0) __PYX_ERR(0, 853, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":848
+  /* "octomap/octomap.pyx":865
  *         return np.array((p.x(), p.y(), p.z()))
  * 
  *     def memoryFullGrid(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.memoryFullGrid()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_73memoryFullGrid, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_memoryFullGrid, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[70])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 848, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_73memoryFullGrid, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_memoryFullGrid, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[68])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 865, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_memoryFullGrid, __pyx_t_3) < 0) __PYX_ERR(0, 848, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_memoryFullGrid, __pyx_t_3) < 0) __PYX_ERR(0, 865, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":851
+  /* "octomap/octomap.pyx":868
  *         return self.thisptr.memoryFullGrid()
  * 
  *     def memoryUsage(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.memoryUsage()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_75memoryUsage, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_memoryUsage, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[71])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 851, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_75memoryUsage, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_memoryUsage, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[69])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 868, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_memoryUsage, __pyx_t_3) < 0) __PYX_ERR(0, 851, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_memoryUsage, __pyx_t_3) < 0) __PYX_ERR(0, 868, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":854
+  /* "octomap/octomap.pyx":871
  *         return self.thisptr.memoryUsage()
  * 
  *     def memoryUsageNode(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.memoryUsageNode()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_77memoryUsageNode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_memoryUsageNode, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[72])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 854, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_77memoryUsageNode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_memoryUsageNode, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[70])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 871, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_memoryUsageNode, __pyx_t_3) < 0) __PYX_ERR(0, 854, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_memoryUsageNode, __pyx_t_3) < 0) __PYX_ERR(0, 871, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":857
+  /* "octomap/octomap.pyx":874
  *         return self.thisptr.memoryUsageNode()
  * 
  *     def resetChangeDetection(self):             # <<<<<<<<<<<<<<
  *         """
  *         Reset the set of changed keys. Call this after you obtained all changed nodes.
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_79resetChangeDetection, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_resetChangeDetection, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[73])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_79resetChangeDetection, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_resetChangeDetection, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[71])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 874, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_resetChangeDetection, __pyx_t_3) < 0) __PYX_ERR(0, 857, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_resetChangeDetection, __pyx_t_3) < 0) __PYX_ERR(0, 874, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":865
+  /* "octomap/octomap.pyx":882
  * 
  * 
  *     def search(self, value, depth=0):             # <<<<<<<<<<<<<<
  *         node = OcTreeNode()
  *         if isinstance(value, OcTreeKey):
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_81search, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_search, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[74])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 865, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_81search, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_search, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[72])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 882, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[5]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_search, __pyx_t_3) < 0) __PYX_ERR(0, 865, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_search, __pyx_t_3) < 0) __PYX_ERR(0, 882, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":882
+  /* "octomap/octomap.pyx":899
  *         return node
  * 
  *     def setBBXMax(self, np.ndarray[DOUBLE_t, ndim=1] max):             # <<<<<<<<<<<<<<
  *         """
  *         sets the maximum for a query bounding box to use
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_83setBBXMax, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setBBXMax, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[75])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 882, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_83setBBXMax, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setBBXMax, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[73])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 899, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setBBXMax, __pyx_t_3) < 0) __PYX_ERR(0, 882, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setBBXMax, __pyx_t_3) < 0) __PYX_ERR(0, 899, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":888
+  /* "octomap/octomap.pyx":905
  *         self.thisptr.setBBXMax(defs.point3d(max[0], max[1], max[2]))
  * 
  *     def setBBXMin(self, np.ndarray[DOUBLE_t, ndim=1] min):             # <<<<<<<<<<<<<<
  *         """
  *         sets the minimum for a query bounding box to use
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_85setBBXMin, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setBBXMin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[76])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 888, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_85setBBXMin, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setBBXMin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[74])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 905, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setBBXMin, __pyx_t_3) < 0) __PYX_ERR(0, 888, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setBBXMin, __pyx_t_3) < 0) __PYX_ERR(0, 905, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":894
+  /* "octomap/octomap.pyx":911
  *         self.thisptr.setBBXMin(defs.point3d(min[0], min[1], min[2]))
  * 
  *     def setResolution(self, double r):             # <<<<<<<<<<<<<<
  *         """
  *         Change the resolution of the octree, scaling all voxels. This will not preserve the (metric) scale!
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_87setResolution, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setResolution, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[77])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 894, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_87setResolution, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setResolution, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[75])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 911, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setResolution, __pyx_t_3) < 0) __PYX_ERR(0, 894, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setResolution, __pyx_t_3) < 0) __PYX_ERR(0, 911, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":900
+  /* "octomap/octomap.pyx":917
  *         self.thisptr.setResolution(r)
  * 
  *     def size(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.size()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_89size, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_size, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[78])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 900, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_89size, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_size, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[76])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 917, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_size, __pyx_t_3) < 0) __PYX_ERR(0, 900, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_size, __pyx_t_3) < 0) __PYX_ERR(0, 917, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":903
+  /* "octomap/octomap.pyx":920
  *         return self.thisptr.size()
  * 
  *     def toMaxLikelihood(self):             # <<<<<<<<<<<<<<
  *         """
  *         Creates the maximum likelihood map by calling toMaxLikelihood on all tree nodes,
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_91toMaxLikelihood, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_toMaxLikelihood, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[79])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 903, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_91toMaxLikelihood, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_toMaxLikelihood, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[77])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 920, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_toMaxLikelihood, __pyx_t_3) < 0) __PYX_ERR(0, 903, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_toMaxLikelihood, __pyx_t_3) < 0) __PYX_ERR(0, 920, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":910
+  /* "octomap/octomap.pyx":927
  *         self.thisptr.toMaxLikelihood()
  * 
  *     def updateNodes(self, values, update, lazy_eval=False):             # <<<<<<<<<<<<<<
  *         """
  *         Integrate occupancy measurements and Manipulate log_odds value of voxel directly.
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_93updateNodes, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_updateNodes, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[80])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 910, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_93updateNodes, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_updateNodes, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[78])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 927, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[6]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_updateNodes, __pyx_t_3) < 0) __PYX_ERR(0, 910, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_updateNodes, __pyx_t_3) < 0) __PYX_ERR(0, 927, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":947
+  /* "octomap/octomap.pyx":964
  *                                             <cppbool?>lazy_eval)
  * 
  *     def updateNode(self, value, update, lazy_eval=False):             # <<<<<<<<<<<<<<
  *         """
  *         Integrate occupancy measurement and Manipulate log_odds value of voxel directly.
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_95updateNode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_updateNode, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[81])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 947, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_95updateNode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_updateNode, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[79])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 964, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[6]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_updateNode, __pyx_t_3) < 0) __PYX_ERR(0, 947, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_updateNode, __pyx_t_3) < 0) __PYX_ERR(0, 964, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":980
+  /* "octomap/octomap.pyx":997
  *         return node
  * 
  *     def updateInnerOccupancy(self):             # <<<<<<<<<<<<<<
  *         """
  *         Updates the occupancy of all inner nodes to reflect their children's occupancy.
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_97updateInnerOccupancy, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_updateInnerOccupancy, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[82])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 980, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_97updateInnerOccupancy, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_updateInnerOccupancy, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[80])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 997, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_updateInnerOccupancy, __pyx_t_3) < 0) __PYX_ERR(0, 980, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_updateInnerOccupancy, __pyx_t_3) < 0) __PYX_ERR(0, 997, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":986
+  /* "octomap/octomap.pyx":1003
  *         self.thisptr.updateInnerOccupancy()
  * 
  *     def useBBXLimit(self, enable):             # <<<<<<<<<<<<<<
  *         """
  *         use or ignore BBX limit (default: ignore)
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_99useBBXLimit, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_useBBXLimit, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[83])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 986, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_99useBBXLimit, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_useBBXLimit, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[81])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1003, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_useBBXLimit, __pyx_t_3) < 0) __PYX_ERR(0, 986, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_useBBXLimit, __pyx_t_3) < 0) __PYX_ERR(0, 1003, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":992
+  /* "octomap/octomap.pyx":1009
  *         self.thisptr.useBBXLimit(bool(enable))
  * 
  *     def volume(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.volume()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_101volume, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_volume, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[84])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 992, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_101volume, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_volume, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[82])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1009, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_volume, __pyx_t_3) < 0) __PYX_ERR(0, 992, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_volume, __pyx_t_3) < 0) __PYX_ERR(0, 1009, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":995
+  /* "octomap/octomap.pyx":1012
  *         return self.thisptr.volume()
  * 
  *     def getClampingThresMax(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getClampingThresMax()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_103getClampingThresMax, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getClampingThresMax, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[85])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 995, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_103getClampingThresMax, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getClampingThresMax, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[83])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1012, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getClampingThresMax, __pyx_t_3) < 0) __PYX_ERR(0, 995, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getClampingThresMax, __pyx_t_3) < 0) __PYX_ERR(0, 1012, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":998
+  /* "octomap/octomap.pyx":1015
  *         return self.thisptr.getClampingThresMax()
  * 
  *     def getClampingThresMaxLog(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getClampingThresMaxLog()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_105getClampingThresMaxLog, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getClampingThresMaxLog, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[86])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 998, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_105getClampingThresMaxLog, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getClampingThresMaxLog, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[84])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1015, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getClampingThresMaxLog, __pyx_t_3) < 0) __PYX_ERR(0, 998, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getClampingThresMaxLog, __pyx_t_3) < 0) __PYX_ERR(0, 1015, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1001
+  /* "octomap/octomap.pyx":1018
  *         return self.thisptr.getClampingThresMaxLog()
  * 
  *     def getClampingThresMin(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getClampingThresMin()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_107getClampingThresMin, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getClampingThresMin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[87])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1001, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_107getClampingThresMin, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getClampingThresMin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[85])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1018, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getClampingThresMin, __pyx_t_3) < 0) __PYX_ERR(0, 1001, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getClampingThresMin, __pyx_t_3) < 0) __PYX_ERR(0, 1018, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1004
+  /* "octomap/octomap.pyx":1021
  *         return self.thisptr.getClampingThresMin()
  * 
  *     def getClampingThresMinLog(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getClampingThresMinLog()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_109getClampingThresMinLog, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getClampingThresMinLog, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[88])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1004, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_109getClampingThresMinLog, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getClampingThresMinLog, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[86])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1021, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getClampingThresMinLog, __pyx_t_3) < 0) __PYX_ERR(0, 1004, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getClampingThresMinLog, __pyx_t_3) < 0) __PYX_ERR(0, 1021, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1007
+  /* "octomap/octomap.pyx":1024
  *         return self.thisptr.getClampingThresMinLog()
  * 
  *     def getOccupancyThres(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getOccupancyThres()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_111getOccupancyThres, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getOccupancyThres, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[89])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1007, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_111getOccupancyThres, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getOccupancyThres, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[87])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1024, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getOccupancyThres, __pyx_t_3) < 0) __PYX_ERR(0, 1007, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getOccupancyThres, __pyx_t_3) < 0) __PYX_ERR(0, 1024, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1010
+  /* "octomap/octomap.pyx":1027
  *         return self.thisptr.getOccupancyThres()
  * 
  *     def getOccupancyThresLog(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getOccupancyThresLog()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_113getOccupancyThresLog, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getOccupancyThresLog, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[90])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1010, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_113getOccupancyThresLog, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getOccupancyThresLog, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[88])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1027, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getOccupancyThresLog, __pyx_t_3) < 0) __PYX_ERR(0, 1010, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getOccupancyThresLog, __pyx_t_3) < 0) __PYX_ERR(0, 1027, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1013
+  /* "octomap/octomap.pyx":1030
  *         return self.thisptr.getOccupancyThresLog()
  * 
  *     def getProbHit(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getProbHit()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_115getProbHit, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getProbHit, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[91])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1013, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_115getProbHit, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getProbHit, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[89])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1030, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getProbHit, __pyx_t_3) < 0) __PYX_ERR(0, 1013, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getProbHit, __pyx_t_3) < 0) __PYX_ERR(0, 1030, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1016
+  /* "octomap/octomap.pyx":1033
  *         return self.thisptr.getProbHit()
  * 
  *     def getProbHitLog(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getProbHitLog()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_117getProbHitLog, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getProbHitLog, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[92])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1016, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_117getProbHitLog, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getProbHitLog, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[90])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1033, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getProbHitLog, __pyx_t_3) < 0) __PYX_ERR(0, 1016, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getProbHitLog, __pyx_t_3) < 0) __PYX_ERR(0, 1033, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1019
+  /* "octomap/octomap.pyx":1036
  *         return self.thisptr.getProbHitLog()
  * 
  *     def getProbMiss(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getProbMiss()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_119getProbMiss, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getProbMiss, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[93])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1019, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_119getProbMiss, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getProbMiss, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[91])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1036, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getProbMiss, __pyx_t_3) < 0) __PYX_ERR(0, 1019, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getProbMiss, __pyx_t_3) < 0) __PYX_ERR(0, 1036, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1022
+  /* "octomap/octomap.pyx":1039
  *         return self.thisptr.getProbMiss()
  * 
  *     def getProbMissLog(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.getProbMissLog()
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_121getProbMissLog, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getProbMissLog, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[94])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1022, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_121getProbMissLog, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getProbMissLog, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[92])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1039, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getProbMissLog, __pyx_t_3) < 0) __PYX_ERR(0, 1022, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getProbMissLog, __pyx_t_3) < 0) __PYX_ERR(0, 1039, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1025
+  /* "octomap/octomap.pyx":1042
  *         return self.thisptr.getProbMissLog()
  * 
  *     def setClampingThresMax(self, double thresProb):             # <<<<<<<<<<<<<<
  *         self.thisptr.setClampingThresMax(thresProb)
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_123setClampingThresMax, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setClampingThresMax, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[95])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1025, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_123setClampingThresMax, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setClampingThresMax, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[93])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1042, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setClampingThresMax, __pyx_t_3) < 0) __PYX_ERR(0, 1025, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setClampingThresMax, __pyx_t_3) < 0) __PYX_ERR(0, 1042, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1028
+  /* "octomap/octomap.pyx":1045
  *         self.thisptr.setClampingThresMax(thresProb)
  * 
  *     def setClampingThresMin(self, double thresProb):             # <<<<<<<<<<<<<<
  *         self.thisptr.setClampingThresMin(thresProb)
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_125setClampingThresMin, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setClampingThresMin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[96])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1028, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_125setClampingThresMin, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setClampingThresMin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[94])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1045, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setClampingThresMin, __pyx_t_3) < 0) __PYX_ERR(0, 1028, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setClampingThresMin, __pyx_t_3) < 0) __PYX_ERR(0, 1045, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1031
+  /* "octomap/octomap.pyx":1048
  *         self.thisptr.setClampingThresMin(thresProb)
  * 
  *     def setOccupancyThres(self, double prob):             # <<<<<<<<<<<<<<
  *         self.thisptr.setOccupancyThres(prob)
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_127setOccupancyThres, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setOccupancyThres, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[97])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1031, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_127setOccupancyThres, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setOccupancyThres, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[95])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1048, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setOccupancyThres, __pyx_t_3) < 0) __PYX_ERR(0, 1031, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setOccupancyThres, __pyx_t_3) < 0) __PYX_ERR(0, 1048, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1034
+  /* "octomap/octomap.pyx":1051
  *         self.thisptr.setOccupancyThres(prob)
  * 
  *     def setProbHit(self, double prob):             # <<<<<<<<<<<<<<
  *         self.thisptr.setProbHit(prob)
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_129setProbHit, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setProbHit, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[98])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1034, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_129setProbHit, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setProbHit, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[96])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1051, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setProbHit, __pyx_t_3) < 0) __PYX_ERR(0, 1034, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setProbHit, __pyx_t_3) < 0) __PYX_ERR(0, 1051, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1037
+  /* "octomap/octomap.pyx":1054
  *         self.thisptr.setProbHit(prob)
  * 
  *     def setProbMiss(self, double prob):             # <<<<<<<<<<<<<<
  *         self.thisptr.setProbMiss(prob)
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_131setProbMiss, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setProbMiss, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[99])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1037, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_131setProbMiss, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_setProbMiss, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[97])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1054, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setProbMiss, __pyx_t_3) < 0) __PYX_ERR(0, 1037, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_setProbMiss, __pyx_t_3) < 0) __PYX_ERR(0, 1054, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1040
+  /* "octomap/octomap.pyx":1057
  *         self.thisptr.setProbMiss(prob)
  * 
  *     def getMetricSize(self):             # <<<<<<<<<<<<<<
  *         cdef double x = 0
  *         cdef double y = 0
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_133getMetricSize, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getMetricSize, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[100])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1040, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_133getMetricSize, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getMetricSize, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[98])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1057, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getMetricSize, __pyx_t_3) < 0) __PYX_ERR(0, 1040, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getMetricSize, __pyx_t_3) < 0) __PYX_ERR(0, 1057, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1047
+  /* "octomap/octomap.pyx":1064
  *         return np.array([x, y, z], dtype=float)
  * 
  *     def getMetricMin(self):             # <<<<<<<<<<<<<<
  *         cdef double x = 0
  *         cdef double y = 0
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_135getMetricMin, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getMetricMin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[101])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1047, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_135getMetricMin, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getMetricMin, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[99])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1064, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getMetricMin, __pyx_t_3) < 0) __PYX_ERR(0, 1047, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getMetricMin, __pyx_t_3) < 0) __PYX_ERR(0, 1064, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1054
+  /* "octomap/octomap.pyx":1071
  *         return np.array([x, y, z], dtype=float)
  * 
  *     def getMetricMax(self):             # <<<<<<<<<<<<<<
  *         cdef double x = 0
  *         cdef double y = 0
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_137getMetricMax, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getMetricMax, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[102])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1054, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_137getMetricMax, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getMetricMax, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[100])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1071, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getMetricMax, __pyx_t_3) < 0) __PYX_ERR(0, 1054, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getMetricMax, __pyx_t_3) < 0) __PYX_ERR(0, 1071, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1061
+  /* "octomap/octomap.pyx":1078
  *         return np.array([x, y, z], dtype=float)
  * 
  *     def expandNode(self, node):             # <<<<<<<<<<<<<<
  *         self.thisptr.expandNode((<OcTreeNode>node).thisptr)
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_139expandNode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_expandNode, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[103])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1061, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_139expandNode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_expandNode, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[101])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1078, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_expandNode, __pyx_t_3) < 0) __PYX_ERR(0, 1061, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_expandNode, __pyx_t_3) < 0) __PYX_ERR(0, 1078, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1064
+  /* "octomap/octomap.pyx":1081
  *         self.thisptr.expandNode((<OcTreeNode>node).thisptr)
  * 
  *     def createNodeChild(self, node, int idx):             # <<<<<<<<<<<<<<
  *         child = OcTreeNode()
  *         child.thisptr = self.thisptr.createNodeChild((<OcTreeNode>node).thisptr, idx)
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_141createNodeChild, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_createNodeChild, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[104])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1064, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_141createNodeChild, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_createNodeChild, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[102])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1081, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_createNodeChild, __pyx_t_3) < 0) __PYX_ERR(0, 1064, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_createNodeChild, __pyx_t_3) < 0) __PYX_ERR(0, 1081, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1069
+  /* "octomap/octomap.pyx":1086
  *         return child
  * 
  *     def getNodeChild(self, node, int idx):             # <<<<<<<<<<<<<<
  *         child = OcTreeNode()
  *         child.thisptr = self.thisptr.getNodeChild((<OcTreeNode>node).thisptr, idx)
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_143getNodeChild, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getNodeChild, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[105])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1069, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_143getNodeChild, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_getNodeChild, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[103])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1086, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getNodeChild, __pyx_t_3) < 0) __PYX_ERR(0, 1069, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_getNodeChild, __pyx_t_3) < 0) __PYX_ERR(0, 1086, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1074
+  /* "octomap/octomap.pyx":1091
  *         return child
  * 
  *     def isNodeCollapsible(self, node):             # <<<<<<<<<<<<<<
  *         return self.thisptr.isNodeCollapsible((<OcTreeNode>node).thisptr)
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_145isNodeCollapsible, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_isNodeCollapsible, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[106])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1074, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_145isNodeCollapsible, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_isNodeCollapsible, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[104])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1091, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_isNodeCollapsible, __pyx_t_3) < 0) __PYX_ERR(0, 1074, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_isNodeCollapsible, __pyx_t_3) < 0) __PYX_ERR(0, 1091, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1077
+  /* "octomap/octomap.pyx":1094
  *         return self.thisptr.isNodeCollapsible((<OcTreeNode>node).thisptr)
  * 
  *     def deleteNodeChild(self, node, int idx):             # <<<<<<<<<<<<<<
  *         self.thisptr.deleteNodeChild((<OcTreeNode>node).thisptr, idx)
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_147deleteNodeChild, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_deleteNodeChild, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[107])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1077, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_147deleteNodeChild, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_deleteNodeChild, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[105])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1094, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_deleteNodeChild, __pyx_t_3) < 0) __PYX_ERR(0, 1077, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_deleteNodeChild, __pyx_t_3) < 0) __PYX_ERR(0, 1094, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1080
+  /* "octomap/octomap.pyx":1097
  *         self.thisptr.deleteNodeChild((<OcTreeNode>node).thisptr, idx)
  * 
  *     def pruneNode(self, node):             # <<<<<<<<<<<<<<
  *         return self.thisptr.pruneNode((<OcTreeNode>node).thisptr)
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_149pruneNode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_pruneNode, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[108])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1080, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_149pruneNode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_pruneNode, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[106])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1097, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_pruneNode, __pyx_t_3) < 0) __PYX_ERR(0, 1080, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_pruneNode, __pyx_t_3) < 0) __PYX_ERR(0, 1097, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1083
+  /* "octomap/octomap.pyx":1100
  *         return self.thisptr.pruneNode((<OcTreeNode>node).thisptr)
  * 
  *     def nodeHasChildren(self, node):             # <<<<<<<<<<<<<<
  *         """
  *         Check if a node has children (recommended replacement for node.hasChildren()).
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_151nodeHasChildren, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_nodeHasChildren, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[109])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1083, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_151nodeHasChildren, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_nodeHasChildren, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[107])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_nodeHasChildren, __pyx_t_3) < 0) __PYX_ERR(0, 1083, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_nodeHasChildren, __pyx_t_3) < 0) __PYX_ERR(0, 1100, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1101
+  /* "octomap/octomap.pyx":1118
  *             raise TypeError("Expected OcTreeNode")
  * 
  *     def dynamicEDT_generate(self, maxdist,             # <<<<<<<<<<<<<<
  *                             np.ndarray[DOUBLE_t, ndim=1] bbx_min,
  *                             np.ndarray[DOUBLE_t, ndim=1] bbx_max,
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_153dynamicEDT_generate, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_dynamicEDT_generate, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[110])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1101, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_153dynamicEDT_generate, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_dynamicEDT_generate, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[108])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_mstate_global->__pyx_tuple[6]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_dynamicEDT_generate, __pyx_t_3) < 0) __PYX_ERR(0, 1101, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_dynamicEDT_generate, __pyx_t_3) < 0) __PYX_ERR(0, 1118, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1116
+  /* "octomap/octomap.pyx":1133
  *                                                 <cppbool?>treatUnknownAsOccupied)
  * 
  *     def dynamicEDT_checkConsistency(self):             # <<<<<<<<<<<<<<
  *         if self.edtptr:
  *             return self.edtptr.checkConsistency()
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_155dynamicEDT_checkConsistency, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_dynamicEDT_checkConsisten, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[111])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1116, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_155dynamicEDT_checkConsistency, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_dynamicEDT_checkConsisten, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[109])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_dynamicEDT_checkConsistency, __pyx_t_3) < 0) __PYX_ERR(0, 1116, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_dynamicEDT_checkConsistency, __pyx_t_3) < 0) __PYX_ERR(0, 1133, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1122
+  /* "octomap/octomap.pyx":1139
  *             raise NullPointerException
  * 
  *     def dynamicEDT_update(self, updateRealDist):             # <<<<<<<<<<<<<<
  *         if self.edtptr:
  *             self.edtptr.update(<cppbool?>updateRealDist)
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_157dynamicEDT_update, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_dynamicEDT_update, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[112])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1122, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_157dynamicEDT_update, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_dynamicEDT_update, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[110])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_dynamicEDT_update, __pyx_t_3) < 0) __PYX_ERR(0, 1122, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_dynamicEDT_update, __pyx_t_3) < 0) __PYX_ERR(0, 1139, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1128
+  /* "octomap/octomap.pyx":1145
  *             raise NullPointerException
  * 
  *     def dynamicEDT_getMaxDist(self):             # <<<<<<<<<<<<<<
  *         if self.edtptr:
  *             return self.edtptr.getMaxDist()
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_159dynamicEDT_getMaxDist, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_dynamicEDT_getMaxDist, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[113])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1128, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_159dynamicEDT_getMaxDist, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_dynamicEDT_getMaxDist, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[111])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_dynamicEDT_getMaxDist, __pyx_t_3) < 0) __PYX_ERR(0, 1128, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_dynamicEDT_getMaxDist, __pyx_t_3) < 0) __PYX_ERR(0, 1145, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "octomap/octomap.pyx":1134
+  /* "octomap/octomap.pyx":1151
  *             raise NullPointerException
  * 
  *     def dynamicEDT_getDistance(self, p):             # <<<<<<<<<<<<<<
  *         if self.edtptr:
  *             if isinstance(p, OcTreeKey):
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_161dynamicEDT_getDistance, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_dynamicEDT_getDistance, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[114])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1134, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_161dynamicEDT_getDistance, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree_dynamicEDT_getDistance, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[112])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_dynamicEDT_getDistance, __pyx_t_3) < 0) __PYX_ERR(0, 1134, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_7octomap_7octomap_OcTree, __pyx_mstate_global->__pyx_n_u_dynamicEDT_getDistance, __pyx_t_3) < 0) __PYX_ERR(0, 1151, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "(tree fragment)":1
@@ -35124,7 +34831,7 @@ __Pyx_RefNannySetupContext("PyInit_octomap", 0);
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_163__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[115])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_163__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[113])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_3) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -35135,7 +34842,7 @@ __Pyx_RefNannySetupContext("PyInit_octomap", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_165__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[116])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7octomap_7octomap_6OcTree_165__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_OcTree___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_octomap_octomap, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[114])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_3) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -35586,9 +35293,9 @@ static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   __pyx_builtin_StopIteration = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_StopIteration); if (!__pyx_builtin_StopIteration) __PYX_ERR(0, 213, __pyx_L1_error)
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 646, __pyx_L1_error)
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 677, __pyx_L1_error)
-  __pyx_builtin_round = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_round); if (!__pyx_builtin_round) __PYX_ERR(0, 714, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 633, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 664, __pyx_L1_error)
+  __pyx_builtin_round = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_round); if (!__pyx_builtin_round) __PYX_ERR(0, 701, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 1010, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -35601,91 +35308,91 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "octomap/octomap.pyx":578
+  /* "octomap/octomap.pyx":565
  *         )
  *         if hit:
  *             end[0:3] = e.x(), e.y(), e.z()             # <<<<<<<<<<<<<<
  *         return hit
  * 
 */
-  __pyx_mstate_global->__pyx_slice[0] = PySlice_New(__pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_3, Py_None); if (unlikely(!__pyx_mstate_global->__pyx_slice[0])) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_slice[0] = PySlice_New(__pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_3, Py_None); if (unlikely(!__pyx_mstate_global->__pyx_slice[0])) __PYX_ERR(0, 565, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_slice[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_slice[0]);
 
-  /* "octomap/octomap.pyx":728
+  /* "octomap/octomap.pyx":715
  *         cdef np.ndarray[DOUBLE_t, ndim=2] empty_arr
  *         if len(occupied) == 0:
  *             occupied_arr = np.zeros((0, 3), dtype=float)             # <<<<<<<<<<<<<<
  *         else:
  *             occupied_arr = np.concatenate(occupied, axis=0)
 */
-  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_3); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 728, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_3); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 715, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
 
-  /* "octomap/octomap.pyx":511
+  /* "octomap/octomap.pyx":498
  *         self.thisptr.clear()
  * 
  *     def coordToKey(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):             # <<<<<<<<<<<<<<
  *         cdef defs.OcTreeKey key
  *         if depth is None:
 */
-  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 511, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 498, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
 
-  /* "octomap/octomap.pyx":551
+  /* "octomap/octomap.pyx":538
  *             return chk, None
  * 
  *     def deleteNode(self, np.ndarray[DOUBLE_t, ndim=1] value, depth=1):             # <<<<<<<<<<<<<<
  *         return self.thisptr.deleteNode(defs.point3d(value[0],
  *                                                     value[1],
 */
-  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(1, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(1, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 538, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
 
-  /* "octomap/octomap.pyx":557
+  /* "octomap/octomap.pyx":544
  *                                        <int?>depth)
  * 
  *     def castRay(self, np.ndarray[DOUBLE_t, ndim=1] origin,             # <<<<<<<<<<<<<<
  *                 np.ndarray[DOUBLE_t, ndim=1] direction,
  *                 np.ndarray[DOUBLE_t, ndim=1] end,
 */
-  __pyx_mstate_global->__pyx_tuple[3] = PyTuple_Pack(2, Py_False, __pyx_mstate_global->__pyx_float_neg_1_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[3])) __PYX_ERR(0, 557, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[3] = PyTuple_Pack(2, Py_False, __pyx_mstate_global->__pyx_float_neg_1_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[3])) __PYX_ERR(0, 544, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[3]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[3]);
 
-  /* "octomap/octomap.pyx":737
+  /* "octomap/octomap.pyx":724
  *         return occupied_arr, empty_arr
  * 
  *     def insertPointCloud(self,             # <<<<<<<<<<<<<<
  *                          np.ndarray[DOUBLE_t, ndim=2] pointcloud,
  *                          np.ndarray[DOUBLE_t, ndim=1] origin,
 */
-  __pyx_mstate_global->__pyx_tuple[4] = PyTuple_Pack(3, __pyx_mstate_global->__pyx_float_neg_1_, Py_False, Py_False); if (unlikely(!__pyx_mstate_global->__pyx_tuple[4])) __PYX_ERR(0, 737, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[4] = PyTuple_Pack(3, __pyx_mstate_global->__pyx_float_neg_1_, Py_False, Py_False); if (unlikely(!__pyx_mstate_global->__pyx_tuple[4])) __PYX_ERR(0, 724, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[4]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[4]);
 
-  /* "octomap/octomap.pyx":769
+  /* "octomap/octomap.pyx":756
  *                                       bool(discretize))
  * 
  *     def begin_tree(self, maxDepth=0):             # <<<<<<<<<<<<<<
  *         """Return a simplified tree iterator"""
  *         return SimpleTreeIterator(self, maxDepth)
 */
-  __pyx_mstate_global->__pyx_tuple[5] = PyTuple_Pack(1, __pyx_mstate_global->__pyx_int_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[5])) __PYX_ERR(0, 769, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[5] = PyTuple_Pack(1, __pyx_mstate_global->__pyx_int_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[5])) __PYX_ERR(0, 756, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[5]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[5]);
 
-  /* "octomap/octomap.pyx":910
+  /* "octomap/octomap.pyx":927
  *         self.thisptr.toMaxLikelihood()
  * 
  *     def updateNodes(self, values, update, lazy_eval=False):             # <<<<<<<<<<<<<<
  *         """
  *         Integrate occupancy measurements and Manipulate log_odds value of voxel directly.
 */
-  __pyx_mstate_global->__pyx_tuple[6] = PyTuple_Pack(1, Py_False); if (unlikely(!__pyx_mstate_global->__pyx_tuple[6])) __PYX_ERR(0, 910, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[6] = PyTuple_Pack(1, Py_False); if (unlikely(!__pyx_mstate_global->__pyx_tuple[6])) __PYX_ERR(0, 927, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[6]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[6]);
   __Pyx_RefNannyFinishContext();
@@ -35704,7 +35411,6 @@ static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   __pyx_mstate->__pyx_float_0_0 = PyFloat_FromDouble(0.0); if (unlikely(!__pyx_mstate->__pyx_float_0_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_float_0_1 = PyFloat_FromDouble(0.1); if (unlikely(!__pyx_mstate->__pyx_float_0_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_float_1_0 = PyFloat_FromDouble(1.0); if (unlikely(!__pyx_mstate->__pyx_float_1_0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_mstate->__pyx_float_2_0 = PyFloat_FromDouble(2.0); if (unlikely(!__pyx_mstate->__pyx_float_2_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_float_neg_1_ = PyFloat_FromDouble(-1.); if (unlikely(!__pyx_mstate->__pyx_float_neg_1_)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_float_neg_1_0 = PyFloat_FromDouble(-1.0); if (unlikely(!__pyx_mstate->__pyx_float_neg_1_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_int_0 = PyLong_FromLong(0); if (unlikely(!__pyx_mstate->__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -35871,459 +35577,449 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[25] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getDepth, __pyx_k_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[25])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 334, 29};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[26] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getSize, __pyx_k_A_4q_4v_3b_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[26])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 341, 19};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[27] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getDepth, __pyx_k_A_4q_1_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[27])) goto bad;
-  }
-  {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[28] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[28])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[26] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[26])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_pyx_state};
-    __pyx_mstate_global->__pyx_codeobj_tab[29] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[29])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[27] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[27])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 418, 32};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 405, 32};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[30] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getCoordinate, __pyx_k_A_4_wa_4q_q_U, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[30])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[28] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getCoordinate, __pyx_k_A_4_wa_4q_q_U, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[28])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 423, 9};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 410, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[31] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getSize, __pyx_k_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[31])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[29] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getSize, __pyx_k_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[29])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 426, 9};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 413, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[32] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getDepth, __pyx_k_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[32])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[30] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getDepth, __pyx_k_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[30])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[33] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[33])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[31] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[31])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_pyx_state};
-    __pyx_mstate_global->__pyx_codeobj_tab[34] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[34])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[32] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[32])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 437, 140};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 424, 140};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_filename, __pyx_mstate->__pyx_n_u_iss, __pyx_mstate->__pyx_n_u_tree, __pyx_mstate->__pyx_n_u_c_filename, __pyx_mstate->__pyx_n_u_new_tree};
-    __pyx_mstate_global->__pyx_codeobj_tab[35] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_octree_read, __pyx_k_vQa_XWAQ_x_1_4q_axz_AQ_XU_3C1_X, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[35])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[33] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_octree_read, __pyx_k_vQa_XWAQ_x_1_4q_axz_AQ_XU_3C1_X, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[33])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 490, 118};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 477, 118};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_key, __pyx_mstate->__pyx_n_u_depth, __pyx_mstate->__pyx_n_u_key_in, __pyx_mstate->__pyx_n_u_key_out, __pyx_mstate->__pyx_n_u_res};
-    __pyx_mstate_global->__pyx_codeobj_tab[36] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_adjustKeyAtDepth, __pyx_k_A_1_auCq_auCq_auCq_d_2C1HFRS_iq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[36])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[34] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_adjustKeyAtDepth, __pyx_k_A_1_auCq_auCq_auCq_d_2C1HFRS_iq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[34])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 502, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 489, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[37] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_bbxSet, __pyx_k_A_t87, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[37])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[35] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_bbxSet, __pyx_k_A_t87, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[35])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 505, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 492, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[38] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_calcNumNodes, __pyx_k_A_t8, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[38])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[36] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_calcNumNodes, __pyx_k_A_t8, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[36])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 508, 11};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 495, 11};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[39] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_clear, __pyx_k_A_HF, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[39])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[37] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_clear, __pyx_k_A_HF, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[37])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 511, 140};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 498, 140};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_coord, __pyx_mstate->__pyx_n_u_depth, __pyx_mstate->__pyx_n_u_key, __pyx_mstate->__pyx_n_u_res};
-    __pyx_mstate_global->__pyx_codeobj_tab[40] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_coordToKey, __pyx_k_C1_6_A_hk_hauAQ7_AQ7_AQ_hk_hauA, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[40])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[38] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_coordToKey, __pyx_k_C1_6_A_hk_hauAQ7_AQ7_AQ_hk_hauA, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[38])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 528, 164};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 515, 164};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_coord, __pyx_mstate->__pyx_n_u_depth, __pyx_mstate->__pyx_n_u_key, __pyx_mstate->__pyx_n_u_chk, __pyx_mstate->__pyx_n_u_res};
-    __pyx_mstate_global->__pyx_codeobj_tab[41] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_coordToKeyChecked, __pyx_k_J_6_A_h_0_XQe1A_C1A_C1A12_h_0_X, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[41])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[39] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_coordToKeyChecked, __pyx_k_J_6_A_h_0_XQe1A_C1A_C1A12_h_0_X, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[39])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 551, 45};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 538, 45};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_depth};
-    __pyx_mstate_global->__pyx_codeobj_tab[42] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_deleteNode, __pyx_k_C1_t8_e81E_49_49_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[42])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[40] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_deleteNode, __pyx_k_C1_t8_e81E_49_49_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[40])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 557, 121};
+    const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 544, 121};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_origin, __pyx_mstate->__pyx_n_u_direction, __pyx_mstate->__pyx_n_u_end, __pyx_mstate->__pyx_n_u_ignoreUnknownCells, __pyx_mstate->__pyx_n_u_maxRange, __pyx_mstate->__pyx_n_u_e, __pyx_mstate->__pyx_n_u_hit};
-    __pyx_mstate_global->__pyx_codeobj_tab[43] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_castRay, __pyx_k_A_d_q_F_4vQa_4y_Yaq_Q_1_q_q_ar_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[43])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[41] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_castRay, __pyx_k_A_d_q_F_4vQa_4y_Yaq_Q_1_q_q_ar_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[41])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 581, 70};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 568, 70};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_filename, __pyx_mstate->__pyx_n_u_c_filename, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_new_tree};
-    __pyx_mstate_global->__pyx_codeobj_tab[44] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_read, __pyx_k_A_t85_7_Q_vQa_Kq_IQ_1_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[44])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[42] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_read, __pyx_k_A_t85_7_Q_vQa_Kq_IQ_1_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[42])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 593, 91};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 580, 91};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_filename, __pyx_mstate->__pyx_n_u_oss, __pyx_mstate->__pyx_n_u_c_filename, __pyx_mstate->__pyx_n_u_ret};
-    __pyx_mstate_global->__pyx_codeobj_tab[45] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_write, __pyx_k_Q_y_1_4xvQa_hfA_5Q_q_s_b_b_T_7, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[45])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[43] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_write, __pyx_k_Q_y_1_4xvQa_hfA_5Q_q_s_b_b_T_7, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[43])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 609, 56};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 596, 56};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_filename, __pyx_mstate->__pyx_n_u_c_filename};
-    __pyx_mstate_global->__pyx_codeobj_tab[46] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_readBinary, __pyx_k_A_Qk_y_q_t8_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[46])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[44] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_readBinary, __pyx_k_A_Qk_y_q_t8_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[44])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 618, 91};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 605, 91};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_filename, __pyx_mstate->__pyx_n_u_oss, __pyx_mstate->__pyx_n_u_c_filename, __pyx_mstate->__pyx_n_u_ret};
-    __pyx_mstate_global->__pyx_codeobj_tab[47] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_writeBinary, __pyx_k_1_y_1_4x_1A_hl_1_q_s_b_b_T_7_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[47])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[45] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_writeBinary, __pyx_k_1_y_1_4x_1A_hl_1_q_s_b_b_T_7_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[45])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 631, 165};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 618, 165};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_node};
-    __pyx_mstate_global->__pyx_codeobj_tab[48] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_isNodeOccupied, __pyx_k_A_QfA_E_t8_7_e1_a_q_33Gq_wav_d_o, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[48])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[46] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_isNodeOccupied, __pyx_k_A_QfA_E_t8_7_e1_a_q_33Gq_wav_d_o, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[46])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 650, 168};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 637, 168};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_node};
-    __pyx_mstate_global->__pyx_codeobj_tab[49] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_isNodeAtThreshold, __pyx_k_A_QfA_E_t8_5Qg_a_a_q_33Gq_wav_d, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[49])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[47] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_isNodeAtThreshold, __pyx_k_A_QfA_E_t8_5Qg_a_a_q_33Gq_wav_d, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[47])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 7, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 669, 122};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 7, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 656, 122};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_points, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_pt, __pyx_mstate->__pyx_n_u_key, __pyx_mstate->__pyx_n_u_node, __pyx_mstate->__pyx_n_u_labels};
-    __pyx_mstate_global->__pyx_codeobj_tab[50] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getLabels, __pyx_k_A_e2V6_F_A_CvYaq_k_4waq_uCq_avQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[50])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[48] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getLabels, __pyx_k_A_e2V6_F_A_CvYaq_k_4waq_uCq_avQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[48])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 16, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 689, 307};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 16, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 676, 307};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_resolution, __pyx_mstate->__pyx_n_u_occupied, __pyx_mstate->__pyx_n_u_empty, __pyx_mstate->__pyx_n_u_it, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_is_occupied, __pyx_mstate->__pyx_n_u_center, __pyx_mstate->__pyx_n_u_origin, __pyx_mstate->__pyx_n_u_indices, __pyx_mstate->__pyx_n_u_points, __pyx_mstate->__pyx_n_u_keep, __pyx_mstate->__pyx_n_u_dimension, __pyx_mstate->__pyx_n_u_raw_dimension, __pyx_mstate->__pyx_n_u_occupied_arr, __pyx_mstate->__pyx_n_u_empty_arr};
-    __pyx_mstate_global->__pyx_codeobj_tab[51] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_extractPointCloud, __pyx_k_A_N_Q_F_l_d_a_2XQ_RvQb_d_q_5_83b, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[51])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[49] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_extractPointCloud, __pyx_k_A_N_Q_F_l_d_a_2XQ_RvQb_d_q_5_83b, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[49])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 737, 124};
+    const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 724, 124};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_pointcloud, __pyx_mstate->__pyx_n_u_origin, __pyx_mstate->__pyx_n_u_maxrange, __pyx_mstate->__pyx_n_u_lazy_eval, __pyx_mstate->__pyx_n_u_discretize, __pyx_mstate->__pyx_n_u_pc, __pyx_mstate->__pyx_n_u_p};
-    __pyx_mstate_global->__pyx_codeobj_tab[52] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_insertPointCloud, __pyx_k_A_k_E_j_H_Qa_2_7_3_3_q_1_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[52])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[50] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_insertPointCloud, __pyx_k_A_k_E_j_H_Qa_2_7_3_3_q_1_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[50])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 769, 17};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 756, 17};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_maxDepth};
-    __pyx_mstate_global->__pyx_codeobj_tab[53] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_begin_tree, __pyx_k__4, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[53])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[51] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_begin_tree, __pyx_k__4, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[51])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 773, 17};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 760, 20};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_maxDepth};
-    __pyx_mstate_global->__pyx_codeobj_tab[54] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_begin_leafs, __pyx_k_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[54])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[52] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_begin_leafs, __pyx_k_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[52])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 777, 22};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 794, 22};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_bbx_min, __pyx_mstate->__pyx_n_u_bbx_max, __pyx_mstate->__pyx_n_u_maxDepth};
-    __pyx_mstate_global->__pyx_codeobj_tab[55] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_begin_leafs_bbx, __pyx_k_sst_AV9IQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[55])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[53] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_begin_leafs_bbx, __pyx_k_sst_AV9IQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[53])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 781, 24};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 798, 24};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_itr};
-    __pyx_mstate_global->__pyx_codeobj_tab[56] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_end_tree, __pyx_k_A_a_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[56])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[54] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_end_tree, __pyx_k_A_a_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[54])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 787, 24};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 804, 24};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_itr};
-    __pyx_mstate_global->__pyx_codeobj_tab[57] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_end_leafs, __pyx_k_A_a_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[57])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[55] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_end_leafs, __pyx_k_A_a_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[55])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 793, 82};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 810, 82};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_itr};
-    __pyx_mstate_global->__pyx_codeobj_tab[58] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_end_leafs_bbx, __pyx_k_A_1F_F_1E_fF_KWYY___aaffkkqqwwyy, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[58])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[56] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_end_leafs_bbx, __pyx_k_A_1F_F_1E_fF_KWYY___aaffkkqqwwyy, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[56])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 800, 40};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 817, 40};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_p};
-    __pyx_mstate_global->__pyx_codeobj_tab[59] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getBBXBounds, __pyx_k_A_d_q_r_r_D_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[59])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[57] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getBBXBounds, __pyx_k_A_d_q_r_r_D_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[57])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 804, 40};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 821, 40};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_p};
-    __pyx_mstate_global->__pyx_codeobj_tab[60] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getBBXCenter, __pyx_k_A_d_q_r_r_D_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[60])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[58] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getBBXCenter, __pyx_k_A_d_q_r_r_D_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[58])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 808, 40};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 825, 40};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_p};
-    __pyx_mstate_global->__pyx_codeobj_tab[61] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getBBXMax, __pyx_k_A_d_A_r_r_D_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[61])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[59] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getBBXMax, __pyx_k_A_d_A_r_r_D_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[59])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 812, 40};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 829, 40};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_p};
-    __pyx_mstate_global->__pyx_codeobj_tab[62] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getBBXMin, __pyx_k_A_d_A_r_r_D_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[62])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[60] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getBBXMin, __pyx_k_A_d_A_r_r_D_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[60])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 816, 27};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 833, 27};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_node};
-    __pyx_mstate_global->__pyx_codeobj_tab[63] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getRoot, __pyx_k_A_z_Kt881_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[63])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[61] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getRoot, __pyx_k_A_z_Kt881_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[61])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 821, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 838, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[64] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getNumLeafNodes, __pyx_k_A_t8_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[64])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[62] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getNumLeafNodes, __pyx_k_A_t8_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[62])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 824, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 841, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[65] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getResolution, __pyx_k_A_t8_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[65])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[63] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getResolution, __pyx_k_A_t8_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[63])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 827, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 844, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[66] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getTreeDepth, __pyx_k_A_t8, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[66])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[64] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getTreeDepth, __pyx_k_A_t8, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[64])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 830, 17};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 847, 17};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[67] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getTreeType, __pyx_k_A_t8_r_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[67])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[65] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getTreeType, __pyx_k_A_t8_r_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[65])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 833, 35};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 850, 35};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_p};
-    __pyx_mstate_global->__pyx_codeobj_tab[68] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_inBBX, __pyx_k_A_t86_haq_Qat1AQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[68])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[66] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_inBBX, __pyx_k_A_t86_haq_Qat1AQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[66])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 836, 124};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 853, 124};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_key, __pyx_mstate->__pyx_n_u_depth, __pyx_mstate->__pyx_n_u_key_in, __pyx_mstate->__pyx_n_u_p};
-    __pyx_mstate_global->__pyx_codeobj_tab[69] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_keyToCoord, __pyx_k_a_1_auCq_auCq_auCq_6_A_HKq_HKq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[69])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[67] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_keyToCoord, __pyx_k_a_1_auCq_auCq_auCq_6_A_HKq_HKq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[67])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 848, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 865, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[70] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_memoryFullGrid, __pyx_k_A_t8_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[70])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[68] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_memoryFullGrid, __pyx_k_A_t8_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[68])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 851, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 868, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[71] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_memoryUsage, __pyx_k_A_t8_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[71])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[69] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_memoryUsage, __pyx_k_A_t8_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[69])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 854, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 871, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[72] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_memoryUsageNode, __pyx_k_A_t8_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[72])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[70] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_memoryUsageNode, __pyx_k_A_t8_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[70])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 857, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 874, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[73] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_resetChangeDetection, __pyx_k_A_H, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[73])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[71] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_resetChangeDetection, __pyx_k_A_H, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[71])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 865, 146};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 882, 146};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_depth, __pyx_mstate->__pyx_n_u_node};
-    __pyx_mstate_global->__pyx_codeobj_tab[74] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_search, __pyx_k_z_QgQ_4xwe_Q_RRWWXXY_RRWWXXY_RR, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[74])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[72] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_search, __pyx_k_z_QgQ_4xwe_Q_RRWWXXY_RRWWXXY_RR, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[72])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 882, 35};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 899, 35};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_max};
-    __pyx_mstate_global->__pyx_codeobj_tab[75] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setBBXMax, __pyx_k_A_HJe81Cq_Cq_Cq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[75])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[73] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setBBXMax, __pyx_k_A_HJe81Cq_Cq_Cq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[73])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 888, 35};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 905, 35};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_min};
-    __pyx_mstate_global->__pyx_codeobj_tab[76] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setBBXMin, __pyx_k_A_HJe81Cq_Cq_Cq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[76])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[74] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setBBXMin, __pyx_k_A_HJe81Cq_Cq_Cq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[74])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 894, 15};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 911, 15};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_r};
-    __pyx_mstate_global->__pyx_codeobj_tab[77] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setResolution, __pyx_k_A_HN_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[77])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[75] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setResolution, __pyx_k_A_HN_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[75])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 900, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 917, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[78] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_size, __pyx_k_A_t85, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[78])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[76] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_size, __pyx_k_A_t85, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[76])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 903, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 920, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[79] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_toMaxLikelihood, __pyx_k_A_H_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[79])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[77] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_toMaxLikelihood, __pyx_k_A_H_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[77])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 910, 298};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 927, 298};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_values, __pyx_mstate->__pyx_n_u_update, __pyx_mstate->__pyx_n_u_lazy_eval, __pyx_mstate->__pyx_n_u_v};
-    __pyx_mstate_global->__pyx_codeobj_tab[80] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_updateNodes, __pyx_k_4A_7_U_S_A_QfAT_z_E_5_OqPQQR_Oq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[80])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[78] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_updateNodes, __pyx_k_4A_7_U_S_A_QfAT_z_E_5_OqPQQR_Oq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[78])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 947, 276};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 964, 276};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_update, __pyx_mstate->__pyx_n_u_lazy_eval, __pyx_mstate->__pyx_n_u_node};
-    __pyx_mstate_global->__pyx_codeobj_tab[81] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_updateNode, __pyx_k_2_z_QgQ_z_Kt8_e_QFZZ___aFZZ___a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[81])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[79] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_updateNode, __pyx_k_2_z_QgQ_z_Kt8_e_QFZZ___aFZZ___a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[79])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 980, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 997, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[82] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_updateInnerOccupancy, __pyx_k_A_H, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[82])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[80] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_updateInnerOccupancy, __pyx_k_A_H, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[80])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 986, 19};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1003, 19};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_enable};
-    __pyx_mstate_global->__pyx_codeobj_tab[83] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_useBBXLimit, __pyx_k_A_HL_Qa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[83])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[81] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_useBBXLimit, __pyx_k_A_HL_Qa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[81])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 992, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1009, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[84] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_volume, __pyx_k_A_t87, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[84])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[82] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_volume, __pyx_k_A_t87, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[82])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 995, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1012, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[85] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getClampingThresMax, __pyx_k_A_t8_q_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[85])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[83] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getClampingThresMax, __pyx_k_A_t8_q_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[83])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 998, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1015, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[86] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getClampingThresMaxLog, __pyx_k_A_t8_2_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[86])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[84] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getClampingThresMaxLog, __pyx_k_A_t8_2_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[84])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1001, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1018, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[87] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getClampingThresMin, __pyx_k_A_t8_q_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[87])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[85] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getClampingThresMin, __pyx_k_A_t8_q_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[85])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1004, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1021, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[88] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getClampingThresMinLog, __pyx_k_A_t8_2_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[88])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[86] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getClampingThresMinLog, __pyx_k_A_t8_2_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[86])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1007, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1024, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[89] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getOccupancyThres, __pyx_k_A_t8_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[89])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[87] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getOccupancyThres, __pyx_k_A_t8_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[87])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1010, 14};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1027, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[90] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getOccupancyThresLog, __pyx_k_A_t8_0, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[90])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[88] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getOccupancyThresLog, __pyx_k_A_t8_0, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[88])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1013, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1030, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[91] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getProbHit, __pyx_k_A_t8_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[91])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[89] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getProbHit, __pyx_k_A_t8_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[89])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1016, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1033, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[92] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getProbHitLog, __pyx_k_A_t8_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[92])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[90] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getProbHitLog, __pyx_k_A_t8_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[90])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1019, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1036, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[93] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getProbMiss, __pyx_k_A_t8_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[93])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[91] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getProbMiss, __pyx_k_A_t8_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[91])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1022, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1039, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[94] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getProbMissLog, __pyx_k_A_t8_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[94])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[92] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getProbMissLog, __pyx_k_A_t8_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[92])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1025, 14};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1042, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_thresProb};
-    __pyx_mstate_global->__pyx_codeobj_tab[95] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setClampingThresMax, __pyx_k_A_H_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[95])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[93] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setClampingThresMax, __pyx_k_A_H_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[93])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1028, 14};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1045, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_thresProb};
-    __pyx_mstate_global->__pyx_codeobj_tab[96] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setClampingThresMin, __pyx_k_A_H_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[96])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[94] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setClampingThresMin, __pyx_k_A_H_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[94])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1031, 14};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1048, 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_prob};
-    __pyx_mstate_global->__pyx_codeobj_tab[97] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setOccupancyThres, __pyx_k_A_H_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[97])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[95] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setOccupancyThres, __pyx_k_A_H_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[95])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1034, 13};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1051, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_prob};
-    __pyx_mstate_global->__pyx_codeobj_tab[98] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setProbHit, __pyx_k_A_HKq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[98])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[96] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setProbHit, __pyx_k_A_HKq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[96])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1037, 13};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1054, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_prob};
-    __pyx_mstate_global->__pyx_codeobj_tab[99] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setProbMiss, __pyx_k_A_HL, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[99])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[97] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_setProbMiss, __pyx_k_A_HL, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[97])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1040, 53};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1057, 53};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_z};
-    __pyx_mstate_global->__pyx_codeobj_tab[100] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getMetricSize, __pyx_k_A_HN_3c_r_q_Ct6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[100])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[98] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getMetricSize, __pyx_k_A_HN_3c_r_q_Ct6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[98])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1047, 53};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1064, 53};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_z};
-    __pyx_mstate_global->__pyx_codeobj_tab[101] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getMetricMin, __pyx_k_A_HM_S_r_q_Ct6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[101])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[99] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getMetricMin, __pyx_k_A_HM_S_r_q_Ct6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[99])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1054, 53};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1071, 53};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_z};
-    __pyx_mstate_global->__pyx_codeobj_tab[102] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getMetricMax, __pyx_k_A_HM_S_r_q_Ct6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[102])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[100] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getMetricMax, __pyx_k_A_HM_S_r_q_Ct6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[100])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1061, 17};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1078, 17};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_node};
-    __pyx_mstate_global->__pyx_codeobj_tab[103] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_expandNode, __pyx_k_A_HKr_U, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[103])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[101] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_expandNode, __pyx_k_A_HKr_U, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[101])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1064, 37};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1081, 37};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_node, __pyx_mstate->__pyx_n_u_idx, __pyx_mstate->__pyx_n_u_child};
-    __pyx_mstate_global->__pyx_codeobj_tab[104] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_createNodeChild, __pyx_k_A_H_4Bl_zQR_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[104])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[102] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_createNodeChild, __pyx_k_A_H_4Bl_zQR_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[102])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1069, 35};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1086, 35};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_node, __pyx_mstate->__pyx_n_u_idx, __pyx_mstate->__pyx_n_u_child};
-    __pyx_mstate_global->__pyx_codeobj_tab[105] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getNodeChild, __pyx_k_A_HM_uJa_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[105])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[103] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_getNodeChild, __pyx_k_A_HM_uJa_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[103])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1074, 20};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1091, 20};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_node};
-    __pyx_mstate_global->__pyx_codeobj_tab[106] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_isNodeCollapsible, __pyx_k_A_t8_R_5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[106])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[104] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_isNodeCollapsible, __pyx_k_A_t8_R_5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[104])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1077, 20};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1094, 20};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_node, __pyx_mstate->__pyx_n_u_idx};
-    __pyx_mstate_global->__pyx_codeobj_tab[107] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_deleteNodeChild, __pyx_k_A_H_Bl_z, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[107])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[105] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_deleteNodeChild, __pyx_k_A_H_Bl_z, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[105])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1080, 19};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1097, 19};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_node};
-    __pyx_mstate_global->__pyx_codeobj_tab[108] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_pruneNode, __pyx_k_A_t8_R_5_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[108])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[106] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_pruneNode, __pyx_k_A_t8_R_5_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[106])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1083, 56};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1100, 56};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_node};
-    __pyx_mstate_global->__pyx_codeobj_tab[109] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_nodeHasChildren, __pyx_k_A_QfA_E_t8_32_a_a_1A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[109])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[107] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_nodeHasChildren, __pyx_k_A_QfA_E_t8_32_a_a_1A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[107])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {5, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1101, 112};
+    const __Pyx_PyCode_New_function_description descr = {5, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1118, 112};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_maxdist, __pyx_mstate->__pyx_n_u_bbx_min, __pyx_mstate->__pyx_n_u_bbx_max, __pyx_mstate->__pyx_n_u_treatUnknownAsOccupied};
-    __pyx_mstate_global->__pyx_codeobj_tab[110] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_dynamicEDT_generate, __pyx_k_A_45_4xs_A_J_q_04A4_AWAT_PQQUU_4, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[110])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[108] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_dynamicEDT_generate, __pyx_k_A_45_4xs_A_J_q_04A4_AWAT_PQQUU_4, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[108])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1116, 26};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1133, 26};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[111] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_dynamicEDT_checkConsistency, __pyx_k_A_4q_4w_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[111])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[109] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_dynamicEDT_checkConsistency, __pyx_k_A_4q_4w_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[109])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1122, 27};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1139, 27};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_updateRealDist};
-    __pyx_mstate_global->__pyx_codeobj_tab[112] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_dynamicEDT_update, __pyx_k_A_4q_waz, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[112])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[110] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_dynamicEDT_update, __pyx_k_A_4q_waz, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[110])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1128, 25};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1145, 25};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[113] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_dynamicEDT_getMaxDist, __pyx_k_A_4q_4wk, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[113])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[111] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_dynamicEDT_getMaxDist, __pyx_k_A_4q_4wk, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[111])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1134, 117};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1151, 117};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_p};
-    __pyx_mstate_global->__pyx_codeobj_tab[114] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_dynamicEDT_getDistance, __pyx_k_A_4q_z_Q_t7_d_A_QQRRSST_QQRRSST, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[114])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[112] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_octomap_octomap_pyx, __pyx_mstate->__pyx_n_u_dynamicEDT_getDistance, __pyx_k_A_4q_z_Q_t7_d_A_QQRRSST_QQRRSST, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[112])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[115] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[115])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[113] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[113])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_pyx_state};
-    __pyx_mstate_global->__pyx_codeobj_tab[116] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[116])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[114] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[114])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
