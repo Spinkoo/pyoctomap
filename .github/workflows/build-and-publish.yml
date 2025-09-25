@@ -47,14 +47,25 @@ jobs:
           echo "🔨 Building OctoMap C++ library..."
           mkdir -p build
           cd build
-          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./install
           make -j$(nproc)
           make install
-          ldconfig
+          # Set environment variables for the build
+          export OCTOMAP_ROOT=$(pwd)/install
+          export PKG_CONFIG_PATH=$OCTOMAP_ROOT/lib/pkgconfig:$PKG_CONFIG_PATH
+          export LD_LIBRARY_PATH=$OCTOMAP_ROOT/lib:$LD_LIBRARY_PATH
+          echo "OCTOMAP_ROOT=$OCTOMAP_ROOT" >> $GITHUB_ENV
+          echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH" >> $GITHUB_ENV
+          echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> $GITHUB_ENV
         else
           echo "✅ Using cached OctoMap C++ build"
-          # Skip build entirely - just install the cached libraries
-          echo "Skipping build - using cached libraries"
+          # Set environment variables for cached build
+          export OCTOMAP_ROOT=$(pwd)/build/install
+          export PKG_CONFIG_PATH=$OCTOMAP_ROOT/lib/pkgconfig:$PKG_CONFIG_PATH
+          export LD_LIBRARY_PATH=$OCTOMAP_ROOT/lib:$LD_LIBRARY_PATH
+          echo "OCTOMAP_ROOT=$OCTOMAP_ROOT" >> $GITHUB_ENV
+          echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH" >> $GITHUB_ENV
+          echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> $GITHUB_ENV
         fi
     
     - name: Install Python dependencies
@@ -143,14 +154,25 @@ jobs:
           echo "🔨 Building OctoMap C++ library..."
           mkdir -p build
           cd build
-          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./install
           make -j$(nproc)
           make install
-          ldconfig
+          # Set environment variables for the build
+          export OCTOMAP_ROOT=$(pwd)/install
+          export PKG_CONFIG_PATH=$OCTOMAP_ROOT/lib/pkgconfig:$PKG_CONFIG_PATH
+          export LD_LIBRARY_PATH=$OCTOMAP_ROOT/lib:$LD_LIBRARY_PATH
+          echo "OCTOMAP_ROOT=$OCTOMAP_ROOT" >> $GITHUB_ENV
+          echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH" >> $GITHUB_ENV
+          echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> $GITHUB_ENV
         else
           echo "✅ Using cached OctoMap C++ build"
-          # Skip build entirely - just install the cached libraries
-          echo "Skipping build - using cached libraries"
+          # Set environment variables for cached build
+          export OCTOMAP_ROOT=$(pwd)/build/install
+          export PKG_CONFIG_PATH=$OCTOMAP_ROOT/lib/pkgconfig:$PKG_CONFIG_PATH
+          export LD_LIBRARY_PATH=$OCTOMAP_ROOT/lib:$LD_LIBRARY_PATH
+          echo "OCTOMAP_ROOT=$OCTOMAP_ROOT" >> $GITHUB_ENV
+          echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH" >> $GITHUB_ENV
+          echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> $GITHUB_ENV
         fi
     
     - name: Install build dependencies
