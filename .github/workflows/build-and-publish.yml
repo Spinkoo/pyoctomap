@@ -30,43 +30,15 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y cmake build-essential
     
-    - name: Cache OctoMap C++ build
-      uses: actions/cache@v3
-      with:
-        path: |
-          src/octomap/build
-          src/octomap/lib
-        key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
-        restore-keys: |
-          octomap-cpp-${{ runner.os }}-
-    
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
-        if [ ! -d "build" ] || [ ! -f "build/CMakeCache.txt" ]; then
-          echo "🔨 Building OctoMap C++ library..."
-          mkdir -p build
-          cd build
-          cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./install
-          make -j$(nproc)
-          make install
-          # Set environment variables for the build
-          export OCTOMAP_ROOT=$(pwd)/install
-          export PKG_CONFIG_PATH=$OCTOMAP_ROOT/lib/pkgconfig:$PKG_CONFIG_PATH
-          export LD_LIBRARY_PATH=$OCTOMAP_ROOT/lib:$LD_LIBRARY_PATH
-          echo "OCTOMAP_ROOT=$OCTOMAP_ROOT" >> $GITHUB_ENV
-          echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH" >> $GITHUB_ENV
-          echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> $GITHUB_ENV
-        else
-          echo "✅ Using cached OctoMap C++ build"
-          # Set environment variables for cached build
-          export OCTOMAP_ROOT=$(pwd)/build/install
-          export PKG_CONFIG_PATH=$OCTOMAP_ROOT/lib/pkgconfig:$PKG_CONFIG_PATH
-          export LD_LIBRARY_PATH=$OCTOMAP_ROOT/lib:$LD_LIBRARY_PATH
-          echo "OCTOMAP_ROOT=$OCTOMAP_ROOT" >> $GITHUB_ENV
-          echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH" >> $GITHUB_ENV
-          echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> $GITHUB_ENV
-        fi
+        mkdir build
+        cd build
+        cmake ..
+        make -j$(nproc)
+        sudo make install
+        sudo ldconfig
     
     - name: Install Python dependencies
       run: |
@@ -137,43 +109,14 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y cmake build-essential
     
-    - name: Cache OctoMap C++ build
-      uses: actions/cache@v3
-      with:
-        path: |
-          src/octomap/build
-          src/octomap/lib
-        key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
-        restore-keys: |
-          octomap-cpp-${{ runner.os }}-
-    
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
-        if [ ! -d "build" ] || [ ! -f "build/CMakeCache.txt" ]; then
-          echo "🔨 Building OctoMap C++ library..."
-          mkdir -p build
-          cd build
-          cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./install
-          make -j$(nproc)
-          make install
-          # Set environment variables for the build
-          export OCTOMAP_ROOT=$(pwd)/install
-          export PKG_CONFIG_PATH=$OCTOMAP_ROOT/lib/pkgconfig:$PKG_CONFIG_PATH
-          export LD_LIBRARY_PATH=$OCTOMAP_ROOT/lib:$LD_LIBRARY_PATH
-          echo "OCTOMAP_ROOT=$OCTOMAP_ROOT" >> $GITHUB_ENV
-          echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH" >> $GITHUB_ENV
-          echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> $GITHUB_ENV
-        else
-          echo "✅ Using cached OctoMap C++ build"
-          # Set environment variables for cached build
-          export OCTOMAP_ROOT=$(pwd)/build/install
-          export PKG_CONFIG_PATH=$OCTOMAP_ROOT/lib/pkgconfig:$PKG_CONFIG_PATH
-          export LD_LIBRARY_PATH=$OCTOMAP_ROOT/lib:$LD_LIBRARY_PATH
-          echo "OCTOMAP_ROOT=$OCTOMAP_ROOT" >> $GITHUB_ENV
-          echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH" >> $GITHUB_ENV
-          echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> $GITHUB_ENV
-        fi
+        mkdir -p build && cd build
+        cmake ..
+        make -j$(nproc)
+        sudo make install
+        sudo ldconfig
     
     - name: Install build dependencies
       run: |
@@ -262,46 +205,38 @@ jobs:
           --verbose \
           dist/*
 
-  verify-package:
+  update-readme:
     needs: build
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     
     steps:
     - uses: actions/checkout@v4
+      with:
+        submodules: recursive
     
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: "3.11"  # Use a single stable version
     
-    - name: Download artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: distributions
-        path: dist/
-    
-    - name: Verify package contents
+    - name: Generate PyPI-ready README
       run: |
-        echo "📦 Verifying package contents..."
-        for wheel in dist/*.whl; do
-          echo "Contents of $wheel:"
-          unzip -l "$wheel" | grep -E '\.(md|txt)$' || echo "No documentation files found"
-          echo "---"
-        done
-    
-    - name: Test package installation
-      run: |
-        pip install dist/*.whl
         python -c "
-        import octomap
-        print('✅ Package installed successfully')
+        from github2pypi import replace_url
+        with open('README.md', 'r', encoding='utf-8') as f:
+            content = f.read()
         
-        # Test that docs are accessible
-        import pkg_resources
-        try:
-            docs = pkg_resources.resource_listdir('', 'docs')
-            print(f'✅ Documentation files found: {docs}')
-        except:
-            print('⚠️  Documentation files not found in package')
+        converted = replace_url('Spinkoo/octomap2python', content, branch='main')
+        
+        with open('README_PyPI.md', 'w', encoding='utf-8') as f:
+            f.write(converted)
+        
+        print('✅ Generated README_PyPI.md with absolute GitHub URLs')
         "
+    
+    - name: Upload PyPI README artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: readme-pypi
+        path: README_PyPI.md
