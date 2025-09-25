@@ -30,15 +30,32 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y cmake build-essential
     
+    - name: Cache OctoMap C++ build
+      uses: actions/cache@v3
+      with:
+        path: |
+          src/octomap/build
+          src/octomap/lib
+        key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
+        restore-keys: |
+          octomap-cpp-${{ runner.os }}-
+    
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
-        mkdir build
-        cd build
-        cmake ..
-        make -j$(nproc)
-        sudo make install
-        sudo ldconfig
+        if [ ! -d "build" ] || [ ! -f "build/CMakeCache.txt" ]; then
+          echo "🔨 Building OctoMap C++ library..."
+          mkdir -p build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          make -j$(nproc)
+          make install
+          ldconfig
+        else
+          echo "✅ Using cached OctoMap C++ build"
+          # Skip build entirely - just install the cached libraries
+          echo "Skipping build - using cached libraries"
+        fi
     
     - name: Install Python dependencies
       run: |
@@ -109,14 +126,32 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y cmake build-essential
     
+    - name: Cache OctoMap C++ build
+      uses: actions/cache@v3
+      with:
+        path: |
+          src/octomap/build
+          src/octomap/lib
+        key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
+        restore-keys: |
+          octomap-cpp-${{ runner.os }}-
+    
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
-        mkdir -p build && cd build
-        cmake ..
-        make -j$(nproc)
-        sudo make install
-        sudo ldconfig
+        if [ ! -d "build" ] || [ ! -f "build/CMakeCache.txt" ]; then
+          echo "🔨 Building OctoMap C++ library..."
+          mkdir -p build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          make -j$(nproc)
+          make install
+          ldconfig
+        else
+          echo "✅ Using cached OctoMap C++ build"
+          # Skip build entirely - just install the cached libraries
+          echo "Skipping build - using cached libraries"
+        fi
     
     - name: Install build dependencies
       run: |
@@ -212,8 +247,6 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
-      with:
-        submodules: recursive
     
     - name: Set up Python
       uses: actions/setup-python@v4
