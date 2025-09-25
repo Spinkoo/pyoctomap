@@ -150,14 +150,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install build twine setuptools wheel numpy cython
     
-    - name: Verify documentation files
-      run: |
-        echo "📚 Checking documentation files..."
-        ls -la docs/
-        echo "README.md exists: $(test -f README.md && echo 'Yes' || echo 'No')"
-        echo "MANIFEST.in exists: $(test -f MANIFEST.in && echo 'Yes' || echo 'No')"
-        cat MANIFEST.in | grep -E 'docs|README' || echo "No docs/README references in MANIFEST.in"
-    
     - name: Build distributions
       run: |
         # Clean any previous builds
@@ -236,7 +228,7 @@ jobs:
           --verbose \
           dist/*
 
-  verify-package:
+  update-readme:
     needs: build
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -251,33 +243,23 @@ jobs:
       with:
         python-version: "3.9"
     
-    - name: Download artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: distributions
-        path: dist/
-    
-    - name: Verify package contents
+    - name: Generate PyPI-ready README
       run: |
-        echo "📦 Verifying package contents..."
-        for wheel in dist/*.whl; do
-          echo "Contents of $wheel:"
-          unzip -l "$wheel" | grep -E '\.(md|txt)$' || echo "No documentation files found"
-          echo "---"
-        done
-    
-    - name: Test package installation
-      run: |
-        pip install dist/*.whl
         python -c "
-        import octomap
-        print('✅ Package installed successfully')
+        from github2pypi import replace_url
+        with open('README.md', 'r', encoding='utf-8') as f:
+            content = f.read()
         
-        # Test that docs are accessible
-        import pkg_resources
-        try:
-            docs = pkg_resources.resource_listdir('', 'docs')
-            print(f'✅ Documentation files found: {docs}')
-        except:
-            print('⚠️  Documentation files not found in package')
+        converted = replace_url('Spinkoo/octomap2python', content, branch='main')
+        
+        with open('README_PyPI.md', 'w', encoding='utf-8') as f:
+            f.write(converted)
+        
+        print('✅ Generated README_PyPI.md with absolute GitHub URLs')
         "
+    
+    - name: Upload PyPI README artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: readme-pypi
+        path: README_PyPI.md
