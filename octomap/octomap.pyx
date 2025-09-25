@@ -337,7 +337,7 @@ cdef class SimpleLeafIterator:
     @property
     def current_node(self):
         return self._current_node
-
+    
 cdef class SimpleLeafBBXIterator:
     """
     Robust wrapper around octomap C++ leaf_bbx_iterator.
@@ -772,7 +772,37 @@ cdef class OcTree:
         return SimpleTreeIterator(self, maxDepth)
 
     def begin_leafs(self, maxDepth=0):
-        """Return a simplified leaf iterator"""
+        """
+        Return a simplified leaf iterator
+        
+        Args:
+            maxDepth (int): Maximum depth for iteration
+                - 0 (default): Iterate through all actual leaf nodes at any depth.
+                              This is the recommended setting for most use cases.
+                - N > 0: Iterate through nodes specifically at depth N.
+                        Note: These may be internal nodes with larger sizes,
+                        not necessarily leaf nodes. Use this for multi-resolution
+                        processing or level-of-detail operations.
+        
+        Returns:
+            SimpleLeafIterator: Iterator for traversing nodes
+            
+        Example:
+            # Iterate through all actual leaves (recommended)
+            for leaf in octree.begin_leafs():
+                coord = leaf.getCoordinate()
+                size = leaf.getSize()
+                
+            # Iterate through nodes at depth 2 (larger cells)
+            for node in octree.begin_leafs(maxDepth=2):
+                coord = node.getCoordinate()  # Larger coordinate values
+                size = node.getSize()         # Larger size values
+        
+        Note:
+            When maxDepth > 0, the returned nodes represent cells at that specific
+            depth level in the octree hierarchy, with sizes = resolution * (2^maxDepth).
+            This follows OctoMap's standard behavior for hierarchical processing.
+        """
         return SimpleLeafIterator(self, maxDepth)
 
     def begin_leafs_bbx(self, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):

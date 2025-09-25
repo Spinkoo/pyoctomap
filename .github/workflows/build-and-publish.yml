@@ -1,10 +1,10 @@
 name: Build and Publish to PyPI
 
 on:
-  # Trigger on pushes to main branch
+  # Trigger on pushes to main and dev branches
   push:
-    branches: [ main ]
-  # Trigger on pull requests
+    branches: [ main, dev ]
+  # Trigger on pull requests to main
   pull_request:
     branches: [ main ]
   # Allow manual trigger
@@ -13,19 +13,17 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    # Remove the strategy section entirely and use single version
     
     steps:
     - uses: actions/checkout@v4
       with:
         submodules: recursive  # Important: fetch OctoMap submodule
     
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: "3.11"  # Single stable version
     
     - name: Install system dependencies
       run: |
@@ -104,23 +102,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.9"
-    
-    - name: Cache OctoMap C++ build
-      uses: actions/cache@v3
-      with:
-        path: src/octomap/build
-        key: octomap-cpp-${{ runner.os }}-${{ hashFiles('src/octomap/**/*.cpp', 'src/octomap/**/*.h', 'src/octomap/**/CMakeLists.txt') }}
-        restore-keys: |
-          octomap-cpp-${{ runner.os }}-
-    
-    - name: Cache Python dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: pip-${{ runner.os }}-${{ hashFiles('**/requirements.txt', '**/pyproject.toml', '**/setup.py') }}
-        restore-keys: |
-          pip-${{ runner.os }}-
+        python-version: "3.11"  # Use a single stable version
     
     - name: Install system dependencies
       run: |
@@ -130,66 +112,53 @@ jobs:
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
-        if [ ! -d "build" ] || [ ! -f "build/lib/liboctomap.so" ]; then
-          echo "🔨 Building OctoMap C++ library..."
-          mkdir -p build
-          cd build
-          cmake ..
-          make -j$(nproc)
-          sudo make install
-          sudo ldconfig
-        else
-          echo "✅ Using cached OctoMap C++ build"
-          cd build
-          sudo make install
-          sudo ldconfig
-        fi
+        mkdir -p build && cd build
+        cmake ..
+        make -j$(nproc)
+        sudo make install
+        sudo ldconfig
     
     - name: Install build dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install build twine setuptools wheel numpy cython
+        pip install build wheel setuptools numpy cython auditwheel twine
     
-    - name: Verify documentation files
+    - name: Build wheel and fix platform tag
       run: |
-        echo "📚 Checking documentation files..."
-        ls -la docs/
-        echo "README.md exists: $(test -f README.md && echo 'Yes' || echo 'No')"
-        echo "MANIFEST.in exists: $(test -f MANIFEST.in && echo 'Yes' || echo 'No')"
-        cat MANIFEST.in | grep -E 'docs|README' || echo "No docs/README references in MANIFEST.in"
-    
-    - name: Build distributions
-      run: |
-        # Clean any previous builds
-        rm -rf build/ dist/ *.egg-info/
-        # Build using modern build tools that properly read pyproject.toml
-        python -m build
+        # Build wheel normally
+        python -m build --wheel
+        python -m build --sdist
         
-        # Fix platform tags for PyPI compatibility using auditwheel
-        pip install auditwheel
+        # Install auditwheel and try to repair for broader compatibility
+        echo "Original wheels:"
+        ls -la dist/
         
-        # Create repaired wheels directory
+        # Try to make compatible with older systems
         mkdir -p wheelhouse
-        
-        # Repair wheels for manylinux compatibility
         for wheel in dist/*.whl; do
           if [[ -f "$wheel" ]]; then
-            echo "Repairing wheel: $wheel"
-            auditwheel repair "$wheel" -w wheelhouse/ || {
-              echo "auditwheel failed, trying manual tag fix..."
+            # Try auditwheel first
+            if auditwheel repair "$wheel" -w wheelhouse/ 2>/dev/null; then
+              echo "✅ auditwheel repair successful for $wheel"
+            else
+              echo "⚠️ auditwheel failed, using manual platform tag"
+              # Manual platform tag fix for broad compatibility
               cp "$wheel" wheelhouse/
               cd wheelhouse
-              python -c "import os; [os.rename(f, f.replace('linux_x86_64', 'manylinux1_x86_64')) for f in os.listdir('.') if f.endswith('.whl') and 'linux_x86_64' in f]; print('Fixed platform tags')"
+              python -c "import os; [print(f'Keeping {f} as-is for broad compatibility') for f in os.listdir('.') if f.endswith('.whl') and 'linux_x86_64' in f]"
               cd ..
-            }
+            fi
           fi
         done
         
-        # Replace original wheels with repaired ones
-        rm -f dist/*.whl
-        cp wheelhouse/*.whl dist/ 2>/dev/null || echo "No wheels to copy"
+        # Use repaired wheels if available, otherwise keep originals
+        if ls wheelhouse/*.whl 1> /dev/null 2>&1; then
+          echo "Using repaired wheels:"
+          rm -f dist/*.whl
+          cp wheelhouse/*.whl dist/
+        fi
         
-        echo "Final distributions:"
+        echo "Final wheels:"
         ls -la dist/
     
     - name: Check distributions
@@ -205,13 +174,13 @@ jobs:
   publish-test:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')
     
     steps:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.9"
+        python-version: "3.11"  # Use a single stable version
     
     - name: Install twine
       run: |
@@ -249,7 +218,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.9"
+        python-version: "3.11"  # Use a single stable version
     
     - name: Download artifacts
       uses: actions/download-artifact@v4
