@@ -40,10 +40,32 @@ jobs:
         python -m pip install --upgrade pip
         pip install build twine setuptools wheel numpy cython pytest
     
+    - name: Generate PyPI README
+      run: |
+        # Generate PyPI README with converted URLs
+        python github2pypi/generate_pypi_readme.py
+        
+        # Verify the PyPI README was created
+        if [ -f "README_pypi_preview.md" ]; then
+          echo "✅ PyPI README generated successfully"
+          echo "📊 File size: $(wc -c < README_pypi_preview.md) bytes"
+          echo "🔗 Sample URLs:"
+          grep -o 'https://github.com/[^)]*' README_pypi_preview.md | head -3
+        else
+          echo "❌ PyPI README generation failed"
+          exit 1
+        fi
+    
     - name: Build distributions
       run: |
         # Clean any previous builds
         rm -rf build/ dist/ *.egg-info/
+        
+        # Verify PyPI README exists before building
+        if [ ! -f "README_pypi_preview.md" ]; then
+          echo "❌ PyPI README not found, generating it..."
+          python github2pypi/generate_pypi_readme.py
+        fi
         
         # Build using modern build tools that properly read pyproject.toml
         python -m build
@@ -80,6 +102,19 @@ jobs:
         twine check dist/*
         echo "📦 Built distributions:"
         ls -la dist/
+        
+        # Verify PyPI README is included in the package
+        echo "🔍 Checking package contents:"
+        python -c "
+        import zipfile
+        import os
+        for file in os.listdir('dist'):
+            if file.endswith('.whl'):
+                with zipfile.ZipFile(f'dist/{file}', 'r') as zf:
+                    files = zf.namelist()
+                    readme_files = [f for f in files if 'readme' in f.lower()]
+                    print(f'README files in {file}: {readme_files}')
+        "
     
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
@@ -87,14 +122,23 @@ jobs:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
     
-    - name: Create PyPI README artifact
+    - name: Verify PyPI README
       run: |
-        # The github2pypi conversion happens automatically in setup.py
-        echo "✅ PyPI README with converted URLs created during build"
+        echo "✅ PyPI README verification:"
+        echo "📁 PyPI README file: README_pypi_preview.md"
+        if [ -f "README_pypi_preview.md" ]; then
+          echo "✅ File exists"
+          echo "📊 Size: $(wc -c < README_pypi_preview.md) bytes"
+          echo "🔗 Contains GitHub URLs: $(grep -c 'https://github.com' README_pypi_preview.md || echo '0')"
+          echo "️ Contains images: $(grep -c '!\[.*\](.*github.*)' README_pypi_preview.md || echo '0')"
+        else
+          echo "❌ PyPI README file not found"
+          exit 1
+        fi
     
-    - name: Upload PyPI README
+    - name: Upload PyPI README artifact
       uses: actions/upload-artifact@v4
       with:
         name: pypi-readme
-        path: README_PyPI.md
+        path: README_pypi_preview.md
         retention-days: 30

@@ -58,9 +58,12 @@ Repository = "https://github.com/Spinkoo/octomap2python"
 Documentation = "https://github.com/Spinkoo/octomap2python#readme"
 "Bug Tracker" = "https://github.com/Spinkoo/octomap2python/issues"
 
+[project.scripts]
+generate-pypi-readme = "github2pypi.generate_pypi_readme:main"
+
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["octomap*"]
+include = ["octomap*", "github2pypi*"]
 exclude = ["tests*", "examples*"]
 
 [tool.setuptools.dynamic]
