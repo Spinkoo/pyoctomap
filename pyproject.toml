@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 
 
 [project]
-name = "octomap2python"
+name = "pyoctomap"
 dynamic = ["version"]
 description = "Python binding of the OctoMap library with bundled shared libraries."
 readme = "README_pypi_preview.md"
@@ -31,7 +31,7 @@ classifiers = [
     "Topic :: Scientific/Engineering",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
-keywords = ["octomap", "occupancy", "mapping", "robotics", "3d", "bundled-libs", "python"]
+keywords = ["octomap", "occupancy", "mapping", "robotics", "3d", "bundled-libs", "python", "pyoctomap"]
 requires-python = ">=3.9"
 dependencies = [
     "numpy>=1.16.0"
@@ -53,21 +53,21 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Spinkoo/octomap2python"
-Repository = "https://github.com/Spinkoo/octomap2python"
-Documentation = "https://github.com/Spinkoo/octomap2python#readme"
-"Bug Tracker" = "https://github.com/Spinkoo/octomap2python/issues"
+Homepage = "https://github.com/Spinkoo/pyoctomap"
+Repository = "https://github.com/Spinkoo/pyoctomap"
+Documentation = "https://github.com/Spinkoo/pyoctomap#readme"
+"Bug Tracker" = "https://github.com/Spinkoo/pyoctomap/issues"
 
 [project.scripts]
 generate-pypi-readme = "github2pypi.generate_pypi_readme:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["octomap*", "github2pypi*"]
+include = ["pyoctomap*", "github2pypi*"]
 exclude = ["tests*", "examples*"]
 
 [tool.setuptools.dynamic]
-version = {attr = "octomap.__version__"}
+version = {attr = "pyoctomap.__version__"}
 
 [tool.black]
 line-length = 88

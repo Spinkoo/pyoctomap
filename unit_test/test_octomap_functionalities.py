@@ -5,8 +5,7 @@ Tests both newly added functions (computeChildIdx, computeIndexKey) and existing
 """
 
 import numpy as np
-from octomap import octomap
-
+import pyoctomap
 def test_octree_key_functions():
     """Test OcTreeKey creation and basic operations"""
     print("=" * 50)
@@ -14,8 +13,8 @@ def test_octree_key_functions():
     print("=" * 50)
     
     # Create OcTreeKey objects (using new constructor)
-    key1 = octomap.OcTreeKey(100, 200, 300)
-    key2 = octomap.OcTreeKey(150, 250, 350)
+    key1 = pyoctomap.OcTreeKey(100, 200, 300)
+    key2 = pyoctomap.OcTreeKey(150, 250, 350)
     
     print(f"Key1: [{key1[0]}, {key1[1]}, {key1[2]}]")
     print(f"Key2: [{key2[0]}, {key2[1]}, {key2[2]}]")
@@ -43,7 +42,7 @@ def test_octree_basic_operations():
     print("=" * 50)
     
     # Create an OcTree with resolution 0.1
-    octree = octomap.OcTree(0.1)
+    octree = pyoctomap.OcTree(0.1)
     print(f"Created OcTree with resolution: {octree.getResolution()}")
     print(f"Tree depth: {octree.getTreeDepth()}")
     print(f"Tree type: {octree.getTreeType()}")
@@ -70,7 +69,7 @@ def test_point_cloud_operations():
     print("Testing Point Cloud Operations")
     print("=" * 50)
     
-    octree = octomap.OcTree(0.1)
+    octree = pyoctomap.OcTree(0.1)
     
     # Create a simple point cloud (2D array as required)
     points = np.array([

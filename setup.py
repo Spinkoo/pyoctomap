@@ -23,7 +23,7 @@ try:
         
         # Convert relative URLs to absolute GitHub URLs
         return replace_url(
-            slug="Spinkoo/octomap2python", 
+            slug="Spinkoo/pyoctomap", 
             content=content,
             branch="main"
         )
@@ -36,7 +36,7 @@ except ImportError:
 
 def get_version():
     """Get version from octomap/__init__.py without importing the module."""
-    version_file = os.path.join(os.path.dirname(__file__), "octomap", "__init__.py")
+    version_file = os.path.join(os.path.dirname(__file__), "pyoctomap", "__init__.py")
     try:
         with open(version_file, "r", encoding="utf-8") as f:
             for line in f:
@@ -93,7 +93,7 @@ class CustomBuildExt(build_ext):
             return
         
         # Get the package directory
-        package_dir = os.path.join(self.build_lib, "octomap")
+        package_dir = os.path.join(self.build_lib, "pyoctomap")
         os.makedirs(package_dir, exist_ok=True)
         
         # Create lib subdirectory in package
@@ -184,10 +184,10 @@ def build_extensions():
 
     ext_modules = [
         Extension(
-            "octomap.octomap",
-            ["octomap/octomap.pyx"],
+            "pyoctomap.octomap",
+            ["pyoctomap/octomap.pyx"],
             include_dirs=[
-                "octomap",  # Include the octomap directory for .pxd files
+                "pyoctomap",  # Include the pyoctomap directory for .pxd files
                 "src/octomap/octomap/include",
                 "src/octomap/octomap/include/octomap",
                 "src/octomap/dynamicEDT3D/include",
@@ -212,7 +212,7 @@ def build_extensions():
     
     return cythonize(
         ext_modules, 
-        include_path=["octomap"],
+        include_path=["pyoctomap"],
         compiler_directives={'language_level': 3}  # Ensure Python 3 syntax
     )
 
@@ -225,7 +225,7 @@ def main():
     
     # Create package data structure
     package_data = {
-        "octomap": [
+        "pyoctomap": [
             "lib/*",
             "lib/*.so*"  # Include versioned symlinks
         ],
@@ -238,14 +238,14 @@ def main():
     # Include library files in package
     data_files = []
     if lib_files:
-        data_files.append(("octomap/lib", lib_files))
+        data_files.append(("pyoctomap/lib", lib_files))
 
     # Build extensions
     ext_modules = build_extensions()
 
     setup(
         ext_modules=ext_modules,
-        packages=["octomap"],
+        packages=["pyoctomap"],
         package_data=package_data,
         data_files=data_files,
         long_description=get_long_description(),

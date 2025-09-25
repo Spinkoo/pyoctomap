@@ -24,10 +24,10 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 try:
-    import octomap
-    print("✅ OctoMap import successful!")
+    import pyoctomap
+    print("✅ PyOctoMap import successful!")
 except ImportError as e:
-    print(f"❌ Failed to import octomap: {e}")
+    print(f"❌ Failed to import pyoctomap: {e}")
     sys.exit(1)
 
 try:
@@ -107,7 +107,7 @@ class SequentialOccupancyGrid:
             print(f"    This may cause unexpected behavior. Consider adjusting values.")
         
         # Initialize OctoMap
-        self.tree = octomap.OcTree(resolution)
+        self.tree = pyoctomap.OcTree(resolution)
         
         # Set probabilities
         self.tree.setProbHit(prob_hit)

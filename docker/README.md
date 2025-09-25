@@ -1,6 +1,6 @@
 # Docker Configuration
 
-This folder contains Docker-related files for the octomap2python project.
+This folder contains Docker-related files for the pyoctomap project.
 
 ## Files:
 

@@ -22,10 +22,10 @@ except ImportError:
 
 
 try:
-    import octomap
-    print("✅ OctoMap import successful!")
+    import pyoctomap
+    print("✅ PyOctoMap import successful!")
 except ImportError as e:
-    print(f"❌ Failed to import octomap: {e}")
+    print(f"❌ Failed to import pyoctomap: {e}")
     sys.exit(1)
 
 def demo_room_mapping():
@@ -34,7 +34,7 @@ def demo_room_mapping():
     print("=" * 40)
 
     # Create octree with 0.1m resolution (10cm)
-    tree = octomap.OcTree(0.1)
+    tree = pyoctomap.OcTree(0.1)
 
     # Scene extents
     room_w, room_d, room_h = 6.0, 5.0, 3.0  # width (x), depth (y), height (z)
@@ -170,7 +170,7 @@ def demo_probabilistic_mapping():
     print("\n📊 Probabilistic Mapping Demo")
     print("=" * 40)
     
-    tree = octomap.OcTree(0.1)
+    tree = pyoctomap.OcTree(0.1)
     
     # Create a more diverse set of sensor readings
     occupied_readings = []
@@ -495,7 +495,7 @@ def demo_pointcloud_scene():
     pts = _generate_pointcloud_room_scene()
     print(f"Generated {len(pts)} input points")
 
-    tree = octomap.OcTree(0.1)
+    tree = pyoctomap.OcTree(0.1)
     origin = np.array([0.5, 0.5, 1.5], dtype=np.float64)
 
     # insert in batches
@@ -590,7 +590,7 @@ def main():
                 response = input().lower().strip()
                 if response in ['y', 'yes']:
                     # Create a simple test tree for final visualization
-                    final_tree = octomap.OcTree(0.1)
+                    final_tree = pyoctomap.OcTree(0.1)
                     # Add some test points
                     for i in range(10):
                         for j in range(10):

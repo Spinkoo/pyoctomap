@@ -6,16 +6,16 @@ Used by GitHub Actions CI.
 
 def test_import():
     """Test basic import functionality."""
-    import octomap
-    print(f"✅ Successfully imported octomap version: {octomap.__version__}")
+    import pyoctomap
+    print(f"✅ Successfully imported octomap version: {pyoctomap.__version__}")
     # Just assert success - if import fails, pytest will catch the exception
 
 def test_basic_functionality():
     """Test basic OctoMap functionality."""
-    import octomap
+    import pyoctomap
     
     # Create octree
-    tree = octomap.OcTree(0.1)
+    tree = pyoctomap.OcTree(0.1)
     print(f"✅ Created OcTree with resolution: {tree.getResolution()}")
     
     # Add some nodes

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# OctoMap2Python Build Script
+# PyOctoMap Build Script
 # This script automates the build and installation process
 
 set -e  # Exit on any error
 
-echo "🚀 Building OctoMap2Python..."
+echo "🚀 Building PyOctoMap..."
 
 # Check if we're in the right directory
 if [ ! -f "setup.py" ]; then

@@ -4,7 +4,7 @@ Pytest configuration and fixtures for octomap tests.
 
 import pytest
 import numpy as np
-from octomap import octomap
+from pyoctomap import octomap
 
 
 @pytest.fixture

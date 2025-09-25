@@ -60,17 +60,17 @@ def generate_room_points(size=4.0, step=0.1) -> Tuple[np.ndarray, np.ndarray]:
 
 
 def main() -> int:
-    import octomap
+    import pyoctomap
     failures = 0
 
     h("Import")
-    print("octomap from:", getattr(octomap, "__file__", None))
-    if hasattr(octomap, "get_package_info"):
-        print(octomap.get_package_info())
+    print("pyoctomap from:", getattr(pyoctomap, "__file__", None))
+    if hasattr(pyoctomap, "get_package_info"):
+        print(pyoctomap.get_package_info())
 
     # Basic tree
     h("Create Tree")
-    ok, tree = try_call("OcTree(0.1)", octomap.OcTree, 0.1, critical=True)
+    ok, tree = try_call("OcTree(0.1)", pyoctomap.OcTree, 0.1, critical=True)
     if not ok:
         return 1
 
@@ -172,7 +172,7 @@ def main() -> int:
         found = -1
         for dx, dy, dz in product([-1, 0, 1], repeat=3):
             try:
-                nkey = octomap.OcTreeKey()
+                nkey = pyoctomap.OcTreeKey()
                 nkey[0] = key[0] + dx
                 nkey[1] = key[1] + dy
                 nkey[2] = key[2] + dz

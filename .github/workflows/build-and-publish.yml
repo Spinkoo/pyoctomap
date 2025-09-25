@@ -53,7 +53,7 @@ jobs:
         from github2pypi import replace_url
         with open('README.md', 'r') as f:
             content = f.read()
-        converted = replace_url('Spinkoo/octomap2python', content)
+        converted = replace_url('Spinkoo/pyoctomap', content)
         print('✅ GitHub2PyPI conversion successful')
         print(f'Converted {len(content)} chars to {len(converted)} chars')
         "

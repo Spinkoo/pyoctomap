@@ -12,10 +12,10 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 try:
-    import octomap
-    print("✅ OctoMap import successful!")
+    import pyoctomap
+    print("✅ PyOctoMap import successful!")
 except ImportError as e:
-    print(f"❌ Failed to import octomap: {e}")
+    print(f"❌ Failed to import pyoctomap: {e}")
     sys.exit(1)
 
 try:
@@ -31,7 +31,7 @@ def create_test_environment():
     """Create a test environment with solid 3D obstacles"""
     print("\n🏗️ Creating Test Environment with Solid Obstacles...")
     
-    tree = octomap.OcTree(0.05)  # 5cm resolution
+    tree = pyoctomap.OcTree(0.05)  # 5cm resolution
     
     # Create room boundaries (walls)
     print("  Adding room boundaries...")

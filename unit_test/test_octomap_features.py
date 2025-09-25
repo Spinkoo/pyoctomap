@@ -25,15 +25,15 @@ def section(title: str):
 
 def main():
     section("Import")
-    import octomap
-    print("octomap imported from:", getattr(octomap, "__file__", None))
-    if hasattr(octomap, "get_package_info"):
-        info = octomap.get_package_info()
+    import pyoctomap
+    print("pyoctomap imported from:", getattr(pyoctomap, "__file__", None))
+    if hasattr(pyoctomap, "get_package_info"):
+        info = pyoctomap.get_package_info()
         print("package info:", info)
 
     # Create a tree
     section("Create OcTree")
-    tree = octomap.OcTree(0.1)
+    tree = pyoctomap.OcTree(0.1)
     print("Resolution:", tree.getResolution())
 
     # Basic updates

@@ -31,7 +31,7 @@ jobs:
         file: ./docker/Dockerfile.ci
         push: true
         tags: |
-          ghcr.io/spinkoo/octomap2python/octomap-ci:latest
-          ghcr.io/spinkoo/octomap2python/octomap-ci:${{ github.sha }}
+          ghcr.io/spinkoo/pyoctomap/octomap-ci:latest
+          ghcr.io/spinkoo/pyoctomap/octomap-ci:${{ github.sha }}
         cache-from: type=gha
         cache-to: type=gha,mode=max

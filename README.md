@@ -1,4 +1,4 @@
-# OctoMap2Python
+# PyOctoMap
 
 <div align="center">
 <img src="images/octomap_core.png" alt="OctoMap Core" width="900">
@@ -37,7 +37,7 @@ chmod +x build.sh
 
 When published on PyPI (Linux):
 ```bash
-pip install octomap2python
+pip install pyoctomap
 ```
 
 ## Quick Start
@@ -45,11 +45,11 @@ pip install octomap2python
 ### Basic Usage
 
 ```python
-import octomap
+import pyoctomap
 import numpy as np
 
 # Create an octree with 0.1m resolution
-tree = octomap.OcTree(0.1)
+tree = pyoctomap.OcTree(0.1)
 
 # Add occupied points
 tree.updateNode([1.0, 2.0, 3.0], True)
@@ -69,7 +69,7 @@ tree.write("my_map.bt")
 
 ### New Vectorized Operations
 
-OctoMap2Python now includes high-performance vectorized operations for better performance:
+PyOctoMap now includes high-performance vectorized operations for better performance:
 
 #### Traditional vs Vectorized Approach
 
@@ -161,11 +161,11 @@ See runnable demos in `examples/`:
 ### Room Mapping with Ray Casting
 
 ```python
-import octomap
+import pyoctomap
 import numpy as np
 
 # Create octree
-tree = octomap.OcTree(0.05)  # 5cm resolution
+tree = pyoctomap.OcTree(0.05)  # 5cm resolution
 sensor_origin = np.array([2.0, 2.0, 1.5])
 
 # Add walls with ray casting
@@ -185,11 +185,11 @@ print(f"Tree size: {tree.size()} nodes")
 ### Path Planning
 
 ```python
-import octomap
+import pyoctomap
 import numpy as np
 
 # Create an octree for path planning
-tree = octomap.OcTree(0.1)  # 10cm resolution
+tree = pyoctomap.OcTree(0.1)  # 10cm resolution
 
 # Add some obstacles to the map
 obstacles = [
@@ -325,7 +325,7 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 ## Acknowledgments
 
 - **Previous work**: [`wkentaro/octomap-python`](https://github.com/wkentaro/octomap-python) - This project builds upon and modernizes the original Python bindings
-- **Core library**: [OctoMap](https://octomap.github.io/) - An efficient probabilistic 3D mapping framework based on octrees
+- **Core library**: [OctoMap](https://pyoctomap.github.io/) - An efficient probabilistic 3D mapping framework based on octrees
 - **Build system**: Built with Cython for seamless Python-C++ integration and performance
 - **Visualization**: [Open3D](https://www.open3d.org/) - Used for 3D visualization capabilities in demonstration scripts
 - **Research support**: Development of this enhanced Python wrapper was supported by the French National Research Agency (ANR) under the France 2030 program, specifically the IRT Nanoelec project (ANR-10-AIRT-05), advancing robotics and 3D mapping research capabilities.

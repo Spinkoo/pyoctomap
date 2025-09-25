@@ -30,7 +30,7 @@ def main():
     print("🔄 Converting URLs for PyPI...")
     # Convert relative URLs to absolute GitHub URLs
     converted_content = replace_url(
-        slug="Spinkoo/octomap2python",
+        slug="Spinkoo/pyoctomap",
         content=content,
         branch="main"
     )

@@ -1,7 +1,7 @@
-# OctoMap2Python
+# PyOctoMap
 
 <div align="center">
-<img src="https://github.com/Spinkoo/octomap2python/blob/main/images/octomap_core.png?raw=true" alt="OctoMap Core" width="900">
+<img src="https://github.com/Spinkoo/pyoctomap/blob/main/images/octomap_core.png?raw=true" alt="OctoMap Core" width="900">
 </div>
 
 A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 3D occupancy mapping capabilities for robotics and computer vision applications. This modernized binding offers enhanced performance, bundled shared libraries for easy deployment, and seamless integration with the Python scientific ecosystem.
@@ -20,14 +20,14 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 
 **PyPI Installation (Recommended):**
 ```bash
-pip install octomap2python
+pip install pyoctomap
 ```
 
 **From Source (Linux / WSL):**
 ```bash
 # Clone the repository with submodules
-git clone --recursive https://github.com/Spinkoo/octomap2python.git
-cd octomap2python
+git clone --recursive https://github.com/Spinkoo/pypyoctomap.git
+cd pyoctomap
 
 # Build and install OctoMap C++ library
 cd src/octomap
@@ -45,11 +45,11 @@ chmod +x build.sh
 ### Basic Usage
 
 ```python
-import octomap
+import pyoctomap
 import numpy as np
 
 # Create an octree with 0.1m resolution
-tree = octomap.OcTree(0.1)
+tree = pyoctomap.OcTree(0.1)
 
 # Add occupied points
 tree.updateNode([1.0, 2.0, 3.0], True)
@@ -137,21 +137,21 @@ print(f"Added {success_count} points with individual origins")
 
 ## Examples
 
-See runnable demos in the [examples directory](https://github.com/Spinkoo/octomap2python/blob/main/examples/):
-- [examples/basic_test.py](https://github.com/Spinkoo/octomap2python/blob/main/examples/basic_test.py) — smoke test for core API
-- [examples/demo_occupancy_grid.py](https://github.com/Spinkoo/octomap2python/blob/main/examples/demo_occupancy_grid.py) — build and visualize a 2D occupancy grid
-- [examples/demo_octomap_open3d.py](https://github.com/Spinkoo/octomap2python/blob/main/examples/demo_octomap_open3d.py) — visualize octomap data with Open3D
+See runnable demos in the [examples directory](https://github.com/Spinkoo/pyoctomap/blob/main/examples/):
+- [examples/basic_test.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/basic_test.py) — smoke test for core API
+- [examples/demo_occupancy_grid.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/demo_occupancy_grid.py) — build and visualize a 2D occupancy grid
+- [examples/demo_octomap_open3d.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/demo_octomap_open3d.py) — visualize octomap data with Open3D
 
 ### Demo Visualizations
 
 **3D OctoMap Scene Visualization:**
 <div align="center">
-<img src="https://github.com/Spinkoo/octomap2python/blob/main/images/octomap_demo_scene.png?raw=true" alt="OctoMap Demo Scene" width="700">
+<img src="https://github.com/Spinkoo/pyoctomap/blob/main/images/octomap_demo_scene.png?raw=true" alt="OctoMap Demo Scene" width="700">
 </div>
 
 **Occupancy Grid Visualization:**
 <div align="center">
-<img src="https://github.com/Spinkoo/octomap2python/blob/main/images/occupancy_grid.png?raw=true" alt="Occupancy Grid" width="700">
+<img src="https://github.com/Spinkoo/pyoctomap/blob/main/images/occupancy_grid.png?raw=true" alt="Occupancy Grid" width="700">
 </div>
 
 ## Advanced Usage
@@ -159,11 +159,11 @@ See runnable demos in the [examples directory](https://github.com/Spinkoo/octoma
 ### Room Mapping with Ray Casting
 
 ```python
-import octomap
+import pyoctomap
 import numpy as np
 
 # Create octree
-tree = octomap.OcTree(0.05)  # 5cm resolution
+tree = pyoctomap.OcTree(0.05)  # 5cm resolution
 sensor_origin = np.array([2.0, 2.0, 1.5])
 
 # Add walls with ray casting
@@ -183,11 +183,11 @@ print(f"Tree size: {tree.size()} nodes")
 ### Path Planning
 
 ```python
-import octomap
+import pyoctomap
 import numpy as np
 
 # Create an octree for path planning
-tree = octomap.OcTree(0.1)  # 10cm resolution
+tree = pyoctomap.OcTree(0.1)  # 10cm resolution
 
 # Add some obstacles to the map
 obstacles = [
@@ -305,16 +305,16 @@ for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
 
 ## Documentation
 
-- **[Complete API Reference](https://github.com/Spinkoo/octomap2python/blob/main/docs/api_reference.md)** - Detailed API documentation
-- **[File Format Guide](https://github.com/Spinkoo/octomap2python/blob/main/docs/file_format.md)** - Supported file formats
-- **[Performance Guide](https://github.com/Spinkoo/octomap2python/blob/main/docs/performance_guide.md)** - Optimization tips and benchmarks
-- **[Troubleshooting](https://github.com/Spinkoo/octomap2python/blob/main/docs/troubleshooting.md)** - Common issues and solutions
-- **[Build System](https://github.com/Spinkoo/octomap2python/blob/main/docs/build_system.md)** - Build process and scripts
-- **[Wheel Technology](https://github.com/Spinkoo/octomap2python/blob/main/docs/wheel_technology.md)** - Library bundling details
+- **[Complete API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md)** - Detailed API documentation
+- **[File Format Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/file_format.md)** - Supported file formats
+- **[Performance Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/performance_guide.md)** - Optimization tips and benchmarks
+- **[Troubleshooting](https://github.com/Spinkoo/pyoctomap/blob/main/docs/troubleshooting.md)** - Common issues and solutions
+- **[Build System](https://github.com/Spinkoo/pyoctomap/blob/main/docs/build_system.md)** - Build process and scripts
+- **[Wheel Technology](https://github.com/Spinkoo/pyoctomap/blob/main/docs/wheel_technology.md)** - Library bundling details
 
 ## License
 
-MIT License - see [LICENSE](https://github.com/Spinkoo/octomap2python/blob/main/LICENSE) file for details.
+MIT License - see [LICENSE](https://github.com/Spinkoo/pyoctomap/blob/main/LICENSE) file for details.
 
 ## Contributing
 
@@ -323,7 +323,7 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 ## Acknowledgments
 
 - **Previous work**: [`wkentaro/octomap-python`](https://github.com/wkentaro/octomap-python) - This project builds upon and modernizes the original Python bindings
-- **Core library**: [OctoMap](https://octomap.github.io/) - An efficient probabilistic 3D mapping framework based on octrees
+- **Core library**: [OctoMap](https://pyoctomap.github.io/) - An efficient probabilistic 3D mapping framework based on octrees
 - **Build system**: Built with Cython for seamless Python-C++ integration and performance
 - **Visualization**: [Open3D](https://www.open3d.org/) - Used for 3D visualization capabilities in demonstration scripts
 - **Research support**: Development of this enhanced Python wrapper was supported by the French National Research Agency (ANR) under the France 2030 program, specifically the IRT Nanoelec project (ANR-10-AIRT-05), advancing robotics and 3D mapping research capabilities.

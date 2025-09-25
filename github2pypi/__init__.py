@@ -11,7 +11,7 @@ when the package is uploaded to PyPI.
 
 __version__ = "1.0.0"
 __author__ = "Spinkoo"
-__project__ = "octomap2python"
+__project__ = "pyoctomap"
 
 from .replace_url import replace_url
 
