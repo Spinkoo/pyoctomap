@@ -6,6 +6,7 @@ include setup.py
 recursive-include octomap *.pyx *.pxd *.cpp *.h
 recursive-include src *.so *.a *.h *.hpp *.hxx
 recursive-include examples *.py
+recursive-include docs *.md
 # Exclude build artifacts and external dependencies
 prune build
 prune dist

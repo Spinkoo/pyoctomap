@@ -228,6 +228,10 @@ def main():
         "octomap": [
             "lib/*",
             "lib/*.so*"  # Include versioned symlinks
+        ],
+        "": [
+            "docs/*.md",
+            "docs/**/*.md"
         ]
     }
     

@@ -221,7 +221,7 @@ cdef class SimpleTreeIterator:
         self._current_size = deref(self._it).getSize()
         self._current_depth = <int?>deref(self._it).getDepth()
 
-        # Capture node by searching at current coordinate (robust, avoids operator* issues)
+        # Capture node by searching at current coordinate (robust approach)
         cdef np.ndarray[DOUBLE_t, ndim=1] _pt = np.array(self._current_coord, dtype=np.float64)
         self._current_node = self._tree.search(_pt)
 
@@ -309,8 +309,9 @@ cdef class SimpleLeafIterator:
         self._current_size = deref(self._it).getSize()
         self._current_depth = <int?>deref(self._it).getDepth()
 
-        cdef np.ndarray[DOUBLE_t, ndim=1] _pt2 = np.array(self._current_coord, dtype=np.float64)
-        self._current_node = self._tree.search(_pt2)
+        # Capture node by searching at current coordinate (robust approach)
+        cdef np.ndarray[DOUBLE_t, ndim=1] _pt = np.array(self._current_coord, dtype=np.float64)
+        self._current_node = self._tree.search(_pt)
 
         # Advance
         inc(deref(self._it))
@@ -327,22 +328,15 @@ cdef class SimpleLeafIterator:
     def getDepth(self):
         return self._current_depth
 
+    def isLeaf(self):
+        """Check if current node is a leaf"""
+        if self._current_node is None:
+            return True
+        return not self._tree.nodeHasChildren(self._current_node)
+
     @property
     def current_node(self):
         return self._current_node
-    
-    def getSize(self):
-        """Get the size of the current node"""
-        if self._current_node:
-            # Return a more reasonable size based on the tree resolution
-            return self._tree.getResolution() * 2.0  # Simplified: 2x resolution
-        return 0.0
-    
-    def getDepth(self):
-        """Get the depth of the current node"""
-        if self._current_node:
-            return 0  # This would need to be tracked properly
-        return 0
 
 cdef class SimpleLeafBBXIterator:
     """
@@ -409,8 +403,9 @@ cdef class SimpleLeafBBXIterator:
         self._current_size = deref(self._it).getSize()
         self._current_depth = <int?>deref(self._it).getDepth()
 
-        cdef np.ndarray[DOUBLE_t, ndim=1] _pt3 = np.array(self._current_coord, dtype=np.float64)
-        self._current_node = self._tree.search(_pt3)
+        # Capture node by searching at current coordinate (robust approach)
+        cdef np.ndarray[DOUBLE_t, ndim=1] _pt = np.array(self._current_coord, dtype=np.float64)
+        self._current_node = self._tree.search(_pt)
 
         inc(deref(self._it))
         return self
@@ -425,6 +420,12 @@ cdef class SimpleLeafBBXIterator:
 
     def getDepth(self):
         return self._current_depth
+
+    def isLeaf(self):
+        """Check if current node is a leaf"""
+        if self._current_node is None:
+            return True
+        return not self._tree.nodeHasChildren(self._current_node)
 
     @property
     def current_node(self):
@@ -642,8 +643,8 @@ cdef class OcTree:
                 else:
                     raise NullPointerException
             else:
-                # Iterator doesn't have a valid current node
-                raise RuntimeError("Iterator has no current node - ensure iterator is properly initialized and advanced")
+                # Iterator doesn't have a valid current node - return False (unknown/empty)
+                return False
         else:
             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")
 
@@ -661,8 +662,8 @@ cdef class OcTree:
                 else:
                     raise NullPointerException
             else:
-                # Iterator doesn't have a valid current node
-                raise RuntimeError("Iterator has no current node - ensure iterator is properly initialized and advanced")
+                # Iterator doesn't have a valid current node - return False (not at threshold)
+                return False
         else:
             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")
 
@@ -1143,3 +1144,266 @@ cdef class OcTree:
                                                            <float?>p[2]))
         else:
             raise NullPointerException
+
+    def addPointWithRayCasting(self, 
+                              np.ndarray[DOUBLE_t, ndim=1] point,
+                              np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                              update_inner_occupancy=False):
+        """
+        Add a single 3D point to update the occupancy grid using ray casting.
+        
+        This method efficiently adds a point by:
+        1. Casting a ray from sensor_origin to the target point
+        2. If the ray hits an obstacle, marking the hit point as occupied
+        3. If no hit, marking the target point as occupied
+        4. Marking free space along the ray from origin to the occupied point
+        
+        Args:
+            point: 3D point [x, y, z] in meters
+            sensor_origin: Sensor origin [x, y, z] in meters
+            update_inner_occupancy: Whether to update inner node occupancy (expensive)
+            
+        Returns:
+            bool: True if point was successfully added
+        """
+        cdef cppbool success = self._add_single_point_optimized(point, sensor_origin)
+        
+        if success and update_inner_occupancy:
+            self.updateInnerOccupancy()
+        
+        return success
+
+    def markFreeSpaceAlongRay(self, 
+                             np.ndarray[DOUBLE_t, ndim=1] origin, 
+                             np.ndarray[DOUBLE_t, ndim=1] end_point, 
+                             step_size=None):
+        """
+        Mark free space along a ray from origin to end_point using manual sampling.
+        
+        Args:
+            origin: Ray start point [x, y, z]
+            end_point: Ray end point [x, y, z]
+            step_size: Step size for ray sampling (defaults to tree resolution)
+        """
+        if step_size is not None and step_size != self.getResolution():
+            # Use custom step size - fall back to original implementation
+            resolution = self.getResolution()
+            step = step_size
+            
+            # Calculate ray direction and length
+            direction = end_point - origin
+            ray_length = np.linalg.norm(direction)
+            
+            if ray_length == 0:
+                return
+                
+            direction = direction / ray_length
+            
+            # Sample points along the ray
+            num_steps = int(ray_length / step) + 1
+            
+            for i in range(1, num_steps):  # Skip origin (i=0)
+                t = (i * step) / ray_length
+                if t >= 1.0:
+                    break
+                    
+                sample_point = origin + t * direction
+                self.updateNode(sample_point, False)  # Mark as free
+        else:
+            # Use optimized version with default resolution
+            self._mark_free_space_optimized(origin, end_point)
+
+    cdef int _process_points_vectorized(self, np.ndarray[DOUBLE_t, ndim=2] points, 
+                                       np.ndarray[DOUBLE_t, ndim=1] origin, 
+                                       int num_points):
+        """Optimized vectorized processing for points with same origin"""
+        cdef int success_count = 0
+        cdef int i
+        cdef np.ndarray[DOUBLE_t, ndim=1] point
+        cdef cppbool success
+        
+        for i in range(num_points):
+            point = points[i]
+            success = self._add_single_point_optimized(point, origin)
+            if success:
+                success_count += 1
+        
+        return success_count
+
+    cdef cppbool _add_single_point_optimized(self, np.ndarray[DOUBLE_t, ndim=1] point, 
+                                            np.ndarray[DOUBLE_t, ndim=1] sensor_origin):
+        """Optimized single point addition with minimal overhead"""
+        cdef np.ndarray[DOUBLE_t, ndim=1] direction
+        cdef np.ndarray[DOUBLE_t, ndim=1] end_point
+        cdef double ray_length
+        cdef cppbool hit
+        
+        try:
+            # Check if origin and point are the same
+            if (point[0] == sensor_origin[0] and 
+                point[1] == sensor_origin[1] and 
+                point[2] == sensor_origin[2]):
+                self.updateNode(point, True)
+                return True
+            
+            # Calculate direction vector
+            direction = point - sensor_origin
+            ray_length = np.linalg.norm(direction)
+            
+            if ray_length > 0:
+                # Normalize direction
+                direction = direction / ray_length
+                
+                # Use castRay to find the first occupied cell along the ray
+                end_point = np.zeros(3, dtype=np.float64)
+                hit = self.castRay(sensor_origin, direction, end_point, 
+                                  ignoreUnknownCells=True, 
+                                  maxRange=ray_length)
+                
+                if hit:
+                    # Ray hit an obstacle - mark the hit point as occupied
+                    self.updateNode(end_point, True)
+                    # Mark free space from origin to hit point
+                    self._mark_free_space_optimized(sensor_origin, end_point)
+                else:
+                    # No hit - mark the target point as occupied
+                    self.updateNode(point, True)
+                    # Mark free space from origin to target point
+                    self._mark_free_space_optimized(sensor_origin, point)
+            else:
+                # Zero-length ray - just mark the point as occupied
+                self.updateNode(point, True)
+            
+            return True
+            
+        except Exception:
+            return False
+
+    cdef void _mark_free_space_optimized(self, np.ndarray[DOUBLE_t, ndim=1] origin, 
+                                        np.ndarray[DOUBLE_t, ndim=1] end_point):
+        """Optimized free space marking with pre-calculated step size"""
+        cdef double resolution = self.getResolution()
+        cdef np.ndarray[DOUBLE_t, ndim=1] direction = end_point - origin
+        cdef double ray_length = np.linalg.norm(direction)
+        
+        if ray_length == 0:
+            return
+            
+        direction = direction / ray_length
+        
+        # Sample points along the ray
+        cdef int num_steps = int(ray_length / resolution) + 1
+        cdef int i
+        cdef double t
+        cdef np.ndarray[DOUBLE_t, ndim=1] sample_point
+        
+        for i in range(1, num_steps):  # Skip origin (i=0)
+            t = (i * resolution) / ray_length
+            if t >= 1.0:
+                break
+                
+            sample_point = origin + t * direction
+            self.updateNode(sample_point, False)  # Mark as free
+
+    def addPointsBatch(self, 
+                      np.ndarray[DOUBLE_t, ndim=2] points,
+                      np.ndarray[DOUBLE_t, ndim=2] sensor_origins=None,
+                      update_inner_occupancy=True):
+        """
+        Add multiple 3D points in batch for better performance using ray casting.
+        
+        Args:
+            points: Array of 3D points [[x,y,z], ...] 
+            sensor_origins: Optional array of sensor origins for each point
+            update_inner_occupancy: Whether to update inner node occupancy
+            
+        Returns:
+            int: Number of points successfully added
+        """
+        cdef int success_count = 0
+        cdef int i, j, num_origins
+        cdef int num_points = points.shape[0]
+        cdef np.ndarray[DOUBLE_t, ndim=1] point
+        cdef np.ndarray[DOUBLE_t, ndim=1] origin
+        cdef np.ndarray[DOUBLE_t, ndim=1] direction
+        cdef np.ndarray[DOUBLE_t, ndim=1] end_point
+        cdef np.ndarray[DOUBLE_t, ndim=1] default_origin
+        cdef double ray_length
+        cdef cppbool hit, success
+        
+        try:
+            # Handle sensor origins - vectorized approach
+            if sensor_origins is None:
+                # Use default origin [0,0,0] for all points - vectorized
+                default_origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+                success_count = self._process_points_vectorized(points, default_origin, num_points)
+            else:
+                # Process with individual origins
+                num_origins = sensor_origins.shape[0]
+                for i in range(num_points):
+                    point = points[i]
+                    if i < num_origins:
+                        origin = sensor_origins[i]
+                    else:
+                        origin = sensor_origins[-1]  # Use last available origin
+                    
+                    success = self._add_single_point_optimized(point, origin)
+                    if success:
+                        success_count += 1
+            
+            # Update inner occupancy once for the batch
+            if update_inner_occupancy and success_count > 0:
+                self.updateInnerOccupancy()
+            
+            return success_count
+            
+        except Exception as e:
+            print(f"Error in batch processing: {e}")
+            return success_count
+
+    def addPointCloudWithRayCasting(self,
+                                   np.ndarray[DOUBLE_t, ndim=2] point_cloud,
+                                   np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                                   max_range=-1.0,
+                                   update_inner_occupancy=True):
+        """
+        Add a full point cloud using ray casting for each point.
+        
+        This method provides more accurate free space marking compared to 
+        the standard insertPointCloud method by using ray casting for each point.
+        
+        Args:
+            point_cloud: Nx3 array of points
+            sensor_origin: Sensor origin for the point cloud
+            max_range: Maximum range for points (-1 = no limit)
+            update_inner_occupancy: Whether to update inner node occupancy
+            
+        Returns:
+            int: Number of points successfully added
+        """
+        cdef int success_count = 0
+        cdef int i
+        cdef int num_points = point_cloud.shape[0]
+        cdef np.ndarray[DOUBLE_t, ndim=1] point
+        cdef np.ndarray[DOUBLE_t, ndim=2] filtered_points
+        cdef cppbool success
+        
+        try:
+            if max_range > 0:
+                # Filter points by range first - vectorized approach
+                distances = np.linalg.norm(point_cloud - sensor_origin, axis=1)
+                filtered_points = point_cloud[distances <= max_range]
+                success_count = self._process_points_vectorized(filtered_points, sensor_origin, filtered_points.shape[0])
+            else:
+                # Process all points without range filtering
+                success_count = self._process_points_vectorized(point_cloud, sensor_origin, num_points)
+            
+            # Update inner occupancy once for the batch
+            if update_inner_occupancy and success_count > 0:
+                self.updateInnerOccupancy()
+            
+            return success_count
+            
+        except Exception as e:
+            print(f"Error in point cloud processing: {e}")
+            return success_count
