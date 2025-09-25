@@ -141,6 +141,8 @@ See runnable demos in `examples/`:
 - `examples/basic_test.py` — smoke test for core API
 - `examples/demo_occupancy_grid.py` — build and visualize a 2D occupancy grid
 - `examples/demo_octomap_open3d.py` — visualize octomap data with Open3D
+- `examples/sequential_occupancy_grid_demo.py` — comprehensive sequential occupancy grid with Open3D visualization
+- `examples/test_sequential_occupancy_grid.py` — comprehensive test suite for all occupancy grid methods
 
 ### Demo Visualizations
 
