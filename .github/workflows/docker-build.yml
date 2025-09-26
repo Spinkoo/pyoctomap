@@ -1,0 +1,96 @@
+name: Build Wheels with Docker
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to build (e.g., 0.1.16)'
+        required: false
+        default: '0.1.16'
+
+jobs:
+  build-wheels:
+    runs-on: ubuntu-latest
+    environment: release
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    
+    - name: Build wheel with Docker
+      run: |
+        echo "🐳 Building wheel using Docker..."
+        docker build -f Dockerfile.wheel -t pyoctomap-wheel .
+        
+        echo "📦 Extracting wheel from container..."
+        docker run --name temp-container pyoctomap-wheel
+        docker cp temp-container:/wheels/ ./dist/
+        docker rm temp-container
+        
+        echo "✅ Built wheels:"
+        ls -la dist/
+    
+    - name: Upload wheels
+      uses: actions/upload-artifact@v4
+      with:
+        name: wheel-docker
+        path: dist/*.whl
+
+  build-sdist:
+    runs-on: ubuntu-latest
+    environment: release
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+    
+    - name: Build source distribution
+      run: |
+        python -m pip install --upgrade pip build
+        python -m build --sdist
+        echo "✅ Built source distribution:"
+        ls -la dist/
+    
+    - name: Upload source distribution
+      uses: actions/upload-artifact@v4
+      with:
+        name: sdist
+        path: dist/*.tar.gz
+
+  publish:
+    needs: [build-wheels, build-sdist]
+    runs-on: ubuntu-latest
+    environment: release
+    
+    steps:
+    - name: Download wheels
+      uses: actions/download-artifact@v4
+      with:
+        name: wheel-docker
+        path: ./wheels
+    
+    - name: Download source distribution
+      uses: actions/download-artifact@v4
+      with:
+        name: sdist
+        path: ./dist
+    
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
+        packages_dir: ./wheels
+        skip_existing: true

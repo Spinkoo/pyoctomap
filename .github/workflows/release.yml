@@ -49,45 +49,25 @@ jobs:
         CIBW_PLATFORM: linux
         CIBW_BUILD: cp311-manylinux_x86_64
         CIBW_BEFORE_BUILD: |
-          echo "🔧 Building OctoMap C++ library inside cibuildwheel container..." &&
+          echo "🔧 CIBW_BEFORE_BUILD SCRIPT STARTING" &&
           echo "Current directory: $(pwd)" &&
-          echo "Contents of current directory:" &&
-          ls -la &&
-          echo "Contents of src/octomap:" &&
           ls -la src/octomap/ &&
-          echo "Contents of src/octomap/octomap:" &&
-          ls -la src/octomap/octomap/ &&
-          if command -v yum >/dev/null 2>&1; then
-            echo "Using yum package manager" &&
-            yum install -y cmake3 make gcc gcc-c++ &&
-            CMAKE_CMD=cmake3
-          elif command -v apk >/dev/null 2>&1; then
-            echo "Using apk package manager" &&
-            apk add --no-cache cmake make gcc g++ &&
-            CMAKE_CMD=cmake
-          else
-            echo "Unknown package manager"
-            exit 1
-          fi &&
+          echo "Installing build tools..." &&
+          yum install -y cmake3 make gcc gcc-c++ &&
           echo "Building OctoMap..." &&
           cd src/octomap && mkdir -p build && cd build &&
-          echo "In build directory: $(pwd)" &&
-          echo "CMake command: $CMAKE_CMD" &&
-          $CMAKE_CMD .. -DCMAKE_BUILD_TYPE=Release &&
-          echo "Running make..." &&
+          cmake3 .. -DCMAKE_BUILD_TYPE=Release &&
           make -j$(nproc) &&
-          echo "Running make install..." &&
-          make install && ldconfig &&
-          echo "🔍 Looking for libraries in build directory:" &&
-          find . -name "*.so*" -o -name "*.a" | head -10 &&
-          echo "📦 Copying libraries to ../../src/octomap/lib" &&
+          make install &&
+          echo "Finding libraries..." &&
+          find . -name "*.so*" -o -name "*.a" &&
+          echo "Copying libraries..." &&
           mkdir -p ../../src/octomap/lib &&
-          find . -name "*.so*" -exec cp {} ../../src/octomap/lib/ \; 2>/dev/null || echo "No .so files found" &&
-          find . -name "*.a" -exec cp {} ../../src/octomap/lib/ \; 2>/dev/null || echo "No .a files found" &&
-          echo "✅ Libraries copied to ../../src/octomap/lib:" &&
+          find . -name "*.so*" -exec cp {} ../../src/octomap/lib/ \; &&
+          find . -name "*.a" -exec cp {} ../../src/octomap/lib/ \; &&
+          echo "Libraries copied:" &&
           ls -la ../../src/octomap/lib/ &&
-          echo "Final check - contents of src/octomap/lib:" &&
-          ls -la ../../src/octomap/lib/ || echo "Directory does not exist"
+          echo "🔧 CIBW_BEFORE_BUILD SCRIPT COMPLETED"
       run: |
         echo "Checking if libraries exist before cibuildwheel:"
         ls -la src/octomap/lib/ || echo "No lib directory found"
