@@ -64,10 +64,10 @@ echo "🧪 Testing installation (no env vars required)..."
 # Change to a different directory to avoid source directory conflicts
 cd /tmp
 python3 - <<'PY'
-import octomap
+import pyoctomap
 print('✅ OctoMap import successful!')
 # Basic functionality
-t = octomap.OcTree(0.1)
+t = pyoctomap.OcTree(0.1)
 t.updateNode([1.0, 2.0, 3.0], True)
 n = t.search([1.0, 2.0, 3.0])
 if n and t.isNodeOccupied(n):
@@ -83,6 +83,6 @@ echo "📁 Wheel file: $wheel_file"
 echo "📦 Libraries bundled: liboctomap, libdynamicedt3d, liboctomath"
 echo "📖 Demos available in the examples/ folder (e.g., examples/basic_test.py)"
 echo "Usage:"
-echo "  import octomap"
-echo "  tree = octomap.OcTree(0.1)"
+echo "  import pyoctomap"
+echo "  tree = pyoctomap.OcTree(0.1)"
 echo "  tree.updateNode([1.0, 2.0, 3.0], True)"
