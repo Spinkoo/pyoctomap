@@ -1,0 +1,38 @@
+# GitHub Actions CI for OctoMap2Python
+# This file is kept for compatibility but GitHub Actions are used instead
+# See .github/workflows/ for actual CI configuration
+
+# Legacy Travis CI configuration (replaced by GitHub Actions)
+dist: focal
+
+language: python
+
+python:
+  - '3.9'
+  - '3.10'
+  - '3.11'
+  - '3.12'
+
+branches:
+  only:
+    - master
+    - main
+
+notifications:
+  email: false
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y build-essential cmake
+
+install:
+  - pip install --upgrade pip
+  - pip install numpy cython
+  - pip install -e .
+
+script:
+  - python -c "import octomap; print('Import successful')"
+  - python examples/test_octomap_functionalities.py
+
+# Note: This project primarily uses GitHub Actions for CI
+# See .github/workflows/ci.yml for the main CI pipeline
