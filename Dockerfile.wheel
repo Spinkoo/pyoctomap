@@ -41,8 +41,19 @@ RUN echo "Libraries in wheel before repair:" && \
 # Install auditwheel
 RUN /opt/python/cp311-cp311/bin/pip install auditwheel
 
-# Try to repair the wheel (it might already be compatible)
-RUN /opt/python/cp311-cp311/bin/auditwheel repair dist/*.whl -w dist/ || echo "Repair failed, but wheel might still be usable"
+# Show what libraries are available
+RUN echo "Libraries in src/octomap/lib:" && ls -la src/octomap/lib/
+
+# Copy libraries to standard location for auditwheel
+RUN cp src/octomap/lib/*.so* /usr/local/lib/ && \
+    ldconfig
+
+# Show what libraries are now available for auditwheel
+RUN echo "Libraries in /usr/local/lib:" && \
+    find /usr/local/lib -name "*octomap*" -o -name "*dynamicedt*" | head -10
+
+# Repair the wheel for manylinux compatibility
+RUN /opt/python/cp311-cp311/bin/auditwheel repair dist/*.whl -w dist/ --plat manylinux_2_28_x86_64
 
 # Show final wheels
 RUN echo "Final wheels:" && ls -la dist/
