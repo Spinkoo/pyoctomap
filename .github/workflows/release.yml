@@ -55,6 +55,8 @@ jobs:
           ls -la &&
           echo "Contents of src/octomap:" &&
           ls -la src/octomap/ &&
+          echo "Contents of src/octomap/octomap:" &&
+          ls -la src/octomap/octomap/ &&
           if command -v yum >/dev/null 2>&1; then
             echo "Using yum package manager" &&
             yum install -y cmake3 make gcc gcc-c++ &&
@@ -70,8 +72,12 @@ jobs:
           echo "Building OctoMap..." &&
           cd src/octomap && mkdir -p build && cd build &&
           echo "In build directory: $(pwd)" &&
+          echo "CMake command: $CMAKE_CMD" &&
           $CMAKE_CMD .. -DCMAKE_BUILD_TYPE=Release &&
-          make -j$(nproc) && make install && ldconfig &&
+          echo "Running make..." &&
+          make -j$(nproc) &&
+          echo "Running make install..." &&
+          make install && ldconfig &&
           echo "🔍 Looking for libraries in build directory:" &&
           find . -name "*.so*" -o -name "*.a" | head -10 &&
           echo "📦 Copying libraries to ../../src/octomap/lib" &&
