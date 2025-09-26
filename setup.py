@@ -182,10 +182,47 @@ def build_extensions():
         elif platform.system() == "Darwin":
             rpath_args = ["-Wl,-rpath,@loader_path/lib"]
 
+    # Find the .pyx file - it might be in different locations depending on how it's installed
+    pyx_file = None
+    possible_paths = [
+        "pyoctomap/octomap.pyx",
+        "octomap.pyx",
+        "pyoctomap/octomap.pyx"
+    ]
+    
+    for path in possible_paths:
+        if os.path.exists(path):
+            pyx_file = path
+            break
+    
+    if pyx_file is None:
+        print("Error: Could not find octomap.pyx file")
+        print("Searched in:", possible_paths)
+        print("Current directory contents:")
+        for root, dirs, files in os.walk("."):
+            for file in files:
+                if file.endswith(".pyx"):
+                    print(f"  Found: {os.path.join(root, file)}")
+        sys.exit(1)
+    
+    print(f"Using .pyx file: {pyx_file}")
+    
+    # Debug: Print current directory structure
+    print("Current directory structure:")
+    for root, dirs, files in os.walk("."):
+        level = root.replace(".", "").count(os.sep)
+        indent = " " * 2 * level
+        print(f"{indent}{os.path.basename(root)}/")
+        subindent = " " * 2 * (level + 1)
+        for file in files[:5]:  # Show first 5 files
+            print(f"{subindent}{file}")
+        if len(files) > 5:
+            print(f"{subindent}... and {len(files) - 5} more files")
+
     ext_modules = [
         Extension(
             "pyoctomap.octomap",
-            ["pyoctomap/octomap.pyx"],
+            [pyx_file],
             include_dirs=[
                 "pyoctomap",  # Include the pyoctomap directory for .pxd files
                 "src/octomap/octomap/include",
