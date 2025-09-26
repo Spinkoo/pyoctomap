@@ -13,9 +13,9 @@ docker run --rm -v $(pwd):/home/octomap -w /home/octomap pyoctomap bash -c "
     pip3 install dist/*.whl --force-reinstall
     
     echo '�� Running tests...'
-    mv octomap _octomap_source
+    mv pyoctomap _pyoctomap_source
     python3 -m pytest unit_test/ -v
-    mv _octomap_source octomap
+    mv _pyoctomap_source pyoctomap
     
     echo '✅ Build and tests completed!'
 "
