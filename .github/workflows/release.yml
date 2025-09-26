@@ -144,6 +144,8 @@ jobs:
     needs: [build-wheels, build-sdist]
     runs-on: ubuntu-latest
     environment: release
+    permissions:
+      id-token: write  # Required for Trusted Publishing
     
     steps:
     - name: Download all wheels
