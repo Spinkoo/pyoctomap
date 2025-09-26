@@ -124,10 +124,10 @@ python setup.py build_ext --inplace
 python setup.py bdist_wheel
 
 # 3. Bundle libraries
-auditwheel repair dist/octomap2python-*.whl
+auditwheel repair dist/pyoctomap-*.whl
 
 # 4. Install bundled wheel
-pip install dist/octomap2python-*_linux_x86_64.whl
+pip install dist/pyoctomap-*_linux_x86_64.whl
 ```
 
 ## Wheel Structure
@@ -135,7 +135,7 @@ pip install dist/octomap2python-*_linux_x86_64.whl
 ### Directory Layout
 
 ```
-octomap2python-1.1.0-cp312-cp312-linux_x86_64.whl
+pyoctomap-1.1.0-cp312-cp312-linux_x86_64.whl
 ├── octomap/
 │   ├── __init__.py
 │   ├── octomap.pyx
@@ -186,7 +186,7 @@ octomap2python-1.1.0-cp312-cp312-linux_x86_64.whl
 **Installation:**
 ```bash
 # In WSL
-pip install octomap2python
+pip install pyoctomap
 ```
 
 ### macOS (Future)

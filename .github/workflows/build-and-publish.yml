@@ -265,7 +265,7 @@ jobs:
         with open('README.md', 'r', encoding='utf-8') as f:
             content = f.read()
         
-        converted = replace_url('Spinkoo/octomap2python', content, branch='main')
+        converted = replace_url('Spinkoo/pyoctomap', content, branch='main')
         
         with open('README_PyPI.md', 'w', encoding='utf-8') as f:
             f.write(converted)

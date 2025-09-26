@@ -15,7 +15,7 @@ This directory contains comprehensive documentation for the OctoMap2Python libra
 
 - [Main README](../README.md) - Getting started and basic usage
 - [Examples](../examples/) - Code examples and demos
-- [GitHub Repository](https://github.com/Spinkoo/octomap2python)
+- [GitHub Repository](https://github.com/Spinkoo/pyoctomap)
 
 ## Getting Help
 
@@ -23,5 +23,5 @@ If you can't find what you're looking for in the documentation:
 
 1. Check the [Troubleshooting Guide](troubleshooting.md)
 2. Look at the [Examples](../examples/) directory
-3. Open an issue on [GitHub](https://github.com/Spinkoo/octomap2python/issues)
+3. Open an issue on [GitHub](https://github.com/Spinkoo/pyoctomap/issues)
 4. Check the [API Reference](api_reference.md) for detailed method documentation

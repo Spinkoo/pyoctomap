@@ -331,9 +331,9 @@ When reporting issues, include:
 
 ### Community Support
 
-- **GitHub Issues**: [Report bugs and request features](https://github.com/Spinkoo/octomap2python/issues)
-- **Discussions**: [Ask questions and share ideas](https://github.com/Spinkoo/octomap2python/discussions)
-- **Documentation**: [Read the docs](https://github.com/Spinkoo/octomap2python/tree/main/docs)
+- **GitHub Issues**: [Report bugs and request features](https://github.com/Spinkoo/pyoctomap/issues)
+- **Discussions**: [Ask questions and share ideas](https://github.com/Spinkoo/pyoctomap/discussions)
+- **Documentation**: [Read the docs](https://github.com/Spinkoo/pyoctomap/tree/main/docs)
 
 ## Common Solutions
 
@@ -341,8 +341,8 @@ When reporting issues, include:
 
 ```bash
 # Reinstall package
-pip uninstall octomap2python
-pip install octomap2python
+pip uninstall pyoctomap
+pip install pyoctomap
 
 # Clear Python cache
 find . -name "*.pyc" -delete
@@ -359,7 +359,7 @@ python setup.py build_ext --inplace
 # Create fresh virtual environment
 python3 -m venv fresh_env
 source fresh_env/bin/activate
-pip install octomap2python
+pip install pyoctomap
 ```
 
 ### System Update
