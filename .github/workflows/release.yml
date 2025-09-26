@@ -23,10 +23,6 @@ jobs:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12"]
     
-    # Use manylinux2014 container for better compatibility
-    container:
-      image: quay.io/pypa/manylinux2014_x86_64:latest
-    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -37,33 +33,24 @@ jobs:
       run: |
         echo "🚀 Building Linux wheels for Google Colab compatibility"
         echo "🐍 Python version: ${{ matrix.python-version }}"
-        echo "🐧 Container: manylinux2014"
         if [ -n "${{ github.event.inputs.version }}" ]; then
           echo "📦 Version: ${{ github.event.inputs.version }}"
         fi
     
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
     - name: Install system dependencies
       run: |
-        yum install -y cmake3 gcc-c++ make
-        # Create symlinks for cmake
-        ln -sf /usr/bin/cmake3 /usr/bin/cmake
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential
     
-    - name: Set up Python
+    - name: Install build tools
       run: |
-        # Set Python version for this matrix job
-        export PYTHON_VERSION="${{ matrix.python-version }}"
-        echo "Setting up Python $PYTHON_VERSION"
-        
-        # Use the Python version from manylinux2014
-        PYTHON_BIN="/opt/python/cp${PYTHON_VERSION//./}-cp${PYTHON_VERSION//./}/bin/python"
-        PIP_BIN="/opt/python/cp${PYTHON_VERSION//./}-cp${PYTHON_VERSION//./}/bin/pip"
-        
-        $PYTHON_BIN -m pip install --upgrade pip
-        $PIP_BIN install setuptools wheel numpy cython auditwheel
-        
-        # Create symlinks for easier access
-        ln -sf $PYTHON_BIN /usr/local/bin/python
-        ln -sf $PIP_BIN /usr/local/bin/pip
+        python -m pip install --upgrade pip
+        pip install setuptools wheel numpy cython auditwheel
     
     - name: Build OctoMap C++ library
       run: |
@@ -71,8 +58,8 @@ jobs:
         mkdir -p build && cd build
         cmake .. -DCMAKE_BUILD_TYPE=Release
         make -j$(nproc)
-        make install
-        ldconfig
+        sudo make install
+        sudo ldconfig
     
     - name: Build wheel
       run: |
@@ -87,15 +74,20 @@ jobs:
         echo "Checking for problematic symbols:"
         auditwheel show dist/*.whl || echo "auditwheel show failed, continuing..."
     
-    - name: Repair wheel for manylinux2014 compatibility
+    - name: Repair wheel for compatibility
       run: |
         mkdir -p wheelhouse
-        echo "Attempting to repair wheel for manylinux2014..."
-        auditwheel repair dist/*.whl --plat manylinux2014_x86_64 -w wheelhouse/ || {
-          echo "manylinux2014 failed, trying manylinux1..."
-          auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/ || {
-            echo "manylinux1 failed, using original wheel"
-            cp dist/*.whl wheelhouse/
+        echo "Attempting to repair wheel..."
+        
+        # Try different compatibility levels
+        auditwheel repair dist/*.whl --plat manylinux_2_17_x86_64 -w wheelhouse/ || {
+          echo "manylinux_2_17 failed, trying manylinux2014..."
+          auditwheel repair dist/*.whl --plat manylinux2014_x86_64 -w wheelhouse/ || {
+            echo "manylinux2014 failed, trying manylinux1..."
+            auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/ || {
+              echo "All repair attempts failed, using original wheel"
+              cp dist/*.whl wheelhouse/
+            }
           }
         }
         echo "Final wheels in wheelhouse:"
