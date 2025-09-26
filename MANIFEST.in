@@ -3,7 +3,7 @@ include LICENSE
 include pyproject.toml
 include setup.cfg
 include setup.py
-recursive-include octomap *.pyx *.pxd *.cpp *.h
+recursive-include pyoctomap *.pyx *.pxd *.cpp *.h
 recursive-include src *.so *.a *.h *.hpp *.hxx
 recursive-include examples *.py
 recursive-include docs *.md
