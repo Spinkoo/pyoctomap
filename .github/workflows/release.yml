@@ -17,11 +17,12 @@ on:
 
 jobs:
   build-wheels:
-    runs-on: ubuntu-22.04  # Use Ubuntu 22.04 for better runner availability
+    runs-on: ubuntu-latest
     environment: release
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12"]
+    container: quay.io/pypa/manylinux1_x86_64
     
     steps:
     - name: Checkout code
@@ -37,33 +38,36 @@ jobs:
           echo "📦 Version: ${{ github.event.inputs.version }}"
         fi
     
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-    
     - name: Install system dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake build-essential
+        yum install -y cmake3 make gcc gcc-c++
     
     - name: Install build tools
       run: |
-        python -m pip install --upgrade pip
-        pip install setuptools wheel numpy cython auditwheel
+        /opt/python/cp39-cp39/bin/pip install --upgrade pip
+        /opt/python/cp39-cp39/bin/pip install setuptools wheel numpy cython auditwheel
     
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
         mkdir -p build && cd build
-        cmake .. -DCMAKE_BUILD_TYPE=Release
+        cmake3 .. -DCMAKE_BUILD_TYPE=Release
         make -j$(nproc)
-        sudo make install
-        sudo ldconfig
+        make install
+        ldconfig
     
     - name: Build wheel
       run: |
-        python setup.py bdist_wheel
+        # Select the correct Python version from the manylinux container
+        PYTHON_CMD=""
+        case "${{ matrix.python-version }}" in
+          "3.9") PYTHON_CMD="/opt/python/cp39-cp39/bin/python" ;;
+          "3.10") PYTHON_CMD="/opt/python/cp310-cp310/bin/python" ;;
+          "3.11") PYTHON_CMD="/opt/python/cp311-cp311/bin/python" ;;
+          "3.12") PYTHON_CMD="/opt/python/cp312-cp312/bin/python" ;;
+        esac
+        
+        $PYTHON_CMD setup.py bdist_wheel
         echo "Built wheel:"
         ls -la dist/*.whl
     
@@ -71,7 +75,7 @@ jobs:
       run: |
         # Use auditwheel to properly repair the wheel
         mkdir -p wheelhouse
-        auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/
+        /opt/python/cp39-cp39/bin/auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/
         
         # Move repaired wheel back to dist
         rm -f dist/*.whl
