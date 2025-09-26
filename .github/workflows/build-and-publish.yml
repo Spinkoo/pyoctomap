@@ -132,12 +132,24 @@ jobs:
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
+        # Check if cached build has correct paths (handle repo name change)
         if [ -d "build" ] && [ -f "build/CMakeCache.txt" ]; then
-          echo "✅ Using cached OctoMap C++ build"
-          cd build
-          make -j$(nproc)
-          sudo make install
-          sudo ldconfig
+          if grep -q "/__w/pyoctomap/pyoctomap" build/CMakeCache.txt 2>/dev/null; then
+            echo "✅ Using cached OctoMap C++ build"
+            cd build
+            make -j$(nproc)
+            sudo make install
+            sudo ldconfig
+          else
+            echo "⚠️  Cached build has old paths, rebuilding..."
+            rm -rf build
+            mkdir -p build
+            cd build
+            cmake ..
+            make -j$(nproc)
+            sudo make install
+            sudo ldconfig
+          fi
         else
           echo "🔨 Building OctoMap C++ library from scratch..."
           mkdir -p build
