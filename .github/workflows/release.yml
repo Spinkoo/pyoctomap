@@ -49,12 +49,14 @@ jobs:
         CIBW_PLATFORM: linux
         CIBW_BUILD: cp311-*
         CIBW_BEFORE_BUILD: |
+          yum install -y cmake3 make gcc gcc-c++ &&
           cd src/octomap && mkdir -p build && cd build &&
-          cmake .. -DCMAKE_BUILD_TYPE=Release &&
+          cmake3 .. -DCMAKE_BUILD_TYPE=Release &&
           make -j$(nproc) && make install && ldconfig
         CIBW_BEFORE_BUILD_LINUX: |
+          yum install -y cmake3 make gcc gcc-c++ &&
           cd src/octomap && mkdir -p build && cd build &&
-          cmake .. -DCMAKE_BUILD_TYPE=Release &&
+          cmake3 .. -DCMAKE_BUILD_TYPE=Release &&
           make -j$(nproc) && make install && ldconfig
       run: |
         cibuildwheel --platform linux --output-dir dist
