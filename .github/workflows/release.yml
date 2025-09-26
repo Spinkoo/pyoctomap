@@ -1,57 +1,189 @@
+name: Release to PyPI
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:  # Add manual trigger
+    inputs:
+      version:
+        description: 'Version to release (optional)'
+        required: false
+        default: ''
+      skip_tests:
+        description: 'Skip tests (not recommended)'
+        required: false
+        default: false
+        type: boolean
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: release
+    # Add this container section
+    container:
+      image: quay.io/pypa/manylinux2014_x86_64
     
+    environment: release    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
         submodules: recursive
-
-    - name: Set up Python on the runner
+    
+    - name: Display release info
+      run: |
+        echo "🚀 Manual release triggered"
+        if [ -n "${{ github.event.inputs.version }}" ]; then
+          echo "📦 Version: ${{ github.event.inputs.version }}"
+        fi
+        if [ "${{ github.event.inputs.skip_tests }}" = "true" ]; then
+          echo "⚠️  Tests will be skipped"
+        fi
+    
+    - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: "3.9"
-
-    - name: Build wheels using manylinux2014 container
+    
+    - name: Install system dependencies
       run: |
-        # Pull the container image
-        docker pull quay.io/pypa/manylinux2014_x86_64
-
-        # Run all build steps inside the container
-        docker run --rm -v "$(pwd)":/work -w /work quay.io/pypa/manylinux2014_x86_64 sh -c '
-          # 1. Install system dependencies inside the container
-          yum install -y cmake
-
-          # 2. Build the C++ library
-          cd src/octomap && mkdir build && cd build
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential
+    
+    - name: Build OctoMap C++ library
+      run: |
+        cd src/octomap
+        # Check if cached build has correct paths (handle repo name change)
+        if [ -d "build" ] && [ -f "build/CMakeCache.txt" ]; then
+          if grep -q "/__w/pyoctomap/pyoctomap" build/CMakeCache.txt 2>/dev/null; then
+            echo "✅ Using cached OctoMap C++ build"
+            cd build
+            make -j$(nproc)
+            sudo make install
+            sudo ldconfig
+          else
+            echo "⚠️  Cached build has old paths, rebuilding..."
+            rm -rf build
+            mkdir build
+            cd build
+            cmake ..
+            make -j$(nproc)
+            sudo make install
+            sudo ldconfig
+          fi
+        else
+          echo "🔨 Building OctoMap C++ library from scratch..."
+          mkdir build
+          cd build
           cmake ..
           make -j$(nproc)
-          make install
-          ldconfig
-          cd /work # Go back to the root
-
-          # 3. Install Python build tools using the container's Python
-          #    Note: We specify the Python version provided by the container
-          /opt/python/cp39-cp39/bin/pip install build setuptools wheel numpy cython auditwheel
-
-          # 4. Build the wheel
-          /opt/python/cp39-cp39/bin/python -m build --wheel
-
-          # 5. Repair the wheel to bundle the C++ library
-          auditwheel repair dist/*.whl -w dist/
-        '
-        
-    - name: Clean up and list artifacts
+          sudo make install
+          sudo ldconfig
+        fi
+    
+    - name: Install build tools
       run: |
-        # The original linux wheel is no longer needed, only the repaired manylinux one
-        rm dist/*-linux_x86_64.whl
-        echo "Final distributions to be published:"
+        python -m pip install --upgrade pip
+        pip install build twine setuptools wheel numpy cython pytest
+    
+    - name: Generate PyPI README
+      run: |
+        # Generate PyPI README with converted URLs
+        python github2pypi/generate_pypi_readme.py
+        
+        # Verify the PyPI README was created
+        if [ -f "README_pypi_preview.md" ]; then
+          echo "✅ PyPI README generated successfully"
+          echo "📊 File size: $(wc -c < README_pypi_preview.md) bytes"
+          echo "🔗 Sample URLs:"
+          grep -o 'https://github.com/[^)]*' README_pypi_preview.md | head -3
+        else
+          echo "❌ PyPI README generation failed"
+          exit 1
+        fi
+    
+    - name: Build distributions
+      run: |
+        # Clean any previous builds
+        rm -rf build/ dist/ *.egg-info/
+        
+        # Verify PyPI README exists before building
+        if [ ! -f "README_pypi_preview.md" ]; then
+          echo "❌ PyPI README not found, generating it..."
+          python github2pypi/generate_pypi_readme.py
+        fi
+        
+        # Build both wheel and source distribution
+        python setup.py bdist_wheel sdist
+        
+        # Fix platform tags for PyPI compatibility using auditwheel
+        pip install auditwheel
+        
+        # Create repaired wheels directory
+        mkdir -p wheelhouse
+        
+        # Repair wheels for manylinux1 compatibility (better compatibility)
+        for wheel in dist/*.whl; do
+          if [[ -f "$wheel" ]]; then
+            echo "Repairing wheel: $wheel"
+            auditwheel repair "$wheel" -w wheelhouse/ --plat manylinux1_x86_64 || {
+              echo "auditwheel failed, trying manual tag fix..."
+              cp "$wheel" wheelhouse/
+              cd wheelhouse
+              python -c "import os; [os.rename(f, f.replace('linux_x86_64', 'manylinux1_x86_64')) for f in os.listdir('.') if f.endswith('.whl') and 'linux_x86_64' in f]; print('Fixed platform tags')"
+              cd ..
+            }
+          fi
+        done
+        
+        # Replace original wheels with repaired ones
+        rm -f dist/*.whl
+        cp wheelhouse/*.whl dist/ 2>/dev/null || echo "No wheels to copy"
+        
+        echo "Final distributions:"
         ls -la dist/
-
+    
+    - name: Check distributions
+      run: |
+        twine check dist/*
+        echo "📦 Built distributions:"
+        ls -la dist/
+        
+        # Verify PyPI README is included in the package
+        echo "🔍 Checking package contents:"
+        python -c "
+        import zipfile
+        import os
+        for file in os.listdir('dist'):
+            if file.endswith('.whl'):
+                with zipfile.ZipFile(f'dist/{file}', 'r') as zf:
+                    files = zf.namelist()
+                    readme_files = [f for f in files if 'readme' in f.lower()]
+                    print(f'README files in {file}: {readme_files}')
+        "
+    
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
+    
+    - name: Verify PyPI README
+      run: |
+        echo "✅ PyPI README verification:"
+        echo "📁 PyPI README file: README_pypi_preview.md"
+        if [ -f "README_pypi_preview.md" ]; then
+          echo "✅ File exists"
+          echo "📊 Size: $(wc -c < README_pypi_preview.md) bytes"
+          echo "🔗 Contains GitHub URLs: $(grep -c 'https://github.com' README_pypi_preview.md || echo '0')"
+          echo "️ Contains images: $(grep -c '!\[.*\](.*github.*)' README_pypi_preview.md || echo '0')"
+        else
+          echo "❌ PyPI README file not found"
+          exit 1
+        fi
+    
+    - name: Upload PyPI README artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: pypi-readme
+        path: README_pypi_preview.md
+        retention-days: 30
