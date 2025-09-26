@@ -67,9 +67,6 @@ jobs:
         # Use auditwheel to repair for manylinux2014 (more compatible than manylinux1)
         mkdir -p wheelhouse
         
-        echo "🔍 Checking original wheel:"
-        auditwheel show dist/*.whl || echo "auditwheel show failed"
-        
         echo "🔧 Attempting manylinux2014 repair..."
         if auditwheel repair dist/*.whl --plat manylinux2014_x86_64 -w wheelhouse/ 2>&1; then
           echo "✅ manylinux2014 repair successful"
@@ -78,39 +75,15 @@ jobs:
           if auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/ 2>&1; then
             echo "✅ manylinux1 repair successful"
           else
-            echo "❌ Both repairs failed, using manylinux2014 tag for broader compatibility"
-            # Use manylinux2014 which should work on Google Colab (Ubuntu 20.04+)
+            echo "❌ Both repairs failed, using correct platform tag"
+            # Use the platform tag that auditwheel actually suggests
             cp dist/*.whl wheelhouse/
             cd wheelhouse
             for wheel in *.whl; do
               if [[ "$wheel" == *"linux_x86_64"* ]]; then
-                new_name="${wheel/linux_x86_64/manylinux2014_x86_64}"
+                new_name="${wheel/linux_x86_64/manylinux_2_39_x86_64}"
                 mv "$wheel" "$new_name"
-                echo "Renamed for Google Colab compatibility: $wheel -> $new_name"
-                
-                # Update the internal platform tag to match
-                python3 -c """
-                    import zipfile, tempfile, os, shutil, sys
-                    wheel_file = '$new_name'
-                    temp_dir = tempfile.mkdtemp()
-                    try:
-                        with zipfile.ZipFile(wheel_file, 'r') as zf: zf.extractall(temp_dir)
-                        for item in os.listdir(temp_dir):
-                            if item.endswith('.dist-info'):
-                                wheel_path = os.path.join(temp_dir, item, 'WHEEL')
-                                if os.path.exists(wheel_path):
-                                    with open(wheel_path, 'r') as f: content = f.read()
-                                    content = content.replace('linux_x86_64', 'manylinux2014_x86_64')
-                                    with open(wheel_path, 'w') as f: f.write(content)
-                                    print('Updated internal platform tag'); break
-                        with zipfile.ZipFile(wheel_file, 'w', zipfile.ZIP_DEFLATED) as zf:
-                            for root, dirs, files in os.walk(temp_dir):
-                                for file in files:
-                                    file_path = os.path.join(root, file)
-                                    arc_path = os.path.relpath(file_path, temp_dir)
-                                    zf.write(file_path, arc_path)
-                    finally: shutil.rmtree(temp_dir)
-                    """
+                echo "Renamed to correct platform tag: $wheel -> $new_name"
               fi
             done
             cd ..
@@ -123,12 +96,6 @@ jobs:
         
         echo "✅ Final wheels:"
         ls -la dist/*.whl
-        
-        # Verify the platform tag
-        for wheel in dist/*.whl; do
-          echo "Platform tag for $(basename "$wheel"):"
-          auditwheel show "$wheel" || echo "auditwheel show failed"
-        done
     
     - name: Upload wheel
       uses: actions/upload-artifact@v4
