@@ -158,25 +158,39 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         pattern: wheel-py*
-        path: ./wheelhouse
+        path: ./artifacts
         merge-multiple: true
     
     - name: Download source distribution
       uses: actions/download-artifact@v4
       with:
         name: sdist
-        path: ./dist
+        path: ./artifacts
     
-    - name: List downloaded files
+    - name: Organize distributions for publishing
       run: |
-        echo "Wheels:"
-        find ./wheelhouse -name "*.whl" -type f
-        echo "Source distributions:"
-        find ./dist -name "*.tar.gz" -type f
+        # Create dist directory
+        mkdir -p dist
+        
+        # Copy all wheels to dist directory
+        echo "Copying wheels to dist directory:"
+        find ./artifacts -name "*.whl" -type f -exec cp {} dist/ \;
+        
+        # Copy source distributions to dist directory
+        echo "Copying source distributions to dist directory:"
+        find ./artifacts -name "*.tar.gz" -type f -exec cp {} dist/ \;
+        
+        # List final distributions
+        echo "Final distributions to publish:"
+        ls -la dist/
+        
+        # Verify we have distributions
+        if [ -z "$(ls -A dist/)" ]; then
+          echo "ERROR: No distributions found in dist/ directory!"
+          exit 1
+        fi
     
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
-        packages_dir: .
+        packages_dir: dist/
