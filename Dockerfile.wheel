@@ -1,5 +1,5 @@
 # Multi-stage Dockerfile for building pyoctomap wheels
-FROM quay.io/pypa/manylinux_2_28_x86_64:2025.09.19-1 as builder
+FROM quay.io/pypa/manylinux_2_28_x86_64:2025.09.19-1 AS builder
 
 # Install build dependencies
 RUN yum install -y cmake3 make gcc gcc-c++ git
@@ -23,6 +23,9 @@ RUN mkdir -p src/octomap/lib && \
     find /usr/local/lib -name "*.a" -exec cp {} src/octomap/lib/ \; && \
     echo "Libraries copied:" && \
     ls -la src/octomap/lib/
+
+# Find the correct Python path
+RUN find /opt/python -name "python" -type f | head -5
 
 # Install Python build tools
 RUN /opt/python/cp311-cp311/bin/pip install --upgrade pip setuptools wheel

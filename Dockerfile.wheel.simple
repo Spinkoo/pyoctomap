@@ -1,0 +1,37 @@
+# Simple Dockerfile for building pyoctomap wheels
+FROM quay.io/pypa/manylinux_2_28_x86_64:2025.09.19-1
+
+# Install build dependencies
+RUN yum install -y cmake3 make gcc gcc-c++ git python3 python3-pip
+
+# Copy source code
+COPY . /project
+WORKDIR /project
+
+# Build OctoMap C++ library
+RUN cd src/octomap && \
+    mkdir -p build && \
+    cd build && \
+    cmake3 .. -DCMAKE_BUILD_TYPE=Release && \
+    make -j$(nproc) && \
+    make install && \
+    ldconfig
+
+# Copy libraries to the expected location
+RUN mkdir -p src/octomap/lib && \
+    find /usr/local/lib -name "*.so*" -exec cp {} src/octomap/lib/ \; && \
+    find /usr/local/lib -name "*.a" -exec cp {} src/octomap/lib/ \; && \
+    echo "Libraries copied:" && \
+    ls -la src/octomap/lib/
+
+# Install Python build tools
+RUN python3 -m pip install --upgrade pip setuptools wheel
+
+# Build the wheel
+RUN python3 setup.py bdist_wheel
+
+# Show the built wheel
+RUN echo "Built wheel:" && ls -la dist/
+
+# Keep container running to inspect
+CMD ["bash"]
