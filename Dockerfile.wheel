@@ -27,8 +27,9 @@ RUN mkdir -p src/octomap/lib && \
 # Find the correct Python path
 RUN find /opt/python -name "python" -type f | head -5
 
-# Install Python build tools
+# Install Python build tools and dependencies
 RUN /opt/python/cp311-cp311/bin/pip install --upgrade pip setuptools wheel
+RUN /opt/python/cp311-cp311/bin/pip install numpy cython
 
 # Build the wheel
 RUN /opt/python/cp311-cp311/bin/python setup.py bdist_wheel
