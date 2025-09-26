@@ -2,10 +2,16 @@ name: CI Tests
 
 on:
   # DISABLED - Only using release workflow for now
+  # This workflow is disabled by using a dummy trigger
+  # To re-enable, replace the schedule with the triggers below:
   # push:
   #   branches: [ main, develop, Lisa ]
   # pull_request:
   #   branches: [ main, develop, Lisa ]
+  
+  # Dummy trigger to keep workflow valid (never actually runs)
+  schedule:
+    - cron: '0 0 1 1 *'  # Runs once a year on Jan 1st (effectively never)
 
 jobs:
   test:
