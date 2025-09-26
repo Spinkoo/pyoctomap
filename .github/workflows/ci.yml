@@ -53,15 +53,21 @@ jobs:
     - name: Build OctoMap from source
       run: |
         cd src/octomap
-        # Always clean build directory to avoid CMake cache path issues
-        echo "🔨 Building OctoMap C++ library..."
-        rm -rf build
-        mkdir -p build
-        cd build
-        cmake .. -DCMAKE_BUILD_TYPE=Release
-        make -j$(nproc)
-        make install
-        ldconfig
+        if [ -d "build" ] && [ -f "build/CMakeCache.txt" ]; then
+          echo "✅ Using cached OctoMap C++ build"
+          cd build
+          make -j$(nproc)
+          make install
+          ldconfig
+        else
+          echo "🔨 Building OctoMap C++ library from scratch..."
+          mkdir -p build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          make -j$(nproc)
+          make install
+          ldconfig
+        fi
     
     - name: Install Python build dependencies
       run: |

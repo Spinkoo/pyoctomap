@@ -132,15 +132,21 @@ jobs:
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
-        # Clean build directory to avoid CMake cache path issues
-        echo "🔨 Building OctoMap C++ library..."
-        rm -rf build
-        mkdir -p build
-        cd build
-        cmake ..
-        make -j$(nproc)
-        sudo make install
-        sudo ldconfig
+        if [ -d "build" ] && [ -f "build/CMakeCache.txt" ]; then
+          echo "✅ Using cached OctoMap C++ build"
+          cd build
+          make -j$(nproc)
+          sudo make install
+          sudo ldconfig
+        else
+          echo "🔨 Building OctoMap C++ library from scratch..."
+          mkdir -p build
+          cd build
+          cmake ..
+          make -j$(nproc)
+          sudo make install
+          sudo ldconfig
+        fi
     
     - name: Install build dependencies
       run: |
