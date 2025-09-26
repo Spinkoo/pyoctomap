@@ -52,17 +52,30 @@ jobs:
         python -m pip install --upgrade pip
         pip install setuptools wheel numpy cython auditwheel
     
-    - name: Build OctoMap C++ library
+    - name: Build OctoMap C++ library for compatibility
       run: |
         cd src/octomap
         mkdir -p build && cd build
-        cmake .. -DCMAKE_BUILD_TYPE=Release
+        
+        # Configure with compatibility flags for older systems
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_CXX_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" \
+          -DCMAKE_C_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0"
+        
         make -j$(nproc)
         sudo make install
         sudo ldconfig
+        
+        echo "✅ OctoMap C++ library built with compatibility flags"
     
-    - name: Build wheel
+    - name: Build wheel with compatibility flags
       run: |
+        # Set environment variables for compatibility
+        export CFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0"
+        export CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0"
+        export LDFLAGS="-Wl,--as-needed"
+        
         python setup.py bdist_wheel
         echo "Built wheel:"
         ls -la dist/*.whl
@@ -74,24 +87,30 @@ jobs:
         echo "Checking for problematic symbols:"
         auditwheel show dist/*.whl || echo "auditwheel show failed, continuing..."
     
-    - name: Repair wheel for compatibility
+    - name: Repair wheel for Google Colab compatibility
       run: |
         mkdir -p wheelhouse
-        echo "Attempting to repair wheel..."
+        echo "🔧 Repairing wheel for Google Colab compatibility..."
+        echo "Google Colab requires manylinux1 for maximum compatibility"
         
-        # Try different compatibility levels
-        auditwheel repair dist/*.whl --plat manylinux_2_17_x86_64 -w wheelhouse/ || {
-          echo "manylinux_2_17 failed, trying manylinux2014..."
+        # Try manylinux1 first (most compatible with Google Colab)
+        auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/ || {
+          echo "manylinux1 failed, trying manylinux2014..."
           auditwheel repair dist/*.whl --plat manylinux2014_x86_64 -w wheelhouse/ || {
-            echo "manylinux2014 failed, trying manylinux1..."
-            auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/ || {
+            echo "manylinux2014 failed, trying manylinux_2_17..."
+            auditwheel repair dist/*.whl --plat manylinux_2_17_x86_64 -w wheelhouse/ || {
               echo "All repair attempts failed, using original wheel"
               cp dist/*.whl wheelhouse/
             }
           }
         }
-        echo "Final wheels in wheelhouse:"
+        
+        echo "✅ Final wheels in wheelhouse:"
         ls -la wheelhouse/
+        
+        # Verify the wheel is compatible
+        echo "🔍 Checking wheel compatibility:"
+        auditwheel show wheelhouse/*.whl || echo "auditwheel show failed, but wheel exists"
     
     - name: Upload wheel
       uses: actions/upload-artifact@v4
