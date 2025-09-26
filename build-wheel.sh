@@ -7,7 +7,7 @@ echo "🐳 Building pyoctomap wheel using Docker..."
 
 # Build the Docker image
 echo "Building Docker image..."
-docker build -f Dockerfile.wheel.norepair -t pyoctomap-wheel .
+docker build -f Dockerfile.wheel.multiversion -t pyoctomap-wheel .
 
 # Extract the wheel from the container
 echo "Extracting wheel from container..."
