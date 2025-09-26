@@ -169,8 +169,8 @@ jobs:
       run: |
         # Clean any previous builds
         rm -rf build/ dist/ *.egg-info/
-        # Build using setup.py for now (Cython extensions work better this way)
-        python setup.py bdist_wheel
+        # Build both wheel and source distribution
+        python setup.py bdist_wheel sdist
         
         # Fix platform tags for PyPI compatibility using auditwheel
         pip install auditwheel
