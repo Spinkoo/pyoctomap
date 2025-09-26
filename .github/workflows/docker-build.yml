@@ -25,7 +25,7 @@ jobs:
     - name: Build wheel with Docker
       run: |
         echo "🐳 Building wheels using Docker (multi-version)..."
-        docker build -f Dockerfile.wheel.multiversion -t pyoctomap-wheel .
+        docker build -f docker/Dockerfile.wheel -t pyoctomap-wheel .
         
         echo "📦 Extracting wheel from container..."
         docker run --name temp-container pyoctomap-wheel

@@ -1,6 +1,6 @@
 # Wheel Technology Documentation
 
-OctoMap2Python uses advanced wheel bundling technology to create self-contained packages with zero external dependencies.
+PyOctoMap uses advanced wheel bundling technology to create self-contained packages with zero external dependencies.
 
 ## Overview
 
@@ -88,30 +88,31 @@ liboctomap.so.1.10.0 (actual library)
 
 ## Build Process
 
-### Automated Build Script
+### Docker-Based Build Process
 
 ```bash
 #!/bin/bash
-# build.sh - Automated build with library bundling
+# build-wheel.sh - Docker-based build for multiple Python versions
 
-# 1. Check Python version
-python3 --version
+# 1. Build wheels using Docker
+docker build -f docker/Dockerfile.wheel -t pyoctomap-wheel .
 
-# 2. Install dependencies
-pip install numpy cython auditwheel
+# 2. Extract wheels from container
+docker run --name temp-container pyoctomap-wheel
+docker cp temp-container:/wheels/ ./dist/
+docker rm temp-container
 
-# 3. Clean previous builds
-rm -rf build/ dist/ *.egg-info/
-
-# 4. Build wheel
-python setup.py bdist_wheel
-
-# 5. Bundle libraries (Linux)
-auditwheel repair dist/*.whl
-
-# 6. Install and test
+# 3. Test the wheels
 pip install dist/*.whl
-python -c "import octomap; print('Success!')"
+python -c "import pyoctomap; print('Success!')"
+```
+
+### Manual Build (Advanced)
+
+```bash
+# For development/testing only
+python setup.py bdist_wheel
+auditwheel repair dist/*.whl  # Linux only
 ```
 
 ### Manual Build Process

@@ -35,10 +35,36 @@ chmod +x build.sh
 ./build.sh
 ```
 
-When published on PyPI (Linux):
+## Installation
+
+### Quick Install (Recommended)
+
+For most users, simply install the pre-built wheel:
+
 ```bash
 pip install pyoctomap
 ```
+
+**Supported Platforms:**
+- Linux (manylinux2014 compatible)
+- Python 3.9, 3.10, 3.11, 3.12
+- Pre-built wheels available for all supported combinations
+
+**Note:** Building from source is not recommended for most users as it requires compiling C++ code and managing dependencies.
+
+### For Developers
+
+If you need to build from source or create custom wheels, we provide a Docker-based build system:
+
+```bash
+# Build wheels for all supported Python versions
+./build-wheel.sh
+
+# Or build manually with Docker
+docker build -f docker/Dockerfile.wheel -t pyoctomap-wheel .
+```
+
+The Docker build creates manylinux-compatible wheels for Python 3.9-3.12, properly bundling all required C++ libraries.
 
 ## Quick Start
 

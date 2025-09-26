@@ -1,8 +1,21 @@
 # Troubleshooting Guide
 
-Common issues and solutions for OctoMap2Python.
+Common issues and solutions for PyOctoMap.
 
 ## Installation Issues
+
+### Pre-built Wheels Not Available
+
+**Problem**: `pip install pyoctomap` tries to build from source
+**Solution**: Use the pre-built manylinux wheels
+
+```bash
+# Force wheel installation (recommended)
+pip install pyoctomap --only-binary=all
+
+# If that fails, try with no cache
+pip install pyoctomap --only-binary=all --no-cache-dir
+```
 
 ### Python Version Compatibility
 
