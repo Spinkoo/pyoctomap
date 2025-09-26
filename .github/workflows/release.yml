@@ -63,10 +63,12 @@ jobs:
           $CMAKE_CMD .. -DCMAKE_BUILD_TYPE=Release &&
           make -j$(nproc) && make install && ldconfig &&
           mkdir -p ../../src/octomap/lib &&
-          echo "Copying libraries from $(pwd)/lib to ../../src/octomap/lib" &&
-          ls -la lib/ &&
-          cp lib/*.so* ../../src/octomap/lib/ 2>/dev/null || echo "No .so files found" &&
-          cp lib/*.a ../../src/octomap/lib/ 2>/dev/null || echo "No .a files found" &&
+          echo "Looking for libraries in build directory:" &&
+          find . -name "*.so*" -o -name "*.a" | head -10 &&
+          echo "Copying libraries from build directory to ../../src/octomap/lib" &&
+          mkdir -p ../../src/octomap/lib &&
+          find . -name "*.so*" -exec cp {} ../../src/octomap/lib/ \; 2>/dev/null || echo "No .so files found" &&
+          find . -name "*.a" -exec cp {} ../../src/octomap/lib/ \; 2>/dev/null || echo "No .a files found" &&
           echo "Libraries copied to ../../src/octomap/lib:" &&
           ls -la ../../src/octomap/lib/
         CIBW_BEFORE_BUILD_LINUX: |
@@ -84,10 +86,12 @@ jobs:
           $CMAKE_CMD .. -DCMAKE_BUILD_TYPE=Release &&
           make -j$(nproc) && make install && ldconfig &&
           mkdir -p ../../src/octomap/lib &&
-          echo "Copying libraries from $(pwd)/lib to ../../src/octomap/lib" &&
-          ls -la lib/ &&
-          cp lib/*.so* ../../src/octomap/lib/ 2>/dev/null || echo "No .so files found" &&
-          cp lib/*.a ../../src/octomap/lib/ 2>/dev/null || echo "No .a files found" &&
+          echo "Looking for libraries in build directory:" &&
+          find . -name "*.so*" -o -name "*.a" | head -10 &&
+          echo "Copying libraries from build directory to ../../src/octomap/lib" &&
+          mkdir -p ../../src/octomap/lib &&
+          find . -name "*.so*" -exec cp {} ../../src/octomap/lib/ \; 2>/dev/null || echo "No .so files found" &&
+          find . -name "*.a" -exec cp {} ../../src/octomap/lib/ \; 2>/dev/null || echo "No .a files found" &&
           echo "Libraries copied to ../../src/octomap/lib:" &&
           ls -la ../../src/octomap/lib/
       run: |
