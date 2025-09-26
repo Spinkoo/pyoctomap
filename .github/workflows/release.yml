@@ -90,8 +90,8 @@ jobs:
           python github2pypi/generate_pypi_readme.py
         fi
         
-        # Build using modern build tools that properly read pyproject.toml
-        python -m build
+        # Build using setup.py for now (Cython extensions work better this way)
+        python setup.py bdist_wheel
         
         # Fix platform tags for PyPI compatibility using auditwheel
         pip install auditwheel

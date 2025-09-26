@@ -5,7 +5,7 @@ requires = [
     "cython>=0.29.0",
     "numpy>=1.16.0"
 ]
-build-backend = "setuptools.build_meta"
+build-backend = "setuptools"
 
 
 [project]
@@ -68,6 +68,12 @@ exclude = ["tests*", "examples*"]
 
 [tool.setuptools.dynamic]
 version = {attr = "pyoctomap.__version__"}
+
+[tool.setuptools]
+py-modules = []
+
+[tool.setuptools.package-data]
+pyoctomap = ["lib/*", "lib/*.so*"]
 
 [tool.black]
 line-length = 88

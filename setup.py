@@ -244,12 +244,41 @@ def main():
     ext_modules = build_extensions()
 
     setup(
-        ext_modules=ext_modules,
+        # Basic package info
+        name="pyoctomap",
+        version=get_version(),
+        description="Python binding of the OctoMap library with bundled shared libraries.",
+        long_description=get_long_description(),
+        long_description_content_type="text/markdown",
+        author="Spinkoo",
+        author_email="lespinkoo@gmail.com",
+        url="https://github.com/Spinkoo/pyoctomap",
+        license="BSD",
+        classifiers=[
+            "Development Status :: 5 - Production/Stable",
+            "Intended Audience :: Developers",
+            "Intended Audience :: Science/Research",
+            "Natural Language :: English",
+            "Programming Language :: Python :: 3",
+            "Programming Language :: Python :: 3.9",
+            "Programming Language :: Python :: 3.10",
+            "Programming Language :: Python :: 3.11",
+            "Programming Language :: Python :: 3.12",
+            "Programming Language :: Python :: Implementation :: CPython",
+            "Topic :: Scientific/Engineering",
+            "Topic :: Software Development :: Libraries :: Python Modules"
+        ],
+        keywords=["octomap", "occupancy", "mapping", "robotics", "3d", "bundled-libs", "python", "pyoctomap"],
+        python_requires=">=3.9",
+        install_requires=["numpy>=1.16.0"],
+        
+        # Package configuration
         packages=["pyoctomap"],
         package_data=package_data,
         data_files=data_files,
-        long_description=get_long_description(),
-        long_description_content_type="text/markdown",
+        ext_modules=ext_modules,
+        
+        # Build configuration
         cmdclass={
             "build_ext": CustomBuildExt,
             "install": CustomInstall,
