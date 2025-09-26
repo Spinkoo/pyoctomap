@@ -61,7 +61,10 @@ jobs:
           fi &&
           cd src/octomap && mkdir -p build && cd build &&
           $CMAKE_CMD .. -DCMAKE_BUILD_TYPE=Release &&
-          make -j$(nproc) && make install && ldconfig
+          make -j$(nproc) && make install && ldconfig &&
+          mkdir -p ../../src/octomap/lib &&
+          cp lib/*.so* ../../src/octomap/lib/ 2>/dev/null || true &&
+          cp lib/*.a ../../src/octomap/lib/ 2>/dev/null || true
         CIBW_BEFORE_BUILD_LINUX: |
           if command -v yum >/dev/null 2>&1; then
             yum install -y cmake3 make gcc gcc-c++
@@ -75,7 +78,10 @@ jobs:
           fi &&
           cd src/octomap && mkdir -p build && cd build &&
           $CMAKE_CMD .. -DCMAKE_BUILD_TYPE=Release &&
-          make -j$(nproc) && make install && ldconfig
+          make -j$(nproc) && make install && ldconfig &&
+          mkdir -p ../../src/octomap/lib &&
+          cp lib/*.so* ../../src/octomap/lib/ 2>/dev/null || true &&
+          cp lib/*.a ../../src/octomap/lib/ 2>/dev/null || true
       run: |
         cibuildwheel --platform linux --output-dir dist
     
