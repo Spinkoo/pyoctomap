@@ -1,10 +1,11 @@
 name: CI Tests
 
 on:
-  push:
-    branches: [ main, develop, Lisa ]
-  pull_request:
-    branches: [ main, develop, Lisa ]
+  # DISABLED - Only using release workflow for now
+  # push:
+  #   branches: [ main, develop, Lisa ]
+  # pull_request:
+  #   branches: [ main, develop, Lisa ]
 
 jobs:
   test:

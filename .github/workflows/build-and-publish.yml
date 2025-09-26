@@ -1,14 +1,12 @@
 name: Build and Publish to PyPI
 
 on:
-  # Trigger on pushes to main branch
-  push:
-    branches: [ main ]
-  # Trigger on pull requests
-  pull_request:
-    branches: [ main ]
-  # Allow manual trigger
-  workflow_dispatch:
+  # DISABLED - Only using release workflow for now
+  # push:
+  #   branches: [ main ]
+  # pull_request:
+  #   branches: [ main ]
+  # workflow_dispatch:
 
 jobs:
   test:
