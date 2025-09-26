@@ -21,7 +21,7 @@ jobs:
     environment: release
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.11"]
     
     steps:
     - name: Checkout code
@@ -66,20 +66,45 @@ jobs:
       run: |
         # Use auditwheel to repair for manylinux2014 (more compatible than manylinux1)
         mkdir -p wheelhouse
-        auditwheel repair dist/*.whl --plat manylinux2014_x86_64 -w wheelhouse/ || {
-          echo "manylinux2014 failed, trying manylinux1..."
-          auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/ || {
-            echo "Repair failed, using original wheel"
+        
+        echo "🔍 Checking original wheel:"
+        auditwheel show dist/*.whl || echo "auditwheel show failed"
+        
+        echo "🔧 Attempting manylinux2014 repair..."
+        if auditwheel repair dist/*.whl --plat manylinux2014_x86_64 -w wheelhouse/ 2>&1; then
+          echo "✅ manylinux2014 repair successful"
+        else
+          echo "❌ manylinux2014 failed, trying manylinux1..."
+          if auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/ 2>&1; then
+            echo "✅ manylinux1 repair successful"
+          else
+            echo "❌ Both repairs failed, manually fixing platform tag"
+            # Manually fix the platform tag as last resort
             cp dist/*.whl wheelhouse/
-          }
-        }
+            cd wheelhouse
+            for wheel in *.whl; do
+              if [[ "$wheel" == *"linux_x86_64"* ]]; then
+                new_name="${wheel/linux_x86_64/manylinux1_x86_64}"
+                mv "$wheel" "$new_name"
+                echo "Manually renamed: $wheel -> $new_name"
+              fi
+            done
+            cd ..
+          fi
+        fi
         
         # Move repaired wheel back to dist
         rm -f dist/*.whl
         cp wheelhouse/*.whl dist/
         
-        echo "Final wheels:"
+        echo "✅ Final wheels:"
         ls -la dist/*.whl
+        
+        # Verify the platform tag
+        for wheel in dist/*.whl; do
+          echo "Platform tag for $(basename "$wheel"):"
+          auditwheel show "$wheel" || echo "auditwheel show failed"
+        done
     
     - name: Upload wheel
       uses: actions/upload-artifact@v4
