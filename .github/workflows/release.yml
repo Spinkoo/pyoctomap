@@ -49,19 +49,19 @@ jobs:
         CIBW_SKIP: "*-win32 *-macosx* *-win_amd64"
         CIBW_BEFORE_BUILD_LINUX: |
           # Install system dependencies
-          apt-get update && apt-get install -y cmake build-essential
+          yum install -y cmake3 gcc-c++ make
           # Build OctoMap
           cd src/octomap
           mkdir build && cd build
-          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake3 .. -DCMAKE_BUILD_TYPE=Release
           make -j$(nproc)
           make install
           ldconfig
         CIBW_REPAIR_WHEEL_COMMAND_LINUX: |
-          # Use auditwheel for Linux wheels with manylinux1 compatibility
-          auditwheel repair -w {dest_dir} {wheel} --plat manylinux1_x86_64
-        CIBW_MANYLINUX_X86_64_IMAGE: manylinux1
-        CIBW_MANYLINUX_I686_IMAGE: manylinux1
+          # Use auditwheel for Linux wheels with manylinux2014 compatibility
+          auditwheel repair -w {dest_dir} {wheel} --plat manylinux2014_x86_64
+        CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
+        CIBW_MANYLINUX_I686_IMAGE: manylinux2014
       run: |
         cibuildwheel --platform linux
     
