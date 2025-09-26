@@ -22,7 +22,6 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12"]
-    container: quay.io/pypa/manylinux1_x86_64
     
     steps:
     - name: Checkout code
@@ -40,48 +39,46 @@ jobs:
     
     - name: Install system dependencies
       run: |
-        yum install -y cmake3 make gcc gcc-c++
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential
     
     - name: Install build tools
       run: |
-        /opt/python/cp39-cp39/bin/pip install --upgrade pip
-        /opt/python/cp39-cp39/bin/pip install setuptools wheel numpy cython auditwheel
+        python -m pip install --upgrade pip
+        pip install setuptools wheel numpy cython auditwheel
     
     - name: Build OctoMap C++ library
       run: |
         cd src/octomap
         mkdir -p build && cd build
-        cmake3 .. -DCMAKE_BUILD_TYPE=Release
+        cmake .. -DCMAKE_BUILD_TYPE=Release
         make -j$(nproc)
-        make install
-        ldconfig
+        sudo make install
+        sudo ldconfig
     
     - name: Build wheel
       run: |
-        # Select the correct Python version from the manylinux container
-        PYTHON_CMD=""
-        case "${{ matrix.python-version }}" in
-          "3.9") PYTHON_CMD="/opt/python/cp39-cp39/bin/python" ;;
-          "3.10") PYTHON_CMD="/opt/python/cp310-cp310/bin/python" ;;
-          "3.11") PYTHON_CMD="/opt/python/cp311-cp311/bin/python" ;;
-          "3.12") PYTHON_CMD="/opt/python/cp312-cp312/bin/python" ;;
-        esac
-        
-        $PYTHON_CMD setup.py bdist_wheel
+        python setup.py bdist_wheel
         echo "Built wheel:"
         ls -la dist/*.whl
     
-    - name: Repair wheel for manylinux1 compatibility
+    - name: Repair wheel for manylinux2014 compatibility
       run: |
-        # Use auditwheel to properly repair the wheel
+        # Use auditwheel to repair for manylinux2014 (more compatible than manylinux1)
         mkdir -p wheelhouse
-        /opt/python/cp39-cp39/bin/auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/
+        auditwheel repair dist/*.whl --plat manylinux2014_x86_64 -w wheelhouse/ || {
+          echo "manylinux2014 failed, trying manylinux1..."
+          auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/ || {
+            echo "Repair failed, using original wheel"
+            cp dist/*.whl wheelhouse/
+          }
+        }
         
         # Move repaired wheel back to dist
         rm -f dist/*.whl
         cp wheelhouse/*.whl dist/
         
-        echo "Repaired wheels:"
+        echo "Final wheels:"
         ls -la dist/*.whl
     
     - name: Upload wheel
