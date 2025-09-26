@@ -28,7 +28,7 @@ jobs:
     
     - name: Display release info
       run: |
-        echo "🚀 Building wheels for release"
+        echo "🚀 Building Linux wheels for Google Colab compatibility"
         if [ -n "${{ github.event.inputs.version }}" ]; then
           echo "📦 Version: ${{ github.event.inputs.version }}"
         fi
@@ -43,20 +43,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install cibuildwheel
     
-    - name: Build wheels with cibuildwheel
+    - name: Build Linux wheels with cibuildwheel
       env:
         CIBW_BUILD: cp39-* cp310-* cp311-* cp312-*
-        CIBW_SKIP: "*-win32 *-macosx_arm64"
-        CIBW_BEFORE_BUILD: |
-          # Install system dependencies
-          yum install -y cmake3 gcc-c++ make
-          # Build OctoMap
-          cd src/octomap
-          mkdir build && cd build
-          cmake3 .. -DCMAKE_BUILD_TYPE=Release
-          make -j$(nproc)
-          make install
-          ldconfig
+        CIBW_SKIP: "*-win32 *-macosx* *-win_amd64"
         CIBW_BEFORE_BUILD_LINUX: |
           # Install system dependencies
           apt-get update && apt-get install -y cmake build-essential
@@ -68,15 +58,12 @@ jobs:
           make install
           ldconfig
         CIBW_REPAIR_WHEEL_COMMAND_LINUX: |
-          # Use auditwheel for Linux wheels
-          auditwheel repair -w {dest_dir} {wheel}
-        CIBW_REPAIR_WHEEL_COMMAND_MACOS: |
-          # Use delocate for macOS wheels
-          delocate-wheel -w {dest_dir} {wheel}
+          # Use auditwheel for Linux wheels with manylinux1 compatibility
+          auditwheel repair -w {dest_dir} {wheel} --plat manylinux1_x86_64
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux1
         CIBW_MANYLINUX_I686_IMAGE: manylinux1
       run: |
-        cibuildwheel --platform linux --platform macos --platform windows
+        cibuildwheel --platform linux
     
     - name: Upload wheels
       uses: actions/upload-artifact@v4
