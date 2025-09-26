@@ -29,17 +29,23 @@ jobs:
         
         echo "📦 Extracting wheel from container..."
         docker run --name temp-container pyoctomap-wheel
-        docker cp temp-container:/wheels/ ./dist/
+        docker cp temp-container:/wheels/ ./wheels/
         docker rm temp-container
         
         echo "✅ Built wheels:"
-        ls -la dist/
+        ls -la wheels/
+        
+        echo "🔍 Filtering to only manylinux wheels..."
+        mkdir -p ./manylinux-wheels
+        cp wheels/*manylinux*.whl ./manylinux-wheels/ || echo "No manylinux wheels found"
+        echo "Manylinux wheels:"
+        ls -la ./manylinux-wheels/
     
     - name: Upload wheels
       uses: actions/upload-artifact@v4
       with:
         name: wheel-docker
-        path: dist/*.whl
+        path: ./manylinux-wheels
 
   build-sdist:
     runs-on: ubuntu-latest
