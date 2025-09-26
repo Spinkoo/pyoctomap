@@ -171,12 +171,11 @@ def build_extensions():
     else:
         extra_compile_args = [
             "-O2", "-DNDEBUG", "-fPIC",
-            "-D_GLIBCXX_USE_CXX11_ABI=0",    # Use old ABI for compatibility
             "-Wno-deprecated-declarations",  # Suppress deprecation warnings
             "-Wno-deprecated",               # Suppress all deprecated warnings
             "-Wno-unused-function"           # Suppress unused function warnings
         ]
-        extra_link_args = ["-fPIC", "-D_GLIBCXX_USE_CXX11_ABI=0"]
+        extra_link_args = ["-fPIC"]
         # Ensure extension finds bundled libs at runtime without LD_LIBRARY_PATH
         if platform.system() == "Linux":
             rpath_args = ["-Wl,-rpath,$ORIGIN/lib"]
