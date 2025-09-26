@@ -21,8 +21,8 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 **Linux / WSL (Windows Subsystem for Linux):**
 ```bash
 # Clone the repository with submodules
-git clone --recursive https://github.com/Spinkoo/octomap2python.git
-cd octomap2python
+git clone --recursive https://github.com/Spinkoo/pyoctomap.git
+cd pyoctomap
 
 # Build and install OctoMap C++ library
 cd src/octomap

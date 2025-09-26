@@ -68,11 +68,11 @@ jobs:
     
     - name: Test import
       run: |
-        mv octomap _octomap_source
+        mv pyoctomap _pyoctomap_source
         python -c "
-        import octomap
-        print('✅ OctoMap import successful!')
-        tree = octomap.OcTree(0.1)
+        import pyoctomap
+        print('✅ PyOctoMap import successful!')
+        tree = pyoctomap.OcTree(0.1)
         tree.updateNode([1.0, 2.0, 3.0], True)
         node = tree.search([1.0, 2.0, 3.0])
         if node and tree.isNodeOccupied(node):
@@ -80,14 +80,14 @@ jobs:
         else:
             raise Exception('Basic functionality test failed!')
         "
-        mv _octomap_source octomap
+        mv _pyoctomap_source pyoctomap
     
     - name: Run unit tests (if they exist)
       run: |
         if [ -d "unit_test" ]; then
-          mv octomap _octomap_source
+          mv pyoctomap _pyoctomap_source
           python -m pytest unit_test/ -v
-          mv _octomap_source octomap
+          mv _pyoctomap_source pyoctomap
         else
           echo "No unit tests found, skipping..."
         fi

@@ -26,7 +26,7 @@ pip install pyoctomap
 **From Source (Linux / WSL):**
 ```bash
 # Clone the repository with submodules
-git clone --recursive https://github.com/Spinkoo/pypyoctomap.git
+git clone --recursive https://github.com/Spinkoo/pyoctomap.git
 cd pyoctomap
 
 # Build and install OctoMap C++ library
