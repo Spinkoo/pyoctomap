@@ -19,9 +19,6 @@ jobs:
   build-wheels:
     runs-on: ubuntu-latest
     environment: release
-    strategy:
-      matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
     
     steps:
     - name: Checkout code
@@ -31,76 +28,41 @@ jobs:
     
     - name: Display release info
       run: |
-        echo "🚀 Building Linux wheels for Google Colab compatibility"
-        echo "🐍 Python version: ${{ matrix.python-version }}"
+        echo "🚀 Building manylinux2014 wheels for broad compatibility"
+        echo "🐍 Python version: 3.11"
         if [ -n "${{ github.event.inputs.version }}" ]; then
           echo "📦 Version: ${{ github.event.inputs.version }}"
         fi
     
-    - name: Install system dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake build-essential
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
     
-    - name: Install build tools
+    - name: Install cibuildwheel
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel numpy cython auditwheel
+        pip install cibuildwheel
     
-    - name: Build OctoMap C++ library
+    - name: Build manylinux2014 wheels
+      env:
+        CIBW_PLATFORM: linux
+        CIBW_BUILD: cp311-*
+        CIBW_BEFORE_BUILD: |
+          cd src/octomap && mkdir -p build && cd build &&
+          cmake .. -DCMAKE_BUILD_TYPE=Release &&
+          make -j$(nproc) && make install && ldconfig
+        CIBW_BEFORE_BUILD_LINUX: |
+          cd src/octomap && mkdir -p build && cd build &&
+          cmake .. -DCMAKE_BUILD_TYPE=Release &&
+          make -j$(nproc) && make install && ldconfig
       run: |
-        cd src/octomap
-        mkdir -p build && cd build
-        cmake .. -DCMAKE_BUILD_TYPE=Release
-        make -j$(nproc)
-        sudo make install
-        sudo ldconfig
+        cibuildwheel --platform linux --output-dir dist
     
-    - name: Build wheel
-      run: |
-        python setup.py bdist_wheel
-        echo "Built wheel:"
-        ls -la dist/*.whl
-    
-    - name: Repair wheel for manylinux2014 compatibility
-      run: |
-        # Use auditwheel to repair for manylinux2014 (more compatible than manylinux1)
-        mkdir -p wheelhouse
-        
-        echo "🔧 Attempting manylinux2014 repair..."
-        if auditwheel repair dist/*.whl --plat manylinux2014_x86_64 -w wheelhouse/ 2>&1; then
-          echo "✅ manylinux2014 repair successful"
-        else
-          echo "❌ manylinux2014 failed, trying manylinux1..."
-          if auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/ 2>&1; then
-            echo "✅ manylinux1 repair successful"
-          else
-            echo "❌ Both repairs failed, using correct platform tag"
-            # Use the platform tag that auditwheel actually suggests
-            cp dist/*.whl wheelhouse/
-            cd wheelhouse
-            for wheel in *.whl; do
-              if [[ "$wheel" == *"linux_x86_64"* ]]; then
-                new_name="${wheel/linux_x86_64/manylinux_2_39_x86_64}"
-                mv "$wheel" "$new_name"
-                echo "Renamed to correct platform tag: $wheel -> $new_name"
-              fi
-            done
-            cd ..
-          fi
-        fi
-        
-        # Move repaired wheel back to dist
-        rm -f dist/*.whl
-        cp wheelhouse/*.whl dist/
-        
-        echo "✅ Final wheels:"
-        ls -la dist/*.whl
-    
-    - name: Upload wheel
+    - name: Upload wheels
       uses: actions/upload-artifact@v4
       with:
-        name: wheel-py${{ matrix.python-version }}
+        name: wheel-py3.11
         path: dist/*.whl
 
   build-sdist:
@@ -150,12 +112,11 @@ jobs:
     environment: release
     
     steps:
-    - name: Download all wheels
+    - name: Download wheels
       uses: actions/download-artifact@v4
       with:
-        pattern: wheel-py*
+        name: wheel-py3.11
         path: ./artifacts
-        merge-multiple: true
     
     - name: Download source distribution
       uses: actions/download-artifact@v4
