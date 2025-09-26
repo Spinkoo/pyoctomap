@@ -118,11 +118,11 @@ jobs:
         # Create repaired wheels directory
         mkdir -p wheelhouse
         
-        # Repair wheels for manylinux compatibility
+        # Repair wheels for manylinux1 compatibility (better compatibility)
         for wheel in dist/*.whl; do
           if [[ -f "$wheel" ]]; then
             echo "Repairing wheel: $wheel"
-            auditwheel repair "$wheel" -w wheelhouse/ || {
+            auditwheel repair "$wheel" -w wheelhouse/ --plat manylinux1_x86_64 || {
               echo "auditwheel failed, trying manual tag fix..."
               cp "$wheel" wheelhouse/
               cd wheelhouse
