@@ -50,7 +50,7 @@ jobs:
     - name: Install build tools
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel numpy cython
+        pip install setuptools wheel numpy cython auditwheel
     
     - name: Build OctoMap C++ library
       run: |
@@ -65,6 +65,19 @@ jobs:
       run: |
         python setup.py bdist_wheel
         echo "Built wheel:"
+        ls -la dist/*.whl
+    
+    - name: Repair wheel for manylinux1 compatibility
+      run: |
+        # Use auditwheel to properly repair the wheel
+        mkdir -p wheelhouse
+        auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/
+        
+        # Move repaired wheel back to dist
+        rm -f dist/*.whl
+        cp wheelhouse/*.whl dist/
+        
+        echo "Repaired wheels:"
         ls -la dist/*.whl
     
     - name: Upload wheel
