@@ -1,11 +1,11 @@
 name: Build and Push Docker Image
 
 on:
-  # Disabled - only run manually for now
+  # DISABLED - Only using release workflow for now
   # push:
   #   branches: [ main ]
   #   paths: [ 'docker/Dockerfile.ci' ]
-  workflow_dispatch:  # Only manual trigger
+  # workflow_dispatch:  # Only manual trigger
 
 jobs:
   build:
