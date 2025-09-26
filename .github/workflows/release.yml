@@ -63,8 +63,12 @@ jobs:
           $CMAKE_CMD .. -DCMAKE_BUILD_TYPE=Release &&
           make -j$(nproc) && make install && ldconfig &&
           mkdir -p ../../src/octomap/lib &&
-          cp lib/*.so* ../../src/octomap/lib/ 2>/dev/null || true &&
-          cp lib/*.a ../../src/octomap/lib/ 2>/dev/null || true
+          echo "Copying libraries from $(pwd)/lib to ../../src/octomap/lib" &&
+          ls -la lib/ &&
+          cp lib/*.so* ../../src/octomap/lib/ 2>/dev/null || echo "No .so files found" &&
+          cp lib/*.a ../../src/octomap/lib/ 2>/dev/null || echo "No .a files found" &&
+          echo "Libraries copied to ../../src/octomap/lib:" &&
+          ls -la ../../src/octomap/lib/
         CIBW_BEFORE_BUILD_LINUX: |
           if command -v yum >/dev/null 2>&1; then
             yum install -y cmake3 make gcc gcc-c++
@@ -80,9 +84,15 @@ jobs:
           $CMAKE_CMD .. -DCMAKE_BUILD_TYPE=Release &&
           make -j$(nproc) && make install && ldconfig &&
           mkdir -p ../../src/octomap/lib &&
-          cp lib/*.so* ../../src/octomap/lib/ 2>/dev/null || true &&
-          cp lib/*.a ../../src/octomap/lib/ 2>/dev/null || true
+          echo "Copying libraries from $(pwd)/lib to ../../src/octomap/lib" &&
+          ls -la lib/ &&
+          cp lib/*.so* ../../src/octomap/lib/ 2>/dev/null || echo "No .so files found" &&
+          cp lib/*.a ../../src/octomap/lib/ 2>/dev/null || echo "No .a files found" &&
+          echo "Libraries copied to ../../src/octomap/lib:" &&
+          ls -la ../../src/octomap/lib/
       run: |
+        echo "Checking if libraries exist before cibuildwheel:"
+        ls -la src/octomap/lib/ || echo "No lib directory found"
         cibuildwheel --platform linux --output-dir dist
     
     - name: Upload wheels
