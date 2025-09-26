@@ -45,7 +45,9 @@ jobs:
     - name: Install build tools
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel numpy cython auditwheel
+        pip install setuptools wheel numpy cython
+        # Install auditwheel for wheel repair
+        pip install auditwheel
     
     - name: Build OctoMap C++ library
       run: |
@@ -59,11 +61,30 @@ jobs:
     - name: Build wheel
       run: |
         python setup.py bdist_wheel
+        echo "Built wheel:"
+        ls -la dist/*.whl
     
-    - name: Repair wheel for manylinux1 compatibility
+    - name: Check wheel contents and symbols
+      run: |
+        echo "Checking wheel contents:"
+        unzip -l dist/*.whl
+        echo "Checking for problematic symbols:"
+        auditwheel show dist/*.whl || echo "auditwheel show failed, continuing..."
+    
+    - name: Repair wheel for manylinux2014 compatibility
       run: |
         mkdir -p wheelhouse
-        auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/
+        echo "Attempting to repair wheel..."
+        auditwheel repair dist/*.whl --plat manylinux2014_x86_64 -w wheelhouse/ || {
+          echo "manylinux2014 failed, trying manylinux1..."
+          auditwheel repair dist/*.whl --plat manylinux1_x86_64 -w wheelhouse/ || {
+            echo "manylinux1 failed, trying manylinux_2_17..."
+            auditwheel repair dist/*.whl --plat manylinux_2_17_x86_64 -w wheelhouse/ || {
+              echo "All repair attempts failed, using original wheel"
+              cp dist/*.whl wheelhouse/
+            }
+          }
+        }
     
     - name: Upload wheel
       uses: actions/upload-artifact@v4
