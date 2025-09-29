@@ -41,11 +41,9 @@ RUN echo "🚀 Starting ROS-compatible wheel build..." && \
     echo "🐍 Building for Python 3.11 (ROS compatible)..." && \
     /opt/python/cp311-cp311/bin/pip install --upgrade pip setuptools wheel && \
     /opt/python/cp311-cp311/bin/pip install numpy cython && \
-    echo "📦 Installing ROS dependencies..." && \
-    /opt/python/cp311-cp311/bin/pip install rclpy sensor_msgs geometry_msgs nav_msgs tf2_ros && \
-    echo "🔨 Building pyoctomap wheel with ROS support..." && \
+    echo "🔨 Building pyoctomap wheel (ROS dependencies installed separately)..." && \
     /opt/python/cp311-cp311/bin/python setup.py bdist_wheel && \
-    echo "✅ ROS wheel build completed!"
+    echo "✅ ROS-compatible wheel build completed!"
 
 # Show what libraries are in the wheels before repair
 RUN echo "🔍 Checking libraries in wheels before repair:" && \

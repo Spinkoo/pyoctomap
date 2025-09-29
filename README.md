@@ -42,8 +42,12 @@ PyOctoMap is designed to work seamlessly with ROS (Robot Operating System):
 # Install pyoctomap
 pip install pyoctomap
 
-# Install ROS2 dependencies (optional)
-pip install pyoctomap[ros]
+# Install ROS2 dependencies via ROS package manager
+# On Ubuntu/Debian:
+sudo apt install ros-iron-rclpy ros-iron-sensor-msgs ros-iron-geometry-msgs ros-iron-nav-msgs ros-iron-tf2-ros
+
+# Or source your ROS2 workspace:
+source /opt/ros/iron/setup.bash
 ```
 
 #### ROS1
@@ -51,8 +55,12 @@ pip install pyoctomap[ros]
 # Install pyoctomap
 pip install pyoctomap
 
-# For ROS1, you may need to install additional dependencies
-pip install sensor_msgs geometry_msgs nav_msgs tf2_ros
+# Install ROS1 dependencies via ROS package manager
+# On Ubuntu/Debian:
+sudo apt install ros-noetic-rclpy ros-noetic-sensor-msgs ros-noetic-geometry-msgs ros-noetic-nav-msgs ros-noetic-tf2-ros
+
+# Or source your ROS1 workspace:
+source /opt/ros/noetic/setup.bash
 ```
 
 #### ROS Workspace Integration
@@ -422,9 +430,9 @@ for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
 - open3d (for 3D visualization)
 
 **Optional for ROS integration:**
-- rclpy (ROS2 Python client)
-- sensor_msgs, geometry_msgs, nav_msgs (ROS message types)
-- tf2_ros (ROS2 transforms)
+- ROS2: `ros-iron-rclpy`, `ros-iron-sensor-msgs`, `ros-iron-geometry-msgs`, `ros-iron-nav-msgs`, `ros-iron-tf2-ros`
+- ROS1: `ros-noetic-rclpy`, `ros-noetic-sensor-msgs`, `ros-noetic-geometry-msgs`, `ros-noetic-nav-msgs`, `ros-noetic-tf2-ros`
+- Install via ROS package manager (not pip)
 
 ## Documentation
 
