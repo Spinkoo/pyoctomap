@@ -1,12 +1,12 @@
-name: Build Wheels with Docker
+name: Build ROS-Compatible Wheels with Docker
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to build (e.g., 0.1.16)'
+        description: 'Version to build (e.g., 0.1.24-ros)'
         required: false
-        default: '0.1.16'
+        default: '0.1.24-ros'
 
 jobs:
   build-wheels:
@@ -22,29 +22,30 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
     
-    - name: Build wheel with Docker
+    - name: Build ROS-compatible wheel with Docker
       run: |
-        echo "🐳 Building wheels using Docker (multi-version)..."
-        docker build -f docker/Dockerfile.wheel -t pyoctomap-wheel .
+        echo "🚀 Building ROS-compatible wheels using Docker..."
+        echo "🐳 Using single Python version (3.11) for faster testing..."
+        docker build -f docker/Dockerfile.wheel -t pyoctomap-ros-wheel .
         
-        echo "📦 Extracting wheel from container..."
-        docker run --name temp-container pyoctomap-wheel
-        docker cp temp-container:/wheels/ ./wheels/
-        docker rm temp-container
+        echo "📦 Extracting ROS-compatible wheel from container..."
+        docker run --name temp-ros-container pyoctomap-ros-wheel
+        docker cp temp-ros-container:/wheels/ ./wheels/
+        docker rm temp-ros-container
         
-        echo "✅ Built wheels:"
+        echo "✅ ROS-compatible wheels built:"
         ls -la wheels/
         
         echo "🔍 Filtering to only manylinux wheels..."
         mkdir -p ./manylinux-wheels
         cp wheels/*manylinux*.whl ./manylinux-wheels/ || echo "No manylinux wheels found"
-        echo "Manylinux wheels:"
+        echo "🎉 ROS-compatible manylinux wheels:"
         ls -la ./manylinux-wheels/
     
-    - name: Upload wheels
+    - name: Upload ROS-compatible wheels
       uses: actions/upload-artifact@v4
       with:
-        name: wheel-docker
+        name: ros-wheel-docker
         path: ./manylinux-wheels
 
   build-sdist:
@@ -81,10 +82,10 @@ jobs:
     environment: release
     
     steps:
-    - name: Download wheels
+    - name: Download ROS-compatible wheels
       uses: actions/download-artifact@v4
       with:
-        name: wheel-docker
+        name: ros-wheel-docker
         path: ./wheels
     
     - name: Download source distribution
@@ -93,13 +94,13 @@ jobs:
         name: sdist
         path: ./dist
     
-    - name: Combine packages for upload
+    - name: Combine ROS packages for upload
       run: |
-        echo "📦 Combining wheels and source distribution..."
+        echo "📦 Combining ROS-compatible wheels and source distribution..."
         mkdir -p ./packages
         cp ./wheels/*.whl ./packages/
         cp ./dist/*.tar.gz ./packages/
-        echo "Packages to upload:"
+        echo "🎉 ROS-compatible packages ready for upload:"
         ls -la ./packages/
     
     - name: Publish to PyPI
