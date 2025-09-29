@@ -12,7 +12,6 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 - **Probabilistic Updates**: Stochastic occupancy updates with uncertainty handling
 - **Path Planning**: Ray casting and collision detection
 - **File Operations**: Save/load octree data in binary format
-- **Bundled Libraries**: No external dependencies - all C++ libraries included
 - **Python Integration**: Clean Python interface with NumPy support
 - **Cross-Platform**: Linux native support with Windows compatibility via WSL
 
@@ -50,7 +49,7 @@ pip install pyoctomap
 - Python 3.9, 3.10, 3.11, 3.12
 - Pre-built wheels available for all supported combinations
 
-**Note:** Building from source is not recommended for most users as it requires compiling C++ code and managing dependencies.
+> **🚀 ROS Integration**: ROS/ROS2 integration is currently being developed on the [`ros` branch](https://github.com/Spinkoo/pyoctomap/tree/ros), featuring ROS2 message support and real-time point cloud processing.
 
 ### For Developers
 
