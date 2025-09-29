@@ -1,18 +1,21 @@
 # Multi-version Dockerfile for building pyoctomap wheels
 FROM quay.io/pypa/manylinux_2_28_x86_64:2025.09.19-1 AS builder
 
-# Install build dependencies
-RUN yum install -y cmake3 make gcc gcc-c++ git
+# Install build dependencies including ROS-compatible libraries
+RUN yum install -y cmake3 make gcc gcc-c++ git \
+    && yum clean all
 
 # Copy source code
 COPY . /project
 WORKDIR /project
 
-# Build OctoMap C++ library
+# Build OctoMap C++ library with ROS-compatible flags
 RUN cd src/octomap && \
     mkdir -p build && \
     cd build && \
-    cmake3 .. -DCMAKE_BUILD_TYPE=Release && \
+    cmake3 .. -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_CXX_STANDARD=17 \
+              -DCMAKE_POSITION_INDEPENDENT_CODE=ON && \
     make -j$(nproc) && \
     make install && \
     ldconfig

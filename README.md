@@ -18,25 +18,6 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 
 ## Installation
 
-**Linux / WSL (Windows Subsystem for Linux):**
-```bash
-# Clone the repository with submodules
-git clone --recursive https://github.com/Spinkoo/pyoctomap.git
-cd pyoctomap
-
-# Build and install OctoMap C++ library
-cd src/octomap
-mkdir build && cd build
-cmake .. && make && sudo make install
-
-# Return to main project and run automated build script
-cd ../../..
-chmod +x build.sh
-./build.sh
-```
-
-## Installation
-
 ### Quick Install (Recommended)
 
 For most users, simply install the pre-built wheel:
@@ -51,6 +32,37 @@ pip install pyoctomap
 - Pre-built wheels available for all supported combinations
 
 **Note:** Building from source is not recommended for most users as it requires compiling C++ code and managing dependencies.
+
+### ROS/ROS2 Integration
+
+PyOctoMap is designed to work seamlessly with ROS (Robot Operating System):
+
+#### ROS2 (Recommended)
+```bash
+# Install pyoctomap
+pip install pyoctomap
+
+# Install ROS2 dependencies (optional)
+pip install pyoctomap[ros]
+```
+
+#### ROS1
+```bash
+# Install pyoctomap
+pip install pyoctomap
+
+# For ROS1, you may need to install additional dependencies
+pip install sensor_msgs geometry_msgs nav_msgs tf2_ros
+```
+
+#### ROS Workspace Integration
+```bash
+# In your ROS workspace
+cd ~/ros2_ws/src
+git clone https://github.com/Spinkoo/pyoctomap.git
+cd ~/ros2_ws
+colcon build --packages-select pyoctomap
+```
 
 ### For Developers
 
@@ -162,6 +174,84 @@ print(f"Added {success_count} points with individual origins")
 | Batch processing | 15,000 pts/sec | 60,000 pts/sec | 4x |
 
 ## Examples
+
+### ROS2 Integration Example
+
+```python
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import PointCloud2
+from nav_msgs.msg import OccupancyGrid
+import pyoctomap
+import numpy as np
+
+class OctoMapNode(Node):
+    def __init__(self):
+        super().__init__('octomap_node')
+        self.octree = pyoctomap.OcTree(0.1)  # 10cm resolution
+        
+        # ROS2 subscribers and publishers
+        self.subscription = self.create_subscription(
+            PointCloud2,
+            '/camera/depth/points',
+            self.pointcloud_callback,
+            10
+        )
+        self.occupancy_pub = self.create_publisher(
+            OccupancyGrid,
+            '/octomap/occupancy_grid',
+            10
+        )
+        
+    def pointcloud_callback(self, msg):
+        # Convert PointCloud2 to numpy array
+        points = self.pointcloud2_to_array(msg)
+        
+        # Add points to octree with ray casting
+        sensor_origin = np.array([0.0, 0.0, 1.5])
+        success_count = self.octree.addPointCloudWithRayCasting(points, sensor_origin)
+        
+        self.get_logger().info(f'Added {success_count} points to octree')
+        
+        # Publish occupancy grid
+        self.publish_occupancy_grid()
+    
+    def publish_occupancy_grid(self):
+        # Convert octree to 2D occupancy grid
+        grid_msg = OccupancyGrid()
+        grid_msg.header.frame_id = 'map'
+        grid_msg.info.resolution = 0.1
+        grid_msg.info.width = 100
+        grid_msg.info.height = 100
+        
+        # Fill occupancy data from octree
+        occupancy_data = []
+        for y in range(100):
+            for x in range(100):
+                world_x = x * 0.1 - 5.0
+                world_y = y * 0.1 - 5.0
+                world_z = 0.5  # Fixed height
+                
+                node = self.octree.search([world_x, world_y, world_z])
+                if node and self.octree.isNodeOccupied(node):
+                    occupancy_data.append(100)  # Occupied
+                else:
+                    occupancy_data.append(0)    # Free
+        
+        grid_msg.data = occupancy_data
+        self.occupancy_pub.publish(grid_msg)
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = OctoMapNode()
+    rclpy.spin(node)
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+### Standard Examples
 
 See runnable demos in `examples/`:
 - `examples/basic_test.py` — smoke test for core API
@@ -330,6 +420,11 @@ for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
 **Optional for visualization:**
 - matplotlib (for 2D plotting)
 - open3d (for 3D visualization)
+
+**Optional for ROS integration:**
+- rclpy (ROS2 Python client)
+- sensor_msgs, geometry_msgs, nav_msgs (ROS message types)
+- tf2_ros (ROS2 transforms)
 
 ## Documentation
 
