@@ -38,3 +38,6 @@ Lisa/
 unit_test/test_ray_casting.py
 #environments
 testenv/
+
+# Cursor IDE rules (local development configuration)
+.cursor/
