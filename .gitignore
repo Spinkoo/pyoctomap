@@ -32,6 +32,7 @@ octomap/dist/
 octomap/octomap.egg-info/
 octomap/octomap.egg-info/
 Prompet for readme.md
+pyoctomap/octomap.cpp
 
 #work related
 Lisa/
@@ -41,3 +42,4 @@ testenv/
 
 # Cursor IDE rules (local development configuration)
 .cursor/
+unit_test/precomit_test.py
