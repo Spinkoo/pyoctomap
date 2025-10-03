@@ -17,6 +17,25 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 
 ## Installation
 
+### Quick Install (Recommended)
+
+For most users, simply install the pre-built wheel:
+
+```bash
+pip install pyoctomap
+```
+
+**Supported Platforms:**
+- Linux (manylinux2014 compatible)
+- Python 3.9, 3.10, 3.11, 3.12
+- Pre-built wheels available for all supported combinations
+
+> **🚀 ROS Integration**: ROS/ROS2 integration is currently being developed on the [`ros` branch](https://github.com/Spinkoo/pyoctomap/tree/ros), featuring ROS2 message support and real-time point cloud processing.
+
+### Building from Source
+
+If you need to build from source or create custom wheels, we provide a Docker-based build system:
+
 **Linux / WSL (Windows Subsystem for Linux):**
 ```bash
 # Clone the repository with submodules
@@ -33,27 +52,6 @@ cd ../../..
 chmod +x build.sh
 ./build.sh
 ```
-
-## Installation
-
-### Quick Install (Recommended)
-
-For most users, simply install the pre-built wheel:
-
-```bash
-pip install pyoctomap
-```
-
-**Supported Platforms:**
-- Linux (manylinux2014 compatible)
-- Python 3.9, 3.10, 3.11, 3.12
-- Pre-built wheels available for all supported combinations
-
-> **🚀 ROS Integration**: ROS/ROS2 integration is currently being developed on the [`ros` branch](https://github.com/Spinkoo/pyoctomap/tree/ros), featuring ROS2 message support and real-time point cloud processing.
-
-### For Developers
-
-If you need to build from source or create custom wheels, we provide a Docker-based build system:
 
 ```bash
 # Build wheels for all supported Python versions
