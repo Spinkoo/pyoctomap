@@ -48,4 +48,6 @@ unit_test/precomit_test.py
 # Benchmarking results (local only)
 benchmarks/
 
+*.bt
+
 
