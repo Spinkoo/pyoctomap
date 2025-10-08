@@ -133,6 +133,7 @@ cdef extern from "include_and_setting.h" namespace "octomap":
         bool isNodeAtThreshold(OcTreeNode& occupancyNode)
         void insertPointCloud(Pointcloud& scan, point3d& sensor_origin,
                               double maxrange, bool lazy_eval, bool discretize)
+        void insertPointCloudRays(const Pointcloud& scan, const point3d& sensor_origin, double maxrange, bool lazy_eval)
         OccupancyOcTreeBase[OcTreeNode].tree_iterator begin_tree(unsigned char maxDepth) except +
         OccupancyOcTreeBase[OcTreeNode].tree_iterator end_tree() except +
         OccupancyOcTreeBase[OcTreeNode].leaf_iterator begin_leafs(unsigned char maxDepth) except +

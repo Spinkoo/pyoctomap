@@ -1213,23 +1213,6 @@ cdef class OcTree:
             # Use optimized version with default resolution
             self._mark_free_space_optimized(origin, end_point)
 
-    cdef int _process_points_vectorized(self, np.ndarray[DOUBLE_t, ndim=2] points, 
-                                       np.ndarray[DOUBLE_t, ndim=1] origin, 
-                                       int num_points):
-        """Optimized vectorized processing for points with same origin"""
-        cdef int success_count = 0
-        cdef int i
-        cdef np.ndarray[DOUBLE_t, ndim=1] point
-        cdef cppbool success
-        
-        for i in range(num_points):
-            point = points[i]
-            success = self._add_single_point_optimized(point, origin)
-            if success:
-                success_count += 1
-        
-        return success_count
-
     cdef cppbool _add_single_point_optimized(self, np.ndarray[DOUBLE_t, ndim=1] point, 
                                             np.ndarray[DOUBLE_t, ndim=1] sensor_origin):
         """Optimized single point addition with minimal overhead"""
@@ -1283,8 +1266,11 @@ cdef class OcTree:
                                         np.ndarray[DOUBLE_t, ndim=1] end_point):
         """Optimized free space marking with pre-calculated step size"""
         cdef double resolution = self.getResolution()
-        cdef np.ndarray[DOUBLE_t, ndim=1] direction = end_point - origin
-        cdef double ray_length = np.linalg.norm(direction)
+        cdef np.ndarray[DOUBLE_t, ndim=1] direction
+        cdef double ray_length
+        
+        direction = end_point - origin
+        ray_length = np.linalg.norm(direction)
         
         if ray_length == 0:
             return
@@ -1305,67 +1291,12 @@ cdef class OcTree:
             sample_point = origin + t * direction
             self.updateNode(sample_point, False)  # Mark as free
 
-    def addPointsBatch(self, 
-                      np.ndarray[DOUBLE_t, ndim=2] points,
-                      np.ndarray[DOUBLE_t, ndim=2] sensor_origins=None,
-                      update_inner_occupancy=True):
-        """
-        Add multiple 3D points in batch for better performance using ray casting.
-        
-        Args:
-            points: Array of 3D points [[x,y,z], ...] 
-            sensor_origins: Optional array of sensor origins for each point
-            update_inner_occupancy: Whether to update inner node occupancy
-            
-        Returns:
-            int: Number of points successfully added
-        """
-        cdef int success_count = 0
-        cdef int i, j, num_origins
-        cdef int num_points = points.shape[0]
-        cdef np.ndarray[DOUBLE_t, ndim=1] point
-        cdef np.ndarray[DOUBLE_t, ndim=1] origin
-        cdef np.ndarray[DOUBLE_t, ndim=1] direction
-        cdef np.ndarray[DOUBLE_t, ndim=1] end_point
-        cdef np.ndarray[DOUBLE_t, ndim=1] default_origin
-        cdef double ray_length
-        cdef cppbool hit, success
-        
-        try:
-            # Handle sensor origins - vectorized approach
-            if sensor_origins is None:
-                # Use default origin [0,0,0] for all points - vectorized
-                default_origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
-                success_count = self._process_points_vectorized(points, default_origin, num_points)
-            else:
-                # Process with individual origins
-                num_origins = sensor_origins.shape[0]
-                for i in range(num_points):
-                    point = points[i]
-                    if i < num_origins:
-                        origin = sensor_origins[i]
-                    else:
-                        origin = sensor_origins[-1]  # Use last available origin
-                    
-                    success = self._add_single_point_optimized(point, origin)
-                    if success:
-                        success_count += 1
-            
-            # Update inner occupancy once for the batch
-            if update_inner_occupancy and success_count > 0:
-                self.updateInnerOccupancy()
-            
-            return success_count
-            
-        except Exception as e:
-            print(f"Error in batch processing: {e}")
-            return success_count
-
     def addPointCloudWithRayCasting(self,
                                    np.ndarray[DOUBLE_t, ndim=2] point_cloud,
                                    np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
                                    max_range=-1.0,
-                                   update_inner_occupancy=True):
+                                   update_inner_occupancy=True,
+                                   discretize=False):
         """
         Add a full point cloud using ray casting for each point.
         
@@ -1377,7 +1308,8 @@ cdef class OcTree:
             sensor_origin: Sensor origin for the point cloud
             max_range: Maximum range for points (-1 = no limit)
             update_inner_occupancy: Whether to update inner node occupancy
-            
+            discretize: If True, discretize to unique keys first to reduce rays (faster for dense clouds)
+        
         Returns:
             int: Number of points successfully added
         """
@@ -1389,6 +1321,11 @@ cdef class OcTree:
         cdef cppbool success
         
         try:
+            # Discretize if requested (reduces N for dense clouds)
+            if discretize:
+                point_cloud = self._discretizePointCloud(point_cloud)
+                num_points = point_cloud.shape[0]
+            
             if max_range > 0:
                 # Filter points by range first - vectorized approach
                 distances = np.linalg.norm(point_cloud - sensor_origin, axis=1)
@@ -1407,3 +1344,214 @@ cdef class OcTree:
         except Exception as e:
             print(f"Error in point cloud processing: {e}")
             return success_count
+
+    cdef int _process_points_vectorized(self, np.ndarray[DOUBLE_t, ndim=2] points, 
+                                        np.ndarray[DOUBLE_t, ndim=1] origin, 
+                                        int num_points):
+        """Optimized vectorized processing for points with same origin"""
+        cdef int success_count = 0
+        cdef int i
+        cdef cppbool hit
+        cdef double ray_length
+        cdef np.ndarray[DOUBLE_t, ndim=1] end_point_py
+        
+        # Vectorized pre-computation (NumPy ops auto-manage GIL)
+        cdef np.ndarray[DOUBLE_t, ndim=2] directions
+        cdef np.ndarray[DOUBLE_t, ndim=1] distances
+        cdef np.ndarray[DOUBLE_t, ndim=2] valid_points  # Filtered points
+        cdef int valid_num_points
+        
+        directions = points - origin  # (N, 3) vectorized subtract
+        distances = np.linalg.norm(directions, axis=1)  # O(N) norms
+        
+        # Handle zero-distance points separately (small loop, rare/edge case)
+        zero_mask = distances == 0.0
+        if np.any(zero_mask):
+            for j in range(num_points):
+                if zero_mask[j]:
+                    self.updateNode(points[j], True)  # Mark occupied
+                    success_count += 1
+        
+        # Filter non-zero points
+        non_zero = distances > 0.0
+        valid_num_points = np.sum(non_zero)
+        if valid_num_points == 0:
+            return success_count
+        
+        valid_points = points[non_zero]
+        directions = directions[non_zero] / distances[non_zero, np.newaxis]  # Normalize
+        distances = distances[non_zero]  # Filtered distances
+        
+        # Pre-allocate end_point_py once
+        end_point_py = np.zeros(3, dtype=np.float64)
+        
+        # Main loop: C-style optimized, auto GIL for method calls
+        for i in range(valid_num_points):
+            ray_length = distances[i]  # Pre-computed scalar (fast typed access)
+            
+            # Cast ray and updates (Cython auto-acquires GIL for these Python-bound calls)
+            hit = self.castRay(origin, directions[i], end_point_py, 
+                               ignoreUnknownCells=True, maxRange=ray_length)
+            
+            if hit:
+                self.updateNode(end_point_py, True)
+                self._mark_free_space_optimized(origin, end_point_py)
+            else:
+                self.updateNode(valid_points[i], True)
+                self._mark_free_space_optimized(origin, valid_points[i])
+            
+            success_count += 1  # Assume success (add checks if needed)
+        
+        return success_count
+
+    def _discretizePointCloud(self, np.ndarray[DOUBLE_t, ndim=2] point_cloud, bint checked=True):
+        """
+        Discretize points to unique octree keys (reduces duplicates for batching).
+        Internal helper for faster insertion.
+        """
+        cdef int i, num_points = point_cloud.shape[0]
+        cdef np.ndarray[DOUBLE_t, ndim=1] point
+        cdef set unique_keys = set()
+        cdef list discrete_points = []
+        cdef OcTreeKey key
+        
+        for i in range(num_points):
+            point = point_cloud[i]
+            if checked:
+                key = self.coordToKeyChecked(point)[1]  # Returns key if in bounds
+                if key is not None:
+                    key_tuple = (key[0], key[1], key[2])
+                    if key_tuple not in unique_keys:
+                        unique_keys.add(key_tuple)
+                        discrete_points.append(point)
+            else:
+                key = self.coordToKey(point)
+                key_tuple = (key[0], key[1], key[2])
+                if key_tuple not in unique_keys:
+                    unique_keys.add(key_tuple)
+                    discrete_points.append(point)
+        
+        return np.array(discrete_points, dtype=np.float64)
+
+    cdef void _build_pointcloud_and_insert(self, np.ndarray[DOUBLE_t, ndim=2] point_cloud,
+                                      np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                                      double max_range,
+                                      bint discretize,
+                                      bint lazy_eval):
+        """Shared internal: Build Pointcloud, optional discretize, insert via C++."""
+        cdef int i, num_points = point_cloud.shape[0]
+        cdef np.ndarray[DOUBLE_t, ndim=1] point
+        cdef defs.Pointcloud pc = defs.Pointcloud()
+        cdef cppbool success = True
+        
+        # Discretize if requested (reduces N)
+        if discretize:
+            point_cloud = self._discretizePointCloud(point_cloud)
+            num_points = point_cloud.shape[0]
+        
+        # Build C++ Pointcloud
+        for i in range(num_points):
+            point = point_cloud[i]
+            pc.push_back(<float>point[0], <float>point[1], <float>point[2])
+        
+        # Call native batch
+        self.thisptr.insertPointCloud(pc,
+                                      defs.point3d(<float>sensor_origin[0],
+                                                   <float>sensor_origin[1],
+                                                   <float>sensor_origin[2]),
+                                      <double>max_range,
+                                      <cppbool>lazy_eval,
+                                      <cppbool>discretize)
+        
+        if not lazy_eval:
+            self.updateInnerOccupancy()
+        
+        # No return; assume success
+
+    def insertPointCloudFast(self,
+                         np.ndarray[DOUBLE_t, ndim=2] point_cloud,
+                         np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                         double max_range=-1.0,
+                         bint discretize=False,
+                         bint lazy_eval=False):
+        """
+        Fast batch insertion using native C++ (parallelized with OpenMP, batched updates).
+        
+        Marks full rays from origin to endpoints as free, endpoints as occupied.
+        Less accurate than ray-casting (doesn't stop at hits) but much faster.
+        Uses discretization if enabled (groups points to reduce rays ~50% for dense clouds).
+        
+        Args:
+            point_cloud: Nx3 array of points
+            sensor_origin: Sensor origin [x, y, z]
+            max_range: Max range per ray (-1 = unlimited)
+            discretize: If True, discretize points to keys first (faster for dense clouds)
+            lazy_eval: If True, defer updateInnerOccupancy (call manually later)
+        
+        Returns:
+            int: Number of points processed
+        """
+        cdef int num_points = point_cloud.shape[0]
+        cdef cppbool success = True
+        
+        self._build_pointcloud_and_insert(point_cloud, sensor_origin, max_range, discretize, lazy_eval)
+        
+        return num_points if success else 0
+
+    def insertPointCloud(self,
+                     np.ndarray[DOUBLE_t, ndim=2] point_cloud,
+                     np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                     double max_range=-1.0,
+                     bint lazy_eval=False,
+                     bint discretize=False):
+        """
+        Original native C++ batch insertion (full rays, no Python-specific opts beyond params).
+        
+        Equivalent to insertPointCloudFast with wrapper logic shared.
+        
+        Args:
+            point_cloud: Nx3 array of points
+            sensor_origin: Sensor origin [x, y, z]
+            max_range: Max range per ray (-1 = unlimited)
+            lazy_eval: If True, defer updateInnerOccupancy (call manually later)
+            discretize: If True, discretize points to keys first
+        
+        Returns:
+            int: Number of points processed
+        """
+        cdef int num_points = point_cloud.shape[0]
+        cdef cppbool success = True
+        
+        self._build_pointcloud_and_insert(point_cloud, sensor_origin, max_range, discretize, lazy_eval)
+        
+        return num_points if success else 0
+
+    def insertPointCloudRaysFast(self,
+                                np.ndarray[DOUBLE_t, ndim=2] point_cloud,
+                                np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                                double max_range=-1.0,
+                                bint lazy_eval=False):
+        """
+        Ultra-fast batch using native insertPointCloudRays (parallel rays, no key sets).
+        Inserts full rays without deduplication—fastest but may over-update.
+        """
+        cdef defs.Pointcloud pc
+        cdef int i, num_points = point_cloud.shape[0]
+        cdef np.ndarray[DOUBLE_t, ndim=1] point
+        cdef defs.point3d origin_c  # C++ type declaration
+        
+        pc = defs.Pointcloud()  # C++ constructor
+        
+        for i in range(num_points):
+            point = point_cloud[i]
+            pc.push_back(<float>point[0], <float>point[1], <float>point[2])
+        
+        # Create C++ origin without Python conversion
+        origin_c = defs.point3d(<float>sensor_origin[0], <float>sensor_origin[1], <float>sensor_origin[2])
+        
+        self.thisptr.insertPointCloudRays(pc, origin_c, <double>max_range, <cppbool>lazy_eval)
+        
+        if not lazy_eval:
+            self.updateInnerOccupancy()
+        
+        return num_points

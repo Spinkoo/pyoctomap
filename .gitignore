@@ -16,6 +16,7 @@ __pycache__/
 build/
 dist/
 *.egg-info/
+*.so
 
 #Open3D
 Open3D/
@@ -43,3 +44,8 @@ testenv/
 # Cursor IDE rules (local development configuration)
 .cursor/
 unit_test/precomit_test.py
+
+# Benchmarking results (local only)
+benchmarks/
+
+
