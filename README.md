@@ -130,25 +130,33 @@ success_count = tree.addPointCloudWithRayCasting(point_cloud, sensor_origin)
 print(f"Added {success_count} points")
 ```
 
-#### Batch Operations
+### Batch Operations
 
-**Batch Points with Same Origin:**
+For efficient batch processing of point clouds, PyOctoMap provides both precise and fast options:
+
+**Precise Batch Ray-Casting:**
 ```python
-# Efficient batch processing
-points = np.random.rand(5000, 3) * 10
-sensor_origin = np.array([0.0, 0.0, 1.5])
-success_count = tree.addPointsBatch(points, update_inner_occupancy=True)
-print(f"Added {success_count} points in batch")
+# Accurate batch insertion with ray-casting (hit-stopping for free/occupied)
+points = np.random.uniform(-5, 5, (1000, 3))
+origin = np.array([0., 0., 0.], dtype=np.float64)
+success_count = tree.addPointCloudWithRayCasting(points, origin, discretize=True)
+# discretize=True reduces duplicates for dense clouds
 ```
 
-**Batch Points with Different Origins:**
+**Fast Native Batching:**
 ```python
-# Each point can have different sensor origin
-points = np.random.rand(100, 3) * 10
-origins = np.random.rand(100, 3) * 2
-success_count = tree.addPointsBatch(points, origins)
-print(f"Added {success_count} points with individual origins")
+# Fast C++ batch (full rays, optional discretization and lazy evaluation)
+points = np.random.uniform(-5, 5, (1000, 3))
+origin = np.array([0., 0., 0.], dtype=np.float64)
+tree.insertPointCloudFast(points, origin, discretize=False, lazy_eval=True)
+tree.updateInnerOccupancy()  # Manual after lazy
+
+# Equivalent raw C++ access (identical to above)
+tree.insertPointCloud(points, origin, discretize=False, lazy_eval=True)
+tree.updateInnerOccupancy()
 ```
+
+Note: `insertPointCloud` and `insertPointCloudFast` share the same underlying logic (consolidated for efficiency) – use either for native batching. For precision-critical tasks, prefer `addPointCloudWithRayCasting`; for speed, use natives with `lazy_eval=True` for deferral. All support NumPy arrays and `max_range` clipping.
 
 ### Performance Comparison
 
@@ -295,27 +303,44 @@ else:
 
 ### Iterator Operations
 
+PyOctoMap provides three types of iterators for different use cases:
+
+#### Tree Iterator (`begin_tree`) - All Nodes
 ```python
-# Iterate over all nodes
+# Iterate over ALL nodes (inner + leaf nodes) - slower but complete
 for node_it in tree.begin_tree():
     coord = node_it.getCoordinate()
     depth = node_it.getDepth()
     size = node_it.getSize()
     is_leaf = node_it.isLeaf()
+    
+    # Use for: tree structure analysis, debugging, inner node operations
+    if not is_leaf:
+        print(f"Inner node at depth {depth}, size {size:.2f}m")
+```
 
-# Iterate over leaf nodes only
+#### Leaf Iterator (`begin_leafs`) - Leaf Nodes Only  
+```python
+# Iterate over LEAF nodes only - faster for occupancy queries
 for leaf_it in tree.begin_leafs():
     coord = leaf_it.getCoordinate()
     occupied = tree.isNodeOccupied(leaf_it)
     if occupied:
         print(f"Occupied leaf at {coord}")
+    
+    # Use for: standard occupancy operations, fast iteration
+```
 
-# Iterate over bounding box
+#### Bounding Box Iterator (`begin_leafs_bbx`) - Spatial Filtering
+```python
+# Iterate over leaf nodes within a bounding box
 bbx_min = np.array([0.0, 0.0, 0.0])
 bbx_max = np.array([5.0, 5.0, 5.0])
 for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
     coord = bbx_it.getCoordinate()
     print(f"Node in BBX: {coord}")
+    
+    # Use for: region-specific analysis, spatial queries
 ```
 
 ## Requirements

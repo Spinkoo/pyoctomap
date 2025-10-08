@@ -198,7 +198,7 @@ class SequentialOccupancyGrid:
             points: Array of 3D points [[x,y,z], ...] 
             sensor_origins: Optional array of sensor origins for each point
             update_inner_occupancy: Whether to update inner node occupancy
-            
+        
         Returns:
             int: Number of points successfully added
         """
@@ -223,7 +223,7 @@ class SequentialOccupancyGrid:
                 sensor_origins = np.tile(self.sensor_origin, (len(points), 1))
             
             # Use the new integrated batch method from octomap
-            success_count = self.tree.addPointsBatch(points, sensor_origins, update_inner_occupancy)
+            success_count = self.tree.addPointCloudWithRayCasting(points, self.sensor_origin, update_inner_occupancy=update_inner_occupancy)
             
             # Update statistics
             batch_time = time.time() - start_time
