@@ -55,7 +55,7 @@ dev = [
 [project.urls]
 Homepage = "https://octomap.github.io/"
 Repository = "https://github.com/Spinkoo/pyoctomap"
-Documentation = "https://github.com/Spinkoo/pyoctomap#readme"
+Documentation = "https://github.com/Spinkoo/pyoctomap/tree/main/docs"
 "Bug Tracker" = "https://github.com/Spinkoo/pyoctomap/issues"
 
 [project.scripts]
