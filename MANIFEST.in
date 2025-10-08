@@ -16,6 +16,7 @@ recursive-include docs *.md
 recursive-include src/octomap/octomap/include *.h *.hpp *.hxx
 recursive-include src/octomap/dynamicEDT3D/include *.h *.hpp *.hxx
 recursive-include src/octomap/octovis/include *.h *.hpp *.hxx
+recursive-include src/octomap/lib *.so *.so.* *.a *.dll *.dylib
 
 # Exclude build artifacts and external dependencies
 prune build
