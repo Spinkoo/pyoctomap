@@ -57,16 +57,10 @@ cdef extern from "OcTreeNode.h" namespace "octomap":
         void updateOccupancyChildren()
 
 cdef extern from "OcTreeKey.h" namespace "octomap":
-    cdef cppclass OcTreeKey:
-        OcTreeKey() except +
-        OcTreeKey(unsigned short int a, unsigned short int b, unsigned short int c) except +
-        OcTreeKey(OcTreeKey& other)
-        unsigned short int& operator[](unsigned int i)
-        bool operator==(OcTreeKey& other)
-        bool operator!=(OcTreeKey& other)
-        unsigned short int& operator[](unsigned int i)
-        unsigned short int k[3]
-    OcTreeKey computeIndexKey(unsigned int level, const OcTreeKey& key)
+    ctypedef unsigned short int key_type
+    cdef struct OcTreeKey:
+        key_type k[3]
+    OcTreeKey computeIndexKey(key_type level, const OcTreeKey& key)
     unsigned int computeChildIdx(const OcTreeKey& key, int depth)
 cdef extern from "include_and_setting.h" namespace "octomap":
     cdef cppclass OccupancyOcTreeBase[T]:
