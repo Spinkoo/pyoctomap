@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyOctoMap - Python 3D Occupancy Mapping</title>
+    <meta name="description" content="A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 3D occupancy mapping capabilities for robotics and computer vision applications.">
+    <meta name="keywords" content="octomap, occupancy mapping, robotics, 3d mapping, python, computer vision">
+    <meta name="author" content="Spinkoo">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pyoctomap.github.io/">
+    <meta property="og:title" content="PyOctoMap - Python 3D Occupancy Mapping">
+    <meta property="og:description" content="A comprehensive Python wrapper for the OctoMap C++ library with bundled shared libraries for easy deployment.">
+    <meta property="og:image" content="https://pyoctomap.github.io/images/octomap_core.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://pyoctomap.github.io/">
+    <meta property="twitter:title" content="PyOctoMap - Python 3D Occupancy Mapping">
+    <meta property="twitter:description" content="A comprehensive Python wrapper for the OctoMap C++ library with bundled shared libraries for easy deployment.">
+    <meta property="twitter:image" content="https://pyoctomap.github.io/images/octomap_core.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            max-width: 800px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 2rem 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .btn-primary:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Code Section */
+        .code-section {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 4rem 0;
+        }
+
+        .code-container {
+            background: #2d2d2d;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid #404040;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #404040;
+        }
+
+        .code-title {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #5a6fd8;
+        }
+
+        pre {
+            margin: 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .code-comment {
+            color: #6a9955;
+        }
+
+        .code-string {
+            color: #ce9178;
+        }
+
+        .code-keyword {
+            color: #569cd6;
+        }
+
+        .code-function {
+            color: #dcdcaa;
+        }
+
+        /* Performance Section */
+        .performance {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .perf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .perf-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .perf-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .perf-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Installation Section */
+        .installation {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .install-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ecf0f1;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 2rem;
+            color: #bdc3c7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Syntax highlighting */
+        .python .keyword { color: #569cd6; }
+        .python .string { color: #ce9178; }
+        .python .comment { color: #6a9955; }
+        .python .function { color: #dcdcaa; }
+        .python .number { color: #b5cea8; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="logo">PyOctoMap</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#documentation">Documentation</a></li>
+                <li><a href="https://github.com/Spinkoo/pyoctomap" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in-up">PyOctoMap</h1>
+            <p class="subtitle fade-in-up">A comprehensive Python wrapper for the OctoMap C++ library with bundled shared libraries for easy deployment</p>
+            
+            <img src="images/octomap_core.png" alt="PyOctoMap Core Visualization" class="hero-image fade-in-up">
+            
+            <div class="cta-buttons fade-in-up">
+                <a href="#installation" class="btn btn-primary">Get Started</a>
+                <a href="https://github.com/Spinkoo/pyoctomap" class="btn btn-secondary" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why PyOctoMap?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Easy Installation</h3>
+                    <p>Pre-built wheels with bundled shared libraries. No complex C++ compilation required. Just <code>pip install pyoctomap</code> and you're ready to go!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>High Performance</h3>
+                    <p>Optimized Cython bindings with vectorized operations. 4-5x faster than traditional Python loops for batch operations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Production Ready</h3>
+                    <p>Comprehensive API with ray casting, path planning, file I/O, and advanced tree operations. Built for robotics and computer vision applications.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Rich Visualization</h3>
+                    <p>Seamless integration with Open3D and matplotlib for 2D and 3D visualization. Perfect for debugging and analysis.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Cross-Platform</h3>
+                    <p>Linux native support with Windows compatibility via WSL. Python 3.9+ support across all major platforms.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Well Documented</h3>
+                    <p>Comprehensive documentation with examples, API reference, and performance guides. Easy to learn and integrate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Examples Section -->
+    <section id="examples" class="code-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Quick Start</h2>
+            
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="code-title">Basic Usage</span>
+                    <button class="copy-btn" onclick="copyCode('basic-code')">Copy</button>
+                </div>
+                <pre id="basic-code"><code><span class="code-comment"># Create an octree with 0.1m resolution</span>
+<span class="code-keyword">import</span> pyoctomap
+<span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np
+
+tree = pyoctomap.<span class="code-function">OcTree</span>(<span class="code-number">0.1</span>)
+
+<span class="code-comment"># Add occupied points</span>
+tree.<span class="code-function">updateNode</span>([<span class="code-number">1.0</span>, <span class="code-number">2.0</span>, <span class="code-number">3.0</span>], <span class="code-keyword">True</span>)
+tree.<span class="code-function">updateNode</span>([<span class="code-number">1.1</span>, <span class="code-number">2.1</span>, <span class="code-number">3.1</span>], <span class="code-keyword">True</span>)
+
+<span class="code-comment"># Add free space</span>
+tree.<span class="code-function">updateNode</span>([<span class="code-number">0.5</span>, <span class="code-number">0.5</span>, <span class="code-number">0.5</span>], <span class="code-keyword">False</span>)
+
+<span class="code-comment"># Check occupancy</span>
+node = tree.<span class="code-function">search</span>([<span class="code-number">1.0</span>, <span class="code-number">2.0</span>, <span class="code-number">3.0</span>])
+<span class="code-keyword">if</span> node <span class="code-keyword">and</span> tree.<span class="code-function">isNodeOccupied</span>(node):
+    <span class="code-function">print</span>(<span class="code-string">"Point is occupied!"</span>)
+
+<span class="code-comment"># Save to file</span>
+tree.<span class="code-function">write</span>(<span class="code-string">"my_map.bt"</span>)</code></pre>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="code-title">Advanced: Ray Casting with Point Clouds</span>
+                    <button class="copy-btn" onclick="copyCode('advanced-code')">Copy</button>
+                </div>
+                <pre id="advanced-code"><code><span class="code-comment"># High-performance batch processing with ray casting</span>
+points = np.<span class="code-function">random</span>.<span class="code-function">uniform</span>(-<span class="code-number">5</span>, <span class="code-number">5</span>, (<span class="code-number">1000</span>, <span class="code-number">3</span>))
+origin = np.<span class="code-function">array</span>([<span class="code-number">0.</span>, <span class="code-number">0.</span>, <span class="code-number">0.</span>], dtype=np.<span class="code-function">float64</span>)
+
+<span class="code-comment"># Precise batch ray-casting (hit-stopping for free/occupied)</span>
+success_count = tree.<span class="code-function">addPointCloudWithRayCasting</span>(points, origin, discretize=<span class="code-keyword">True</span>)
+
+<span class="code-comment"># Fast native batching (full rays, optional discretization)</span>
+tree.<span class="code-function">insertPointCloudFast</span>(points, origin, discretize=<span class="code-keyword">False</span>, lazy_eval=<span class="code-keyword">True</span>)
+tree.<span class="code-function">updateInnerOccupancy</span>()  <span class="code-comment"># Manual after lazy</span>
+
+<span class="code-comment"># Iterate over occupancy data</span>
+<span class="code-keyword">for</span> leaf_it <span class="code-keyword">in</span> tree.<span class="code-function">begin_leafs</span>():
+    coord = leaf_it.<span class="code-function">getCoordinate</span>()
+    <span class="code-keyword">if</span> tree.<span class="code-function">isNodeOccupied</span>(leaf_it):
+        <span class="code-function">print</span>(<span class="code-string">f"Occupied leaf at {coord}"</span>)</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Section -->
+    <section class="performance">
+        <div class="container">
+            <h2 class="section-title">Performance Benchmarks</h2>
+            <div class="perf-grid">
+                <div class="perf-card">
+                    <div class="perf-number">4-5x</div>
+                    <div class="perf-label">Faster than traditional Python loops</div>
+                </div>
+                <div class="perf-card">
+                    <div class="perf-number">60,000</div>
+                    <div class="perf-label">Points processed per second</div>
+                </div>
+                <div class="perf-card">
+                    <div class="perf-number">0.1m</div>
+                    <div class="perf-label">Sub-meter resolution support</div>
+                </div>
+                <div class="perf-card">
+                    <div class="perf-number">99%</div>
+                    <div class="perf-label">Use cases covered by leaf iterators</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="installation" class="installation">
+        <div class="container">
+            <h2 class="section-title">Installation</h2>
+            
+            <div class="install-tabs">
+                <div class="tab active" onclick="showTab('pip')">pip (Recommended)</div>
+                <div class="tab" onclick="showTab('source')">From Source</div>
+            </div>
+
+            <div id="pip" class="tab-content active">
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-title">Quick Install</span>
+                        <button class="copy-btn" onclick="copyCode('pip-code')">Copy</button>
+                    </div>
+                    <pre id="pip-code"><code><span class="code-comment"># Install pre-built wheel (recommended)</span>
+pip install pyoctomap
+
+<span class="code-comment"># With visualization dependencies</span>
+pip install pyoctomap[visualization]
+
+<span class="code-comment"># For development</span>
+pip install pyoctomap[dev]</code></pre>
+                </div>
+                <p style="text-align: center; margin-top: 1rem; color: #666;">
+                    <strong>Supported:</strong> Python 3.9, 3.10, 3.11, 3.12 | Linux (manylinux2014) | Windows (WSL)
+                </p>
+            </div>
+
+            <div id="source" class="tab-content">
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-title">Build from Source</span>
+                        <button class="copy-btn" onclick="copyCode('source-code')">Copy</button>
+                    </div>
+                    <pre id="source-code"><code><span class="code-comment"># Clone with submodules</span>
+git clone --recursive https://github.com/Spinkoo/pyoctomap.git
+cd pyoctomap
+
+<span class="code-comment"># Build OctoMap C++ library</span>
+cd src/octomap
+mkdir build && cd build
+cmake .. && make && sudo make install
+
+<span class="code-comment"># Build Python package</span>
+cd ../../..
+python setup.py build_ext --inplace</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PyOctoMap</h3>
+                    <p>A comprehensive Python wrapper for the OctoMap C++ library with bundled shared libraries for easy deployment.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Documentation</h3>
+                    <a href="https://github.com/Spinkoo/pyoctomap/tree/main/docs">API Reference</a>
+                    <a href="https://github.com/Spinkoo/pyoctomap/tree/main/examples">Examples</a>
+                    <a href="https://github.com/Spinkoo/pyoctomap/tree/main/docs/performance_guide.md">Performance Guide</a>
+                    <a href="https://github.com/Spinkoo/pyoctomap/tree/main/docs/troubleshooting.md">Troubleshooting</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <a href="https://github.com/Spinkoo/pyoctomap">GitHub Repository</a>
+                    <a href="https://github.com/Spinkoo/pyoctomap/issues">Issue Tracker</a>
+                    <a href="https://github.com/Spinkoo/pyoctomap/discussions">Discussions</a>
+                    <a href="https://pypi.org/project/pyoctomap/">PyPI Package</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="https://octomap.github.io/">OctoMap Library</a>
+                    <a href="https://github.com/wkentaro/octomap-python">Original Work</a>
+                    <a href="https://open3d.org/">Open3D</a>
+                    <a href="https://numpy.org/">NumPy</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PyOctoMap. Built with ❤️ by <a href="https://github.com/Spinkoo" style="color: #667eea;">Spinkoo</a></p>
+                <p>Licensed under MIT License | Supported by French National Research Agency (ANR)</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Copy code functionality
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const text = codeElement.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#667eea';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
