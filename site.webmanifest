@@ -1,0 +1,27 @@
+{
+    "name": "PyOctoMap - Python 3D Occupancy Mapping",
+    "short_name": "PyOctoMap",
+    "description": "A comprehensive Python wrapper for the OctoMap C++ library with bundled shared libraries for easy deployment",
+    "icons": [
+        {
+            "src": "/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#38a169",
+    "background_color": "#e6fffa",
+    "display": "standalone",
+    "start_url": "/",
+    "scope": "/"
+}
