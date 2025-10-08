@@ -23,66 +23,46 @@ cdef class OcTreeKey:
     OcTreeKey is a container class for internal key addressing.
     The keys count the number of cells (voxels) from the origin as discrete address of a voxel.
     """
-    cdef defs.OcTreeKey *thisptr
+    cdef defs.OcTreeKey thisptr
     def __cinit__(self, unsigned short int a=0, unsigned short int b=0, unsigned short int c=0):
-        if a == 0 and b == 0 and c == 0:
-            self.thisptr = new defs.OcTreeKey()
-        else:
-            self.thisptr = new defs.OcTreeKey(a, b, c)
-    def __dealloc__(self):
-        if self.thisptr != NULL:
-            del self.thisptr
-            self.thisptr = NULL
+        self.thisptr.k[0] = a
+        self.thisptr.k[1] = b
+        self.thisptr.k[2] = c
     def __richcmp__(self, other, int op):
         if op == 2:
-            return (self.thisptr[0][0] == other[0] and \
-                    self.thisptr[0][1] == other[1] and \
-                    self.thisptr[0][2] == other[2])
+            return (self.thisptr.k[0] == other[0] and \
+                    self.thisptr.k[1] == other[1] and \
+                    self.thisptr.k[2] == other[2])
         elif op == 3:
-            return not (self.thisptr[0][0] == other[0] and \
-                        self.thisptr[0][1] == other[1] and \
-                        self.thisptr[0][2] == other[2])
+            return not (self.thisptr.k[0] == other[0] and \
+                        self.thisptr.k[1] == other[1] and \
+                        self.thisptr.k[2] == other[2])
     
     def __getitem__(self, unsigned int i):
-        if self.thisptr:
-            return self.thisptr[0][i]
-        else:
-            raise NullPointerException
+        return self.thisptr.k[i]
     def __setitem__(self, unsigned int i, unsigned int value):
-        if self.thisptr:
-            self.thisptr[0][i] = value
-        else:
-            raise NullPointerException
+        self.thisptr.k[i] = value
             
     def __repr__(self):
-        if self.thisptr:
-            return f"OcTreeKey({self.thisptr[0][0]}, {self.thisptr[0][1]}, {self.thisptr[0][2]})"
-        else:
-            return "OcTreeKey(NULL)"
+        return f"OcTreeKey({self.thisptr.k[0]}, {self.thisptr.k[1]}, {self.thisptr.k[2]})"
             
     def computeChildIdx(self, OcTreeKey key, int depth):
         cdef unsigned int result
-        cdef defs.OcTreeKey key_in = defs.OcTreeKey()
-        key_in[0] = key[0]
-        key_in[1] = key[1]
-        key_in[2] = key[2]
-        if self.thisptr:
-            result = defs.computeChildIdx(key_in, depth)
-            return result
-        else:
-            raise NullPointerException
+        cdef defs.OcTreeKey key_in
+        key_in.k[0] = key[0]
+        key_in.k[1] = key[1]
+        key_in.k[2] = key[2]
+        result = defs.computeChildIdx(key_in, depth)
+        return result
     def computeIndexKey(self, unsigned int level, OcTreeKey key):
-        cdef defs.OcTreeKey key_in = defs.OcTreeKey()
+        cdef defs.OcTreeKey key_in
         cdef defs.OcTreeKey result
-        key_in[0] = key[0]
-        key_in[1] = key[1]
-        key_in[2] = key[2]
-        if self.thisptr:
-            result = defs.computeIndexKey(level, key_in)
-            # Convert back to Python OcTreeKey
-            return OcTreeKey(result[0], result[1], result[2])
-        else:
-            raise NullPointerException
+        key_in.k[0] = key[0]
+        key_in.k[1] = key[1]
+        key_in.k[2] = key[2]
+        result = defs.computeIndexKey(level, key_in)
+        # Convert back to Python OcTreeKey
+        return OcTreeKey(result.k[0], result.k[1], result.k[2])
 
 cdef class OcTreeNode:
     """
@@ -490,14 +470,14 @@ cdef class OcTree:
 
     def adjustKeyAtDepth(self, OcTreeKey key, depth):
         cdef defs.OcTreeKey key_in = defs.OcTreeKey()
-        key_in[0] = key[0]
-        key_in[1] = key[1]
-        key_in[2] = key[2]
+        key_in.k[0] = key[0]
+        key_in.k[1] = key[1]
+        key_in.k[2] = key[2]
         cdef defs.OcTreeKey key_out = self.thisptr.adjustKeyAtDepth(key_in, <int?>depth)
         res = OcTreeKey()
-        res[0] = key_out[0]
-        res[1] = key_out[1]
-        res[2] = key_out[2]
+        res.thisptr.k[0] = key_out.k[0]
+        res.thisptr.k[1] = key_out.k[1]
+        res.thisptr.k[2] = key_out.k[2]
         return res
 
     def bbxSet(self):
@@ -521,9 +501,9 @@ cdef class OcTree:
                                                        coord[2]),
                                           <unsigned int?>depth)
         res = OcTreeKey()
-        res[0] = key[0]
-        res[1] = key[1]
-        res[2] = key[2]
+        res.thisptr.k[0] = key.k[0]
+        res.thisptr.k[1] = key.k[1]
+        res.thisptr.k[2] = key.k[2]
         return res
 
     def coordToKeyChecked(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):
@@ -542,9 +522,9 @@ cdef class OcTree:
                                                  key)
         if chk:
             res = OcTreeKey()
-            res[0] = key[0]
-            res[1] = key[1]
-            res[2] = key[2]
+            res.thisptr.k[0] = key.k[0]
+            res.thisptr.k[1] = key.k[1]
+            res.thisptr.k[2] = key.k[2]
             return chk, res
         else:
             return chk, None
@@ -630,39 +610,52 @@ cdef class OcTree:
                 return False
 
     def isNodeOccupied(self, node):
+        cdef defs.point3d search_point
+        cdef defs.OcTreeNode* found_node
+        
         if isinstance(node, OcTreeNode):
             if (<OcTreeNode>node).thisptr:
                 return self.thisptr.isNodeOccupied(deref((<OcTreeNode>node).thisptr))
             else:
                 raise NullPointerException
         elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):
-            # Handle iterator case - get the current node from the iterator
-            if hasattr(node, '_current_node') and node._current_node is not None:
-                if isinstance(node._current_node, OcTreeNode) and (<OcTreeNode>node._current_node).thisptr:
-                    return self.thisptr.isNodeOccupied(deref((<OcTreeNode>node._current_node).thisptr))
+            # Handle iterator case - use coordinate to search for the node
+            try:
+                coord = node.getCoordinate()
+                # Convert coordinate to point3d for search
+                search_point = defs.point3d(coord[0], coord[1], coord[2])
+                found_node = self.thisptr.search(<double>coord[0], <double>coord[1], <double>coord[2], <unsigned int>0)
+                if found_node != NULL:
+                    result = self.thisptr.isNodeOccupied(deref(found_node))
+                    return result
                 else:
-                    raise NullPointerException
-            else:
-                # Iterator doesn't have a valid current node - return False (unknown/empty)
+                    return False
+            except Exception:
                 return False
         else:
             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")
 
     def isNodeAtThreshold(self, node):
+        cdef defs.point3d search_point
+        cdef defs.OcTreeNode* found_node
+        
         if isinstance(node, OcTreeNode):
             if (<OcTreeNode>node).thisptr:
                 return self.thisptr.isNodeAtThreshold(deref((<OcTreeNode>node).thisptr))
             else:
                 raise NullPointerException
         elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):
-            # Handle iterator case - get the current node from the iterator
-            if hasattr(node, '_current_node') and node._current_node is not None:
-                if isinstance(node._current_node, OcTreeNode) and (<OcTreeNode>node._current_node).thisptr:
-                    return self.thisptr.isNodeAtThreshold(deref((<OcTreeNode>node._current_node).thisptr))
+            # Handle iterator case - use coordinate to search for the node
+            try:
+                coord = node.getCoordinate()
+                # Convert coordinate to point3d for search
+                search_point = defs.point3d(coord[0], coord[1], coord[2])
+                found_node = self.thisptr.search(<double>coord[0], <double>coord[1], <double>coord[2], <unsigned int>0)
+                if found_node != NULL:
+                    return self.thisptr.isNodeAtThreshold(deref(found_node))
                 else:
-                    raise NullPointerException
-            else:
-                # Iterator doesn't have a valid current node - return False (not at threshold)
+                    return False
+            except Exception:
                 return False
         else:
             raise TypeError(f"Expected OcTreeNode or iterator, got {type(node)}")
@@ -837,9 +830,9 @@ cdef class OcTree:
     def keyToCoord(self, OcTreeKey key, depth=None):
         cdef defs.OcTreeKey key_in = defs.OcTreeKey()
         cdef defs.point3d p = defs.point3d()
-        key_in[0] = key[0]
-        key_in[1] = key[1]
-        key_in[2] = key[2]
+        key_in.k[0] = key[0]
+        key_in.k[1] = key[1]
+        key_in.k[2] = key[2]
         if depth is None:
             p = self.thisptr.keyToCoord(key_in)
         else:
@@ -864,11 +857,13 @@ cdef class OcTree:
 
         
     def search(self, value, depth=0):
+        cdef defs.OcTreeKey search_key
         node = OcTreeNode()
         if isinstance(value, OcTreeKey):
-            node.thisptr = self.thisptr.search(defs.OcTreeKey(<unsigned short int>value[0],
-                                                              <unsigned short int>value[1],
-                                                              <unsigned short int>value[2]),
+            search_key.k[0] = value[0]
+            search_key.k[1] = value[1]
+            search_key.k[2] = value[2]
+            node.thisptr = self.thisptr.search(search_key,
                                                <unsigned int?>depth)
         else:
             node.thisptr = self.thisptr.search(<double>value[0],
@@ -912,21 +907,24 @@ cdef class OcTree:
         """
         Integrate occupancy measurements and Manipulate log_odds value of voxel directly. 
         """
+        cdef defs.OcTreeKey update_key
         if values is None or len(values) == 0:
             return
         if isinstance(values[0], OcTreeKey):
             if isinstance(update, bool):
                 for v in values:
-                    self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],
-                                                           <unsigned short int>v[1],
-                                                           <unsigned short int>v[2]),
+                    update_key.k[0] = v[0]
+                    update_key.k[1] = v[1]
+                    update_key.k[2] = v[2]
+                    self.thisptr.updateNode(update_key,
                                             <cppbool>update,
                                             <cppbool?>lazy_eval)
             else:
                 for v in values:
-                    self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>v[0],
-                                                           <unsigned short int>v[1],
-                                                           <unsigned short int>v[2]),
+                    update_key.k[0] = v[0]
+                    update_key.k[1] = v[1]
+                    update_key.k[2] = v[2]
+                    self.thisptr.updateNode(update_key,
                                             <float?>update,
                                             <cppbool?>lazy_eval)
         else:
@@ -946,21 +944,24 @@ cdef class OcTree:
                                             <cppbool?>lazy_eval)
 
     def updateNode(self, value, update, lazy_eval=False):
+        cdef defs.OcTreeKey update_key # Moved to top
         """
         Integrate occupancy measurement and Manipulate log_odds value of voxel directly. 
         """
         node = OcTreeNode()
         if isinstance(value, OcTreeKey):
             if isinstance(update, bool):
-                node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],
-                                                                      <unsigned short int>value[1],
-                                                                      <unsigned short int>value[2]),
+                update_key.k[0] = value[0]
+                update_key.k[1] = value[1]
+                update_key.k[2] = value[2]
+                node.thisptr = self.thisptr.updateNode(update_key,
                                                        <cppbool>update,
                                                        <cppbool?>lazy_eval)
             else:
-                node.thisptr = self.thisptr.updateNode(defs.OcTreeKey(<unsigned short int>value[0],
-                                                                      <unsigned short int>value[1],
-                                                                      <unsigned short int>value[2]),
+                update_key.k[0] = value[0]
+                update_key.k[1] = value[1]
+                update_key.k[2] = value[2]
+                node.thisptr = self.thisptr.updateNode(update_key,
                                                        <float?>update,
                                                        <cppbool?>lazy_eval)
         else:

@@ -33,7 +33,6 @@ octomap/dist/
 octomap/octomap.egg-info/
 octomap/octomap.egg-info/
 Prompet for readme.md
-pyoctomap/octomap.cpp
 
 #work related
 Lisa/
@@ -48,4 +47,5 @@ unit_test/precomit_test.py
 # Benchmarking results (local only)
 benchmarks/
 
-
+*.bt
+pyoctomap/octomap.cpp
