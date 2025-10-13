@@ -27,10 +27,38 @@ pip install pyoctomap
 
 **Supported Platforms:**
 - Linux (manylinux2014 compatible)
-- Python 3.9, 3.10, 3.11, 3.12
+- Python 3.9, 3.10, 3.11, 3.12, 3.13, 3.14
 - Pre-built wheels available for all supported combinations
 
 > **🚀 ROS Integration**: ROS/ROS2 integration is currently being developed on the [`ros` branch](https://github.com/Spinkoo/pyoctomap/tree/ros), featuring ROS2 message support and real-time point cloud processing.
+
+### Prerequisites for Building from Source
+
+Before building PyOctoMap from source, you need to install the following system dependencies:
+
+**Ubuntu/Debian:**
+```bash
+sudo apt update
+sudo apt install python3-dev python3-distutils build-essential g++ gcc cython3
+```
+
+**CentOS/RHEL/Fedora:**
+```bash
+# CentOS/RHEL
+sudo yum groupinstall "Development Tools"
+sudo yum install python3-devel gcc-c++ cython3
+
+# Fedora
+sudo dnf groupinstall "Development Tools"
+sudo dnf install python3-devel gcc-c++ cython3
+```
+
+**Arch Linux:**
+```bash
+sudo pacman -S python gcc g++ cython
+```
+
+> **📝 Note**: Replace `python3-dev` with `python3.x-dev` for specific Python versions (e.g., `python3.14-dev` for Python 3.14). The `python3.x-dev` package contains the header files (`Python.h`) required for compiling C extensions.
 
 ### Building from Source
 
@@ -61,7 +89,7 @@ chmod +x build.sh
 docker build -f docker/Dockerfile.wheel -t pyoctomap-wheel .
 ```
 
-The Docker build creates manylinux-compatible wheels for Python 3.9-3.12, properly bundling all required C++ libraries.
+The Docker build creates manylinux-compatible wheels for Python 3.9-3.14, properly bundling all required C++ libraries.
 
 ## Quick Start
 
@@ -352,6 +380,52 @@ for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
 **Optional for visualization:**
 - matplotlib (for 2D plotting)
 - open3d (for 3D visualization)
+
+## Troubleshooting
+
+### Common Build Issues
+
+**Error: `Python.h: No such file or directory`**
+```bash
+# Install Python development headers
+sudo apt install python3-dev  # Ubuntu/Debian
+sudo yum install python3-devel  # CentOS/RHEL
+sudo dnf install python3-devel  # Fedora
+```
+
+**Error: `fatal error: 'numpy/arrayobject.h' file not found`**
+```bash
+# Install NumPy development headers
+pip install numpy
+# Or if using system packages:
+sudo apt install python3-numpy-dev  # Ubuntu/Debian
+```
+
+**Error: `Cython not found`**
+```bash
+# Install Cython
+pip install cython
+# Or system package:
+sudo apt install cython3  # Ubuntu/Debian
+```
+
+**Error: `g++: command not found`**
+```bash
+# Install C++ compiler
+sudo apt install build-essential  # Ubuntu/Debian
+sudo yum groupinstall "Development Tools"  # CentOS/RHEL
+```
+
+### Python Version Issues
+
+For specific Python versions (e.g., Python 3.14), use the corresponding dev package:
+```bash
+# For Python 3.14
+sudo apt install python3.14-dev python3.14-distutils
+
+# For Python 3.13
+sudo apt install python3.13-dev python3.13-distutils
+```
 
 ## Documentation
 
