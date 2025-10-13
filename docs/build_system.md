@@ -436,7 +436,9 @@ python setup.py build_ext --inplace --debug
 
 **Workflow**: `.github/workflows/ci.yml`
 **Triggers**: Push, Pull Request
-**Platforms**: Ubuntu 20.04, Python 3.9-3.12
+**Platforms**: Ubuntu 20.04, Python 3.9-3.13
+
+> **📝 Note**: Python 3.14 support will be added once it becomes available in the manylinux images. Currently, Python 3.14 is not yet supported by the official manylinux build environment.
 
 **Steps:**
 1. Checkout code
@@ -467,7 +469,7 @@ COPY --from=octomap-builder /usr/local /usr/local
 
 **Linux Wheels:**
 - Platform: linux_x86_64
-- Python: 3.9-3.12
+- Python: 3.9-3.13
 - Bundled libraries included
 
 **Future Platforms:**

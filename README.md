@@ -27,7 +27,7 @@ pip install pyoctomap
 
 **Supported Platforms:**
 - Linux (manylinux2014 compatible)
-- Python 3.9, 3.10, 3.11, 3.12, 3.13, 3.14
+- Python 3.9, 3.10, 3.11, 3.12, 3.13
 - Pre-built wheels available for all supported combinations
 
 > **🚀 ROS Integration**: ROS/ROS2 integration is currently being developed on the [`ros` branch](https://github.com/Spinkoo/pyoctomap/tree/ros), featuring ROS2 message support and real-time point cloud processing.
