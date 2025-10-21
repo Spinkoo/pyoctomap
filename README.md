@@ -65,6 +65,8 @@ docker build -f docker/Dockerfile.wheel -t pyoctomap-wheel .
 
 The Docker build creates manylinux-compatible wheels for Python 3.9-3.14, properly bundling all required C++ libraries.
 
+> **📋 Google Colab Users**: See [Build System Documentation](docs/build_system.md) for detailed Colab installation instructions.
+
 ## Quick Start
 
 ### Basic Usage
