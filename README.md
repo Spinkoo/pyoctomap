@@ -27,12 +27,14 @@ pip install pyoctomap
 
 **Supported Platforms:**
 - Linux (manylinux2014 compatible)
-- Python 3.9, 3.10, 3.11, 3.12
+- Python 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13
 - Pre-built wheels available for all supported combinations
 
 > **🚀 ROS Integration**: ROS/ROS2 integration is currently being developed on the [`ros` branch](https://github.com/Spinkoo/pyoctomap/tree/ros), featuring ROS2 message support and real-time point cloud processing.
 
 ### Building from Source
+
+> **📋 Prerequisites**: See [Build System Documentation](docs/build_system.md) for detailed system dependencies and troubleshooting guide.
 
 If you need to build from source or create custom wheels, we provide a Docker-based build system:
 
@@ -61,7 +63,7 @@ chmod +x build.sh
 docker build -f docker/Dockerfile.wheel -t pyoctomap-wheel .
 ```
 
-The Docker build creates manylinux-compatible wheels for Python 3.9-3.12, properly bundling all required C++ libraries.
+The Docker build creates manylinux-compatible wheels for Python 3.9-3.14, properly bundling all required C++ libraries.
 
 ## Quick Start
 
@@ -356,10 +358,10 @@ for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
 ## Documentation
 
 - **[Complete API Reference](docs/api_reference.md)** - Detailed API documentation
+- **[Build System](docs/build_system.md)** - Prerequisites, build process, and troubleshooting
 - **[File Format Guide](docs/file_format.md)** - Supported file formats
 - **[Performance Guide](docs/performance_guide.md)** - Optimization tips and benchmarks
 - **[Troubleshooting](docs/troubleshooting.md)** - Common issues and solutions
-- **[Build System](docs/build_system.md)** - Build process and scripts
 - **[Wheel Technology](docs/wheel_technology.md)** - Library bundling details
 
 ## License

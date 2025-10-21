@@ -6,6 +6,80 @@ Detailed documentation of the PyOctoMap build system and scripts.
 
 The build system automates the entire process of building PyOctoMap with bundled shared libraries, ensuring zero external dependencies.
 
+## Prerequisites
+
+Before building PyOctoMap from source, you need to install the following system dependencies:
+
+### Ubuntu/Debian
+```bash
+sudo apt update
+sudo apt install python3-dev python3-distutils build-essential g++ gcc cython3
+```
+
+### CentOS/RHEL/Fedora
+```bash
+# CentOS/RHEL
+sudo yum groupinstall "Development Tools"
+sudo yum install python3-devel gcc-c++ cython3
+
+# Fedora
+sudo dnf groupinstall "Development Tools"
+sudo dnf install python3-devel gcc-c++ cython3
+```
+
+### Arch Linux
+```bash
+sudo pacman -S python gcc g++ cython
+```
+
+> **📝 Note**: Replace `python3-dev` with `python3.x-dev` for specific Python versions (e.g., `python3.14-dev` for Python 3.14). The `python3.x-dev` package contains the header files (`Python.h`) required for compiling C extensions.
+
+## Troubleshooting Build Issues
+
+### Common Build Errors
+
+**Error: `Python.h: No such file or directory`**
+```bash
+# Install Python development headers
+sudo apt install python3-dev  # Ubuntu/Debian
+sudo yum install python3-devel  # CentOS/RHEL
+sudo dnf install python3-devel  # Fedora
+```
+
+**Error: `fatal error: 'numpy/arrayobject.h' file not found`**
+```bash
+# Install NumPy development headers
+pip install numpy
+# Or if using system packages:
+sudo apt install python3-numpy-dev  # Ubuntu/Debian
+```
+
+**Error: `Cython not found`**
+```bash
+# Install Cython
+pip install cython
+# Or system package:
+sudo apt install cython3  # Ubuntu/Debian
+```
+
+**Error: `g++: command not found`**
+```bash
+# Install C++ compiler
+sudo apt install build-essential  # Ubuntu/Debian
+sudo yum groupinstall "Development Tools"  # CentOS/RHEL
+```
+
+### Python Version Issues
+
+For specific Python versions (e.g., Python 3.14), use the corresponding dev package:
+```bash
+# For Python 3.14
+sudo apt install python3.14-dev python3.14-distutils
+
+# For Python 3.13
+sudo apt install python3.13-dev python3.13-distutils
+```
+
 ## Build Scripts
 
 ### Linux Build Script (`build.sh`)
@@ -362,7 +436,9 @@ python setup.py build_ext --inplace --debug
 
 **Workflow**: `.github/workflows/ci.yml`
 **Triggers**: Push, Pull Request
-**Platforms**: Ubuntu 20.04, Python 3.9-3.12
+**Platforms**: Ubuntu 20.04, Python 3.9-3.13
+
+> **📝 Note**: Python 3.14 support will be added once it becomes available in the manylinux images. Currently, Python 3.14 is not yet supported by the official manylinux build environment.
 
 **Steps:**
 1. Checkout code
@@ -393,7 +469,7 @@ COPY --from=octomap-builder /usr/local /usr/local
 
 **Linux Wheels:**
 - Platform: linux_x86_64
-- Python: 3.9-3.12
+- Python: 3.9-3.13
 - Bundled libraries included
 
 **Future Platforms:**
