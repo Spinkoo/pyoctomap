@@ -147,6 +147,7 @@ cdef class SimpleTreeIterator:
     cdef tree_iterator_ptr _it
     cdef tree_iterator_ptr _end
     cdef bint _is_end
+    cdef unsigned long _expected_version
     # Snapshot state
     cdef object _current_node
     cdef list _current_coord
@@ -172,12 +173,14 @@ cdef class SimpleTreeIterator:
         self._current_coord = None
         self._current_size = 0.0
         self._current_depth = 0
+        self._expected_version = 0
 
     def __init__(self, OcTree tree, maxDepth=0):
         if tree is None or tree.thisptr == NULL:
             self._is_end = True
             return
         self._tree = tree
+        self._expected_version = tree._mod_version
         cdef unsigned char depth = <unsigned char?>maxDepth
         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator tmp_it = tree.thisptr.begin_tree(depth)
         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator tmp_end = tree.thisptr.end_tree()
@@ -190,6 +193,12 @@ cdef class SimpleTreeIterator:
 
     def __next__(self):
         if self._is_end or self._it == NULL or self._end == NULL:
+            raise StopIteration
+        # Stop safely if tree was modified concurrently
+        if (self._tree is None or
+            (<OcTree>self._tree).thisptr == NULL or
+            (<OcTree>self._tree)._mod_version != self._expected_version):
+            self._is_end = True
             raise StopIteration
         if deref(self._it) == deref(self._end):
             self._is_end = True
@@ -235,6 +244,7 @@ cdef class SimpleLeafIterator:
     cdef leaf_iterator_ptr _it
     cdef leaf_iterator_ptr _end
     cdef bint _is_end
+    cdef unsigned long _expected_version
     # Snapshot state
     cdef object _current_node
     cdef list _current_coord
@@ -260,12 +270,14 @@ cdef class SimpleLeafIterator:
         self._current_coord = None
         self._current_size = 0.0
         self._current_depth = 0
+        self._expected_version = 0
 
     def __init__(self, OcTree tree, maxDepth=0):
         if tree is None or tree.thisptr == NULL:
             self._is_end = True
             return
         self._tree = tree
+        self._expected_version = tree._mod_version
         cdef unsigned char depth = <unsigned char?>maxDepth
         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_iterator tmp_it = tree.thisptr.begin_leafs(depth)
         cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_iterator tmp_end = tree.thisptr.end_leafs()
@@ -278,6 +290,12 @@ cdef class SimpleLeafIterator:
 
     def __next__(self):
         if self._is_end or self._it == NULL or self._end == NULL:
+            raise StopIteration
+        # Stop safely if tree was modified concurrently
+        if (self._tree is None or
+            (<OcTree>self._tree).thisptr == NULL or
+            (<OcTree>self._tree)._mod_version != self._expected_version):
+            self._is_end = True
             raise StopIteration
         if deref(self._it) == deref(self._end):
             self._is_end = True
@@ -327,6 +345,7 @@ cdef class SimpleLeafBBXIterator:
     cdef leaf_bbx_iterator_ptr _it
     cdef leaf_bbx_iterator_ptr _end
     cdef bint _is_end
+    cdef unsigned long _expected_version
     # Snapshot state
     cdef object _current_node
     cdef list _current_coord
@@ -352,12 +371,14 @@ cdef class SimpleLeafBBXIterator:
         self._current_coord = None
         self._current_size = 0.0
         self._current_depth = 0
+        self._expected_version = 0
 
     def __init__(self, OcTree tree, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):
         if tree is None or tree.thisptr == NULL:
             self._is_end = True
             return
         self._tree = tree
+        self._expected_version = tree._mod_version
         cdef defs.point3d pmin = defs.point3d(<float?>bbx_min[0], <float?>bbx_min[1], <float?>bbx_min[2])
         cdef defs.point3d pmax = defs.point3d(<float?>bbx_max[0], <float?>bbx_max[1], <float?>bbx_max[2])
         cdef unsigned char depth = <unsigned char?>maxDepth
@@ -372,6 +393,12 @@ cdef class SimpleLeafBBXIterator:
 
     def __next__(self):
         if self._is_end or self._it == NULL or self._end == NULL:
+            raise StopIteration
+        # Stop safely if tree was modified concurrently
+        if (self._tree is None or
+            (<OcTree>self._tree).thisptr == NULL or
+            (<OcTree>self._tree)._mod_version != self._expected_version):
+            self._is_end = True
             raise StopIteration
         if deref(self._it) == deref(self._end):
             self._is_end = True
@@ -447,11 +474,13 @@ cdef class OcTree:
     cdef defs.OcTree *thisptr
     cdef edt.DynamicEDTOctomap *edtptr
     cdef bint owner
+    cdef unsigned long _mod_version
     
     def __cinit__(self, arg):
         import numbers
         self.owner = True
         self.edtptr = NULL  # Initialize to NULL
+        self._mod_version = 0
         if isinstance(arg, numbers.Number):
             self.thisptr = new defs.OcTree(<double?>arg)
         else:
@@ -469,7 +498,7 @@ cdef class OcTree:
             self.thisptr = NULL
 
     def adjustKeyAtDepth(self, OcTreeKey key, depth):
-        cdef defs.OcTreeKey key_in = defs.OcTreeKey()
+        cdef defs.OcTreeKey key_in
         key_in.k[0] = key[0]
         key_in.k[1] = key[1]
         key_in.k[2] = key[2]
@@ -488,6 +517,7 @@ cdef class OcTree:
 
     def clear(self):
         self.thisptr.clear()
+        self._mod_version += 1
 
     def coordToKey(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):
         cdef defs.OcTreeKey key
@@ -530,14 +560,16 @@ cdef class OcTree:
             return chk, None
 
     def deleteNode(self, np.ndarray[DOUBLE_t, ndim=1] value, depth=1):
-        return self.thisptr.deleteNode(defs.point3d(value[0],
-                                                    value[1],
-                                                    value[2]),
-                                       <int?>depth)
+        cdef cppbool _ret = self.thisptr.deleteNode(defs.point3d(value[0],
+                                                                 value[1],
+                                                                 value[2]),
+                                                    <int?>depth)
+        self._mod_version += 1
+        return _ret
 
-    def castRay(self, np.ndarray[DOUBLE_t, ndim=1] origin,
-                np.ndarray[DOUBLE_t, ndim=1] direction,
-                np.ndarray[DOUBLE_t, ndim=1] end,
+    def castRay(self, origin,
+                direction,
+                end,
                 ignoreUnknownCells=False,
                 maxRange=-1.0):
         """
@@ -548,15 +580,25 @@ cdef class OcTree:
         """
         cdef defs.point3d e
         cdef cppbool hit
+        # Upcast inputs to float64 internally to satisfy C++ interface
+        cdef np.ndarray[DOUBLE_t, ndim=1] _origin = np.ascontiguousarray(origin, dtype=np.float64)
+        cdef np.ndarray[DOUBLE_t, ndim=1] _direction = np.ascontiguousarray(direction, dtype=np.float64)
+        cdef np.ndarray[DOUBLE_t, ndim=1] _end = np.zeros(3, dtype=np.float64)
         hit = self.thisptr.castRay(
-            defs.point3d(origin[0], origin[1], origin[2]),
-            defs.point3d(direction[0], direction[1], direction[2]),
+            defs.point3d(_origin[0], _origin[1], _origin[2]),
+            defs.point3d(_direction[0], _direction[1], _direction[2]),
             e,
             bool(ignoreUnknownCells),
             <double?>maxRange
         )
         if hit:
-            end[0:3] = e.x(), e.y(), e.z()
+            _end[0:3] = e.x(), e.y(), e.z()
+            # Copy back into provided end buffer (dtype-agnostic)
+            try:
+                end[0:3] = _end
+            except Exception:
+                # If end is not writeable/compatible, ignore copy-back
+                pass
         return hit
     
     def read(self, filename):
@@ -729,8 +771,8 @@ cdef class OcTree:
         return occupied_arr, empty_arr
     
     def insertPointCloud(self,
-                         np.ndarray[DOUBLE_t, ndim=2] pointcloud,
-                         np.ndarray[DOUBLE_t, ndim=1] origin,
+                         pointcloud,
+                         origin,
                          maxrange=-1.,
                          lazy_eval=False,
                          discretize=False):
@@ -746,6 +788,9 @@ cdef class OcTree:
         :param : whether update of inner nodes is omitted after the update (default: false).
         This speeds up the insertion, but you need to call updateInnerOccupancy() when done.
         """
+        # Upcast inputs to float64 to satisfy C++ interface
+        pointcloud = np.ascontiguousarray(pointcloud, dtype=np.float64)
+        origin = np.ascontiguousarray(origin, dtype=np.float64)
         cdef defs.Pointcloud pc = defs.Pointcloud()
         for p in pointcloud:
             pc.push_back(<float>p[0],
@@ -828,7 +873,7 @@ cdef class OcTree:
         return self.thisptr.inBBX(defs.point3d(p[0], p[1], p[2]))
 
     def keyToCoord(self, OcTreeKey key, depth=None):
-        cdef defs.OcTreeKey key_in = defs.OcTreeKey()
+        cdef defs.OcTreeKey key_in
         cdef defs.point3d p = defs.point3d()
         key_in.k[0] = key[0]
         key_in.k[1] = key[1]
@@ -892,6 +937,7 @@ cdef class OcTree:
         Change the resolution of the octree, scaling all voxels. This will not preserve the (metric) scale!
         """
         self.thisptr.setResolution(r)
+        self._mod_version += 1
 
     def size(self):
         return self.thisptr.size()
@@ -902,6 +948,7 @@ cdef class OcTree:
         setting their occupancy to the corresponding occupancy thresholds.
         """
         self.thisptr.toMaxLikelihood()
+        self._mod_version += 1
 
     def updateNodes(self, values, update, lazy_eval=False):
         """
@@ -942,6 +989,7 @@ cdef class OcTree:
                                             <double?>v[2],
                                             <float?>update,
                                             <cppbool?>lazy_eval)
+        self._mod_version += 1
 
     def updateNode(self, value, update, lazy_eval=False):
         cdef defs.OcTreeKey update_key # Moved to top
@@ -977,6 +1025,7 @@ cdef class OcTree:
                                                        <double?>value[2],
                                                        <float?>update,
                                                        <cppbool?>lazy_eval)
+        self._mod_version += 1
         return node
 
     def updateInnerOccupancy(self):
@@ -984,6 +1033,7 @@ cdef class OcTree:
         Updates the occupancy of all inner nodes to reflect their children's occupancy.
         """
         self.thisptr.updateInnerOccupancy()
+        self._mod_version += 1
 
     def useBBXLimit(self, enable):
         """
@@ -1062,10 +1112,12 @@ cdef class OcTree:
 
     def expandNode(self, node):
         self.thisptr.expandNode((<OcTreeNode>node).thisptr)
+        self._mod_version += 1
 
     def createNodeChild(self, node, int idx):
         child = OcTreeNode()
         child.thisptr = self.thisptr.createNodeChild((<OcTreeNode>node).thisptr, idx)
+        self._mod_version += 1
         return child
 
     def getNodeChild(self, node, int idx):
@@ -1078,9 +1130,12 @@ cdef class OcTree:
 
     def deleteNodeChild(self, node, int idx):
         self.thisptr.deleteNodeChild((<OcTreeNode>node).thisptr, idx)
+        self._mod_version += 1
 
     def pruneNode(self, node):
-        return self.thisptr.pruneNode((<OcTreeNode>node).thisptr)
+        cdef cppbool _ret_prune = self.thisptr.pruneNode((<OcTreeNode>node).thisptr)
+        self._mod_version += 1
+        return _ret_prune
     
     def nodeHasChildren(self, node):
         """
@@ -1147,8 +1202,8 @@ cdef class OcTree:
             raise NullPointerException
 
     def addPointWithRayCasting(self, 
-                              np.ndarray[DOUBLE_t, ndim=1] point,
-                              np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                              point,
+                              sensor_origin,
                               update_inner_occupancy=False):
         """
         Add a single 3D point to update the occupancy grid using ray casting.
@@ -1167,7 +1222,9 @@ cdef class OcTree:
         Returns:
             bool: True if point was successfully added
         """
-        cdef cppbool success = self._add_single_point_optimized(point, sensor_origin)
+        cdef np.ndarray[DOUBLE_t, ndim=1] _point64 = np.ascontiguousarray(point, dtype=np.float64)
+        cdef np.ndarray[DOUBLE_t, ndim=1] _origin64 = np.ascontiguousarray(sensor_origin, dtype=np.float64)
+        cdef cppbool success = self._add_single_point_optimized(_point64, _origin64)
         
         if success and update_inner_occupancy:
             self.updateInnerOccupancy()
@@ -1175,8 +1232,8 @@ cdef class OcTree:
         return success
 
     def markFreeSpaceAlongRay(self, 
-                             np.ndarray[DOUBLE_t, ndim=1] origin, 
-                             np.ndarray[DOUBLE_t, ndim=1] end_point, 
+                             origin, 
+                             end_point, 
                              step_size=None):
         """
         Mark free space along a ray from origin to end_point using manual sampling.
@@ -1186,6 +1243,9 @@ cdef class OcTree:
             end_point: Ray end point [x, y, z]
             step_size: Step size for ray sampling (defaults to tree resolution)
         """
+        # Upcast inputs to float64 for internal computations
+        origin = np.ascontiguousarray(origin, dtype=np.float64)
+        end_point = np.ascontiguousarray(end_point, dtype=np.float64)
         if step_size is not None and step_size != self.getResolution():
             # Use custom step size - fall back to original implementation
             resolution = self.getResolution()
@@ -1269,6 +1329,8 @@ cdef class OcTree:
         cdef double resolution = self.getResolution()
         cdef np.ndarray[DOUBLE_t, ndim=1] direction
         cdef double ray_length
+        cdef double step
+        cdef int max_steps = 100000
         
         direction = end_point - origin
         ray_length = np.linalg.norm(direction)
@@ -1279,13 +1341,17 @@ cdef class OcTree:
         direction = direction / ray_length
         
         # Sample points along the ray
-        cdef int num_steps = int(ray_length / resolution) + 1
+        # Adapt step size to avoid extremely large loops for very long rays
+        step = resolution
+        if ray_length / step > max_steps:
+            step = ray_length / max_steps
+        cdef int num_steps = int(ray_length / step) + 1
         cdef int i
         cdef double t
         cdef np.ndarray[DOUBLE_t, ndim=1] sample_point
         
         for i in range(1, num_steps):  # Skip origin (i=0)
-            t = (i * resolution) / ray_length
+            t = (i * step) / ray_length
             if t >= 1.0:
                 break
                 
@@ -1293,8 +1359,8 @@ cdef class OcTree:
             self.updateNode(sample_point, False)  # Mark as free
 
     def addPointCloudWithRayCasting(self,
-                                   np.ndarray[DOUBLE_t, ndim=2] point_cloud,
-                                   np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                                   point_cloud,
+                                   sensor_origin,
                                    max_range=-1.0,
                                    update_inner_occupancy=True,
                                    discretize=False):
@@ -1322,6 +1388,9 @@ cdef class OcTree:
         cdef cppbool success
         
         try:
+            # Upcast inputs once
+            point_cloud = np.ascontiguousarray(point_cloud, dtype=np.float64)
+            sensor_origin = np.ascontiguousarray(sensor_origin, dtype=np.float64)
             # Discretize if requested (reduces N for dense clouds)
             if discretize:
                 point_cloud = self._discretizePointCloud(point_cloud)
@@ -1470,8 +1539,8 @@ cdef class OcTree:
         # No return; assume success
 
     def insertPointCloudFast(self,
-                         np.ndarray[DOUBLE_t, ndim=2] point_cloud,
-                         np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                         point_cloud,
+                         sensor_origin,
                          double max_range=-1.0,
                          bint discretize=False,
                          bint lazy_eval=False):
@@ -1492,16 +1561,20 @@ cdef class OcTree:
         Returns:
             int: Number of points processed
         """
+        # Upcast inputs
+        point_cloud = np.ascontiguousarray(point_cloud, dtype=np.float64)
+        sensor_origin = np.ascontiguousarray(sensor_origin, dtype=np.float64)
         cdef int num_points = point_cloud.shape[0]
         cdef cppbool success = True
         
         self._build_pointcloud_and_insert(point_cloud, sensor_origin, max_range, discretize, lazy_eval)
+        self._mod_version += 1
         
         return num_points if success else 0
 
     def insertPointCloud(self,
-                     np.ndarray[DOUBLE_t, ndim=2] point_cloud,
-                     np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                     point_cloud,
+                     sensor_origin,
                      double max_range=-1.0,
                      bint lazy_eval=False,
                      bint discretize=False):
@@ -1520,16 +1593,20 @@ cdef class OcTree:
         Returns:
             int: Number of points processed
         """
+        # Upcast inputs
+        point_cloud = np.ascontiguousarray(point_cloud, dtype=np.float64)
+        sensor_origin = np.ascontiguousarray(sensor_origin, dtype=np.float64)
         cdef int num_points = point_cloud.shape[0]
         cdef cppbool success = True
         
         self._build_pointcloud_and_insert(point_cloud, sensor_origin, max_range, discretize, lazy_eval)
+        self._mod_version += 1
         
         return num_points if success else 0
 
     def insertPointCloudRaysFast(self,
-                                np.ndarray[DOUBLE_t, ndim=2] point_cloud,
-                                np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                                point_cloud,
+                                sensor_origin,
                                 double max_range=-1.0,
                                 bint lazy_eval=False):
         """
@@ -1537,6 +1614,9 @@ cdef class OcTree:
         Inserts full rays without deduplication—fastest but may over-update.
         """
         cdef defs.Pointcloud pc
+        # Upcast inputs
+        point_cloud = np.ascontiguousarray(point_cloud, dtype=np.float64)
+        sensor_origin = np.ascontiguousarray(sensor_origin, dtype=np.float64)
         cdef int i, num_points = point_cloud.shape[0]
         cdef np.ndarray[DOUBLE_t, ndim=1] point
         cdef defs.point3d origin_c  # C++ type declaration
@@ -1551,6 +1631,7 @@ cdef class OcTree:
         origin_c = defs.point3d(<float>sensor_origin[0], <float>sensor_origin[1], <float>sensor_origin[2])
         
         self.thisptr.insertPointCloudRays(pc, origin_c, <double>max_range, <cppbool>lazy_eval)
+        self._mod_version += 1
         
         if not lazy_eval:
             self.updateInnerOccupancy()

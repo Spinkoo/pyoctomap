@@ -1,0 +1,17 @@
+python:
+  - 3.9
+  - 3.10
+  - 3.11
+  - 3.12
+numpy:
+  - 1.22
+  - 1.23
+  - 1.24
+c_compiler:
+  - {{ compiler(c) }}
+cxx_compiler:
+  - {{ compiler(cxx) }}
+channel_sources:
+  - conda-forge,defaults
+channel_targets:
+  - conda-forge main
