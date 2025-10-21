@@ -227,6 +227,7 @@ def build_extensions():
                 "pyoctomap",  # Include the pyoctomap directory for .pxd files
                 "src/octomap/octomap/include",
                 "src/octomap/octomap/include/octomap",
+                "src/octomap/octomap/include/octomap/math",  # For Vector3.h and other math headers
                 "src/octomap/dynamicEDT3D/include",
                 numpy_include,  # Use the variable instead of calling numpy.get_include() again
             ],
