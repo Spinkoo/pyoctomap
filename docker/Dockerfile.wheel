@@ -25,7 +25,7 @@ RUN mkdir -p src/octomap/lib && \
     ls -la src/octomap/lib/
 
 # Build wheels for multiple Python versions
-RUN for py_version in cp39-cp39 cp310-cp310 cp311-cp311 cp312-cp312 cp313-cp313; do \
+RUN for py_version in cp37-cp37m cp38-cp38 cp39-cp39 cp310-cp310 cp311-cp311 cp312-cp312 cp313-cp313; do \
         echo "Building wheel for Python $py_version..." && \
         /opt/python/$py_version/bin/pip install --upgrade pip setuptools wheel && \
         /opt/python/$py_version/bin/pip install numpy cython && \

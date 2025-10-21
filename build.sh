@@ -34,6 +34,11 @@ python3 -c "import Cython" 2>/dev/null || {
     pip install Cython
 }
 
+python3 -c "import wheel" 2>/dev/null || {
+    echo "❌ wheel not found. Installing..."
+    pip install wheel
+}
+
 echo "ℹ️  Note: Libraries are bundled in the wheel under octomap/lib, and rpath points to $ORIGIN/lib."
 
 # Clean previous builds
