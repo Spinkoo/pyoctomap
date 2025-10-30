@@ -62,6 +62,23 @@ cdef extern from "OcTreeKey.h" namespace "octomap":
         key_type k[3]
     OcTreeKey computeIndexKey(key_type level, const OcTreeKey& key)
     unsigned int computeChildIdx(const OcTreeKey& key, int depth)
+    
+    cdef cppclass KeyRay:
+        KeyRay() except +
+        void reset()
+        void addKey(const OcTreeKey& k)
+        size_t size() const
+        
+        cppclass iterator:
+            iterator() except +
+            OcTreeKey& deref()
+            OcTreeKey& operator*()
+            iterator& inc()
+            iterator& operator++()
+            bool operator!=(iterator& other)
+        
+        iterator begin()
+        iterator end()
 cdef extern from "include_and_setting.h" namespace "octomap":
     cdef cppclass OccupancyOcTreeBase[T]:
         cppclass iterator_base:
@@ -114,7 +131,8 @@ cdef extern from "include_and_setting.h" namespace "octomap":
         bool coordToKeyChecked(point3d& coord, unsigned int depth, OcTreeKey& key)
         bool deleteNode(point3d& value, unsigned int depth)
         bool castRay(point3d& origin, point3d& direction, point3d& end,
-                     bool ignoreUnknownCells, double maxRange)
+                     bool ignoreUnknownCells, double maxRange) except +
+        bool computeRayKeys(point3d& origin, point3d& end, KeyRay& ray)
         OcTree* read(string& filename)
         OcTree* read(istream& s)
         bool write(string& filename)
@@ -162,6 +180,7 @@ cdef extern from "include_and_setting.h" namespace "octomap":
         OcTreeNode* updateNode(double x, double y, double z, bool occupied, bool lazy_eval)
         OcTreeNode* updateNode(OcTreeKey& key, float log_odds_update, bool lazy_eval)
         OcTreeNode* updateNode(OcTreeKey& key, bool occupied, bool lazy_eval)
+        bool computeRayKeys(const point3d& origin, const point3d& end, KeyRay& ray)
         void updateInnerOccupancy()
         void useBBXLimit(bool enable)
         double volume()

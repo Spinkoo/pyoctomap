@@ -1,12 +1,25 @@
+# cython: language_level=3
+# cython: boundscheck=False
+# cython: wraparound=False
+# cython: cdivision=True
+# cython: nonecheck=False
+# cython: np_pythran=False
+
 from libcpp.string cimport string
 from libcpp cimport bool as cppbool
 from libc.string cimport memcpy
+from libc.math cimport sqrt, ceil, fmax
 from cython.operator cimport dereference as deref, preincrement as inc, address
 cimport octomap_defs as defs
 cimport dynamicEDT3D_defs as edt
 import numpy as np
 cimport numpy as np
 ctypedef np.float64_t DOUBLE_t
+
+# Fix NumPy API compatibility
+np.import_array()
+
+# NumPy compatibility for newer versions
 ctypedef defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator* tree_iterator_ptr
 ctypedef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_iterator* leaf_iterator_ptr
 ctypedef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator* leaf_bbx_iterator_ptr
@@ -558,7 +571,35 @@ cdef class OcTree:
         if hit:
             end[0:3] = e.x(), e.y(), e.z()
         return hit
-    
+    cdef void _fast_decay_in_bbx(self, 
+                                  defs.point3d bbx_min, 
+                                  defs.point3d bbx_max, 
+                                  float logodd_decay_value) except +:
+        """
+        (Internal C++-level worker)
+        Iterates over all leaves in a BBX at C++ speed
+        and applies a decay value.
+        """
+        
+        # 1. Get the raw C++ iterators
+        cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator it
+        cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator end_it
+        
+        # Get all leaves (maxDepth = 0)
+        it = self.thisptr.begin_leafs_bbx(bbx_min, bbx_max, 0) 
+        end_it = self.thisptr.end_leafs_bbx()
+
+        # 2. C-style loop (this is now extremely fast)
+        while it != end_it:
+            # 3. C-style checks and updates
+            # We use deref() to get the OcTreeNode&
+            if self.thisptr.isNodeOccupied(deref(it)):
+                # Directly call the C++ addValue
+                deref(it).addValue(logodd_decay_value)
+
+            # 4. Advance iterator using the imported 'inc'
+            inc(it)
+
     def read(self, filename):
         cdef string c_filename = filename.encode('utf-8')
         cdef defs.OcTree* result
@@ -1154,10 +1195,10 @@ cdef class OcTree:
         Add a single 3D point to update the occupancy grid using ray casting.
         
         This method efficiently adds a point by:
-        1. Casting a ray from sensor_origin to the target point
-        2. If the ray hits an obstacle, marking the hit point as occupied
-        3. If no hit, marking the target point as occupied
-        4. Marking free space along the ray from origin to the occupied point
+        1. Clearing the entire ray as free space first (removes old occupied voxels)
+        2. Casting a ray from sensor_origin to the target point
+        3. If the ray hits an obstacle, marking the hit point as occupied
+        4. If no hit, marking the target point as occupied
         
         Args:
             point: 3D point [x, y, z] in meters
@@ -1214,13 +1255,23 @@ cdef class OcTree:
             # Use optimized version with default resolution
             self._mark_free_space_optimized(origin, end_point)
 
+    #Debugging function to test the ray casting insertion
     cdef cppbool _add_single_point_optimized(self, np.ndarray[DOUBLE_t, ndim=1] point, 
-                                            np.ndarray[DOUBLE_t, ndim=1] sensor_origin):
-        """Optimized single point addition with minimal overhead"""
+                                            np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                                            double decay_factor=0.1):
+        """Optimized single point addition with probabilistic decay along ray"""
         cdef np.ndarray[DOUBLE_t, ndim=1] direction
         cdef np.ndarray[DOUBLE_t, ndim=1] end_point
         cdef double ray_length
         cdef cppbool hit
+        cdef float logodd_decay
+        cdef float logodd_miss
+        cdef double resolution
+        cdef double hit_distance
+        cdef int num_steps
+        cdef int i
+        cdef double t
+        cdef np.ndarray[DOUBLE_t, ndim=1] sample_point
         
         try:
             # Check if origin and point are the same
@@ -1230,6 +1281,10 @@ cdef class OcTree:
                 self.updateNode(point, True)
                 return True
             
+            # Calculate decay values
+            logodd_miss = self.thisptr.getProbMissLog()
+            logodd_decay = logodd_miss * <float>decay_factor
+            
             # Calculate direction vector
             direction = point - sensor_origin
             ray_length = np.linalg.norm(direction)
@@ -1238,22 +1293,49 @@ cdef class OcTree:
                 # Normalize direction
                 direction = direction / ray_length
                 
-                # Use castRay to find the first occupied cell along the ray
+                # STEP 1: Use castRay to find the first occupied cell along the ray
                 end_point = np.zeros(3, dtype=np.float64)
                 hit = self.castRay(sensor_origin, direction, end_point, 
                                   ignoreUnknownCells=True, 
                                   maxRange=ray_length)
                 
                 if hit:
-                    # Ray hit an obstacle - mark the hit point as occupied
-                    self.updateNode(end_point, True)
-                    # Mark free space from origin to hit point
-                    self._mark_free_space_optimized(sensor_origin, end_point)
+                    # Apply probabilistic decay to voxels along the ray up to the hit point
+                    # This maintains the probabilistic nature of OctoMap
+                    hit_distance = np.linalg.norm(end_point - sensor_origin)
+                    resolution = self.getResolution()
+                    num_steps = <int>(hit_distance / resolution) + 1
+                    
+                    for i in range(1, num_steps):  # Skip origin (i=0)
+                        t = i * resolution
+                        if t >= hit_distance:
+                            break
+                        
+                        sample_point = sensor_origin + direction * t
+                        # Apply decay to voxels along the ray (probabilistic update)
+                        self.thisptr.updateNode(sample_point[0], sample_point[1], sample_point[2], 
+                                              logodd_decay, <cppbool>True)
+                    
+                    # Decay the hit voxel as well
+                    self.thisptr.updateNode(end_point[0], end_point[1], end_point[2], 
+                                          logodd_decay, <cppbool>True)
                 else:
-                    # No hit - mark the target point as occupied
+                    # No hit - apply decay along the ray and mark target point as occupied
+                    resolution = self.getResolution()
+                    num_steps = <int>(ray_length / resolution) + 1
+                    
+                    for i in range(1, num_steps):  # Skip origin (i=0)
+                        t = i * resolution
+                        if t >= ray_length:
+                            break
+                        
+                        sample_point = sensor_origin + direction * t
+                        # Apply decay to voxels along the ray (probabilistic update)
+                        self.thisptr.updateNode(sample_point[0], sample_point[1], sample_point[2], 
+                                              logodd_decay, <cppbool>True)
+                    
+                    # Mark the target point as occupied
                     self.updateNode(point, True)
-                    # Mark free space from origin to target point
-                    self._mark_free_space_optimized(sensor_origin, point)
             else:
                 # Zero-length ray - just mark the point as occupied
                 self.updateNode(point, True)
@@ -1292,118 +1374,6 @@ cdef class OcTree:
             sample_point = origin + t * direction
             self.updateNode(sample_point, False)  # Mark as free
 
-    def addPointCloudWithRayCasting(self,
-                                   np.ndarray[DOUBLE_t, ndim=2] point_cloud,
-                                   np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
-                                   max_range=-1.0,
-                                   update_inner_occupancy=True,
-                                   discretize=False):
-        """
-        Add a full point cloud using ray casting for each point.
-        
-        This method provides more accurate free space marking compared to 
-        the standard insertPointCloud method by using ray casting for each point.
-        
-        Args:
-            point_cloud: Nx3 array of points
-            sensor_origin: Sensor origin for the point cloud
-            max_range: Maximum range for points (-1 = no limit)
-            update_inner_occupancy: Whether to update inner node occupancy
-            discretize: If True, discretize to unique keys first to reduce rays (faster for dense clouds)
-        
-        Returns:
-            int: Number of points successfully added
-        """
-        cdef int success_count = 0
-        cdef int i
-        cdef int num_points = point_cloud.shape[0]
-        cdef np.ndarray[DOUBLE_t, ndim=1] point
-        cdef np.ndarray[DOUBLE_t, ndim=2] filtered_points
-        cdef cppbool success
-        
-        try:
-            # Discretize if requested (reduces N for dense clouds)
-            if discretize:
-                point_cloud = self._discretizePointCloud(point_cloud)
-                num_points = point_cloud.shape[0]
-            
-            if max_range > 0:
-                # Filter points by range first - vectorized approach
-                distances = np.linalg.norm(point_cloud - sensor_origin, axis=1)
-                filtered_points = point_cloud[distances <= max_range]
-                success_count = self._process_points_vectorized(filtered_points, sensor_origin, filtered_points.shape[0])
-            else:
-                # Process all points without range filtering
-                success_count = self._process_points_vectorized(point_cloud, sensor_origin, num_points)
-            
-            # Update inner occupancy once for the batch
-            if update_inner_occupancy and success_count > 0:
-                self.updateInnerOccupancy()
-            
-            return success_count
-            
-        except Exception as e:
-            print(f"Error in point cloud processing: {e}")
-            return success_count
-
-    cdef int _process_points_vectorized(self, np.ndarray[DOUBLE_t, ndim=2] points, 
-                                        np.ndarray[DOUBLE_t, ndim=1] origin, 
-                                        int num_points):
-        """Optimized vectorized processing for points with same origin"""
-        cdef int success_count = 0
-        cdef int i
-        cdef cppbool hit
-        cdef double ray_length
-        cdef np.ndarray[DOUBLE_t, ndim=1] end_point_py
-        
-        # Vectorized pre-computation (NumPy ops auto-manage GIL)
-        cdef np.ndarray[DOUBLE_t, ndim=2] directions
-        cdef np.ndarray[DOUBLE_t, ndim=1] distances
-        cdef np.ndarray[DOUBLE_t, ndim=2] valid_points  # Filtered points
-        cdef int valid_num_points
-        
-        directions = points - origin  # (N, 3) vectorized subtract
-        distances = np.linalg.norm(directions, axis=1)  # O(N) norms
-        
-        # Handle zero-distance points separately (small loop, rare/edge case)
-        zero_mask = distances == 0.0
-        if np.any(zero_mask):
-            for j in range(num_points):
-                if zero_mask[j]:
-                    self.updateNode(points[j], True)  # Mark occupied
-                    success_count += 1
-        
-        # Filter non-zero points
-        non_zero = distances > 0.0
-        valid_num_points = np.sum(non_zero)
-        if valid_num_points == 0:
-            return success_count
-        
-        valid_points = points[non_zero]
-        directions = directions[non_zero] / distances[non_zero, np.newaxis]  # Normalize
-        distances = distances[non_zero]  # Filtered distances
-        
-        # Pre-allocate end_point_py once
-        end_point_py = np.zeros(3, dtype=np.float64)
-        
-        # Main loop: C-style optimized, auto GIL for method calls
-        for i in range(valid_num_points):
-            ray_length = distances[i]  # Pre-computed scalar (fast typed access)
-            
-            # Cast ray and updates (Cython auto-acquires GIL for these Python-bound calls)
-            hit = self.castRay(origin, directions[i], end_point_py, 
-                               ignoreUnknownCells=True, maxRange=ray_length)
-            
-            if hit:
-                self.updateNode(end_point_py, True)
-                self._mark_free_space_optimized(origin, end_point_py)
-            else:
-                self.updateNode(valid_points[i], True)
-                self._mark_free_space_optimized(origin, valid_points[i])
-            
-            success_count += 1  # Assume success (add checks if needed)
-        
-        return success_count
 
     def _discretizePointCloud(self, np.ndarray[DOUBLE_t, ndim=2] point_cloud, bint checked=True):
         """
@@ -1469,36 +1439,6 @@ cdef class OcTree:
         
         # No return; assume success
 
-    def insertPointCloudFast(self,
-                         np.ndarray[DOUBLE_t, ndim=2] point_cloud,
-                         np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
-                         double max_range=-1.0,
-                         bint discretize=False,
-                         bint lazy_eval=False):
-        """
-        Fast batch insertion using native C++ (parallelized with OpenMP, batched updates).
-        
-        Marks full rays from origin to endpoints as free, endpoints as occupied.
-        Less accurate than ray-casting (doesn't stop at hits) but much faster.
-        Uses discretization if enabled (groups points to reduce rays ~50% for dense clouds).
-        
-        Args:
-            point_cloud: Nx3 array of points
-            sensor_origin: Sensor origin [x, y, z]
-            max_range: Max range per ray (-1 = unlimited)
-            discretize: If True, discretize points to keys first (faster for dense clouds)
-            lazy_eval: If True, defer updateInnerOccupancy (call manually later)
-        
-        Returns:
-            int: Number of points processed
-        """
-        cdef int num_points = point_cloud.shape[0]
-        cdef cppbool success = True
-        
-        self._build_pointcloud_and_insert(point_cloud, sensor_origin, max_range, discretize, lazy_eval)
-        
-        return num_points if success else 0
-
     def insertPointCloud(self,
                      np.ndarray[DOUBLE_t, ndim=2] point_cloud,
                      np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
@@ -1556,3 +1496,95 @@ cdef class OcTree:
             self.updateInnerOccupancy()
         
         return num_points
+    def decayOccupancyInBBX(self,
+                              np.ndarray[DOUBLE_t, ndim=2] point_cloud,
+                              np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                              float logodd_decay_value=-0.2):
+        """
+        Calculates the bounding box of a scan (points + origin) and
+        applies a log-odds decay to all *occupied* leaf nodes within it.
+
+        This function is a high-performance wrapper that calls an
+        internal C++ iterator loop.
+        """
+        
+        # --- 1. Bounding Box Calculation (NumPy) ---
+        cdef np.ndarray[DOUBLE_t, ndim=1] bbx_min_np, bbx_max_np
+        cdef np.ndarray[DOUBLE_t, ndim=1] pc_min = np.min(point_cloud, axis=0)
+        cdef np.ndarray[DOUBLE_t, ndim=1] pc_max = np.max(point_cloud, axis=0)
+        
+        bbx_min_np = np.minimum(pc_min, sensor_origin)
+        bbx_max_np = np.maximum(pc_max, sensor_origin)
+
+        # --- 2. Convert to C++ types ---
+        cdef defs.point3d bbx_min_cpp = defs.point3d(
+            <float>bbx_min_np[0], <float>bbx_min_np[1], <float>bbx_min_np[2])
+        cdef defs.point3d bbx_max_cpp = defs.point3d(
+            <float>bbx_max_np[0], <float>bbx_max_np[1], <float>bbx_max_np[2])
+
+        # Ensure decay is negative
+        if logodd_decay_value > 0.0:
+            logodd_decay_value = -logodd_decay_value
+
+        # --- 3. Call the fast C++ worker function ---
+        try:
+            # This C++ call will be very fast
+            self._fast_decay_in_bbx(bbx_min_cpp, bbx_max_cpp, logodd_decay_value)
+        except Exception as e:
+            # Catch C++ exceptions
+            print(f"Warning: Error during fast decay step: {e}")
+
+    def decayAndInsertPointCloud(self,
+                                 np.ndarray[DOUBLE_t, ndim=2] point_cloud,
+                                 np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                                 float logodd_decay_value=-0.2,
+                                 double max_range=-1.0,
+                                 bint update_inner_occupancy=True):
+        """
+        Solves the occluded-ghost problem by first applying a temporal
+        decay to the scan's bounding box, and then
+        inserting the new point cloud.
+        
+        This is the recommended function for inserting scans from a
+        moving sensor in a dynamic environment.
+
+        Args:
+            point_cloud: The new point cloud to insert.
+            sensor_origin: The origin of the sensor.
+            logodd_decay_value: The negative log-odds to add to all
+                occupied voxels in the region *before* inserting
+                the new scan. This value *must* be negative.
+
+                **Tuning Guide:**
+                This value controls how fast the map "forgets" old data.
+                A good way to tune it is to decide how many scans
+                it should take for a ghost to disappear.
+
+                A fully occupied voxel typically has a log-odds value
+                of around +4.0.
+
+                Formula: Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)
+
+                - **Moderate (Default): -0.2**
+                  Takes ~20 scans for a ghost to fade.
+                - **Aggressive: -1.0 to -3.0**
+                  Takes 2-4 scans to fade. Good for highly dynamic
+                  environments.
+                - **Weak: -0.05 to -0.1**
+                  Takes 40-80 scans to fade. Good for mostly
+                  static maps.
+
+            max_range: (for insertion) Max range of the sensor.
+            update_inner_occupancy: (for insertion) Whether to update
+                                     the tree hierarchy.
+        """
+        
+        # --- 1. DECAY STEP ---
+        # The bounding box calculation is inside this function call
+        self.decayOccupancyInBBX(point_cloud, sensor_origin, logodd_decay_value)
+
+        # --- 2. INSERT STEP ---
+        # Insert the new point cloud using the fast C++ method
+        self.insertPointCloud(point_cloud, sensor_origin, max_range=max_range)
+        if update_inner_occupancy:
+            self.updateInnerOccupancy()

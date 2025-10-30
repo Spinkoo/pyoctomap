@@ -11,7 +11,7 @@ import platform
 from pathlib import Path
 
 # Version information
-__version__ = "0.3.2"
+__version__ = "0.3.3"
 __author__ = "Spinkoo"
 __email__ = "lespinkoo@gmail.com"
 
@@ -140,4 +140,5 @@ if __name__ == "__main__":
             print(f"    - {lib_file}")
     
     # Run installation test
+
     test_installation()
