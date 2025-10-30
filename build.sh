@@ -41,6 +41,47 @@ python3 -c "import wheel" 2>/dev/null || {
 
 echo "ℹ️  Note: Libraries are bundled in the wheel under octomap/lib, and rpath points to $ORIGIN/lib."
 
+# Build OctoMap C++ libraries first
+echo "🔨 Building OctoMap C++ libraries..."
+if [ ! -d "src/octomap" ]; then
+    echo "❌ Error: OctoMap source not found. Please ensure submodule is initialized:"
+    echo "  git submodule update --init --recursive"
+    exit 1
+fi
+
+# Check if libraries already exist
+if [ -d "src/octomap/lib" ] && [ "$(ls -A src/octomap/lib/*.so 2>/dev/null)" ]; then
+    echo "✅ OctoMap libraries already exist, skipping build"
+else
+    echo "🔨 Building OctoMap from source..."
+    cd src/octomap
+    
+    # Create build directory
+    mkdir -p build
+    cd build
+    
+    # Configure with CMake
+    echo "Configuring with CMake..."
+    cmake .. \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+        -DBUILD_SHARED_LIBS=ON \
+        -DOCTOVIS_QT5=OFF \
+        -DOCTOVIS_QT6=OFF
+    
+    # Build the libraries
+    echo "Building OctoMap libraries..."
+    make -j$(nproc)
+    
+    # Create lib directory and copy libraries
+    mkdir -p lib
+    cp lib/*.so* lib/ 2>/dev/null || true
+    
+    # Return to project root
+    cd ../../..
+    echo "✅ OctoMap libraries built successfully!"
+fi
+
 # Clean previous builds
 echo "🧹 Cleaning previous builds..."
 rm -rf build/ dist/ *.egg-info/ 2>/dev/null || true

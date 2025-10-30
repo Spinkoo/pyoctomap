@@ -90,6 +90,7 @@ sudo apt install python3.13-dev python3.13-distutils
 **Features:**
 - Python version checking
 - Dependency installation
+- OctoMap C++ library building
 - Clean build process
 - Library bundling with auditwheel
 - Automatic testing
@@ -102,15 +103,59 @@ chmod +x build.sh
 ```
 
 **What it does:**
-1. Checks Python version (3.9+)
+1. Checks Python version (3.7+)
 2. Installs required dependencies
-3. Cleans previous builds
-4. Builds Cython extensions
-5. Creates wheel package
-6. Bundles shared libraries
-7. Installs package
-8. Runs basic tests
-9. Provides usage instructions
+3. **Builds OctoMap C++ libraries from source** (NEW)
+4. Cleans previous builds
+5. Builds Cython extensions
+6. Creates wheel package
+7. Bundles shared libraries
+8. Installs package
+9. Runs basic tests
+10. Provides usage instructions
+
+### Google Colab Installation
+
+**Script**: Use the main `build.sh` script
+**Purpose**: Automated build and installation for Google Colab environment
+
+**Features:**
+- OctoMap C++ library building from source (built into main script)
+- Headless build configuration (no Qt dependencies)
+- Automatic dependency checking
+- Clean build process
+- Library bundling
+- Automatic testing
+
+**Usage in Colab:**
+```bash
+# Install system dependencies first
+!apt-get update -qq
+!apt-get install -y -qq cmake build-essential
+
+# Clone the repository with submodules
+!git clone --recursive https://github.com/Spinkoo/pyoctomap.git
+!cd pyoctomap
+
+# Run the main build script
+!chmod +x build.sh
+!./build.sh
+```
+
+**What the build script does:**
+1. **Checks Python version** (3.7+)
+2. **Installs Python dependencies** (NumPy, Cython, setuptools, wheel)
+3. **Builds OctoMap C++ libraries** from source using CMake with headless configuration
+4. **Cleans previous builds** - Removes any existing build artifacts
+5. **Builds Python package** - Compiles Cython extensions and creates wheel
+6. **Bundles shared libraries** - Includes all required C++ libraries
+7. **Installs package** - Installs the wheel
+8. **Runs basic tests** - Verifies installation works correctly
+
+**Colab-Specific Notes:**
+- The main build script automatically handles OctoMap C++ library building
+- Headless configuration disables Qt5/Qt6 dependencies for Colab compatibility
+- No separate Colab-specific script needed
 
 ### Docker Build Script (`build-docker.sh`)
 
@@ -405,6 +450,43 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 ```
 
+### Google Colab Specific Issues
+
+**Error: `cannot find -ldynamicedt3d: No such file or directory`**
+```bash
+# This error occurs when OctoMap C++ libraries aren't built first
+# Solution: Use the main build.sh script which builds libraries first
+!git clone --recursive https://github.com/Spinkoo/pyoctomap.git
+!cd pyoctomap && chmod +x build.sh && ./build.sh
+```
+
+**Error: `fatal: not a git repository` during cloning**
+```bash
+# This happens when the submodule isn't properly initialized
+# Solution: Clone with --recursive flag
+!git clone --recursive https://github.com/Spinkoo/pyoctomap.git
+```
+
+**Error: `cmake: command not found`**
+```bash
+# Install system dependencies first
+!apt-get update -qq
+!apt-get install -y -qq cmake build-essential
+```
+
+**Error: `Python.h: No such file or directory` in Colab**
+```bash
+# Install Python development headers
+!apt-get install -y python3-dev
+```
+
+**Build takes too long in Colab**
+```bash
+# Reduce parallel jobs to avoid memory issues
+# The build script automatically uses -j$(nproc) but you can modify it to use fewer cores
+!make -j2  # Use only 2 cores instead of all available
+```
+
 ### Build Optimization
 
 **Compiler Flags:**
@@ -436,9 +518,7 @@ python setup.py build_ext --inplace --debug
 
 **Workflow**: `.github/workflows/ci.yml`
 **Triggers**: Push, Pull Request
-**Platforms**: Ubuntu 20.04, Python 3.9-3.13
-
-> **📝 Note**: Python 3.14 support will be added once it becomes available in the manylinux images. Currently, Python 3.14 is not yet supported by the official manylinux build environment.
+**Platforms**: Ubuntu 20.04, Python 3.7-3.14
 
 **Steps:**
 1. Checkout code
@@ -469,7 +549,7 @@ COPY --from=octomap-builder /usr/local /usr/local
 
 **Linux Wheels:**
 - Platform: linux_x86_64
-- Python: 3.9-3.13
+- Python: 3.7-3.14
 - Bundled libraries included
 
 **Future Platforms:**

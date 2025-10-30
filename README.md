@@ -27,7 +27,7 @@ pip install pyoctomap
 
 **Supported Platforms:**
 - Linux (manylinux2014 compatible)
-- Python 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13
+- Python 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13, 3.14
 - Pre-built wheels available for all supported combinations
 
 > **🚀 ROS Integration**: ROS/ROS2 integration is currently being developed on the [`ros` branch](https://github.com/Spinkoo/pyoctomap/tree/ros), featuring ROS2 message support and real-time point cloud processing.
@@ -64,6 +64,8 @@ docker build -f docker/Dockerfile.wheel -t pyoctomap-wheel .
 ```
 
 The Docker build creates manylinux-compatible wheels for Python 3.9-3.14, properly bundling all required C++ libraries.
+
+> **📋 Google Colab Users**: See [Build System Documentation](docs/build_system.md) for detailed Colab installation instructions.
 
 ## Quick Start
 
