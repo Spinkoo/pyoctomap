@@ -188,9 +188,9 @@ class SequentialOccupancyGrid:
         self.tree.markFreeSpaceAlongRay(origin, end_point, step_size)
         
     def add_points_batch(self, 
-                        points: Union[List, np.ndarray],
-                        sensor_origins: Optional[Union[List, np.ndarray]] = None,
-                        update_inner_occupancy: bool = True) -> int:
+                       points: Union[List, np.ndarray],
+                       sensor_origins: Optional[Union[List, np.ndarray]] = None,
+                       update_inner_occupancy: bool = True) -> int:
         """
         Add multiple 3D points in batch for better performance
         
@@ -213,17 +213,15 @@ class SequentialOccupancyGrid:
             return 0
         
         try:
-            # Handle sensor origins
-            if sensor_origins is not None:
-                sensor_origins = np.asarray(sensor_origins, dtype=np.float64)
-                if len(sensor_origins.shape) == 1:
-                    sensor_origins = sensor_origins.reshape(1, -1)
-            else:
-                # Use default sensor origin for all points
-                sensor_origins = np.tile(self.sensor_origin, (len(points), 1))
+            # Use default sensor origin for all points (sensor_origins could be implemented in the future if needed)
+            origin = self.sensor_origin
+
+            # Use the Cython fast rays method for batch insertion
+            success_count = self.tree.insertPointCloudRaysFast(points, origin)
             
-            # Use the new integrated batch method from octomap
-            success_count = self.tree.addPointCloudWithRayCasting(points, self.sensor_origin, update_inner_occupancy=update_inner_occupancy)
+            # Optionally update inner occupancy
+            if update_inner_occupancy:
+                self.tree.updateInnerOccupancy()
             
             # Update statistics
             batch_time = time.time() - start_time
@@ -243,10 +241,10 @@ class SequentialOccupancyGrid:
         return success_count
     
     def add_point_cloud(self,
-                       point_cloud: np.ndarray,
-                       sensor_origin: Optional[Union[List[float], np.ndarray]] = None,
-                       max_range: float = -1.0,
-                       use_ray_casting: bool = True) -> bool:
+                      point_cloud: np.ndarray,
+                      sensor_origin: Optional[Union[List[float], np.ndarray]] = None,
+                      max_range: float = -1.0,
+                      use_ray_casting: bool = True) -> bool:
         """
         Add a full point cloud using either ray casting or OctoMap's optimized insertion
         
@@ -270,8 +268,9 @@ class SequentialOccupancyGrid:
                 return False
             
             if use_ray_casting:
-                # Use the new integrated ray casting method
-                success_count = self.tree.addPointCloudWithRayCasting(point_cloud, origin, max_range, True)
+                # Use the fast rays batch insertion method
+                success_count = self.tree.insertPointCloudRaysFast(point_cloud, origin)
+                self.tree.updateInnerOccupancy()
                 success = success_count > 0
             else:
                 # Use OctoMap's optimized point cloud insertion

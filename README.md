@@ -92,81 +92,59 @@ if node and tree.isNodeOccupied(node):
 tree.write("my_map.bt")
 ```
 
-### New Vectorized Operations
+### Dynamic Mapping and Point Cloud Insertion
 
-PyOctoMap now includes high-performance vectorized operations for better performance:
+PyOctoMap provides efficient methods for dynamic mapping and probabilistic decay:
 
-#### Traditional vs Vectorized Approach
-
-**Traditional (slower):**
+**Decay and Insert Point Cloud (Recommended for Dynamic Environments):**
 ```python
-# Individual point updates - slower
-points = np.array([[1.0, 2.0, 3.0], [1.1, 2.1, 3.1], [1.2, 2.2, 3.2]])
-for point in points:
-    tree.updateNode(point, True)
-```
-
-**Vectorized (faster):**
-```python
-# Batch point updates - 4-5x faster
-points = np.array([[1.0, 2.0, 3.0], [1.1, 2.1, 3.1], [1.2, 2.2, 3.2]])
-tree.addPointsBatch(points)
-```
-
-#### Ray Casting with Free Space Marking
-
-**Single Point with Ray Casting:**
-```python
-# Add point with automatic free space marking
-sensor_origin = np.array([0.0, 0.0, 1.5])
-point = np.array([2.0, 2.0, 1.0])
-tree.addPointWithRayCasting(point, sensor_origin)
-```
-
-**Point Cloud with Ray Casting:**
-```python
-# Add point cloud with ray casting for each point
+# Recommended function for inserting scans from a moving sensor
+# Solves the occluded-ghost problem by applying temporal decay before insertion
 point_cloud = np.random.rand(1000, 3) * 10
 sensor_origin = np.array([0.0, 0.0, 1.5])
-success_count = tree.addPointCloudWithRayCasting(point_cloud, sensor_origin)
-print(f"Added {success_count} points")
+
+# Tuning the decay value:
+# Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)
+# 
+# Moderate (default: -0.2): ~20 scans for ghost to fade
+# Aggressive (-1.0 to -3.0): 2-4 scans (highly dynamic environments)
+# Weak (-0.05 to -0.1): 40-80 scans (mostly static maps)
+
+tree.decayAndInsertPointCloud(
+    point_cloud,
+    sensor_origin,
+    logodd_decay_value=-0.2,  # Must be negative
+    max_range=50.0
+)
 ```
 
 ### Batch Operations
 
 For efficient batch processing of point clouds, PyOctoMap provides both precise and fast options:
 
-**Precise Batch Ray-Casting:**
-```python
-# Accurate batch insertion with ray-casting (hit-stopping for free/occupied)
-points = np.random.uniform(-5, 5, (1000, 3))
-origin = np.array([0., 0., 0.], dtype=np.float64)
-success_count = tree.addPointCloudWithRayCasting(points, origin, discretize=True)
-# discretize=True reduces duplicates for dense clouds
-```
-
 **Fast Native Batching:**
 ```python
-# Fast C++ batch (full rays, optional discretization and lazy evaluation)
+# Fast C++ batch insertion (full rays, optional discretization and lazy evaluation)
 points = np.random.uniform(-5, 5, (1000, 3))
 origin = np.array([0., 0., 0.], dtype=np.float64)
-tree.insertPointCloudFast(points, origin, discretize=False, lazy_eval=True)
+tree.insertPointCloud(points, origin, discretize=False, lazy_eval=True)
 tree.updateInnerOccupancy()  # Manual after lazy
 
-# Equivalent raw C++ access (identical to above)
-tree.insertPointCloud(points, origin, discretize=False, lazy_eval=True)
+# Ultra-fast version using parallel rays (no deduplication)
+tree.insertPointCloudRaysFast(points, origin, max_range=50.0, lazy_eval=True)
 tree.updateInnerOccupancy()
 ```
 
-Note: `insertPointCloud` and `insertPointCloudFast` share the same underlying logic (consolidated for efficiency) – use either for native batching. For precision-critical tasks, prefer `addPointCloudWithRayCasting`; for speed, use natives with `lazy_eval=True` for deferral. All support NumPy arrays and `max_range` clipping.
+Note: `insertPointCloud` is the standard batch insertion method. Use `lazy_eval=True` for performance with large point clouds, then call `updateInnerOccupancy()` manually afterward. All methods support NumPy arrays and `max_range` clipping.
 
 ### Performance Comparison
 
-| Operation | Traditional | Vectorized | Speedup |
-|-----------|-------------|------------|---------|
-| Individual points | 5,000 pts/sec | 20,000 pts/sec | 4x |
-| Point cloud | 10,000 pts/sec | 30,000 pts/sec | 3x |
-| Batch processing | 15,000 pts/sec | 60,000 pts/sec | 4x |
+| Operation | Method | Speed |
+|-----------|--------|-------|
+| Individual points | `updateNode()` | ~300,000 pts/sec |
+| Batch insertion | `insertPointCloud()` | ~17,000 pts/sec |
+| Parallel rays | `insertPointCloudRaysFast()` | ~30,500 pts/sec |
+| Decay and insert | `decayAndInsertPointCloud()` | ~17,300 pts/sec |
 
 ## Examples
 
@@ -208,9 +186,10 @@ for x in np.arange(0, 4.0, 0.05):
         wall_points.append([x, y, 0])  # Floor
         wall_points.append([x, y, 3.0])  # Ceiling
 
-# Use vectorized approach for better performance
+# Use batch insertion for better performance
 wall_points = np.array(wall_points)
-tree.addPointCloudWithRayCasting(wall_points, sensor_origin)
+tree.insertPointCloud(wall_points, sensor_origin, lazy_eval=True)
+tree.updateInnerOccupancy()
 
 print(f"Tree size: {tree.size()} nodes")
 ```
@@ -301,6 +280,48 @@ if path_clear:
     print("✅ Complete path is clear!")
 else:
     print(f"❌ Path blocked at segments: {obstacles}")
+```
+
+### Dynamic Environment Mapping
+
+For moving sensors in dynamic environments, use `decayAndInsertPointCloud` to handle occluded-ghost problems:
+
+```python
+import pyoctomap
+import numpy as np
+
+# Create octree for dynamic mapping
+tree = pyoctomap.OcTree(0.1)  # 10cm resolution
+
+# Simulate sequential scans from a moving sensor
+for scan_num in range(100):
+    # Generate new scan (e.g., from LiDAR)
+    point_cloud = np.random.rand(500, 3) * 10  # Simulated point cloud
+    sensor_origin = np.array([scan_num * 0.1, 0.0, 1.5])  # Moving sensor
+    
+    # Recommended: Decay and insert
+    # This solves the occluded-ghost problem by:
+    # 1. Applying temporal decay to occupied voxels in scan's bounding box
+    # 2. Inserting the new point cloud
+    
+    tree.decayAndInsertPointCloud(
+        point_cloud,
+        sensor_origin,
+        logodd_decay_value=-0.2,  # Default: ~20 scans for ghost to fade
+        max_range=50.0,
+        update_inner_occupancy=True
+    )
+    
+    # For highly dynamic environments (faster ghost removal):
+    # tree.decayAndInsertPointCloud(point_cloud, sensor_origin, 
+    #                                logodd_decay_value=-1.0)  # ~4 scans
+
+# Tuning guide:
+# Formula: Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)
+# 
+# - Moderate (default: -0.2): ~20 scans to fade (balanced)
+# - Aggressive (-1.0 to -3.0): 2-4 scans (highly dynamic)
+# - Weak (-0.05 to -0.1): 40-80 scans (mostly static)
 ```
 
 ### Iterator Operations
