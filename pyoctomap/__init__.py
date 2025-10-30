@@ -11,7 +11,7 @@ import platform
 from pathlib import Path
 
 # Version information
-__version__ = "0.3.1"
+__version__ = "0.3.3"
 __author__ = "Spinkoo"
 __email__ = "lespinkoo@gmail.com"
 
