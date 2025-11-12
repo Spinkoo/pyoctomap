@@ -354,6 +354,20 @@
             border-bottom-color: #38a169;
         }
 
+        /* Dark section tabs */
+        #examples .tab {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #examples .tab:hover {
+            color: white;
+        }
+
+        #examples .tab.active {
+            color: #38a169;
+            border-bottom-color: #38a169;
+        }
+
         .tab-content {
             display: none;
         }
@@ -496,6 +510,15 @@
         <div class="container">
             <h2 class="section-title" style="color: white;">Examples & Quick Start</h2>
             
+            <div class="install-tabs" style="justify-content: flex-start; margin-bottom: 2rem; border-bottom: 2px solid #404040;">
+                <div class="tab active" onclick="showExampleTab('quickstart')">Quick Start</div>
+                <div class="tab" onclick="showExampleTab('pointcloud')">Point Cloud Ops</div>
+                <div class="tab" onclick="showExampleTab('advanced')">Advanced</div>
+                <div class="tab" onclick="showExampleTab('performance')">Performance</div>
+            </div>
+
+            <!-- Quick Start Tab -->
+            <div id="quickstart" class="tab-content active">
             <div class="code-container">
                 <div class="code-header">
                     <span class="code-title">Basic Usage</span>
@@ -522,7 +545,10 @@ node = tree.<span class="code-function">search</span>([<span class="code-number"
 <span class="code-comment"># Save to file</span>
 tree.<span class="code-function">write</span>(<span class="code-string">"my_map.bt"</span>)</code></pre>
             </div>
+            </div>
 
+            <!-- Point Cloud Operations Tab -->
+            <div id="pointcloud" class="tab-content">
             <div class="code-container">
                 <div class="code-header">
                     <span class="code-title">Dynamic Mapping and Point Cloud Insertion</span>
@@ -569,7 +595,10 @@ tree.<span class="code-function">updateInnerOccupancy</span>()  <span class="cod
 tree.<span class="code-function">insertPointCloud</span>(points, origin, discretize=<span class="code-keyword">False</span>, lazy_eval=<span class="code-keyword">True</span>)
 tree.<span class="code-function">updateInnerOccupancy</span>()</code></pre>
             </div>
+            </div>
 
+            <!-- Advanced Tab -->
+            <div id="advanced" class="tab-content">
             <div class="code-container">
                 <div class="code-header">
                     <span class="code-title">Room Mapping with Ray Casting</span>
@@ -718,7 +747,10 @@ bbx_max = np.<span class="code-function">array</span>([<span class="code-number"
     <span class="code-function">print</span>(<span class="code-string">f"Node in BBX: {coord}"</span>)
     <span class="code-comment"># Use for: region-specific analysis, spatial queries</span></code></pre>
             </div>
+            </div>
 
+            <!-- Performance Tab -->
+            <div id="performance" class="tab-content">
             <div style="background: #2d2d2d; border-radius: 12px; padding: 2rem; margin: 2rem 0; border: 1px solid #404040;">
                 <h3 style="color: white; margin-bottom: 1.5rem; text-align: center;">Performance Comparison</h3>
                 <table style="width: 100%; color: #d4d4d4; border-collapse: collapse;">
@@ -752,6 +784,7 @@ bbx_max = np.<span class="code-function">array</span>([<span class="code-number"
                         </tr>
                     </tbody>
                 </table>
+            </div>
             </div>
         </div>
     </section>
@@ -854,6 +887,23 @@ chmod +x build.sh
             // Remove active class from all tabs
             const tabs = document.querySelectorAll('.tab');
             tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Example tab functionality (for dark section)
+        function showExampleTab(tabName) {
+            // Hide all example tab contents
+            const exampleTabs = document.querySelectorAll('#examples .tab-content');
+            exampleTabs.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all example tabs
+            const exampleTabButtons = document.querySelectorAll('#examples .tab');
+            exampleTabButtons.forEach(tab => tab.classList.remove('active'));
             
             // Show selected tab content
             document.getElementById(tabName).classList.add('active');
