@@ -477,43 +477,16 @@
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <h2 class="section-title">Why PyOctoMap?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Easy Installation</h3>
-                    <p>Pre-built wheels with bundled shared libraries. No complex C++ compilation required. Just <code>pip install pyoctomap</code> and you're ready to go!</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>High Performance</h3>
-                    <p>Optimized Cython bindings with vectorized operations. 4-5x faster than traditional Python loops for batch operations.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <h3>Production Ready</h3>
-                    <p>Comprehensive API with ray casting, path planning, file I/O, and advanced tree operations. Built for robotics and computer vision applications.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Rich Visualization</h3>
-                    <p>Seamless integration with Open3D and matplotlib for 2D and 3D visualization. Perfect for debugging and analysis.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>Cross-Platform</h3>
-                    <p>Linux native support with Windows compatibility via WSL. Python 3.9+ support across all major platforms.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Well Documented</h3>
-                    <p>Comprehensive documentation with examples, API reference, and performance guides. Easy to learn and integrate.</p>
-                </div>
+            <h2 class="section-title">Features</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: left; font-size: 1.1rem; line-height: 2;">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 1rem;"><strong>3D Occupancy Mapping</strong>: Efficient octree-based 3D occupancy mapping</li>
+                    <li style="margin-bottom: 1rem;"><strong>Probabilistic Updates</strong>: Stochastic occupancy updates with uncertainty handling</li>
+                    <li style="margin-bottom: 1rem;"><strong>Path Planning</strong>: Ray casting and collision detection</li>
+                    <li style="margin-bottom: 1rem;"><strong>File Operations</strong>: Save/load octree data in binary format</li>
+                    <li style="margin-bottom: 1rem;"><strong>Python Integration</strong>: Clean Python interface with NumPy support</li>
+                    <li style="margin-bottom: 1rem;"><strong>Cross-Platform</strong>: Linux native support with Windows compatibility via WSL</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -552,34 +525,27 @@ tree.<span class="code-function">write</span>(<span class="code-string">"my_map.
 
             <div class="code-container">
                 <div class="code-header">
-                    <span class="code-title">Vectorized Operations (4-5x Faster)</span>
-                    <button class="copy-btn" onclick="copyCode('vectorized-code')">Copy</button>
+                    <span class="code-title">Dynamic Mapping and Point Cloud Insertion</span>
+                    <button class="copy-btn" onclick="copyCode('decay-code')">Copy</button>
                 </div>
-                <pre id="vectorized-code"><code><span class="code-comment"># Traditional approach (slower)</span>
-points = np.<span class="code-function">array</span>([[<span class="code-number">1.0</span>, <span class="code-number">2.0</span>, <span class="code-number">3.0</span>], [<span class="code-number">1.1</span>, <span class="code-number">2.1</span>, <span class="code-number">3.1</span>], [<span class="code-number">1.2</span>, <span class="code-number">2.2</span>, <span class="code-number">3.2</span>]])
-<span class="code-keyword">for</span> point <span class="code-keyword">in</span> points:
-    tree.<span class="code-function">updateNode</span>(point, <span class="code-keyword">True</span>)
-
-<span class="code-comment"># Vectorized approach (faster - 4-5x speedup)</span>
-points = np.<span class="code-function">array</span>([[<span class="code-number">1.0</span>, <span class="code-number">2.0</span>, <span class="code-number">3.0</span>], [<span class="code-number">1.1</span>, <span class="code-number">2.1</span>, <span class="code-number">3.1</span>], [<span class="code-number">1.2</span>, <span class="code-number">2.2</span>, <span class="code-number">3.2</span>]])
-tree.<span class="code-function">addPointsBatch</span>(points)</code></pre>
-            </div>
-
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="code-title">Ray Casting with Free Space Marking</span>
-                    <button class="copy-btn" onclick="copyCode('raycasting-code')">Copy</button>
-                </div>
-                <pre id="raycasting-code"><code><span class="code-comment"># Single point with ray casting</span>
-sensor_origin = np.<span class="code-function">array</span>([<span class="code-number">0.0</span>, <span class="code-number">0.0</span>, <span class="code-number">1.5</span>])
-point = np.<span class="code-function">array</span>([<span class="code-number">2.0</span>, <span class="code-number">2.0</span>, <span class="code-number">1.0</span>])
-tree.<span class="code-function">addPointWithRayCasting</span>(point, sensor_origin)
-
-<span class="code-comment"># Point cloud with ray casting</span>
+                <pre id="decay-code"><code><span class="code-comment"># Recommended function for inserting scans from a moving sensor</span>
+<span class="code-comment"># Solves the occluded-ghost problem by applying temporal decay before insertion</span>
 point_cloud = np.<span class="code-function">random</span>.<span class="code-function">rand</span>(<span class="code-number">1000</span>, <span class="code-number">3</span>) * <span class="code-number">10</span>
 sensor_origin = np.<span class="code-function">array</span>([<span class="code-number">0.0</span>, <span class="code-number">0.0</span>, <span class="code-number">1.5</span>])
-success_count = tree.<span class="code-function">addPointCloudWithRayCasting</span>(point_cloud, sensor_origin)
-<span class="code-function">print</span>(<span class="code-string">f"Added {success_count} points"</span>)</code></pre>
+
+<span class="code-comment"># Tuning the decay value:</span>
+<span class="code-comment"># Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)</span>
+<span class="code-comment"># </span>
+<span class="code-comment"># Moderate (default: -0.2): ~20 scans for ghost to fade</span>
+<span class="code-comment"># Aggressive (-1.0 to -3.0): 2-4 scans (highly dynamic environments)</span>
+<span class="code-comment"># Weak (-0.05 to -0.1): 40-80 scans (mostly static maps)</span>
+
+tree.<span class="code-function">decayAndInsertPointCloud</span>(
+    point_cloud,
+    sensor_origin,
+    logodd_decay_value=-<span class="code-number">0.2</span>,  <span class="code-comment"># Must be negative</span>
+    max_range=<span class="code-number">50.0</span>
+)</code></pre>
             </div>
 
             <div class="code-container">
@@ -681,35 +647,108 @@ clear, obstacle = <span class="code-function">is_path_clear</span>(start, end, t
     <span class="code-function">print</span>(<span class="code-string">f"❌ Path blocked at: {obstacle}"</span>)</code></pre>
             </div>
 
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="code-title">Dynamic Environment Mapping</span>
+                    <button class="copy-btn" onclick="copyCode('dynamic-code')">Copy</button>
+                </div>
+                <pre id="dynamic-code"><code><span class="code-comment"># For moving sensors in dynamic environments, use decayAndInsertPointCloud</span>
+<span class="code-comment"># to handle occluded-ghost problems</span>
+tree = pyoctomap.<span class="code-function">OcTree</span>(<span class="code-number">0.1</span>)  <span class="code-comment"># 10cm resolution</span>
+
+<span class="code-comment"># Simulate sequential scans from a moving sensor</span>
+<span class="code-keyword">for</span> scan_num <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-number">100</span>):
+    <span class="code-comment"># Generate new scan (e.g., from LiDAR)</span>
+    point_cloud = np.<span class="code-function">random</span>.<span class="code-function">rand</span>(<span class="code-number">500</span>, <span class="code-number">3</span>) * <span class="code-number">10</span>  <span class="code-comment"># Simulated point cloud</span>
+    sensor_origin = np.<span class="code-function">array</span>([scan_num * <span class="code-number">0.1</span>, <span class="code-number">0.0</span>, <span class="code-number">1.5</span>])  <span class="code-comment"># Moving sensor</span>
+    
+    <span class="code-comment"># Recommended: Decay and insert</span>
+    <span class="code-comment"># This solves the occluded-ghost problem by:</span>
+    <span class="code-comment"># 1. Applying temporal decay to occupied voxels in scan's bounding box</span>
+    <span class="code-comment"># 2. Inserting the new point cloud</span>
+    
+    tree.<span class="code-function">decayAndInsertPointCloud</span>(
+        point_cloud,
+        sensor_origin,
+        logodd_decay_value=-<span class="code-number">0.2</span>,  <span class="code-comment"># Default: ~20 scans for ghost to fade</span>
+        max_range=<span class="code-number">50.0</span>,
+        update_inner_occupancy=<span class="code-keyword">True</span>
+    )
+    
+    <span class="code-comment"># For highly dynamic environments (faster ghost removal):</span>
+    <span class="code-comment"># tree.decayAndInsertPointCloud(point_cloud, sensor_origin, </span>
+    <span class="code-comment">#                                logodd_decay_value=-1.0)  # ~4 scans</span>
+
+<span class="code-comment"># Tuning guide:</span>
+<span class="code-comment"># Formula: Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)</span>
+<span class="code-comment"># </span>
+<span class="code-comment"># - Moderate (default: -0.2): ~20 scans to fade (balanced)</span>
+<span class="code-comment"># - Aggressive (-1.0 to -3.0): 2-4 scans (highly dynamic)</span>
+<span class="code-comment"># - Weak (-0.05 to -0.1): 40-80 scans (mostly static)</span></code></pre>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="code-title">Iterator Operations</span>
+                    <button class="copy-btn" onclick="copyCode('iterator-code')">Copy</button>
+                </div>
+                <pre id="iterator-code"><code><span class="code-comment"># Tree Iterator - All nodes (inner + leaf nodes)</span>
+<span class="code-keyword">for</span> node_it <span class="code-keyword">in</span> tree.<span class="code-function">begin_tree</span>():
+    coord = node_it.<span class="code-function">getCoordinate</span>()
+    depth = node_it.<span class="code-function">getDepth</span>()
+    size = node_it.<span class="code-function">getSize</span>()
+    is_leaf = node_it.<span class="code-function">isLeaf</span>()
+    <span class="code-comment"># Use for: tree structure analysis, debugging, inner node operations</span>
+    <span class="code-keyword">if</span> <span class="code-keyword">not</span> is_leaf:
+        <span class="code-function">print</span>(<span class="code-string">f"Inner node at depth {depth}, size {size:.2f}m"</span>)
+
+<span class="code-comment"># Leaf Iterator - Leaf nodes only (faster for occupancy queries)</span>
+<span class="code-keyword">for</span> leaf_it <span class="code-keyword">in</span> tree.<span class="code-function">begin_leafs</span>():
+    coord = leaf_it.<span class="code-function">getCoordinate</span>()
+    occupied = tree.<span class="code-function">isNodeOccupied</span>(leaf_it)
+    <span class="code-keyword">if</span> occupied:
+        <span class="code-function">print</span>(<span class="code-string">f"Occupied leaf at {coord}"</span>)
+    <span class="code-comment"># Use for: standard occupancy operations, fast iteration</span>
+
+<span class="code-comment"># Bounding Box Iterator - Spatial filtering</span>
+bbx_min = np.<span class="code-function">array</span>([<span class="code-number">0.0</span>, <span class="code-number">0.0</span>, <span class="code-number">0.0</span>])
+bbx_max = np.<span class="code-function">array</span>([<span class="code-number">5.0</span>, <span class="code-number">5.0</span>, <span class="code-number">5.0</span>])
+<span class="code-keyword">for</span> bbx_it <span class="code-keyword">in</span> tree.<span class="code-function">begin_leafs_bbx</span>(bbx_min, bbx_max):
+    coord = bbx_it.<span class="code-function">getCoordinate</span>()
+    <span class="code-function">print</span>(<span class="code-string">f"Node in BBX: {coord}"</span>)
+    <span class="code-comment"># Use for: region-specific analysis, spatial queries</span></code></pre>
+            </div>
+
             <div style="background: #2d2d2d; border-radius: 12px; padding: 2rem; margin: 2rem 0; border: 1px solid #404040;">
                 <h3 style="color: white; margin-bottom: 1.5rem; text-align: center;">Performance Comparison</h3>
                 <table style="width: 100%; color: #d4d4d4; border-collapse: collapse;">
                     <thead>
                         <tr style="border-bottom: 2px solid #404040;">
                             <th style="padding: 0.75rem; text-align: left;">Operation</th>
-                            <th style="padding: 0.75rem; text-align: left;">Traditional</th>
-                            <th style="padding: 0.75rem; text-align: left;">Vectorized</th>
-                            <th style="padding: 0.75rem; text-align: left;">Speedup</th>
+                            <th style="padding: 0.75rem; text-align: left;">Method</th>
+                            <th style="padding: 0.75rem; text-align: left;">Speed</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr style="border-bottom: 1px solid #404040;">
                             <td style="padding: 0.75rem;">Individual points</td>
-                            <td style="padding: 0.75rem;">5,000 pts/sec</td>
-                            <td style="padding: 0.75rem;">20,000 pts/sec</td>
-                            <td style="padding: 0.75rem; color: #38a169; font-weight: 600;">4x</td>
+                            <td style="padding: 0.75rem;"><code style="color: #dcdcaa;">updateNode()</code></td>
+                            <td style="padding: 0.75rem; color: #38a169; font-weight: 600;">~300,000 pts/sec</td>
                         </tr>
                         <tr style="border-bottom: 1px solid #404040;">
-                            <td style="padding: 0.75rem;">Point cloud</td>
-                            <td style="padding: 0.75rem;">10,000 pts/sec</td>
-                            <td style="padding: 0.75rem;">30,000 pts/sec</td>
-                            <td style="padding: 0.75rem; color: #38a169; font-weight: 600;">3x</td>
+                            <td style="padding: 0.75rem;">Batch insertion</td>
+                            <td style="padding: 0.75rem;"><code style="color: #dcdcaa;">insertPointCloud()</code></td>
+                            <td style="padding: 0.75rem; color: #38a169; font-weight: 600;">~17,000 pts/sec</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #404040;">
+                            <td style="padding: 0.75rem;">Parallel rays</td>
+                            <td style="padding: 0.75rem;"><code style="color: #dcdcaa;">insertPointCloudRaysFast()</code></td>
+                            <td style="padding: 0.75rem; color: #38a169; font-weight: 600;">~30,500 pts/sec</td>
                         </tr>
                         <tr>
-                            <td style="padding: 0.75rem;">Batch processing</td>
-                            <td style="padding: 0.75rem;">15,000 pts/sec</td>
-                            <td style="padding: 0.75rem;">60,000 pts/sec</td>
-                            <td style="padding: 0.75rem; color: #38a169; font-weight: 600;">4x</td>
+                            <td style="padding: 0.75rem;">Decay and insert</td>
+                            <td style="padding: 0.75rem;"><code style="color: #dcdcaa;">decayAndInsertPointCloud()</code></td>
+                            <td style="padding: 0.75rem; color: #38a169; font-weight: 600;">~17,300 pts/sec</td>
                         </tr>
                     </tbody>
                 </table>
@@ -735,13 +774,7 @@ clear, obstacle = <span class="code-function">is_path_clear</span>(start, end, t
                         <button class="copy-btn" onclick="copyCode('pip-code')">Copy</button>
                     </div>
                     <pre id="pip-code"><code><span class="code-comment"># Install pre-built wheel (recommended)</span>
-pip install pyoctomap
-
-<span class="code-comment"># With visualization dependencies</span>
-pip install pyoctomap[visualization]
-
-<span class="code-comment"># For development</span>
-pip install pyoctomap[dev]</code></pre>
+pip install pyoctomap</code></pre>
                 </div>
                 <p style="text-align: center; margin-top: 1rem; color: #666;">
                     <strong>Supported:</strong> Python 3.9, 3.10, 3.11, 3.12 | Linux (manylinux2014) | Windows (WSL)
@@ -758,14 +791,15 @@ pip install pyoctomap[dev]</code></pre>
 git clone --recursive https://github.com/Spinkoo/pyoctomap.git
 cd pyoctomap
 
-<span class="code-comment"># Build OctoMap C++ library</span>
+<span class="code-comment"># Build and install OctoMap C++ library</span>
 cd src/octomap
 mkdir build && cd build
 cmake .. && make && sudo make install
 
-<span class="code-comment"># Build Python package</span>
+<span class="code-comment"># Return to main project and run automated build script</span>
 cd ../../..
-python setup.py build_ext --inplace</code></pre>
+chmod +x build.sh
+./build.sh</code></pre>
                 </div>
             </div>
         </div>
@@ -876,10 +910,6 @@ python setup.py build_ext --inplace</code></pre>
             });
         }, observerOptions);
 
-        // Observe all feature cards
-        document.querySelectorAll('.feature-card').forEach(card => {
-            observer.observe(card);
-        });
     </script>
 </body>
 </html>
