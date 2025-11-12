@@ -521,7 +521,7 @@
     <!-- Code Examples Section -->
     <section id="examples" class="code-section">
         <div class="container">
-            <h2 class="section-title" style="color: white;">Quick Start</h2>
+            <h2 class="section-title" style="color: white;">Examples & Quick Start</h2>
             
             <div class="code-container">
                 <div class="code-header">
@@ -552,25 +552,167 @@ tree.<span class="code-function">write</span>(<span class="code-string">"my_map.
 
             <div class="code-container">
                 <div class="code-header">
-                    <span class="code-title">Advanced: Ray Casting with Point Clouds</span>
-                    <button class="copy-btn" onclick="copyCode('advanced-code')">Copy</button>
+                    <span class="code-title">Vectorized Operations (4-5x Faster)</span>
+                    <button class="copy-btn" onclick="copyCode('vectorized-code')">Copy</button>
                 </div>
-                <pre id="advanced-code"><code><span class="code-comment"># High-performance batch processing with ray casting</span>
+                <pre id="vectorized-code"><code><span class="code-comment"># Traditional approach (slower)</span>
+points = np.<span class="code-function">array</span>([[<span class="code-number">1.0</span>, <span class="code-number">2.0</span>, <span class="code-number">3.0</span>], [<span class="code-number">1.1</span>, <span class="code-number">2.1</span>, <span class="code-number">3.1</span>], [<span class="code-number">1.2</span>, <span class="code-number">2.2</span>, <span class="code-number">3.2</span>]])
+<span class="code-keyword">for</span> point <span class="code-keyword">in</span> points:
+    tree.<span class="code-function">updateNode</span>(point, <span class="code-keyword">True</span>)
+
+<span class="code-comment"># Vectorized approach (faster - 4-5x speedup)</span>
+points = np.<span class="code-function">array</span>([[<span class="code-number">1.0</span>, <span class="code-number">2.0</span>, <span class="code-number">3.0</span>], [<span class="code-number">1.1</span>, <span class="code-number">2.1</span>, <span class="code-number">3.1</span>], [<span class="code-number">1.2</span>, <span class="code-number">2.2</span>, <span class="code-number">3.2</span>]])
+tree.<span class="code-function">addPointsBatch</span>(points)</code></pre>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="code-title">Ray Casting with Free Space Marking</span>
+                    <button class="copy-btn" onclick="copyCode('raycasting-code')">Copy</button>
+                </div>
+                <pre id="raycasting-code"><code><span class="code-comment"># Single point with ray casting</span>
+sensor_origin = np.<span class="code-function">array</span>([<span class="code-number">0.0</span>, <span class="code-number">0.0</span>, <span class="code-number">1.5</span>])
+point = np.<span class="code-function">array</span>([<span class="code-number">2.0</span>, <span class="code-number">2.0</span>, <span class="code-number">1.0</span>])
+tree.<span class="code-function">addPointWithRayCasting</span>(point, sensor_origin)
+
+<span class="code-comment"># Point cloud with ray casting</span>
+point_cloud = np.<span class="code-function">random</span>.<span class="code-function">rand</span>(<span class="code-number">1000</span>, <span class="code-number">3</span>) * <span class="code-number">10</span>
+sensor_origin = np.<span class="code-function">array</span>([<span class="code-number">0.0</span>, <span class="code-number">0.0</span>, <span class="code-number">1.5</span>])
+success_count = tree.<span class="code-function">addPointCloudWithRayCasting</span>(point_cloud, sensor_origin)
+<span class="code-function">print</span>(<span class="code-string">f"Added {success_count} points"</span>)</code></pre>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="code-title">Batch Operations</span>
+                    <button class="copy-btn" onclick="copyCode('batch-code')">Copy</button>
+                </div>
+                <pre id="batch-code"><code><span class="code-comment"># Precise batch ray-casting (hit-stopping for free/occupied)</span>
 points = np.<span class="code-function">random</span>.<span class="code-function">uniform</span>(-<span class="code-number">5</span>, <span class="code-number">5</span>, (<span class="code-number">1000</span>, <span class="code-number">3</span>))
 origin = np.<span class="code-function">array</span>([<span class="code-number">0.</span>, <span class="code-number">0.</span>, <span class="code-number">0.</span>], dtype=np.<span class="code-function">float64</span>)
-
-<span class="code-comment"># Precise batch ray-casting (hit-stopping for free/occupied)</span>
 success_count = tree.<span class="code-function">addPointCloudWithRayCasting</span>(points, origin, discretize=<span class="code-keyword">True</span>)
+<span class="code-comment"># discretize=True reduces duplicates for dense clouds</span>
 
-<span class="code-comment"># Fast native batching (full rays, optional discretization)</span>
+<span class="code-comment"># Fast native batching (full rays, optional discretization and lazy evaluation)</span>
+points = np.<span class="code-function">random</span>.<span class="code-function">uniform</span>(-<span class="code-number">5</span>, <span class="code-number">5</span>, (<span class="code-number">1000</span>, <span class="code-number">3</span>))
+origin = np.<span class="code-function">array</span>([<span class="code-number">0.</span>, <span class="code-number">0.</span>, <span class="code-number">0.</span>], dtype=np.<span class="code-function">float64</span>)
 tree.<span class="code-function">insertPointCloudFast</span>(points, origin, discretize=<span class="code-keyword">False</span>, lazy_eval=<span class="code-keyword">True</span>)
 tree.<span class="code-function">updateInnerOccupancy</span>()  <span class="code-comment"># Manual after lazy</span>
 
-<span class="code-comment"># Iterate over occupancy data</span>
-<span class="code-keyword">for</span> leaf_it <span class="code-keyword">in</span> tree.<span class="code-function">begin_leafs</span>():
-    coord = leaf_it.<span class="code-function">getCoordinate</span>()
-    <span class="code-keyword">if</span> tree.<span class="code-function">isNodeOccupied</span>(leaf_it):
-        <span class="code-function">print</span>(<span class="code-string">f"Occupied leaf at {coord}"</span>)</code></pre>
+<span class="code-comment"># Equivalent raw C++ access (identical to above)</span>
+tree.<span class="code-function">insertPointCloud</span>(points, origin, discretize=<span class="code-keyword">False</span>, lazy_eval=<span class="code-keyword">True</span>)
+tree.<span class="code-function">updateInnerOccupancy</span>()</code></pre>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="code-title">Room Mapping with Ray Casting</span>
+                    <button class="copy-btn" onclick="copyCode('room-code')">Copy</button>
+                </div>
+                <pre id="room-code"><code><span class="code-comment"># Create octree</span>
+tree = pyoctomap.<span class="code-function">OcTree</span>(<span class="code-number">0.05</span>)  <span class="code-comment"># 5cm resolution</span>
+sensor_origin = np.<span class="code-function">array</span>([<span class="code-number">2.0</span>, <span class="code-number">2.0</span>, <span class="code-number">1.5</span>])
+
+<span class="code-comment"># Add walls with ray casting</span>
+wall_points = []
+<span class="code-keyword">for</span> x <span class="code-keyword">in</span> np.<span class="code-function">arange</span>(<span class="code-number">0</span>, <span class="code-number">4.0</span>, <span class="code-number">0.05</span>):
+    <span class="code-keyword">for</span> y <span class="code-keyword">in</span> np.<span class="code-function">arange</span>(<span class="code-number">0</span>, <span class="code-number">4.0</span>, <span class="code-number">0.05</span>):
+        wall_points.<span class="code-function">append</span>([x, y, <span class="code-number">0</span>])  <span class="code-comment"># Floor</span>
+        wall_points.<span class="code-function">append</span>([x, y, <span class="code-number">3.0</span>])  <span class="code-comment"># Ceiling</span>
+
+<span class="code-comment"># Use vectorized approach for better performance</span>
+wall_points = np.<span class="code-function">array</span>(wall_points)
+tree.<span class="code-function">addPointCloudWithRayCasting</span>(wall_points, sensor_origin)
+
+<span class="code-function">print</span>(<span class="code-string">f"Tree size: {tree.size()} nodes"</span>)</code></pre>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="code-title">Path Planning</span>
+                    <button class="copy-btn" onclick="copyCode('path-code')">Copy</button>
+                </div>
+                <pre id="path-code"><code><span class="code-comment"># Create an octree for path planning</span>
+tree = pyoctomap.<span class="code-function">OcTree</span>(<span class="code-number">0.1</span>)  <span class="code-comment"># 10cm resolution</span>
+
+<span class="code-comment"># Add some obstacles to the map</span>
+obstacles = [
+    [<span class="code-number">1.0</span>, <span class="code-number">1.0</span>, <span class="code-number">0.5</span>],  <span class="code-comment"># Wall at (1,1)</span>
+    [<span class="code-number">1.5</span>, <span class="code-number">1.5</span>, <span class="code-number">0.5</span>],  <span class="code-comment"># Another obstacle</span>
+    [<span class="code-number">2.0</span>, <span class="code-number">1.0</span>, <span class="code-number">0.5</span>],  <span class="code-comment"># Wall at (2,1)</span>
+]
+
+<span class="code-keyword">for</span> obstacle <span class="code-keyword">in</span> obstacles:
+    tree.<span class="code-function">updateNode</span>(obstacle, <span class="code-keyword">True</span>)
+
+<span class="code-keyword">def</span> <span class="code-function">is_path_clear</span>(start, end, tree):
+    <span class="code-comment">"""Efficient ray casting for path planning using OctoMap's built-in castRay"""</span>
+    start = np.<span class="code-function">array</span>(start, dtype=np.<span class="code-function">float64</span>)
+    end = np.<span class="code-function">array</span>(end, dtype=np.<span class="code-function">float64</span>)
+    
+    <span class="code-comment"># Calculate direction vector</span>
+    direction = end - start
+    ray_length = np.<span class="code-function">linalg</span>.<span class="code-function">norm</span>(direction)
+    
+    <span class="code-keyword">if</span> ray_length == <span class="code-number">0</span>:
+        <span class="code-keyword">return</span> <span class="code-keyword">True</span>, <span class="code-keyword">None</span>
+    
+    <span class="code-comment"># Normalize direction</span>
+    direction = direction / ray_length
+    
+    <span class="code-comment"># Use OctoMap's efficient castRay method</span>
+    end_point = np.<span class="code-function">zeros</span>(<span class="code-number">3</span>, dtype=np.<span class="code-function">float64</span>)
+    hit = tree.<span class="code-function">castRay</span>(start, direction, end_point, 
+                      ignoreUnknownCells=<span class="code-keyword">True</span>, 
+                      maxRange=ray_length)
+    
+    <span class="code-keyword">if</span> hit:
+        <span class="code-keyword">return</span> <span class="code-keyword">False</span>, end_point
+    <span class="code-keyword">else</span>:
+        <span class="code-keyword">return</span> <span class="code-keyword">True</span>, <span class="code-keyword">None</span>
+
+<span class="code-comment"># Check if path is clear</span>
+start = [<span class="code-number">0.5</span>, <span class="code-number">2.0</span>, <span class="code-number">0.5</span>]
+end = [<span class="code-number">2.0</span>, <span class="code-number">2.0</span>, <span class="code-number">0.5</span>]
+clear, obstacle = <span class="code-function">is_path_clear</span>(start, end, tree)
+<span class="code-keyword">if</span> clear:
+    <span class="code-function">print</span>(<span class="code-string">"✅ Path is clear!"</span>)
+<span class="code-keyword">else</span>:
+    <span class="code-function">print</span>(<span class="code-string">f"❌ Path blocked at: {obstacle}"</span>)</code></pre>
+            </div>
+
+            <div style="background: #2d2d2d; border-radius: 12px; padding: 2rem; margin: 2rem 0; border: 1px solid #404040;">
+                <h3 style="color: white; margin-bottom: 1.5rem; text-align: center;">Performance Comparison</h3>
+                <table style="width: 100%; color: #d4d4d4; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #404040;">
+                            <th style="padding: 0.75rem; text-align: left;">Operation</th>
+                            <th style="padding: 0.75rem; text-align: left;">Traditional</th>
+                            <th style="padding: 0.75rem; text-align: left;">Vectorized</th>
+                            <th style="padding: 0.75rem; text-align: left;">Speedup</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #404040;">
+                            <td style="padding: 0.75rem;">Individual points</td>
+                            <td style="padding: 0.75rem;">5,000 pts/sec</td>
+                            <td style="padding: 0.75rem;">20,000 pts/sec</td>
+                            <td style="padding: 0.75rem; color: #38a169; font-weight: 600;">4x</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #404040;">
+                            <td style="padding: 0.75rem;">Point cloud</td>
+                            <td style="padding: 0.75rem;">10,000 pts/sec</td>
+                            <td style="padding: 0.75rem;">30,000 pts/sec</td>
+                            <td style="padding: 0.75rem; color: #38a169; font-weight: 600;">3x</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem;">Batch processing</td>
+                            <td style="padding: 0.75rem;">15,000 pts/sec</td>
+                            <td style="padding: 0.75rem;">60,000 pts/sec</td>
+                            <td style="padding: 0.75rem; color: #38a169; font-weight: 600;">4x</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
