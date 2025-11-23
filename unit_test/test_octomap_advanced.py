@@ -7,14 +7,14 @@ Safe-guards are added so missing bindings won't abort the run.
 Exit code is 0 if all critical checks pass, non-zero otherwise.
 """
 
+import math
 import os
 import sys
-import math
 import tempfile
-from typing import List, Tuple
+from itertools import product
+from typing import Tuple
 
 import numpy as np
-from itertools import product
 
 
 def h(title: str) -> None:
@@ -61,6 +61,7 @@ def generate_room_points(size=4.0, step=0.1) -> Tuple[np.ndarray, np.ndarray]:
 
 def main() -> int:
     import pyoctomap
+
     failures = 0
 
     h("Import")
@@ -126,7 +127,9 @@ def main() -> int:
     for ang in np.linspace(0, math.pi / 2, 4):
         dir_vec = np.array([math.cos(ang), math.sin(ang), 0.0], dtype=np.float64)
         end = np.zeros(3, dtype=np.float64)
-        ok, hit = try_call(f"castRay dir={dir_vec.tolist()}", tree.castRay, origin, dir_vec, end)
+        ok, hit = try_call(
+            f"castRay dir={dir_vec.tolist()}", tree.castRay, origin, dir_vec, end
+        )
         if hit:
             print("  -> hit at", end.tolist())
 
@@ -137,7 +140,9 @@ def main() -> int:
         tree.updateNode(p, True)
     for p in pillar[:200]:
         tree.updateNode(p, True)
-    samples = np.array([[0.2, 0.2, 0.1], [1.0, 1.0, 0.5], [3.0, 3.0, 3.0]], dtype=np.float64)
+    samples = np.array(
+        [[0.2, 0.2, 0.1], [1.0, 1.0, 0.5], [3.0, 3.0, 3.0]], dtype=np.float64
+    )
 
     # 1) Direct labels at provided coordinates
     direct_labels = None
@@ -197,16 +202,21 @@ def main() -> int:
                 out["unknown"] += 1
         return out
 
-    print("Counts -> direct:", counts(direct_labels),
-          "snapped:", counts(snapped_labels),
-          "nearest:", counts(nearest_labels))
+    print(
+        "Counts -> direct:",
+        counts(direct_labels),
+        "snapped:",
+        counts(snapped_labels),
+        "nearest:",
+        counts(nearest_labels),
+    )
 
     # Iterators if available
     h("Iterators")
     if hasattr(tree, "begin_tree"):
         cnt = 0
         try:
-            for it in tree.begin_tree(0):
+            for _ in tree.begin_tree(0):
                 cnt += 1
                 if cnt >= 20:
                     break
@@ -219,7 +229,7 @@ def main() -> int:
     if hasattr(tree, "begin_leafs"):
         cnt = 0
         try:
-            for it in tree.begin_leafs(0):
+            for _ in tree.begin_leafs(0):
                 cnt += 1
                 if cnt >= 20:
                     break
@@ -234,7 +244,7 @@ def main() -> int:
         try:
             bbx_min = np.array([0.0, 0.0, 0.0], dtype=np.float64)
             bbx_max = np.array([1.0, 1.0, 1.0], dtype=np.float64)
-            for it in tree.begin_leafs_bbx(bbx_min, bbx_max, 0):
+            for _ in tree.begin_leafs_bbx(bbx_min, bbx_max, 0):
                 cnt += 1
                 if cnt >= 20:
                     break
@@ -252,7 +262,12 @@ def main() -> int:
     try_call("setBBXMax", tree.setBBXMax, bbx_max)
     try_call("useBBXLimit(True)", tree.useBBXLimit, True)
     # Query BBX getters
-    for getter in [tree.getBBXMin, tree.getBBXMax, tree.getBBXCenter, tree.getBBXBounds]:
+    for getter in [
+        tree.getBBXMin,
+        tree.getBBXMax,
+        tree.getBBXCenter,
+        tree.getBBXBounds,
+    ]:
         try_call(getter.__name__, getter)
     # Iterate using BBX iterator if available and verify points are inside BBX via inBBX
     if hasattr(tree, "begin_leafs_bbx"):
@@ -267,7 +282,9 @@ def main() -> int:
                     break
                 if cnt_bbx >= 50:
                     break
-            print(f"BBX leafs count(sampled up to 50): {cnt_bbx}, all inBBX: {inside_all}")
+            print(
+                f"BBX leafs count(sampled up to 50): {cnt_bbx}, all inBBX: {inside_all}"
+            )
         except Exception as e:
             print("BBX iterator error:", e)
     else:
@@ -295,20 +312,37 @@ def main() -> int:
         bbx_min = np.array([-0.2, -0.2, -0.2], dtype=np.float64)
         bbx_max = np.array([1.2, 1.2, 1.2], dtype=np.float64)
         if hasattr(tree, "dynamicEDT_generate"):
-            try_call("dynamicEDT_generate", tree.dynamicEDT_generate, 2.0, bbx_min, bbx_max, False)
+            try_call(
+                "dynamicEDT_generate",
+                tree.dynamicEDT_generate,
+                2.0,
+                bbx_min,
+                bbx_max,
+                False,
+            )
             try_call("dynamicEDT_checkConsistency", tree.dynamicEDT_checkConsistency)
             try_call("dynamicEDT_update(False)", tree.dynamicEDT_update, False)
             if hasattr(tree, "dynamicEDT_getMaxDist"):
                 try_call("dynamicEDT_getMaxDist", tree.dynamicEDT_getMaxDist)
             if hasattr(tree, "dynamicEDT_getDistance"):
-                try_call("dynamicEDT_getDistance([0.2,0.2,0.2])", tree.dynamicEDT_getDistance, np.array([0.2, 0.2, 0.2], dtype=np.float64))
+                try_call(
+                    "dynamicEDT_getDistance([0.2,0.2,0.2])",
+                    tree.dynamicEDT_getDistance,
+                    np.array([0.2, 0.2, 0.2], dtype=np.float64),
+                )
         else:
             print("DynamicEDT not available; skipping")
     except Exception as e:
         print("DynamicEDT error:", e)
 
     h("Stats")
-    for getter in [tree.memoryUsage, tree.memoryUsageNode, tree.volume, tree.getTreeDepth, tree.getNumLeafNodes]:
+    for getter in [
+        tree.memoryUsage,
+        tree.memoryUsageNode,
+        tree.volume,
+        tree.getTreeDepth,
+        tree.getNumLeafNodes,
+    ]:
         try_call(getter.__name__, getter)
 
     print("\n✅ Advanced feature test complete")
@@ -322,8 +356,7 @@ if __name__ == "__main__":
     except Exception as exc:
         print("❌ Fatal:", exc)
         import traceback
+
         traceback.print_exc()
         rc = 1
     sys.exit(rc)
-
-

@@ -4,7 +4,6 @@ Script to generate PyPI README from main README.md using github2pypi.
 This ensures that all relative URLs are converted to absolute GitHub URLs.
 """
 
-import os
 import sys
 from pathlib import Path
 
@@ -12,6 +11,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from replace_url import replace_url
+
 
 def main():
     """Generate PyPI README from main README.md"""

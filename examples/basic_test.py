@@ -1,5 +1,6 @@
-import open3d as o3d
 import numpy as np
+import open3d as o3d
+
 
 # --- Log-Odds Helper Functions (unchanged) ---
 def prob_to_log_odds(p):

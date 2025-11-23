@@ -4,8 +4,8 @@ Test script for github2pypi URL replacement functionality.
 Tests the replace_url function with various PyOctoMap scenarios.
 """
 
-import sys
 import os
+import sys
 
 # Add current directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -83,7 +83,7 @@ See the [documentation](Readme.md) for more details.
     )
     
     print("Test: Multiple URL replacements")
-    print(f"Input contains: images/octomap_core.png, Readme.md, images/occupancy_grid.png")
+    print("Input contains: images/octomap_core.png, Readme.md, images/occupancy_grid.png")
     print(f"All converted: {'✅ PASS' if success else '❌ FAIL'}")
     print()
     

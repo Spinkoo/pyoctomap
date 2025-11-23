@@ -4,9 +4,10 @@ Test file specifically for creating and visualizing occupancy grids from OctoMap
 Shows the final occupancy state in 2D and 3D visualizations.
 """
 
-import numpy as np
-import sys
 import os
+import sys
+
+import numpy as np
 
 # Add current directory to path for proper import
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -158,7 +159,7 @@ def create_2d_occupancy_grid(tree, resolution=0.1, max_coord=4.0, z_levels=None)
     if z_levels is None:
         z_levels = [0.1, 0.5, 1.0, 1.5, 1.9]  # Sample at different heights
     
-    print(f"\n📊 Creating 2D Occupancy Grid...")
+    print("\n📊 Creating 2D Occupancy Grid...")
     print(f"  Resolution: {resolution}m")
     print(f"  Z levels: {z_levels}")
     
@@ -244,7 +245,7 @@ def create_3d_occupancy_visualization(tree, resolution=0.1, max_coord=4.0):
         print("⚠️ Matplotlib not available - skipping 3D visualization")
         return
     
-    print(f"\n🎨 Creating 3D Occupancy Visualization...")
+    print("\n🎨 Creating 3D Occupancy Visualization...")
     
     occupied_points = []
     free_points = []
@@ -315,7 +316,7 @@ def create_3d_occupancy_visualization(tree, resolution=0.1, max_coord=4.0):
 
 def analyze_occupancy_statistics(occupancy_grid):
     """Analyze and print occupancy statistics"""
-    print(f"\n📈 Occupancy Statistics:")
+    print("\n📈 Occupancy Statistics:")
     print(f"  Grid size: {occupancy_grid.shape[0]}x{occupancy_grid.shape[1]}")
     print(f"  Total cells: {occupancy_grid.size}")
     print(f"  Occupied cells (>0.5): {np.sum(occupancy_grid > 0.5)}")

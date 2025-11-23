@@ -3,10 +3,11 @@
 Comprehensive test for SequentialOccupancyGrid with all add methods and visualization
 """
 
-import sys
 import os
-import numpy as np
+import sys
 import time
+
+import numpy as np
 
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -380,11 +381,11 @@ def test_iterator_operations(grid):
     except Exception as e:
         print(f"    ❌ Iterator performance error: {e}")
     
-    print(f"\n📊 Iterator Summary:")
+    print("\n📊 Iterator Summary:")
     print(f"    Tree nodes: {tree_count}")
     print(f"    Leaf nodes: {leaf_count}")
     print(f"    BBX nodes: {bbx_count}")
-    print(f"    All iterators working: ✅")
+    print("    All iterators working: ✅")
 
 def test_visualization(grid):
     """Test visualization capabilities"""
@@ -476,7 +477,7 @@ def test_performance_comparison():
     time4 = time.time() - start_time
     
     # Print results
-    print(f"\n📊 Performance Results:")
+    print("\n📊 Performance Results:")
     print(f"    Individual points: {success_count1}/{num_points} in {time1:.3f}s ({num_points/time1:.0f} pts/sec)")
     print(f"    Batch processing:  {success_count2}/{num_points} in {time2:.3f}s ({num_points/time2:.0f} pts/sec)")
     print(f"    Point cloud (ray): {'✅' if success3 else '❌'} in {time3:.3f}s ({num_points/time3:.0f} pts/sec)")

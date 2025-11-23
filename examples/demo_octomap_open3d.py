@@ -4,9 +4,10 @@ Demonstration script showing practical usage of the OctoMap wrapper.
 This script shows how to use the wrapper for real-world applications.
 """
 
-import numpy as np
-import sys
 import os
+import sys
+
+import numpy as np
 
 # Add current directory to path for proper import
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

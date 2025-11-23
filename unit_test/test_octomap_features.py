@@ -16,6 +16,7 @@ Covers:
 import os
 import sys
 import tempfile
+
 import numpy as np
 
 
@@ -26,6 +27,7 @@ def section(title: str):
 def main():
     section("Import")
     import pyoctomap
+
     print("pyoctomap imported from:", getattr(pyoctomap, "__file__", None))
     if hasattr(pyoctomap, "get_package_info"):
         info = pyoctomap.get_package_info()
@@ -47,23 +49,38 @@ def main():
         tree.updateNode(p, True)
     print("Updated:", len(pts), "nodes -> size:", tree.size())
     n = tree.search(pts[0])
-    print("search -> node exists:", bool(n), "occupied:", (tree.isNodeOccupied(n) if n else None))
+    print(
+        "search -> node exists:",
+        bool(n),
+        "occupied:",
+        (tree.isNodeOccupied(n) if n else None),
+    )
 
     # coordToKey / keyToCoord
     section("coordToKey / keyToCoord")
     coord = np.array([0.25, 0.25, 0.25], dtype=np.float64)
     key = tree.coordToKey(coord)
     back = tree.keyToCoord(key)
-    print("coord:", coord.tolist(), "-> key:", [key[0], key[1], key[2]], "-> back:", back.tolist())
+    print(
+        "coord:",
+        coord.tolist(),
+        "-> key:",
+        [key[0], key[1], key[2]],
+        "-> back:",
+        back.tolist(),
+    )
 
     # Insert point cloud
     section("Insert Point Cloud")
-    pc = np.array([
-        [1.0, 0.0, 0.0],
-        [1.0, 0.1, 0.0],
-        [1.0, 0.2, 0.0],
-        [1.0, 0.3, 0.0],
-    ], dtype=np.float64)
+    pc = np.array(
+        [
+            [1.0, 0.0, 0.0],
+            [1.0, 0.1, 0.0],
+            [1.0, 0.2, 0.0],
+            [1.0, 0.3, 0.0],
+        ],
+        dtype=np.float64,
+    )
     origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
     tree.insertPointCloud(pc, origin)
     print("pointcloud inserted -> size:", tree.size())
@@ -71,9 +88,13 @@ def main():
     # Ray casting
     section("Ray Casting")
     end = np.zeros(3, dtype=np.float64)
-    hit = tree.castRay(np.array([0.0, 0.0, 0.0], dtype=np.float64),
-                       np.array([1.0, 0.0, 0.0], dtype=np.float64), end,
-                       ignoreUnknownCells=False, maxRange=-1.0)
+    hit = tree.castRay(
+        np.array([0.0, 0.0, 0.0], dtype=np.float64),
+        np.array([1.0, 0.0, 0.0], dtype=np.float64),
+        end,
+        ignoreUnknownCells=False,
+        maxRange=-1.0,
+    )
     print("castRay hit:", bool(hit), "end:", end.tolist())
 
     # Iterators (if exposed)
@@ -81,7 +102,7 @@ def main():
     if hasattr(tree, "begin_tree"):
         try:
             count = 0
-            for it in tree.begin_tree(0):
+            for _it in tree.begin_tree(0):
                 count += 1
                 if count >= 10:
                     break
@@ -94,7 +115,7 @@ def main():
     if hasattr(tree, "begin_leafs"):
         try:
             count = 0
-            for it in tree.begin_leafs(0):
+            for _it in tree.begin_leafs(0):
                 count += 1
                 if count >= 10:
                     break
@@ -109,7 +130,7 @@ def main():
             bbx_min = np.array([0.0, 0.0, 0.0], dtype=np.float64)
             bbx_max = np.array([1.0, 0.5, 0.5], dtype=np.float64)
             count = 0
-            for it in tree.begin_leafs_bbx(bbx_min, bbx_max, 0):
+            for _it in tree.begin_leafs_bbx(bbx_min, bbx_max, 0):
                 count += 1
                 if count >= 10:
                     break
@@ -121,11 +142,14 @@ def main():
 
     # Labels
     section("Labels")
-    samples = np.array([
-        [0.2, 0.2, 0.2],      # should exist
-        [1.0, 0.0, 0.0],      # should exist after point cloud insertion
-        [2.0, 2.0, 2.0],      # likely unknown
-    ], dtype=np.float64)
+    samples = np.array(
+        [
+            [0.2, 0.2, 0.2],  # should exist
+            [1.0, 0.0, 0.0],  # should exist after point cloud insertion
+            [2.0, 2.0, 2.0],  # likely unknown
+        ],
+        dtype=np.float64,
+    )
     # Preferred: use provided API
     try:
         labels = tree.getLabels(samples)
@@ -158,7 +182,10 @@ def main():
             print("readBinary error:", e)
         try:
             loaded_text = tree.read(ot_path)
-            print("read(text) -> loaded size:", (loaded_text.size() if loaded_text else None))
+            print(
+                "read(text) -> loaded size:",
+                (loaded_text.size() if loaded_text else None),
+            )
         except Exception as e:
             print("read(text) error:", e)
 
@@ -171,8 +198,12 @@ def main():
         if hasattr(tree, "dynamicEDT_generate"):
             tree.dynamicEDT_generate(2.0, bbx_min, bbx_max, False)
             if hasattr(tree, "dynamicEDT_getDistance"):
-                d1 = tree.dynamicEDT_getDistance(np.array([0.2, 0.2, 0.2], dtype=np.float64))
-                d2 = tree.dynamicEDT_getDistance(np.array([0.9, 0.0, 0.0], dtype=np.float64))
+                d1 = tree.dynamicEDT_getDistance(
+                    np.array([0.2, 0.2, 0.2], dtype=np.float64)
+                )
+                d2 = tree.dynamicEDT_getDistance(
+                    np.array([0.9, 0.0, 0.0], dtype=np.float64)
+                )
                 print("EDT distances:", float(d1), float(d2))
             else:
                 print("dynamicEDT_getDistance not available")
@@ -190,8 +221,7 @@ if __name__ == "__main__":
     except Exception as exc:
         print("\n❌ Test failed:", exc)
         import traceback
+
         traceback.print_exc()
         sys.exit(1)
     sys.exit(0)
-
-

@@ -5,10 +5,11 @@ Uses github2pypi to ensure images work correctly on PyPI.
 """
 
 import os
-import sys
-import subprocess
 import shutil
+import subprocess
+import sys
 from pathlib import Path
+
 
 def run_command(cmd, check=True):
     """Run a shell command and print output."""

@@ -13,12 +13,13 @@ The main class SequentialOccupancyGrid manages:
 - Performance optimization for real-time updates
 """
 
-import numpy as np
-import sys
 import os
-from typing import List, Tuple, Optional, Union, Dict, Any
-from dataclasses import dataclass
+import sys
 import time
+from dataclasses import dataclass
+from typing import Dict, List, Optional, Tuple, Union
+
+import numpy as np
 
 # Add parent directory to path for proper import
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -104,7 +105,7 @@ class SequentialOccupancyGrid:
         # Validate probability values
         if prob_hit + prob_miss > 1.0:
             print(f"⚠️  Warning: prob_hit ({prob_hit}) + prob_miss ({prob_miss}) = {prob_hit + prob_miss} > 1.0")
-            print(f"    This may cause unexpected behavior. Consider adjusting values.")
+            print("    This may cause unexpected behavior. Consider adjusting values.")
         
         # Initialize OctoMap
         self.tree = pyoctomap.OcTree(resolution)
@@ -125,7 +126,7 @@ class SequentialOccupancyGrid:
         self._cached_points = None
         self._cache_invalid = True
         
-        print(f"��️  Initialized SequentialOccupancyGrid:")
+        print("��️  Initialized SequentialOccupancyGrid:")
         print(f"    Resolution: {resolution}m")
         print(f"    Sensor origin: {self.sensor_origin}")
         print(f"    Prob hit/miss: {prob_hit}/{prob_miss}")
@@ -551,7 +552,7 @@ class SequentialOccupancyGrid:
     def print_statistics(self):
         """Print detailed statistics"""
         stats = self.get_statistics()
-        print(f"\n📈 Occupancy Grid Statistics:")
+        print("\n📈 Occupancy Grid Statistics:")
         print(f"    Total points processed: {stats.total_points_processed}")
         print(f"    Tree size (nodes): {stats.tree_size}")
         print(f"    Occupied cells: {stats.occupied_cells}")
