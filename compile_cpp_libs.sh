@@ -47,16 +47,30 @@ else
 fi
 
 # Configure CMake
+# We install to the build directory first to ensure headers are found
+# The octomap-config.cmake expects headers in specific relative paths
 echo "🔧 Configuring CMake with source ${CMAKE_SOURCE_DIR}..."
-cmake "${CMAKE_SOURCE_DIR}" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${INSTALL_PREFIX}"
+cmake "${CMAKE_SOURCE_DIR}" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="${PWD}/install" \
+    -DBUILD_OCTOVIS_SUBPROJECT=OFF \
+    -DBUILD_DYNAMICETD3D_SUBPROJECT=ON \
+    -DCMAKE_CXX_FLAGS="-fPIC"
 
 # Build
 echo "🔨 Building..."
 make -j$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
 
-# Install (to src/octomap/lib via CMAKE_INSTALL_PREFIX)
+# Install
 echo "📦 Installing..."
 make install
+
+# Copy libraries to the expected location (src/octomap/lib)
+echo "📋 Copying artifacts to ${LIB_DIR}..."
+mkdir -p "${LIB_DIR}"
+cp -r "${PWD}/install/lib/"* "${LIB_DIR}/" 2>/dev/null || true
+# Also copy headers if needed by pyoctomap (though Cython uses src paths usually)
+# But for completeness, we might want them. For now, just libs are critical for setup.py.
 
 # Copy libraries if they ended up in a different lib folder (CMake install sometimes uses lib or lib64)
 # We need them in src/octomap/lib
