@@ -33,25 +33,41 @@ mkdir -p "${LIB_DIR}"
 # Navigate to build directory
 cd "${BUILD_DIR}"
 
+# Check if we are in a subdirectory or if src/octomap is the root
+if [ -f "../CMakeLists.txt" ]; then
+    CMAKE_SOURCE_DIR=".."
+    INSTALL_PREFIX=".."
+elif [ -f "../../src/octomap/CMakeLists.txt" ]; then
+    CMAKE_SOURCE_DIR="../../src/octomap"
+    INSTALL_PREFIX="../../src/octomap"
+else
+    # Fallback - assume we are in src/octomap/build and parent has CMakeLists.txt
+    CMAKE_SOURCE_DIR=".."
+    INSTALL_PREFIX=".."
+fi
+
 # Configure CMake
-echo "🔧 Configuring CMake..."
-cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=..
+echo "🔧 Configuring CMake with source ${CMAKE_SOURCE_DIR}..."
+cmake "${CMAKE_SOURCE_DIR}" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${INSTALL_PREFIX}"
 
 # Build
 echo "🔨 Building..."
 make -j$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
 
 # Install (to src/octomap/lib via CMAKE_INSTALL_PREFIX)
-echo "📦 Installing to ${LIB_DIR}..."
+echo "📦 Installing..."
 make install
 
-# Copy libraries to the expected location if needed
-# CMake install should handle this with CMAKE_INSTALL_PREFIX/lib, but let's ensure
-# they are in src/octomap/lib where setup.py expects them.
+# Copy libraries if they ended up in a different lib folder (CMake install sometimes uses lib or lib64)
+# We need them in src/octomap/lib
+if [ -d "${INSTALL_PREFIX}/lib64" ]; then
+    echo "Copying from lib64 to lib..."
+    cp -r "${INSTALL_PREFIX}/lib64/"* "${INSTALL_PREFIX}/lib/" 2>/dev/null || true
+fi
 
 # Check if libraries exist in lib folder relative to source
 echo "✅ Build complete. Checking libraries..."
-ls -la ../lib/
+ls -la "${INSTALL_PREFIX}/lib/"
 
 echo "🎉 C++ libraries compiled successfully!"
 
