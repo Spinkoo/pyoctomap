@@ -1,0 +1,9 @@
+pytest>=6.0
+pytest-cov
+ruff
+mypy
+twine
+build
+numpy>=1.16.0
+cython>=0.29.0
+

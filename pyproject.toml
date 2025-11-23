@@ -46,8 +46,7 @@ visualization = [
 dev = [
     "pytest>=6.0",
     "pytest-cov",
-    "black",
-    "flake8",
+    "ruff",
     "mypy",
     "twine",
     "build"
@@ -70,15 +69,19 @@ exclude = ["tests*", "examples*"]
 [tool.setuptools.dynamic]
 version = {attr = "pyoctomap.__version__"}
 
-[tool.setuptools]
-py-modules = []
-
 [tool.setuptools.package-data]
 pyoctomap = ["lib/*", "lib/*.so*"]
 
-[tool.black]
+[tool.ruff]
 line-length = 88
-target-version = ['py38']
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["pyoctomap"]
 
 [tool.pytest.ini_options]
 testpaths = ["unit_test"]

@@ -1,49 +1,74 @@
-{% set setup = load_setup_py_data() %}
+{% set name = "pyoctomap" %}
+{% set version = "0.3.1" %}
 
 package:
-  name: pyoctomap
-  version: {{ setup.get('version') }}
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  git_url: https://github.com/lespim/pyoctomap.git
-  git_rev: v{{ setup.get('version') }}
+  # Option 1: Use PyPI source (preferred for conda-forge)
+  # url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  # sha256: # Add SHA256 hash after PyPI release: sha256sum pyoctomap-{{ version }}.tar.gz
+  
+  # Option 2: Use git source (for initial submission or if PyPI source unavailable)
+  git_url: https://github.com/Spinkoo/pyoctomap.git
+  git_rev: v{{ version }}
 
 build:
   number: 0
+  skip: True  # [win]
   script: bash conda/recipe/build.sh
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - cmake
+    - cmake >=3.10
     - ninja
-    - pkg-config        # [unix]
-    - make              # [unix]
+    - pkg-config
+    - make
   host:
     - python
     - pip
-    - cython >=0.29
+    - cython >=0.29.0
     - numpy
-    - setuptools >=61
+    - setuptools >=61.0
     - wheel
-    - eigen             # [unix]
+    - eigen
   run:
     - python
-    - numpy
+    - numpy >=1.16.0
 
 test:
+  source_files:
+    - conda/recipe/test_import.py
   imports:
     - pyoctomap
   commands:
-    - python -c "import pyoctomap as m; print('version', getattr(m, '__version__', 'unknown')); t = m.OcTree(0.1); t.updateNode([1.0, 2.0, 3.0], True); n = t.search([1.0, 2.0, 3.0]); assert n is not None and t.isNodeOccupied(n); print('sanity ok')"
+    - python -c "import pyoctomap as m; print('PyOctoMap version:', getattr(m, '__version__', 'unknown'))"
+    - python -c "import pyoctomap as m; t = m.OcTree(0.1); t.updateNode([1.0, 2.0, 3.0], True); n = t.search([1.0, 2.0, 3.0]); assert n is not None and t.isNodeOccupied(n), 'Basic functionality test failed'; print('✓ Basic functionality working')"
 
 about:
-  home: https://github.com/lespim/pyoctomap
-  summary: Python binding of the OctoMap library with bundled shared libraries.
+  home: https://github.com/Spinkoo/pyoctomap
   license: BSD-3-Clause
   license_file: LICENSE
+  summary: Python binding of the OctoMap library with bundled shared libraries.
+  description: |
+    PyOctoMap provides Python bindings for the OctoMap library, a probabilistic
+    3D mapping framework. This package includes bundled shared libraries to
+    avoid external dependencies, making it easy to install and use.
+    
+    Features:
+    - 3D occupancy grid mapping
+    - Efficient octree data structure
+    - Probabilistic sensor fusion
+    - Ray casting and collision checking
+    - File I/O for .bt and .ot formats
+    
+    The package is designed for robotics applications, SLAM, and 3D mapping.
+  doc_url: https://github.com/Spinkoo/pyoctomap/tree/main/docs
+  dev_url: https://github.com/Spinkoo/pyoctomap
 
 extra:
   recipe-maintainers:
-    - lespim
+    - Spinkoo

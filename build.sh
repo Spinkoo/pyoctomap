@@ -34,6 +34,18 @@ python3 -c "import Cython" 2>/dev/null || {
     pip install Cython
 }
 
+# Check if C++ libraries are built
+if [ ! -d "src/octomap/lib" ] || [ -z "$(ls -A src/octomap/lib)" ]; then
+    echo "⚠️  C++ libraries not found in src/octomap/lib."
+    if [ -f "./compile_cpp_libs.sh" ]; then
+        echo "🔨 Running C++ compilation script..."
+        bash ./compile_cpp_libs.sh
+    else
+        echo "❌ Error: compile_cpp_libs.sh not found."
+        exit 1
+    fi
+fi
+
 echo "ℹ️  Note: Libraries are bundled in the wheel under octomap/lib, and rpath points to $ORIGIN/lib."
 
 # Clean previous builds

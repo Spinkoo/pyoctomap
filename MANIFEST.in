@@ -4,6 +4,8 @@ include LICENSE
 include pyproject.toml
 include setup.cfg
 include setup.py
+include compile_cpp_libs.sh
+include build.sh
 
 # Include core Python package files
 recursive-include pyoctomap *.pyx *.pxd *.cpp *.h

@@ -183,6 +183,20 @@ insertPointCloud(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False, di
 - Returns: `int` (points processed)
 - Note: Equivalent to `insertPointCloudFast` (shared logic).
 
+```python
+addPointCloudDecay(point_cloud, sensor_origin, max_range=-1.0, update_inner_occupancy=True, discretize=False, decay_factor=0.1)
+```
+
+- `point_cloud` (np.array): Nx3 array of 3D points [x, y, z] in meters
+- `sensor_origin` (np.array): 3D sensor origin position [x, y, z] in meters
+- `max_range` (float, optional): Maximum range for points in meters. -1.0 = no limit. Defaults to -1.0.
+- `update_inner_occupancy` (bool, optional): Whether to update inner node occupancy. Expensive operation. Defaults to True.
+- `discretize` (bool, optional): If True, discretize to unique keys first. Can improve performance for large point clouds. Defaults to False.
+- `decay_factor` (float, optional): Decay rate for occluded objects (0.0-1.0). Higher values = faster decay. Defaults to 0.1.
+- Returns: `int` (Number of points successfully added to the map)
+- **Purpose**: Add point cloud with probability decay for occluded objects. Gradually decreases probability of old objects that are now occluded or replaced by new objects, maintaining OctoMap's probabilistic nature.
+- **Use cases**: Object replacement scenarios, dynamic environments with moving/overlapping objects, high-quality mapping where ghost voxels are problematic.
+
 #### Iterators
 
 PyOctoMap provides three iterator types for different traversal needs:
