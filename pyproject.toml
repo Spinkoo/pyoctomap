@@ -23,6 +23,7 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -33,7 +34,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 keywords = ["octomap", "occupancy", "mapping", "robotics", "3d", "bundled-libs", "python", "pyoctomap"]
-requires-python = ">=3.9"
+requires-python = ">=3.8"
 dependencies = [
     "numpy>=1.16.0"
 ]
@@ -74,7 +75,7 @@ pyoctomap = ["lib/*", "lib/*.so*"]
 
 [tool.ruff]
 line-length = 88
-target-version = "py39"
+target-version = "py38"
 exclude = ["src", "build", "dist", ".git", "__pycache__", "examples", "github2pypi"]
 
 [tool.ruff.lint]
