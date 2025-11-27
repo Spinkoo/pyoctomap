@@ -16,6 +16,7 @@ __pycache__/
 build/
 dist/
 *.egg-info/
+*.so
 
 #Open3D
 Open3D/
@@ -38,3 +39,13 @@ Lisa/
 unit_test/test_ray_casting.py
 #environments
 testenv/
+
+# Cursor IDE rules (local development configuration)
+.cursor/
+unit_test/precomit_test.py
+
+# Benchmarking results (local only)
+benchmarks/
+
+*.bt
+pyoctomap/octomap.cpp

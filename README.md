@@ -1,32 +1,25 @@
-# PyOctoMap - ROS Integration
+# PyOctoMap
 
 <div align="center">
 <img src="images/octomap_core.png" alt="OctoMap Core" width="900">
 </div>
 
-**A ROS-optimized Python wrapper for OctoMap** - the industry-standard 3D occupancy mapping library. Designed specifically for robotics applications, this package provides seamless integration with ROS/ROS2 for real-time 3D mapping, SLAM, and navigation.
+A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 3D occupancy mapping capabilities for robotics and computer vision applications. This modernized binding offers enhanced performance, bundled shared libraries for easy deployment, and seamless integration with the Python scientific ecosystem.
 
-## Why PyOctoMap for ROS?
-
-- **🚀 Real-time Performance**: Optimized for robotics with vectorized operations (4x faster than traditional approaches)
-- **🗺️ 3D Occupancy Mapping**: Efficient octree-based mapping perfect for robot navigation and SLAM
-- **📡 ROS2 Integration**: Native support for PointCloud2, OccupancyGrid, and other ROS message types
-- **⚡ Ray Casting**: Built-in ray casting for proper free space marking in 3D environments
-- **🔧 Zero Dependencies**: Bundled C++ libraries - no complex setup required
-- **🐍 Python Native**: Clean Python interface with NumPy support for rapid prototyping
-
-## Key Features for Robotics
+## Features
 
 - **3D Occupancy Mapping**: Efficient octree-based 3D occupancy mapping
-- **ROS2 Message Integration**: Direct support for PointCloud2, OccupancyGrid, PoseStamped
-- **Ray Casting**: Automatic free space marking for proper 3D mapping
-- **Vectorized Operations**: 4x faster point cloud processing for real-time applications
-- **File Operations**: Save/load octree data in binary format (.bt files)
-- **Bundled Libraries**: No external C++ dependencies - works out of the box
+- **Probabilistic Updates**: Stochastic occupancy updates with uncertainty handling
+- **Path Planning**: Ray casting and collision detection
+- **File Operations**: Save/load octree data in binary format
+- **Python Integration**: Clean Python interface with NumPy support
+- **Cross-Platform**: Linux native support with Windows compatibility via WSL
 
 ## Installation
 
 ### Quick Install (Recommended)
+
+For most users, simply install the pre-built wheel:
 
 ```bash
 pip install pyoctomap
@@ -34,81 +27,49 @@ pip install pyoctomap
 
 **Supported Platforms:**
 - Linux (manylinux2014 compatible)
-- Python 3.9, 3.10, 3.11, 3.12
+- Python 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13, 3.14
+- Pre-built wheels available for all supported combinations
 
-### ROS/ROS2 Integration
+> **🚀 ROS Integration**: ROS/ROS2 integration is currently being developed on the [`ros` branch](https://github.com/Spinkoo/pyoctomap/tree/ros), featuring ROS2 message support and real-time point cloud processing.
 
-PyOctoMap is designed to work seamlessly with ROS (Robot Operating System):
+### Building from Source
 
-#### ROS2 (Recommended)
+> **📋 Prerequisites**: See [Build System Documentation](docs/build_system.md) for detailed system dependencies and troubleshooting guide.
+
+If you need to build from source or create custom wheels, we provide a Docker-based build system:
+
+**Linux / WSL (Windows Subsystem for Linux):**
 ```bash
-# Install pyoctomap
-pip install pyoctomap
+# Clone the repository with submodules
+git clone --recursive https://github.com/Spinkoo/pyoctomap.git
+cd pyoctomap
 
-# Install ROS2 dependencies via ROS package manager
-sudo apt install ros-iron-rclpy ros-iron-sensor-msgs ros-iron-geometry-msgs ros-iron-nav-msgs ros-iron-tf2-ros
+# Build and install OctoMap C++ library
+cd src/octomap
+mkdir build && cd build
+cmake .. && make && sudo make install
 
-# Source your ROS2 workspace
-source /opt/ros/iron/setup.bash
+# Return to main project and run automated build script
+cd ../../..
+chmod +x build.sh
+./build.sh
 ```
 
-#### ROS1
 ```bash
-# Install pyoctomap
-pip install pyoctomap
+# Build wheels for all supported Python versions
+./build-wheel.sh
 
-# Install ROS1 dependencies via ROS package manager
-sudo apt install ros-noetic-rclpy ros-noetic-sensor-msgs ros-noetic-geometry-msgs ros-noetic-nav-msgs ros-noetic-tf2-ros
-
-# Source your ROS1 workspace
-source /opt/ros/noetic/setup.bash
+# Or build manually with Docker
+docker build -f docker/Dockerfile.wheel -t pyoctomap-wheel .
 ```
+
+The Docker build creates manylinux-compatible wheels for Python 3.9-3.14, properly bundling all required C++ libraries.
+
+> **📋 Google Colab Users**: See [Build System Documentation](docs/build_system.md) for detailed Colab installation instructions.
 
 ## Quick Start
 
-### ROS2 Integration (Recommended)
-
-```python
-import rclpy
-from rclpy.node import Node
-from sensor_msgs.msg import PointCloud2
-import pyoctomap
-import numpy as np
-
-class OctoMapNode(Node):
-    def __init__(self):
-        super().__init__('octomap_node')
-        self.octree = pyoctomap.OcTree(0.1)  # 10cm resolution
-        
-        # Subscribe to point cloud data
-        self.subscription = self.create_subscription(
-            PointCloud2,
-            '/camera/depth/points',
-            self.pointcloud_callback,
-            10
-        )
-    
-    def pointcloud_callback(self, msg):
-        # Convert PointCloud2 to numpy array
-        points = self.pointcloud2_to_array(msg)
-        
-        # Add points with ray casting for proper 3D mapping
-        sensor_origin = np.array([0.0, 0.0, 1.5])
-        success_count = self.octree.addPointCloudWithRayCasting(points, sensor_origin)
-        
-        self.get_logger().info(f'Added {success_count} points to octree')
-
-def main(args=None):
-    rclpy.init(args=args)
-    node = OctoMapNode()
-    rclpy.spin(node)
-    rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
-```
-
-### Basic Usage (Non-ROS)
+### Basic Usage
 
 ```python
 import pyoctomap
@@ -133,146 +94,88 @@ if node and tree.isNodeOccupied(node):
 tree.write("my_map.bt")
 ```
 
-### New Vectorized Operations
+### Color Occupancy Mapping
 
-PyOctoMap now includes high-performance vectorized operations for better performance:
-
-#### Traditional vs Vectorized Approach
-
-**Traditional (slower):**
-```python
-# Individual point updates - slower
-points = np.array([[1.0, 2.0, 3.0], [1.1, 2.1, 3.1], [1.2, 2.2, 3.2]])
-for point in points:
-    tree.updateNode(point, True)
-```
-
-**Vectorized (faster):**
-```python
-# Batch point updates - 4-5x faster
-points = np.array([[1.0, 2.0, 3.0], [1.1, 2.1, 3.1], [1.2, 2.2, 3.2]])
-tree.addPointsBatch(points)
-```
-
-#### Ray Casting with Free Space Marking
-
-**Single Point with Ray Casting:**
-```python
-# Add point with automatic free space marking
-sensor_origin = np.array([0.0, 0.0, 1.5])
-point = np.array([2.0, 2.0, 1.0])
-tree.addPointWithRayCasting(point, sensor_origin)
-```
-
-**Point Cloud with Ray Casting:**
-```python
-# Add point cloud with ray casting for each point
-point_cloud = np.random.rand(1000, 3) * 10
-sensor_origin = np.array([0.0, 0.0, 1.5])
-success_count = tree.addPointCloudWithRayCasting(point_cloud, sensor_origin)
-print(f"Added {success_count} points")
-```
-
-#### Batch Operations
-
-**Batch Points with Same Origin:**
-```python
-# Efficient batch processing
-points = np.random.rand(5000, 3) * 10
-sensor_origin = np.array([0.0, 0.0, 1.5])
-success_count = tree.addPointsBatch(points, update_inner_occupancy=True)
-print(f"Added {success_count} points in batch")
-```
-
-**Batch Points with Different Origins:**
-```python
-# Each point can have different sensor origin
-points = np.random.rand(100, 3) * 10
-origins = np.random.rand(100, 3) * 2
-success_count = tree.addPointsBatch(points, origins)
-print(f"Added {success_count} points with individual origins")
-```
-
-
-## Examples
-
-### ROS2 Integration Example
+PyOctoMap also supports `ColorOcTree`, allowing you to store RGB color information for each voxel. This is useful for semantic mapping or visualization.
 
 ```python
-import rclpy
-from rclpy.node import Node
-from sensor_msgs.msg import PointCloud2
-from nav_msgs.msg import OccupancyGrid
 import pyoctomap
 import numpy as np
 
-class OctoMapNode(Node):
-    def __init__(self):
-        super().__init__('octomap_node')
-        self.octree = pyoctomap.OcTree(0.1)  # 10cm resolution
-        
-        # ROS2 subscribers and publishers
-        self.subscription = self.create_subscription(
-            PointCloud2,
-            '/camera/depth/points',
-            self.pointcloud_callback,
-            10
-        )
-        self.occupancy_pub = self.create_publisher(
-            OccupancyGrid,
-            '/octomap/occupancy_grid',
-            10
-        )
-        
-    def pointcloud_callback(self, msg):
-        # Convert PointCloud2 to numpy array
-        points = self.pointcloud2_to_array(msg)
-        
-        # Add points to octree with ray casting
-        sensor_origin = np.array([0.0, 0.0, 1.5])
-        success_count = self.octree.addPointCloudWithRayCasting(points, sensor_origin)
-        
-        self.get_logger().info(f'Added {success_count} points to octree')
-        
-        # Publish occupancy grid
-        self.publish_occupancy_grid()
-    
-    def publish_occupancy_grid(self):
-        # Convert octree to 2D occupancy grid
-        grid_msg = OccupancyGrid()
-        grid_msg.header.frame_id = 'map'
-        grid_msg.info.resolution = 0.1
-        grid_msg.info.width = 100
-        grid_msg.info.height = 100
-        
-        # Fill occupancy data from octree
-        occupancy_data = []
-        for y in range(100):
-            for x in range(100):
-                world_x = x * 0.1 - 5.0
-                world_y = y * 0.1 - 5.0
-                world_z = 0.5  # Fixed height
-                
-                node = self.octree.search([world_x, world_y, world_z])
-                if node and self.octree.isNodeOccupied(node):
-                    occupancy_data.append(100)  # Occupied
-                else:
-                    occupancy_data.append(0)    # Free
-        
-        grid_msg.data = occupancy_data
-        self.occupancy_pub.publish(grid_msg)
+# Create a ColorOcTree with 0.1m resolution
+tree = pyoctomap.ColorOcTree(0.1)
 
-def main(args=None):
-    rclpy.init(args=args)
-    node = OctoMapNode()
-    rclpy.spin(node)
-    rclpy.shutdown()
+# Add a colored node (Red)
+coord = [1.0, 1.0, 1.0]
+tree.updateNode(coord, True)
+tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
 
-if __name__ == '__main__':
-    main()
+# Search and retrieve color
+node = tree.search(coord)
+if node:
+    color = node.getColor()
+    print(f"Node color: {color}")  # (255, 0, 0)
+
+# Average color (mixing multiple observations)
+tree.averageNodeColor(coord, 0, 255, 0)  # Mix with Green
+print(f"New color: {tree.search(coord).getColor()}")
 ```
 
-### Basic Usage Examples
+### Dynamic Mapping and Point Cloud Insertion
+
+PyOctoMap provides efficient methods for dynamic mapping and probabilistic decay:
+
+**Decay and Insert Point Cloud (Recommended for Dynamic Environments):**
+```python
+# Recommended function for inserting scans from a moving sensor
+# Solves the occluded-ghost problem by applying temporal decay before insertion
+point_cloud = np.random.rand(1000, 3) * 10
+sensor_origin = np.array([0.0, 0.0, 1.5])
+
+# Tuning the decay value:
+# Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)
+# 
+# Moderate (default: -0.2): ~20 scans for ghost to fade
+# Aggressive (-1.0 to -3.0): 2-4 scans (highly dynamic environments)
+# Weak (-0.05 to -0.1): 40-80 scans (mostly static maps)
+
+tree.decayAndInsertPointCloud(
+    point_cloud,
+    sensor_origin,
+    logodd_decay_value=-0.2,  # Must be negative
+    max_range=50.0
+)
+```
+
+### Batch Operations
+
+For efficient batch processing of point clouds, PyOctoMap provides both precise and fast options:
+
+**Fast Native Batching:**
+```python
+# Fast C++ batch insertion (full rays, optional discretization and lazy evaluation)
+points = np.random.uniform(-5, 5, (1000, 3))
+origin = np.array([0., 0., 0.], dtype=np.float64)
+tree.insertPointCloud(points, origin, discretize=False, lazy_eval=True)
+tree.updateInnerOccupancy()  # Manual after lazy
+
+# Ultra-fast version using parallel rays (no deduplication)
+tree.insertPointCloudRaysFast(points, origin, max_range=50.0, lazy_eval=True)
+tree.updateInnerOccupancy()
+```
+
+Note: `insertPointCloud` is the standard batch insertion method. Use `lazy_eval=True` for performance with large point clouds, then call `updateInnerOccupancy()` manually afterward. All methods support NumPy arrays and `max_range` clipping.
+
+### Performance Comparison
+
+| Operation | Method | Speed |
+|-----------|--------|-------|
+| Individual points | `updateNode()` | ~300,000 pts/sec |
+| Batch insertion | `insertPointCloud()` | ~17,000 pts/sec |
+| Parallel rays | `insertPointCloudRaysFast()` | ~30,500 pts/sec |
+| Decay and insert | `decayAndInsertPointCloud()` | ~17,300 pts/sec |
+
+## Examples
 
 See runnable demos in `examples/`:
 - `examples/basic_test.py` — smoke test for core API
@@ -281,16 +184,235 @@ See runnable demos in `examples/`:
 - `examples/sequential_occupancy_grid_demo.py` — comprehensive sequential occupancy grid with Open3D visualization
 - `examples/test_sequential_occupancy_grid.py` — comprehensive test suite for all occupancy grid methods
 
+### Demo Visualizations
+
+**3D OctoMap Scene Visualization:**
+<div align="center">
+<img src="images/octomap_demo_scene.png" alt="OctoMap Demo Scene" width="700">
+</div>
+
+**Occupancy Grid Visualization:**
+<div align="center">
+<img src="images/occupancy_grid.png" alt="Occupancy Grid" width="700">
+</div>
+
+## Advanced Usage
+
+### Room Mapping with Ray Casting
+
+```python
+import pyoctomap
+import numpy as np
+
+# Create octree
+tree = pyoctomap.OcTree(0.05)  # 5cm resolution
+sensor_origin = np.array([2.0, 2.0, 1.5])
+
+# Add walls with ray casting
+wall_points = []
+for x in np.arange(0, 4.0, 0.05):
+    for y in np.arange(0, 4.0, 0.05):
+        wall_points.append([x, y, 0])  # Floor
+        wall_points.append([x, y, 3.0])  # Ceiling
+
+# Use batch insertion for better performance
+wall_points = np.array(wall_points)
+tree.insertPointCloud(wall_points, sensor_origin, lazy_eval=True)
+tree.updateInnerOccupancy()
+
+print(f"Tree size: {tree.size()} nodes")
+```
+
+### Path Planning
+
+```python
+import pyoctomap
+import numpy as np
+
+# Create an octree for path planning
+tree = pyoctomap.OcTree(0.1)  # 10cm resolution
+
+# Add some obstacles to the map
+obstacles = [
+    [1.0, 1.0, 0.5],  # Wall at (1,1)
+    [1.5, 1.5, 0.5],  # Another obstacle
+    [2.0, 1.0, 0.5],  # Wall at (2,1)
+]
+
+for obstacle in obstacles:
+    tree.updateNode(obstacle, True)
+
+def is_path_clear(start, end, tree):
+    """Efficient ray casting for path planning using OctoMap's built-in castRay"""
+    start = np.array(start, dtype=np.float64)
+    end = np.array(end, dtype=np.float64)
+    
+    # Calculate direction vector
+    direction = end - start
+    ray_length = np.linalg.norm(direction)
+    
+    if ray_length == 0:
+        return True, None
+    
+    # Normalize direction
+    direction = direction / ray_length
+    
+    # Use OctoMap's efficient castRay method
+    end_point = np.zeros(3, dtype=np.float64)
+    hit = tree.castRay(start, direction, end_point, 
+                      ignoreUnknownCells=True, 
+                      maxRange=ray_length)
+    
+    if hit:
+        # Ray hit an obstacle - path is blocked
+        return False, end_point
+    else:
+        # No obstacle found - path is clear
+        return True, None
+
+# Check if path is clear
+start = [0.5, 2.0, 0.5]
+end = [2.0, 2.0, 0.5]
+clear, obstacle = is_path_clear(start, end, tree)
+if clear:
+    print("✅ Path is clear!")
+else:
+    print(f"❌ Path blocked at: {obstacle}")
+
+# Advanced path planning with multiple waypoints
+def plan_path(waypoints, tree):
+    """Plan a path through multiple waypoints using ray casting"""
+    path_clear = True
+    obstacles = []
+    
+    for i in range(len(waypoints) - 1):
+        start = waypoints[i]
+        end = waypoints[i + 1]
+        clear, obstacle = is_path_clear(start, end, tree)
+        
+        if not clear:
+            path_clear = False
+            obstacles.append((i, i+1, obstacle))
+    
+    return path_clear, obstacles
+
+# Example: Plan path through multiple waypoints
+waypoints = [
+    [0.0, 0.0, 0.5],
+    [1.0, 1.0, 0.5], 
+    [2.0, 2.0, 0.5],
+    [3.0, 3.0, 0.5]
+]
+
+path_clear, obstacles = plan_path(waypoints, tree)
+if path_clear:
+    print("✅ Complete path is clear!")
+else:
+    print(f"❌ Path blocked at segments: {obstacles}")
+```
+
+### Dynamic Environment Mapping
+
+For moving sensors in dynamic environments, use `decayAndInsertPointCloud` to handle occluded-ghost problems:
+
+```python
+import pyoctomap
+import numpy as np
+
+# Create octree for dynamic mapping
+tree = pyoctomap.OcTree(0.1)  # 10cm resolution
+
+# Simulate sequential scans from a moving sensor
+for scan_num in range(100):
+    # Generate new scan (e.g., from LiDAR)
+    point_cloud = np.random.rand(500, 3) * 10  # Simulated point cloud
+    sensor_origin = np.array([scan_num * 0.1, 0.0, 1.5])  # Moving sensor
+    
+    # Recommended: Decay and insert
+    # This solves the occluded-ghost problem by:
+    # 1. Applying temporal decay to occupied voxels in scan's bounding box
+    # 2. Inserting the new point cloud
+    
+    tree.decayAndInsertPointCloud(
+        point_cloud,
+        sensor_origin,
+        logodd_decay_value=-0.2,  # Default: ~20 scans for ghost to fade
+        max_range=50.0,
+        update_inner_occupancy=True
+    )
+    
+    # For highly dynamic environments (faster ghost removal):
+    # tree.decayAndInsertPointCloud(point_cloud, sensor_origin, 
+    #                                logodd_decay_value=-1.0)  # ~4 scans
+
+# Tuning guide:
+# Formula: Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)
+# 
+# - Moderate (default: -0.2): ~20 scans to fade (balanced)
+# - Aggressive (-1.0 to -3.0): 2-4 scans (highly dynamic)
+# - Weak (-0.05 to -0.1): 40-80 scans (mostly static)
+```
+
+### Iterator Operations
+
+PyOctoMap provides three types of iterators for different use cases:
+
+#### Tree Iterator (`begin_tree`) - All Nodes
+```python
+# Iterate over ALL nodes (inner + leaf nodes) - slower but complete
+for node_it in tree.begin_tree():
+    coord = node_it.getCoordinate()
+    depth = node_it.getDepth()
+    size = node_it.getSize()
+    is_leaf = node_it.isLeaf()
+    
+    # Use for: tree structure analysis, debugging, inner node operations
+    if not is_leaf:
+        print(f"Inner node at depth {depth}, size {size:.2f}m")
+```
+
+#### Leaf Iterator (`begin_leafs`) - Leaf Nodes Only  
+```python
+# Iterate over LEAF nodes only - faster for occupancy queries
+for leaf_it in tree.begin_leafs():
+    coord = leaf_it.getCoordinate()
+    occupied = tree.isNodeOccupied(leaf_it)
+    if occupied:
+        print(f"Occupied leaf at {coord}")
+    
+    # Use for: standard occupancy operations, fast iteration
+```
+
+#### Bounding Box Iterator (`begin_leafs_bbx`) - Spatial Filtering
+```python
+# Iterate over leaf nodes within a bounding box
+bbx_min = np.array([0.0, 0.0, 0.0])
+bbx_max = np.array([5.0, 5.0, 5.0])
+for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
+    coord = bbx_it.getCoordinate()
+    print(f"Node in BBX: {coord}")
+    
+    # Use for: region-specific analysis, spatial queries
+```
 
 ## Requirements
 
 - Python 3.9+
 - NumPy
+- Cython (for building from source)
 
-**For ROS integration:**
-- ROS2: `ros-iron-rclpy`, `ros-iron-sensor-msgs`, `ros-iron-geometry-msgs`, `ros-iron-nav-msgs`, `ros-iron-tf2-ros`
-- ROS1: `ros-noetic-rclpy`, `ros-noetic-sensor-msgs`, `ros-noetic-geometry-msgs`, `ros-noetic-nav-msgs`, `ros-noetic-tf2-ros`
-- Install via ROS package manager (not pip)
+**Optional for visualization:**
+- matplotlib (for 2D plotting)
+- open3d (for 3D visualization)
+
+## Documentation
+
+- **[Complete API Reference](docs/api_reference.md)** - Detailed API documentation
+- **[Build System](docs/build_system.md)** - Prerequisites, build process, and troubleshooting
+- **[File Format Guide](docs/file_format.md)** - Supported file formats
+- **[Performance Guide](docs/performance_guide.md)** - Optimization tips and benchmarks
+- **[Troubleshooting](docs/troubleshooting.md)** - Common issues and solutions
+- **[Wheel Technology](docs/wheel_technology.md)** - Library bundling details
 
 ## License
 
@@ -302,5 +424,8 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 
 ## Acknowledgments
 
-- **Core library**: [OctoMap](https://octomap.github.io) - An efficient probabilistic 3D mapping framework based on octrees
 - **Previous work**: [`wkentaro/octomap-python`](https://github.com/wkentaro/octomap-python) - This project builds upon and modernizes the original Python bindings
+- **Core library**: [OctoMap](https://OctoMap.github.io) - An efficient probabilistic 3D mapping framework based on octrees
+- **Build system**: Built with Cython for seamless Python-C++ integration and performance
+- **Visualization**: [Open3D](https://www.open3d.org/) - Used for 3D visualization capabilities in demonstration scripts
+- **Research support**: Development of this enhanced Python wrapper was supported by the French National Research Agency (ANR) under the France 2030 program, specifically the IRT Nanoelec project (ANR-10-AIRT-05), advancing robotics and 3D mapping research capabilities.

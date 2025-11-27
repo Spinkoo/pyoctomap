@@ -42,8 +42,8 @@ def get_version():
             for line in f:
                 if line.startswith("__version__"):
                     return line.split("=")[1].strip().strip('"').strip("'")
-    except (FileNotFoundError, IOError) as e:
-        print(f"Warning: Could not read version from {version_file}: {e}")
+    except (FileNotFoundError, IOError):
+        pass
     return "0.0.0"
 
 
@@ -52,7 +52,6 @@ def get_lib_files():
     lib_dir = "src/octomap/lib"
     
     if not os.path.exists(lib_dir):
-        print(f"Warning: Library directory {lib_dir} not found")
         return []
     
     lib_files = []
@@ -65,69 +64,88 @@ def get_lib_files():
     else:  # Linux and others
         lib_extensions = [".so", ".a"]
     
-    # Find all library files
+    # Find all library files (including versioned ones like .so.1.10, .so.1.10.0)
     for file in os.listdir(lib_dir):
-        if any(file.endswith(ext) for ext in lib_extensions):
-            lib_files.append(os.path.join(lib_dir, file))
+        file_path = os.path.join(lib_dir, file)
+        # Include files that match extensions or contain versioned patterns
+        # Skip symlinks - we'll copy the actual files they point to
+        if not os.path.islink(file_path):
+            if (any(file.endswith(ext) for ext in lib_extensions) or 
+                ('.so.' in file and platform.system() != "Windows")):
+                lib_files.append(file_path)
     
-    print(f"Found {len(lib_files)} library files: {lib_files}")
     return lib_files
+
+
+def copy_libraries_to_directory(lib_package_dir):
+    """Copy libraries to a target directory, preserving symlink structure"""
+    lib_dir = "src/octomap/lib"
+    
+    if not os.path.exists(lib_dir):
+        return
+    
+    os.makedirs(lib_package_dir, exist_ok=True)
+    
+    # First, copy all actual files (not symlinks) - these are the .so.1.10.0 files
+    actual_files = {}
+    for file in os.listdir(lib_dir):
+        lib_file = os.path.join(lib_dir, file)
+        if os.path.isfile(lib_file) and not os.path.islink(lib_file):
+            if file.endswith('.so') or file.endswith('.a') or '.so.' in file:
+                dest_file = os.path.join(lib_package_dir, file)
+                shutil.copy2(lib_file, dest_file)
+                actual_files[file] = dest_file
+    
+    # Then, resolve and copy symlinks by copying their targets with the symlink name
+    for file in os.listdir(lib_dir):
+        lib_file = os.path.join(lib_dir, file)
+        if os.path.islink(lib_file):
+            target = os.readlink(lib_file)
+            if os.path.isabs(target):
+                target_name = os.path.basename(target)
+                target_path = target
+            else:
+                target_name = target
+                target_path = os.path.join(os.path.dirname(lib_file), target)
+            
+            # Resolve the symlink chain to find the actual file
+            while os.path.islink(target_path):
+                next_target = os.readlink(target_path)
+                if os.path.isabs(next_target):
+                    target_path = next_target
+                else:
+                    target_path = os.path.join(os.path.dirname(target_path), next_target)
+            
+            # Copy the actual file with the symlink's name
+            if os.path.exists(target_path):
+                dest_file = os.path.join(lib_package_dir, file)
+                shutil.copy2(target_path, dest_file)
+
+
+def copy_libraries_to_source():
+    """Copy libraries to source pyoctomap/lib/ directory before build"""
+    lib_package_dir = os.path.join("pyoctomap", "lib")
+    copy_libraries_to_directory(lib_package_dir)
 
 
 class CustomBuildExt(build_ext):
     """Custom build extension that copies libraries to the package"""
     
     def run(self):
+        # Copy libraries to source directory first (for MANIFEST.in)
+        copy_libraries_to_source()
+        
         # Run the normal build
         super().run()
         
-        # Copy libraries to the package directory
+        # Copy libraries to the build directory
         self.copy_libraries()
     
     def copy_libraries(self):
-        """Copy shared libraries to the package directory and create versioned symlinks"""
-        lib_files = get_lib_files()
-        
-        if not lib_files:
-            print("No library files found to copy")
-            return
-        
-        # Get the package directory
+        """Copy shared libraries to the build package directory"""
         package_dir = os.path.join(self.build_lib, "pyoctomap")
-        os.makedirs(package_dir, exist_ok=True)
-        
-        # Create lib subdirectory in package
         lib_package_dir = os.path.join(package_dir, "lib")
-        os.makedirs(lib_package_dir, exist_ok=True)
-        
-        # Copy library files and create versioned symlinks
-        for lib_file in lib_files:
-            if os.path.exists(lib_file):
-                dest_file = os.path.join(lib_package_dir, os.path.basename(lib_file))
-                shutil.copy2(lib_file, dest_file)
-                print(f"Copied {lib_file} -> {dest_file}")
-                
-                # Create versioned symlinks for .so files
-                if lib_file.endswith('.so'):
-                    lib_name = os.path.basename(lib_file)
-                    # Create versioned symlinks (e.g., liboctomap.so.1.10 -> liboctomap.so)
-                    versioned_names = []
-                    
-                    if 'liboctomap.so' in lib_name and not lib_name.endswith('.1.10.0'):
-                        versioned_names = ['liboctomap.so.1.10', 'liboctomap.so.1.10.0']
-                    elif 'libdynamicedt3d.so' in lib_name and not lib_name.endswith('.1.10.0'):
-                        versioned_names = ['libdynamicedt3d.so.1.10', 'libdynamicedt3d.so.1.10.0']
-                    elif 'liboctomath.so' in lib_name and not lib_name.endswith('.1.10.0'):
-                        versioned_names = ['liboctomath.so.1.10', 'liboctomath.so.1.10.0']
-                    
-                    for versioned_name in versioned_names:
-                        versioned_path = os.path.join(lib_package_dir, versioned_name)
-                        if not os.path.exists(versioned_path):
-                            try:
-                                os.symlink(lib_name, versioned_path)
-                                print(f"Created symlink {versioned_name} -> {lib_name}")
-                            except OSError as e:
-                                print(f"Failed to create symlink {versioned_name}: {e}")
+        copy_libraries_to_directory(lib_package_dir)
 
 
 class CustomInstall(install):
@@ -135,6 +153,15 @@ class CustomInstall(install):
     
     def run(self):
         super().run()
+        # Copy libraries to installed package
+        self.copy_libraries_to_installed()
+    
+    def copy_libraries_to_installed(self):
+        """Copy libraries to the installed package directory"""
+        install_lib = self.install_lib
+        package_dir = os.path.join(install_lib, "pyoctomap")
+        lib_package_dir = os.path.join(package_dir, "lib")
+        copy_libraries_to_directory(lib_package_dir)
 
 
 class CustomDevelop(develop):
@@ -142,6 +169,14 @@ class CustomDevelop(develop):
     
     def run(self):
         super().run()
+        # Copy libraries to development package
+        self.copy_libraries_to_installed()
+    
+    def copy_libraries_to_installed(self):
+        """Copy libraries to the development package directory"""
+        package_dir = "pyoctomap"
+        lib_package_dir = os.path.join(package_dir, "lib")
+        copy_libraries_to_directory(lib_package_dir)
 
 
 def build_extensions():
@@ -158,7 +193,6 @@ def build_extensions():
     
     # Get numpy include directory at build time (not install time)
     numpy_include = numpy.get_include()
-    print(f"Using NumPy headers from: {numpy_include}")
 
     # Compiler flags for better memory management and debugging
     extra_compile_args = []
@@ -182,70 +216,125 @@ def build_extensions():
         elif platform.system() == "Darwin":
             rpath_args = ["-Wl,-rpath,@loader_path/lib"]
 
-    # Find the .pyx file - it might be in different locations depending on how it's installed
-    pyx_file = None
-    possible_paths = [
-        "pyoctomap/octomap.pyx",
-        "octomap.pyx",
-        "pyoctomap/octomap.pyx"
+    # Find all .pyx files
+    pyx_files = {
+        "pyoctomap.octree_base": None,
+        "pyoctomap.octree_iterators": None,
+        "pyoctomap.octree": None,
+        "pyoctomap.octomap": None,
+        "pyoctomap.color_octree": None,
+    }
+    
+    possible_paths = {
+        "pyoctomap.octree_base": ["pyoctomap/octree_base.pyx"],
+        "pyoctomap.octree_iterators": ["pyoctomap/octree_iterators.pyx"],
+        "pyoctomap.octree": ["pyoctomap/octree.pyx"],
+        "pyoctomap.octomap": ["pyoctomap/octomap.pyx"],
+        "pyoctomap.color_octree": ["pyoctomap/color_octree.pyx"],
+    }
+    
+    for module_name, paths in possible_paths.items():
+        for path in paths:
+            if os.path.exists(path):
+                pyx_files[module_name] = path
+                break
+    
+    # Common extension configuration
+    common_include_dirs = [
+        "pyoctomap",
+        "src/octomap/octomap/include",
+        "src/octomap/octomap/include/octomap",
+        "src/octomap/dynamicEDT3D/include",
+        numpy_include,
     ]
     
-    for path in possible_paths:
-        if os.path.exists(path):
-            pyx_file = path
-            break
+    common_library_dirs = ["src/octomap/lib"]
     
-    if pyx_file is None:
-        print("Error: Could not find octomap.pyx file")
-        print("Searched in:", possible_paths)
-        print("Current directory contents:")
-        for root, dirs, files in os.walk("."):
-            for file in files:
-                if file.endswith(".pyx"):
-                    print(f"  Found: {os.path.join(root, file)}")
-        sys.exit(1)
+    common_libraries = ["dynamicedt3d", "octomap", "octomath"]
     
-    print(f"Using .pyx file: {pyx_file}")
+    common_macros = [("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")]
     
-    # Debug: Print current directory structure
-    print("Current directory structure:")
-    for root, dirs, files in os.walk("."):
-        level = root.replace(".", "").count(os.sep)
-        indent = " " * 2 * level
-        print(f"{indent}{os.path.basename(root)}/")
-        subindent = " " * 2 * (level + 1)
-        for file in files[:5]:  # Show first 5 files
-            print(f"{subindent}{file}")
-        if len(files) > 5:
-            print(f"{subindent}... and {len(files) - 5} more files")
-
-    ext_modules = [
-        Extension(
-            "pyoctomap.octomap",
-            [pyx_file],
-            include_dirs=[
-                "pyoctomap",  # Include the pyoctomap directory for .pxd files
-                "src/octomap/octomap/include",
-                "src/octomap/octomap/include/octomap",
-                "src/octomap/dynamicEDT3D/include",
-                numpy_include,  # Use the variable instead of calling numpy.get_include() again
-            ],
-            library_dirs=[
-                "src/octomap/lib",
-            ],
-            libraries=[
-                "dynamicedt3d",
-                "octomap",
-                "octomath",
-            ],
-            define_macros=[
-                ("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION"),
-            ],
-            language="c++",
-            extra_compile_args=extra_compile_args,
-            extra_link_args=extra_link_args + rpath_args,
+    ext_modules = []
+    
+    # Build octree_base extension
+    if pyx_files["pyoctomap.octree_base"]:
+        ext_modules.append(
+            Extension(
+                "pyoctomap.octree_base",
+                [pyx_files["pyoctomap.octree_base"]],
+                include_dirs=common_include_dirs,
+                library_dirs=common_library_dirs,
+                libraries=common_libraries,
+                define_macros=common_macros,
+                language="c++",
+                extra_compile_args=extra_compile_args,
+                extra_link_args=extra_link_args + rpath_args,
+            )
         )
-    ]
+    
+    # Build octree_iterators extension
+    if pyx_files["pyoctomap.octree_iterators"]:
+        ext_modules.append(
+            Extension(
+                "pyoctomap.octree_iterators",
+                [pyx_files["pyoctomap.octree_iterators"]],
+                include_dirs=common_include_dirs,
+                library_dirs=common_library_dirs,
+                libraries=common_libraries,
+                define_macros=common_macros,
+                language="c++",
+                extra_compile_args=extra_compile_args,
+                extra_link_args=extra_link_args + rpath_args,
+            )
+        )
+    
+    # Build octree extension
+    if pyx_files["pyoctomap.octree"]:
+        ext_modules.append(
+            Extension(
+                "pyoctomap.octree",
+                [pyx_files["pyoctomap.octree"]],
+                include_dirs=common_include_dirs,
+                library_dirs=common_library_dirs,
+                libraries=common_libraries,
+                define_macros=common_macros,
+                language="c++",
+                extra_compile_args=extra_compile_args,
+                extra_link_args=extra_link_args + rpath_args,
+            )
+        )
+    
+    # Build octomap wrapper extension
+    if pyx_files["pyoctomap.octomap"]:
+        ext_modules.append(
+            Extension(
+                "pyoctomap.octomap",
+                [pyx_files["pyoctomap.octomap"]],
+                include_dirs=common_include_dirs,
+                library_dirs=common_library_dirs,
+                libraries=common_libraries,
+                define_macros=common_macros,
+                language="c++",
+                extra_compile_args=extra_compile_args,
+                extra_link_args=extra_link_args + rpath_args,
+            )
+        )
+    
+    # Build color_octree extension
+    if pyx_files["pyoctomap.color_octree"]:
+        ext_modules.append(
+            Extension(
+                "pyoctomap.color_octree",
+                [pyx_files["pyoctomap.color_octree"]],
+                include_dirs=common_include_dirs,
+                library_dirs=common_library_dirs,
+                libraries=common_libraries,
+                define_macros=common_macros,
+                language="c++",
+                extra_compile_args=extra_compile_args,
+                extra_link_args=extra_link_args + rpath_args,
+            )
+        )
     
     return cythonize(
         ext_modules, 
@@ -272,10 +361,9 @@ def main():
         ]
     }
     
-    # Include library files in package
+    # Don't use data_files - libraries are copied by CustomBuildExt.copy_libraries()
+    # and included via package_data
     data_files = []
-    if lib_files:
-        data_files.append(("pyoctomap/lib", lib_files))
 
     # Build extensions
     ext_modules = build_extensions()
@@ -297,16 +385,20 @@ def main():
             "Intended Audience :: Science/Research",
             "Natural Language :: English",
             "Programming Language :: Python :: 3",
+            "Programming Language :: Python :: 3.7",
+            "Programming Language :: Python :: 3.8",
             "Programming Language :: Python :: 3.9",
             "Programming Language :: Python :: 3.10",
             "Programming Language :: Python :: 3.11",
             "Programming Language :: Python :: 3.12",
+            "Programming Language :: Python :: 3.13",
+            "Programming Language :: Python :: 3.14",
             "Programming Language :: Python :: Implementation :: CPython",
             "Topic :: Scientific/Engineering",
             "Topic :: Software Development :: Libraries :: Python Modules"
         ],
         keywords=["octomap", "occupancy", "mapping", "robotics", "3d", "bundled-libs", "python", "pyoctomap"],
-        python_requires=">=3.9",
+        python_requires=">=3.7",
         install_requires=["numpy>=1.16.0"],
         
         # Package configuration

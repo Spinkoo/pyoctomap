@@ -6,7 +6,7 @@ PyOctoMap supports several file formats for saving and loading octree data.
 
 ### Binary Tree Format (.bt)
 
-The primary format used by OctoMap for efficient storage and loading.
+The primary format used by OctoMap for efficient storage and loading of **occupancy-only** trees (`OcTree`).
 
 **Characteristics:**
 - **Efficient**: Compressed binary format
@@ -23,11 +23,23 @@ tree.write("my_map.bt")
 loaded_tree = tree.read("my_map.bt")
 ```
 
-**File Structure:**
-- Header with metadata (resolution, tree type, etc.)
-- Compressed octree data
-- Node occupancy information
-- Log-odds values
+### Octree Format (.ot)
+
+General file format that supports all octree types, including `ColorOcTree`. Use this for trees with additional data (like color).
+
+**Characteristics:**
+- **Versatile**: Supports ColorOcTree and other types
+- **Complete**: Stores all node data (occupancy + color)
+- **Standard**: Compatible with `octovis` and other tools
+
+**Usage (ColorOcTree):**
+```python
+# Save ColorOcTree
+color_tree.write("colored_map.ot")
+
+# Load ColorOcTree
+loaded_tree = pyoctomap.ColorOcTree("colored_map.ot")
+```
 
 ### Binary Format (.bt) - Alternative Method
 

@@ -23,16 +23,20 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: Implementation :: CPython",
     "Topic :: Scientific/Engineering",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 keywords = ["octomap", "occupancy", "mapping", "robotics", "3d", "bundled-libs", "python", "pyoctomap"]
-requires-python = ">=3.9"
+requires-python = ">=3.7"
 dependencies = [
     "numpy>=1.16.0"
 ]
@@ -42,8 +46,6 @@ visualization = [
     "matplotlib>=3.0.0",
     "open3d>=0.13.0"
 ]
-# Note: ROS dependencies are not available on PyPI
-# Install them separately via ROS package manager
 dev = [
     "pytest>=6.0",
     "pytest-cov",
@@ -55,9 +57,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://octomap.github.io/"
+Homepage = "https://spinkoo.github.io/pyoctomap/"
 Repository = "https://github.com/Spinkoo/pyoctomap"
-Documentation = "https://github.com/Spinkoo/pyoctomap#readme"
+Documentation = "https://github.com/Spinkoo/pyoctomap/tree/main/docs"
 "Bug Tracker" = "https://github.com/Spinkoo/pyoctomap/issues"
 
 [project.scripts]

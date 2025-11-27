@@ -1,91 +1,64 @@
-# ROS-compatible Dockerfile for building pyoctomap wheels
+# Multi-version Dockerfile for building pyoctomap wheels
 FROM quay.io/pypa/manylinux_2_28_x86_64:2025.09.19-1 AS builder
 
-# Install build dependencies including ROS-compatible libraries
-RUN echo "🔧 Installing build dependencies for ROS compatibility..." && \
-    yum install -y cmake3 make gcc gcc-c++ git && \
-    yum clean all && \
-    echo "✅ Build dependencies installed!"
+# Install build dependencies
+RUN yum install -y cmake3 make gcc gcc-c++ git
 
 # Copy source code
 COPY . /project
 WORKDIR /project
 
-# Build OctoMap C++ library with ROS-compatible flags
-RUN echo "🏗️ Building OctoMap C++ library with ROS compatibility..." && \
-    cd src/octomap && \
+# Build OctoMap C++ library
+RUN cd src/octomap && \
     mkdir -p build && \
     cd build && \
-    echo "🔨 Configuring CMake with ROS-compatible flags..." && \
-    cmake3 .. -DCMAKE_BUILD_TYPE=Release \
-              -DCMAKE_CXX_STANDARD=17 \
-              -DCMAKE_POSITION_INDEPENDENT_CODE=ON && \
-    echo "⚙️ Compiling OctoMap library..." && \
+    cmake3 .. -DCMAKE_BUILD_TYPE=Release && \
     make -j$(nproc) && \
-    echo "📦 Installing OctoMap library..." && \
     make install && \
-    ldconfig && \
-    echo "✅ OctoMap C++ library built successfully!"
+    ldconfig
 
 # Copy libraries to the expected location
-RUN echo "📚 Copying OctoMap libraries for bundling..." && \
-    mkdir -p src/octomap/lib && \
+RUN mkdir -p src/octomap/lib && \
     find /usr/local/lib -name "*.so*" -exec cp {} src/octomap/lib/ \; && \
     find /usr/local/lib -name "*.a" -exec cp {} src/octomap/lib/ \; && \
-    echo "📋 Libraries copied to src/octomap/lib/:" && \
-    ls -la src/octomap/lib/ && \
-    echo "✅ Libraries ready for wheel bundling!"
+    echo "Libraries copied:" && \
+    ls -la src/octomap/lib/
 
-# Build wheel for ROS integration (Python 3.11 only for faster testing)
-RUN echo "🚀 Starting ROS-compatible wheel build..." && \
-    echo "🐍 Building for Python 3.11 (ROS compatible)..." && \
-    /opt/python/cp311-cp311/bin/pip install --upgrade pip setuptools wheel && \
-    /opt/python/cp311-cp311/bin/pip install numpy cython && \
-    echo "🔨 Building pyoctomap wheel (ROS dependencies installed separately)..." && \
-    /opt/python/cp311-cp311/bin/python setup.py bdist_wheel && \
-    echo "✅ ROS-compatible wheel build completed!"
+# Build wheels for multiple Python versions
+RUN for py_version in cp37-cp37m cp38-cp38 cp39-cp39 cp310-cp310 cp311-cp311 cp312-cp312 cp313-cp313 cp314-cp314; do \
+        echo "Building wheel for Python $py_version..." && \
+        /opt/python/$py_version/bin/pip install --upgrade pip setuptools wheel && \
+        /opt/python/$py_version/bin/pip install numpy cython && \
+        /opt/python/$py_version/bin/python setup.py bdist_wheel && \
+        echo "Built wheel for $py_version"; \
+    done
 
 # Show what libraries are in the wheels before repair
-RUN echo "🔍 Checking libraries in wheels before repair:" && \
+RUN echo "Libraries in wheels before repair:" && \
     for wheel in dist/*.whl; do \
         echo "=== $wheel ===" && \
         unzip -l "$wheel" | grep -E "\.(so|a)$" || echo "No libraries found"; \
     done
 
 # Install auditwheel
-RUN echo "🔧 Installing auditwheel for manylinux compatibility..." && \
-    /opt/python/cp311-cp311/bin/pip install auditwheel && \
-    echo "✅ auditwheel installed!"
+RUN /opt/python/cp311-cp311/bin/pip install auditwheel
 
 # Copy libraries to standard location for auditwheel
-RUN echo "📚 Preparing libraries for auditwheel repair..." && \
-    cp src/octomap/lib/*.so* /usr/local/lib/ && \
-    ldconfig && \
-    echo "✅ Libraries ready for auditwheel!"
+RUN cp src/octomap/lib/*.so* /usr/local/lib/ && \
+    ldconfig
 
 # Repair all wheels for manylinux compatibility
-RUN echo "🛠️ Repairing wheels for manylinux compatibility..." && \
-    for wheel in dist/*.whl; do \
-        echo "🔨 Repairing $wheel..." && \
+RUN for wheel in dist/*.whl; do \
+        echo "Repairing $wheel..." && \
         /opt/python/cp311-cp311/bin/auditwheel repair "$wheel" -w dist/ --plat manylinux_2_28_x86_64; \
-    done && \
-    echo "✅ Wheel repair completed!"
+    done
 
 # Show final wheels
-RUN echo "🎉 Final ROS-compatible wheels:" && \
-    ls -la dist/ && \
-    echo "📊 Wheel details:" && \
-    for wheel in dist/*.whl; do \
-        echo "=== $wheel ===" && \
-        /opt/python/cp311-cp311/bin/auditwheel show "$wheel" || echo "auditwheel show failed"; \
-    done
+RUN echo "Final wheels:" && ls -la dist/
 
 # Final stage - just copy the built wheels
 FROM alpine:latest
 RUN apk add --no-cache bash
 COPY --from=builder /project/dist/*.whl /wheels/
 WORKDIR /wheels
-RUN echo "🎉 ROS-compatible pyoctomap wheels ready!" && \
-    echo "📦 Available wheels:" && \
-    ls -la
-CMD ["echo", "🚀 ROS-compatible pyoctomap wheels built successfully!"]
+CMD ["ls", "-la"]

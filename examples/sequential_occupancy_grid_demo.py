@@ -14,29 +14,21 @@ The main class SequentialOccupancyGrid manages:
 """
 
 import numpy as np
-import sys
 import os
 from typing import List, Tuple, Optional, Union, Dict, Any
 from dataclasses import dataclass
 import time
 
-# Add parent directory to path for proper import
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 try:
     import pyoctomap
-    print("✅ PyOctoMap import successful!")
 except ImportError as e:
-    print(f"❌ Failed to import pyoctomap: {e}")
-    sys.exit(1)
+    raise ImportError(f"Failed to import pyoctomap: {e}")
 
 try:
     import open3d as o3d
     OPEN3D_AVAILABLE = True
-    print("✅ Open3D available for visualization")
 except ImportError:
     OPEN3D_AVAILABLE = False
-    print("⚠️ Open3D not available - visualization will be limited")
 
 
 @dataclass
@@ -103,8 +95,7 @@ class SequentialOccupancyGrid:
         
         # Validate probability values
         if prob_hit + prob_miss > 1.0:
-            print(f"⚠️  Warning: prob_hit ({prob_hit}) + prob_miss ({prob_miss}) = {prob_hit + prob_miss} > 1.0")
-            print(f"    This may cause unexpected behavior. Consider adjusting values.")
+            pass  # Warning suppressed for cleaner output
         
         # Initialize OctoMap
         self.tree = pyoctomap.OcTree(resolution)
@@ -124,11 +115,6 @@ class SequentialOccupancyGrid:
         # Cached visualization data
         self._cached_points = None
         self._cache_invalid = True
-        
-        print(f"��️  Initialized SequentialOccupancyGrid:")
-        print(f"    Resolution: {resolution}m")
-        print(f"    Sensor origin: {self.sensor_origin}")
-        print(f"    Prob hit/miss: {prob_hit}/{prob_miss}")
     
     def update_sensor_origin(self, origin: Union[List[float], np.ndarray]):
         """Update the sensor origin for ray casting"""
@@ -170,8 +156,7 @@ class SequentialOccupancyGrid:
             
             return success
             
-        except Exception as e:
-            print(f"❌ Error adding point {point}: {e}")
+        except Exception:
             return False
     
     def _mark_free_space_along_ray(self, origin: np.ndarray, end_point: np.ndarray, 
@@ -188,9 +173,9 @@ class SequentialOccupancyGrid:
         self.tree.markFreeSpaceAlongRay(origin, end_point, step_size)
         
     def add_points_batch(self, 
-                        points: Union[List, np.ndarray],
-                        sensor_origins: Optional[Union[List, np.ndarray]] = None,
-                        update_inner_occupancy: bool = True) -> int:
+                       points: Union[List, np.ndarray],
+                       sensor_origins: Optional[Union[List, np.ndarray]] = None,
+                       update_inner_occupancy: bool = True) -> int:
         """
         Add multiple 3D points in batch for better performance
         
@@ -198,7 +183,7 @@ class SequentialOccupancyGrid:
             points: Array of 3D points [[x,y,z], ...] 
             sensor_origins: Optional array of sensor origins for each point
             update_inner_occupancy: Whether to update inner node occupancy
-            
+        
         Returns:
             int: Number of points successfully added
         """
@@ -209,21 +194,18 @@ class SequentialOccupancyGrid:
             points = points.reshape(1, -1)
         
         if points.shape[1] != 3:
-            print(f"❌ Invalid point shape: {points.shape}. Expected (N, 3)")
             return 0
         
         try:
-            # Handle sensor origins
-            if sensor_origins is not None:
-                sensor_origins = np.asarray(sensor_origins, dtype=np.float64)
-                if len(sensor_origins.shape) == 1:
-                    sensor_origins = sensor_origins.reshape(1, -1)
-            else:
-                # Use default sensor origin for all points
-                sensor_origins = np.tile(self.sensor_origin, (len(points), 1))
+            # Use default sensor origin for all points (sensor_origins could be implemented in the future if needed)
+            origin = self.sensor_origin
+
+            # Use the Cython fast rays method for batch insertion
+            success_count = self.tree.insertPointCloudRaysFast(points, origin)
             
-            # Use the new integrated batch method from octomap
-            success_count = self.tree.addPointsBatch(points, sensor_origins, update_inner_occupancy)
+            # Optionally update inner occupancy
+            if update_inner_occupancy:
+                self.tree.updateInnerOccupancy()
             
             # Update statistics
             batch_time = time.time() - start_time
@@ -234,19 +216,16 @@ class SequentialOccupancyGrid:
             # Invalidate cache
             self._cache_invalid = True
             
-            print(f"✅ Added {success_count}/{len(points)} points in {batch_time:.3f}s")
-            
-        except Exception as e:
-            print(f"❌ Batch processing error: {e}")
+        except Exception:
             success_count = 0
         
         return success_count
     
     def add_point_cloud(self,
-                       point_cloud: np.ndarray,
-                       sensor_origin: Optional[Union[List[float], np.ndarray]] = None,
-                       max_range: float = -1.0,
-                       use_ray_casting: bool = True) -> bool:
+                      point_cloud: np.ndarray,
+                      sensor_origin: Optional[Union[List[float], np.ndarray]] = None,
+                      max_range: float = -1.0,
+                      use_ray_casting: bool = True) -> bool:
         """
         Add a full point cloud using either ray casting or OctoMap's optimized insertion
         
@@ -266,12 +245,12 @@ class SequentialOccupancyGrid:
             origin = np.array(sensor_origin if sensor_origin is not None else self.sensor_origin, dtype=np.float64)
             
             if len(point_cloud.shape) != 2 or point_cloud.shape[1] != 3:
-                print(f"❌ Invalid point cloud shape: {point_cloud.shape}")
                 return False
             
             if use_ray_casting:
-                # Use the new integrated ray casting method
-                success_count = self.tree.addPointCloudWithRayCasting(point_cloud, origin, max_range, True)
+                # Use the fast rays batch insertion method
+                success_count = self.tree.insertPointCloudRaysFast(point_cloud, origin)
+                self.tree.updateInnerOccupancy()
                 success = success_count > 0
             else:
                 # Use OctoMap's optimized point cloud insertion
@@ -289,12 +268,9 @@ class SequentialOccupancyGrid:
             # Invalidate cache
             self._cache_invalid = True
             
-            method_str = "ray casting" if use_ray_casting else "standard"
-            print(f"✅ Inserted point cloud ({success_count} points) using {method_str} in {process_time:.3f}s")
             return success
             
-        except Exception as e:
-            print(f"❌ Point cloud insertion error: {e}")
+        except Exception:
             return False
     
     def get_points_for_open3d(self, 
@@ -383,16 +359,9 @@ class SequentialOccupancyGrid:
             self._cached_points = result
             self._cache_invalid = False
             
-            extraction_time = time.time() - start_time
-            print(f"📊 Extracted points in {extraction_time:.3f}s:")
-            print(f"    Occupied: {len(occupied_points)}")
-            print(f"    Free: {len(free_points)}")
-            print(f"    Uncertain: {len(uncertain_points)}")
-            
             return result
             
-        except Exception as e:
-            print(f"❌ Error extracting points: {e}")
+        except Exception:
             return {
                 'occupied_points': np.zeros((0, 3)),
                 'free_points': np.zeros((0, 3)),
@@ -507,16 +476,12 @@ class SequentialOccupancyGrid:
             background_color: RGB background color
         """
         if not OPEN3D_AVAILABLE:
-            print("⚠️ Open3D not available - skipping visualization")
             return
         
         geometries = self.create_open3d_visualization(title)
         
         if not geometries:
-            print("⚠️ No geometries to visualize")
             return
-        
-        print(f"🎨 Opening Open3D visualization: {title}")
         
         # Create visualizer
         vis = o3d.visualization.Visualizer()
@@ -551,31 +516,14 @@ class SequentialOccupancyGrid:
     def print_statistics(self):
         """Print detailed statistics"""
         stats = self.get_statistics()
-        print(f"\n📈 Occupancy Grid Statistics:")
-        print(f"    Total points processed: {stats.total_points_processed}")
-        print(f"    Tree size (nodes): {stats.tree_size}")
-        print(f"    Occupied cells: {stats.occupied_cells}")
-        print(f"    Free cells: {stats.free_cells}")
-        print(f"    Uncertain cells: {stats.uncertain_cells}")
-        print(f"    Total processing time: {stats.processing_time:.3f}s")
-        if stats.total_points_processed > 0:
-            print(f"    Avg time per point: {stats.processing_time/stats.total_points_processed*1000:.2f}ms")
-        print(f"    Resolution: {self.resolution}m")
-        print(f"    Sensor origin: {self.sensor_origin}")
+        print(f"Total points: {stats.total_points_processed}, Tree size: {stats.tree_size}")
+        print(f"Occupied: {stats.occupied_cells}, Free: {stats.free_cells}, Uncertain: {stats.uncertain_cells}")
     
     def save_map(self, filename: str) -> bool:
         """Save the occupancy map to file"""
         try:
-            success = self.tree.write(filename)
-            if success:
-                file_size = os.path.getsize(filename)
-                print(f"✅ Map saved to {filename} ({file_size} bytes)")
-                return True
-            else:
-                print(f"❌ Failed to save map to {filename}")
-                return False
-        except Exception as e:
-            print(f"❌ Error saving map: {e}")
+            return self.tree.write(filename)
+        except Exception:
             return False
     
     def load_map(self, filename: str) -> bool:
@@ -585,14 +533,9 @@ class SequentialOccupancyGrid:
             if loaded_tree:
                 self.tree = loaded_tree
                 self._cache_invalid = True
-                print(f"✅ Map loaded from {filename}")
-                print(f"    Tree size: {self.tree.size()} nodes")
                 return True
-            else:
-                print(f"❌ Failed to load map from {filename}")
-                return False
-        except Exception as e:
-            print(f"❌ Error loading map: {e}")
+            return False
+        except Exception:
             return False
     
     def clear_map(self):
@@ -600,7 +543,6 @@ class SequentialOccupancyGrid:
         self.tree.clear()
         self._cache_invalid = True
         self.stats = MappingStats()
-        print("🗑️  Map cleared")
     
     def get_occupancy_at_point(self, point: Union[List[float], np.ndarray]) -> Optional[float]:
         """
@@ -618,8 +560,7 @@ class SequentialOccupancyGrid:
             if node:
                 return node.getOccupancy()
             return None
-        except Exception as e:
-            print(f"❌ Error getting occupancy at {point}: {e}")
+        except Exception:
             return None
     
     def is_point_occupied(self, point: Union[List[float], np.ndarray], threshold: float = 0.5) -> bool:
@@ -639,9 +580,6 @@ class SequentialOccupancyGrid:
 
 def demo_sequential_occupancy_grid():
     """Demonstration of the Sequential Occupancy Grid functionality"""
-    print("🚀 Sequential Occupancy Grid Demo")
-    print("=" * 50)
-    
     # Create occupancy grid
     grid = SequentialOccupancyGrid(
         resolution=0.05,
@@ -655,7 +593,6 @@ def demo_sequential_occupancy_grid():
     grid.viz_config.show_free_space = True
     grid.viz_config.point_size = 8.0
     
-    print("\n📍 Adding individual points...")
     # Add some individual points
     test_points = [
         [1.0, 1.0, 1.0],
@@ -669,7 +606,6 @@ def demo_sequential_occupancy_grid():
     for point in test_points:
         grid.add_point(point)
     
-    print("\n📦 Adding batch of points...")
     # Create a small room structure
     room_points = []
     # Floor
@@ -696,7 +632,6 @@ def demo_sequential_occupancy_grid():
     
     grid.add_points_batch(room_points)
     
-    print("\n☁️  Adding cylindrical obstacle...")
     # Create a cylindrical obstacle without free space marking
     cylinder_points = []
     # Cylindrical obstacle - make it more dense and visible
@@ -718,13 +653,10 @@ def demo_sequential_occupancy_grid():
     for point in cylinder_points:
         grid.tree.updateNode(np.array(point, dtype=np.float64), True)
     
-    print(f"✅ Added {len(cylinder_points)} cylinder points")
-    
     # Print statistics
     grid.print_statistics()
     
     # Test point queries
-    print("\n�� Testing point queries...")
     test_query_points = [
         [1.0, 1.0, 1.0],  # Should be occupied
         [0.5, 0.5, 0.5],  # Should be free
@@ -735,42 +667,27 @@ def demo_sequential_occupancy_grid():
         occupancy = grid.get_occupancy_at_point(point)
         is_occupied = grid.is_point_occupied(point)
         occupancy_str = f"{occupancy:.3f}" if occupancy is not None else "None"
-        print(f"    Point {point}: occupancy={occupancy_str}, occupied={is_occupied}")
+        print(f"Point {point}: occupancy={occupancy_str}, occupied={is_occupied}")
     
     # Get points for visualization
-    print("\n🎨 Extracting points for visualization...")
     viz_points = grid.get_points_for_open3d()
-    
-    print(f"    Extracted {len(viz_points['occupied_points'])} occupied points")
-    print(f"    Extracted {len(viz_points['free_points'])} free points")
-    print(f"    Extracted {len(viz_points['uncertain_points'])} uncertain points")
     
     # Show visualization if Open3D is available
     if OPEN3D_AVAILABLE:
-        print("\n🖼️  Opening visualization...")
         grid.visualize_with_open3d("Sequential Occupancy Grid Demo")
     
     # Test file operations
-    print("\n�� Testing file operations...")
     filename = "demo_sequential_map.bt"
     if grid.save_map(filename):
         # Test loading
         new_grid = SequentialOccupancyGrid(resolution=0.05)
-        if new_grid.load_map(filename):
-            print(f"✅ Successfully loaded map with {new_grid.tree.size()} nodes")
+        new_grid.load_map(filename)
         
         # Clean up
         try:
             os.remove(filename)
-            print(f"🗑️  Cleaned up {filename}")
         except:
             pass
-    
-    print("\n" + "=" * 50)
-    print("🎉 Sequential Occupancy Grid Demo completed!")
-    print(f"✅ Processed {grid.stats.total_points_processed} points")
-    print(f"✅ Generated {grid.stats.tree_size} tree nodes")
-    print(f"✅ Processing time: {grid.stats.processing_time:.3f}s")
     
     return grid
 

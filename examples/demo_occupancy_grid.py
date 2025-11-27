@@ -5,36 +5,25 @@ Shows the final occupancy state in 2D and 3D visualizations.
 """
 
 import numpy as np
-import sys
-import os
-
-# Add current directory to path for proper import
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 try:
     import pyoctomap
-    print("✅ PyOctoMap import successful!")
 except ImportError as e:
-    print(f"❌ Failed to import pyoctomap: {e}")
+    print(f"Failed to import pyoctomap: {e}")
     sys.exit(1)
 
 try:
     import matplotlib.pyplot as plt
     from mpl_toolkits.mplot3d import Axes3D
     MATPLOTLIB_AVAILABLE = True
-    print("✅ Matplotlib available for visualization")
 except ImportError:
     MATPLOTLIB_AVAILABLE = False
-    print("⚠️ Matplotlib not available - visualization will be skipped")
 
 def create_test_environment():
     """Create a test environment with solid 3D obstacles"""
-    print("\n🏗️ Creating Test Environment with Solid Obstacles...")
-    
-    tree = pyoctomap.OcTree(0.05)  # 5cm resolution
+    tree = pyoctomap.OcTree(0.05)
     
     # Create room boundaries (walls)
-    print("  Adding room boundaries...")
     wall_points = []
     
     # Floor (solid)
