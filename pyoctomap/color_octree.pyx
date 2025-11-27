@@ -47,8 +47,10 @@ cdef class ColorOcTreeNode:
         Returns: tuple (r, g, b) with values 0-255
         """
         cdef defs.ColorOcTreeNode.Color c
+        cdef const defs.ColorOcTreeNode* const_node
         if self.thisptr:
-            c = self.thisptr.getColor()
+            const_node = <const defs.ColorOcTreeNode*>self.thisptr
+            c = const_node.getColor()
             return (c.r, c.g, c.b)
         else:
             raise NullPointerException
