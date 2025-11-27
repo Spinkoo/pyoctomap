@@ -7,8 +7,7 @@ Used by GitHub Actions CI.
 def test_import():
     """Test basic import functionality."""
     import pyoctomap
-    print(f"✅ Successfully imported octomap version: {pyoctomap.__version__}")
-    # Just assert success - if import fails, pytest will catch the exception
+    assert pyoctomap.__version__ is not None
 
 def test_basic_functionality():
     """Test basic OctoMap functionality."""
@@ -16,7 +15,7 @@ def test_basic_functionality():
     
     # Create octree
     tree = pyoctomap.OcTree(0.1)
-    print(f"✅ Created OcTree with resolution: {tree.getResolution()}")
+    assert tree.getResolution() == 0.1
     
     # Add some nodes
     tree.updateNode([1.0, 2.0, 3.0], True)
@@ -27,9 +26,7 @@ def test_basic_functionality():
     node = tree.search([1.0, 2.0, 3.0])
     assert node is not None, "Should find node at [1.0, 2.0, 3.0]"
     assert tree.isNodeOccupied(node), "Node should be occupied"
-    
-    print("✅ Basic OctoMap functionality working!")
-    print(f"✅ Tree has {tree.size()} nodes")
+    assert tree.size() > 0
 
 def test_github2pypi():
     """Test github2pypi URL conversion."""
@@ -53,8 +50,6 @@ def test_github2pypi():
     # Check conversions
     assert 'https://github.com/Spinkoo/pyoctomap/blob/main/images/test.png?raw=true' in result, "Image URL not converted correctly"
     assert 'https://github.com/Spinkoo/pyoctomap/blob/main/docs/guide.md' in result, "Link URL not converted correctly"
-    
-    print("✅ github2pypi URL conversion working correctly")
 
 # This file is now a proper pytest module
 # Run with: python -m pytest unit_test/test_build.py -v

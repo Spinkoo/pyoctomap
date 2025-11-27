@@ -400,6 +400,74 @@ for i, (min_pt, max_pt) in enumerate(regions):
     print(f"Region {i}: {count} nodes")
 ```
 
+## ColorOcTree Class
+
+Extension of `OcTree` that stores RGB color information for each node.
+
+### Constructor
+
+```python
+ColorOcTree(resolution)
+```
+
+- `resolution` (float): Tree resolution in meters
+
+### Color Operations
+
+```python
+setNodeColor(point, r, g, b)
+```
+
+- `point` (list/np.array): 3D coordinates [x, y, z]
+- `r`, `g`, `b` (int): Red, Green, Blue components (0-255)
+- Returns: `ColorOcTreeNode`
+
+```python
+averageNodeColor(point, r, g, b)
+```
+
+- `point` (list/np.array): 3D coordinates [x, y, z]
+- `r`, `g`, `b` (int): RGB components to average with existing color
+- Returns: `ColorOcTreeNode`
+
+```python
+integrateNodeColor(point, r, g, b)
+```
+
+- `point` (list/np.array): 3D coordinates [x, y, z]
+- `r`, `g`, `b` (int): RGB components to integrate (weighted by occupancy)
+- Returns: `ColorOcTreeNode`
+
+## ColorOcTreeNode Class
+
+Represents a single node in a `ColorOcTree`. Inherits from `OcTreeNode`.
+
+### Methods
+
+```python
+getColor()
+```
+
+- Returns: Tuple `(r, g, b)` with values 0-255
+
+```python
+setColor(r, g, b)
+```
+
+- `r`, `g`, `b` (int): Set RGB color
+
+```python
+isColorSet()
+```
+
+- Returns: `bool` (True if color is not default white)
+
+```python
+getAverageChildColor()
+```
+
+- Returns: Tuple `(r, g, b)` average of children colors
+
 ## OcTreeKey Class
 
 Represents internal octree coordinates.

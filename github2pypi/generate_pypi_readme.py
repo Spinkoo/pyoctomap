@@ -20,14 +20,12 @@ def main():
     pypi_readme_path = project_root / "README_pypi_preview.md"
     
     if not readme_path.exists():
-        print(f"❌ README.md not found at {readme_path}")
+        print(f"README.md not found at {readme_path}")
         sys.exit(1)
     
-    print("🔄 Reading main README.md...")
     with open(readme_path, 'r', encoding='utf-8') as f:
         content = f.read()
     
-    print("🔄 Converting URLs for PyPI...")
     # Convert relative URLs to absolute GitHub URLs
     converted_content = replace_url(
         slug="Spinkoo/pyoctomap",
@@ -47,20 +45,11 @@ def main():
         "**From Source (Linux / WSL):**"
     )
     
-    print(f"💾 Writing PyPI README to {pypi_readme_path}...")
     with open(pypi_readme_path, 'w', encoding='utf-8') as f:
         f.write(pypi_content)
     
-    print("✅ PyPI README generated successfully!")
-    print(f"📁 File: {pypi_readme_path}")
-    print("\n🔗 All images and links are now PyPI-compatible with absolute GitHub URLs")
-    
-    # Verify the file was created
-    if pypi_readme_path.exists():
-        file_size = pypi_readme_path.stat().st_size
-        print(f"📊 File size: {file_size:,} bytes")
-    else:
-        print("❌ Error: PyPI README file was not created")
+    if not pypi_readme_path.exists():
+        print("Error: PyPI README file was not created")
         sys.exit(1)
 
 if __name__ == "__main__":

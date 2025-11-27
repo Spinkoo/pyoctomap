@@ -56,6 +56,29 @@ cdef extern from "OcTreeNode.h" namespace "octomap":
         float getMaxChildLogOdds()
         void updateOccupancyChildren()
 
+cdef extern from "ColorOcTree.h" namespace "octomap":
+    cdef cppclass ColorOcTreeNode(OcTreeNode):
+        cppclass Color:
+            Color() except +
+            Color(unsigned char r, unsigned char g, unsigned char b) except +
+            unsigned char r
+            unsigned char g
+            unsigned char b
+            bool operator==(const Color& other)
+            bool operator!=(const Color& other)
+        
+        ColorOcTreeNode() except +
+        ColorOcTreeNode(const ColorOcTreeNode& rhs) except +
+        Color getColor() const
+        Color& getColor()
+        void setColor(Color c)
+        void setColor(unsigned char r, unsigned char g, unsigned char b)
+        bool isColorSet() const
+        void updateColorChildren()
+        Color getAverageChildColor() const
+        void copyData(const ColorOcTreeNode& other)
+        bool operator==(const ColorOcTreeNode& rhs) const
+
 cdef extern from "OcTreeKey.h" namespace "octomap":
     ctypedef unsigned short int key_type
     cdef struct OcTreeKey:
@@ -216,5 +239,85 @@ cdef extern from "include_and_setting.h" namespace "octomap":
         bool nodeHasChildren(const OcTreeNode* node)
         void prune()
         void expand()
+
+cdef extern from "ColorOcTree.h" namespace "octomap":
+    cdef cppclass ColorOcTree:
+        ColorOcTree(double resolution) except +
+        ColorOcTree* create() const
+        string getTreeType() const
+        bool pruneNode(ColorOcTreeNode* node)
+        bool isNodeCollapsible(const ColorOcTreeNode* node) const
+        ColorOcTreeNode* setNodeColor(const OcTreeKey& key, unsigned char r, unsigned char g, unsigned char b)
+        ColorOcTreeNode* setNodeColor(float x, float y, float z, unsigned char r, unsigned char g, unsigned char b)
+        ColorOcTreeNode* averageNodeColor(const OcTreeKey& key, unsigned char r, unsigned char g, unsigned char b)
+        ColorOcTreeNode* averageNodeColor(float x, float y, float z, unsigned char r, unsigned char g, unsigned char b)
+        ColorOcTreeNode* integrateNodeColor(const OcTreeKey& key, unsigned char r, unsigned char g, unsigned char b)
+        ColorOcTreeNode* integrateNodeColor(float x, float y, float z, unsigned char r, unsigned char g, unsigned char b)
+        void updateInnerOccupancy()
+        void writeColorHistogram(string filename)
+        # Inherited from OccupancyOcTreeBase - need to declare key methods
+        OcTreeKey coordToKey(point3d& coord)
+        OcTreeKey coordToKey(point3d& coord, unsigned int depth)
+        bool coordToKeyChecked(point3d& coord, OcTreeKey& key)
+        bool coordToKeyChecked(point3d& coord, unsigned int depth, OcTreeKey& key)
+        ColorOcTreeNode* search(double x, double y, double z, unsigned int depth)
+        ColorOcTreeNode* search(point3d& value, unsigned int depth)
+        ColorOcTreeNode* search(const OcTreeKey& key, unsigned int depth)
+        ColorOcTreeNode* updateNode(double x, double y, double z, float log_odds_update, bool lazy_eval)
+        ColorOcTreeNode* updateNode(double x, double y, double z, bool occupied, bool lazy_eval)
+        ColorOcTreeNode* updateNode(const OcTreeKey& key, float log_odds_update, bool lazy_eval)
+        ColorOcTreeNode* updateNode(const OcTreeKey& key, bool occupied, bool lazy_eval)
+        void insertPointCloud(Pointcloud& scan, point3d& sensor_origin, double maxrange, bool lazy_eval, bool discretize)
+        bool isNodeOccupied(ColorOcTreeNode& occupancyNode)
+        bool isNodeAtThreshold(ColorOcTreeNode& occupancyNode)
+        bool castRay(point3d& origin, point3d& direction, point3d& end, bool ignoreUnknownCells, double maxRange) except +
+        double getResolution()
+        unsigned int getTreeDepth()
+        size_t size()
+        size_t getNumLeafNodes()
+        size_t calcNumNodes()
+        void clear()
+        bool write(string& filename)
+        bool write(ostream& s)
+        bool readBinary(string& filename)
+        bool writeBinary(string& filename)
+        ColorOcTree* read(string& filename)
+        ColorOcTree* read(istream& s)
+        point3d getBBXMin()
+        point3d getBBXMax()
+        point3d getBBXCenter()
+        point3d getBBXBounds()
+        void setBBXMin(point3d& min)
+        void setBBXMax(point3d& max)
+        bool inBBX(point3d& p)
+        point3d keyToCoord(OcTreeKey& key)
+        point3d keyToCoord(OcTreeKey& key, unsigned int depth)
+        ColorOcTreeNode* getRoot()
+        bool nodeHasChildren(const ColorOcTreeNode* node)
+        ColorOcTreeNode* getNodeChild(ColorOcTreeNode *node, unsigned int childIdx)
+        ColorOcTreeNode* createNodeChild(ColorOcTreeNode *node, unsigned int childIdx)
+        void deleteNodeChild(ColorOcTreeNode *node, unsigned int childIdx)
+        void expandNode(ColorOcTreeNode* node)
+        OccupancyOcTreeBase[ColorOcTreeNode].tree_iterator begin_tree(unsigned char maxDepth) except +
+        OccupancyOcTreeBase[ColorOcTreeNode].tree_iterator end_tree() except +
+        OccupancyOcTreeBase[ColorOcTreeNode].leaf_iterator begin_leafs(unsigned char maxDepth) except +
+        OccupancyOcTreeBase[ColorOcTreeNode].leaf_iterator end_leafs() except +
+        OccupancyOcTreeBase[ColorOcTreeNode].leaf_bbx_iterator begin_leafs_bbx(point3d &min, point3d &max, unsigned char maxDepth) except +
+        OccupancyOcTreeBase[ColorOcTreeNode].leaf_bbx_iterator end_leafs_bbx() except +
+        void getMetricSize(double& x, double& y, double& z)
+        void getMetricMin(double& x, double& y, double& z)
+        void getMetricMax(double& x, double& y, double& z)
+        size_t memoryUsage()
+        size_t memoryUsageNode()
+        double volume()
+        double getOccupancyThres()
+        float getOccupancyThresLog()
+        double getProbHit()
+        float getProbHitLog()
+        double getProbMiss()
+        float getProbMissLog()
+        void setOccupancyThres(double prob)
+        void setProbHit(double prob)
+        void setProbMiss(double prob)
 
 # Typedef removed due to Cython template issues

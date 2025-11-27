@@ -94,6 +94,33 @@ if node and tree.isNodeOccupied(node):
 tree.write("my_map.bt")
 ```
 
+### Color Occupancy Mapping
+
+PyOctoMap also supports `ColorOcTree`, allowing you to store RGB color information for each voxel. This is useful for semantic mapping or visualization.
+
+```python
+import pyoctomap
+import numpy as np
+
+# Create a ColorOcTree with 0.1m resolution
+tree = pyoctomap.ColorOcTree(0.1)
+
+# Add a colored node (Red)
+coord = [1.0, 1.0, 1.0]
+tree.updateNode(coord, True)
+tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
+
+# Search and retrieve color
+node = tree.search(coord)
+if node:
+    color = node.getColor()
+    print(f"Node color: {color}")  # (255, 0, 0)
+
+# Average color (mixing multiple observations)
+tree.averageNodeColor(coord, 0, 255, 0)  # Mix with Green
+print(f"New color: {tree.search(coord).getColor()}")
+```
+
 ### Dynamic Mapping and Point Cloud Insertion
 
 PyOctoMap provides efficient methods for dynamic mapping and probabilistic decay:
