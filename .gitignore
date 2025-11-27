@@ -49,3 +49,7 @@ benchmarks/
 
 *.bt
 pyoctomap/octomap.cpp
+
+# The correct pattern to ignore all .cpp files in the root and subfolders of pyoctomap:
+pyoctomap/**/*.cpp
+pyoctomap/*.cpp

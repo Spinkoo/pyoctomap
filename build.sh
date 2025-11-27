@@ -29,9 +29,14 @@ python3 -c "import numpy" 2>/dev/null || {
     pip install numpy
 }
 
-python3 -c "import Cython" 2>/dev/null || {
-    echo "❌ Cython not found. Installing..."
-    pip install Cython
+required_cython="3.1.6"
+python3 - <<PY 2>/dev/null || {
+import Cython
+import sys
+sys.exit(0 if Cython.__version__ == "$required_cython" else 1)
+PY
+    echo "ℹ️  Ensuring Cython==$required_cython..."
+    pip install --upgrade "Cython==$required_cython"
 }
 
 python3 -c "import wheel" 2>/dev/null || {
