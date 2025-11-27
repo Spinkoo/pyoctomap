@@ -495,6 +495,7 @@
             <div style="max-width: 800px; margin: 0 auto; text-align: left; font-size: 1.1rem; line-height: 2;">
                 <ul style="list-style: none; padding: 0;">
                     <li style="margin-bottom: 1rem;"><strong>3D Occupancy Mapping</strong>: Efficient octree-based 3D occupancy mapping</li>
+                    <li style="margin-bottom: 1rem;"><strong>Color Mapping</strong>: RGB color support via ColorOcTree for semantic mapping</li>
                     <li style="margin-bottom: 1rem;"><strong>Probabilistic Updates</strong>: Stochastic occupancy updates with uncertainty handling</li>
                     <li style="margin-bottom: 1rem;"><strong>Path Planning</strong>: Ray casting and collision detection</li>
                     <li style="margin-bottom: 1rem;"><strong>File Operations</strong>: Save/load octree data in binary format</li>
@@ -512,6 +513,7 @@
             
             <div class="install-tabs" style="justify-content: flex-start; margin-bottom: 2rem; border-bottom: 2px solid #404040;">
                 <div class="tab active" onclick="showExampleTab('quickstart')">Quick Start</div>
+                <div class="tab" onclick="showExampleTab('coloroctree')">ColorOcTree</div>
                 <div class="tab" onclick="showExampleTab('pointcloud')">Point Cloud Ops</div>
                 <div class="tab" onclick="showExampleTab('advanced')">Advanced</div>
                 <div class="tab" onclick="showExampleTab('performance')">Performance</div>
@@ -547,6 +549,42 @@ tree.<span class="code-function">write</span>(<span class="code-string">"my_map.
             </div>
             </div>
 
+            <!-- ColorOcTree Tab -->
+            <div id="coloroctree" class="tab-content">
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="code-title">Color Occupancy Mapping</span>
+                    <button class="copy-btn" onclick="copyCode('color-code')">Copy</button>
+                </div>
+                <pre id="color-code"><code><span class="code-keyword">import</span> pyoctomap
+<span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np
+
+<span class="code-comment"># Create a ColorOcTree with 0.1m resolution</span>
+tree = pyoctomap.<span class="code-function">ColorOcTree</span>(<span class="code-number">0.1</span>)
+
+<span class="code-comment"># Add a colored node (Red)</span>
+coord = [<span class="code-number">1.0</span>, <span class="code-number">1.0</span>, <span class="code-number">1.0</span>]
+tree.<span class="code-function">updateNode</span>(coord, <span class="code-keyword">True</span>)
+tree.<span class="code-function">setNodeColor</span>(coord, <span class="code-number">255</span>, <span class="code-number">0</span>, <span class="code-number">0</span>)  <span class="code-comment"># R, G, B (0-255)</span>
+
+<span class="code-comment"># Search and retrieve color</span>
+node = tree.<span class="code-function">search</span>(coord)
+<span class="code-keyword">if</span> node:
+    color = node.<span class="code-function">getColor</span>()
+    <span class="code-function">print</span>(<span class="code-string">f"Node color: {color}"</span>)  <span class="code-comment"># (255, 0, 0)</span>
+
+<span class="code-comment"># Average color (mixing multiple observations)</span>
+tree.<span class="code-function">averageNodeColor</span>(coord, <span class="code-number">0</span>, <span class="code-number">255</span>, <span class="code-number">0</span>)  <span class="code-comment"># Mix with Green</span>
+<span class="code-function">print</span>(<span class="code-string">f"New color: {tree.search(coord).getColor()}"</span>)
+
+<span class="code-comment"># Integrate color (weighted by occupancy)</span>
+tree.<span class="code-function">integrateNodeColor</span>(coord, <span class="code-number">0</span>, <span class="code-number">0</span>, <span class="code-number">255</span>)  <span class="code-comment"># Add Blue</span>
+
+<span class="code-comment"># Save to file (.ot format preserves colors)</span>
+tree.<span class="code-function">write</span>(<span class="code-string">"colored_map.ot"</span>)</code></pre>
+            </div>
+            </div>
+
             <!-- Point Cloud Operations Tab -->
             <div id="pointcloud" class="tab-content">
             <div class="code-container">
@@ -579,20 +617,14 @@ tree.<span class="code-function">decayAndInsertPointCloud</span>(
                     <span class="code-title">Batch Operations</span>
                     <button class="copy-btn" onclick="copyCode('batch-code')">Copy</button>
                 </div>
-                <pre id="batch-code"><code><span class="code-comment"># Precise batch ray-casting (hit-stopping for free/occupied)</span>
+                <pre id="batch-code"><code><span class="code-comment"># Fast C++ batch insertion (full rays, optional discretization and lazy evaluation)</span>
 points = np.<span class="code-function">random</span>.<span class="code-function">uniform</span>(-<span class="code-number">5</span>, <span class="code-number">5</span>, (<span class="code-number">1000</span>, <span class="code-number">3</span>))
 origin = np.<span class="code-function">array</span>([<span class="code-number">0.</span>, <span class="code-number">0.</span>, <span class="code-number">0.</span>], dtype=np.<span class="code-function">float64</span>)
-success_count = tree.<span class="code-function">addPointCloudWithRayCasting</span>(points, origin, discretize=<span class="code-keyword">True</span>)
-<span class="code-comment"># discretize=True reduces duplicates for dense clouds</span>
-
-<span class="code-comment"># Fast native batching (full rays, optional discretization and lazy evaluation)</span>
-points = np.<span class="code-function">random</span>.<span class="code-function">uniform</span>(-<span class="code-number">5</span>, <span class="code-number">5</span>, (<span class="code-number">1000</span>, <span class="code-number">3</span>))
-origin = np.<span class="code-function">array</span>([<span class="code-number">0.</span>, <span class="code-number">0.</span>, <span class="code-number">0.</span>], dtype=np.<span class="code-function">float64</span>)
-tree.<span class="code-function">insertPointCloudFast</span>(points, origin, discretize=<span class="code-keyword">False</span>, lazy_eval=<span class="code-keyword">True</span>)
+tree.<span class="code-function">insertPointCloud</span>(points, origin, discretize=<span class="code-keyword">False</span>, lazy_eval=<span class="code-keyword">True</span>)
 tree.<span class="code-function">updateInnerOccupancy</span>()  <span class="code-comment"># Manual after lazy</span>
 
-<span class="code-comment"># Equivalent raw C++ access (identical to above)</span>
-tree.<span class="code-function">insertPointCloud</span>(points, origin, discretize=<span class="code-keyword">False</span>, lazy_eval=<span class="code-keyword">True</span>)
+<span class="code-comment"># Ultra-fast version using parallel rays (no deduplication)</span>
+tree.<span class="code-function">insertPointCloudRaysFast</span>(points, origin, max_range=<span class="code-number">50.0</span>, lazy_eval=<span class="code-keyword">True</span>)
 tree.<span class="code-function">updateInnerOccupancy</span>()</code></pre>
             </div>
             </div>
@@ -615,9 +647,10 @@ wall_points = []
         wall_points.<span class="code-function">append</span>([x, y, <span class="code-number">0</span>])  <span class="code-comment"># Floor</span>
         wall_points.<span class="code-function">append</span>([x, y, <span class="code-number">3.0</span>])  <span class="code-comment"># Ceiling</span>
 
-<span class="code-comment"># Use vectorized approach for better performance</span>
+<span class="code-comment"># Use batch insertion for better performance</span>
 wall_points = np.<span class="code-function">array</span>(wall_points)
-tree.<span class="code-function">addPointCloudWithRayCasting</span>(wall_points, sensor_origin)
+tree.<span class="code-function">insertPointCloud</span>(wall_points, sensor_origin, lazy_eval=<span class="code-keyword">True</span>)
+tree.<span class="code-function">updateInnerOccupancy</span>()
 
 <span class="code-function">print</span>(<span class="code-string">f"Tree size: {tree.size()} nodes"</span>)</code></pre>
             </div>
