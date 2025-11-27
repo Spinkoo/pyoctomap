@@ -487,14 +487,24 @@ tree.write("my_map.bt")
                     <span class="code-title">ColorOcTree</span>
                     <button class="copy-btn" data-code="code-color">Copy</button>
                 </div>
-                <pre id="code-color"><code>tree = pom.ColorOcTree(0.05)
-color = pom.Color(128, 200, 255)
+                <pre id="code-color"><code>
+tree = pom.ColorOcTree(0.1)
 
-for pt in np.random.rand(2000, 3) * 5:
-    tree.updateNode(pt.tolist(), True)
-    tree.setNodeColor(pt[0], pt[1], pt[2], color)
+# Add a colored node (Red)
+coord = [1.0, 1.0, 1.0]
+tree.updateNode(coord, True)
+tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
 
-tree.write("semantic.bt")</code></pre>
+# Search and retrieve color
+node = tree.search(coord)
+if node:
+    color = node.getColor()
+    print(f"Node color: {color}")  # (255, 0, 0)
+
+# Average color (mixing multiple observations)
+tree.averageNodeColor(coord, 0, 255, 0)  # Mix with Green
+print(f"New color: {tree.search(coord).getColor()}")
+</code></pre>
             </div>
         </div>
 
@@ -509,9 +519,7 @@ origin = np.array([0.0, 0.0, 0.0])
 
 tree.insertPointCloud(points, origin, lazy_eval=True)
 tree.updateInnerOccupancy()
-
-tree.insertPointCloudRaysFast(points, origin, max_range=50.0, lazy_eval=True)
-tree.updateInnerOccupancy()</code></pre>
+</code></pre>
             </div>
         </div>
 
@@ -521,24 +529,88 @@ tree.updateInnerOccupancy()</code></pre>
                     <span class="code-title">Ray Casting & Planning</span>
                     <button class="copy-btn" data-code="code-advanced">Copy</button>
                 </div>
-                <pre id="code-advanced"><code>start = np.array([0.5, 0.5, 0.5])
-end = np.array([4.0, 2.0, 1.0])
+                <pre id="code-advanced"><code>
+# Create an octree for path planning
+tree = pom.OcTree(0.1)  # 10cm resolution
 
-direction = end - start
-length = np.linalg.norm(direction)
-if length > 0:
-    direction /= length
+# Add some obstacles to the map
+obstacles = [
+    [1.0, 1.0, 0.5],  # Wall at (1,1)
+    [1.5, 1.5, 0.5],  # Another obstacle
+    [2.0, 1.0, 0.5],  # Wall at (2,1)
+]
 
-hit_point = np.zeros(3)
-hit = tree.castRay(
-    start,
-    direction,
-    hit_point,
-    ignoreUnknownCells=True,
-    maxRange=10.0,
-)
+for obstacle in obstacles:
+    tree.updateNode(obstacle, True)
 
-print("blocked at" if hit else "clear path", hit_point)</code></pre>
+def is_path_clear(start, end, tree):
+    """Efficient ray casting for path planning using OctoMap's built-in castRay"""
+    start = np.array(start, dtype=np.float64)
+    end = np.array(end, dtype=np.float64)
+    
+    # Calculate direction vector
+    direction = end - start
+    ray_length = np.linalg.norm(direction)
+    
+    if ray_length == 0:
+        return True, None
+    
+    # Normalize direction
+    direction = direction / ray_length
+    
+    # Use OctoMap's efficient castRay method
+    end_point = np.zeros(3, dtype=np.float64)
+    hit = tree.castRay(start, direction, end_point, 
+                        ignoreUnknownCells=True, 
+                        maxRange=ray_length)
+    
+    if hit:
+        # Ray hit an obstacle - path is blocked
+        return False, end_point
+    else:
+        # No obstacle found - path is clear
+        return True, None
+
+# Check if path is clear
+start = [0.5, 2.0, 0.5]
+end = [2.0, 2.0, 0.5]
+clear, obstacle = is_path_clear(start, end, tree)
+if clear:
+    print("✅ Path is clear!")
+else:
+    print(f"❌ Path blocked at: {obstacle}")
+
+# Advanced path planning with multiple waypoints
+def plan_path(waypoints, tree):
+    """Plan a path through multiple waypoints using ray casting"""
+    path_clear = True
+    obstacles = []
+    
+    for i in range(len(waypoints) - 1):
+        start = waypoints[i]
+        end = waypoints[i + 1]
+        clear, obstacle = is_path_clear(start, end, tree)
+        
+        if not clear:
+            path_clear = False
+            obstacles.append((i, i+1, obstacle))
+    
+    return path_clear, obstacles
+
+# Example: Plan path through multiple waypoints
+waypoints = [
+    [0.0, 0.0, 0.5],
+    [1.0, 1.0, 0.5], 
+    [2.0, 2.0, 0.5],
+    [3.0, 3.0, 0.5]
+]
+
+path_clear, obstacles = plan_path(waypoints, tree)
+if path_clear:
+    print("✅ Complete path is clear!")
+else:
+    print(f"❌ Path blocked at segments: {obstacles}")
+                </code></pre>
             </div>
         </div>
     </section>
