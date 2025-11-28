@@ -621,7 +621,6 @@ else:
             <div class="tabs" id="install-tabs">
                 <div class="tab active" data-target="tab-pip">pip</div>
                 <div class="tab" data-target="tab-source">From Source</div>
-                <div class="tab" data-target="tab-script">One-Liner</div>
             </div>
 
             <div id="tab-pip" class="tab-content active">
@@ -643,21 +642,8 @@ pip install pyoctomap</code></pre>
                         <button class="copy-btn" data-code="code-source">Copy</button>
                     </div>
                     <pre id="code-source"><code>git clone --recursive https://github.com/Spinkoo/pyoctomap.git
-cd pyoctomap/src/octomap
-mkdir build && cd build
-cmake .. && make && sudo make install
-cd ../../..
+cd pyoctomap/
 chmod +x build.sh && ./build.sh</code></pre>
-                </div>
-            </div>
-
-            <div id="tab-script" class="tab-content">
-                <div class="code-container" style="box-shadow: none; border: none; background: transparent; padding: 0;">
-                    <div class="code-header">
-                        <span class="code-title">Install Script</span>
-                        <button class="copy-btn" data-code="code-script">Copy</button>
-                    </div>
-                    <pre id="code-script"><code>curl -sL https://raw.githubusercontent.com/Spinkoo/pyoctomap/main/build.sh | bash</code></pre>
                 </div>
             </div>
         </div>
