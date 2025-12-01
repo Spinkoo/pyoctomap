@@ -79,6 +79,12 @@ try:
         __all__.extend(["CountingOcTree", "CountingOcTreeNode"])
     except ImportError:
         pass
+    # Add OcTreeStamped if available
+    try:
+        from .stamped_octree import OcTreeStamped, OcTreeNodeStamped
+        __all__.extend(["OcTreeStamped", "OcTreeNodeStamped"])
+    except ImportError:
+        pass
 except ImportError as e:
     print(f"Error importing octomap module: {e}")
     print("This might be due to missing shared libraries or compilation issues.")

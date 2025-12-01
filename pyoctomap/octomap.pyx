@@ -49,6 +49,16 @@ try:
 except ImportError:
     _has_counting_octree = False
 
+# Import OcTreeStamped classes (optional, may not be available)
+try:
+    from .stamped_octree import (
+        OcTreeStamped,
+        OcTreeNodeStamped
+    )
+    _has_stamped_octree = True
+except ImportError:
+    _has_stamped_octree = False
+
 # Re-export everything for backward compatibility
 __all__ = [
     "OcTreeKey",
@@ -68,3 +78,7 @@ if _has_color_octree:
 # Conditionally add CountingOcTree exports
 if _has_counting_octree:
     __all__.extend(["CountingOcTree", "CountingOcTreeNode"])
+
+# Conditionally add OcTreeStamped exports
+if _has_stamped_octree:
+    __all__.extend(["OcTreeStamped", "OcTreeNodeStamped"])
