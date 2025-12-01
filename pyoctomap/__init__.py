@@ -64,20 +64,31 @@ try:
     from .octomap import *
     __all__ = [
         "OcTree", "OcTreeNode", "OcTreeKey", "Pointcloud",
-        "SimpleTreeIterator", "SimpleLeafIterator", "SimpleLeafBBXIterator",
+        "SimpleTreeIterator", "SimpleLeafIterator",
         "NullPointerException"
     ]
-    
-    # Import color octree module if available
+    # Add ColorOcTree if available
     try:
         from .color_octree import ColorOcTree, ColorOcTreeNode
         __all__.extend(["ColorOcTree", "ColorOcTreeNode"])
     except ImportError:
-        # Color octree module not available (might not be compiled)
         pass
-        
+    # Add CountingOcTree if available
+    try:
+        from .counting_octree import CountingOcTree, CountingOcTreeNode
+        __all__.extend(["CountingOcTree", "CountingOcTreeNode"])
+    except ImportError:
+        pass
+    # Add OcTreeStamped if available
+    try:
+        from .stamped_octree import OcTreeStamped, OcTreeNodeStamped
+        __all__.extend(["OcTreeStamped", "OcTreeNodeStamped"])
+    except ImportError:
+        pass
 except ImportError as e:
-    raise ImportError(f"Error importing octomap module: {e}. This might be due to missing shared libraries or compilation issues.")
+    print(f"Error importing octomap module: {e}")
+    print("This might be due to missing shared libraries or compilation issues.")
+    raise
 
 # Memory management is handled in the Cython code
 
@@ -107,17 +118,44 @@ def get_package_info():
 # Example usage and testing
 def test_installation():
     """Test if the installation is working correctly"""
+    print("Testing OctoMap Python installation...")
+    
     try:
+        # Test basic import
         from .octomap import OcTree
+        print("✅ OcTree import successful")
+        
+        # Test creating an octree
         tree = OcTree(0.1)
+        print("✅ OcTree creation successful")
+        
+        # Test basic operations
         tree.updateNode(1.0, 2.0, 3.0, True)
+        print("✅ Basic operations successful")
+        
+        print("🎉 Installation test passed!")
         return True
-    except Exception:
+        
+    except Exception as e:
+        print(f"❌ Installation test failed: {e}")
         return False
 
 if __name__ == "__main__":
+    # Print package information
     info = get_package_info()
-    print(f"Version: {info['version']}")
+    print("OctoMap Python Package Information:")
+    print(f"  Version: {info['version']}")
+    print(f"  Package Directory: {info['package_dir']}")
+    print(f"  Library Directory: {info['lib_dir']}")
+    print(f"  Library Directory Exists: {info['lib_dir_exists']}")
+    print(f"  Setup Success: {info['setup_success']}")
+    print(f"  Library Check Success: {info['lib_check_success']}")
+    print(f"  Library Message: {info['lib_message']}")
+    
     if 'lib_files' in info:
-        print(f"Library Files: {info['lib_count']}")
+        print(f"  Library Files ({info['lib_count']}):")
+        for lib_file in info['lib_files']:
+            print(f"    - {lib_file}")
+    
+    # Run installation test
     test_installation()

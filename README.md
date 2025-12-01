@@ -19,16 +19,11 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 
 ### Quick Install (Recommended)
 
-For most users, simply install the pre-built wheel:
+Install from PyPI (pre-built manylinux wheel when available):
 
 ```bash
 pip install pyoctomap
 ```
-
-**Supported Platforms:**
-- Linux (manylinux2014 compatible)
-- Python 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13, 3.14
-- Pre-built wheels available for all supported combinations
 
 > **🚀 ROS Integration**: ROS/ROS2 integration is currently being developed on the [`ros` branch](https://github.com/Spinkoo/pyoctomap/tree/ros), featuring ROS2 message support and real-time point cloud processing.
 
@@ -44,13 +39,6 @@ If you need to build from source or create custom wheels, we provide a Docker-ba
 git clone --recursive https://github.com/Spinkoo/pyoctomap.git
 cd pyoctomap
 
-# Build and install OctoMap C++ library
-cd src/octomap
-mkdir build && cd build
-cmake .. && make && sudo make install
-
-# Return to main project and run automated build script
-cd ../../..
 chmod +x build.sh
 ./build.sh
 ```
@@ -94,36 +82,36 @@ if node and tree.isNodeOccupied(node):
 tree.write("my_map.bt")
 ```
 
-### Color Occupancy Mapping
+### Tree Families Overview
 
-PyOctoMap also supports `ColorOcTree`, allowing you to store RGB color information for each voxel. This is useful for semantic mapping or visualization.
+PyOctoMap provides multiple octree variants from a single package:
+
+- `OcTree` – standard probabilistic occupancy tree (most users start here)
+- `ColorOcTree` – occupancy + RGB color per voxel
+- `CountingOcTree` – integer hit counters per voxel
+- `OcTreeStamped` – occupancy with per-node timestamps for temporal mapping
+
+See the **[API Reference](docs/api_reference.md)** for a detailed comparison
+table and full method documentation.
+
+### Color Occupancy Mapping (ColorOcTree)
 
 ```python
 import pyoctomap
 import numpy as np
 
-# Create a ColorOcTree with 0.1m resolution
 tree = pyoctomap.ColorOcTree(0.1)
-
-# Add a colored node (Red)
 coord = [1.0, 1.0, 1.0]
+
 tree.updateNode(coord, True)
 tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
-
-# Search and retrieve color
-node = tree.search(coord)
-if node:
-    color = node.getColor()
-    print(f"Node color: {color}")  # (255, 0, 0)
-
-# Average color (mixing multiple observations)
-tree.averageNodeColor(coord, 0, 255, 0)  # Mix with Green
-print(f"New color: {tree.search(coord).getColor()}")
 ```
 
 ### Dynamic Mapping and Point Cloud Insertion
 
-PyOctoMap provides efficient methods for dynamic mapping and probabilistic decay:
+PyOctoMap provides efficient helpers for dynamic mapping and probabilistic decay.
+For a deeper discussion and tuning guide, see the **Dynamic Mapping** section in
+the API Reference.
 
 **Decay and Insert Point Cloud (Recommended for Dynamic Environments):**
 ```python
@@ -147,33 +135,15 @@ tree.decayAndInsertPointCloud(
 )
 ```
 
-### Batch Operations
+### Batch Operations (Summary)
 
-For efficient batch processing of point clouds, PyOctoMap provides both precise and fast options:
+For large point clouds, favor the C++ batch helpers:
 
-**Fast Native Batching:**
-```python
-# Fast C++ batch insertion (full rays, optional discretization and lazy evaluation)
-points = np.random.uniform(-5, 5, (1000, 3))
-origin = np.array([0., 0., 0.], dtype=np.float64)
-tree.insertPointCloud(points, origin, discretize=False, lazy_eval=True)
-tree.updateInnerOccupancy()  # Manual after lazy
+- `insertPointCloud(points, origin, lazy_eval=True)` then `updateInnerOccupancy()`
+- `insertPointCloudRaysFast(points, origin, max_range=...)` for maximum speed
 
-# Ultra-fast version using parallel rays (no deduplication)
-tree.insertPointCloudRaysFast(points, origin, max_range=50.0, lazy_eval=True)
-tree.updateInnerOccupancy()
-```
-
-Note: `insertPointCloud` is the standard batch insertion method. Use `lazy_eval=True` for performance with large point clouds, then call `updateInnerOccupancy()` manually afterward. All methods support NumPy arrays and `max_range` clipping.
-
-### Performance Comparison
-
-| Operation | Method | Speed |
-|-----------|--------|-------|
-| Individual points | `updateNode()` | ~300,000 pts/sec |
-| Batch insertion | `insertPointCloud()` | ~17,000 pts/sec |
-| Parallel rays | `insertPointCloudRaysFast()` | ~30,500 pts/sec |
-| Decay and insert | `decayAndInsertPointCloud()` | ~17,300 pts/sec |
+See the **Performance Guide** for practical batch sizing and resolution
+recommendations.
 
 ## Examples
 
@@ -311,89 +281,14 @@ else:
     print(f"❌ Path blocked at segments: {obstacles}")
 ```
 
-### Dynamic Environment Mapping
+### Dynamic Environment Mapping & Iterators
 
-For moving sensors in dynamic environments, use `decayAndInsertPointCloud` to handle occluded-ghost problems:
+For more complete examples on:
 
-```python
-import pyoctomap
-import numpy as np
+- dynamic environment mapping with `decayAndInsertPointCloud`,
+- iterator usage (`begin_tree`, `begin_leafs`, `begin_leafs_bbx`),
 
-# Create octree for dynamic mapping
-tree = pyoctomap.OcTree(0.1)  # 10cm resolution
-
-# Simulate sequential scans from a moving sensor
-for scan_num in range(100):
-    # Generate new scan (e.g., from LiDAR)
-    point_cloud = np.random.rand(500, 3) * 10  # Simulated point cloud
-    sensor_origin = np.array([scan_num * 0.1, 0.0, 1.5])  # Moving sensor
-    
-    # Recommended: Decay and insert
-    # This solves the occluded-ghost problem by:
-    # 1. Applying temporal decay to occupied voxels in scan's bounding box
-    # 2. Inserting the new point cloud
-    
-    tree.decayAndInsertPointCloud(
-        point_cloud,
-        sensor_origin,
-        logodd_decay_value=-0.2,  # Default: ~20 scans for ghost to fade
-        max_range=50.0,
-        update_inner_occupancy=True
-    )
-    
-    # For highly dynamic environments (faster ghost removal):
-    # tree.decayAndInsertPointCloud(point_cloud, sensor_origin, 
-    #                                logodd_decay_value=-1.0)  # ~4 scans
-
-# Tuning guide:
-# Formula: Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)
-# 
-# - Moderate (default: -0.2): ~20 scans to fade (balanced)
-# - Aggressive (-1.0 to -3.0): 2-4 scans (highly dynamic)
-# - Weak (-0.05 to -0.1): 40-80 scans (mostly static)
-```
-
-### Iterator Operations
-
-PyOctoMap provides three types of iterators for different use cases:
-
-#### Tree Iterator (`begin_tree`) - All Nodes
-```python
-# Iterate over ALL nodes (inner + leaf nodes) - slower but complete
-for node_it in tree.begin_tree():
-    coord = node_it.getCoordinate()
-    depth = node_it.getDepth()
-    size = node_it.getSize()
-    is_leaf = node_it.isLeaf()
-    
-    # Use for: tree structure analysis, debugging, inner node operations
-    if not is_leaf:
-        print(f"Inner node at depth {depth}, size {size:.2f}m")
-```
-
-#### Leaf Iterator (`begin_leafs`) - Leaf Nodes Only  
-```python
-# Iterate over LEAF nodes only - faster for occupancy queries
-for leaf_it in tree.begin_leafs():
-    coord = leaf_it.getCoordinate()
-    occupied = tree.isNodeOccupied(leaf_it)
-    if occupied:
-        print(f"Occupied leaf at {coord}")
-    
-    # Use for: standard occupancy operations, fast iteration
-```
-
-#### Bounding Box Iterator (`begin_leafs_bbx`) - Spatial Filtering
-```python
-# Iterate over leaf nodes within a bounding box
-bbx_min = np.array([0.0, 0.0, 0.0])
-bbx_max = np.array([5.0, 5.0, 5.0])
-for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
-    coord = bbx_it.getCoordinate()
-    print(f"Node in BBX: {coord}")
-    
-    # Use for: region-specific analysis, spatial queries
-```
+refer to the **API Reference** and example scripts in `examples/`.
 
 ## Requirements
 

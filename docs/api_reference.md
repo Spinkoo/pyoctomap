@@ -1,548 +1,407 @@
-# API Reference
+## API Reference
 
-Complete API documentation for PyOctoMap.
+This page summarizes the public Python API of **PyOctoMap**, with a focus on
+the different **tree types**, how they differ, and when to use each one.
 
-## OcTree Class
+- For installation & quick-start examples, see the main `README.md`.
+- For build details, see `docs/build_system.md`.
+- For file formats, see `docs/file_format.md`.
 
-The main class for 3D occupancy mapping using octrees.
+---
 
-### Constructor
+## Tree Families Overview
 
-```python
-OcTree(resolution)
-```
+PyOctoMap exposes several octree variants, all accessible from the top‑level
+`pyoctomap` package:
 
-- `resolution` (float): Tree resolution in meters
+| Tree family        | Class name          | Stores                    | Typical use‑case                                                |
+|--------------------|---------------------|---------------------------|-----------------------------------------------------------------|
+| Occupancy tree     | `OcTree`           | Occupancy probability     | Standard 3D mapping, collision checking, path planning         |
+| Colored occupancy  | `ColorOcTree`      | Occupancy + RGB color     | Semantic / visual mapping, colored point clouds                |
+| Counting tree      | `CountingOcTree`   | Integer hit count         | Hit statistics, sensor coverage, multi‑hit filtering           |
+| Stamped occupancy  | `OcTreeStamped`    | Occupancy + timestamps    | Temporal maps, degrading outdated information over time        |
 
-### Core Methods
+All trees share the same **octree layout**, similar construction pattern, and
+basic notions of resolution and nodes. Some methods (e.g. ray casting) are
+only meaningful for true occupancy trees.
 
-#### Node Operations
+---
 
-```python
-updateNode(point, occupied, lazy_eval=False)
-```
+## Choosing the Right Tree
 
-- `point` (list/np.array): 3D coordinates [x, y, z]
-- `occupied` (bool): True for occupied, False for free
-- `lazy_eval` (bool): Skip inner node updates for performance
+- **Use `OcTree`** when you just need a fast, standard occupancy map.
+- **Use `ColorOcTree`** when you want both occupancy and color per voxel.
+- **Use `CountingOcTree`** when you care about how many times a voxel was hit,
+  or when you want to threshold points based on minimum hits.
+- **Use `OcTreeStamped`** when you need time‑aware maps that can **degrade**
+  or down‑weight old measurements.
 
-```python
-search(point, depth=0)
-```
+### Feature Comparison
 
-- `point` (list/np.array): 3D coordinates to search
-- `depth` (int): Maximum search depth
-- Returns: `OcTreeNode` or `None`
+| Feature                        | `OcTree` | `ColorOcTree` | `CountingOcTree` | `OcTreeStamped` |
+|--------------------------------|:--------:|:-------------:|:----------------:|:---------------:|
+| Occupancy log‑odds             |   ✔      |      ✔        |        ✖         |       ✔         |
+| RGB color per leaf             |   ✖      |      ✔        |        ✖         |       ✖         |
+| Integer hit counter            |   ✖      |      ✖        |        ✔         |       ✖         |
+| Timestamp per node             |   ✖      |      ✖        |        ✖         |       ✔         |
+| Ray casting (`castRay`)        |   ✔      |      ✔        |  stub / not used |       ✔         |
+| Dynamic decay helpers          |   ✔      |      ✔        |        ✖         |       ✔ (time)  |
+| Standard `.bt`/`.ot` I/O       |   ✔      |      ✔        |        ✔         |       ✔         |
 
-```python
-isNodeOccupied(node)
-```
+---
 
-- `node` (OcTreeNode): Node to check
-- Returns: `bool`
+## Common Concepts and Types
 
-```python
-isNodeAtThreshold(node)
-```
+These types are shared across most operations:
 
-- `node` (OcTreeNode): Node to check
-- Returns: `bool`
+- **`OcTreeKey`** – discrete 3D index inside the tree.
+- **Node classes** – `OcTreeNode`, `ColorOcTreeNode`, `CountingOcTreeNode`,
+  `OcTreeNodeStamped`.
+- **Iterators** – `SimpleTreeIterator`, `SimpleLeafIterator`,
+  `SimpleLeafBBXIterator` (iterate all nodes, just leaf nodes, or only leaf
+  nodes in a bounding box).
 
-#### Tree Information
-
-```python
-size()
-```
-
-- Returns: Number of nodes in tree
-
-```python
-getResolution()
-```
-
-- Returns: Tree resolution in meters
-
-```python
-getTreeDepth()
-```
-
-- Returns: Maximum tree depth
+### Core Usage Pattern
 
 ```python
-getNumLeafNodes()
+import numpy as np
+import pyoctomap
+
+# Create a tree with 0.1 m resolution
+tree = pyoctomap.OcTree(0.1)
+
+# Update occupancy at coordinates
+tree.updateNode([1.0, 2.0, 3.0], True)   # occupied
+tree.updateNode([1.0, 2.0, 3.0], False)  # free
+
+# Query
+node = tree.search([1.0, 2.0, 3.0])
+if node and tree.isNodeOccupied(node):
+    print("Occupied voxel")
 ```
 
-- Returns: Number of leaf nodes
+---
 
-#### File Operations
+## `OcTree` – Standard Occupancy Tree
+
+The canonical octree for probabilistic 3D occupancy mapping.
+
+### Construction
 
 ```python
-write(filename=None)
+from pyoctomap import OcTree
+
+tree = OcTree(resolution=0.1)  # 10 cm voxels
 ```
 
-- `filename` (str): Output file path
-- Returns: `bool` or `str` (if filename=None)
+- **`resolution` (float)** – voxel size in meters.
+
+### Node Operations
+
+- **`updateNode(point, occupied, lazy_eval=False)`**
+  - `point`: list / `np.ndarray` of `[x, y, z]` (meters).
+  - `occupied`: `bool`, `True` = occupied, `False` = free.
+  - `lazy_eval`: if `True`, inner nodes are not updated immediately; call
+    `updateInnerOccupancy()` later for maximum performance.
+
+- **`search(point, depth=0)`**
+  - Returns an `OcTreeNode` or `None` if the voxel is unknown.
+
+- **`isNodeOccupied(node)` / `isNodeAtThreshold(node)`**
+  - Convenience predicates for `OcTreeNode` state.
+
+### Tree Information
+
+- **`size()`** – total number of nodes in the tree.
+- **`getResolution()`** – tree resolution (meters).
+- **`getTreeDepth()`** – maximum depth of the tree.
+- **`getNumLeafNodes()`** – number of leaf nodes.
+
+### File I/O
 
 ```python
-read(filename)
+tree.write("map.bt")        # Save to standard OctoMap .bt file
+loaded = tree.read("map.bt")
+
+blob = tree.writeBinary()   # Serialize to bytes
+tree.readBinary("map.bt")   # Read from file path
 ```
 
-- `filename` (str): Input file path
-- Returns: New `OcTree` instance
+See `docs/file_format.md` for more detail.
+
+### Ray Casting
 
 ```python
-writeBinary(filename=None)
+import numpy as np
+origin = np.array([0.0, 0.0, 1.5])
+direction = np.array([1.0, 0.0, 0.0])
+end = np.zeros(3, dtype=np.float64)
+
+hit = tree.castRay(origin, direction, end,
+                   ignoreUnknownCells=True,
+                   maxRange=50.0)
+if hit:
+    print("Hit at", end)
 ```
 
-- `filename` (str): Output file path
-- Returns: `bool` or `str` (if filename=None)
+### Batch Insertion & Dynamic Mapping
+
+These helpers are implemented in C++ for performance, and should be preferred
+over Python loops:
+
+- **`insertPointCloud(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False, discretize=False)`**
+  - Batch insertion with optional discretization and lazy inner‑node updates.
+
+- **`insertPointCloudRaysFast(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False)`**
+  - Ultra‑fast insertion using independent rays (no deduplication).
+
+- **`decayOccupancyInBBX(point_cloud, sensor_origin, logodd_decay_value=-0.2)`**
+  - Apply temporal decay to occupied voxels in the scan’s bounding box.
+
+- **`decayAndInsertPointCloud(point_cloud, sensor_origin, logodd_decay_value=-0.2, max_range=-1.0, update_inner_occupancy=True)`**
+  - Recommended one‑shot helper for moving sensors in dynamic scenes:
+    1. Decays old occupancy inside scan’s bounding box.
+    2. Inserts the new point cloud.
+
+**Decay tuning (rule of thumb)**  
+Let \(d = \lvert\text{logodd\_decay\_value}\rvert\). A fully occupied voxel is
+around log‑odds \(+4.0\).
+
+\[
+\text{Scans to forget} \approx \frac{4.0}{d}
+\]
+
+- `-0.2` (default): ≈ 20 scans to fade a ghost.
+- `-1.0` to `-3.0`: ≈ 2–4 scans (very dynamic).
+- `-0.05` to `-0.1`: ≈ 40–80 scans (mostly static).
+
+---
+
+## `ColorOcTree` – Occupancy + Color
+
+`ColorOcTree` extends `OcTree` with RGB color information per voxel.
+
+### Construction
 
 ```python
-readBinary(filename)
+from pyoctomap import ColorOcTree
+
+tree = ColorOcTree(0.1)
 ```
 
-- `filename` (str): Input file path
-- Returns: `bool`
-
-#### Ray Casting
-
-```python
-castRay(origin, direction, end, ignoreUnknownCells=False, maxRange=-1.0)
-```
-
-- `origin` (list/np.array): Ray start point
-- `direction` (list/np.array): Ray direction vector
-- `end` (list/np.array): Output hit point
-- `ignoreUnknownCells` (bool): Ignore unknown cells
-- `maxRange` (float): Maximum ray range
-- Returns: `bool` (hit/no hit)
-
-#### Advanced Methods
-
-```python
-markFreeSpaceAlongRay(origin, end_point, step_size=None)
-```
-
-- `origin` (np.array): Ray start point
-- `end_point` (np.array): Ray end point
-- `step_size` (float, optional): Step size for ray sampling (defaults to tree resolution)
-- No return (void)
-- **Purpose**: Manually mark free space along a ray using sampling.
-
-```python
-insertPointCloud(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False, discretize=False)
-```
-
-- `point_cloud` (np.array): Nx3 array of points
-- `sensor_origin` (np.array): Sensor origin for ray casting
-- `max_range` (float): Maximum range for points (-1.0 = no limit)
-- `lazy_eval` (bool): Defer inner node occupancy updates (call `updateInnerOccupancy` manually later)
-- `discretize` (bool): Reduce duplicates for dense clouds
-- Returns: `int` (points processed)
-- **Purpose**: Standard fast batch insertion method using native C++ implementation.
-
-```python
-insertPointCloudRaysFast(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False)
-```
-
-- `point_cloud` (np.array): Nx3 array of points
-- `sensor_origin` (np.array): Sensor origin for ray casting
-- `max_range` (float): Maximum range for points (-1.0 = no limit)
-- `lazy_eval` (bool): Defer inner node occupancy updates (call `updateInnerOccupancy` manually later)
-- Returns: `int` (points processed)
-- **Purpose**: Ultra-fast batch insertion using parallel rays. No deduplication (fastest but may over-update).
-
-```python
-decayOccupancyInBBX(point_cloud, sensor_origin, logodd_decay_value=-0.2)
-```
-
-- `point_cloud` (np.array): Nx3 array of points (used for bounding box calculation)
-- `sensor_origin` (np.array): Sensor origin (used for bounding box calculation)
-- `logodd_decay_value` (float): Negative log-odds value to add to occupied nodes (default: -0.2, must be negative)
-- No return (void)
-- **Purpose**: Calculates bounding box of scan and applies decay to all occupied leaf nodes within it.
-
-```python
-decayAndInsertPointCloud(point_cloud, sensor_origin, logodd_decay_value=-0.2, max_range=-1.0, update_inner_occupancy=True)
-```
-
-- `point_cloud` (np.array): Nx3 array of points
-- `sensor_origin` (np.array): Sensor origin position
-- `logodd_decay_value` (float): Negative log-odds decay value (default: -0.2, must be negative)
-- `max_range` (float): Maximum range for points (-1.0 = no limit)
-- `update_inner_occupancy` (bool): Whether to update inner node occupancy
-- No return (void)
-- **Purpose**: Recommended function for inserting scans from a moving sensor in dynamic environments. Two-step process: first applies temporal decay to occupied nodes in bounding box, then inserts new point cloud. Solves occluded-ghost problem.
-
-**Tuning Guide:**
-The `logodd_decay_value` controls how fast the map "forgets" old data. A fully occupied voxel typically has a log-odds value of around +4.0.
-
-Formula: `Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)`
-
-- **Moderate (Default: -0.2)**: Takes ~20 scans for a ghost to fade. Good for balanced dynamic environments.
-- **Aggressive (-1.0 to -3.0)**: Takes 2-4 scans to fade. Good for highly dynamic environments.
-- **Weak (-0.05 to -0.1)**: Takes 40-80 scans to fade. Good for mostly static maps.
-
-#### Iterators
-
-PyOctoMap provides three iterator types for different traversal needs:
-
-```python
-begin_tree(maxDepth=0)
-```
-
-- **Purpose**: Iterate over ALL nodes in the tree (inner nodes + leaf nodes)
-- **Use cases**: Tree structure analysis, debugging, inner node operations, performance profiling
-- **Performance**: ~2-3x slower than `begin_leafs` (visits more nodes)
-- **Returns**: `SimpleTreeIterator`
-
-```python
-begin_leafs(maxDepth=0)
-```
-
-- **Purpose**: Iterate over leaf nodes only (actual occupancy data)
-- **Use cases**: Standard occupancy queries, fast iteration, most common operations
-- **Performance**: Fastest iterator (visits only data nodes)
-- **Returns**: `SimpleLeafIterator`
-
-```python
-begin_leafs_bbx(bbx_min, bbx_max, maxDepth=0)
-```
-
-- **Purpose**: Iterate over leaf nodes within a spatial bounding box
-- **Use cases**: Region-specific analysis, spatial queries, filtered iteration
-- **Performance**: Fast (filtered by spatial bounds)
-- **Parameters**:
-  - `bbx_min` (np.array): Bounding box minimum corner
-  - `bbx_max` (np.array): Bounding box maximum corner
-- **Returns**: `SimpleLeafBBXIterator`
-
-#### Iterator Performance Comparison
-
-| Iterator | Nodes Visited | Use Case | Performance |
-|----------|---------------|----------|-------------|
-| `begin_tree()` | ALL nodes (inner + leaves) | Tree analysis, debugging | ~2-3x slower |
-| `begin_leafs()` | Leaf nodes only | Occupancy queries | Fastest |
-| `begin_leafs_bbx()` | Leaves in bounding box | Spatial queries | Fast (filtered) |
-
-**Iterator Selection Guide:**
-- **99% of cases**: Use `begin_leafs()` for standard occupancy operations
-- **Tree analysis**: Use `begin_tree()` for structure debugging and inner node access
-- **Spatial queries**: Use `begin_leafs_bbx()` for region-specific operations
-
-## OcTreeNode Class
-
-Represents a single node in the octree.
-
-### Methods
-
-```python
-getOccupancy()
-```
-
-- Returns: Occupancy probability (0.0-1.0)
-
-```python
-getValue()
-```
-
-- Returns: Log-odds value
-
-```python
-setValue(value)
-```
-
-- `value` (float): Log-odds value
-
-```python
-getLogOdds()
-```
-
-- Returns: Log-odds value
-
-```python
-setLogOdds(value)
-```
-
-- `value` (float): Log-odds value
-
-```python
-hasChildren()
-```
-
-- Returns: `bool` (deprecated, use `tree.nodeHasChildren(node)`)
-
-```python
-childExists(i)
-```
-
-- `i` (int): Child index (0-7)
-- Returns: `bool`
-
-```python
-addValue(p)
-```
-
-- `p` (float): Value to add to log-odds
-
-```python
-getMaxChildLogOdds()
-```
-
-- Returns: Maximum child log-odds value
-
-```python
-updateOccupancyChildren()
-```
-
-- Updates occupancy based on children
-
-## Iterator Classes
-
-### SimpleTreeIterator
-
-Iterates over ALL nodes in the tree (inner nodes + leaf nodes). This provides complete access to the octree structure but is slower than leaf-only iterators.
-
-**Key characteristics:**
-- Visits both inner nodes (tree structure) and leaf nodes (occupancy data)
-- ~2-3x slower than `SimpleLeafIterator` (visits more nodes)
-- Essential for tree structure analysis and debugging
-- Allows access to inner node properties and hierarchy
-
-```python
-# Example: Analyze tree structure
-for node_it in tree.begin_tree():
-    coord = node_it.getCoordinate()
-    depth = node_it.getDepth()
-    size = node_it.getSize()
-    is_leaf = node_it.isLeaf()
-    
-    if not is_leaf:
-        print(f"Inner node at depth {depth}, size {size:.2f}m")
-    else:
-        print(f"Leaf node at {coord}, depth {depth}")
-
-# Example: Count nodes by depth
-depth_counts = {}
-for node_it in tree.begin_tree():
-    depth = node_it.getDepth()
-    depth_counts[depth] = depth_counts.get(depth, 0) + 1
-```
-
-### SimpleLeafIterator
-
-Iterates over leaf nodes only (actual occupancy data). This is the fastest iterator and most commonly used for standard occupancy operations.
-
-**Key characteristics:**
-- Visits only leaf nodes (contain actual occupancy data)
-- Fastest iterator (visits only data nodes, not structure)
-- Most common choice for occupancy queries
-- Cannot access inner node properties
-
-```python
-# Example: Standard occupancy iteration
-for leaf_it in tree.begin_leafs():
-    coord = leaf_it.getCoordinate()
-    depth = leaf_it.getDepth()
-    size = leaf_it.getSize()
-    is_leaf = leaf_it.isLeaf()  # Always True for leaf iterator
-    node = leaf_it.current_node
-    
-    # Check occupancy
-    if tree.isNodeOccupied(leaf_it):
-        print(f"Occupied leaf at {coord}")
-
-# Example: Count occupied vs free nodes
-occupied_count = 0
-free_count = 0
-for leaf_it in tree.begin_leafs():
-    if tree.isNodeOccupied(leaf_it):
-        occupied_count += 1
-    else:
-        free_count += 1
-```
-
-### SimpleLeafBBXIterator
-
-Iterates over leaf nodes within a spatial bounding box. This provides spatial filtering for region-specific analysis.
-
-**Key characteristics:**
-- Visits only leaf nodes within the specified bounding box
-- Fast performance (spatially filtered)
-- Useful for region-specific queries and analysis
-- Same API as `SimpleLeafIterator` but with spatial filtering
-
-```python
-# Example: Analyze specific region
-bbx_min = np.array([0.0, 0.0, 0.0])
-bbx_max = np.array([10.0, 10.0, 10.0])
-for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
-    coord = bbx_it.getCoordinate()
-    depth = bbx_it.getDepth()
-    size = bbx_it.getSize()
-    is_leaf = bbx_it.isLeaf()  # Always True
-    node = bbx_it.current_node
-    
-    # Process only nodes in the bounding box
-    if tree.isNodeOccupied(bbx_it):
-        print(f"Occupied node in region: {coord}")
-
-# Example: Count nodes in different regions
-regions = [
-    (np.array([0, 0, 0]), np.array([5, 5, 5])),    # Bottom-left
-    (np.array([5, 5, 5]), np.array([10, 10, 10]))  # Top-right
-]
-
-for i, (min_pt, max_pt) in enumerate(regions):
-    count = 0
-    for bbx_it in tree.begin_leafs_bbx(min_pt, max_pt):
-        count += 1
-    print(f"Region {i}: {count} nodes")
-```
-
-## ColorOcTree Class
-
-Extension of `OcTree` that stores RGB color information for each node.
-
-### Constructor
-
-```python
-ColorOcTree(resolution)
-```
-
-- `resolution` (float): Tree resolution in meters
+Methods match `OcTree` for occupancy, plus color‑specific helpers.
 
 ### Color Operations
 
-```python
-setNodeColor(point, r, g, b)
-```
+- **`setNodeColor(point, r, g, b)`**
+  - Set RGB color for a voxel at `point` (`0–255` ints).
 
-- `point` (list/np.array): 3D coordinates [x, y, z]
-- `r`, `g`, `b` (int): Red, Green, Blue components (0-255)
-- Returns: `ColorOcTreeNode`
+- **`averageNodeColor(point, r, g, b)`**
+  - Average new RGB measurement into existing color.
 
-```python
-averageNodeColor(point, r, g, b)
-```
+- **`integrateNodeColor(point, r, g, b)`**
+  - Integrate color weighted by occupancy updates (useful when coupling with
+    occupancy updates from sensors).
 
-- `point` (list/np.array): 3D coordinates [x, y, z]
-- `r`, `g`, `b` (int): RGB components to average with existing color
-- Returns: `ColorOcTreeNode`
+### Example
 
 ```python
-integrateNodeColor(point, r, g, b)
+from pyoctomap import ColorOcTree
+import numpy as np
+
+tree = ColorOcTree(0.1)
+coord = [1.0, 1.0, 1.0]
+
+tree.updateNode(coord, True)
+tree.setNodeColor(coord, 255, 0, 0)
+
+node = tree.search(coord)
+if node:
+    print("Color:", node.getColor())  # (255, 0, 0)
 ```
 
-- `point` (list/np.array): 3D coordinates [x, y, z]
-- `r`, `g`, `b` (int): RGB components to integrate (weighted by occupancy)
-- Returns: `ColorOcTreeNode`
+---
 
-## ColorOcTreeNode Class
+## `CountingOcTree` – Hit Counting Tree
 
-Represents a single node in a `ColorOcTree`. Inherits from `OcTreeNode`.
+`CountingOcTree` records **integer hit counts** instead of probabilities. It
+is useful for:
 
-### Methods
+- Estimating sensor coverage or confidence.
+- Filtering points/voxels based on minimum observations.
+- Building occupancy maps downstream from stable hit statistics.
+
+### Construction
 
 ```python
-getColor()
+from pyoctomap import CountingOcTree
+
+tree = CountingOcTree(0.1)        # resolution in meters
+tree_from_file = CountingOcTree("counts.bt")
 ```
 
-- Returns: Tuple `(r, g, b)` with values 0-255
+### Node Operations
+
+- **`updateNode(key_or_coord)`**
+  - Accepts either an `OcTreeKey` or `[x, y, z]` coordinates.
+  - Increments the node’s **count** and returns a `CountingOcTreeNode`.
+
+- `CountingOcTreeNode` methods:
+  - `getCount()`, `increaseCount()`, `setCount(value)`.
+
+### Queries
+
+- **`getCentersMinHits(min_hits)`**
+  - Returns a list of `[x, y, z]` centers for nodes whose count is at least
+    `min_hits`.
+
+- Occupancy helpers for compatibility:
+  - `isNodeOccupied(node)` → `True` if `count > 0`.
+  - `isNodeAtThreshold(node)` → always `False` (no probabilistic threshold).
+
+### I/O and Geometry Helpers
+
+`CountingOcTree` provides:
+
+- `getResolution()`, `getTreeDepth()`, `size()`, `getNumLeafNodes()`,
+  `calcNumNodes()`, `clear()`.
+- `coordToKey(coord, depth=None)` → `OcTreeKey`.
+- `keyToCoord(key, depth=None)` → `[x, y, z]`.
+
+Note: `castRay` is implemented as a **stub** (always returns `False`), since
+pure counts do not encode occupancy.
+
+---
+
+## `OcTreeStamped` – Time‑Stamped Occupancy
+
+`OcTreeStamped` extends `OcTree` with per‑node timestamps. This allows building
+maps that can **degrade outdated information** over time.
+
+### Construction
 
 ```python
-setColor(r, g, b)
+from pyoctomap import OcTreeStamped
+
+tree = OcTreeStamped(0.1)
+tree_from_file = OcTreeStamped("stamped.ot")
 ```
 
-- `r`, `g`, `b` (int): Set RGB color
+### Time‑Aware Operations
+
+- **`getLastUpdateTime()`**
+  - Timestamp of the last update (root node); `0` if the tree is empty.
+
+- **`degradeOutdatedNodes(time_thres)`**
+  - Decreases confidence of nodes that haven’t been updated for at least
+    `time_thres` seconds.
+
+- **`updateNodeLogOdds(node, update)`**
+  - Update the log‑odds of an `OcTreeNodeStamped` and its timestamp together.
+
+- **`integrateMissNoTime(node)`**
+  - Integrate a miss **without updating** the timestamp (useful when you want
+    to mark free space but keep the “last seen” time).
+
+### Occupancy Updates
+
+`OcTreeStamped.updateNode(...)` mirrors `OcTree.updateNode(...)` but always
+updates timestamps internally:
 
 ```python
-isColorSet()
+node = tree.updateNode([x, y, z], True)       # occupied
+node = tree.updateNode([x, y, z], -0.4)       # log‑odds update
+node = tree.updateNode(x, y, z, True)        # coordinate triplet
 ```
 
-- Returns: `bool` (True if color is not default white)
+Other common helpers are inherited:
+
+- `coordToKey(coord, depth=None)` / `keyToCoord(key, depth=None)`.
+- `search(value, depth=0)` → `OcTreeNodeStamped` or `None`.
+- `isNodeOccupied(node)`, `isNodeAtThreshold(node)`.
+- `castRay(...)` – same semantics as for `OcTree`.
+
+---
+
+## Node and Key Types
+
+### `OcTreeNode`
+
+Represents a single node in an occupancy tree (`OcTree`, `ColorOcTree`,
+`OcTreeStamped`).
+
+- `getOccupancy()` → probability in `[0.0, 1.0]`.
+- `getValue()` / `setValue(value)` → low‑level log‑odds value.
+- `getLogOdds()` / `setLogOdds(value)` → explicit log‑odds access.
+- `hasChildren()`, `childExists(i)`, `addValue(p)`, `getMaxChildLogOdds()`,
+  `updateOccupancyChildren()`.
+
+### `ColorOcTreeNode`
+
+Extends `OcTreeNode` with color:
+
+- `getColor()` → `(r, g, b)` tuple.
+- `setColor(r, g, b)`.
+- `isColorSet()` – `True` if color differs from default.
+- `getAverageChildColor()` – averaged children color.
+
+### `CountingOcTreeNode`
+
+See the `CountingOcTree` section above:
+
+- `getCount()`, `setCount(value)`, `increaseCount()`.
+
+### `OcTreeNodeStamped`
+
+Extends `OcTreeNode` with:
+
+- `getTimestamp()`, `setTimestamp(t)`, `updateTimestamp()`.
+- `updateOccupancyChildren()` (updates both occupancy and timestamp).
+
+### `OcTreeKey`
+
+Discrete 3D key for internal indexing:
 
 ```python
-getAverageChildColor()
+from pyoctomap import OcTreeKey
+
+key = OcTreeKey()
+key[0], key[1], key[2]  # integer coordinates
 ```
 
-- Returns: Tuple `(r, g, b)` average of children colors
+Typical conversions:
 
-## OcTreeKey Class
+- `coordToKey(coord, depth=None)` → `OcTreeKey`.
+- `keyToCoord(key, depth=None)` → `[x, y, z]`.
+- `coordToKeyChecked(coord, depth=None)` → `(success: bool, key)`.
 
-Represents internal octree coordinates.
+---
 
-### Constructor
+## Iterators
+
+Iterators allow efficient traversal of the tree. They are available on all
+occupancy trees.
+
+- **`begin_tree(maxDepth=0)`**
+  - All nodes (inner + leaf).
+  - Use for structure analysis or debugging.
+
+- **`begin_leafs(maxDepth=0)`**
+  - Leaf nodes only – best choice for most occupancy operations.
+
+- **`begin_leafs_bbx(bbx_min, bbx_max, maxDepth=0)`**
+  - Leaf nodes within a bounding box.
+
+Example (leaf iteration):
 
 ```python
-OcTreeKey(a=0, b=0, c=0)
+for leaf in tree.begin_leafs():
+    coord = leaf.getCoordinate()
+    if tree.isNodeOccupied(leaf):
+        print("Occupied at", coord)
 ```
 
-### Methods
+For more complete examples (path planning, dynamic mapping, visualization),
+see the **Examples** section of `README.md` and the scripts in `examples/`.
 
-```python
-computeChildIdx(key, depth)
-```
 
-- `key` (OcTreeKey): Key to compute
-- `depth` (int): Tree depth
-- Returns: Child index
-
-```python
-computeIndexKey(level, key)
-```
-
-- `level` (int): Tree level
-- `key` (OcTreeKey): Key to compute
-- Returns: New `OcTreeKey`
-
-### Properties
-
-```python
-key[0]  # X coordinate
-key[1]  # Y coordinate
-key[2]  # Z coordinate
-```
-
-## Utility Functions
-
-### Coordinate Conversion
-
-```python
-coordToKey(coord, depth=None)
-```
-
-- `coord` (list/np.array): 3D coordinates
-- `depth` (int): Optional depth
-- Returns: `OcTreeKey`
-
-```python
-keyToCoord(key, depth=None)
-```
-
-- `key` (OcTreeKey): Octree key
-- `depth` (int): Optional depth
-- Returns: 3D coordinates
-
-```python
-coordToKeyChecked(coord, depth=None)
-```
-
-- `coord` (list/np.array): 3D coordinates
-- `depth` (int): Optional depth
-- Returns: `(bool, OcTreeKey)` (success, key)
-
-## Error Handling
-
-### Exceptions
-
-- `NullPointerException`: Raised when accessing null pointers
-- `RuntimeError`: Raised for iterator errors
-- `TypeError`: Raised for incorrect argument types
-
-### Best Practices
-
-1. Always check if `search()` returns `None` before using nodes
-2. Use try-catch blocks around iterator operations
-3. Check `isNodeOccupied()` before accessing node properties
-4. Use `updateInnerOccupancy()` after batch operations for consistency

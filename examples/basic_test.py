@@ -1,16 +1,19 @@
 import open3d as o3d
 import numpy as np
 
+# --- Log-Odds Helper Functions (unchanged) ---
 def prob_to_log_odds(p):
     return np.log(p / (1 - p))
 
 def log_odds_to_prob(l):
     return 1 - (1 / (1 + np.exp(l)))
 
+# --- Configuration (unchanged) ---
 SENSOR_ORIGIN = np.array([0, 0, 0])
 LOG_ODDS_OCCUPIED = prob_to_log_odds(0.85)
 LOG_ODDS_FREE = prob_to_log_odds(0.40)
 
+# --- Main Script ---ore  e sophist
 if __name__ == "__main__":
     # 1. Create a sample point cloud (unchanged)
     point_cloud_np = (np.random.rand(200, 3) - 0.5) * 10
@@ -26,6 +29,7 @@ if __name__ == "__main__":
     log_odds_map = {}
 
     # 4. Process each point (ray casting and log-odds update)
+    print("Processing sensor readings...")
     for point in point_cloud_np:
         ray_vector = point - SENSOR_ORIGIN
         ray_length = np.linalg.norm(ray_vector)
@@ -52,6 +56,8 @@ if __name__ == "__main__":
         current_log_odds = log_odds_map.get(grid_key, 0)
         log_odds_map[grid_key] = current_log_odds + LOG_ODDS_OCCUPIED
 
+    print(f"Map created with {len(log_odds_map)} updated cells.")
+
     # 5. Visualize the Probabilistic OGM
     ogm_points = []
     ogm_colors = []
@@ -75,7 +81,9 @@ if __name__ == "__main__":
         ogm_colors = np.array(ogm_colors)
         ogm_pcd.colors = o3d.utility.Vector3dVector(ogm_colors)
 
-    pcd.paint_uniform_color([1.0, 1.0, 1.0])
+    pcd.paint_uniform_color([1.0, 1.0, 1.0]) 
+
+    print("Visualizing OGM: Red=Occupied, Blue=Free, Gray=Uncertain, White=Original Points")
     
     # Create a simple visualization
     geometries = [pcd]

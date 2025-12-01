@@ -79,6 +79,15 @@ cdef extern from "ColorOcTree.h" namespace "octomap":
         void copyData(const ColorOcTreeNode& other)
         bool operator==(const ColorOcTreeNode& rhs) const
 
+cdef extern from "CountingOcTree.h" namespace "octomap":
+    cdef cppclass CountingOcTreeNode:
+        CountingOcTreeNode() except +
+        unsigned int getCount() const
+        void increaseCount()
+        void setCount(unsigned int c)
+        unsigned int getValue() const
+        void setValue(unsigned int v)
+
 cdef extern from "OcTreeKey.h" namespace "octomap":
     ctypedef unsigned short int key_type
     cdef struct OcTreeKey:
@@ -319,5 +328,150 @@ cdef extern from "ColorOcTree.h" namespace "octomap":
         void setOccupancyThres(double prob)
         void setProbHit(double prob)
         void setProbMiss(double prob)
+
+cdef extern from "<list>" namespace "std":
+    cdef cppclass list[T]:
+        void push_back(T&)
+        size_t size()
+        T& front()
+        T& back()
+        void pop_front()
+        void pop_back()
+        void clear()
+        cppclass iterator:
+            T& operator*()
+            iterator& operator++()
+            iterator operator--()
+            bint operator==(iterator)
+            bint operator!=(iterator)
+        iterator begin()
+        iterator end()
+
+cdef extern from "CountingOcTree.h" namespace "octomap":
+    cdef cppclass CountingOcTree:
+        CountingOcTree(double resolution) except +
+        CountingOcTree* create() const
+        string getTreeType() const
+        CountingOcTreeNode* updateNode(const point3d& value)
+        CountingOcTreeNode* updateNode(const OcTreeKey& k)
+        void getCentersMinHits(list[point3d]& node_centers, unsigned int min_hits) const
+        # Inherited from OcTreeBase - need to declare key methods
+        OcTreeKey coordToKey(point3d& coord)
+        OcTreeKey coordToKey(point3d& coord, unsigned int depth)
+        bool coordToKeyChecked(point3d& coord, OcTreeKey& key)
+        bool coordToKeyChecked(point3d& coord, unsigned int depth, OcTreeKey& key)
+        CountingOcTreeNode* search(double x, double y, double z, unsigned int depth)
+        CountingOcTreeNode* search(point3d& value, unsigned int depth)
+        CountingOcTreeNode* search(const OcTreeKey& key, unsigned int depth)
+        double getResolution()
+        unsigned int getTreeDepth()
+        size_t size()
+        size_t getNumLeafNodes()
+        size_t calcNumNodes()
+        void clear()
+        bool write(string& filename)
+        bool write(ostream& s)
+        CountingOcTree* read(string& filename)
+        CountingOcTree* read(istream& s)
+        point3d keyToCoord(OcTreeKey& key)
+        point3d keyToCoord(OcTreeKey& key, unsigned int depth)
+        CountingOcTreeNode* getRoot()
+        bool nodeHasChildren(const CountingOcTreeNode* node)
+        CountingOcTreeNode* getNodeChild(CountingOcTreeNode *node, unsigned int childIdx)
+        CountingOcTreeNode* createNodeChild(CountingOcTreeNode *node, unsigned int childIdx)
+        void deleteNodeChild(CountingOcTreeNode *node, unsigned int childIdx)
+        void expandNode(CountingOcTreeNode* node)
+        bool isNodeCollapsible(const CountingOcTreeNode* node) const
+        bool pruneNode(CountingOcTreeNode* node)
+        void getMetricSize(double& x, double& y, double& z)
+        void getMetricMin(double& x, double& y, double& z)
+        void getMetricMax(double& x, double& y, double& z)
+        size_t memoryUsage()
+        size_t memoryUsageNode()
+        double volume()
+
+cdef extern from "OcTreeStamped.h" namespace "octomap":
+    cdef cppclass OcTreeNodeStamped(OcTreeNode):
+        OcTreeNodeStamped() except +
+        OcTreeNodeStamped(const OcTreeNodeStamped& rhs) except +
+        unsigned int getTimestamp() const
+        void updateTimestamp()
+        void setTimestamp(unsigned int t)
+        void updateOccupancyChildren()
+        void copyData(const OcTreeNodeStamped& other)
+        bool operator==(const OcTreeNodeStamped& rhs) const
+    
+    cdef cppclass OcTreeStamped:
+        OcTreeStamped(double resolution) except +
+        OcTreeStamped* create() const
+        string getTreeType() const
+        unsigned int getLastUpdateTime()
+        void degradeOutdatedNodes(unsigned int time_thres)
+        void updateNodeLogOdds(OcTreeNodeStamped* node, const float& update) const
+        void integrateMissNoTime(OcTreeNodeStamped* node) const
+        # Inherited from OccupancyOcTreeBase - updateNode methods
+        OcTreeNodeStamped* updateNode(const OcTreeKey& key, float log_odds_update, bool lazy_eval)
+        OcTreeNodeStamped* updateNode(point3d& value, float log_odds_update, bool lazy_eval)
+        OcTreeNodeStamped* updateNode(double x, double y, double z, float log_odds_update, bool lazy_eval)
+        OcTreeNodeStamped* updateNode(const OcTreeKey& key, bool occupied, bool lazy_eval)
+        OcTreeNodeStamped* updateNode(point3d& value, bool occupied, bool lazy_eval)
+        OcTreeNodeStamped* updateNode(double x, double y, double z, bool occupied, bool lazy_eval)
+        # Inherited from OccupancyOcTreeBase - need to declare key methods
+        OcTreeKey coordToKey(point3d& coord)
+        OcTreeKey coordToKey(point3d& coord, unsigned int depth)
+        bool coordToKeyChecked(point3d& coord, OcTreeKey& key)
+        bool coordToKeyChecked(point3d& coord, unsigned int depth, OcTreeKey& key)
+        OcTreeNodeStamped* search(double x, double y, double z, unsigned int depth)
+        OcTreeNodeStamped* search(point3d& value, unsigned int depth)
+        OcTreeNodeStamped* search(const OcTreeKey& key, unsigned int depth)
+        double getResolution()
+        unsigned int getTreeDepth()
+        size_t size()
+        size_t getNumLeafNodes()
+        size_t calcNumNodes()
+        void clear()
+        bool write(string& filename)
+        bool write(ostream& s)
+        OcTreeStamped* read(string& filename)
+        OcTreeStamped* read(istream& s)
+        bool readBinary(string& filename)
+        bool readBinary(istream& s)
+        bool writeBinary(string& filename)
+        bool writeBinary(ostream& s)
+        bool isNodeOccupied(OcTreeNodeStamped* node)
+        bool isNodeAtThreshold(OcTreeNodeStamped* node)
+        bool castRay(point3d& origin, point3d& direction, point3d& end,
+                     bool ignoreUnknownCells, double maxRange) except +
+        point3d keyToCoord(OcTreeKey& key)
+        point3d keyToCoord(OcTreeKey& key, unsigned int depth)
+        OcTreeNodeStamped* getRoot()
+        bool nodeHasChildren(const OcTreeNodeStamped* node)
+        OcTreeNodeStamped* getNodeChild(OcTreeNodeStamped *node, unsigned int childIdx)
+        OcTreeNodeStamped* createNodeChild(OcTreeNodeStamped *node, unsigned int childIdx)
+        void deleteNodeChild(OcTreeNodeStamped *node, unsigned int childIdx)
+        void expandNode(OcTreeNodeStamped* node)
+        bool isNodeCollapsible(const OcTreeNodeStamped* node) const
+        bool pruneNode(OcTreeNodeStamped* node)
+        void getMetricSize(double& x, double& y, double& z)
+        void getMetricMin(double& x, double& y, double& z)
+        void getMetricMax(double& x, double& y, double& z)
+        size_t memoryUsage()
+        size_t memoryUsageNode()
+        double volume()
+        point3d getBBXMin()
+        point3d getBBXMax()
+        point3d getBBXCenter()
+        point3d getBBXBounds()
+        void setBBXMin(point3d& value)
+        void setBBXMax(point3d& value)
+        bool inBBX(point3d& value)
+        void insertPointCloud(Pointcloud& scan, point3d& sensor_origin,
+                              double maxrange, bool lazy_eval, bool discretize)
+        OccupancyOcTreeBase[OcTreeNodeStamped].tree_iterator begin_tree(unsigned char maxDepth) except +
+        OccupancyOcTreeBase[OcTreeNodeStamped].tree_iterator end_tree() except +
+        OccupancyOcTreeBase[OcTreeNodeStamped].leaf_iterator begin_leafs(unsigned char maxDepth) except +
+        OccupancyOcTreeBase[OcTreeNodeStamped].leaf_iterator end_leafs() except +
+        OccupancyOcTreeBase[OcTreeNodeStamped].leaf_bbx_iterator begin_leafs_bbx(point3d &min, point3d &max, unsigned char maxDepth) except +
+        OccupancyOcTreeBase[OcTreeNodeStamped].leaf_bbx_iterator end_leafs_bbx() except +
 
 # Typedef removed due to Cython template issues

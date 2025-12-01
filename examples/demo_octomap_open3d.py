@@ -5,23 +5,34 @@ This script shows how to use the wrapper for real-world applications.
 """
 
 import numpy as np
+import sys
+import os
+
+# Add current directory to path for proper import
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Try to import Open3D for visualization
 try:
     import open3d as o3d
     OPEN3D_AVAILABLE = True
+    print("✅ Open3D available for visualization")
 except ImportError:
     OPEN3D_AVAILABLE = False
+    print("⚠️ Open3D not available - visualization will be skipped")
+
 
 try:
     import pyoctomap
+    print("✅ PyOctoMap import successful!")
 except ImportError as e:
-    import sys
-    print(f"Failed to import pyoctomap: {e}")
+    print(f"❌ Failed to import pyoctomap: {e}")
     sys.exit(1)
 
 def demo_room_mapping():
     """Demonstrate mapping a richer indoor scene with architectural details."""
+    print("\n🏠 Room Mapping Demo (Enhanced)")
+    print("=" * 40)
+
     # Create octree with 0.1m resolution (10cm)
     tree = pyoctomap.OcTree(0.1)
 
@@ -50,6 +61,7 @@ def demo_room_mapping():
                 for dz in np.arange(0.0, thickness + step/2, step):
                     tree.updateNode([x, y, z + dz], True)
 
+    print("Building architecture: floor, walls, ceiling, openings...")
     # Floor at z=0 and ceiling at z=room_h
     add_slab(0.0, thickness=0.1, step=0.15)
     add_slab(room_h - 0.1, thickness=0.1, step=0.15)
@@ -74,6 +86,7 @@ def demo_room_mapping():
     # Right wall at x ∈ [room_w - 0.15, room_w]
     add_wall([room_w - 0.15, room_w], [0.0, room_d], [0.0, room_h], step=0.15)
 
+    print("Adding architectural elements: pillars, curved sofa, table set, shelves, plants...")
     # Pillars (cylinders) near corners
     def add_cylinder(center, radius, height, step=0.12):
         cx, cy, cz = center
@@ -134,6 +147,7 @@ def demo_room_mapping():
     add_sphere([5.5, 4.4, 0.5], 0.4, step=0.1)
 
     # Carve free corridor from door to center
+    print("Carving free-space corridor from door to center...")
     start = [door_x0 + 0.2, 0.2, 0.6]
     goal = [room_w/2, room_d/2, 0.6]
     steps = 60
@@ -144,6 +158,8 @@ def demo_room_mapping():
         for z in np.arange(0.2, 2.0, 0.2):
             tree.updateNode([x, y, z], False)
 
+    print(f"Total tree size: {tree.size()} nodes")
+
     # Visualize the enriched scene
     visualize_octree(tree, "Enhanced Room Mapping - Architectural Scene", max_depth=0, show_wireframe=True)
 
@@ -151,6 +167,9 @@ def demo_room_mapping():
 
 def demo_probabilistic_mapping():
     """Demonstrate probabilistic occupancy mapping"""
+    print("\n📊 Probabilistic Mapping Demo")
+    print("=" * 40)
+    
     tree = pyoctomap.OcTree(0.1)
     
     # Create a more diverse set of sensor readings
@@ -177,6 +196,8 @@ def demo_probabilistic_mapping():
     ]
     
     # Create a grid of different confidence levels
+    print("Creating probabilistic map with different confidence levels...")
+    
     # Area 1: High confidence occupied (walls)
     for x in np.arange(3.0, 4.0, 0.1):
         for y in np.arange(0.0, 1.0, 0.1):
@@ -208,6 +229,8 @@ def demo_probabilistic_mapping():
         tree.updateNode(point, False)  # Free reading
         tree.updateNode(point, True)   # Occupied reading
     
+    print(f"Tree size: {tree.size()} nodes")
+    
     # Test different areas
     test_areas = [
         ([3.5, 0.5, 0.5], "High confidence wall"),
@@ -217,17 +240,21 @@ def demo_probabilistic_mapping():
         ([5.0, 5.0, 5.0], "Unknown area")
     ]
     
+    print("\nFinal occupancy states by area:")
     for point, description in test_areas:
         node = tree.search(point)
         if node:
             try:
                 occupied = tree.isNodeOccupied(node)
                 at_threshold = tree.isNodeAtThreshold(node)
-                pass
-            except Exception:
-                pass
+                occupancy = node.getOccupancy()
+                log_odds = node.getLogOdds()
+                print(f"  {description}: Occupied={occupied}, AtThreshold={at_threshold}")
+                print(f"    Occupancy={occupancy:.3f}, LogOdds={log_odds:.3f}")
+            except Exception as e:
+                print(f"  {description}: Error reading node - {e}")
         else:
-            pass
+            print(f"  {description}: Unknown (no node)")
     
     # Visualize the probabilistic mapping
     visualize_octree(tree, "Probabilistic Mapping - Different Confidence Levels")
@@ -270,7 +297,10 @@ def _colorize_by_height(points_arr, palette):
 def visualize_octree(tree, title="OctoMap Visualization", max_depth=0, show_wireframe=True):
     """Visualize the octree using Open3D with leaf-iterator extraction and better overlays."""
     if not OPEN3D_AVAILABLE:
+        print("⚠️ Open3D not available - skipping visualization")
         return
+
+    print(f"\n🎨 Creating Open3D visualization: {title}")
 
     # Extract points using iterators (faster and exact)
     occupied_pts, free_pts, uncertain_pts, occ_samples_for_boxes = [], [], [], []
@@ -300,7 +330,9 @@ def visualize_octree(tree, title="OctoMap Visualization", max_depth=0, show_wire
             free_pts.append(coord)
         counter += 1
 
+    print(f"Extracted: {len(occupied_pts)} occupied, {len(free_pts)} free, {len(uncertain_pts)} uncertain")
     if not occupied_pts and not free_pts and not uncertain_pts:
+        print("⚠️ No points found for visualization")
         return
 
     geometries = []
@@ -364,6 +396,7 @@ def visualize_octree(tree, title="OctoMap Visualization", max_depth=0, show_wire
                 # If any error in size/placement, skip the cube
                 pass
 
+    print("🖼️ Opening Open3D visualization window...")
     vis = o3d.visualization.Visualizer()
     vis.create_window(window_name=title, width=1400, height=1000)
     for g in geometries:
@@ -456,7 +489,11 @@ def _generate_pointcloud_room_scene():
 
 def demo_pointcloud_scene():
     """Build an octree from a synthetic point cloud scene and visualize with Open3D."""
+    print("\n🧪 Point Cloud Scene Demo (Enhanced)")
+    print("=" * 40)
+
     pts = _generate_pointcloud_room_scene()
+    print(f"Generated {len(pts)} input points")
 
     tree = pyoctomap.OcTree(0.1)
     origin = np.array([0.5, 0.5, 1.5], dtype=np.float64)
@@ -467,24 +504,62 @@ def demo_pointcloud_scene():
         tree.insertPointCloud(pts[i:i+batch], origin)
     tree.updateInnerOccupancy()
 
+    print(f"Tree size: {tree.size()} nodes, depth: {tree.getTreeDepth()}")
     visualize_octree(tree, "Point Cloud Scene - Open3D", max_depth=0, show_wireframe=True)
     return tree
 
 def demo_file_operations(tree):
     """Demonstrate file save/load operations"""
+    print("\n💾 File Operations Demo")
+    print("=" * 40)
+    
+    # Save the tree
     filename = "demo_octree.bt"
     try:
         success = tree.write(filename)
         if success:
+            print(f"✅ Tree saved to {filename}")
+            
+            # Get file size
             import os
+            file_size = os.path.getsize(filename)
+            print(f"File size: {file_size} bytes")
+            
+            # Load the tree
             loaded_tree = tree.read(filename)
-            if os.path.exists(filename):
-                os.remove(filename)
-    except Exception:
-        pass
+            if loaded_tree:
+                print(f"✅ Tree loaded from {filename}")
+                print(f"Loaded tree size: {loaded_tree.size()} nodes")
+            else:
+                print("❌ Failed to load tree from file")
+                return
+            
+            # Verify data integrity
+            test_point = [1.0, 1.0, 1.0]
+            original_node = tree.search(test_point)
+            loaded_node = loaded_tree.search(test_point)
+            
+            if original_node and loaded_node:
+                original_occupied = tree.isNodeOccupied(original_node)
+                loaded_occupied = loaded_tree.isNodeOccupied(loaded_node)
+                print(f"Data integrity check: {original_occupied == loaded_occupied}")
+            
+            # Clean up
+            os.remove(filename)
+            print(f"✅ Cleaned up {filename}")
+
+            
+        else:
+            print("❌ Failed to save tree")
+            
+    except Exception as e:
+        print(f"❌ File operations failed: {e}")
 
 def main():
     """Run all demonstrations"""
+    print("🚀 OctoMap Wrapper Demonstration")
+    print("=" * 50)
+    
     try:
         # Demo 1: Room mapping
         room_tree = demo_room_mapping()
@@ -495,8 +570,40 @@ def main():
         # Demo 3: File operations
         demo_file_operations(room_tree)
         
+        print("\n" + "=" * 50)
+        print("🎉 All demonstrations completed successfully!")
+        print("\nKey features demonstrated:")
+        print("✅ 3D occupancy mapping with walls and furniture")
+        print("✅ Probabilistic occupancy updates")
+        print("✅ Path planning and collision detection")
+        print("✅ File save/load operations")
+        print("✅ Data integrity verification")
+        if OPEN3D_AVAILABLE:
+            print("✅ Open3D visualization")
+        
+        print("\nThe OctoMap wrapper is ready for robotics applications!")
+        
+        # Optional: Show a final combined visualization
+        if OPEN3D_AVAILABLE:
+            print("\n🎨 Would you like to see a final visualization? (y/n): ", end="")
+            try:
+                response = input().lower().strip()
+                if response in ['y', 'yes']:
+                    # Create a simple test tree for final visualization
+                    final_tree = pyoctomap.OcTree(0.1)
+                    # Add some test points
+                    for i in range(10):
+                        for j in range(10):
+                            for k in range(5):
+                                point = [i * 0.2, j * 0.2, k * 0.2]
+                                occupied = (i + j + k) % 3 == 0
+                                final_tree.updateNode(point, occupied)
+                    visualize_octree(final_tree, "Final Demo - Test Pattern")
+            except (EOFError, KeyboardInterrupt):
+                print("\nSkipping final visualization.")
+        
     except Exception as e:
-        print(f"Demonstration failed: {e}")
+        print(f"\n❌ Demonstration failed with error: {e}")
         import traceback
         traceback.print_exc()
 
