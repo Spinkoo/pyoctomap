@@ -119,57 +119,15 @@ castRay(origin, direction, end, ignoreUnknownCells=False, maxRange=-1.0)
 
 #### Advanced Methods
 
-**Note on Consolidation**: `insertPointCloud` and `insertPointCloudFast` are functionally equivalent (shared internal logic via a common helper) – use either. Both support the same parameters and produce identical results.
-
 ```python
-addPointWithRayCasting(point, sensor_origin, update_inner_occupancy=False)
-```
-
-- `point` (np.array): 3D point to add
-- `sensor_origin` (np.array): Sensor origin for ray casting
-- `update_inner_occupancy` (bool): Update inner node occupancy
-- Returns: `bool` (success)
-
-```python
-addPointCloudWithRayCasting(point_cloud, sensor_origin, max_range=-1.0, update_inner_occupancy=True, discretize=False)
-```
-
-- `point_cloud` (np.array): Nx3 array of points
-- `sensor_origin` (np.array): Sensor origin for ray casting
-- `max_range` (float): Maximum range for points
-- `update_inner_occupancy` (bool): Update inner node occupancy
-- `discretize` (bool): Reduce duplicates for dense clouds
-- Returns: `int` (points added)
-
-```python
-insertPointCloudFast(point_cloud, sensor_origin, max_range=-1.0, discretize=False, lazy_eval=False)
-```
-
-- `point_cloud` (np.array): Nx3 array of points
-- `sensor_origin` (np.array): Sensor origin for ray casting
-- `max_range` (float): Maximum range for points
-- `discretize` (bool): Reduce duplicates for dense clouds
-- `lazy_eval` (bool): Defer inner node occupancy updates (call `updateInnerOccupancy` manually later)
-- Returns: `int` (points processed)
-
-```python
-insertPointCloudRaysFast(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False)
-```
-
-- `point_cloud` (np.array): Nx3 array of points
-- `sensor_origin` (np.array): Sensor origin for ray casting
-- `max_range` (float): Maximum range for points
-- `lazy_eval` (bool): Defer inner node occupancy updates (call `updateInnerOccupancy` manually later)
-- Returns: `int` (points processed)
-
-```python
-markFreeSpaceAlongRay(origin, end_point, max_range=-1.0)
+markFreeSpaceAlongRay(origin, end_point, step_size=None)
 ```
 
 - `origin` (np.array): Ray start point
 - `end_point` (np.array): Ray end point
-- `max_range` (float): Maximum ray range
+- `step_size` (float, optional): Step size for ray sampling (defaults to tree resolution)
 - No return (void)
+- **Purpose**: Manually mark free space along a ray using sampling.
 
 ```python
 insertPointCloud(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False, discretize=False)
@@ -177,11 +135,53 @@ insertPointCloud(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False, di
 
 - `point_cloud` (np.array): Nx3 array of points
 - `sensor_origin` (np.array): Sensor origin for ray casting
-- `max_range` (float): Maximum range for points
+- `max_range` (float): Maximum range for points (-1.0 = no limit)
 - `lazy_eval` (bool): Defer inner node occupancy updates (call `updateInnerOccupancy` manually later)
 - `discretize` (bool): Reduce duplicates for dense clouds
 - Returns: `int` (points processed)
-- Note: Equivalent to `insertPointCloudFast` (shared logic).
+- **Purpose**: Standard fast batch insertion method using native C++ implementation.
+
+```python
+insertPointCloudRaysFast(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False)
+```
+
+- `point_cloud` (np.array): Nx3 array of points
+- `sensor_origin` (np.array): Sensor origin for ray casting
+- `max_range` (float): Maximum range for points (-1.0 = no limit)
+- `lazy_eval` (bool): Defer inner node occupancy updates (call `updateInnerOccupancy` manually later)
+- Returns: `int` (points processed)
+- **Purpose**: Ultra-fast batch insertion using parallel rays. No deduplication (fastest but may over-update).
+
+```python
+decayOccupancyInBBX(point_cloud, sensor_origin, logodd_decay_value=-0.2)
+```
+
+- `point_cloud` (np.array): Nx3 array of points (used for bounding box calculation)
+- `sensor_origin` (np.array): Sensor origin (used for bounding box calculation)
+- `logodd_decay_value` (float): Negative log-odds value to add to occupied nodes (default: -0.2, must be negative)
+- No return (void)
+- **Purpose**: Calculates bounding box of scan and applies decay to all occupied leaf nodes within it.
+
+```python
+decayAndInsertPointCloud(point_cloud, sensor_origin, logodd_decay_value=-0.2, max_range=-1.0, update_inner_occupancy=True)
+```
+
+- `point_cloud` (np.array): Nx3 array of points
+- `sensor_origin` (np.array): Sensor origin position
+- `logodd_decay_value` (float): Negative log-odds decay value (default: -0.2, must be negative)
+- `max_range` (float): Maximum range for points (-1.0 = no limit)
+- `update_inner_occupancy` (bool): Whether to update inner node occupancy
+- No return (void)
+- **Purpose**: Recommended function for inserting scans from a moving sensor in dynamic environments. Two-step process: first applies temporal decay to occupied nodes in bounding box, then inserts new point cloud. Solves occluded-ghost problem.
+
+**Tuning Guide:**
+The `logodd_decay_value` controls how fast the map "forgets" old data. A fully occupied voxel typically has a log-odds value of around +4.0.
+
+Formula: `Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)`
+
+- **Moderate (Default: -0.2)**: Takes ~20 scans for a ghost to fade. Good for balanced dynamic environments.
+- **Aggressive (-1.0 to -3.0)**: Takes 2-4 scans to fade. Good for highly dynamic environments.
+- **Weak (-0.05 to -0.1)**: Takes 40-80 scans to fade. Good for mostly static maps.
 
 #### Iterators
 
@@ -399,6 +399,74 @@ for i, (min_pt, max_pt) in enumerate(regions):
         count += 1
     print(f"Region {i}: {count} nodes")
 ```
+
+## ColorOcTree Class
+
+Extension of `OcTree` that stores RGB color information for each node.
+
+### Constructor
+
+```python
+ColorOcTree(resolution)
+```
+
+- `resolution` (float): Tree resolution in meters
+
+### Color Operations
+
+```python
+setNodeColor(point, r, g, b)
+```
+
+- `point` (list/np.array): 3D coordinates [x, y, z]
+- `r`, `g`, `b` (int): Red, Green, Blue components (0-255)
+- Returns: `ColorOcTreeNode`
+
+```python
+averageNodeColor(point, r, g, b)
+```
+
+- `point` (list/np.array): 3D coordinates [x, y, z]
+- `r`, `g`, `b` (int): RGB components to average with existing color
+- Returns: `ColorOcTreeNode`
+
+```python
+integrateNodeColor(point, r, g, b)
+```
+
+- `point` (list/np.array): 3D coordinates [x, y, z]
+- `r`, `g`, `b` (int): RGB components to integrate (weighted by occupancy)
+- Returns: `ColorOcTreeNode`
+
+## ColorOcTreeNode Class
+
+Represents a single node in a `ColorOcTree`. Inherits from `OcTreeNode`.
+
+### Methods
+
+```python
+getColor()
+```
+
+- Returns: Tuple `(r, g, b)` with values 0-255
+
+```python
+setColor(r, g, b)
+```
+
+- `r`, `g`, `b` (int): Set RGB color
+
+```python
+isColorSet()
+```
+
+- Returns: `bool` (True if color is not default white)
+
+```python
+getAverageChildColor()
+```
+
+- Returns: Tuple `(r, g, b)` average of children colors
 
 ## OcTreeKey Class
 
