@@ -223,6 +223,7 @@ def build_extensions():
         "pyoctomap.octree": None,
         "pyoctomap.octomap": None,
         "pyoctomap.color_octree": None,
+        "pyoctomap.counting_octree": None,
     }
     
     possible_paths = {
@@ -231,6 +232,7 @@ def build_extensions():
         "pyoctomap.octree": ["pyoctomap/octree.pyx"],
         "pyoctomap.octomap": ["pyoctomap/octomap.pyx"],
         "pyoctomap.color_octree": ["pyoctomap/color_octree.pyx"],
+        "pyoctomap.counting_octree": ["pyoctomap/counting_octree.pyx"],
     }
     
     for module_name, paths in possible_paths.items():
@@ -326,6 +328,22 @@ def build_extensions():
             Extension(
                 "pyoctomap.color_octree",
                 [pyx_files["pyoctomap.color_octree"]],
+                include_dirs=common_include_dirs,
+                library_dirs=common_library_dirs,
+                libraries=common_libraries,
+                define_macros=common_macros,
+                language="c++",
+                extra_compile_args=extra_compile_args,
+                extra_link_args=extra_link_args + rpath_args,
+            )
+        )
+    
+    # Build counting_octree extension
+    if pyx_files["pyoctomap.counting_octree"]:
+        ext_modules.append(
+            Extension(
+                "pyoctomap.counting_octree",
+                [pyx_files["pyoctomap.counting_octree"]],
                 include_dirs=common_include_dirs,
                 library_dirs=common_library_dirs,
                 libraries=common_libraries,

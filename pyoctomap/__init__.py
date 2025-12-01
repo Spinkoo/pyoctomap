@@ -67,6 +67,18 @@ try:
         "SimpleTreeIterator", "SimpleLeafIterator",
         "NullPointerException"
     ]
+    # Add ColorOcTree if available
+    try:
+        from .color_octree import ColorOcTree, ColorOcTreeNode
+        __all__.extend(["ColorOcTree", "ColorOcTreeNode"])
+    except ImportError:
+        pass
+    # Add CountingOcTree if available
+    try:
+        from .counting_octree import CountingOcTree, CountingOcTreeNode
+        __all__.extend(["CountingOcTree", "CountingOcTreeNode"])
+    except ImportError:
+        pass
 except ImportError as e:
     print(f"Error importing octomap module: {e}")
     print("This might be due to missing shared libraries or compilation issues.")

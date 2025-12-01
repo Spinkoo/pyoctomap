@@ -39,10 +39,30 @@ cdef class OcTreeKey:
                         self.thisptr.k[1] == other[1] and \
                         self.thisptr.k[2] == other[2])
     
-    def __getitem__(self, unsigned int i):
+    def __getitem__(self, int i):
+        # Handle negative indices (Python convention: -1 means last element)
+        if i < 0:
+            i = 3 + i
+        if i < 0 or i >= 3:
+            raise IndexError("OcTreeKey index out of range")
         return self.thisptr.k[i]
-    def __setitem__(self, unsigned int i, unsigned int value):
+    
+    def __setitem__(self, int i, unsigned int value):
+        # Handle negative indices (Python convention: -1 means last element)
+        if i < 0:
+            i = 3 + i
+        if i < 0 or i >= 3:
+            raise IndexError("OcTreeKey index out of range")
         self.thisptr.k[i] = value
+    
+    def __len__(self):
+        return 3
+    
+    def __iter__(self):
+        """Make OcTreeKey iterable"""
+        yield self.thisptr.k[0]
+        yield self.thisptr.k[1]
+        yield self.thisptr.k[2]
             
     def __repr__(self):
         return f"OcTreeKey({self.thisptr.k[0]}, {self.thisptr.k[1]}, {self.thisptr.k[2]})"

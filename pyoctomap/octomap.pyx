@@ -29,6 +29,26 @@ from .octree import (
     _octree_read
 )
 
+# Import ColorOcTree classes (optional, may not be available)
+try:
+    from .color_octree import (
+        ColorOcTree,
+        ColorOcTreeNode
+    )
+    _has_color_octree = True
+except ImportError:
+    _has_color_octree = False
+
+# Import CountingOcTree classes (optional, may not be available)
+try:
+    from .counting_octree import (
+        CountingOcTree,
+        CountingOcTreeNode
+    )
+    _has_counting_octree = True
+except ImportError:
+    _has_counting_octree = False
+
 # Re-export everything for backward compatibility
 __all__ = [
     "OcTreeKey",
@@ -40,3 +60,11 @@ __all__ = [
     "OcTree",
     "_octree_read"
 ]
+
+# Conditionally add ColorOcTree exports
+if _has_color_octree:
+    __all__.extend(["ColorOcTree", "ColorOcTreeNode"])
+
+# Conditionally add CountingOcTree exports
+if _has_counting_octree:
+    __all__.extend(["CountingOcTree", "CountingOcTreeNode"])

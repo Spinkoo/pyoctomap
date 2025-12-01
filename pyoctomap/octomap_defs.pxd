@@ -79,6 +79,15 @@ cdef extern from "ColorOcTree.h" namespace "octomap":
         void copyData(const ColorOcTreeNode& other)
         bool operator==(const ColorOcTreeNode& rhs) const
 
+cdef extern from "CountingOcTree.h" namespace "octomap":
+    cdef cppclass CountingOcTreeNode:
+        CountingOcTreeNode() except +
+        unsigned int getCount() const
+        void increaseCount()
+        void setCount(unsigned int c)
+        unsigned int getValue() const
+        void setValue(unsigned int v)
+
 cdef extern from "OcTreeKey.h" namespace "octomap":
     ctypedef unsigned short int key_type
     cdef struct OcTreeKey:
@@ -319,5 +328,66 @@ cdef extern from "ColorOcTree.h" namespace "octomap":
         void setOccupancyThres(double prob)
         void setProbHit(double prob)
         void setProbMiss(double prob)
+
+cdef extern from "<list>" namespace "std":
+    cdef cppclass list[T]:
+        void push_back(T&)
+        size_t size()
+        T& front()
+        T& back()
+        void pop_front()
+        void pop_back()
+        void clear()
+        cppclass iterator:
+            T& operator*()
+            iterator& operator++()
+            iterator operator--()
+            bint operator==(iterator)
+            bint operator!=(iterator)
+        iterator begin()
+        iterator end()
+
+cdef extern from "CountingOcTree.h" namespace "octomap":
+    cdef cppclass CountingOcTree:
+        CountingOcTree(double resolution) except +
+        CountingOcTree* create() const
+        string getTreeType() const
+        CountingOcTreeNode* updateNode(const point3d& value)
+        CountingOcTreeNode* updateNode(const OcTreeKey& k)
+        void getCentersMinHits(list[point3d]& node_centers, unsigned int min_hits) const
+        # Inherited from OcTreeBase - need to declare key methods
+        OcTreeKey coordToKey(point3d& coord)
+        OcTreeKey coordToKey(point3d& coord, unsigned int depth)
+        bool coordToKeyChecked(point3d& coord, OcTreeKey& key)
+        bool coordToKeyChecked(point3d& coord, unsigned int depth, OcTreeKey& key)
+        CountingOcTreeNode* search(double x, double y, double z, unsigned int depth)
+        CountingOcTreeNode* search(point3d& value, unsigned int depth)
+        CountingOcTreeNode* search(const OcTreeKey& key, unsigned int depth)
+        double getResolution()
+        unsigned int getTreeDepth()
+        size_t size()
+        size_t getNumLeafNodes()
+        size_t calcNumNodes()
+        void clear()
+        bool write(string& filename)
+        bool write(ostream& s)
+        CountingOcTree* read(string& filename)
+        CountingOcTree* read(istream& s)
+        point3d keyToCoord(OcTreeKey& key)
+        point3d keyToCoord(OcTreeKey& key, unsigned int depth)
+        CountingOcTreeNode* getRoot()
+        bool nodeHasChildren(const CountingOcTreeNode* node)
+        CountingOcTreeNode* getNodeChild(CountingOcTreeNode *node, unsigned int childIdx)
+        CountingOcTreeNode* createNodeChild(CountingOcTreeNode *node, unsigned int childIdx)
+        void deleteNodeChild(CountingOcTreeNode *node, unsigned int childIdx)
+        void expandNode(CountingOcTreeNode* node)
+        bool isNodeCollapsible(const CountingOcTreeNode* node) const
+        bool pruneNode(CountingOcTreeNode* node)
+        void getMetricSize(double& x, double& y, double& z)
+        void getMetricMin(double& x, double& y, double& z)
+        void getMetricMax(double& x, double& y, double& z)
+        size_t memoryUsage()
+        size_t memoryUsageNode()
+        double volume()
 
 # Typedef removed due to Cython template issues

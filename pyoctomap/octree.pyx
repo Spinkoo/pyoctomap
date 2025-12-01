@@ -179,7 +179,7 @@ cdef class OcTree:
     cdef void _fast_decay_in_bbx(self, 
                                   defs.point3d bbx_min, 
                                   defs.point3d bbx_max, 
-                                  float logodd_decay_value) except +:
+                                  float logodd_decay_value):
         """
         (Internal C++-level worker)
         Iterates over all leaves in a BBX at C++ speed
