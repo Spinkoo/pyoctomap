@@ -4,12 +4,12 @@ This directory contains comprehensive documentation for the PyOctoMap library.
 
 ## Contents
 
-- **[API Reference](api_reference.md)** - Complete API documentation for all classes and methods
+- **[API Reference](api_reference.md)** - Consolidated API for all tree types, nodes, and iterators, with comparison tables
 - **[File Format](file_format.md)** - Details about supported file formats and data structures
 - **[Wheel Technology](wheel_technology.md)** - Information about wheel bundling and distribution
 - **[Troubleshooting](troubleshooting.md)** - Common issues and solutions
 - **[Build System](build_system.md)** - Detailed build process and scripts
-- **[Performance Guide](performance_guide.md)** - Optimization tips and benchmarks
+- **[Performance Guide](performance_guide.md)** - Practical optimization guidelines
 
 ## Quick Links
 

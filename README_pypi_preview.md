@@ -9,6 +9,7 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 ## Features
 
 - **3D Occupancy Mapping**: Efficient octree-based 3D occupancy mapping
+- **Multiple Tree Types**: Standard occupancy, color, counting, and time-stamped trees
 - **Probabilistic Updates**: Stochastic occupancy updates with uncertainty handling
 - **Path Planning**: Ray casting and collision detection
 - **File Operations**: Save/load octree data in binary format
@@ -67,65 +68,21 @@ if node and tree.isNodeOccupied(node):
 tree.write("my_map.bt")
 ```
 
-### New Vectorized Operations
+### Tree Families Overview
 
-PyOctoMap now includes high-performance vectorized operations for better performance:
+PyOctoMap provides multiple octree variants from a single package:
 
-#### Traditional vs Vectorized Approach
+- `OcTree` – standard probabilistic occupancy tree (most users start here)
+- `ColorOcTree` – occupancy + RGB color per voxel
+- `CountingOcTree` – integer hit counters per voxel
+- `OcTreeStamped` – occupancy with per-node timestamps for temporal mapping
 
-**Traditional (slower):**
-```python
-# Individual point updates - slower
-points = np.array([[1.0, 2.0, 3.0], [1.1, 2.1, 3.1], [1.2, 2.2, 3.2]])
-for point in points:
-    tree.updateNode(point, True)
-```
+See the **API Reference** for a detailed comparison table and full method documentation.
 
-**Vectorized (faster):**
-```python
-# Batch point updates - 4-5x faster
-points = np.array([[1.0, 2.0, 3.0], [1.1, 2.1, 3.1], [1.2, 2.2, 3.2]])
-tree.addPointsBatch(points)
-```
+### Batch Operations (Summary)
 
-#### Ray Casting with Free Space Marking
-
-**Single Point with Ray Casting:**
-```python
-# Add point with automatic free space marking
-sensor_origin = np.array([0.0, 0.0, 1.5])
-point = np.array([2.0, 2.0, 1.0])
-tree.addPointWithRayCasting(point, sensor_origin)
-```
-
-**Point Cloud with Ray Casting:**
-```python
-# Add point cloud with ray casting for each point
-point_cloud = np.random.rand(1000, 3) * 10
-sensor_origin = np.array([0.0, 0.0, 1.5])
-success_count = tree.addPointCloudWithRayCasting(point_cloud, sensor_origin)
-print(f"Added {success_count} points")
-```
-
-#### Batch Operations
-
-**Batch Points with Same Origin:**
-```python
-# Efficient batch processing
-points = np.random.rand(5000, 3) * 10
-sensor_origin = np.array([0.0, 0.0, 1.5])
-success_count = tree.addPointsBatch(points, update_inner_occupancy=True)
-print(f"Added {success_count} points in batch")
-```
-
-**Batch Points with Different Origins:**
-```python
-# Each point can have different sensor origin
-points = np.random.rand(100, 3) * 10
-origins = np.random.rand(100, 3) * 2
-success_count = tree.addPointsBatch(points, origins)
-print(f"Added {success_count} points with individual origins")
-```
+For large point clouds, prefer the C++ batch helpers instead of Python loops. See the
+Performance Guide for practical batch sizing and resolution recommendations.
 
 ### Performance Comparison
 
