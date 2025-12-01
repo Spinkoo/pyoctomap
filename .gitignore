@@ -49,6 +49,8 @@ benchmarks/
 
 *.bt
 pyoctomap/octomap.cpp
+# Local copies of bundled OctoMap libraries
+pyoctomap/lib/
 
 # The correct pattern to ignore all .cpp files in the root and subfolders of pyoctomap:
 pyoctomap/**/*.cpp
