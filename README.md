@@ -41,14 +41,6 @@ If you need to build from source or create custom wheels, we provide a Docker-ba
 # Clone the repository with submodules
 git clone --recursive https://github.com/Spinkoo/pyoctomap.git
 cd pyoctomap
-
-# Build and install OctoMap C++ library
-cd src/octomap
-mkdir build && cd build
-cmake .. && make && sudo make install
-
-# Return to main project and run automated build script
-cd ../../..
 chmod +x build.sh
 ./build.sh
 ```
