@@ -28,6 +28,13 @@ except ImportError as e:
     print(f"❌ Failed to import pyoctomap: {e}")
     sys.exit(1)
 
+# Import Pointcloud
+try:
+    from pyoctomap import Pointcloud
+except (ImportError, AttributeError):
+    print("❌ Pointcloud not available - demo requires Pointcloud")
+    sys.exit(1)
+
 def demo_room_mapping():
     """Demonstrate mapping a richer indoor scene with architectural details."""
     print("\n🏠 Room Mapping Demo (Enhanced)")
@@ -417,25 +424,25 @@ def visualize_octree(tree, title="OctoMap Visualization", max_depth=0, show_wire
     vis.destroy_window()
 
 def _generate_pointcloud_room_scene():
-    """Generate a richer synthetic point cloud (walls, furniture, plants) similar to the matplotlib demo."""
-    points = []
+    """Generate a richer synthetic point cloud (walls, furniture, plants) using pyoctomap.Pointcloud."""
+    pc = Pointcloud()
     room_w, room_d, room_h = 6.0, 5.0, 3.0
     # Floor grid
     for x in np.arange(0.0, room_w, 0.15):
         for y in np.arange(0.0, room_d, 0.15):
             if np.random.rand() < 0.4:
-                points.append([x, y, 0.0])
+                pc.push_back(x, y, 0.0)
     # Walls planes (sparse)
     for x in np.arange(0.0, room_w, 0.15):
         for z in np.arange(0.0, room_h, 0.15):
             if np.random.rand() < 0.6:
-                points.append([x, 0.0, z])
-                points.append([x, room_d, z])
+                pc.push_back(x, 0.0, z)
+                pc.push_back(x, room_d, z)
     for y in np.arange(0.0, room_d, 0.15):
         for z in np.arange(0.0, room_h, 0.15):
             if np.random.rand() < 0.6:
-                points.append([0.0, y, z])
-                points.append([room_w, y, z])
+                pc.push_back(0.0, y, z)
+                pc.push_back(room_w, y, z)
     # Pillars
     def add_cyl(center, radius, height, step=0.1):
         cx, cy, cz = center
@@ -444,7 +451,7 @@ def _generate_pointcloud_room_scene():
                 if (x - cx) ** 2 + (y - cy) ** 2 <= radius ** 2:
                     for z in np.arange(cz, cz + height, step):
                         if np.random.rand() < 0.8:
-                            points.append([x, y, z])
+                            pc.push_back(x, y, z)
     add_cyl([0.8, 0.8, 0.0], 0.25, 2.8)
     add_cyl([room_w - 0.8, room_d - 0.8, 0.0], 0.25, 2.8)
     # Curved sofa arc
@@ -464,7 +471,7 @@ def _generate_pointcloud_room_scene():
             for y in np.arange(y0, y1, step):
                 for z in np.arange(z0, z1, step):
                     if np.random.rand() < 0.8:
-                        points.append([x, y, z])
+                        pc.push_back(x, y, z)
     table_min = [4.3, 2.0, 0.0]
     table_max = [5.2, 2.8, 0.75]
     add_box_points(table_min, table_max, step=0.08)
@@ -482,23 +489,24 @@ def _generate_pointcloud_room_scene():
                 for z in np.arange(cz - radius, cz + radius, step):
                     if (x - cx) ** 2 + (y - cy) ** 2 + (z - cz) ** 2 <= radius ** 2:
                         if np.random.rand() < 0.8:
-                            points.append([x, y, z])
+                            pc.push_back(x, y, z)
     add_sphere_points([5.5, 4.4, 0.6], 0.45, step=0.08)
-    return np.array(points, dtype=np.float64)
+    return pc
 
 
 def demo_pointcloud_scene():
-    """Build an octree from a synthetic point cloud scene and visualize with Open3D."""
+    """Build an octree from a synthetic point cloud scene using pyoctomap.Pointcloud."""
     print("\n🧪 Point Cloud Scene Demo (Enhanced)")
     print("=" * 40)
 
-    pts = _generate_pointcloud_room_scene()
-    print(f"Generated {len(pts)} input points")
+    pc = _generate_pointcloud_room_scene()
+    print(f"Generated {pc.size()} input points")
 
     tree = pyoctomap.OcTree(0.1)
     origin = np.array([0.5, 0.5, 1.5], dtype=np.float64)
 
-    # insert in batches
+    # Convert to numpy for insertPointCloud
+    pts = pc.to_numpy()
     batch = 2000
     for i in range(0, len(pts), batch):
         tree.insertPointCloud(pts[i:i+batch], origin)
@@ -575,7 +583,7 @@ def main():
         print("\nKey features demonstrated:")
         print("✅ 3D occupancy mapping with walls and furniture")
         print("✅ Probabilistic occupancy updates")
-        print("✅ Path planning and collision detection")
+        print("✅ Point cloud processing with pyoctomap.Pointcloud")
         print("✅ File save/load operations")
         print("✅ Data integrity verification")
         if OPEN3D_AVAILABLE:

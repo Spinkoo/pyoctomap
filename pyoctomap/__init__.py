@@ -11,7 +11,7 @@ import platform
 from pathlib import Path
 
 # Version information
-__version__ = "0.3.4"
+__version__ = "0.3.5"
 __author__ = "Spinkoo"
 __email__ = "lespinkoo@gmail.com"
 
@@ -59,36 +59,70 @@ setup_success = setup_library_paths()
 # Optional diagnostic can be added here if needed
 lib_check_success, lib_message = True, "rpath used"
 
-# Import the main module
+# Import the main module first
 try:
     from .octomap import *
     __all__ = [
-        "OcTree", "OcTreeNode", "OcTreeKey", "Pointcloud",
+        "OcTree", "OcTreeNode", "OcTreeKey",
         "SimpleTreeIterator", "SimpleLeafIterator",
         "NullPointerException"
     ]
-    # Add ColorOcTree if available
-    try:
-        from .color_octree import ColorOcTree, ColorOcTreeNode
-        __all__.extend(["ColorOcTree", "ColorOcTreeNode"])
-    except ImportError:
-        pass
-    # Add CountingOcTree if available
-    try:
-        from .counting_octree import CountingOcTree, CountingOcTreeNode
-        __all__.extend(["CountingOcTree", "CountingOcTreeNode"])
-    except ImportError:
-        pass
-    # Add OcTreeStamped if available
-    try:
-        from .stamped_octree import OcTreeStamped, OcTreeNodeStamped
-        __all__.extend(["OcTreeStamped", "OcTreeNodeStamped"])
-    except ImportError:
-        pass
 except ImportError as e:
     print(f"Error importing octomap module: {e}")
     print("This might be due to missing shared libraries or compilation issues.")
     raise
+
+# Import Pointcloud (after octomap to avoid conflicts)
+_has_pointcloud = False
+try:
+    from .pointcloud import Pointcloud
+    _has_pointcloud = True
+    __all__.append("Pointcloud")
+except ImportError as e:
+    _has_pointcloud = False
+    Pointcloud = None
+    # Print warning to help with debugging
+    import os
+    verbose = os.environ.get('PYOCTOMAP_VERBOSE', '').lower() in ('1', 'true', 'yes')
+    if verbose:
+        import traceback
+        print(f"⚠️ Pointcloud module not available: {e}")
+        traceback.print_exc()
+        print("Pointcloud features will not be available.")
+        print("To compile pointcloud module, run: python setup.py build_ext --inplace")
+except Exception as e:
+    # Catch any other errors (compilation errors, etc.)
+    _has_pointcloud = False
+    Pointcloud = None
+    import os
+    verbose = os.environ.get('PYOCTOMAP_VERBOSE', '').lower() in ('1', 'true', 'yes')
+    if verbose:
+        import traceback
+        print(f"⚠️ Error loading Pointcloud module: {e}")
+        traceback.print_exc()
+        print("Pointcloud features will not be available.")
+        print("To compile pointcloud module, run: python setup.py build_ext --inplace")
+
+# Add ColorOcTree if available
+try:
+    from .color_octree import ColorOcTree, ColorOcTreeNode
+    __all__.extend(["ColorOcTree", "ColorOcTreeNode"])
+except ImportError:
+    pass
+
+# Add CountingOcTree if available
+try:
+    from .counting_octree import CountingOcTree, CountingOcTreeNode
+    __all__.extend(["CountingOcTree", "CountingOcTreeNode"])
+except ImportError:
+    pass
+
+# Add OcTreeStamped if available
+try:
+    from .stamped_octree import OcTreeStamped, OcTreeNodeStamped
+    __all__.extend(["OcTreeStamped", "OcTreeNodeStamped"])
+except ImportError:
+    pass
 
 # Memory management is handled in the Cython code
 
