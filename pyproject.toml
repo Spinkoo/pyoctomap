@@ -22,14 +22,12 @@ classifiers = [
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
     "Natural Language :: English",
-    "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: Implementation :: CPython",
     "Topic :: Scientific/Engineering",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
-keywords = ["octomap", "occupancy", "mapping", "robotics", "3d", "bundled-libs", "python", "pyoctomap"]
-requires-python = ">=3.9"
+keywords = ["octomap", "occupancy", "mapping", "robotics", "3d"]
+requires-python = ">=3.8"
 dependencies = [
     "numpy>=1.16.0"
 ]

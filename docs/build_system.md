@@ -34,7 +34,7 @@ chmod +x build.sh
 ./build.sh
 ```
 
-The script checks Python >=3.9, builds OctoMap from `src/octomap`, runs
+The script checks Python >=3.8, builds OctoMap from `src/octomap`, runs
 Cython, produces wheels, bundles shared libs via `auditwheel`, installs
 the result, and executes a short import test.
 
