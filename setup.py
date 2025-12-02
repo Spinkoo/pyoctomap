@@ -432,19 +432,17 @@ def main():
         author="Spinkoo",
         author_email="lespinkoo@gmail.com",
         url="https://github.com/Spinkoo/pyoctomap",
-        license="BSD",
+        license="MIT",
         classifiers=[
             "Development Status :: 5 - Production/Stable",
             "Intended Audience :: Developers",
             "Intended Audience :: Science/Research",
             "Natural Language :: English",
             "Programming Language :: Python :: 3",
-            "Programming Language :: Python :: 3 :: Only",
-            "Programming Language :: Python :: Implementation :: CPython",
             "Topic :: Scientific/Engineering",
             "Topic :: Software Development :: Libraries :: Python Modules"
         ],
-        keywords=["octomap", "occupancy", "mapping", "robotics", "3d", "bundled-libs", "python", "pyoctomap"],
+        keywords=["octomap", "occupancy", "mapping", "robotics", "3d"],
         python_requires=">=3.9",
         install_requires=["numpy>=1.16.0"],
         
