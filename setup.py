@@ -12,40 +12,6 @@ from setuptools.command.build_ext import build_ext
 from setuptools.command.install import install
 from setuptools.command.develop import develop
 
-# Import github2pypi for PyPI README conversion
-try:
-    from github2pypi import replace_url
-    
-    def get_long_description():
-        """Get long description with GitHub URLs for PyPI compatibility."""
-        with open("README.md", encoding="utf-8") as f:
-            content = f.read()
-        
-        # Convert relative URLs to absolute GitHub URLs
-        return replace_url(
-            slug="Spinkoo/pyoctomap", 
-            content=content,
-            branch="main"
-        )
-except ImportError:
-    def get_long_description():
-        """Fallback long description if github2pypi is not available."""
-        with open("README.md", encoding="utf-8") as f:
-            return f.read()
-
-
-def get_version():
-    """Get version from octomap/__init__.py without importing the module."""
-    version_file = os.path.join(os.path.dirname(__file__), "pyoctomap", "__init__.py")
-    try:
-        with open(version_file, "r", encoding="utf-8") as f:
-            for line in f:
-                if line.startswith("__version__"):
-                    return line.split("=")[1].strip().strip('"').strip("'")
-    except (FileNotFoundError, IOError):
-        pass
-    return "0.0.0"
-
 
 def get_lib_files():
     """Get the appropriate library files for the current platform"""
@@ -400,56 +366,11 @@ def build_extensions():
 def main():
     """Main setup function - minimal since pyproject.toml handles metadata"""
     
-    # Get library files for package data
-    lib_files = get_lib_files()
-    
-    # Create package data structure
-    package_data = {
-        "pyoctomap": [
-            "lib/*",
-            "lib/*.so*"  # Include versioned symlinks
-        ],
-        "": [
-            "docs/*.md",
-            "docs/**/*.md"
-        ]
-    }
-    
-    # Don't use data_files - libraries are copied by CustomBuildExt.copy_libraries()
-    # and included via package_data
-    data_files = []
-
     # Build extensions
     ext_modules = build_extensions()
 
     setup(
-        # Basic package info
-        name="pyoctomap",
-        version=get_version(),
-        description="Python binding of the OctoMap library with bundled shared libraries.",
-        long_description=get_long_description(),
-        long_description_content_type="text/markdown",
-        author="Spinkoo",
-        author_email="lespinkoo@gmail.com",
-        url="https://github.com/Spinkoo/pyoctomap",
-        license="MIT",
-        classifiers=[
-            "Development Status :: 5 - Production/Stable",
-            "Intended Audience :: Developers",
-            "Intended Audience :: Science/Research",
-            "Natural Language :: English",
-            "Programming Language :: Python :: 3 :: Only",
-            "Topic :: Scientific/Engineering",
-            "Topic :: Software Development :: Libraries :: Python Modules"
-        ],
-        keywords=["octomap", "occupancy", "mapping", "robotics", "3d"],
-        python_requires=">=3.8",
-        install_requires=["numpy>=1.16.0"],
-        
-        # Package configuration
-        packages=["pyoctomap"],
-        package_data=package_data,
-        data_files=data_files,
+        # Metadata comes from pyproject.toml
         ext_modules=ext_modules,
         
         # Build configuration

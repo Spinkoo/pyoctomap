@@ -222,8 +222,11 @@ class SequentialOccupancyGrid:
                 # Use default sensor origin for all points
                 sensor_origins = np.tile(self.sensor_origin, (len(points), 1))
             
-            # Use the new integrated batch method from octomap
-            success_count = self.tree.addPointCloudWithRayCasting(points, self.sensor_origin, update_inner_occupancy=update_inner_occupancy)
+            # Use the batch insertion method from octomap
+            self.tree.insertPointCloud(points, self.sensor_origin, max_range=-1.0, lazy_eval=not update_inner_occupancy, discretize=False)
+            if update_inner_occupancy:
+                self.tree.updateInnerOccupancy()
+            success_count = len(points)
             
             # Update statistics
             batch_time = time.time() - start_time
@@ -269,16 +272,12 @@ class SequentialOccupancyGrid:
                 print(f"❌ Invalid point cloud shape: {point_cloud.shape}")
                 return False
             
-            if use_ray_casting:
-                # Use the new integrated ray casting method
-                success_count = self.tree.addPointCloudWithRayCasting(point_cloud, origin, max_range, True)
-                success = success_count > 0
-            else:
-                # Use OctoMap's optimized point cloud insertion
-                self.tree.insertPointCloud(point_cloud, origin, max_range, lazy_eval=False)
-                self.tree.updateInnerOccupancy()
-                success = True
-                success_count = len(point_cloud)
+            # Use OctoMap's optimized point cloud insertion
+            # Note: For ray casting, we use insertPointCloud which handles rays automatically
+            self.tree.insertPointCloud(point_cloud, origin, max_range=max_range, lazy_eval=False, discretize=False)
+            self.tree.updateInnerOccupancy()
+            success = True
+            success_count = len(point_cloud)
             
             # Update statistics
             process_time = time.time() - start_time
