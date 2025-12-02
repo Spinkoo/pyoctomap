@@ -438,7 +438,7 @@ def main():
             "Intended Audience :: Developers",
             "Intended Audience :: Science/Research",
             "Natural Language :: English",
-            "Programming Language :: Python :: 3",
+            "Programming Language :: Python :: 3 :: Only",
             "Topic :: Scientific/Engineering",
             "Topic :: Software Development :: Libraries :: Python Modules"
         ],
