@@ -14,7 +14,6 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 - **Path Planning**: Ray casting and collision detection
 - **File Operations**: Save/load octree data in binary format
 - **Bundled Libraries**: No external dependencies - all C++ libraries included
-- **Python Integration**: Clean Python interface with NumPy support
 - **Cross-Platform**: Linux native support with Windows compatibility via WSL
 
 ## Installation
@@ -252,7 +251,7 @@ for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
 
 ## Requirements
 
-- Python 3.9+
+- Python 3.8+
 - NumPy
 - Cython (for building from source)
 

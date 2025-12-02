@@ -12,7 +12,6 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 - **Probabilistic Updates**: Stochastic occupancy updates with uncertainty handling
 - **Path Planning**: Ray casting and collision detection
 - **File Operations**: Save/load octree data in binary format
-- **Python Integration**: Clean Python interface with NumPy support
 - **Cross-Platform**: Linux native support with Windows compatibility via WSL
 
 ## Installation
@@ -51,7 +50,7 @@ chmod +x build.sh
 docker build -f docker/Dockerfile.wheel -t pyoctomap-wheel .
 ```
 
-The Docker build creates manylinux-compatible wheels for Python 3.9-3.14, properly bundling all required C++ libraries.
+The Docker build creates manylinux-compatible wheels for Python 3.8-3.14, properly bundling all required C++ libraries.
 
 > **📋 Google Colab Users**: See [Build System Documentation](docs/build_system.md) for detailed Colab installation instructions.
 
@@ -292,7 +291,7 @@ refer to the **API Reference** and example scripts in `examples/`.
 
 ## Requirements
 
-- Python 3.9+
+- Python 3.8+
 - NumPy
 - Cython (for building from source)
 

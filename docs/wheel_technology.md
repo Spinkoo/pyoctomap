@@ -182,7 +182,7 @@ pyoctomap-1.1.0-cp312-cp312-linux_x86_64.whl
 **Requirements:**
 - WSL2 installed
 - Ubuntu 18.04+ in WSL
-- Python 3.9+
+- Python 3.8+
 
 **Installation:**
 ```bash

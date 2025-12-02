@@ -57,4 +57,4 @@ def test_github2pypi():
     print("✅ github2pypi URL conversion working correctly")
 
 # This file is now a proper pytest module
-# Run with: python -m pytest unit_test/test_build.py -v
+# Run with: python -m pytest tests/test_build.py -v

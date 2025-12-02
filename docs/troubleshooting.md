@@ -20,15 +20,15 @@ pip install pyoctomap --only-binary=all --no-cache-dir
 ### Python Version Compatibility
 
 **Problem**: Package fails to install or import
-**Solution**: Ensure Python 3.9+ is installed
+**Solution**: Ensure Python 3.8+ is installed
 
 ```bash
 # Check Python version
 python3 --version
 
-# If version is too old, install Python 3.9+
+# If version is too old, install Python 3.8+
 sudo apt update
-sudo apt install python3.9 python3.9-pip
+sudo apt install python3.8 python3.8-pip
 ```
 
 ### Missing Dependencies

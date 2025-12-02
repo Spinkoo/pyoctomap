@@ -57,3 +57,6 @@ pyoctomap/**/*.cpp
 pyoctomap/*.cpp
 **/*.json
 **/*.png
+
+# examples
+examples/demo_magic_image.py
