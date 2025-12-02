@@ -1,4 +1,8 @@
-import open3d as o3d
+try:
+    import open3d as o3d
+except ImportError:
+    print("Open3D is not installed. Please install it using 'pip install open3d'.")
+    exit(1)
 import numpy as np
 
 # --- Log-Odds Helper Functions (unchanged) ---
@@ -13,7 +17,7 @@ SENSOR_ORIGIN = np.array([0, 0, 0])
 LOG_ODDS_OCCUPIED = prob_to_log_odds(0.85)
 LOG_ODDS_FREE = prob_to_log_odds(0.40)
 
-# --- Main Script ---ore  e sophist
+# --- Main Script ---
 if __name__ == "__main__":
     # 1. Create a sample point cloud (unchanged)
     point_cloud_np = (np.random.rand(200, 3) - 0.5) * 10
