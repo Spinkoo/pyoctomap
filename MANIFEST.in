@@ -25,7 +25,7 @@ prune *.egg-info
 prune src/octomap/build
 prune src/octomap/bin
 prune examples
-prune unit_test
+prune tests
 prune github2pypi
 prune docker
 prune images

@@ -14,7 +14,7 @@ docker run --rm -v $(pwd):/home/octomap -w /home/octomap pyoctomap bash -c "
     
     echo '�� Running tests...'
     mv octomap _octomap_source
-    python3 -m pytest unit_test/ -v
+    python3 -m pytest tests/ -v
     mv _octomap_source octomap
     
     echo '✅ Build and tests completed!'
