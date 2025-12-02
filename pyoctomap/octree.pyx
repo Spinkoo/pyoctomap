@@ -406,10 +406,9 @@ cdef class OcTree:
                          <float>p[1],
                          <float>p[2])
 
+        cdef defs.point3d origin_c = defs.point3d(<float>origin[0], <float>origin[1], <float>origin[2])
         self.thisptr.insertPointCloud(pc,
-                                      defs.Vector3(<float>origin[0],
-                                                   <float>origin[1],
-                                                   <float>origin[2]),
+                                      origin_c,
                                       <double?>maxrange,
                                       bool(lazy_eval),
                                       bool(discretize))

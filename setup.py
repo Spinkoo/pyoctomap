@@ -225,6 +225,7 @@ def build_extensions():
         "pyoctomap.color_octree": None,
         "pyoctomap.counting_octree": None,
         "pyoctomap.stamped_octree": None,
+        "pyoctomap.pointcloud": None,
     }
     
     possible_paths = {
@@ -235,6 +236,7 @@ def build_extensions():
         "pyoctomap.color_octree": ["pyoctomap/color_octree.pyx"],
         "pyoctomap.counting_octree": ["pyoctomap/counting_octree.pyx"],
         "pyoctomap.stamped_octree": ["pyoctomap/stamped_octree.pyx"],
+        "pyoctomap.pointcloud": ["pyoctomap/pointcloud.pyx"],
     }
     
     for module_name, paths in possible_paths.items():
@@ -362,6 +364,22 @@ def build_extensions():
             Extension(
                 "pyoctomap.stamped_octree",
                 [pyx_files["pyoctomap.stamped_octree"]],
+                include_dirs=common_include_dirs,
+                library_dirs=common_library_dirs,
+                libraries=common_libraries,
+                define_macros=common_macros,
+                language="c++",
+                extra_compile_args=extra_compile_args,
+                extra_link_args=extra_link_args + rpath_args,
+            )
+        )
+    
+    # Build pointcloud extension
+    if pyx_files["pyoctomap.pointcloud"]:
+        ext_modules.append(
+            Extension(
+                "pyoctomap.pointcloud",
+                [pyx_files["pyoctomap.pointcloud"]],
                 include_dirs=common_include_dirs,
                 library_dirs=common_library_dirs,
                 libraries=common_libraries,

@@ -59,6 +59,13 @@ try:
 except ImportError:
     _has_stamped_octree = False
 
+# Import Pointcloud class (optional, may not be available)
+try:
+    from .pointcloud import Pointcloud
+    _has_pointcloud = True
+except ImportError:
+    _has_pointcloud = False
+
 # Re-export everything for backward compatibility
 __all__ = [
     "OcTreeKey",
@@ -82,3 +89,7 @@ if _has_counting_octree:
 # Conditionally add OcTreeStamped exports
 if _has_stamped_octree:
     __all__.extend(["OcTreeStamped", "OcTreeNodeStamped"])
+
+# Conditionally add Pointcloud exports
+if _has_pointcloud:
+    __all__.append("Pointcloud")

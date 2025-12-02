@@ -406,8 +406,9 @@ cdef class ColorOcTree:
         cdef defs.Pointcloud pc = defs.Pointcloud()
         for p in pointcloud:
             pc.push_back(<float>p[0], <float>p[1], <float>p[2])
+        cdef defs.point3d origin_c = defs.point3d(<float>origin[0], <float>origin[1], <float>origin[2])
         self.thisptr.insertPointCloud(pc,
-                                      defs.Vector3(<float>origin[0], <float>origin[1], <float>origin[2]),
+                                      origin_c,
                                       <double?>maxrange, bool(lazy_eval), bool(discretize))
     
     def isNodeOccupied(self, node):
