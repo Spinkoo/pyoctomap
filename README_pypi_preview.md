@@ -9,36 +9,50 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 ## Features
 
 - **3D Occupancy Mapping**: Efficient octree-based 3D occupancy mapping
-- **Multiple Tree Types**: Standard occupancy, color, counting, and time-stamped trees
 - **Probabilistic Updates**: Stochastic occupancy updates with uncertainty handling
 - **Path Planning**: Ray casting and collision detection
 - **File Operations**: Save/load octree data in binary format
-- **Bundled Libraries**: No external dependencies - all C++ libraries included
 - **Cross-Platform**: Linux native support with Windows compatibility via WSL
 
 ## Installation
 
-**PyPI Installation (Recommended):**
+### Quick Install (Recommended)
+
+Install from PyPI (pre-built manylinux wheel when available):
+
 ```bash
 pip install pyoctomap
 ```
 
-**From Source (Linux / WSL):**
+> **🚀 ROS Integration**: ROS/ROS2 integration is currently being developed on the [`ros` branch](https://github.com/Spinkoo/pyoctomap/tree/ros), featuring ROS2 message support and real-time point cloud processing.
+
+### Building from Source
+
+> **📋 Prerequisites**: See [Build System Documentation](https://github.com/Spinkoo/pyoctomap/blob/main/docs/build_system.md) for detailed system dependencies and troubleshooting guide.
+
+If you need to build from source or create custom wheels, we provide a Docker-based build system:
+
+**Linux / WSL (Windows Subsystem for Linux):**
 ```bash
 # Clone the repository with submodules
 git clone --recursive https://github.com/Spinkoo/pyoctomap.git
 cd pyoctomap
 
-# Build and install OctoMap C++ library
-cd src/octomap
-mkdir build && cd build
-cmake .. && make && sudo make install
-
-# Return to main project and run automated build script
-cd ../../..
 chmod +x build.sh
 ./build.sh
 ```
+
+```bash
+# Build wheels for all supported Python versions
+./build-wheel.sh
+
+# Or build manually with Docker
+docker build -f docker/Dockerfile.wheel -t pyoctomap-wheel .
+```
+
+The Docker build creates manylinux-compatible wheels for Python 3.8-3.14, properly bundling all required C++ libraries.
+
+> **📋 Google Colab Users**: See [Build System Documentation](https://github.com/Spinkoo/pyoctomap/blob/main/docs/build_system.md) for detailed Colab installation instructions.
 
 ## Quick Start
 
@@ -76,20 +90,59 @@ PyOctoMap provides multiple octree variants from a single package:
 - `CountingOcTree` – integer hit counters per voxel
 - `OcTreeStamped` – occupancy with per-node timestamps for temporal mapping
 
-See the **API Reference** for a detailed comparison table and full method documentation.
+See the **[API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md)** for a detailed comparison
+table and full method documentation.
+
+### Color Occupancy Mapping (ColorOcTree)
+
+```python
+import pyoctomap
+import numpy as np
+
+tree = pyoctomap.ColorOcTree(0.1)
+coord = [1.0, 1.0, 1.0]
+
+tree.updateNode(coord, True)
+tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
+```
+
+### Dynamic Mapping and Point Cloud Insertion
+
+PyOctoMap provides efficient helpers for dynamic mapping and probabilistic decay.
+For a deeper discussion and tuning guide, see the [Dynamic Mapping](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md#dynamic-mapping) section in
+the [API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md).
+
+**Decay and Insert Point Cloud (Recommended for Dynamic Environments):**
+```python
+# Recommended function for inserting scans from a moving sensor
+# Solves the occluded-ghost problem by applying temporal decay before insertion
+point_cloud = np.random.rand(1000, 3) * 10
+sensor_origin = np.array([0.0, 0.0, 1.5])
+
+# Tuning the decay value:
+# Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)
+# 
+# Moderate (default: -0.2): ~20 scans for ghost to fade
+# Aggressive (-1.0 to -3.0): 2-4 scans (highly dynamic environments)
+# Weak (-0.05 to -0.1): 40-80 scans (mostly static maps)
+
+tree.decayAndInsertPointCloud(
+    point_cloud,
+    sensor_origin,
+    logodd_decay_value=-0.2,  # Must be negative
+    max_range=50.0
+)
+```
 
 ### Batch Operations (Summary)
 
-For large point clouds, prefer the C++ batch helpers instead of Python loops. See the
-Performance Guide for practical batch sizing and resolution recommendations.
+For large point clouds, favor the C++ batch helpers:
 
-### Performance Comparison
+- `insertPointCloud(points, origin, lazy_eval=True)` then `updateInnerOccupancy()`
+- `insertPointCloudRaysFast(points, origin, max_range=...)` for maximum speed
 
-| Operation | Traditional | Vectorized | Speedup |
-|-----------|-------------|------------|---------|
-| Individual points | 5,000 pts/sec | 20,000 pts/sec | 4x |
-| Point cloud | 10,000 pts/sec | 30,000 pts/sec | 3x |
-| Batch processing | 15,000 pts/sec | 60,000 pts/sec | 4x |
+See the [Performance Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/performance_guide.md) for practical batch sizing and resolution
+recommendations.
 
 ## Examples
 
@@ -97,6 +150,8 @@ See runnable demos in the [examples directory](https://github.com/Spinkoo/pyocto
 - [examples/basic_test.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/basic_test.py) — smoke test for core API
 - [examples/demo_occupancy_grid.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/demo_occupancy_grid.py) — build and visualize a 2D occupancy grid
 - [examples/demo_octomap_open3d.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/demo_octomap_open3d.py) — visualize octomap data with Open3D
+- [examples/sequential_occupancy_grid_demo.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/sequential_occupancy_grid_demo.py) — comprehensive sequential occupancy grid with Open3D visualization
+- [examples/test_sequential_occupancy_grid.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/test_sequential_occupancy_grid.py) — comprehensive test suite for all occupancy grid methods
 
 ### Demo Visualizations
 
@@ -129,9 +184,10 @@ for x in np.arange(0, 4.0, 0.05):
         wall_points.append([x, y, 0])  # Floor
         wall_points.append([x, y, 3.0])  # Ceiling
 
-# Use vectorized approach for better performance
+# Use batch insertion for better performance
 wall_points = np.array(wall_points)
-tree.addPointCloudWithRayCasting(wall_points, sensor_origin)
+tree.insertPointCloud(wall_points, sensor_origin, lazy_eval=True)
+tree.updateInnerOccupancy()
 
 print(f"Tree size: {tree.size()} nodes")
 ```
@@ -224,30 +280,14 @@ else:
     print(f"❌ Path blocked at segments: {obstacles}")
 ```
 
-### Iterator Operations
+### Dynamic Environment Mapping & Iterators
 
-```python
-# Iterate over all nodes
-for node_it in tree.begin_tree():
-    coord = node_it.getCoordinate()
-    depth = node_it.getDepth()
-    size = node_it.getSize()
-    is_leaf = node_it.isLeaf()
+For more complete examples on:
 
-# Iterate over leaf nodes only
-for leaf_it in tree.begin_leafs():
-    coord = leaf_it.getCoordinate()
-    occupied = tree.isNodeOccupied(leaf_it)
-    if occupied:
-        print(f"Occupied leaf at {coord}")
+- dynamic environment mapping with `decayAndInsertPointCloud`,
+- iterator usage (`begin_tree`, `begin_leafs`, `begin_leafs_bbx`),
 
-# Iterate over bounding box
-bbx_min = np.array([0.0, 0.0, 0.0])
-bbx_max = np.array([5.0, 5.0, 5.0])
-for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
-    coord = bbx_it.getCoordinate()
-    print(f"Node in BBX: {coord}")
-```
+refer to the [API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md) and example scripts in the [examples directory](https://github.com/Spinkoo/pyoctomap/blob/main/examples/).
 
 ## Requirements
 
@@ -262,10 +302,10 @@ for bbx_it in tree.begin_leafs_bbx(bbx_min, bbx_max):
 ## Documentation
 
 - **[Complete API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md)** - Detailed API documentation
+- **[Build System](https://github.com/Spinkoo/pyoctomap/blob/main/docs/build_system.md)** - Prerequisites, build process, and troubleshooting
 - **[File Format Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/file_format.md)** - Supported file formats
 - **[Performance Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/performance_guide.md)** - Optimization tips and benchmarks
 - **[Troubleshooting](https://github.com/Spinkoo/pyoctomap/blob/main/docs/troubleshooting.md)** - Common issues and solutions
-- **[Build System](https://github.com/Spinkoo/pyoctomap/blob/main/docs/build_system.md)** - Build process and scripts
 - **[Wheel Technology](https://github.com/Spinkoo/pyoctomap/blob/main/docs/wheel_technology.md)** - Library bundling details
 
 ## License

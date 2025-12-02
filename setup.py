@@ -18,19 +18,14 @@ try:
     
     def get_long_description():
         """Get long description with GitHub URLs for PyPI compatibility."""
-        with open("README.md", encoding="utf-8") as f:
-            content = f.read()
-        
-        # Convert relative URLs to absolute GitHub URLs
-        return replace_url(
-            slug="Spinkoo/pyoctomap", 
-            content=content,
-            branch="main"
-        )
+        # Use README_pypi_preview.md which already has GitHub URLs
+        with open("README_pypi_preview.md", encoding="utf-8") as f:
+            return f.read()
 except ImportError:
     def get_long_description():
         """Fallback long description if github2pypi is not available."""
-        with open("README.md", encoding="utf-8") as f:
+        # Use README_pypi_preview.md which already has GitHub URLs
+        with open("README_pypi_preview.md", encoding="utf-8") as f:
             return f.read()
 
 
