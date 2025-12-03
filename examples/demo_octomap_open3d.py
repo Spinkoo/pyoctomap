@@ -236,15 +236,22 @@ def demo_probabilistic_mapping():
         tree.updateNode(point, False)  # Free reading
         tree.updateNode(point, True)   # Occupied reading
     
+    # Update inner occupancy to ensure tree structure is complete
+    tree.updateInnerOccupancy()
+    
     print(f"Tree size: {tree.size()} nodes")
     
-    # Test different areas
+    # Test different areas - use coordinates that match the actual updated grid points
+    # Area 1: x in [3.0, 4.0) step 0.1, y in [0.0, 1.0) step 0.1, z in [0.0, 1.0) step 0.2
+    # Area 2: x in [0.2, 1.5) step 0.2, y in [0.2, 1.5) step 0.2, z in [0.2, 1.0) step 0.2
+    # Area 3: x in [2.0, 2.8) step 0.2, y in [1.5, 2.2) step 0.2, z in [0.0, 0.8) step 0.2
+    #   Note: y values are 1.5, 1.7, 1.9, 2.1 (not 1.8!)
     test_areas = [
-        ([3.5, 0.5, 0.5], "High confidence wall"),
-        ([0.8, 0.8, 0.5], "High confidence free space"), 
-        ([2.4, 1.8, 0.4], "Medium confidence furniture"),
-        ([1.8, 1.8, 0.5], "Low confidence / uncertain"),
-        ([5.0, 5.0, 5.0], "Unknown area")
+        ([3.5, 0.5, 0.6], "High confidence wall"),  # Use 0.6 for z (matches step 0.2: 0.0, 0.2, 0.4, 0.6, 0.8)
+        ([0.8, 0.8, 0.6], "High confidence free space"),  # Use 0.6 for z (matches step 0.2: 0.2, 0.4, 0.6, 0.8)
+        ([2.4, 1.7, 0.6], "Medium confidence furniture"),  # Use y=1.7 (matches step 0.2: 1.5, 1.7, 1.9, 2.1), z=0.6
+        ([1.8, 1.8, 0.5], "Low confidence / uncertain"),  # This point was explicitly updated
+        ([5.0, 5.0, 5.0], "Unknown area")  # This should definitely be unknown
     ]
     
     print("\nFinal occupancy states by area:")
