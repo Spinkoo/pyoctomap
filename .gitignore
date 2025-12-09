@@ -41,3 +41,5 @@ pyoctomap/lib/
 
 # Example outputs
 examples/demo_magic_image.py
+
+.cursor/
