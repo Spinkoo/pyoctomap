@@ -6,6 +6,7 @@
 
 from libcpp.string cimport string
 from libcpp cimport bool as cppbool
+from libc.stddef cimport size_t
 from cython.operator cimport dereference as deref
 cimport octomap_defs as defs
 cimport pyoctomap.octree_base as octree_base
@@ -514,4 +515,18 @@ cdef class OcTreeStamped:
         self.thisptr.insertPointCloud(pc,
                                       defs.point3d(sensor_origin[0], sensor_origin[1], sensor_origin[2]),
                                       <double?>maxrange, bool(lazy_eval), bool(discretize))
+    
+    # Helper method to get the C++ pointer address (for use in other modules)
+    cpdef size_t _get_ptr_addr(self):
+        return <size_t>self.thisptr
+    
+    def begin_leafs(self, maxDepth=0):
+        """Return a simplified leaf iterator"""
+        from .octree_iterators import SimpleLeafIterator
+        return SimpleLeafIterator(self, maxDepth)
+    
+    def begin_leafs_bbx(self, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):
+        """Return a simplified leaf iterator for a bounding box"""
+        from .octree_iterators import SimpleLeafBBXIterator
+        return SimpleLeafBBXIterator(self, bbx_min, bbx_max, maxDepth)
 
