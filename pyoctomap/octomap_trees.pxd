@@ -320,6 +320,9 @@ cdef extern from "ColorOcTree.h" namespace "octomap":
         size_t memoryUsage()
         size_t memoryUsageNode()
         double volume()
+        void prune()
+        void expand()
+        void useBBXLimit(bool enable)
         double getOccupancyThres()
         float getOccupancyThresLog()
         double getProbHit()
@@ -329,6 +332,12 @@ cdef extern from "ColorOcTree.h" namespace "octomap":
         void setOccupancyThres(double prob)
         void setProbHit(double prob)
         void setProbMiss(double prob)
+        double getClampingThresMax()
+        float getClampingThresMaxLog()
+        double getClampingThresMin()
+        float getClampingThresMinLog()
+        void setClampingThresMax(double thresProb)
+        void setClampingThresMin(double thresProb)
 
 cdef extern from "CountingOcTree.h" namespace "octomap":
     cdef cppclass CountingOcTreeNode:

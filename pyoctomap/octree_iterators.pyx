@@ -11,189 +11,477 @@ import numpy as np
 cimport numpy as np
 ctypedef np.float64_t DOUBLE_t
 
-# Import base classes - use runtime import to avoid circular dependency
-from .octree_base import NullPointerException
-# Note: We can't cimport octree here because it creates a circular dependency
-# Instead, we'll cast tree objects directly using isinstance checks
-# The type casting will be done at runtime
-
 # Fix NumPy API compatibility
 np.import_array()
 
-# NumPy compatibility for newer versions
+# Iterator type definitions
 ctypedef defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator* tree_iterator_ptr
 ctypedef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_iterator* leaf_iterator_ptr
 ctypedef defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator* leaf_bbx_iterator_ptr
-# ColorOcTree iterator types
+ctypedef defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].tree_iterator* color_tree_iterator_ptr
 ctypedef defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].leaf_iterator* color_leaf_iterator_ptr
 ctypedef defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].leaf_bbx_iterator* color_leaf_bbx_iterator_ptr
-# OcTreeStamped iterator types
+ctypedef defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].tree_iterator* stamped_tree_iterator_ptr
 ctypedef defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_iterator* stamped_leaf_iterator_ptr
 ctypedef defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_bbx_iterator* stamped_leaf_bbx_iterator_ptr
 
-# Simplified iterator classes that work around Cython template limitations
+# ============================================================================
+# Iterator State Management - Unified abstraction for iterator operations
+# ============================================================================
+
+cdef struct IteratorState:
+    void* it_ptr
+    void* end_ptr
+    int tree_type
+    bint is_end
+
+cdef inline bint _iterator_at_end(IteratorState* state):
+    """Check if iterator has reached the end"""
+    if state.is_end:
+        return True
+    
+    if state.tree_type == 0:  # OcTree
+        if state.it_ptr == NULL or state.end_ptr == NULL:
+            return True
+        return deref(<tree_iterator_ptr>state.it_ptr) == deref(<tree_iterator_ptr>state.end_ptr)
+    elif state.tree_type == 1:  # ColorOcTree
+        if state.it_ptr == NULL or state.end_ptr == NULL:
+            return True
+        return deref(<color_tree_iterator_ptr>state.it_ptr) == deref(<color_tree_iterator_ptr>state.end_ptr)
+    elif state.tree_type == 2:  # OcTreeStamped
+        if state.it_ptr == NULL or state.end_ptr == NULL:
+            return True
+        return deref(<stamped_tree_iterator_ptr>state.it_ptr) == deref(<stamped_tree_iterator_ptr>state.end_ptr)
+    return True
+
+cdef inline void _iterator_get_coordinate(IteratorState* state, defs.point3d* out):
+    """Extract coordinate from current iterator position"""
+    if state.tree_type == 0:  # OcTree
+        out[0] = deref(<tree_iterator_ptr>state.it_ptr).getCoordinate()
+    elif state.tree_type == 1:  # ColorOcTree
+        out[0] = deref(<color_tree_iterator_ptr>state.it_ptr).getCoordinate()
+    elif state.tree_type == 2:  # OcTreeStamped
+        out[0] = deref(<stamped_tree_iterator_ptr>state.it_ptr).getCoordinate()
+
+cdef inline double _iterator_get_size(IteratorState* state):
+    """Extract size from current iterator position"""
+    if state.tree_type == 0:  # OcTree
+        return deref(<tree_iterator_ptr>state.it_ptr).getSize()
+    elif state.tree_type == 1:  # ColorOcTree
+        return deref(<color_tree_iterator_ptr>state.it_ptr).getSize()
+    elif state.tree_type == 2:  # OcTreeStamped
+        return deref(<stamped_tree_iterator_ptr>state.it_ptr).getSize()
+    return 0.0
+
+cdef inline int _iterator_get_depth(IteratorState* state):
+    """Extract depth from current iterator position"""
+    if state.tree_type == 0:  # OcTree
+        return <int?>deref(<tree_iterator_ptr>state.it_ptr).getDepth()
+    elif state.tree_type == 1:  # ColorOcTree
+        return <int?>deref(<color_tree_iterator_ptr>state.it_ptr).getDepth()
+    elif state.tree_type == 2:  # OcTreeStamped
+        return <int?>deref(<stamped_tree_iterator_ptr>state.it_ptr).getDepth()
+    return 0
+
+cdef inline void _iterator_advance(IteratorState* state):
+    """Advance iterator to next position"""
+    if state.tree_type == 0:  # OcTree
+        inc(deref(<tree_iterator_ptr>state.it_ptr))
+    elif state.tree_type == 1:  # ColorOcTree
+        inc(deref(<color_tree_iterator_ptr>state.it_ptr))
+    elif state.tree_type == 2:  # OcTreeStamped
+        inc(deref(<stamped_tree_iterator_ptr>state.it_ptr))
+
+# Note: Cleanup must be done in __dealloc__ with typed pointers, not through void* casts
+
+# ============================================================================
+# Leaf Iterator State Management
+# ============================================================================
+
+cdef struct LeafIteratorState:
+    void* it_ptr
+    void* end_ptr
+    int tree_type
+    bint is_end
+
+cdef inline bint _leaf_iterator_at_end(LeafIteratorState* state):
+    """Check if leaf iterator has reached the end"""
+    if state.is_end:
+        return True
+    
+    if state.tree_type == 0:  # OcTree
+        if state.it_ptr == NULL or state.end_ptr == NULL:
+            return True
+        return deref(<leaf_iterator_ptr>state.it_ptr) == deref(<leaf_iterator_ptr>state.end_ptr)
+    elif state.tree_type == 1:  # ColorOcTree
+        if state.it_ptr == NULL or state.end_ptr == NULL:
+            return True
+        return deref(<color_leaf_iterator_ptr>state.it_ptr) == deref(<color_leaf_iterator_ptr>state.end_ptr)
+    elif state.tree_type == 2:  # OcTreeStamped
+        if state.it_ptr == NULL or state.end_ptr == NULL:
+            return True
+        return deref(<stamped_leaf_iterator_ptr>state.it_ptr) == deref(<stamped_leaf_iterator_ptr>state.end_ptr)
+    return True
+
+cdef inline void _leaf_iterator_get_coordinate(LeafIteratorState* state, defs.point3d* out):
+    """Extract coordinate from current leaf iterator position"""
+    if state.tree_type == 0:  # OcTree
+        out[0] = deref(<leaf_iterator_ptr>state.it_ptr).getCoordinate()
+    elif state.tree_type == 1:  # ColorOcTree
+        out[0] = deref(<color_leaf_iterator_ptr>state.it_ptr).getCoordinate()
+    elif state.tree_type == 2:  # OcTreeStamped
+        out[0] = deref(<stamped_leaf_iterator_ptr>state.it_ptr).getCoordinate()
+
+cdef inline double _leaf_iterator_get_size(LeafIteratorState* state):
+    """Extract size from current leaf iterator position"""
+    if state.tree_type == 0:  # OcTree
+        return deref(<leaf_iterator_ptr>state.it_ptr).getSize()
+    elif state.tree_type == 1:  # ColorOcTree
+        return deref(<color_leaf_iterator_ptr>state.it_ptr).getSize()
+    elif state.tree_type == 2:  # OcTreeStamped
+        return deref(<stamped_leaf_iterator_ptr>state.it_ptr).getSize()
+    return 0.0
+
+cdef inline int _leaf_iterator_get_depth(LeafIteratorState* state):
+    """Extract depth from current leaf iterator position"""
+    if state.tree_type == 0:  # OcTree
+        return <int?>deref(<leaf_iterator_ptr>state.it_ptr).getDepth()
+    elif state.tree_type == 1:  # ColorOcTree
+        return <int?>deref(<color_leaf_iterator_ptr>state.it_ptr).getDepth()
+    elif state.tree_type == 2:  # OcTreeStamped
+        return <int?>deref(<stamped_leaf_iterator_ptr>state.it_ptr).getDepth()
+    return 0
+
+cdef inline void _leaf_iterator_advance(LeafIteratorState* state):
+    """Advance leaf iterator to next position"""
+    if state.tree_type == 0:  # OcTree
+        inc(deref(<leaf_iterator_ptr>state.it_ptr))
+    elif state.tree_type == 1:  # ColorOcTree
+        inc(deref(<color_leaf_iterator_ptr>state.it_ptr))
+    elif state.tree_type == 2:  # OcTreeStamped
+        inc(deref(<stamped_leaf_iterator_ptr>state.it_ptr))
+
+# Note: Cleanup must be done in __dealloc__ with typed pointers, not through void* casts
+
+# ============================================================================
+# Leaf BBX Iterator State Management (reuses LeafIteratorState structure)
+# ============================================================================
+
+cdef inline bint _leaf_bbx_iterator_at_end(LeafIteratorState* state):
+    """Check if leaf BBX iterator has reached the end"""
+    if state.is_end:
+        return True
+    
+    if state.tree_type == 0:  # OcTree
+        if state.it_ptr == NULL or state.end_ptr == NULL:
+            return True
+        return deref(<leaf_bbx_iterator_ptr>state.it_ptr) == deref(<leaf_bbx_iterator_ptr>state.end_ptr)
+    elif state.tree_type == 1:  # ColorOcTree
+        if state.it_ptr == NULL or state.end_ptr == NULL:
+            return True
+        return deref(<color_leaf_bbx_iterator_ptr>state.it_ptr) == deref(<color_leaf_bbx_iterator_ptr>state.end_ptr)
+    elif state.tree_type == 2:  # OcTreeStamped
+        if state.it_ptr == NULL or state.end_ptr == NULL:
+            return True
+        return deref(<stamped_leaf_bbx_iterator_ptr>state.it_ptr) == deref(<stamped_leaf_bbx_iterator_ptr>state.end_ptr)
+    return True
+
+cdef inline void _leaf_bbx_iterator_get_coordinate(LeafIteratorState* state, defs.point3d* out):
+    """Extract coordinate from current leaf BBX iterator position"""
+    if state.tree_type == 0:  # OcTree
+        out[0] = deref(<leaf_bbx_iterator_ptr>state.it_ptr).getCoordinate()
+    elif state.tree_type == 1:  # ColorOcTree
+        out[0] = deref(<color_leaf_bbx_iterator_ptr>state.it_ptr).getCoordinate()
+    elif state.tree_type == 2:  # OcTreeStamped
+        out[0] = deref(<stamped_leaf_bbx_iterator_ptr>state.it_ptr).getCoordinate()
+
+cdef inline double _leaf_bbx_iterator_get_size(LeafIteratorState* state):
+    """Extract size from current leaf BBX iterator position"""
+    if state.tree_type == 0:  # OcTree
+        return deref(<leaf_bbx_iterator_ptr>state.it_ptr).getSize()
+    elif state.tree_type == 1:  # ColorOcTree
+        return deref(<color_leaf_bbx_iterator_ptr>state.it_ptr).getSize()
+    elif state.tree_type == 2:  # OcTreeStamped
+        return deref(<stamped_leaf_bbx_iterator_ptr>state.it_ptr).getSize()
+    return 0.0
+
+cdef inline int _leaf_bbx_iterator_get_depth(LeafIteratorState* state):
+    """Extract depth from current leaf BBX iterator position"""
+    if state.tree_type == 0:  # OcTree
+        return <int?>deref(<leaf_bbx_iterator_ptr>state.it_ptr).getDepth()
+    elif state.tree_type == 1:  # ColorOcTree
+        return <int?>deref(<color_leaf_bbx_iterator_ptr>state.it_ptr).getDepth()
+    elif state.tree_type == 2:  # OcTreeStamped
+        return <int?>deref(<stamped_leaf_bbx_iterator_ptr>state.it_ptr).getDepth()
+    return 0
+
+cdef inline void _leaf_bbx_iterator_advance(LeafIteratorState* state):
+    """Advance leaf BBX iterator to next position"""
+    if state.tree_type == 0:  # OcTree
+        inc(deref(<leaf_bbx_iterator_ptr>state.it_ptr))
+    elif state.tree_type == 1:  # ColorOcTree
+        inc(deref(<color_leaf_bbx_iterator_ptr>state.it_ptr))
+    elif state.tree_type == 2:  # OcTreeStamped
+        inc(deref(<stamped_leaf_bbx_iterator_ptr>state.it_ptr))
+
+# Note: Cleanup must be done in __dealloc__ with typed pointers, not through void* casts
+
+# ============================================================================
+# Tree Iterator Implementation
+# ============================================================================
 
 cdef class SimpleTreeIterator:
     """
-    Robust wrapper around octomap C++ tree_iterator.
-    Captures per-step state so methods refer to the item yielded by the last next().
+    Unified tree iterator supporting OcTree, ColorOcTree, and OcTreeStamped.
+    
+    Uses a clean abstraction layer that encapsulates type-specific iterator
+    operations, making the code maintainable and extensible.
     """
-    cdef object _tree  # Python OcTree
-    cdef tree_iterator_ptr _it
-    cdef tree_iterator_ptr _end
-    cdef bint _is_end
-    # Snapshot state
+    cdef object _tree
+    cdef IteratorState _state
+    # Typed pointers for cleanup (must match _state.tree_type)
+    cdef tree_iterator_ptr _it_oc
+    cdef tree_iterator_ptr _end_oc
+    cdef color_tree_iterator_ptr _it_color
+    cdef color_tree_iterator_ptr _end_color
+    cdef stamped_tree_iterator_ptr _it_stamped
+    cdef stamped_tree_iterator_ptr _end_stamped
+    # Snapshot state for Python access
     cdef object _current_node
     cdef list _current_coord
     cdef double _current_size
     cdef int _current_depth
 
-    def __dealloc__(self):
-        if self._it != NULL:
-            del self._it
-            self._it = NULL
-        if self._end != NULL:
-            del self._end
-            self._end = NULL
-        self._tree = None
-        self._current_node = None
-
     def __cinit__(self):
         self._tree = None
-        self._it = NULL
-        self._end = NULL
-        self._is_end = True
+        self._state.it_ptr = NULL
+        self._state.end_ptr = NULL
+        self._state.tree_type = 0
+        self._state.is_end = True
+        self._it_oc = NULL
+        self._end_oc = NULL
+        self._it_color = NULL
+        self._end_color = NULL
+        self._it_stamped = NULL
+        self._end_stamped = NULL
         self._current_node = None
         self._current_coord = None
         self._current_size = 0.0
         self._current_depth = 0
 
+    def __dealloc__(self):
+        # Cleanup based on tree type using typed pointers
+        if self._state.tree_type == 0:  # OcTree
+            if self._it_oc != NULL:
+                del self._it_oc
+            if self._end_oc != NULL:
+                del self._end_oc
+        elif self._state.tree_type == 1:  # ColorOcTree
+            if self._it_color != NULL:
+                del self._it_color
+            if self._end_color != NULL:
+                del self._end_color
+        elif self._state.tree_type == 2:  # OcTreeStamped
+            if self._it_stamped != NULL:
+                del self._it_stamped
+            if self._end_stamped != NULL:
+                del self._end_stamped
+        self._tree = None
+        self._current_node = None
+
     def __init__(self, tree, maxDepth=0):
-        # Runtime import to avoid circular dependency
+        """Initialize iterator for the given tree type"""
         from .octree import OcTree
-        if tree is None or not isinstance(tree, OcTree):
-            self._is_end = True
-            return
-        # Access thisptr through the helper method (returns address as size_t)
-        cdef size_t ptr_addr = tree._get_ptr_addr()
-        cdef defs.OcTree* tree_ptr = <defs.OcTree*>ptr_addr
-        if tree_ptr == NULL:
-            self._is_end = True
-            return
-        self._tree = tree
+        from .color_octree import ColorOcTree
+        from .stamped_octree import OcTreeStamped
+        
+        cdef size_t ptr_addr
         cdef unsigned char depth = <unsigned char?>maxDepth
-        cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator tmp_it = tree_ptr.begin_tree(depth)
-        cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator tmp_end = tree_ptr.end_tree()
-        self._it = new defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator(tmp_it)
-        self._end = new defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator(tmp_end)
-        self._is_end = False
+        cdef defs.OcTree* tree_ptr_oc = NULL
+        cdef defs.ColorOcTree* tree_ptr_color = NULL
+        cdef defs.OcTreeStamped* tree_ptr_stamped = NULL
+        cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator tmp_it_oc
+        cdef defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator tmp_end_oc
+        cdef defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].tree_iterator tmp_it_color
+        cdef defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].tree_iterator tmp_end_color
+        cdef defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].tree_iterator tmp_it_stamped
+        cdef defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].tree_iterator tmp_end_stamped
+        
+        if tree is None:
+            self._state.is_end = True
+            return
+        
+        if isinstance(tree, OcTree):
+            ptr_addr = tree._get_ptr_addr()
+            tree_ptr_oc = <defs.OcTree*>ptr_addr
+            if tree_ptr_oc == NULL:
+                self._state.is_end = True
+                return
+            self._tree = tree
+            self._state.tree_type = 0
+            tmp_it_oc = tree_ptr_oc.begin_tree(depth)
+            tmp_end_oc = tree_ptr_oc.end_tree()
+            self._it_oc = new defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator(tmp_it_oc)
+            self._end_oc = new defs.OccupancyOcTreeBase[defs.OcTreeNode].tree_iterator(tmp_end_oc)
+            self._state.it_ptr = <void*>self._it_oc
+            self._state.end_ptr = <void*>self._end_oc
+            self._state.is_end = False
+        elif isinstance(tree, ColorOcTree):
+            ptr_addr = tree._get_ptr_addr()
+            tree_ptr_color = <defs.ColorOcTree*>ptr_addr
+            if tree_ptr_color == NULL:
+                self._state.is_end = True
+                return
+            self._tree = tree
+            self._state.tree_type = 1
+            tmp_it_color = tree_ptr_color.begin_tree(depth)
+            tmp_end_color = tree_ptr_color.end_tree()
+            self._it_color = new defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].tree_iterator(tmp_it_color)
+            self._end_color = new defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].tree_iterator(tmp_end_color)
+            self._state.it_ptr = <void*>self._it_color
+            self._state.end_ptr = <void*>self._end_color
+            self._state.is_end = False
+        elif isinstance(tree, OcTreeStamped):
+            ptr_addr = tree._get_ptr_addr()
+            tree_ptr_stamped = <defs.OcTreeStamped*>ptr_addr
+            if tree_ptr_stamped == NULL:
+                self._state.is_end = True
+                return
+            self._tree = tree
+            self._state.tree_type = 2
+            tmp_it_stamped = tree_ptr_stamped.begin_tree(depth)
+            tmp_end_stamped = tree_ptr_stamped.end_tree()
+            self._it_stamped = new defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].tree_iterator(tmp_it_stamped)
+            self._end_stamped = new defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].tree_iterator(tmp_end_stamped)
+            self._state.it_ptr = <void*>self._it_stamped
+            self._state.end_ptr = <void*>self._end_stamped
+            self._state.is_end = False
+        else:
+            self._state.is_end = True
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        if self._is_end or self._it == NULL or self._end == NULL:
+        """Advance iterator and return self"""
+        cdef defs.point3d p
+        cdef np.ndarray[DOUBLE_t, ndim=1] _pt
+        
+        if _iterator_at_end(&self._state):
+            self._state.is_end = True
             raise StopIteration
-        if deref(self._it) == deref(self._end):
-            self._is_end = True
-            raise StopIteration
-
-        # Snapshot current iterator state
-        cdef defs.point3d p = deref(self._it).getCoordinate()
+        
+        # Extract current state using unified abstraction
+        _iterator_get_coordinate(&self._state, &p)
         self._current_coord = [p.x(), p.y(), p.z()]
-        self._current_size = deref(self._it).getSize()
-        self._current_depth = <int?>deref(self._it).getDepth()
-
-        # Capture node by searching at current coordinate (robust approach)
-        cdef np.ndarray[DOUBLE_t, ndim=1] _pt = np.array(self._current_coord, dtype=np.float64)
-        self._current_node = self._tree.search(_pt)
-
+        self._current_size = _iterator_get_size(&self._state)
+        self._current_depth = _iterator_get_depth(&self._state)
+        
         # Advance iterator
-        inc(deref(self._it))
+        _iterator_advance(&self._state)
+        
+        # Capture node by searching at current coordinate
+        _pt = np.array(self._current_coord, dtype=np.float64)
+        self._current_node = self._tree.search(_pt)
+        
         return self
 
     def getCoordinate(self):
+        """Get coordinate of current iterator position"""
         if self._current_coord is not None:
             return self._current_coord
         return [0.0, 0.0, 0.0]
 
     def getSize(self):
+        """Get size of current node"""
         return self._current_size
 
     def getDepth(self):
+        """Get depth of current node"""
         return self._current_depth
+    
+    def _set_end(self):
+        """Set iterator to end state (internal use)"""
+        self._state.is_end = True
 
     def isLeaf(self):
+        """Check if current node is a leaf"""
         if self._current_node is None:
             return True
         return not self._tree.nodeHasChildren(self._current_node)
-
     
+    def _set_end(self):
+        """Set iterator to end state (internal use)"""
+        self._state.is_end = True
+
+# ============================================================================
+# Leaf Iterator Implementation
+# ============================================================================
+
 cdef class SimpleLeafIterator:
     """
-    Robust wrapper around octomap C++ leaf_iterator.
-    Works with OcTree, ColorOcTree, and OcTreeStamped.
-    Captures per-step state so methods refer to the item yielded by the last next().
+    Unified leaf iterator supporting OcTree, ColorOcTree, and OcTreeStamped.
+    
+    Uses the same clean abstraction pattern as SimpleTreeIterator.
     """
     cdef object _tree
-    cdef leaf_iterator_ptr _it
-    cdef leaf_iterator_ptr _end
-    cdef color_leaf_iterator_ptr _color_it
-    cdef color_leaf_iterator_ptr _color_end
-    cdef stamped_leaf_iterator_ptr _stamped_it
-    cdef stamped_leaf_iterator_ptr _stamped_end
-    cdef int _tree_type  # 0=OcTree, 1=ColorOcTree, 2=OcTreeStamped
-    cdef bint _is_end
-    # Snapshot state
+    cdef LeafIteratorState _state
+    # Typed pointers for cleanup (must match _state.tree_type)
+    cdef leaf_iterator_ptr _it_oc
+    cdef leaf_iterator_ptr _end_oc
+    cdef color_leaf_iterator_ptr _it_color
+    cdef color_leaf_iterator_ptr _end_color
+    cdef stamped_leaf_iterator_ptr _it_stamped
+    cdef stamped_leaf_iterator_ptr _end_stamped
+    # Snapshot state for Python access
     cdef object _current_node
     cdef list _current_coord
     cdef double _current_size
     cdef int _current_depth
 
-    def __dealloc__(self):
-        if self._it != NULL:
-            del self._it
-            self._it = NULL
-        if self._end != NULL:
-            del self._end
-            self._end = NULL
-        if self._color_it != NULL:
-            del self._color_it
-            self._color_it = NULL
-        if self._color_end != NULL:
-            del self._color_end
-            self._color_end = NULL
-        if self._stamped_it != NULL:
-            del self._stamped_it
-            self._stamped_it = NULL
-        if self._stamped_end != NULL:
-            del self._stamped_end
-            self._stamped_end = NULL
-        self._tree = None
-        self._current_node = None
-
     def __cinit__(self):
         self._tree = None
-        self._it = NULL
-        self._end = NULL
-        self._color_it = NULL
-        self._color_end = NULL
-        self._stamped_it = NULL
-        self._stamped_end = NULL
-        self._tree_type = 0
-        self._is_end = True
+        self._state.it_ptr = NULL
+        self._state.end_ptr = NULL
+        self._state.tree_type = 0
+        self._state.is_end = True
+        self._it_oc = NULL
+        self._end_oc = NULL
+        self._it_color = NULL
+        self._end_color = NULL
+        self._it_stamped = NULL
+        self._end_stamped = NULL
         self._current_node = None
         self._current_coord = None
         self._current_size = 0.0
         self._current_depth = 0
 
+    def __dealloc__(self):
+        # Cleanup based on tree type using typed pointers
+        if self._state.tree_type == 0:  # OcTree
+            if self._it_oc != NULL:
+                del self._it_oc
+            if self._end_oc != NULL:
+                del self._end_oc
+        elif self._state.tree_type == 1:  # ColorOcTree
+            if self._it_color != NULL:
+                del self._it_color
+            if self._end_color != NULL:
+                del self._end_color
+        elif self._state.tree_type == 2:  # OcTreeStamped
+            if self._it_stamped != NULL:
+                del self._it_stamped
+            if self._end_stamped != NULL:
+                del self._end_stamped
+        self._tree = None
+        self._current_node = None
+
     def __init__(self, tree, maxDepth=0):
-        # Runtime import to avoid circular dependency
+        """Initialize leaf iterator for the given tree type"""
         from .octree import OcTree
         from .color_octree import ColorOcTree
         from .stamped_octree import OcTreeStamped
         
-        # Declare all C variables at the top (required by Cython)
         cdef size_t ptr_addr
         cdef unsigned char depth = <unsigned char?>maxDepth
         cdef defs.OcTree* tree_ptr_oc = NULL
@@ -207,206 +495,175 @@ cdef class SimpleLeafIterator:
         cdef defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_iterator tmp_end_stamped
         
         if tree is None:
-            self._is_end = True
+            self._state.is_end = True
             return
         
         if isinstance(tree, OcTree):
-            # OcTree case
             ptr_addr = tree._get_ptr_addr()
             tree_ptr_oc = <defs.OcTree*>ptr_addr
             if tree_ptr_oc == NULL:
-                self._is_end = True
+                self._state.is_end = True
                 return
             self._tree = tree
-            self._tree_type = 0
+            self._state.tree_type = 0
             tmp_it_oc = tree_ptr_oc.begin_leafs(depth)
             tmp_end_oc = tree_ptr_oc.end_leafs()
-            self._it = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_iterator(tmp_it_oc)
-            self._end = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_iterator(tmp_end_oc)
-            self._is_end = False
+            self._it_oc = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_iterator(tmp_it_oc)
+            self._end_oc = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_iterator(tmp_end_oc)
+            self._state.it_ptr = <void*>self._it_oc
+            self._state.end_ptr = <void*>self._end_oc
+            self._state.is_end = False
         elif isinstance(tree, ColorOcTree):
-            # ColorOcTree case
             ptr_addr = tree._get_ptr_addr()
             tree_ptr_color = <defs.ColorOcTree*>ptr_addr
             if tree_ptr_color == NULL:
-                self._is_end = True
+                self._state.is_end = True
                 return
             self._tree = tree
-            self._tree_type = 1
+            self._state.tree_type = 1
             tmp_it_color = tree_ptr_color.begin_leafs(depth)
             tmp_end_color = tree_ptr_color.end_leafs()
-            self._color_it = new defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].leaf_iterator(tmp_it_color)
-            self._color_end = new defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].leaf_iterator(tmp_end_color)
-            self._is_end = False
+            self._it_color = new defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].leaf_iterator(tmp_it_color)
+            self._end_color = new defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].leaf_iterator(tmp_end_color)
+            self._state.it_ptr = <void*>self._it_color
+            self._state.end_ptr = <void*>self._end_color
+            self._state.is_end = False
         elif isinstance(tree, OcTreeStamped):
-            # OcTreeStamped case
             ptr_addr = tree._get_ptr_addr()
             tree_ptr_stamped = <defs.OcTreeStamped*>ptr_addr
             if tree_ptr_stamped == NULL:
-                self._is_end = True
+                self._state.is_end = True
                 return
             self._tree = tree
-            self._tree_type = 2
+            self._state.tree_type = 2
             tmp_it_stamped = tree_ptr_stamped.begin_leafs(depth)
             tmp_end_stamped = tree_ptr_stamped.end_leafs()
-            self._stamped_it = new defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_iterator(tmp_it_stamped)
-            self._stamped_end = new defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_iterator(tmp_end_stamped)
-            self._is_end = False
+            self._it_stamped = new defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_iterator(tmp_it_stamped)
+            self._end_stamped = new defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_iterator(tmp_end_stamped)
+            self._state.it_ptr = <void*>self._it_stamped
+            self._state.end_ptr = <void*>self._end_stamped
+            self._state.is_end = False
         else:
-            self._is_end = True
+            self._state.is_end = True
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        # Declare all C variables at the top (required by Cython)
+        """Advance iterator and return self"""
         cdef defs.point3d p
         cdef np.ndarray[DOUBLE_t, ndim=1] _pt
         
-        if self._is_end:
+        if _leaf_iterator_at_end(&self._state):
+            self._state.is_end = True
             raise StopIteration
         
-        if self._tree_type == 1:  # ColorOcTree
-            if self._color_it == NULL or self._color_end == NULL:
-                raise StopIteration
-            if deref(self._color_it) == deref(self._color_end):
-                self._is_end = True
-                raise StopIteration
-            
-            # Snapshot the current state
-            p = deref(self._color_it).getCoordinate()
-            self._current_coord = [p.x(), p.y(), p.z()]
-            self._current_size = deref(self._color_it).getSize()
-            self._current_depth = <int?>deref(self._color_it).getDepth()
-            
-            # Advance
-            inc(deref(self._color_it))
-        elif self._tree_type == 2:  # OcTreeStamped
-            if self._stamped_it == NULL or self._stamped_end == NULL:
-                raise StopIteration
-            if deref(self._stamped_it) == deref(self._stamped_end):
-                self._is_end = True
-                raise StopIteration
-            
-            # Snapshot the current state
-            p = deref(self._stamped_it).getCoordinate()
-            self._current_coord = [p.x(), p.y(), p.z()]
-            self._current_size = deref(self._stamped_it).getSize()
-            self._current_depth = <int?>deref(self._stamped_it).getDepth()
-            
-            # Advance
-            inc(deref(self._stamped_it))
-        else:  # OcTree (default)
-            if self._it == NULL or self._end == NULL:
-                raise StopIteration
-            if deref(self._it) == deref(self._end):
-                self._is_end = True
-                raise StopIteration
-            
-            # Snapshot the current state
-            p = deref(self._it).getCoordinate()
-            self._current_coord = [p.x(), p.y(), p.z()]
-            self._current_size = deref(self._it).getSize()
-            self._current_depth = <int?>deref(self._it).getDepth()
-            
-            # Advance
-            inc(deref(self._it))
+        # Extract current state using unified abstraction
+        _leaf_iterator_get_coordinate(&self._state, &p)
+        self._current_coord = [p.x(), p.y(), p.z()]
+        self._current_size = _leaf_iterator_get_size(&self._state)
+        self._current_depth = _leaf_iterator_get_depth(&self._state)
         
-        # Capture node by searching at current coordinate (robust approach)
+        # Advance iterator
+        _leaf_iterator_advance(&self._state)
+        
+        # Capture node by searching at current coordinate
         _pt = np.array(self._current_coord, dtype=np.float64)
         self._current_node = self._tree.search(_pt)
         
         return self
 
     def getCoordinate(self):
+        """Get coordinate of current iterator position"""
         if self._current_coord is not None:
             return self._current_coord
         return [0.0, 0.0, 0.0]
 
     def getSize(self):
+        """Get size of current node"""
         return self._current_size
 
     def getDepth(self):
+        """Get depth of current node"""
         return self._current_depth
+    
+    def _set_end(self):
+        """Set iterator to end state (internal use)"""
+        self._state.is_end = True
 
-    def isLeaf(self):
-        """Check if current node is a leaf"""
-        if self._current_node is None:
-            return True
-        return not self._tree.nodeHasChildren(self._current_node)
-
-    @property
-    def current_node(self):
-        return self._current_node
+# ============================================================================
+# Leaf BBX Iterator Implementation
+# ============================================================================
 
 cdef class SimpleLeafBBXIterator:
     """
-    Robust wrapper around octomap C++ leaf_bbx_iterator.
-    Works with OcTree, ColorOcTree, and OcTreeStamped.
-    Captures per-step state so methods refer to the item yielded by the last next().
+    Unified leaf bounding box iterator supporting OcTree, ColorOcTree, and OcTreeStamped.
+    
+    Uses the same clean abstraction pattern with additional bounding box filtering.
     """
     cdef object _tree
-    cdef leaf_bbx_iterator_ptr _it
-    cdef leaf_bbx_iterator_ptr _end
-    cdef color_leaf_bbx_iterator_ptr _color_it
-    cdef color_leaf_bbx_iterator_ptr _color_end
-    cdef stamped_leaf_bbx_iterator_ptr _stamped_it
-    cdef stamped_leaf_bbx_iterator_ptr _stamped_end
-    cdef int _tree_type  # 0=OcTree, 1=ColorOcTree, 2=OcTreeStamped
-    cdef bint _is_end
-    # Snapshot state
+    cdef LeafIteratorState _state
+    # Typed pointers for cleanup (must match _state.tree_type)
+    cdef leaf_bbx_iterator_ptr _it_oc
+    cdef leaf_bbx_iterator_ptr _end_oc
+    cdef color_leaf_bbx_iterator_ptr _it_color
+    cdef color_leaf_bbx_iterator_ptr _end_color
+    cdef stamped_leaf_bbx_iterator_ptr _it_stamped
+    cdef stamped_leaf_bbx_iterator_ptr _end_stamped
+    # Bounding box (use object instead of buffer type for class attributes)
+    cdef object _bbx_min
+    cdef object _bbx_max
+    # Snapshot state for Python access
     cdef object _current_node
     cdef list _current_coord
     cdef double _current_size
     cdef int _current_depth
 
-    def __dealloc__(self):
-        if self._it != NULL:
-            del self._it
-            self._it = NULL
-        if self._end != NULL:
-            del self._end
-            self._end = NULL
-        if self._color_it != NULL:
-            del self._color_it
-            self._color_it = NULL
-        if self._color_end != NULL:
-            del self._color_end
-            self._color_end = NULL
-        if self._stamped_it != NULL:
-            del self._stamped_it
-            self._stamped_it = NULL
-        if self._stamped_end != NULL:
-            del self._stamped_end
-            self._stamped_end = NULL
-        self._tree = None
-        self._current_node = None
-
     def __cinit__(self):
         self._tree = None
-        self._it = NULL
-        self._end = NULL
-        self._color_it = NULL
-        self._color_end = NULL
-        self._stamped_it = NULL
-        self._stamped_end = NULL
-        self._tree_type = 0
-        self._is_end = True
+        self._state.it_ptr = NULL
+        self._state.end_ptr = NULL
+        self._state.tree_type = 0
+        self._state.is_end = True
+        self._it_oc = NULL
+        self._end_oc = NULL
+        self._it_color = NULL
+        self._end_color = NULL
+        self._it_stamped = NULL
+        self._end_stamped = NULL
         self._current_node = None
         self._current_coord = None
         self._current_size = 0.0
         self._current_depth = 0
 
-    def __init__(self, tree, np.ndarray[DOUBLE_t, ndim=1] bbx_min, np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):
-        # Runtime import to avoid circular dependency
+    def __dealloc__(self):
+        # Cleanup based on tree type using typed pointers
+        if self._state.tree_type == 0:  # OcTree
+            if self._it_oc != NULL:
+                del self._it_oc
+            if self._end_oc != NULL:
+                del self._end_oc
+        elif self._state.tree_type == 1:  # ColorOcTree
+            if self._it_color != NULL:
+                del self._it_color
+            if self._end_color != NULL:
+                del self._end_color
+        elif self._state.tree_type == 2:  # OcTreeStamped
+            if self._it_stamped != NULL:
+                del self._it_stamped
+            if self._end_stamped != NULL:
+                del self._end_stamped
+        self._tree = None
+        self._current_node = None
+
+    def __init__(self, tree, np.ndarray[DOUBLE_t, ndim=1] bbx_min, 
+                 np.ndarray[DOUBLE_t, ndim=1] bbx_max, maxDepth=0):
+        """Initialize leaf BBX iterator for the given tree type"""
         from .octree import OcTree
         from .color_octree import ColorOcTree
         from .stamped_octree import OcTreeStamped
         
-        # Declare all C variables at the top (required by Cython)
         cdef size_t ptr_addr
-        cdef defs.point3d pmin = defs.point3d(<float?>bbx_min[0], <float?>bbx_min[1], <float?>bbx_min[2])
-        cdef defs.point3d pmax = defs.point3d(<float?>bbx_max[0], <float?>bbx_max[1], <float?>bbx_max[2])
         cdef unsigned char depth = <unsigned char?>maxDepth
         cdef defs.OcTree* tree_ptr_oc = NULL
         cdef defs.ColorOcTree* tree_ptr_color = NULL
@@ -417,142 +674,105 @@ cdef class SimpleLeafBBXIterator:
         cdef defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].leaf_bbx_iterator tmp_end_color
         cdef defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_bbx_iterator tmp_it_stamped
         cdef defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_bbx_iterator tmp_end_stamped
+        cdef defs.point3d min_pt = defs.point3d(bbx_min[0], bbx_min[1], bbx_min[2])
+        cdef defs.point3d max_pt = defs.point3d(bbx_max[0], bbx_max[1], bbx_max[2])
+        
+        self._bbx_min = bbx_min.copy()
+        self._bbx_max = bbx_max.copy()
         
         if tree is None:
-            self._is_end = True
+            self._state.is_end = True
             return
         
         if isinstance(tree, OcTree):
-            # OcTree case
             ptr_addr = tree._get_ptr_addr()
             tree_ptr_oc = <defs.OcTree*>ptr_addr
             if tree_ptr_oc == NULL:
-                self._is_end = True
+                self._state.is_end = True
                 return
             self._tree = tree
-            self._tree_type = 0
-            tmp_it_oc = tree_ptr_oc.begin_leafs_bbx(pmin, pmax, depth)
+            self._state.tree_type = 0
+            tmp_it_oc = tree_ptr_oc.begin_leafs_bbx(min_pt, max_pt, depth)
             tmp_end_oc = tree_ptr_oc.end_leafs_bbx()
-            self._it = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator(tmp_it_oc)
-            self._end = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator(tmp_end_oc)
-            self._is_end = False
+            self._it_oc = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator(tmp_it_oc)
+            self._end_oc = new defs.OccupancyOcTreeBase[defs.OcTreeNode].leaf_bbx_iterator(tmp_end_oc)
+            self._state.it_ptr = <void*>self._it_oc
+            self._state.end_ptr = <void*>self._end_oc
+            self._state.is_end = False
         elif isinstance(tree, ColorOcTree):
-            # ColorOcTree case
             ptr_addr = tree._get_ptr_addr()
             tree_ptr_color = <defs.ColorOcTree*>ptr_addr
             if tree_ptr_color == NULL:
-                self._is_end = True
+                self._state.is_end = True
                 return
             self._tree = tree
-            self._tree_type = 1
-            tmp_it_color = tree_ptr_color.begin_leafs_bbx(pmin, pmax, depth)
+            self._state.tree_type = 1
+            tmp_it_color = tree_ptr_color.begin_leafs_bbx(min_pt, max_pt, depth)
             tmp_end_color = tree_ptr_color.end_leafs_bbx()
-            self._color_it = new defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].leaf_bbx_iterator(tmp_it_color)
-            self._color_end = new defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].leaf_bbx_iterator(tmp_end_color)
-            self._is_end = False
+            self._it_color = new defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].leaf_bbx_iterator(tmp_it_color)
+            self._end_color = new defs.OccupancyOcTreeBase[defs.ColorOcTreeNode].leaf_bbx_iterator(tmp_end_color)
+            self._state.it_ptr = <void*>self._it_color
+            self._state.end_ptr = <void*>self._end_color
+            self._state.is_end = False
         elif isinstance(tree, OcTreeStamped):
-            # OcTreeStamped case
             ptr_addr = tree._get_ptr_addr()
             tree_ptr_stamped = <defs.OcTreeStamped*>ptr_addr
             if tree_ptr_stamped == NULL:
-                self._is_end = True
+                self._state.is_end = True
                 return
             self._tree = tree
-            self._tree_type = 2
-            tmp_it_stamped = tree_ptr_stamped.begin_leafs_bbx(pmin, pmax, depth)
+            self._state.tree_type = 2
+            tmp_it_stamped = tree_ptr_stamped.begin_leafs_bbx(min_pt, max_pt, depth)
             tmp_end_stamped = tree_ptr_stamped.end_leafs_bbx()
-            self._stamped_it = new defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_bbx_iterator(tmp_it_stamped)
-            self._stamped_end = new defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_bbx_iterator(tmp_end_stamped)
-            self._is_end = False
+            self._it_stamped = new defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_bbx_iterator(tmp_it_stamped)
+            self._end_stamped = new defs.OccupancyOcTreeBase[defs.OcTreeNodeStamped].leaf_bbx_iterator(tmp_end_stamped)
+            self._state.it_ptr = <void*>self._it_stamped
+            self._state.end_ptr = <void*>self._end_stamped
+            self._state.is_end = False
         else:
-            self._is_end = True
+            self._state.is_end = True
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        # Declare all C variables at the top (required by Cython)
+        """Advance iterator and return self"""
         cdef defs.point3d p
         cdef np.ndarray[DOUBLE_t, ndim=1] _pt
         
-        if self._is_end:
+        if _leaf_bbx_iterator_at_end(&self._state):
+            self._state.is_end = True
             raise StopIteration
         
-        if self._tree_type == 1:  # ColorOcTree
-            if self._color_it == NULL or self._color_end == NULL:
-                raise StopIteration
-            if deref(self._color_it) == deref(self._color_end):
-                self._is_end = True
-                raise StopIteration
-            
-            # Snapshot
-            p = deref(self._color_it).getCoordinate()
-            self._current_coord = [p.x(), p.y(), p.z()]
-            self._current_size = deref(self._color_it).getSize()
-            self._current_depth = <int?>deref(self._color_it).getDepth()
-            
-            # Advance
-            inc(deref(self._color_it))
-        elif self._tree_type == 2:  # OcTreeStamped
-            if self._stamped_it == NULL or self._stamped_end == NULL:
-                raise StopIteration
-            if deref(self._stamped_it) == deref(self._stamped_end):
-                self._is_end = True
-                raise StopIteration
-            
-            # Snapshot
-            p = deref(self._stamped_it).getCoordinate()
-            self._current_coord = [p.x(), p.y(), p.z()]
-            self._current_size = deref(self._stamped_it).getSize()
-            self._current_depth = <int?>deref(self._stamped_it).getDepth()
-            
-            # Advance
-            inc(deref(self._stamped_it))
-        else:  # OcTree (default)
-            if self._it == NULL or self._end == NULL:
-                raise StopIteration
-            if deref(self._it) == deref(self._end):
-                self._is_end = True
-                raise StopIteration
-            
-            # Snapshot
-            p = deref(self._it).getCoordinate()
-            self._current_coord = [p.x(), p.y(), p.z()]
-            self._current_size = deref(self._it).getSize()
-            self._current_depth = <int?>deref(self._it).getDepth()
-            
-            # Advance
-            inc(deref(self._it))
+        # Extract current state using unified abstraction
+        _leaf_bbx_iterator_get_coordinate(&self._state, &p)
+        self._current_coord = [p.x(), p.y(), p.z()]
+        self._current_size = _leaf_bbx_iterator_get_size(&self._state)
+        self._current_depth = _leaf_bbx_iterator_get_depth(&self._state)
         
-        # Capture node by searching at current coordinate (robust approach)
+        # Advance iterator
+        _leaf_bbx_iterator_advance(&self._state)
+        
+        # Capture node by searching at current coordinate
         _pt = np.array(self._current_coord, dtype=np.float64)
         self._current_node = self._tree.search(_pt)
         
         return self
 
     def getCoordinate(self):
+        """Get coordinate of current iterator position"""
         if self._current_coord is not None:
             return self._current_coord
         return [0.0, 0.0, 0.0]
 
     def getSize(self):
+        """Get size of current node"""
         return self._current_size
 
     def getDepth(self):
+        """Get depth of current node"""
         return self._current_depth
-
-    def isLeaf(self):
-        """Check if current node is a leaf"""
-        if self._current_node is None:
-            return True
-        return not self._tree.nodeHasChildren(self._current_node)
-
-    @property
-    def current_node(self):
-        return self._current_node
-
-    @property
-    def is_end(self):
-        return self._is_end
-
-
+    
+    def _set_end(self):
+        """Set iterator to end state (internal use)"""
+        self._state.is_end = True

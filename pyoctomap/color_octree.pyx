@@ -17,13 +17,8 @@ ctypedef np.float64_t DOUBLE_t
 # Fix NumPy API compatibility
 np.import_array()
 
-# Define NullPointerException locally (shared exception class)
-class NullPointerException(Exception):
-    """
-    Null pointer exception
-    """
-    def __init__(self):
-        pass
+# Import NullPointerException from octree_base
+from .octree_base import NullPointerException
 
 # OcTreeKey will be imported at runtime from octomap module
 # We'll use a runtime import for OcTreeKey since it's a Python class
@@ -136,6 +131,10 @@ cdef class ColorOcTreeNode:
             self.thisptr.setLogOdds(l)
         else:
             raise NullPointerException
+    
+    def _get_ptr_addr(self):
+        """Helper method to get the C++ pointer address (for use in other modules)"""
+        return <size_t>self.thisptr
 
 # ColorOcTree wrapper class
 cdef class ColorOcTree:
@@ -413,22 +412,74 @@ cdef class ColorOcTree:
                                       <double?>maxrange, bool(lazy_eval), bool(discretize))
     
     def isNodeOccupied(self, node):
+        """
+        Check if a node is occupied. Accepts ColorOcTreeNode or iterator.
+        """
+        cdef defs.point3d search_point
+        cdef defs.ColorOcTreeNode* found_node
+        cdef defs.ColorOcTreeNode* node_ptr
+        cdef size_t ptr_addr
+        cdef bint result
+        # Runtime import to avoid circular dependency
+        from .octree_iterators import SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator
+        
         if isinstance(node, ColorOcTreeNode):
-            if (<ColorOcTreeNode>node).thisptr:
-                return self.thisptr.isNodeOccupied(deref((<ColorOcTreeNode>node).thisptr))
+            # Access pointer through helper method that returns address
+            ptr_addr = node._get_ptr_addr()
+            node_ptr = <defs.ColorOcTreeNode*>ptr_addr
+            if node_ptr != NULL:
+                return self.thisptr.isNodeOccupied(deref(node_ptr))
             else:
                 raise NullPointerException
+        elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):
+            # Handle iterator case - use coordinate to search for the node
+            try:
+                coord = node.getCoordinate()
+                found_node = self.thisptr.search(<double>coord[0], <double>coord[1], <double>coord[2], <unsigned int>0)
+                if found_node != NULL:
+                    result = self.thisptr.isNodeOccupied(deref(found_node))
+                    return result
+                else:
+                    return False
+            except Exception:
+                return False
         else:
-            raise TypeError(f"Expected ColorOcTreeNode, got {type(node)}")
+            raise TypeError(f"Expected ColorOcTreeNode or iterator, got {type(node)}")
     
     def isNodeAtThreshold(self, node):
+        """
+        Check if a node is at occupancy threshold. Accepts ColorOcTreeNode or iterator.
+        """
+        cdef defs.point3d search_point
+        cdef defs.ColorOcTreeNode* found_node
+        cdef defs.ColorOcTreeNode* node_ptr
+        cdef size_t ptr_addr
+        cdef bint result
+        # Runtime import to avoid circular dependency
+        from .octree_iterators import SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator
+        
         if isinstance(node, ColorOcTreeNode):
-            if (<ColorOcTreeNode>node).thisptr:
-                return self.thisptr.isNodeAtThreshold(deref((<ColorOcTreeNode>node).thisptr))
+            # Access pointer through helper method that returns address
+            ptr_addr = node._get_ptr_addr()
+            node_ptr = <defs.ColorOcTreeNode*>ptr_addr
+            if node_ptr != NULL:
+                return self.thisptr.isNodeAtThreshold(deref(node_ptr))
             else:
                 raise NullPointerException
+        elif isinstance(node, (SimpleTreeIterator, SimpleLeafIterator, SimpleLeafBBXIterator)):
+            # Handle iterator case - use coordinate to search for the node
+            try:
+                coord = node.getCoordinate()
+                found_node = self.thisptr.search(<double>coord[0], <double>coord[1], <double>coord[2], <unsigned int>0)
+                if found_node != NULL:
+                    result = self.thisptr.isNodeAtThreshold(deref(found_node))
+                    return result
+                else:
+                    return False
+            except Exception:
+                return False
         else:
-            raise TypeError(f"Expected ColorOcTreeNode, got {type(node)}")
+            raise TypeError(f"Expected ColorOcTreeNode or iterator, got {type(node)}")
     
     def castRay(self, np.ndarray[DOUBLE_t, ndim=1] origin,
                 np.ndarray[DOUBLE_t, ndim=1] direction,
@@ -609,9 +660,153 @@ cdef class ColorOcTree:
     def setProbMiss(self, double prob):
         self.thisptr.setProbMiss(prob)
     
+    def getClampingThresMax(self):
+        return self.thisptr.getClampingThresMax()
+    
+    def getClampingThresMaxLog(self):
+        return self.thisptr.getClampingThresMaxLog()
+    
+    def getClampingThresMin(self):
+        return self.thisptr.getClampingThresMin()
+    
+    def getClampingThresMinLog(self):
+        return self.thisptr.getClampingThresMinLog()
+    
+    def setClampingThresMax(self, double thresProb):
+        self.thisptr.setClampingThresMax(thresProb)
+    
+    def setClampingThresMin(self, double thresProb):
+        self.thisptr.setClampingThresMin(thresProb)
+    
+    def prune(self):
+        """Prune the tree by removing collapsible nodes"""
+        self.thisptr.prune()
+    
+    def expand(self):
+        """Expand all nodes to maximum depth"""
+        self.thisptr.expand()
+    
+    def useBBXLimit(self, enable):
+        """Enable or disable bounding box limit for queries"""
+        self.thisptr.useBBXLimit(bool(enable))
+    
+    def expandNode(self, node):
+        """Expand a node to create children"""
+        if isinstance(node, ColorOcTreeNode):
+            if (<ColorOcTreeNode>node).thisptr:
+                self.thisptr.expandNode((<ColorOcTreeNode>node).thisptr)
+            else:
+                raise NullPointerException
+        else:
+            raise TypeError("Expected ColorOcTreeNode")
+    
+    def createNodeChild(self, node, int idx):
+        """Create a child node at the specified index"""
+        child = ColorOcTreeNode()
+        if isinstance(node, ColorOcTreeNode):
+            if (<ColorOcTreeNode>node).thisptr:
+                child.thisptr = self.thisptr.createNodeChild((<ColorOcTreeNode>node).thisptr, idx)
+                return child
+            else:
+                raise NullPointerException
+        else:
+            raise TypeError("Expected ColorOcTreeNode")
+    
+    def deleteNodeChild(self, node, int idx):
+        """Delete a child node at the specified index"""
+        if isinstance(node, ColorOcTreeNode):
+            if (<ColorOcTreeNode>node).thisptr:
+                self.thisptr.deleteNodeChild((<ColorOcTreeNode>node).thisptr, idx)
+            else:
+                raise NullPointerException
+        else:
+            raise TypeError("Expected ColorOcTreeNode")
+    
+    def getLabels(self, np.ndarray[DOUBLE_t, ndim=2] points):
+        """
+        Get occupancy labels for a set of points.
+        Returns: -1 for unknown, 0 for free, 1 for occupied
+        """
+        cdef int i
+        cdef np.ndarray[DOUBLE_t, ndim=1] pt
+        # Runtime import to avoid circular dependency
+        from .octomap import OcTreeKey
+        cdef object key_obj
+        cdef object node_obj
+        # -1: unknown, 0: empty, 1: occupied
+        cdef np.ndarray[np.int32_t, ndim=1] labels = \
+            np.full((points.shape[0],), -1, dtype=np.int32)
+        for i, pt in enumerate(points):
+            key = self.coordToKey(pt)
+            node = self.search(key)
+            if node is None:
+                labels[i] = -1
+            else:
+                try:
+                    labels[i] = 1 if self.isNodeOccupied(node) else 0
+                except Exception:
+                    labels[i] = -1
+        return labels
+    
+    def extractPointCloud(self):
+        """
+        Extract point clouds for occupied and free voxels.
+        Returns: (occupied_points, empty_points) as numpy arrays
+        """
+        cdef float resolution = self.getResolution()
+        cdef list occupied = []
+        cdef list empty = []
+        cdef object it
+        cdef float size
+        cdef int is_occupied
+        cdef np.ndarray[DOUBLE_t, ndim=1] center
+        cdef np.ndarray[DOUBLE_t, ndim=1] origin
+        cdef np.ndarray[np.int64_t, ndim=2] indices
+        cdef np.ndarray[DOUBLE_t, ndim=2] points
+        cdef np.ndarray keep
+        cdef int dimension
+        for it in self.begin_leafs():
+            # Try to get occupancy status from the iterator
+            try:
+                is_occupied = self.isNodeOccupied(it)
+            except:
+                # Fallback: assume occupied if we can't determine status
+                is_occupied = True
+            size = it.getSize()
+            center = np.array(it.getCoordinate(), dtype=np.float64)
+            
+            # Limit dimension to prevent memory issues
+            raw_dimension = max(1, round(it.getSize() / resolution))
+            dimension = min(raw_dimension, 100)  # Cap at 100 to prevent memory issues
+            origin = center - (dimension / 2 - 0.5) * resolution
+            indices = np.column_stack(np.nonzero(np.ones((dimension, dimension, dimension))))
+            points = origin + indices * np.array(resolution)
+            
+            if is_occupied:
+                occupied.append(points)
+            else:
+                empty.append(points)
+        
+        cdef np.ndarray[DOUBLE_t, ndim=2] occupied_arr
+        cdef np.ndarray[DOUBLE_t, ndim=2] empty_arr
+        if len(occupied) == 0:
+            occupied_arr = np.zeros((0, 3), dtype=float)
+        else:
+            occupied_arr = np.concatenate(occupied, axis=0)
+        if len(empty) == 0:
+            empty_arr = np.zeros((0, 3), dtype=float)
+        else:
+            empty_arr = np.concatenate(empty, axis=0)
+        return occupied_arr, empty_arr
+    
     # Helper method to get the C++ pointer address (for use in other modules)
     cpdef size_t _get_ptr_addr(self):
         return <size_t>self.thisptr
+    
+    def begin_tree(self, maxDepth=0):
+        """Return a simplified tree iterator"""
+        from .octree_iterators import SimpleTreeIterator
+        return SimpleTreeIterator(self, maxDepth)
     
     def begin_leafs(self, maxDepth=0):
         """Return a simplified leaf iterator"""
@@ -622,4 +817,25 @@ cdef class ColorOcTree:
         """Return a simplified leaf iterator for a bounding box"""
         from .octree_iterators import SimpleLeafBBXIterator
         return SimpleLeafBBXIterator(self, bbx_min, bbx_max, maxDepth)
+    
+    def end_tree(self):
+        """Return an end iterator for tree traversal"""
+        from .octree_iterators import SimpleTreeIterator
+        itr = SimpleTreeIterator(self)
+        itr._set_end()
+        return itr
+    
+    def end_leafs(self):
+        """Return an end iterator for leaf traversal"""
+        from .octree_iterators import SimpleLeafIterator
+        itr = SimpleLeafIterator(self)
+        itr._set_end()
+        return itr
+    
+    def end_leafs_bbx(self):
+        """Return an end iterator for leaf bounding box traversal"""
+        from .octree_iterators import SimpleLeafBBXIterator
+        itr = SimpleLeafBBXIterator(self, np.array([0.0, 0.0, 0.0], dtype=np.float64), np.array([1.0, 1.0, 1.0], dtype=np.float64))
+        itr._set_end()
+        return itr
 

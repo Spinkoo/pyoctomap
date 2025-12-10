@@ -7,7 +7,6 @@
 from libcpp.string cimport string
 from libcpp cimport bool as cppbool
 from libc.stddef cimport size_t
-from cython.operator cimport dereference as deref
 cimport octomap_defs as defs
 cimport pyoctomap.octree_base as octree_base
 import numpy as np
@@ -17,13 +16,8 @@ ctypedef np.float64_t DOUBLE_t
 # Fix NumPy API compatibility
 np.import_array()
 
-# Define NullPointerException locally (shared exception class)
-class NullPointerException(Exception):
-    """
-    Null pointer exception
-    """
-    def __init__(self):
-        pass
+# Import NullPointerException from octree_base
+from .octree_base import NullPointerException
 
 # OcTreeNodeStamped wrapper class
 cdef class OcTreeNodeStamped:
