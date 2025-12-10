@@ -16,13 +16,8 @@ ctypedef np.float64_t DOUBLE_t
 # Fix NumPy API compatibility
 np.import_array()
 
-# Define NullPointerException locally (shared exception class)
-class NullPointerException(Exception):
-    """
-    Null pointer exception
-    """
-    def __init__(self):
-        pass
+# Import NullPointerException from octree_base
+from .octree_base import NullPointerException
 
 # CountingOcTreeNode wrapper class
 cdef class CountingOcTreeNode:

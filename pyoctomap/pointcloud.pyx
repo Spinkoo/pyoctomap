@@ -15,13 +15,8 @@ ctypedef np.float64_t DOUBLE_t
 # Fix NumPy API compatibility
 np.import_array()
 
-# Define NullPointerException locally (shared exception class)
-class NullPointerException(Exception):
-    """
-    Null pointer exception
-    """
-    def __init__(self):
-        pass
+# Import NullPointerException from octree_base
+from .octree_base import NullPointerException
 
 # Pointcloud wrapper class
 cdef class Pointcloud:
@@ -86,7 +81,7 @@ cdef class Pointcloud:
             if idx >= size:
                 raise IndexError(f"Index {i} out of range for pointcloud of size {size}")
         
-        cdef defs.point3d p = deref(self.thisptr)[idx]
+        cdef defs.point3d p = (deref(self.thisptr))[idx]
         return np.array([p.x(), p.y(), p.z()], dtype=np.float64)
     
     def __setitem__(self, i, value):
@@ -115,9 +110,7 @@ cdef class Pointcloud:
         if arr.shape != (3,):
             raise ValueError("Expected array of shape (3,)")
         # Assign directly to operator[] result (which returns a reference)
-        # Cython doesn't allow declaring references, so we assign directly
-        # Use point3d typedef (cast from Vector3)
-        deref(self.thisptr)[idx] = <defs.point3d>defs.Vector3(<float>arr[0], <float>arr[1], <float>arr[2])
+        (deref(self.thisptr))[idx] = defs.point3d(<float>arr[0], <float>arr[1], <float>arr[2])
     
     def push_back(self, x, y=None, z=None):
         """
@@ -300,7 +293,7 @@ cdef class Pointcloud:
         cdef size_t i
         cdef defs.point3d p
         for i in range(n):
-            p = deref(self.thisptr)[i]
+            p = (deref(self.thisptr))[i]
             result[i, 0] = p.x()
             result[i, 1] = p.y()
             result[i, 2] = p.z()

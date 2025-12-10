@@ -6,12 +6,9 @@
 
 from libcpp.string cimport string
 from libcpp cimport bool as cppbool
-from libc.string cimport memcpy
 from libc.stddef cimport size_t
-from libc.math cimport sqrt, ceil, fmax
-from cython.operator cimport dereference as deref, preincrement as inc, address
+from cython.operator cimport dereference as deref, preincrement as inc
 cimport octomap_defs as defs
-cimport dynamicEDT3D_defs as edt
 import numpy as np
 cimport numpy as np
 # Note: DOUBLE_t is declared in octree.pxd, not here
@@ -428,20 +425,19 @@ cdef class OcTree:
     def end_tree(self):
         """Return an end iterator for tree traversal"""
         itr = SimpleTreeIterator(self)
-        itr._is_end = True
+        itr._set_end()
         return itr
 
     def end_leafs(self):
         """Return an end iterator for leaf traversal"""
         itr = SimpleLeafIterator(self)
-        itr._is_end = True
+        itr._set_end()
         return itr
 
     def end_leafs_bbx(self):
         """Return an end iterator for leaf bounding box traversal"""
         itr = SimpleLeafBBXIterator(self, np.array([0.0, 0.0, 0.0], dtype=np.float64), np.array([1.0, 1.0, 1.0], dtype=np.float64))
-        itr._is_end = True
-        itr._sampled_points = []  # Clear sampled points to ensure it's empty
+        itr._set_end()
         return itr
 
     def getBBXBounds(self):
