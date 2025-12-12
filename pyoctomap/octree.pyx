@@ -378,37 +378,6 @@ cdef class OcTree:
         else:
             empty_arr = np.concatenate(empty, axis=0)
         return occupied_arr, empty_arr
-    
-    def insertPointCloud(self,
-                         np.ndarray[DOUBLE_t, ndim=2] pointcloud,
-                         np.ndarray[DOUBLE_t, ndim=1] origin,
-                         maxrange=-1.,
-                         lazy_eval=False,
-                         discretize=False):
-        """
-        Integrate a Pointcloud (in global reference frame), parallelized with OpenMP.
-
-        Special care is taken that each voxel in the map is updated only once, and occupied
-        nodes have a preference over free ones. This avoids holes in the floor from mutual
-        deletion.
-        :param pointcloud: Pointcloud (measurement endpoints), in global reference frame
-        :param origin: measurement origin in global reference frame
-        :param maxrange: maximum range for how long individual beams are inserted (default -1: complete beam)
-        :param : whether update of inner nodes is omitted after the update (default: false).
-        This speeds up the insertion, but you need to call updateInnerOccupancy() when done.
-        """
-        cdef defs.Pointcloud pc = defs.Pointcloud()
-        for p in pointcloud:
-            pc.push_back(<float>p[0],
-                         <float>p[1],
-                         <float>p[2])
-
-        cdef defs.point3d origin_c = defs.point3d(<float>origin[0], <float>origin[1], <float>origin[2])
-        self.thisptr.insertPointCloud(pc,
-                                      origin_c,
-                                      <double?>maxrange,
-                                      bool(lazy_eval),
-                                      bool(discretize))
 
     def begin_tree(self, maxDepth=0):
         """Return a simplified tree iterator"""
