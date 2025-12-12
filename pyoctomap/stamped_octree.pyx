@@ -524,6 +524,12 @@ cdef class OcTreeStamped:
     def pruneNode(self, node):
         return self.thisptr.pruneNode((<OcTreeNodeStamped>node).thisptr)
     
+    def updateInnerOccupancy(self):
+        """
+        Updates the occupancy of all inner nodes to reflect their children's occupancy.
+        """
+        self.thisptr.updateInnerOccupancy()
+    
     def getMetricSize(self):
         cdef double x = 0
         cdef double y = 0
@@ -591,6 +597,9 @@ cdef class OcTreeStamped:
         self.thisptr.insertPointCloud(pc,
                                       defs.point3d(sensor_origin[0], sensor_origin[1], sensor_origin[2]),
                                       <double?>maxrange, bool(lazy_eval), bool(discretize))
+        # Always call updateInnerOccupancy() when lazy_eval=False to ensure tree consistency
+        if not lazy_eval:
+            self.updateInnerOccupancy()
     
     # Helper method to get the C++ pointer address (for use in other modules)
     cpdef size_t _get_ptr_addr(self):

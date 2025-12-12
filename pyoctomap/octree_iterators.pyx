@@ -523,7 +523,8 @@ cdef class SimpleLeafIterator:
             if tree_ptr_oc == NULL:
                 self._state.is_end = True
                 return
-            # Don't store tree reference for leaf iterators to avoid circular refs
+            # Store tree reference to enable node access (needed for current_node property)
+            self._tree = tree
             self._state.tree_type = 0
             tmp_it_oc = tree_ptr_oc.begin_leafs(depth)
             tmp_end_oc = tree_ptr_oc.end_leafs()
@@ -538,7 +539,8 @@ cdef class SimpleLeafIterator:
             if tree_ptr_color == NULL:
                 self._state.is_end = True
                 return
-            # Don't store tree reference for leaf iterators to avoid circular refs
+            # Store tree reference to enable node access (needed for current_node property)
+            self._tree = tree
             self._state.tree_type = 1
             tmp_it_color = tree_ptr_color.begin_leafs(depth)
             tmp_end_color = tree_ptr_color.end_leafs()
@@ -553,7 +555,8 @@ cdef class SimpleLeafIterator:
             if tree_ptr_stamped == NULL:
                 self._state.is_end = True
                 return
-            # Don't store tree reference for leaf iterators to avoid circular refs
+            # Store tree reference to enable node access (needed for current_node property)
+            self._tree = tree
             self._state.tree_type = 2
             tmp_it_stamped = tree_ptr_stamped.begin_leafs(depth)
             tmp_end_stamped = tree_ptr_stamped.end_leafs()
@@ -574,6 +577,7 @@ cdef class SimpleLeafIterator:
         cdef defs.ColorOcTreeNode* node_ptr_color
         cdef defs.OcTreeNodeStamped* node_ptr_stamped
         cdef defs.ColorOcTreeNode.Color c
+        cdef np.ndarray[DOUBLE_t, ndim=1] _pt
 
         if _leaf_iterator_at_end(&self._state):
             self._state.is_end = True
@@ -607,6 +611,8 @@ cdef class SimpleLeafIterator:
 
         # Advance iterator
         _leaf_iterator_advance(&self._state)
+        
+        # Don't create node here - use lazy property instead for efficiency
 
         return self
 
@@ -633,6 +639,23 @@ cdef class SimpleLeafIterator:
     def getTimestamp(self):
         """Get timestamp of current node (only for OcTreeStamped). Returns int."""
         return self._current_timestamp
+    
+    @property
+    def current_node(self):
+        """Get the current node wrapper object (lazy evaluation - only searches when accessed)"""
+        # Lazy evaluation: only search for node when property is accessed
+        cdef np.ndarray[DOUBLE_t, ndim=1] _pt
+        if self._current_node is None and self._tree is not None and self._current_coord is not None:
+            try:
+                _pt = np.array(self._current_coord, dtype=np.float64)
+                self._current_node = self._tree.search(_pt)
+            except Exception:
+                self._current_node = None
+        return self._current_node
+    
+    def _set_end(self):
+        """Set iterator to end state (internal use)"""
+        self._state.is_end = True
 
     def _set_end(self):
         """Set iterator to end state (internal use)"""

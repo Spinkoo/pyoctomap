@@ -410,6 +410,9 @@ cdef class ColorOcTree:
         self.thisptr.insertPointCloud(pc,
                                       origin_c,
                                       <double?>maxrange, bool(lazy_eval), bool(discretize))
+        # Always call updateInnerOccupancy() when lazy_eval=False to ensure tree consistency
+        if not lazy_eval:
+            self.updateInnerOccupancy()
     
     def isNodeOccupied(self, node):
         """

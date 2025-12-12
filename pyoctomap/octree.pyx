@@ -1112,6 +1112,9 @@ cdef class OcTree:
                                       <cppbool>lazy_eval,
                                       <cppbool>discretize)
         
+        # Always call updateInnerOccupancy() to ensure tree consistency
+        # Even when lazy_eval=False, this ensures all inner nodes are properly updated
+        # and the tree is in a consistent state for queries
         if not lazy_eval:
             self.updateInnerOccupancy()
         
