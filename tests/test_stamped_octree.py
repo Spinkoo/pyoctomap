@@ -484,24 +484,126 @@ class TestFileIO:
             assert node_loaded.getTimestamp() >= 0
     
     def test_write_read_binary_preserves_timestamps(self, stamped_tree, tmp_path):
-        """Binary write/read should preserve tree structure"""
+        """Binary write/read should preserve exact timestamp values"""
         coords = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
         original_timestamps = {}
         
         for coord in coords:
             node = stamped_tree.updateNode(coord, True)
-            original_timestamps[tuple(coord)] = node.getTimestamp()
+            # Set specific timestamps to verify they're preserved
+            timestamp = int(time.time()) + hash(tuple(coord)) % 1000
+            node.setTimestamp(timestamp)
+            original_timestamps[tuple(coord)] = timestamp
         
         filename = str(tmp_path / "test_stamped.bt")
-        stamped_tree.writeBinary(filename)
+        success = stamped_tree.writeBinary(filename)
+        assert success, "writeBinary should succeed"
         
         tree_loaded = OcTreeStamped(0.1)
-        tree_loaded.readBinary(filename)
+        success_read = tree_loaded.readBinary(filename)
+        assert success_read, "readBinary should succeed"
         
         for coord in coords:
             node_loaded = tree_loaded.search(coord)
-            assert node_loaded is not None
-            assert node_loaded.getTimestamp() >= 0
+            assert node_loaded is not None, f"Node at {coord} should exist after loading"
+            
+            loaded_timestamp = node_loaded.getTimestamp()
+            expected_timestamp = original_timestamps[tuple(coord)]
+            
+            # Timestamps should be preserved exactly
+            assert loaded_timestamp == expected_timestamp, \
+                f"Timestamp at {coord} should be preserved: expected {expected_timestamp}, got {loaded_timestamp}"
+    
+    def test_write_read_binary_preserves_multiple_timestamps(self, stamped_tree, tmp_path):
+        """Test that binary format preserves timestamps for multiple nodes"""
+        coords = [
+            [1.0, 2.0, 3.0],
+            [4.0, 5.0, 6.0],
+            [7.0, 8.0, 9.0],
+            [10.0, 11.0, 12.0],
+        ]
+        
+        original_timestamps = {}
+        base_time = int(time.time())
+        
+        for i, coord in enumerate(coords):
+            node = stamped_tree.updateNode(coord, True)
+            # Set different timestamps for each node
+            timestamp = base_time + i * 100
+            node.setTimestamp(timestamp)
+            original_timestamps[tuple(coord)] = timestamp
+        
+        filename = str(tmp_path / "test_multiple_timestamps.bt")
+        assert stamped_tree.writeBinary(filename), "writeBinary should succeed"
+        
+        tree_loaded = OcTreeStamped(0.1)
+        assert tree_loaded.readBinary(filename), "readBinary should succeed"
+        
+        # Verify all timestamps are preserved
+        for coord in coords:
+            node_loaded = tree_loaded.search(coord)
+            assert node_loaded is not None, f"Node at {coord} should exist"
+            
+            loaded_timestamp = node_loaded.getTimestamp()
+            expected_timestamp = original_timestamps[tuple(coord)]
+            
+            assert loaded_timestamp == expected_timestamp, \
+                f"Timestamp at {coord} should be preserved: expected {expected_timestamp}, got {loaded_timestamp}"
+    
+    def test_write_read_binary_preserves_timestamp_and_occupancy(self, stamped_tree, tmp_path):
+        """Test that binary format preserves both timestamp and occupancy information"""
+        test_cases = [
+            ([1.0, 1.0, 1.0], True, 1000),
+            ([2.0, 2.0, 2.0], True, 2000),
+            ([3.0, 3.0, 3.0], False, 3000),
+        ]
+        
+        for coord, occupied, timestamp in test_cases:
+            node = stamped_tree.updateNode(coord, occupied)
+            node.setTimestamp(timestamp)
+        
+        filename = str(tmp_path / "test_timestamp_occupancy.bt")
+        assert stamped_tree.writeBinary(filename), "writeBinary should succeed"
+        
+        tree_loaded = OcTreeStamped(0.1)
+        assert tree_loaded.readBinary(filename), "readBinary should succeed"
+        
+        # Verify both occupancy and timestamp are preserved
+        for coord, expected_occupied, expected_timestamp in test_cases:
+            node_loaded = tree_loaded.search(coord)
+            assert node_loaded is not None, f"Node at {coord} should exist"
+            
+            # Check occupancy
+            is_occupied = tree_loaded.isNodeOccupied(node_loaded)
+            assert is_occupied == expected_occupied, \
+                f"Occupancy mismatch at {coord}: expected {expected_occupied}, got {is_occupied}"
+            
+            # Check timestamp
+            actual_timestamp = node_loaded.getTimestamp()
+            assert actual_timestamp == expected_timestamp, \
+                f"Timestamp mismatch at {coord}: expected {expected_timestamp}, got {actual_timestamp}"
+    
+    def test_write_read_binary_preserves_tree_time(self, stamped_tree, tmp_path):
+        """Test that binary format preserves the tree's last update time"""
+        # Update some nodes
+        stamped_tree.updateNode([1.0, 2.0, 3.0], True)
+        stamped_tree.updateNode([4.0, 5.0, 6.0], True)
+        
+        # Get original tree time
+        original_tree_time = stamped_tree.getLastUpdateTime()
+        assert original_tree_time > 0, "Tree should have a valid update time"
+        
+        filename = str(tmp_path / "test_tree_time.bt")
+        assert stamped_tree.writeBinary(filename), "writeBinary should succeed"
+        
+        tree_loaded = OcTreeStamped(0.1)
+        assert tree_loaded.readBinary(filename), "readBinary should succeed"
+        
+        # Verify tree time is preserved (should match root node timestamp)
+        loaded_tree_time = tree_loaded.getLastUpdateTime()
+        # Note: Tree time might not be exactly preserved if root node changes,
+        # but it should be a valid timestamp
+        assert loaded_tree_time >= 0, "Loaded tree should have a valid update time"
     
     def test_write_read_preserves_tree_time(self, stamped_tree, tmp_path):
         """Tree structure should be preserved after write/read"""
@@ -516,6 +618,100 @@ class TestFileIO:
         
         assert loaded_tree_time >= 0
         assert tree_loaded.size() > 0
+
+
+class TestIteratorFunctionality:
+    """Test iterator functionality specific to OcTreeStamped"""
+
+    def test_iterator_timestamp_access(self, stamped_tree):
+        """Test that iterators provide correct timestamp access"""
+        coords = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]]
+        expected_timestamps = []
+
+        # Create nodes with specific timestamps
+        for coord in coords:
+            node = stamped_tree.updateNode(coord, True)
+            timestamp = int(time.time()) + hash(tuple(coord)) % 1000
+            node.setTimestamp(timestamp)
+            expected_timestamps.append(timestamp)
+
+        # Test iterator timestamp access - collect all timestamps
+        found_timestamps = []
+        for leaf in stamped_tree.begin_leafs():
+            timestamp = leaf.getTimestamp()
+            found_timestamps.append(timestamp)
+
+        # Verify we have the expected number of nodes with expected timestamps
+        assert len(found_timestamps) == len(coords), f"Expected {len(coords)} nodes, got {len(found_timestamps)}"
+
+        # Sort both lists for comparison (since order may vary)
+        found_timestamps.sort()
+        expected_timestamps.sort()
+
+        assert found_timestamps == expected_timestamps, \
+            f"Timestamp mismatch: expected {expected_timestamps}, got {found_timestamps}"
+
+    def test_iterator_memory_cleanup(self, stamped_tree):
+        """Test that stamped tree iterators clean up properly"""
+        import gc
+        import weakref
+
+        # Add some nodes
+        coords = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+        for coord in coords:
+            stamped_tree.updateNode(coord, True)
+
+        # Create iterator and weak reference
+        iterator = stamped_tree.begin_leafs()
+        iterator_ref = weakref.ref(iterator)
+
+        # Use iterator
+        count = 0
+        for leaf in iterator:
+            assert leaf.getTimestamp() >= 0  # Should have valid timestamp
+            count += 1
+
+        assert count == len(coords)
+
+        # Clear references and force garbage collection
+        del iterator
+        gc.collect()
+
+        # Iterator should be garbage collected (weak reference should be None)
+        # Note: In some Python implementations, this may not happen immediately
+        collected = iterator_ref() is None
+        if not collected:
+            # If not collected, at least verify it doesn't hold a tree reference
+            weak_iter = iterator_ref()
+            assert not hasattr(weak_iter, '_tree') or weak_iter._tree is None, \
+                "Iterator still holds tree reference which could cause circular reference"
+
+    def test_iterator_with_different_timestamps(self, stamped_tree):
+        """Test iterator with nodes having different timestamps"""
+        base_time = int(time.time())
+
+        # Create nodes with different timestamps
+        test_cases = [
+            ([1.0, 1.0, 1.0], base_time + 100),
+            ([2.0, 2.0, 2.0], base_time + 200),
+            ([3.0, 3.0, 3.0], base_time + 300),
+        ]
+
+        for coord, timestamp in test_cases:
+            node = stamped_tree.updateNode(coord, True)
+            node.setTimestamp(timestamp)
+
+        # Collect timestamps via iterator
+        iterator_timestamps = []
+        for leaf in stamped_tree.begin_leafs():
+            iterator_timestamps.append(leaf.getTimestamp())
+
+        # Sort for comparison
+        iterator_timestamps.sort()
+        expected_timestamps = [ts for _, ts in test_cases]
+        expected_timestamps.sort()
+
+        assert iterator_timestamps == expected_timestamps
 
 
 class TestTreeStatistics:

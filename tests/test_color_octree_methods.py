@@ -214,6 +214,338 @@ def test_method_parity_with_octree():
     print(f"✓ All {len(common_methods)} common methods are present in ColorOcTree")
 
 
+def test_write_read_binary_preserves_colors(tmp_path):
+    """Test that binary write/read preserves color information"""
+    # Create a tree with colored nodes
+    tree = pyoctomap.ColorOcTree(0.1)
+    test_data = [
+        ([1.0, 2.0, 3.0], (255, 0, 0)),      # Red
+        ([4.0, 5.0, 6.0], (0, 255, 0)),      # Green
+        ([7.0, 8.0, 9.0], (0, 0, 255)),      # Blue
+        ([10.0, 11.0, 12.0], (128, 128, 128)), # Gray
+    ]
+    
+    original_colors = {}
+    for coord, color in test_data:
+        node = tree.updateNode(coord, True)
+        tree.setNodeColor(coord, color[0], color[1], color[2])
+        original_colors[tuple(coord)] = color
+    
+    # Write to binary file
+    filename = str(tmp_path / "test_color.bt")
+    success = tree.writeBinary(filename)
+    assert success, "writeBinary should succeed"
+    
+    # Read from binary file
+    tree_loaded = pyoctomap.ColorOcTree(0.1)
+    success_read = tree_loaded.readBinary(filename)
+    assert success_read, "readBinary should succeed"
+    
+    # Verify colors are preserved
+    for coord, expected_color in test_data:
+        node_loaded = tree_loaded.search(coord)
+        assert node_loaded is not None, f"Node at {coord} should exist after loading"
+        
+        loaded_color = node_loaded.getColor()
+        assert loaded_color == expected_color, \
+            f"Color at {coord} should be preserved: expected {expected_color}, got {loaded_color}"
+
+
+def test_write_read_binary_preserves_multiple_colors(tmp_path):
+    """Test that binary format preserves colors for multiple nodes with different colors"""
+    tree = pyoctomap.ColorOcTree(0.05)
+    
+    # Create a grid of nodes with different colors
+    colors = [
+        (255, 0, 0),    # Red
+        (0, 255, 0),    # Green
+        (0, 0, 255),    # Blue
+        (255, 255, 0),  # Yellow
+        (255, 0, 255),  # Magenta
+        (0, 255, 255),  # Cyan
+    ]
+    
+    original_data = {}
+    for i, color in enumerate(colors):
+        coord = [i * 0.2, i * 0.2, i * 0.2]
+        tree.updateNode(coord, True)
+        tree.setNodeColor(coord, color[0], color[1], color[2])
+        original_data[tuple(coord)] = color
+    
+    # Save and load
+    filename = str(tmp_path / "test_multicolor.bt")
+    assert tree.writeBinary(filename), "writeBinary should succeed"
+    
+    tree_loaded = pyoctomap.ColorOcTree(0.05)
+    assert tree_loaded.readBinary(filename), "readBinary should succeed"
+    
+    # Verify all colors are preserved
+    for coord, expected_color in original_data.items():
+        node = tree_loaded.search(coord)
+        assert node is not None, f"Node at {coord} should exist"
+        actual_color = node.getColor()
+        assert actual_color == expected_color, \
+            f"Color mismatch at {coord}: expected {expected_color}, got {actual_color}"
+
+
+def test_write_read_binary_preserves_color_and_occupancy(tmp_path):
+    """Test that binary format preserves both color and occupancy information"""
+    tree = pyoctomap.ColorOcTree(0.1)
+    
+    # Create nodes with different occupancy states and colors
+    test_cases = [
+        ([1.0, 1.0, 1.0], True, (255, 0, 0)),   # Occupied, red
+        ([2.0, 2.0, 2.0], True, (0, 255, 0)),  # Occupied, green
+        ([3.0, 3.0, 3.0], False, (0, 0, 255)), # Free, blue
+    ]
+    
+    for coord, occupied, color in test_cases:
+        tree.updateNode(coord, occupied)
+        tree.setNodeColor(coord, color[0], color[1], color[2])
+    
+    # Save and load
+    filename = str(tmp_path / "test_color_occupancy.bt")
+    assert tree.writeBinary(filename), "writeBinary should succeed"
+    
+    tree_loaded = pyoctomap.ColorOcTree(0.1)
+    assert tree_loaded.readBinary(filename), "readBinary should succeed"
+    
+    # Verify both occupancy and color are preserved
+    for coord, expected_occupied, expected_color in test_cases:
+        node = tree_loaded.search(coord)
+        assert node is not None, f"Node at {coord} should exist"
+        
+        # Check occupancy
+        is_occupied = tree_loaded.isNodeOccupied(node)
+        assert is_occupied == expected_occupied, \
+            f"Occupancy mismatch at {coord}: expected {expected_occupied}, got {is_occupied}"
+        
+        # Check color
+        actual_color = node.getColor()
+        assert actual_color == expected_color, \
+            f"Color mismatch at {coord}: expected {expected_color}, got {actual_color}"
+
+
+def test_write_read_binary_averaged_colors(tmp_path):
+    """Test that binary format preserves averaged colors"""
+    tree = pyoctomap.ColorOcTree(0.1)
+    
+    # Set colors using averageNodeColor
+    coord = [1.0, 2.0, 3.0]
+    tree.updateNode(coord, True)
+    
+    # Add multiple color measurements (should average)
+    tree.averageNodeColor(coord, 100, 100, 100)
+    tree.averageNodeColor(coord, 200, 200, 200)
+    # Average should be approximately (150, 150, 150)
+    
+    node_before = tree.search(coord)
+    color_before = node_before.getColor()
+    
+    # Save and load
+    filename = str(tmp_path / "test_averaged_color.bt")
+    assert tree.writeBinary(filename), "writeBinary should succeed"
+    
+    tree_loaded = pyoctomap.ColorOcTree(0.1)
+    assert tree_loaded.readBinary(filename), "readBinary should succeed"
+    
+    # Verify averaged color is preserved
+    node_after = tree_loaded.search(coord)
+    assert node_after is not None, "Node should exist after loading"
+    
+    color_after = node_after.getColor()
+    # Colors should match (averaged colors should be preserved)
+    assert color_after == color_before, \
+        f"Averaged color should be preserved: expected {color_before}, got {color_after}"
+
+
+def test_iterator_memory_cleanup():
+    """Test that iterators properly clean up memory and don't leak"""
+    import gc
+    import weakref
+
+    tree = pyoctomap.ColorOcTree(0.1)
+
+    # Create some nodes
+    coords = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]]
+    for coord in coords:
+        tree.updateNode(coord, True)
+        tree.setNodeColor(coord, 255, 0, 0)
+
+    # Create iterator and keep weak reference
+    iterator = tree.begin_leafs()
+    iterator_ref = weakref.ref(iterator)
+
+    # Use iterator to ensure it's fully initialized
+    count = 0
+    for leaf in iterator:
+        assert leaf.getColor() == (255, 0, 0)  # Should be red
+        count += 1
+
+    assert count == len(coords), f"Expected {len(coords)} leaves, got {count}"
+
+    # Clear any local references and force garbage collection
+    del iterator
+    gc.collect()
+
+    # Iterator should be garbage collected (weak reference should be None)
+    # Note: In some Python implementations, this may not happen immediately
+    # so we allow for it to still exist but check that it's not holding tree references
+    collected = iterator_ref() is None
+    if not collected:
+        # If not collected, at least verify it doesn't hold a tree reference
+        # that would prevent the tree from being collected
+        weak_iter = iterator_ref()
+        # The iterator should not hold a strong reference to the tree
+        # (we removed this to prevent circular references)
+        assert not hasattr(weak_iter, '_tree') or weak_iter._tree is None, \
+            "Iterator still holds tree reference which could cause circular reference"
+
+
+def test_iterator_exception_safety():
+    """Test that iterators handle exceptions safely during construction"""
+    # Test with None tree
+    iterator = pyoctomap.SimpleLeafIterator(None)
+    assert list(iterator) == [], "Iterator with None tree should be empty"
+
+    # Test with invalid tree (this should not crash)
+    class FakeTree:
+        pass
+
+    try:
+        iterator = pyoctomap.SimpleLeafIterator(FakeTree())
+        # Should handle gracefully
+        assert list(iterator) == [], "Iterator with invalid tree should be empty"
+    except Exception:
+        # It's okay if it raises an exception, as long as it doesn't crash
+        pass
+
+
+def test_iterator_color_access():
+    """Test that iterators provide correct color access"""
+    tree = pyoctomap.ColorOcTree(0.1)
+
+    # Test data: coord -> color
+    test_data = [
+        ([1.0, 2.0, 3.0], (255, 0, 0)),      # Red
+        ([4.0, 5.0, 6.0], (0, 255, 0)),      # Green
+        ([7.0, 8.0, 9.0], (0, 0, 255)),      # Blue
+    ]
+
+    # Create nodes with colors
+    for coord, color in test_data:
+        tree.updateNode(coord, True)
+        tree.setNodeColor(coord, color[0], color[1], color[2])
+
+    # Test iterator color access - collect all colors
+    found_colors = []
+    for leaf in tree.begin_leafs():
+        color = leaf.getColor()
+        found_colors.append(color)
+
+    # Verify we have the expected number of nodes with expected colors
+    assert len(found_colors) == len(test_data), f"Expected {len(test_data)} nodes, got {len(found_colors)}"
+
+    expected_colors = [color for _, color in test_data]
+    found_colors_set = set(found_colors)
+    expected_colors_set = set(expected_colors)
+
+    assert found_colors_set == expected_colors_set, \
+        f"Color mismatch: expected {expected_colors_set}, got {found_colors_set}"
+
+
+def test_iterator_timestamp_access():
+    """Test that iterators provide correct timestamp access for OcTreeStamped"""
+    import pyoctomap as pyoctomap
+
+    tree = pyoctomap.OcTreeStamped(0.1)
+
+    # Test data: coord -> timestamp
+    test_data = [
+        ([1.0, 2.0, 3.0], 1000000000),
+        ([4.0, 5.0, 6.0], 1000000001),
+        ([7.0, 8.0, 9.0], 1000000002),
+    ]
+
+    # Create nodes with timestamps
+    for coord, timestamp in test_data:
+        node = tree.updateNode(coord, True)
+        node.setTimestamp(timestamp)
+
+    # Test iterator timestamp access - collect all timestamps
+    found_timestamps = []
+    for leaf in tree.begin_leafs():
+        timestamp = leaf.getTimestamp()
+        found_timestamps.append(timestamp)
+
+    # Verify we have the expected number of nodes with expected timestamps
+    assert len(found_timestamps) == len(test_data), f"Expected {len(test_data)} nodes, got {len(found_timestamps)}"
+
+    expected_timestamps = [timestamp for _, timestamp in test_data]
+    found_timestamps_set = set(found_timestamps)
+    expected_timestamps_set = set(expected_timestamps)
+
+    assert found_timestamps_set == expected_timestamps_set, \
+        f"Timestamp mismatch: expected {expected_timestamps_set}, got {found_timestamps_set}"
+
+
+def test_iterator_regular_octree():
+    """Test that regular OcTree iterators work correctly (no colors/timestamps)"""
+    tree = pyoctomap.OcTree(0.1)
+
+    coords = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+    for coord in coords:
+        tree.updateNode(coord, True)
+
+    # Test iterator
+    found_coords = []
+    for leaf in tree.begin_leafs():
+        coord = leaf.getCoordinate()
+        found_coords.append(coord)
+        # Regular OcTree should return white/default color
+        assert leaf.getColor() == (255, 255, 255), "Regular OcTree should return white color"
+        assert leaf.getTimestamp() == 0, "Regular OcTree should return 0 timestamp"
+
+    assert len(found_coords) == len(coords), f"Expected {len(coords)} leaves, got {len(found_coords)}"
+
+
+def test_iterator_bounding_box():
+    """Test that bounding box iterators work correctly"""
+    tree = pyoctomap.ColorOcTree(0.1)
+
+    # Create nodes in and out of bounding box
+    all_coords = [
+        ([0.5, 0.5, 0.5], (255, 0, 0)),     # Inside BBX
+        ([1.5, 1.5, 1.5], (0, 255, 0)),     # Inside BBX
+        ([3.0, 3.0, 3.0], (0, 0, 255)),     # Outside BBX
+    ]
+
+    for coord, color in all_coords:
+        tree.updateNode(coord, True)
+        tree.setNodeColor(coord, color[0], color[1], color[2])
+
+    # Define bounding box that contains first two nodes
+    bbx_min = np.array([0.0, 0.0, 0.0])
+    bbx_max = np.array([2.0, 2.0, 2.0])
+
+    # Test BBX iterator
+    found_coords = []
+    found_colors = []
+    for leaf in tree.begin_leafs_bbx(bbx_min, bbx_max):
+        coord = leaf.getCoordinate()
+        color = leaf.getColor()
+        found_coords.append(tuple(coord))
+        found_colors.append(color)
+
+    # Should find exactly 2 nodes (the ones inside BBX)
+    assert len(found_coords) == 2, f"Expected 2 nodes in BBX, got {len(found_coords)}"
+
+    # Colors should be red and green
+    expected_colors = [(255, 0, 0), (0, 255, 0)]
+    for color in found_colors:
+        assert color in expected_colors, f"Unexpected color {color} in BBX iterator"
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
 

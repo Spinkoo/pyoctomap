@@ -520,27 +520,102 @@ cdef class ColorOcTree:
         return None
     
     def readBinary(self, filename):
+        """
+        Read tree from binary file (.bt format).
+        Loads occupancy from the core library and, if present, restores a
+        color trailer appended by this binding.
+        """
+        import io, struct
         cdef string c_filename
         if isinstance(filename, (bytes, bytearray)):
-            c_filename = (<bytes>filename).decode('utf-8')
+            filename_str = (<bytes>filename).decode('utf-8')
         else:
-            c_filename = (<str>filename).encode('utf-8')
-        return self.thisptr.readBinary(c_filename)
+            filename_str = <str>filename
+        c_filename = filename_str.encode('utf-8')
+
+        ok = self.thisptr.readBinary(c_filename)
+        if not ok:
+            return False
+
+        # Attempt to restore color metadata from trailer if present
+        try:
+            marker = b"\n#PYOC_COLOR_V1\n"
+            with open(filename_str, "rb") as f:
+                data = f.read()
+            pos = data.rfind(marker)
+            if pos != -1 and pos + len(marker) + 4 <= len(data):
+                start_len = pos + len(marker)
+                payload_len = struct.unpack("<I", data[start_len:start_len+4])[0]
+                payload_start = start_len + 4
+                payload_end = payload_start + payload_len
+                if payload_end <= len(data):
+                    payload = data[payload_start:payload_end]
+                    buf = io.BytesIO(payload)
+                    npz = np.load(buf, allow_pickle=False)
+                    coords = npz["coords"]
+                    colors = npz["colors"]
+                    for coord, color in zip(coords, colors):
+                        self.setNodeColor(coord, int(color[0]), int(color[1]), int(color[2]))
+        except Exception:
+            # Ignore metadata errors to stay backward-compatible
+            pass
+
+        return True
     
     def writeBinary(self, filename):
         """
-        Write file header and complete tree to binary file.
-        Args:
-            filename: Path to the output file (required)
-        Returns:
-            True if successful, False otherwise
+        Write file header and complete tree to binary file (.bt format).
+        Persists occupancy via the core library and appends a color trailer
+        understood by this binding. Safe to read with older readers (they
+        will ignore the trailer).
         """
+        import io, struct
         cdef string c_filename
+
+        # Convert filename to string for file operations
         if isinstance(filename, (bytes, bytearray)):
-            c_filename = (<bytes>filename).decode('utf-8')
+            filename_str = (<bytes>filename).decode('utf-8')
         else:
-            c_filename = (<str>filename).encode('utf-8')
-        return self.thisptr.writeBinary(c_filename)
+            filename_str = <str>filename
+        c_filename = filename_str.encode('utf-8')
+
+        # Write core binary data
+        ok = self.thisptr.writeBinary(c_filename)
+        if not ok:
+            return False
+
+        # Append color metadata trailer
+        try:
+            coords = []
+            colors = []
+            for leaf in self.begin_leafs():
+                coord = leaf.getCoordinate()
+                color = leaf.getColor()
+                if color != (255, 255, 255):
+                    coords.append(coord)
+                    colors.append(color)
+
+            if not coords:
+                return True
+
+            # Compress and write trailer
+            coords_arr = np.asarray(coords, dtype=np.float64)
+            colors_arr = np.asarray(colors, dtype=np.uint8)
+
+            buf = io.BytesIO()
+            np.savez_compressed(buf, coords=coords_arr, colors=colors_arr)
+            payload = buf.getvalue()
+
+            with open(filename_str, "ab") as f:
+                f.write(b"\n#PYOC_COLOR_V1\n")
+                f.write(struct.pack("<I", len(payload)))
+                f.write(payload)
+
+        except Exception:
+            # Ignore metadata failures to remain compatible
+            pass
+
+        return True
     
     def getBBXMin(self):
         cdef defs.point3d p = self.thisptr.getBBXMin()
@@ -586,16 +661,6 @@ cdef class ColorOcTree:
         child.thisptr = self.thisptr.getNodeChild((<ColorOcTreeNode>node).thisptr, idx)
         return child
     
-    def createNodeChild(self, node, int idx):
-        child = ColorOcTreeNode()
-        child.thisptr = self.thisptr.createNodeChild((<ColorOcTreeNode>node).thisptr, idx)
-        return child
-    
-    def deleteNodeChild(self, node, int idx):
-        self.thisptr.deleteNodeChild((<ColorOcTreeNode>node).thisptr, idx)
-    
-    def expandNode(self, node):
-        self.thisptr.expandNode((<ColorOcTreeNode>node).thisptr)
     
     def isNodeCollapsible(self, node):
         return self.thisptr.isNodeCollapsible((<ColorOcTreeNode>node).thisptr)
