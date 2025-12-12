@@ -451,6 +451,7 @@ cdef extern from "OcTreeStamped.h" namespace "octomap":
         void deleteNodeChild(OcTreeNodeStamped *node, unsigned int childIdx)
         void expandNode(OcTreeNodeStamped* node)
         bool isNodeCollapsible(const OcTreeNodeStamped* node) const
+        void updateInnerOccupancy()
         bool pruneNode(OcTreeNodeStamped* node)
         void getMetricSize(double& x, double& y, double& z)
         void getMetricMin(double& x, double& y, double& z)

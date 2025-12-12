@@ -387,11 +387,59 @@ cdef class OcTreeStamped:
         return None
     
     def writeBinary(self, filename=None):
+        """
+        Write file header and complete tree to binary file (.bt format) or stream.
+        Persists occupancy via the core library and, when a filename is provided,
+        appends a timestamp trailer understood by this binding.
+        """
+        import io, struct
         cdef defs.ostringstream oss
         cdef string c_filename
-        if not filename is None:
-            c_filename = filename.encode('utf-8')
-            return self.thisptr.writeBinary(c_filename)
+        if filename is not None:
+            # Convert filename to string for file operations
+            if isinstance(filename, (bytes, bytearray)):
+                filename_str = (<bytes>filename).decode('utf-8')
+            else:
+                filename_str = <str>filename
+            c_filename = filename_str.encode('utf-8')
+
+            # Write core binary data
+            ok = self.thisptr.writeBinary(c_filename)
+            if not ok:
+                return False
+
+            # Append timestamp metadata trailer
+            try:
+                coords = []
+                times = []
+                for leaf in self.begin_leafs():
+                    coord = leaf.getCoordinate()
+                    timestamp = leaf.getTimestamp()
+                    if timestamp != 0:
+                        coords.append(coord)
+                        times.append(timestamp)
+
+                if not coords:
+                    return True
+
+                # Compress and write trailer
+                coords_arr = np.asarray(coords, dtype=np.float64)
+                times_arr = np.asarray(times, dtype=np.uint32)
+
+                buf = io.BytesIO()
+                np.savez_compressed(buf, coords=coords_arr, times=times_arr)
+                payload = buf.getvalue()
+
+                with open(filename_str, "ab") as f:
+                    f.write(b"\n#PYOC_TIME_V1\n")
+                    f.write(struct.pack("<I", len(payload)))
+                    f.write(payload)
+
+            except Exception:
+                # Ignore metadata failures to remain compatible
+                pass
+
+            return True
         else:
             ret = self.thisptr.writeBinary(<defs.ostream&?>oss)
             if ret:
@@ -400,8 +448,42 @@ cdef class OcTreeStamped:
                 return False
     
     def readBinary(self, filename):
+        """
+        Read tree from binary file (.bt format).
+        Loads occupancy via the core library and restores timestamps if a trailer
+        appended by this binding is present.
+        """
+        import io, struct
         cdef string c_filename = filename.encode('utf-8')
-        return self.thisptr.readBinary(c_filename)
+        ok = self.thisptr.readBinary(c_filename)
+        if not ok:
+            return False
+
+        # Attempt to restore timestamp metadata from trailer
+        try:
+            marker = b"\n#PYOC_TIME_V1\n"
+            with open(filename, "rb") as f:
+                data = f.read()
+            pos = data.rfind(marker)
+            if pos != -1 and pos + len(marker) + 4 <= len(data):
+                start_len = pos + len(marker)
+                payload_len = struct.unpack("<I", data[start_len:start_len+4])[0]
+                payload_start = start_len + 4
+                payload_end = payload_start + payload_len
+                if payload_end <= len(data):
+                    payload = data[payload_start:payload_end]
+                    buf = io.BytesIO(payload)
+                    npz = np.load(buf, allow_pickle=False)
+                    coords = npz["coords"]
+                    times = npz["times"]
+                    for coord, t in zip(coords, times):
+                        node = self.updateNode(coord, True)
+                        if node is not None:
+                            node.setTimestamp(int(t))
+        except Exception:
+            pass
+
+        return True
     
     def getRoot(self):
         cdef defs.OcTreeNodeStamped* root_ptr = self.thisptr.getRoot()
@@ -441,6 +523,12 @@ cdef class OcTreeStamped:
     
     def pruneNode(self, node):
         return self.thisptr.pruneNode((<OcTreeNodeStamped>node).thisptr)
+    
+    def updateInnerOccupancy(self):
+        """
+        Updates the occupancy of all inner nodes to reflect their children's occupancy.
+        """
+        self.thisptr.updateInnerOccupancy()
     
     def getMetricSize(self):
         cdef double x = 0
@@ -509,6 +597,9 @@ cdef class OcTreeStamped:
         self.thisptr.insertPointCloud(pc,
                                       defs.point3d(sensor_origin[0], sensor_origin[1], sensor_origin[2]),
                                       <double?>maxrange, bool(lazy_eval), bool(discretize))
+        # Always call updateInnerOccupancy() when lazy_eval=False to ensure tree consistency
+        if not lazy_eval:
+            self.updateInnerOccupancy()
     
     # Helper method to get the C++ pointer address (for use in other modules)
     cpdef size_t _get_ptr_addr(self):
