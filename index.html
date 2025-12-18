@@ -391,7 +391,7 @@
     <section class="hero">
         <div class="container">
             <p class="section-title">Octree Mapping for Robotics</p>
-            <h1>High-Performance Python Bindings for <a href="https://octomap.github.io" target="_blank" rel="noopener">OctoMap</a></h1>     
+            <h1>Python Bindings for <a href="https://octomap.github.io" target="_blank" rel="noopener">OctoMap</a></h1>     
 
             <div class="quick-install">
                 <code>pip install pyoctomap</code>
@@ -546,7 +546,17 @@ tree.decayAndInsertPointCloud(
 
 # Simpler: pure batch insertion (no temporal decay)
 tree.insertPointCloud(points, origin, lazy_eval=True)
-tree.updateInnerOccupancy()</code></pre>
+tree.updateInnerOccupancy()
+
+# Color tree: batch insertion with colors
+color_tree = pom.ColorOcTree(0.1)
+colors = np.random.rand(1000, 3)  # RGB in [0, 1] range
+color_tree.insertPointCloudWithColor(points, colors)
+
+# Stamped tree: batch insertion with timestamps
+stamped_tree = pom.OcTreeStamped(0.1)
+timestamp = 12345  # unsigned int
+stamped_tree.insertPointCloudWithTimestamp(points, timestamp)</code></pre>
             </div>
         </div>
 
