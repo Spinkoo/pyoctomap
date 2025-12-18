@@ -106,6 +106,14 @@ tree.updateNode(coord, True)
 tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
 ```
 
+**Batch insertion with colors:**
+```python
+# Insert point cloud with colors in a single operation
+points = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=np.float64)
+colors = np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]], dtype=np.float64)  # RGB in [0, 1] range
+tree.insertPointCloudWithColor(points, colors)
+```
+
 ### Dynamic Mapping and Point Cloud Insertion
 
 PyOctoMap provides efficient helpers for dynamic mapping and probabilistic decay.
@@ -140,6 +148,10 @@ For large point clouds, favor the C++ batch helpers:
 
 - `insertPointCloud(points, origin, lazy_eval=True)` then `updateInnerOccupancy()`
 - `insertPointCloudRaysFast(points, origin, max_range=...)` for maximum speed
+
+For color and timestamp data:
+- `ColorOcTree.insertPointCloudWithColor(points, colors, max_range=-1.0, lazy_eval=True)` - Insert point cloud and set colors in a single operation. Colors should be in [0, 1] range (N×3 array).
+- `OcTreeStamped.insertPointCloudWithTimestamp(points, timestamp, max_range=-1.0, lazy_eval=True)` - Insert point cloud and set timestamps in a single operation. Timestamp is an unsigned integer.
 
 See the **Performance Guide** for practical batch sizing and resolution
 recommendations.

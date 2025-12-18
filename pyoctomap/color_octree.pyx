@@ -414,6 +414,73 @@ cdef class ColorOcTree:
         if not lazy_eval:
             self.updateInnerOccupancy()
     
+    def insertPointCloudWithColor(self, double[:,::1] points, double[:,::1] colors, 
+                                   double max_range=-1.0, bint lazy_eval=True):
+        """
+        Custom high-performance implementation that inserts point cloud geometry
+        and then updates colors in a C++-speed loop.
+        
+        Args:
+            points: Nx3 array of point coordinates
+            colors: Nx3 array of color values (0-1 range, will be converted to 0-255)
+            max_range: Maximum range for ray casting (-1 = unlimited)
+            lazy_eval: If True, defer updateInnerOccupancy (call manually later)
+        
+        Returns:
+            int: Number of points processed
+        """
+        cdef int i
+        cdef int n_points = points.shape[0]
+        cdef int n_colors = colors.shape[0]
+        cdef int n_color_channels = colors.shape[1]
+        cdef double x, y, z
+        cdef unsigned char r, g, b
+        
+        if n_points != n_colors:
+            raise ValueError("Points and colors arrays must have the same number of rows")
+        if n_color_channels != 3:
+            raise ValueError("Colors array must have 3 columns (R, G, B)")
+        
+        # 1. Insert Geometry (Standard C++ Batch)
+        # Use a dummy origin at (0, 0, 0) since we're inserting points directly
+        cdef defs.Pointcloud pc = defs.Pointcloud()
+        for i in range(n_points):
+            pc.push_back(<float>points[i, 0], <float>points[i, 1], <float>points[i, 2])
+        cdef defs.point3d origin_c = defs.point3d(0.0, 0.0, 0.0)
+        self.thisptr.insertPointCloud(pc, origin_c, <double>max_range, <cppbool>lazy_eval, <cppbool>False)
+        
+        # 2. Update Colors (The "Missing" Batch Loop)
+        # This loop runs at C speed, not Python speed
+        # OPTIMIZATION: Convert coordinates to keys first, then use key-based search
+        # Key-based operations are faster than coordinate-based, and search is fast since nodes exist
+        cdef defs.ColorOcTreeNode* node_ptr = NULL
+        cdef defs.OcTreeKey key
+        cdef defs.point3d coord_pt
+        for i in range(n_points):
+            x = points[i, 0]
+            y = points[i, 1]
+            z = points[i, 2]
+            
+            # Convert 0-1 float to 0-255 uint8
+            r = <unsigned char>(colors[i, 0] * 255)
+            g = <unsigned char>(colors[i, 1] * 255)
+            b = <unsigned char>(colors[i, 2] * 255)
+
+            # Convert coordinate to key once (key-based operations are faster)
+            coord_pt = defs.point3d(<float>x, <float>y, <float>z)
+            key = self.thisptr.coordToKey(coord_pt)
+            
+            # Search for node using key (fast since insertPointCloud just created it)
+            # Then set color directly on node pointer - avoids redundant updateNode call
+            node_ptr = self.thisptr.search(key, 0)
+            if node_ptr != NULL:
+                node_ptr.setColor(r, g, b)
+
+        if not lazy_eval:
+            self.thisptr.updateInnerOccupancy()
+        
+        return n_points
+    
     def isNodeOccupied(self, node):
         """
         Check if a node is occupied. Accepts ColorOcTreeNode or iterator.
