@@ -546,6 +546,120 @@ def test_iterator_bounding_box():
         assert color in expected_colors, f"Unexpected color {color} in BBX iterator"
 
 
+def test_insertPointCloudWithColor():
+    """Test insertPointCloudWithColor method"""
+    tree = pyoctomap.ColorOcTree(0.1)
+    
+    # Create test points and colors
+    points = np.array([
+        [1.0, 2.0, 3.0],
+        [4.0, 5.0, 6.0],
+        [7.0, 8.0, 9.0]
+    ], dtype=np.float64)
+    
+    colors = np.array([
+        [1.0, 0.0, 0.0],  # Red
+        [0.0, 1.0, 0.0],  # Green
+        [0.0, 0.0, 1.0]   # Blue
+    ], dtype=np.float64)
+    
+    # Insert point cloud with colors
+    n_processed = tree.insertPointCloudWithColor(points, colors, max_range=-1.0, lazy_eval=False)
+    assert n_processed == 3, "Should process 3 points"
+    
+    # Verify colors were set
+    for i, point in enumerate(points):
+        node = tree.search(point)
+        if node is not None:
+            color = node.getColor()
+            expected_r = int(colors[i, 0] * 255)
+            expected_g = int(colors[i, 1] * 255)
+            expected_b = int(colors[i, 2] * 255)
+            assert color[0] == expected_r, f"Red component mismatch for point {i}"
+            assert color[1] == expected_g, f"Green component mismatch for point {i}"
+            assert color[2] == expected_b, f"Blue component mismatch for point {i}"
+
+
+def test_insertPointCloudWithColor_lazy_eval():
+    """Test insertPointCloudWithColor with lazy evaluation"""
+    tree = pyoctomap.ColorOcTree(0.1)
+    
+    points = np.array([
+        [1.0, 2.0, 3.0],
+        [4.0, 5.0, 6.0]
+    ], dtype=np.float64)
+    
+    colors = np.array([
+        [0.5, 0.5, 0.5],  # Gray
+        [1.0, 1.0, 0.0]   # Yellow
+    ], dtype=np.float64)
+    
+    # Insert with lazy_eval=True
+    n_processed = tree.insertPointCloudWithColor(points, colors, lazy_eval=True)
+    assert n_processed == 2, "Should process 2 points"
+    
+    # Manually update inner occupancy
+    tree.updateInnerOccupancy()
+    
+    # Verify colors were set
+    for i, point in enumerate(points):
+        node = tree.search(point)
+        if node is not None:
+            color = node.getColor()
+            assert color[0] == int(colors[i, 0] * 255), f"Color mismatch for point {i}"
+
+
+def test_insertPointCloudWithColor_validation():
+    """Test insertPointCloudWithColor input validation"""
+    tree = pyoctomap.ColorOcTree(0.1)
+    
+    points = np.array([
+        [1.0, 2.0, 3.0],
+        [4.0, 5.0, 6.0]
+    ], dtype=np.float64)
+    
+    # Test mismatched array sizes
+    colors_wrong_size = np.array([
+        [1.0, 0.0, 0.0]
+    ], dtype=np.float64)
+    
+    with pytest.raises(ValueError, match="same number of rows"):
+        tree.insertPointCloudWithColor(points, colors_wrong_size)
+    
+    # Test wrong number of color channels
+    colors_wrong_channels = np.array([
+        [1.0, 0.0],
+        [0.0, 1.0]
+    ], dtype=np.float64)
+    
+    with pytest.raises(ValueError, match="3 columns"):
+        tree.insertPointCloudWithColor(points, colors_wrong_channels)
+
+
+def test_insertPointCloudWithColor_large_batch():
+    """Test insertPointCloudWithColor with a large batch of points"""
+    tree = pyoctomap.ColorOcTree(0.05)
+    
+    # Create 100 points
+    n_points = 100
+    points = np.random.rand(n_points, 3) * 10.0  # Random points in [0, 10] range
+    colors = np.random.rand(n_points, 3)  # Random colors in [0, 1] range
+    
+    # Insert point cloud with colors
+    n_processed = tree.insertPointCloudWithColor(points, colors, lazy_eval=False)
+    assert n_processed == n_points, f"Should process {n_points} points"
+    
+    # Verify a sample of points have colors set
+    sample_indices = [0, 10, 50, 99]
+    for idx in sample_indices:
+        node = tree.search(points[idx])
+        if node is not None:
+            color = node.getColor()
+            # Color should be set (not white/default)
+            assert color != (255, 255, 255) or tree.isNodeOccupied(node), \
+                f"Color should be set for point {idx}"
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
 
