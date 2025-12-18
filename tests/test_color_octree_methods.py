@@ -660,6 +660,54 @@ def test_insertPointCloudWithColor_large_batch():
                 f"Color should be set for point {idx}"
 
 
+def test_insertPointCloudWithColor_sensor_origin():
+    """Test insertPointCloudWithColor with sensor origin for proper ray casting"""
+    tree = pyoctomap.ColorOcTree(0.1)
+    
+    # Create points in front of sensor
+    sensor_origin = np.array([0.0, 0.0, 0.0])
+    points = np.array([
+        [1.0, 0.0, 0.0],  # Point 1m in front
+        [2.0, 0.0, 0.0],  # Point 2m in front
+        [3.0, 0.0, 0.0],  # Point 3m in front
+    ], dtype=np.float64)
+    colors = np.array([
+        [1.0, 0.0, 0.0],  # Red
+        [0.0, 1.0, 0.0],  # Green
+        [0.0, 0.0, 1.0],  # Blue
+    ], dtype=np.float64)
+    
+    # Insert with sensor origin - should perform proper ray casting
+    n_processed = tree.insertPointCloudWithColor(
+        points, colors, sensor_origin=sensor_origin, lazy_eval=False
+    )
+    assert n_processed == 3, "Should process all 3 points"
+    
+    # Verify points are occupied
+    for i, point in enumerate(points):
+        node = tree.search(point)
+        assert node is not None, f"Point {i} should exist"
+        assert tree.isNodeOccupied(node), f"Point {i} should be occupied"
+    
+    # Verify colors are set
+    node1 = tree.search(points[0])
+    color1 = node1.getColor()
+    assert color1[0] > 200, "First point should be red"
+    
+    # Test with list origin
+    n_processed2 = tree.insertPointCloudWithColor(
+        points, colors, sensor_origin=[0.0, 0.0, 0.0], lazy_eval=False
+    )
+    assert n_processed2 == 3, "Should work with list origin"
+    
+    # Test invalid origin
+    try:
+        tree.insertPointCloudWithColor(points, colors, sensor_origin=[1.0, 2.0], lazy_eval=False)
+        assert False, "Should raise ValueError for invalid origin"
+    except ValueError:
+        pass  # Expected
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
 

@@ -415,7 +415,7 @@ cdef class ColorOcTree:
             self.updateInnerOccupancy()
     
     def insertPointCloudWithColor(self, double[:,::1] points, double[:,::1] colors, 
-                                   double max_range=-1.0, bint lazy_eval=True):
+                                   sensor_origin=None, double max_range=-1.0, bint lazy_eval=True):
         """
         Custom high-performance implementation that inserts point cloud geometry
         and then updates colors in a C++-speed loop.
@@ -423,6 +423,7 @@ cdef class ColorOcTree:
         Args:
             points: Nx3 array of point coordinates
             colors: Nx3 array of color values (0-1 range, will be converted to 0-255)
+            sensor_origin: Optional sensor origin [x, y, z] for ray casting. If None, uses (0, 0, 0).
             max_range: Maximum range for ray casting (-1 = unlimited)
             lazy_eval: If True, defer updateInnerOccupancy (call manually later)
         
@@ -435,6 +436,7 @@ cdef class ColorOcTree:
         cdef int n_color_channels = colors.shape[1]
         cdef double x, y, z
         cdef unsigned char r, g, b
+        cdef defs.point3d origin_c
         
         if n_points != n_colors:
             raise ValueError("Points and colors arrays must have the same number of rows")
@@ -442,11 +444,18 @@ cdef class ColorOcTree:
             raise ValueError("Colors array must have 3 columns (R, G, B)")
         
         # 1. Insert Geometry (Standard C++ Batch)
-        # Use a dummy origin at (0, 0, 0) since we're inserting points directly
+        # Use provided sensor origin or default to (0, 0, 0)
+        if sensor_origin is None:
+            origin_c = defs.point3d(0.0, 0.0, 0.0)
+        else:
+            origin_arr = np.array(sensor_origin, dtype=np.float64)
+            if len(origin_arr) != 3:
+                raise ValueError("sensor_origin must be a 3-element array [x, y, z]")
+            origin_c = defs.point3d(<float>origin_arr[0], <float>origin_arr[1], <float>origin_arr[2])
+        
         cdef defs.Pointcloud pc = defs.Pointcloud()
         for i in range(n_points):
             pc.push_back(<float>points[i, 0], <float>points[i, 1], <float>points[i, 2])
-        cdef defs.point3d origin_c = defs.point3d(0.0, 0.0, 0.0)
         self.thisptr.insertPointCloud(pc, origin_c, <double>max_range, <cppbool>lazy_eval, <cppbool>False)
         
         # 2. Update Colors (The "Missing" Batch Loop)
