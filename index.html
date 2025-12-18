@@ -488,6 +488,7 @@ tree.write("my_map.bt")
                     <button class="copy-btn" data-code="code-color">Copy</button>
                 </div>
                 <pre id="code-color"><code>import pyoctomap as pom
+import numpy as np
 
 # Standard occupancy mapping
 occ = pom.OcTree(0.1)
@@ -499,6 +500,11 @@ coord = [1.0, 1.0, 1.0]
 color.updateNode(coord, True)
 color.setNodeColor(coord, 255, 0, 0)
 
+# Batch insertion with colors
+points = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=np.float64)
+colors = np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]], dtype=np.float64)  # RGB in [0, 1]
+color.insertPointCloudWithColor(points, colors)
+
 # Counting tree - integer hit statistics
 count = pom.CountingOcTree(0.1)
 count_node = count.updateNode([0.0, 0.0, 0.0])
@@ -507,7 +513,12 @@ print("Hits:", count_node.getCount())
 # Time-stamped occupancy - temporal maps
 stamped = pom.OcTreeStamped(0.1)
 stamped.updateNode([2.0, 0.0, 1.0], True)
-print("Last update time:", stamped.getLastUpdateTime())</code></pre>
+print("Last update time:", stamped.getLastUpdateTime())
+
+# Batch insertion with timestamps
+points = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=np.float64)
+timestamp = 12345  # unsigned int
+stamped.insertPointCloudWithTimestamp(points, timestamp)</code></pre>
             </div>
         </div>
 
