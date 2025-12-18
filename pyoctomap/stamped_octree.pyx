@@ -602,7 +602,7 @@ cdef class OcTreeStamped:
             self.updateInnerOccupancy()
     
     def insertPointCloudWithTimestamp(self, double[:,::1] points, unsigned int timestamp,
-                                      double max_range=-1.0, bint lazy_eval=True):
+                                      sensor_origin=None, double max_range=-1.0, bint lazy_eval=True):
         """
         Inserts points and updates their timestamp to the specified value.
         This method inserts geometry first, then updates timestamps using key-based search.
@@ -610,6 +610,7 @@ cdef class OcTreeStamped:
         Args:
             points: Nx3 array of point coordinates
             timestamp: Timestamp value to set for all nodes (unsigned int)
+            sensor_origin: Optional sensor origin [x, y, z] for ray casting. If None, uses (0, 0, 0).
             max_range: Maximum range for ray casting (-1 = unlimited)
             lazy_eval: If True, defer updateInnerOccupancy (call manually later)
         
@@ -620,13 +621,21 @@ cdef class OcTreeStamped:
         cdef int n_points = points.shape[0]
         cdef double x, y, z
         cdef defs.OcTreeNodeStamped* node_ptr = NULL
+        cdef defs.point3d origin_c
         
         # 1. Insert Geometry (Standard C++ Batch)
-        # Use a dummy origin at (0, 0, 0) since we're inserting points directly
+        # Use provided sensor origin or default to (0, 0, 0)
+        if sensor_origin is None:
+            origin_c = defs.point3d(0.0, 0.0, 0.0)
+        else:
+            origin_arr = np.array(sensor_origin, dtype=np.float64)
+            if len(origin_arr) != 3:
+                raise ValueError("sensor_origin must be a 3-element array [x, y, z]")
+            origin_c = defs.point3d(<float>origin_arr[0], <float>origin_arr[1], <float>origin_arr[2])
+        
         cdef defs.Pointcloud pc = defs.Pointcloud()
         for i in range(n_points):
             pc.push_back(<float>points[i, 0], <float>points[i, 1], <float>points[i, 2])
-        cdef defs.point3d origin_c = defs.point3d(0.0, 0.0, 0.0)
         self.thisptr.insertPointCloud(pc, origin_c, <double>max_range, <cppbool>lazy_eval, <cppbool>False)
         
         # 2. Update Timestamps (The "Missing" Batch Loop)

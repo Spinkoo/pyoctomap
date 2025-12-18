@@ -994,6 +994,44 @@ class TestInsertPointCloudWithTimestamp:
             points, timestamp, max_range=5.0, lazy_eval=False
         )
         assert n_processed == 2, "Should process all points regardless of max_range"
+    
+    def test_insertPointCloudWithTimestamp_sensor_origin(self, stamped_tree):
+        """Test insertPointCloudWithTimestamp with sensor origin for proper ray casting"""
+        sensor_origin = np.array([0.0, 0.0, 0.0])
+        points = np.array([
+            [1.0, 0.0, 0.0],  # Point 1m in front
+            [2.0, 0.0, 0.0],  # Point 2m in front
+        ], dtype=np.float64)
+        
+        timestamp = 1000
+        
+        # Insert with sensor origin - should perform proper ray casting
+        n_processed = stamped_tree.insertPointCloudWithTimestamp(
+            points, timestamp, sensor_origin=sensor_origin, lazy_eval=False
+        )
+        assert n_processed == 2, "Should process all points"
+        
+        # Verify points are occupied and have timestamps
+        for point in points:
+            node = stamped_tree.search(point)
+            assert node is not None, "Point should exist"
+            assert stamped_tree.isNodeOccupied(node), "Point should be occupied"
+            assert node.getTimestamp() == timestamp, "Timestamp should be set"
+        
+        # Test with list origin
+        n_processed2 = stamped_tree.insertPointCloudWithTimestamp(
+            points, timestamp + 1, sensor_origin=[0.0, 0.0, 0.0], lazy_eval=False
+        )
+        assert n_processed2 == 2, "Should work with list origin"
+        
+        # Test invalid origin
+        try:
+            stamped_tree.insertPointCloudWithTimestamp(
+                points, timestamp, sensor_origin=[1.0, 2.0], lazy_eval=False
+            )
+            assert False, "Should raise ValueError for invalid origin"
+        except ValueError:
+            pass  # Expected
 
 
 if __name__ == "__main__":
