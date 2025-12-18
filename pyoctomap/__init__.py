@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 # Version information
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 __author__ = "Spinkoo"
 __email__ = "lespinkoo@gmail.com"
 
