@@ -203,6 +203,13 @@ Methods match `OcTree` for occupancy, plus color‑specific helpers.
   - Integrate color weighted by occupancy updates (useful when coupling with
     occupancy updates from sensors).
 
+- **`insertPointCloudWithColor(points, colors, max_range=-1.0, lazy_eval=True)`**
+  - Insert a point cloud and set colors for all points in a single operation.
+  - `points`: N×3 numpy array of point coordinates.
+  - `colors`: N×3 numpy array of color values in [0, 1] range (converted to 0–255 internally).
+  - First inserts geometry using batch `insertPointCloud`, then updates colors using key-based search for efficiency.
+  - Returns the number of points processed.
+
 ### Example
 
 ```python
@@ -313,6 +320,13 @@ node = tree.updateNode([x, y, z], True)       # occupied
 node = tree.updateNode([x, y, z], -0.4)       # log‑odds update
 node = tree.updateNode(x, y, z, True)        # coordinate triplet
 ```
+
+- **`insertPointCloudWithTimestamp(points, timestamp, max_range=-1.0, lazy_eval=True)`**
+  - Insert a point cloud and set timestamps for all points in a single operation.
+  - `points`: N×3 numpy array of point coordinates.
+  - `timestamp`: Unsigned integer timestamp value to set for all nodes.
+  - First inserts geometry using batch `insertPointCloud`, then updates timestamps using key-based search for efficiency.
+  - Returns the number of points processed.
 
 Other common helpers are inherited:
 
