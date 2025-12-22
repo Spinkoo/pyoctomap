@@ -178,6 +178,21 @@ See runnable demos in `examples/`:
 <img src="images/occupancy_grid.png" alt="Occupancy Grid" width="700">
 </div>
 
+## Showcase
+
+### 🎨 Photo to 3D Voxel Scene
+
+**[pyocto-map-anything](https://github.com/Spinkoo/pyocto-map-anything)** - Transform single photos into vibrant 3D voxel scenes using AI depth estimation (Depth Anything 3) and PyOctoMap's `ColorOcTree`. This showcase demonstrates the power of combining modern depth estimation models with efficient octree-based mapping, enabling instant 3D reconstruction from 2D images.
+
+**Features:**
+- AI-powered depth estimation from single images
+- Automatic camera intrinsics estimation (DA3 models)
+- Color-integrated voxel mapping with `ColorOcTree`
+- Support for multiple depth models (Depth Anything v3, ZoeDepth, DPT)
+- High-resolution 3D reconstruction with configurable voxel resolution
+
+Perfect for exploring PyOctoMap's color mapping capabilities and seeing how it integrates with modern computer vision pipelines.
+
 ## Advanced Usage
 
 ### Room Mapping with Ray Casting

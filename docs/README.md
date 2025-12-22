@@ -17,6 +17,10 @@ This directory contains comprehensive documentation for the PyOctoMap library.
 - [Examples](../examples/) - Code examples and demos
 - [GitHub Repository](https://github.com/Spinkoo/pyoctomap)
 
+## Showcase Projects
+
+- **[pyocto-map-anything](https://github.com/Spinkoo/pyocto-map-anything)** - Transform photos into 3D voxel scenes using AI depth estimation and PyOctoMap's `ColorOcTree`. A great example of combining modern depth estimation models with efficient octree-based mapping.
+
 ## Getting Help
 
 If you can't find what you're looking for in the documentation:
