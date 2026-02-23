@@ -106,8 +106,8 @@ class SequentialOccupancyGrid:
             print(f"⚠️  Warning: prob_hit ({prob_hit}) + prob_miss ({prob_miss}) = {prob_hit + prob_miss} > 1.0")
             print(f"    This may cause unexpected behavior. Consider adjusting values.")
         
-        # Initialize OctoMap
-        self.tree = pyoctomap.OcTree(resolution)
+        # Initialize OctoMap with DecayOcTree to support dynamic mapping methods
+        self.tree = pyoctomap.DecayOcTree(resolution)
         
         # Set probabilities
         self.tree.setProbHit(prob_hit)

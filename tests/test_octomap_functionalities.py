@@ -63,13 +63,14 @@ def test_octree_basic_operations():
     else:
         print(f"No node found at coordinate {coord}")
 
-def test_point_cloud_operations():
+def test_point_cloud_operations(octree=None):
     """Test point cloud insertion and operations"""
     print("\n" + "=" * 50)
     print("Testing Point Cloud Operations")
     print("=" * 50)
     
-    octree = pyoctomap.OcTree(0.1)
+    if octree is None:
+        octree = pyoctomap.OcTree(0.1)
     
     # Create a simple point cloud (2D array as required)
     points = np.array([
@@ -87,7 +88,7 @@ def test_point_cloud_operations():
         print("Point cloud insertion successful!")
     except Exception as e:
         print(f"Error inserting point cloud: {e}")
-        return octree
+        return
     
     # Test some queries
     test_point = np.array([1.0, 1.0, 1.0])
@@ -105,8 +106,6 @@ def test_point_cloud_operations():
             print(f"Error checking occupancy: {e}")
     else:
         print(f"No node found at {test_point}")
-    
-    return octree
 
 def test_bounding_box_operations(octree):
     """Test bounding box operations"""
@@ -242,7 +241,8 @@ def main():
     test_octree_basic_operations()
     
     # Test point cloud operations
-    octree = test_point_cloud_operations()
+    octree = pyoctomap.OcTree(0.1)
+    test_point_cloud_operations(octree)
     
     # Test bounding box operations
     test_bounding_box_operations(octree)

@@ -149,11 +149,11 @@ if hit:
 These helpers are implemented in C++ for performance, and should be preferred
 over Python loops:
 
-- **`insertPointCloud(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False, discretize=False)`**
+- **`insertPointCloud(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False, discretize=False, method="default")`**
   - Batch insertion with optional discretization and lazy inner‑node updates.
+  - `method="default"`: Use KeySet to deduplicate free cells along rays (safer but slower).
+  - `method="rays_fast"`: Ultra-fast insertion using independent parallel rays (no deduplication).
 
-- **`insertPointCloudRaysFast(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False)`**
-  - Ultra‑fast insertion using independent rays (no deduplication).
 
 - **`decayOccupancyInBBX(point_cloud, sensor_origin, logodd_decay_value=-0.2)`**
   - Apply temporal decay to occupied voxels in the scan’s bounding box.
@@ -203,13 +203,13 @@ Methods match `OcTree` for occupancy, plus color‑specific helpers.
   - Integrate color weighted by occupancy updates (useful when coupling with
     occupancy updates from sensors).
 
-- **`insertPointCloudWithColor(points, colors, sensor_origin=None, max_range=-1.0, lazy_eval=True)`**
-  - Insert a point cloud and set colors for all points in a single operation.
+- **`insertPointCloud(points, origin=None, colors=None, max_range=-1.0, lazy_eval=True)`**
+  - Insert a point cloud, optionally setting colors for all points in a single operation.
   - `points`: N×3 numpy array of point coordinates.
-  - `colors`: N×3 numpy array of color values in [0, 1] range (converted to 0–255 internally).
-  - `sensor_origin`: Optional sensor origin [x, y, z] for ray casting. If `None` (default), uses (0, 0, 0). Providing a proper sensor origin enables correct free-space carving along rays from sensor to points.
-  - First inserts geometry using batch `insertPointCloud` with ray casting, then updates colors using key-based search for efficiency.
-  - Returns the number of points processed.
+  - `origin`: Optional sensor origin [x, y, z] for ray casting. If `None` (default), uses (0, 0, 0). Providing a proper sensor origin enables correct free-space carving along rays from sensor to points.
+  - `colors`: Optional N×3 numpy array of color values in [0, 1] range (converted to 0–255 internally).
+  - When colors are provided, first inserts geometry, then efficiently updates colors.
+  - Returns the number of points processed (if colors provided) or None.
 
 ### Example
 

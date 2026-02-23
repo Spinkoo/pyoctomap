@@ -112,7 +112,7 @@ tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
 points = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=np.float64)
 colors = np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]], dtype=np.float64)  # RGB in [0, 1] range
 sensor_origin = np.array([0.0, 0.0, 0.0])  # Optional: for proper ray casting
-tree.insertPointCloudWithColor(points, colors, sensor_origin=sensor_origin)
+tree.insertPointCloud(points, origin=sensor_origin, colors=colors)
 ```
 
 ### Dynamic Mapping and Point Cloud Insertion
@@ -151,7 +151,7 @@ For large point clouds, favor the C++ batch helpers:
 - `insertPointCloudRaysFast(points, origin, max_range=...)` for maximum speed
 
 For color and timestamp data:
-- `ColorOcTree.insertPointCloudWithColor(points, colors, sensor_origin=None, max_range=-1.0, lazy_eval=True)` - Insert point cloud and set colors in a single operation. Colors should be in [0, 1] range (N×3 array). `sensor_origin` is optional for proper ray casting.
+- `ColorOcTree.insertPointCloud(points, origin=None, colors=None, max_range=-1.0, lazy_eval=True)` - Insert point cloud and optionally set colors in a single operation. Colors should be in [0, 1] range (N×3 array). `origin` is optional for proper ray casting.
 - `OcTreeStamped.insertPointCloudWithTimestamp(points, timestamp, sensor_origin=None, max_range=-1.0, lazy_eval=True)` - Insert point cloud and set timestamps in a single operation. Timestamp is an unsigned integer. `sensor_origin` is optional for proper ray casting.
 
 See the **Performance Guide** for practical batch sizing and resolution
@@ -163,6 +163,7 @@ See runnable demos in `examples/`:
 - `examples/basic_test.py` — smoke test for core API
 - `examples/demo_occupancy_grid.py` — build and visualize a 2D occupancy grid
 - `examples/demo_octomap_open3d.py` — visualize octomap data with Open3D
+- `examples/demo_octoviz.py` — visualize octree using octovis (official OctoMap visualizer)
 - `examples/sequential_occupancy_grid_demo.py` — comprehensive sequential occupancy grid with Open3D visualization
 - `examples/test_sequential_occupancy_grid.py` — comprehensive test suite for all occupancy grid methods
 

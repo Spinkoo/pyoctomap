@@ -11,6 +11,14 @@ cdef extern from "math/Vector3.h" namespace "octomath":
         float& x()
         float& y()
         float& z()
+        # Arithmetic operators for efficient computations
+        Vector3 operator+(const Vector3& other)
+        Vector3 operator-(const Vector3& other)
+        Vector3 operator*(float scalar)
+        Vector3 operator/(float scalar)
+        double norm() const
+        double norm_sq() const
+        Vector3& normalize()
 
 cdef extern from "octomap_types.h" namespace "octomap":
     ctypedef Vector3 point3d

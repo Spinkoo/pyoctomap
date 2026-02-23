@@ -114,11 +114,14 @@ def test_utility_methods():
     assert all(l in [-1, 0, 1] for l in labels), "Labels should be -1, 0, or 1"
     
     # Test extractPointCloud
-    occupied, empty = tree.extractPointCloud()
+    occupied, colors, empty = tree.extractPointCloud()
     assert isinstance(occupied, np.ndarray), "extractPointCloud should return numpy array"
+    assert isinstance(colors, np.ndarray), "extractPointCloud should return numpy color array"
     assert isinstance(empty, np.ndarray), "extractPointCloud should return numpy array"
     assert occupied.shape[1] == 3, "Points should be 3D"
+    assert colors.shape[1] == 3, "Colors should be 3-channel"
     assert empty.shape[1] == 3, "Points should be 3D"
+    assert len(occupied) == len(colors), "Coords and colors should have same length"
 
 
 def test_iterator_methods():
@@ -546,8 +549,8 @@ def test_iterator_bounding_box():
         assert color in expected_colors, f"Unexpected color {color} in BBX iterator"
 
 
-def test_insertPointCloudWithColor():
-    """Test insertPointCloudWithColor method"""
+def test_insertPointCloud_colors():
+    """Test insertPointCloud with colors parameter"""
     tree = pyoctomap.ColorOcTree(0.1)
     
     # Create test points and colors
@@ -564,7 +567,7 @@ def test_insertPointCloudWithColor():
     ], dtype=np.float64)
     
     # Insert point cloud with colors
-    n_processed = tree.insertPointCloudWithColor(points, colors, max_range=-1.0, lazy_eval=False)
+    n_processed = tree.insertPointCloud(points, colors=colors, maxrange=-1.0, lazy_eval=False)
     assert n_processed == 3, "Should process 3 points"
     
     # Verify colors were set
@@ -580,8 +583,8 @@ def test_insertPointCloudWithColor():
             assert color[2] == expected_b, f"Blue component mismatch for point {i}"
 
 
-def test_insertPointCloudWithColor_lazy_eval():
-    """Test insertPointCloudWithColor with lazy evaluation"""
+def test_insertPointCloud_colors_lazy_eval():
+    """Test insertPointCloud with colors parameter and lazy evaluation"""
     tree = pyoctomap.ColorOcTree(0.1)
     
     points = np.array([
@@ -595,7 +598,7 @@ def test_insertPointCloudWithColor_lazy_eval():
     ], dtype=np.float64)
     
     # Insert with lazy_eval=True
-    n_processed = tree.insertPointCloudWithColor(points, colors, lazy_eval=True)
+    n_processed = tree.insertPointCloud(points, colors=colors, lazy_eval=True)
     assert n_processed == 2, "Should process 2 points"
     
     # Manually update inner occupancy
@@ -609,8 +612,8 @@ def test_insertPointCloudWithColor_lazy_eval():
             assert color[0] == int(colors[i, 0] * 255), f"Color mismatch for point {i}"
 
 
-def test_insertPointCloudWithColor_validation():
-    """Test insertPointCloudWithColor input validation"""
+def test_insertPointCloud_colors_validation():
+    """Test insertPointCloud with colors input validation"""
     tree = pyoctomap.ColorOcTree(0.1)
     
     points = np.array([
@@ -624,7 +627,7 @@ def test_insertPointCloudWithColor_validation():
     ], dtype=np.float64)
     
     with pytest.raises(ValueError, match="same number of rows"):
-        tree.insertPointCloudWithColor(points, colors_wrong_size)
+        tree.insertPointCloud(points, colors=colors_wrong_size)
     
     # Test wrong number of color channels
     colors_wrong_channels = np.array([
@@ -633,11 +636,11 @@ def test_insertPointCloudWithColor_validation():
     ], dtype=np.float64)
     
     with pytest.raises(ValueError, match="3 columns"):
-        tree.insertPointCloudWithColor(points, colors_wrong_channels)
+        tree.insertPointCloud(points, colors=colors_wrong_channels)
 
 
-def test_insertPointCloudWithColor_large_batch():
-    """Test insertPointCloudWithColor with a large batch of points"""
+def test_insertPointCloud_colors_large_batch():
+    """Test insertPointCloud with colors with a large batch of points"""
     tree = pyoctomap.ColorOcTree(0.05)
     
     # Create 100 points
@@ -646,7 +649,7 @@ def test_insertPointCloudWithColor_large_batch():
     colors = np.random.rand(n_points, 3)  # Random colors in [0, 1] range
     
     # Insert point cloud with colors
-    n_processed = tree.insertPointCloudWithColor(points, colors, lazy_eval=False)
+    n_processed = tree.insertPointCloud(points, colors=colors, lazy_eval=False)
     assert n_processed == n_points, f"Should process {n_points} points"
     
     # Verify a sample of points have colors set
@@ -660,8 +663,8 @@ def test_insertPointCloudWithColor_large_batch():
                 f"Color should be set for point {idx}"
 
 
-def test_insertPointCloudWithColor_sensor_origin():
-    """Test insertPointCloudWithColor with sensor origin for proper ray casting"""
+def test_insertPointCloud_colors_sensor_origin():
+    """Test insertPointCloud with colors and sensor origin for proper ray casting"""
     tree = pyoctomap.ColorOcTree(0.1)
     
     # Create points in front of sensor
@@ -678,8 +681,8 @@ def test_insertPointCloudWithColor_sensor_origin():
     ], dtype=np.float64)
     
     # Insert with sensor origin - should perform proper ray casting
-    n_processed = tree.insertPointCloudWithColor(
-        points, colors, sensor_origin=sensor_origin, lazy_eval=False
+    n_processed = tree.insertPointCloud(
+        points, origin=sensor_origin, colors=colors, lazy_eval=False
     )
     assert n_processed == 3, "Should process all 3 points"
     
@@ -694,16 +697,16 @@ def test_insertPointCloudWithColor_sensor_origin():
     color1 = node1.getColor()
     assert color1[0] > 200, "First point should be red"
     
-    # Test with list origin
-    n_processed2 = tree.insertPointCloudWithColor(
-        points, colors, sensor_origin=[0.0, 0.0, 0.0], lazy_eval=False
+    # Test with alternative origin
+    n_processed2 = tree.insertPointCloud(
+        points, origin=np.array([1.0, 1.0, 1.0], dtype=np.float64), colors=colors, lazy_eval=False
     )
     assert n_processed2 == 3, "Should work with list origin"
     
-    # Test invalid origin
+    # Test invalid origin size
     try:
-        tree.insertPointCloudWithColor(points, colors, sensor_origin=[1.0, 2.0], lazy_eval=False)
-        assert False, "Should raise ValueError for invalid origin"
+        tree.insertPointCloud(points, origin=np.array([1.0, 2.0], dtype=np.float64), colors=colors, lazy_eval=False)
+        assert False, "Should raise ValueError for invalid origin size"
     except ValueError:
         pass  # Expected
 

@@ -60,6 +60,13 @@ except Exception as e:
         print("Pointcloud features will not be available.")
         print("To compile pointcloud module, run: python setup.py build_ext --inplace")
 
+# Add DecayOcTree
+try:
+    from .decay_octree import DecayOcTree
+    __all__.append("DecayOcTree")
+except ImportError:
+    pass
+
 # Add ColorOcTree if available
 try:
     from .color_octree import ColorOcTree, ColorOcTreeNode

@@ -398,103 +398,117 @@ cdef class ColorOcTree:
         return None
     
     def insertPointCloud(self, np.ndarray[DOUBLE_t, ndim=2] pointcloud,
-                         np.ndarray[DOUBLE_t, ndim=1] origin,
+                         np.ndarray[DOUBLE_t, ndim=1] origin=None,
+                         colors=None,
                          maxrange=-1., lazy_eval=False, discretize=False):
         """
-        Integrate a Pointcloud with color information.
-        """
-        cdef defs.Pointcloud pc = defs.Pointcloud()
-        for p in pointcloud:
-            pc.push_back(<float>p[0], <float>p[1], <float>p[2])
-        cdef defs.point3d origin_c = defs.point3d(<float>origin[0], <float>origin[1], <float>origin[2])
-        self.thisptr.insertPointCloud(pc,
-                                      origin_c,
-                                      <double?>maxrange, bool(lazy_eval), bool(discretize))
-        # Always call updateInnerOccupancy() when lazy_eval=False to ensure tree consistency
-        if not lazy_eval:
-            self.updateInnerOccupancy()
-    
-    def insertPointCloudWithColor(self, double[:,::1] points, double[:,::1] colors, 
-                                   sensor_origin=None, double max_range=-1.0, bint lazy_eval=True):
-        """
-        Custom high-performance implementation that inserts point cloud geometry
-        and then updates colors in a C++-speed loop.
+        Integrate a Pointcloud, optionally with color information.
         
         Args:
-            points: Nx3 array of point coordinates
-            colors: Nx3 array of color values (0-1 range, will be converted to 0-255)
-            sensor_origin: Optional sensor origin [x, y, z] for ray casting. If None, uses (0, 0, 0).
-            max_range: Maximum range for ray casting (-1 = unlimited)
+            pointcloud: Nx3 numpy array of point coordinates
+            origin: Optional sensor origin [x, y, z] for ray casting.
+                    If None, defaults to (0, 0, 0).
+            colors: Optional Nx3 numpy array of color values in [0, 1] range.
+                    If provided, sets color for each point after insertion.
+            maxrange: Maximum range for ray casting (-1 = unlimited)
             lazy_eval: If True, defer updateInnerOccupancy (call manually later)
-        
+            discretize: If True, deduplicate points by voxel key first (not used for colors)
+            
         Returns:
-            int: Number of points processed
+            int: Number of points processed (if colors provided) or None (otherwise)
         """
-        cdef int i
-        cdef int n_points = points.shape[0]
-        cdef int n_colors = colors.shape[0]
-        cdef int n_color_channels = colors.shape[1]
+        cdef int i, n_points, n_colors, n_color_channels
         cdef double x, y, z
         cdef unsigned char r, g, b
         cdef defs.point3d origin_c
-        
-        if n_points != n_colors:
-            raise ValueError("Points and colors arrays must have the same number of rows")
-        if n_color_channels != 3:
-            raise ValueError("Colors array must have 3 columns (R, G, B)")
-        
-        # 1. Insert Geometry (Standard C++ Batch)
-        # Use provided sensor origin or default to (0, 0, 0)
-        if sensor_origin is None:
-            origin_c = defs.point3d(0.0, 0.0, 0.0)
-        else:
-            origin_arr = np.array(sensor_origin, dtype=np.float64)
-            if len(origin_arr) != 3:
-                raise ValueError("sensor_origin must be a 3-element array [x, y, z]")
-            origin_c = defs.point3d(<float>origin_arr[0], <float>origin_arr[1], <float>origin_arr[2])
-        
         cdef defs.Pointcloud pc = defs.Pointcloud()
-        for i in range(n_points):
-            pc.push_back(<float>points[i, 0], <float>points[i, 1], <float>points[i, 2])
-        self.thisptr.insertPointCloud(pc, origin_c, <double>max_range, <cppbool>lazy_eval, <cppbool>False)
-        
-        # 2. Update Colors (The "Missing" Batch Loop)
-        # This loop runs at C speed, not Python speed
-        # OPTIMIZATION: Convert coordinates to keys first, then use key-based search
-        # Key-based operations are faster than coordinate-based, and search is fast since nodes exist
         cdef defs.ColorOcTreeNode* node_ptr = NULL
         cdef defs.OcTreeKey key
         cdef defs.point3d coord_pt
-        for i in range(n_points):
-            x = points[i, 0]
-            y = points[i, 1]
-            z = points[i, 2]
+        
+        # Handle colors logic
+        cdef double[:,::1] colors_view = None
+        cdef bint has_colors = colors is not None
+        
+        if has_colors:
+            colors_view = colors
+            n_points = pointcloud.shape[0]
+            n_colors = colors_view.shape[0]
+            n_color_channels = colors_view.shape[1]
             
-            # Convert 0-1 float to 0-255 uint8
-            r = <unsigned char>(colors[i, 0] * 255)
-            g = <unsigned char>(colors[i, 1] * 255)
-            b = <unsigned char>(colors[i, 2] * 255)
-
-            # Convert coordinate to key once (key-based operations are faster)
-            coord_pt = defs.point3d(<float>x, <float>y, <float>z)
-            key = self.thisptr.coordToKey(coord_pt)
+            if n_points != n_colors:
+                raise ValueError("Points and colors arrays must have the same number of rows")
+            if n_color_channels != 3:
+                raise ValueError("Colors array must have 3 columns (R, G, B)")
+        
+        # Origin default and C++ conversion
+        if origin is None:
+            origin_c = defs.point3d(0.0, 0.0, 0.0)
+        else:
+            if len(origin) != 3:
+                raise ValueError("origin must be a 3-element array [x, y, z]")
+            origin_c = defs.point3d(<float>origin[0], <float>origin[1], <float>origin[2])
             
-            # Search for node using key (fast since insertPointCloud just created it)
-            # Then set color directly on node pointer - avoids redundant updateNode call
-            node_ptr = self.thisptr.search(key, 0)
-            if node_ptr != NULL:
-                node_ptr.setColor(r, g, b)
-
+        # Push points to C++ Pointcloud
+        for p in pointcloud:
+            pc.push_back(<float>p[0], <float>p[1], <float>p[2])
+            
+        # 1. Insert Geometry
+        # When coloring, discretize=False is forced internally to match old behavior
+        self.thisptr.insertPointCloud(pc, origin_c, <double>maxrange, 
+                                      <cppbool>lazy_eval, 
+                                      <cppbool>(False if has_colors else discretize))
+        
+        # 2. Update Colors
+        if has_colors:
+            n_points = pointcloud.shape[0]
+            for i in range(n_points):
+                x = pointcloud[i, 0]
+                y = pointcloud[i, 1]
+                z = pointcloud[i, 2]
+                
+                # Convert 0-1 float to 0-255 uint8 (clamped to valid range)
+                r = <unsigned char>min(max(colors_view[i, 0] * 255.0, 0.0), 255.0)
+                g = <unsigned char>min(max(colors_view[i, 1] * 255.0, 0.0), 255.0)
+                b = <unsigned char>min(max(colors_view[i, 2] * 255.0, 0.0), 255.0)
+    
+                coord_pt = defs.point3d(<float>x, <float>y, <float>z)
+                key = self.thisptr.coordToKey(coord_pt)
+                
+                node_ptr = self.thisptr.search(key, 0)
+                if node_ptr != NULL:
+                    node_ptr.setColor(r, g, b)
+                    
+        # 3. Update inner occupancy unless lazy
         if not lazy_eval:
             self.thisptr.updateInnerOccupancy()
-        
-        return n_points
+            
+        if has_colors:
+            return n_points
+
+    def insertPointCloudWithColor(self, double[:,::1] points, double[:,::1] colors, 
+                                   sensor_origin=None, double max_range=-1.0, bint lazy_eval=False):
+        """
+        DEPRECATED: Use insertPointCloud(points, origin, colors=colors) instead.
+        """
+        import warnings
+        warnings.warn("insertPointCloudWithColor is deprecated. "
+                      "Use insertPointCloud(points, origin, colors=colors) instead.",
+                      DeprecationWarning, stacklevel=2)
+                      
+        # np is already cimported and imported at the module level
+        cdef np.ndarray[DOUBLE_t, ndim=2] pts_arr = np.asarray(points)
+        cdef np.ndarray[DOUBLE_t, ndim=1] org_arr = None
+        if sensor_origin is not None:
+            org_arr = np.array(sensor_origin, dtype=np.float64)
+            
+        return self.insertPointCloud(pts_arr, origin=org_arr, colors=colors, 
+                                     maxrange=max_range, lazy_eval=lazy_eval)
     
     def isNodeOccupied(self, node):
         """
         Check if a node is occupied. Accepts ColorOcTreeNode or iterator.
         """
-        cdef defs.point3d search_point
         cdef defs.ColorOcTreeNode* found_node
         cdef defs.ColorOcTreeNode* node_ptr
         cdef size_t ptr_addr
@@ -529,7 +543,6 @@ cdef class ColorOcTree:
         """
         Check if a node is at occupancy threshold. Accepts ColorOcTreeNode or iterator.
         """
-        cdef defs.point3d search_point
         cdef defs.ColorOcTreeNode* found_node
         cdef defs.ColorOcTreeNode* node_ptr
         cdef size_t ptr_addr
@@ -722,8 +735,11 @@ cdef class ColorOcTree:
         return self.thisptr.inBBX(defs.point3d(p[0], p[1], p[2]))
     
     def getRoot(self):
+        cdef defs.ColorOcTreeNode* root_ptr = self.thisptr.getRoot()
+        if root_ptr == NULL:
+            return None
         node = ColorOcTreeNode()
-        node.thisptr = self.thisptr.getRoot()
+        node.thisptr = root_ptr
         return node
     
     def nodeHasChildren(self, node):
@@ -875,8 +891,6 @@ cdef class ColorOcTree:
         cdef np.ndarray[DOUBLE_t, ndim=1] pt
         # Runtime import to avoid circular dependency
         from .octomap import OcTreeKey
-        cdef object key_obj
-        cdef object node_obj
         # -1: unknown, 0: empty, 1: occupied
         cdef np.ndarray[np.int32_t, ndim=1] labels = \
             np.full((points.shape[0],), -1, dtype=np.int32)
@@ -894,54 +908,51 @@ cdef class ColorOcTree:
     
     def extractPointCloud(self):
         """
-        Extract point clouds for occupied and free voxels.
-        Returns: (occupied_points, empty_points) as numpy arrays
+        Extract all leaf voxel data from the tree in a single pass.
+        
+        Returns one point per leaf voxel (its center coordinate), split by
+        occupancy status. Occupied voxels also include their RGB color.
+        
+        Returns:
+            tuple: (occupied_coords, occupied_colors, free_coords) where:
+                - occupied_coords: Nx3 float64 array of occupied voxel centers
+                - occupied_colors: Nx3 uint8 array of RGB colors (0-255)
+                - free_coords: Mx3 float64 array of free voxel centers
         """
-        cdef float resolution = self.getResolution()
-        cdef list occupied = []
-        cdef list empty = []
+        cdef list occ_coords = []
+        cdef list occ_colors = []
+        cdef list free_coords = []
         cdef object it
-        cdef float size
         cdef int is_occupied
-        cdef np.ndarray[DOUBLE_t, ndim=1] center
-        cdef np.ndarray[DOUBLE_t, ndim=1] origin
-        cdef np.ndarray[np.int64_t, ndim=2] indices
-        cdef np.ndarray[DOUBLE_t, ndim=2] points
-        cdef np.ndarray keep
-        cdef int dimension
+        cdef np.ndarray[DOUBLE_t, ndim=2] occupied_arr
+        cdef np.ndarray[np.uint8_t, ndim=2] color_arr
+        cdef np.ndarray[DOUBLE_t, ndim=2] free_arr
+        
         for it in self.begin_leafs():
-            # Try to get occupancy status from the iterator
             try:
                 is_occupied = self.isNodeOccupied(it)
             except:
-                # Fallback: assume occupied if we can't determine status
                 is_occupied = True
-            size = it.getSize()
-            center = np.array(it.getCoordinate(), dtype=np.float64)
-            
-            # Limit dimension to prevent memory issues
-            raw_dimension = max(1, round(it.getSize() / resolution))
-            dimension = min(raw_dimension, 100)  # Cap at 100 to prevent memory issues
-            origin = center - (dimension / 2 - 0.5) * resolution
-            indices = np.column_stack(np.nonzero(np.ones((dimension, dimension, dimension))))
-            points = origin + indices * np.array(resolution)
             
             if is_occupied:
-                occupied.append(points)
+                occ_coords.append(it.getCoordinate())
+                occ_colors.append(it.getColor())
             else:
-                empty.append(points)
+                free_coords.append(it.getCoordinate())
         
-        cdef np.ndarray[DOUBLE_t, ndim=2] occupied_arr
-        cdef np.ndarray[DOUBLE_t, ndim=2] empty_arr
-        if len(occupied) == 0:
-            occupied_arr = np.zeros((0, 3), dtype=float)
+        if len(occ_coords) == 0:
+            occupied_arr = np.zeros((0, 3), dtype=np.float64)
+            color_arr = np.zeros((0, 3), dtype=np.uint8)
         else:
-            occupied_arr = np.concatenate(occupied, axis=0)
-        if len(empty) == 0:
-            empty_arr = np.zeros((0, 3), dtype=float)
+            occupied_arr = np.array(occ_coords, dtype=np.float64)
+            color_arr = np.array(occ_colors, dtype=np.uint8)
+        
+        if len(free_coords) == 0:
+            free_arr = np.zeros((0, 3), dtype=np.float64)
         else:
-            empty_arr = np.concatenate(empty, axis=0)
-        return occupied_arr, empty_arr
+            free_arr = np.array(free_coords, dtype=np.float64)
+        
+        return occupied_arr, color_arr, free_arr
     
     # Helper method to get the C++ pointer address (for use in other modules)
     cpdef size_t _get_ptr_addr(self):

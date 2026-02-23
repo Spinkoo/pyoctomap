@@ -191,6 +191,7 @@ def build_extensions():
         "pyoctomap.color_octree": None,
         "pyoctomap.counting_octree": None,
         "pyoctomap.stamped_octree": None,
+        "pyoctomap.decay_octree": None,
         "pyoctomap.pointcloud": None,
     }
     
@@ -202,6 +203,7 @@ def build_extensions():
         "pyoctomap.color_octree": ["pyoctomap/color_octree.pyx"],
         "pyoctomap.counting_octree": ["pyoctomap/counting_octree.pyx"],
         "pyoctomap.stamped_octree": ["pyoctomap/stamped_octree.pyx"],
+        "pyoctomap.decay_octree": ["pyoctomap/decay_octree.pyx"],
         "pyoctomap.pointcloud": ["pyoctomap/pointcloud.pyx"],
     }
     
@@ -330,6 +332,22 @@ def build_extensions():
             Extension(
                 "pyoctomap.stamped_octree",
                 [pyx_files["pyoctomap.stamped_octree"]],
+                include_dirs=common_include_dirs,
+                library_dirs=common_library_dirs,
+                libraries=common_libraries,
+                define_macros=common_macros,
+                language="c++",
+                extra_compile_args=extra_compile_args,
+                extra_link_args=extra_link_args + rpath_args,
+            )
+        )
+    
+    # Build decay_octree extension
+    if pyx_files["pyoctomap.decay_octree"]:
+        ext_modules.append(
+            Extension(
+                "pyoctomap.decay_octree",
+                [pyx_files["pyoctomap.decay_octree"]],
                 include_dirs=common_include_dirs,
                 library_dirs=common_library_dirs,
                 libraries=common_libraries,

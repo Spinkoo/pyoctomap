@@ -36,6 +36,8 @@ benchmarks/
 pyoctomap/**/*.cpp
 pyoctomap/*.cpp
 
+#under test
+pyoctomap/*decay*
 # Local copies of bundled OctoMap libraries
 pyoctomap/lib/
 

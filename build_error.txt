@@ -1,0 +1,122 @@
+Obtaining file:///mnt/c/Users/Wail/Desktop/Farm/pyoctomap
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  × Getting requirements to build editable did not run successfully.
+  │ exit code: 1
+  ╰─> [103 lines of output]
+      
+      Error compiling Cython file:
+      ------------------------------------------------------------
+      ...
+          cdef void _fast_decay_in_bbx(self,
+                                       defs.point3d bbx_min,
+                                       defs.point3d bbx_max,
+                                       float logodd_decay_value) except *
+      
+          cdef cppbool _add_single_point_optimized(self,
+               ^
+      ------------------------------------------------------------
+      pyoctomap/decay_octree.pxd:24:9: 'cppbool' is not a type identifier
+      
+      Error compiling Cython file:
+      ------------------------------------------------------------
+      ...
+                                        defs.point3d bbx_max,
+                                        float logodd_decay_value) except *:
+              """
+              Fast C++ loop to decay occupied leaves in a bounding box.
+              """
+              cdef defs.OcTree.leaf_bbx_iterator it = self.thisptr.begin_leafs_bbx(bbx_min, bbx_max)
+                   ^
+      ------------------------------------------------------------
+      pyoctomap/decay_octree.pyx:199:13: 'leaf_bbx_iterator' is not a type identifier
+      
+      Error compiling Cython file:
+      ------------------------------------------------------------
+      ...
+                                        float logodd_decay_value) except *:
+              """
+              Fast C++ loop to decay occupied leaves in a bounding box.
+              """
+              cdef defs.OcTree.leaf_bbx_iterator it = self.thisptr.begin_leafs_bbx(bbx_min, bbx_max)
+              cdef defs.OcTree.leaf_bbx_iterator end = self.thisptr.end_leafs_bbx()
+                   ^
+      ------------------------------------------------------------
+      pyoctomap/decay_octree.pyx:200:13: 'leaf_bbx_iterator' is not a type identifier
+      
+      Error compiling Cython file:
+      ------------------------------------------------------------
+      ...
+                                        defs.point3d bbx_max,
+                                        float logodd_decay_value) except *:
+              """
+              Fast C++ loop to decay occupied leaves in a bounding box.
+              """
+              cdef defs.OcTree.leaf_bbx_iterator it = self.thisptr.begin_leafs_bbx(bbx_min, bbx_max)
+                                                                                  ^
+      ------------------------------------------------------------
+      pyoctomap/decay_octree.pyx:199:76: Call with wrong number of arguments (expected 3, got 2)
+      
+      Error compiling Cython file:
+      ------------------------------------------------------------
+      ...
+      
+              while it != end:
+                  # Check if occupied (log_odds > 0)
+                  if self.thisptr.isNodeOccupied(deref(it)):
+                      # updateNode dynamically adds the value to the current log_odds
+                      self.thisptr.updateNode(deref(it).getCoordinate(), logodd_decay_value)
+                                             ^
+      ------------------------------------------------------------
+      pyoctomap/decay_octree.pyx:208:39: no suitable method found (candidates: 4)
+      Compiling pyoctomap/octree_base.pyx because it depends on /tmp/pip-build-env-9ebwfidj/overlay/lib/python3.12/site-packages/Cython/Includes/libcpp/string_view.pxd.
+      Compiling pyoctomap/octree_iterators.pyx because it depends on /tmp/pip-build-env-9ebwfidj/overlay/lib/python3.12/site-packages/Cython/Includes/libcpp/string_view.pxd.
+      Compiling pyoctomap/octree.pyx because it changed.
+      Compiling pyoctomap/color_octree.pyx because it changed.
+      Compiling pyoctomap/counting_octree.pyx because it changed.
+      Compiling pyoctomap/stamped_octree.pyx because it depends on /tmp/pip-build-env-9ebwfidj/overlay/lib/python3.12/site-packages/Cython/Includes/libcpp/string_view.pxd.
+      Compiling pyoctomap/decay_octree.pyx because it changed.
+      Compiling pyoctomap/pointcloud.pyx because it depends on /tmp/pip-build-env-9ebwfidj/overlay/lib/python3.12/site-packages/Cython/Includes/libcpp/string_view.pxd.
+      [1/8] Cythonizing pyoctomap/color_octree.pyx
+      [2/8] Cythonizing pyoctomap/counting_octree.pyx
+      [3/8] Cythonizing pyoctomap/decay_octree.pyx
+      Traceback (most recent call last):
+        File "/home/spinkoo/octenv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 389, in <module>
+          main()
+        File "/home/spinkoo/octenv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 373, in main
+          json_out["return_val"] = hook(**hook_input["kwargs"])
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/home/spinkoo/octenv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 157, in get_requires_for_build_editable
+          return hook(config_settings)
+                 ^^^^^^^^^^^^^^^^^^^^^
+        File "/tmp/pip-build-env-9ebwfidj/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 481, in get_requires_for_build_editable
+          return self.get_requires_for_build_wheel(config_settings)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/tmp/pip-build-env-9ebwfidj/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 333, in get_requires_for_build_wheel
+          return self._get_build_requires(config_settings, requirements=[])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/tmp/pip-build-env-9ebwfidj/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 301, in _get_build_requires
+          self.run_setup()
+        File "/tmp/pip-build-env-9ebwfidj/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 317, in run_setup
+          exec(code, locals())
+        File "<string>", line 405, in <module>
+        File "<string>", line 388, in main
+        File "<string>", line 377, in build_extensions
+        File "/tmp/pip-build-env-9ebwfidj/overlay/lib/python3.12/site-packages/Cython/Build/Dependencies.py", line 1153, in cythonize
+          cythonize_one(*args)
+        File "/tmp/pip-build-env-9ebwfidj/overlay/lib/python3.12/site-packages/Cython/Build/Dependencies.py", line 1297, in cythonize_one
+          raise CompileError(None, pyx_file)
+      Cython.Compiler.Errors.CompileError: pyoctomap/decay_octree.pyx
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: pip install --upgrade pip
+ERROR: Failed to build 'file:///mnt/c/Users/Wail/Desktop/Farm/pyoctomap' when getting requirements to build editable

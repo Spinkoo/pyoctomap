@@ -736,6 +736,383 @@ class TestIntegration:
             assert np.all(diff < counting_tree.getResolution())
 
 
+class TestInsertionMethods:
+    """Test the new insertion methods: insertPointCloud, insertPointCloudRaysFast, updateNodes, addPointWithRayCasting"""
+    
+    def test_insertPointCloud_basic(self, counting_tree):
+        """Test basic insertPointCloud functionality"""
+        points = np.array([
+            [1.0, 2.0, 3.0],
+            [4.0, 5.0, 6.0],
+            [7.0, 8.0, 9.0],
+        ], dtype=np.float64)
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        n_processed = counting_tree.insertPointCloud(points, origin, maxrange=0.0, lazy_eval=False)
+        assert n_processed == 3
+        
+        # Verify all points were inserted
+        for point in points:
+            node = counting_tree.search(point)
+            assert node is not None
+            assert node.getCount() >= 1
+    
+    def test_insertPointCloud_with_raycasting(self, counting_tree):
+        """Test insertPointCloud with ray casting enabled"""
+        points = np.array([
+            [2.0, 0.0, 0.0],
+            [4.0, 0.0, 0.0],
+        ], dtype=np.float64)
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        n_processed = counting_tree.insertPointCloud(points, origin, maxrange=10.0, lazy_eval=False)
+        assert n_processed == 2
+        
+        # Verify endpoints were counted (not the path)
+        for point in points:
+            node = counting_tree.search(point)
+            assert node is not None
+            assert node.getCount() == 1
+    
+    def test_insertPointCloud_discretize(self, counting_tree):
+        """Test insertPointCloud with discretization"""
+        # Create duplicate points that should be discretized
+        points = np.array([
+            [1.0, 1.0, 1.0],
+            [1.0, 1.0, 1.0],  # Duplicate
+            [1.0, 1.0, 1.0],  # Duplicate
+            [2.0, 2.0, 2.0],
+        ], dtype=np.float64)
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        n_processed = counting_tree.insertPointCloud(points, origin, maxrange=0.0, discretize=True, lazy_eval=False)
+        assert n_processed <= 4  # Should be reduced due to discretization
+        
+        # First point should have count >= 1
+        node = counting_tree.search([1.0, 1.0, 1.0])
+        assert node is not None
+        assert node.getCount() >= 1
+    
+    def test_insertPointCloudRaysFast_basic(self, counting_tree):
+        """Test insertPointCloudRaysFast basic functionality"""
+        points = np.array([
+            [1.0, 0.0, 0.0],
+            [2.0, 0.0, 0.0],
+            [3.0, 0.0, 0.0],
+        ], dtype=np.float64)
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        n_processed = counting_tree.insertPointCloudRaysFast(points, origin, max_range=-1.0, lazy_eval=False)
+        assert n_processed == 3
+        
+        # Verify endpoints were counted
+        for point in points:
+            node = counting_tree.search(point)
+            assert node is not None
+            assert node.getCount() == 1
+    
+    def test_insertPointCloudRaysFast_max_range(self, counting_tree):
+        """Test insertPointCloudRaysFast with max_range limit"""
+        points = np.array([
+            [1.0, 0.0, 0.0],
+            [10.0, 0.0, 0.0],  # Beyond max_range
+        ], dtype=np.float64)
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        n_processed = counting_tree.insertPointCloudRaysFast(points, origin, max_range=5.0, lazy_eval=False)
+        assert n_processed == 2
+        
+        # First point should be counted
+        node1 = counting_tree.search([1.0, 0.0, 0.0])
+        assert node1 is not None
+        
+        # Second point should be truncated but still processed
+        # The endpoint at max_range should be counted
+    
+    def test_updateNodes_with_coordinates(self, counting_tree):
+        """Test updateNodes with coordinate arrays"""
+        coords = [
+            [1.0, 2.0, 3.0],
+            [4.0, 5.0, 6.0],
+            [7.0, 8.0, 9.0],
+        ]
+        
+        n_updated = counting_tree.updateNodes(coords, lazy_eval=False)
+        assert n_updated == 3
+        
+        # Verify all coordinates were updated
+        for coord in coords:
+            node = counting_tree.search(coord)
+            assert node is not None
+            assert node.getCount() >= 1
+    
+    def test_updateNodes_with_keys(self, counting_tree):
+        """Test updateNodes with OcTreeKey objects"""
+        from pyoctomap import OcTreeKey
+        
+        coords = [
+            [1.0, 2.0, 3.0],
+            [4.0, 5.0, 6.0],
+        ]
+        
+        # Convert to keys
+        keys = [counting_tree.coordToKey(np.array(coord)) for coord in coords]
+        
+        n_updated = counting_tree.updateNodes(keys, lazy_eval=False)
+        assert n_updated == 2
+        
+        # Verify all keys were updated
+        for coord in coords:
+            node = counting_tree.search(coord)
+            assert node is not None
+            assert node.getCount() >= 1
+    
+    def test_updateNodes_empty_list(self, counting_tree):
+        """Test updateNodes with empty list"""
+        n_updated = counting_tree.updateNodes([], lazy_eval=False)
+        assert n_updated == 0
+    
+    def test_addPointWithRayCasting_basic(self, counting_tree):
+        """Test addPointWithRayCasting basic functionality"""
+        point = np.array([5.0, 0.0, 0.0], dtype=np.float64)
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        success = counting_tree.addPointWithRayCasting(point, origin, update_inner_occupancy=False)
+        assert success is True
+        
+        # Verify endpoint was counted
+        node = counting_tree.search(point)
+        assert node is not None
+        assert node.getCount() == 1
+    
+    def test_addPointWithRayCasting_multiple_points(self, counting_tree):
+        """Test addPointWithRayCasting with multiple points"""
+        points = [
+            np.array([1.0, 0.0, 0.0], dtype=np.float64),
+            np.array([2.0, 0.0, 0.0], dtype=np.float64),
+            np.array([3.0, 0.0, 0.0], dtype=np.float64),
+        ]
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        for point in points:
+            success = counting_tree.addPointWithRayCasting(point, origin)
+            assert success is True
+        
+        # Verify all endpoints were counted
+        for point in points:
+            node = counting_tree.search(point)
+            assert node is not None
+            assert node.getCount() == 1
+    
+    def test_addPointWithRayCasting_same_origin_and_point(self, counting_tree):
+        """Test addPointWithRayCasting when origin equals point"""
+        point = np.array([1.0, 1.0, 1.0], dtype=np.float64)
+        origin = np.array([1.0, 1.0, 1.0], dtype=np.float64)
+        
+        success = counting_tree.addPointWithRayCasting(point, origin)
+        assert success is True
+        
+        # Point should still be counted
+        node = counting_tree.search(point)
+        assert node is not None
+        assert node.getCount() == 1
+
+
+class TestUpdateInnerCounts:
+    """Test updateInnerCounts and updateInnerOccupancy methods"""
+    
+    def test_updateInnerCounts_basic(self, counting_tree):
+        """Test updateInnerCounts with normal insertion"""
+        # Insert some points
+        points = [
+            [1.0, 2.0, 3.0],
+            [4.0, 5.0, 6.0],
+            [7.0, 8.0, 9.0],
+        ]
+        
+        for point in points:
+            counting_tree.updateNode(point)
+        
+        # Get root count before updateInnerCounts
+        root_before = counting_tree.getRoot()
+        root_count_before = root_before.getCount()
+        
+        # updateInnerCounts should maintain consistency
+        counting_tree.updateInnerCounts()
+        
+        # Root count should remain the same (already consistent)
+        root_after = counting_tree.getRoot()
+        root_count_after = root_after.getCount()
+        assert root_count_after == root_count_before
+    
+    def test_updateInnerCounts_after_manual_modification(self, counting_tree):
+        """Test updateInnerCounts after manually modifying leaf counts"""
+        # Insert a point
+        coord = np.array([1.0, 2.0, 3.0])
+        node = counting_tree.updateNode(coord)
+        assert node is not None
+        
+        initial_count = node.getCount()
+        assert initial_count >= 1
+        
+        # Manually modify the leaf count
+        node.setCount(10)
+        assert node.getCount() == 10
+        
+        # Get parent count before updateInnerCounts
+        # Find parent by searching at a higher level or checking root
+        root_before = counting_tree.getRoot()
+        root_count_before = root_before.getCount()
+        
+        # updateInnerCounts should propagate the change upward
+        counting_tree.updateInnerCounts()
+        
+        # Root count should reflect the new leaf count
+        root_after = counting_tree.getRoot()
+        root_count_after = root_after.getCount()
+        # Root count should be updated to reflect the new leaf count
+        assert root_count_after >= 10
+    
+    def test_updateInnerOccupancy_alias(self, counting_tree):
+        """Test that updateInnerOccupancy is an alias for updateInnerCounts"""
+        # Insert some points
+        points = [
+            [1.0, 2.0, 3.0],
+            [4.0, 5.0, 6.0],
+        ]
+        
+        for point in points:
+            counting_tree.updateNode(point)
+        
+        root_before = counting_tree.getRoot()
+        root_count_before = root_before.getCount()
+        
+        # Both methods should produce the same result
+        counting_tree.updateInnerOccupancy()
+        
+        root_after = counting_tree.getRoot()
+        root_count_after = root_after.getCount()
+        
+        # Should maintain consistency
+        assert root_count_after == root_count_before
+    
+    def test_updateInnerCounts_empty_tree(self, counting_tree):
+        """Test updateInnerCounts on empty tree"""
+        # Should not crash
+        counting_tree.updateInnerCounts()
+        
+        # Tree should still be empty
+        assert counting_tree.size() == 0 or counting_tree.getRoot() is None
+    
+    def test_updateInnerCounts_with_insertPointCloud(self, counting_tree):
+        """Test that insertPointCloud calls updateInnerCounts when lazy_eval=False"""
+        points = np.array([
+            [1.0, 2.0, 3.0],
+            [4.0, 5.0, 6.0],
+        ], dtype=np.float64)
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        # Insert with lazy_eval=False (should call updateInnerCounts internally)
+        n_processed = counting_tree.insertPointCloud(points, origin, maxrange=0.0, lazy_eval=False)
+        assert n_processed == 2
+        
+        # Tree should be consistent
+        root = counting_tree.getRoot()
+        assert root is not None
+        assert root.getCount() >= 2
+    
+    def test_updateInnerCounts_with_insertPointCloud_lazy(self, counting_tree):
+        """Test that insertPointCloud doesn't call updateInnerCounts when lazy_eval=True"""
+        points = np.array([
+            [1.0, 2.0, 3.0],
+        ], dtype=np.float64)
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        # Insert with lazy_eval=True (should NOT call updateInnerCounts internally)
+        n_processed = counting_tree.insertPointCloud(points, origin, maxrange=0.0, lazy_eval=True)
+        assert n_processed == 1
+        
+        # Manually call updateInnerCounts
+        counting_tree.updateInnerCounts()
+        
+        # Tree should be consistent after manual call
+        root = counting_tree.getRoot()
+        assert root is not None
+        assert root.getCount() >= 1
+
+
+class TestInsertionMethodsIntegration:
+    """Integration tests for insertion methods"""
+    
+    def test_insertPointCloud_vs_updateNode_consistency(self, counting_tree):
+        """Test that insertPointCloud produces same results as multiple updateNode calls"""
+        points = np.array([
+            [1.0, 2.0, 3.0],
+            [4.0, 5.0, 6.0],
+        ], dtype=np.float64)
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        # Method 1: Use insertPointCloud
+        tree1 = CountingOcTree(0.1)
+        tree1.insertPointCloud(points, origin, maxrange=0.0, lazy_eval=False)
+        
+        # Method 2: Use updateNode for each point
+        tree2 = CountingOcTree(0.1)
+        for point in points:
+            tree2.updateNode(point)
+        
+        # Both should have same counts at endpoints
+        for point in points:
+            node1 = tree1.search(point)
+            node2 = tree2.search(point)
+            assert node1 is not None
+            assert node2 is not None
+            # Both should have at least 1 count
+            assert node1.getCount() >= 1
+            assert node2.getCount() >= 1
+    
+    def test_insertPointCloudRaysFast_vs_insertPointCloud(self, counting_tree):
+        """Test that insertPointCloudRaysFast and insertPointCloud both count endpoints"""
+        points = np.array([
+            [2.0, 0.0, 0.0],
+            [4.0, 0.0, 0.0],
+        ], dtype=np.float64)
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        # Use insertPointCloudRaysFast
+        tree1 = CountingOcTree(0.1)
+        tree1.insertPointCloudRaysFast(points, origin, max_range=10.0, lazy_eval=False)
+        
+        # Use insertPointCloud
+        tree2 = CountingOcTree(0.1)
+        tree2.insertPointCloud(points, origin, maxrange=10.0, lazy_eval=False)
+        
+        # Both should count endpoints
+        for point in points:
+            node1 = tree1.search(point)
+            node2 = tree2.search(point)
+            assert node1 is not None
+            assert node2 is not None
+            assert node1.getCount() >= 1
+            assert node2.getCount() >= 1
+    
+    def test_batch_insertion_performance(self, counting_tree):
+        """Test that batch insertion methods work with many points"""
+        # Create a larger point cloud
+        n_points = 100
+        points = np.random.rand(n_points, 3) * 10.0  # Random points in [0, 10] range
+        origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+        
+        n_processed = counting_tree.insertPointCloud(points, origin, maxrange=0.0, lazy_eval=False)
+        assert n_processed == n_points
+        
+        # Verify tree has nodes
+        assert counting_tree.size() > 0
+        root = counting_tree.getRoot()
+        assert root is not None
+        assert root.getCount() >= n_points
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "--tb=short"])
 

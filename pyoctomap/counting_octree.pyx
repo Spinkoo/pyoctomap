@@ -380,4 +380,248 @@ cdef class CountingOcTree:
     
     def volume(self):
         return self.thisptr.volume()
+    
+    def updateInnerCounts(self):
+        """
+        Update inner node counts to be the sum of their children's counts.
+        This is useful if you've manually modified leaf node counts and need
+        to propagate those changes upward.
+        
+        Note: CountingOcTree's updateNode() automatically maintains consistency
+        by incrementing counts along the path. This method is only needed if
+        you've directly modified node counts (e.g., using setCount()).
+        
+        Returns:
+            None
+        """
+        cdef defs.CountingOcTreeNode* root_node = self.thisptr.getRoot()
+        if root_node == NULL:
+            return
+        self._updateInnerCountsRecurs(root_node, 0)
+    
+    cdef void _updateInnerCountsRecurs(self, defs.CountingOcTreeNode* node, unsigned int depth):
+        """
+        Recursively update inner node counts to sum of children.
+        Internal helper method.
+        """
+        if node == NULL:
+            return
+        cdef unsigned int i
+        cdef defs.CountingOcTreeNode* child
+        cdef unsigned int sum_count = 0
+        
+        # Only process inner nodes (nodes with children)
+        if self.thisptr.nodeHasChildren(node):
+
+            
+            # Recurse into children first (bottom-up)
+            if depth < self.thisptr.getTreeDepth():
+                for i in range(8):
+                    if self.thisptr.nodeChildExists(node, i):
+                        child = self.thisptr.getNodeChild(node, i)
+                        self._updateInnerCountsRecurs(child, depth + 1)
+                        sum_count += child.getCount()
+            
+            # Update this node's count to sum of children
+            node.setCount(sum_count)
+    
+    def updateInnerOccupancy(self):
+        """
+        Alias for updateInnerCounts() for API compatibility with other tree types.
+        """
+        self.updateInnerCounts()
+    
+    def extractPointCloud(self):
+        """
+        Extract all leaf node data from the tree.
+        
+        Uses the C++ getCentersMinHits traversal to collect leaf centers,
+        then searches each to retrieve its count.
+        
+        Returns:
+            tuple: (coords, counts) where:
+                - coords: Nx3 float64 numpy array of voxel center coordinates
+                - counts: N uint32 numpy array of observation counts
+        """
+        if self.thisptr.size() == 0:
+            return (np.zeros((0, 3), dtype=np.float64),
+                    np.zeros((0,), dtype=np.uint32))
+        
+        # Use C++ getCentersMinHits to get all leaf centers with count >= 1
+        cdef defs.list[defs.point3d] centers_list
+        cdef defs.list[defs.point3d].iterator it
+        cdef defs.list[defs.point3d].iterator end_it
+        cdef defs.point3d p
+        cdef defs.CountingOcTreeNode* node
+        cdef list coord_list = []
+        cdef list count_list = []
+        
+        self.thisptr.getCentersMinHits(centers_list, 1)
+        
+        it = centers_list.begin()
+        end_it = centers_list.end()
+        while it != end_it:
+            p = deref(it)
+            node = self.thisptr.search(p, 0)
+            if node != NULL:
+                coord_list.append([p.x(), p.y(), p.z()])
+                count_list.append(node.getCount())
+            inc(it)
+        
+        cdef int n = len(coord_list)
+        if n == 0:
+            return (np.zeros((0, 3), dtype=np.float64),
+                    np.zeros((0,), dtype=np.uint32))
+        
+        cdef np.ndarray[DOUBLE_t, ndim=2] coords = np.array(coord_list, dtype=np.float64)
+        cdef np.ndarray[np.uint32_t, ndim=1] counts = np.array(count_list, dtype=np.uint32)
+        return coords, counts
+    
+
+    def insertPointCloud(self,
+                         np.ndarray[DOUBLE_t, ndim=2] pointcloud,
+                         np.ndarray[DOUBLE_t, ndim=1] origin,
+                         double maxrange=-1.0,
+                         bint lazy_eval=False,
+                         bint discretize=False):
+        """
+        Integrate a point cloud into the counting tree, incrementing counts
+        for each point. Points beyond maxrange are truncated to maxrange
+        distance from the origin.
+        
+        Note: CountingOcTree counts observation hits per voxel. Unlike
+        probabilistic OcTrees, there is no free-space decrement along rays.
+        
+        Args:
+            pointcloud: Nx3 numpy array of point coordinates
+            origin: Sensor origin [x, y, z] (used for maxrange truncation)
+            maxrange: Maximum range (-1 = unlimited). Points farther than
+                      this are truncated to maxrange along the ray direction.
+            lazy_eval: If True, skip updateInnerCounts after insertion
+            discretize: If True, deduplicate points by voxel key first
+        
+        Returns:
+            int: Number of points processed
+        """
+        cdef int i, num_points = pointcloud.shape[0]
+        cdef np.ndarray[DOUBLE_t, ndim=1] point
+        cdef defs.point3d origin_c = defs.point3d(<float>origin[0], <float>origin[1], <float>origin[2])
+        cdef defs.point3d point_cpp
+        cdef defs.OcTreeKey key
+        cdef set unique_keys = set()
+        cdef list discrete_points = []
+        cdef np.ndarray[DOUBLE_t, ndim=1] ray_lengths
+        cdef np.ndarray[DOUBLE_t, ndim=2] directions
+        cdef defs.point3d direction_vec
+        
+        # Deduplicate by voxel key if requested
+        if discretize:
+            for i in range(num_points):
+                point = pointcloud[i]
+                key = self.thisptr.coordToKey(defs.point3d(point[0], point[1], point[2]))
+                key_tuple = (key.k[0], key.k[1], key.k[2])
+                if key_tuple not in unique_keys:
+                    unique_keys.add(key_tuple)
+                    discrete_points.append(point)
+            pointcloud = np.array(discrete_points, dtype=np.float64)
+            num_points = pointcloud.shape[0]
+        
+        if maxrange > 0.0:
+            # Vectorized distance computation
+            directions = pointcloud - origin
+            ray_lengths = np.sqrt(np.sum(directions**2, axis=1))
+            
+            for i in range(num_points):
+                point = pointcloud[i]
+                point_cpp = defs.point3d(<float>point[0], <float>point[1], <float>point[2])
+                
+                if ray_lengths[i] > maxrange:
+                    direction_vec = point_cpp - origin_c
+                    direction_vec.normalize()
+                    direction_vec *= maxrange
+                    point_cpp = origin_c + direction_vec
+                
+                self.thisptr.updateNode(point_cpp)
+        else:
+            for i in range(num_points):
+                point = pointcloud[i]
+                self.thisptr.updateNode(defs.point3d(<float>point[0], <float>point[1], <float>point[2]))
+        
+        if not lazy_eval:
+            self.updateInnerCounts()
+        
+        return num_points
+    
+    def insertPointCloudRaysFast(self,
+                                 np.ndarray[DOUBLE_t, ndim=2] pointcloud,
+                                 np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
+                                 double max_range=-1.0,
+                                 bint lazy_eval=False):
+        """
+        DEPRECATED: Use insertPointCloud() instead.
+        CountingOcTree does not use ray carving, so this method is identical to insertPointCloud.
+        """
+        import warnings
+        warnings.warn("insertPointCloudRaysFast is deprecated for CountingOcTree. "
+                      "Use insertPointCloud() instead, as CountingOcTree does not use ray carving.",
+                      DeprecationWarning, stacklevel=2)
+        return self.insertPointCloud(pointcloud, sensor_origin,
+                                     maxrange=max_range, lazy_eval=lazy_eval)
+    
+    def updateNodes(self, values, lazy_eval=False):
+        """
+        Batch update: increment counts for multiple nodes.
+        
+        Args:
+            values: List of OcTreeKey objects or numpy arrays [x, y, z]
+            lazy_eval: If True, skip updateInnerCounts after updates
+        
+        Returns:
+            int: Number of nodes updated
+        """
+        from .octomap import OcTreeKey
+        cdef defs.OcTreeKey update_key
+        cdef int count = 0
+        cdef np.ndarray[DOUBLE_t, ndim=1] coord
+        if values is None or len(values) == 0:
+            return 0
+        
+        for v in values:
+            if isinstance(v, OcTreeKey):
+                update_key.k[0] = v[0]
+                update_key.k[1] = v[1]
+                update_key.k[2] = v[2]
+                self.thisptr.updateNode(update_key)
+            else:
+                coord = np.array(v, dtype=np.float64)
+                self.thisptr.updateNode(defs.point3d(<float>coord[0], <float>coord[1], <float>coord[2]))
+            count += 1
+        
+        if not lazy_eval:
+            self.updateInnerCounts()
+        
+        return count
+    
+    def addPointWithRayCasting(self,
+                               np.ndarray[DOUBLE_t, ndim=1] point,
+                               np.ndarray[DOUBLE_t, ndim=1] sensor_origin=None,
+                               bint update_inner_occupancy=False):
+        """
+        DEPRECATED: Use updateNode() instead.
+        CountingOcTree does not implement ray carving for single points.
+        """
+        import warnings
+        warnings.warn("addPointWithRayCasting is deprecated for CountingOcTree. "
+                      "Use updateNode() instead, as CountingOcTree does not perform ray carving.",
+                      DeprecationWarning, stacklevel=2)
+        cdef defs.point3d point_cpp = defs.point3d(<float>point[0],
+                                                   <float>point[1],
+                                                   <float>point[2])
+        try:
+            self.thisptr.updateNode(point_cpp)
+            if update_inner_occupancy:
+                self.updateInnerCounts()
+            return True
+        except Exception:
+            return False
 

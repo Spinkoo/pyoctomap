@@ -377,6 +377,7 @@ cdef extern from "CountingOcTree.h" namespace "octomap":
         point3d keyToCoord(OcTreeKey& key, unsigned int depth)
         CountingOcTreeNode* getRoot()
         bool nodeHasChildren(const CountingOcTreeNode* node)
+        bool nodeChildExists(const CountingOcTreeNode* node, unsigned int childIdx)
         CountingOcTreeNode* getNodeChild(CountingOcTreeNode *node, unsigned int childIdx)
         CountingOcTreeNode* createNodeChild(CountingOcTreeNode *node, unsigned int childIdx)
         void deleteNodeChild(CountingOcTreeNode *node, unsigned int childIdx)
@@ -389,6 +390,8 @@ cdef extern from "CountingOcTree.h" namespace "octomap":
         size_t memoryUsage()
         size_t memoryUsageNode()
         double volume()
+        # Ray tracing methods from OcTreeBase
+        bool computeRayKeys(const point3d& origin, const point3d& end, KeyRay& ray)
 
 cdef extern from "OcTreeStamped.h" namespace "octomap":
     cdef cppclass OcTreeNodeStamped(OcTreeNode):
