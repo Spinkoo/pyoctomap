@@ -39,6 +39,8 @@ pyoctomap/*.cpp
 # Local copies of bundled OctoMap libraries
 pyoctomap/lib/
 
+#under dev and testing
+*decay_octree*
 # Example outputs
 examples/demo_magic_image.py
 
