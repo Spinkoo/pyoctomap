@@ -206,6 +206,48 @@ cdef class CountingOcTree:
         
         return result
     
+    def extractPointCloud(self):
+        """
+        Extract all node centres with count >= 1 and their counts.
+
+        Uses the C++ getCentersMinHits for coordinate extraction and then
+        looks up each node to retrieve its count.
+
+        Returns:
+            tuple: (points, counts)
+                - points: Nx3 float64 array of node centre coordinates
+                - counts: N-element uint32 array of hit counts
+        """
+        cdef defs.list[defs.point3d] centers_list
+        cdef defs.list[defs.point3d].iterator it
+        cdef defs.list[defs.point3d].iterator end_it
+        cdef defs.point3d p
+        cdef defs.CountingOcTreeNode* node_ptr
+
+        if self.thisptr.size() == 0:
+            return np.zeros((0, 3), dtype=np.float64), np.zeros(0, dtype=np.uint32)
+
+        self.thisptr.getCentersMinHits(centers_list, 1)
+
+        cdef list pts = []
+        cdef list cts = []
+        it = centers_list.begin()
+        end_it = centers_list.end()
+        while it != end_it:
+            p = deref(it)
+            pts.append([p.x(), p.y(), p.z()])
+            node_ptr = self.thisptr.search(p, 0)
+            if node_ptr != NULL:
+                cts.append(node_ptr.getCount())
+            else:
+                cts.append(0)
+            inc(it)
+
+        if len(pts) == 0:
+            return np.zeros((0, 3), dtype=np.float64), np.zeros(0, dtype=np.uint32)
+
+        return np.array(pts, dtype=np.float64), np.array(cts, dtype=np.uint32)
+
     # Inherit common OcTree methods
     def getResolution(self):
         return self.thisptr.getResolution()

@@ -652,6 +652,64 @@ cdef class OcTreeStamped:
         if timestamps is not None:
             return n_points
     
+    def extractPointCloud(self):
+        """
+        Extract point clouds split by occupancy, with per-point timestamps.
+
+        Returns:
+            tuple: (occupied_points, empty_points, occupied_timestamps)
+                - occupied_points:     Nx3 float64 array of occupied voxel centres
+                - empty_points:        Mx3 float64 array of free voxel centres
+                - occupied_timestamps: N-element uint32 array of timestamps
+                  (one per occupied point)
+        """
+        cdef float resolution = self.getResolution()
+        cdef list occupied = []
+        cdef list empty = []
+        cdef list occ_ts = []
+        cdef float size
+        cdef int is_occupied
+        cdef int dimension, raw_dimension
+        cdef np.ndarray[DOUBLE_t, ndim=1] center
+        cdef np.ndarray[DOUBLE_t, ndim=1] origin
+        cdef np.ndarray[np.int64_t, ndim=2] indices
+        cdef np.ndarray[DOUBLE_t, ndim=2] points
+
+        for it in self.begin_leafs():
+            try:
+                is_occupied = self.isNodeOccupied(it)
+            except:
+                is_occupied = True
+
+            center = np.array(it.getCoordinate(), dtype=np.float64)
+            raw_dimension = max(1, round(it.getSize() / resolution))
+            dimension = min(raw_dimension, 100)
+            origin = center - (dimension / 2 - 0.5) * resolution
+            indices = np.column_stack(
+                np.nonzero(np.ones((dimension, dimension, dimension))))
+            points = origin + indices * np.array(resolution)
+
+            if is_occupied:
+                occupied.append(points)
+                ts_val = it.getTimestamp()
+                occ_ts.append(np.full(points.shape[0], ts_val, dtype=np.uint32))
+            else:
+                empty.append(points)
+
+        if len(occupied) == 0:
+            occupied_arr = np.zeros((0, 3), dtype=np.float64)
+            ts_arr = np.zeros(0, dtype=np.uint32)
+        else:
+            occupied_arr = np.concatenate(occupied, axis=0)
+            ts_arr = np.concatenate(occ_ts, axis=0)
+
+        if len(empty) == 0:
+            empty_arr = np.zeros((0, 3), dtype=np.float64)
+        else:
+            empty_arr = np.concatenate(empty, axis=0)
+
+        return occupied_arr, empty_arr, ts_arr
+
     # Helper method to get the C++ pointer address (for use in other modules)
     cpdef size_t _get_ptr_addr(self):
         return <size_t>self.thisptr
