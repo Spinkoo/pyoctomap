@@ -1,0 +1,194 @@
+name: Release to PyPI (cibuildwheel)
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to build (informational only)'
+        required: false
+        default: '1.1.2'
+
+jobs:
+  build-wheels:
+    runs-on: ${{ matrix.os }}
+    environment: release
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            arch: x86_64
+            platform: linux
+          - os: macos-14
+            arch: arm64
+            platform: macos
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Display release info
+      run: |
+        echo "🚀 Building wheels using cibuildwheel"
+        echo "🖥️  Platform: ${{ matrix.platform }} (${{ matrix.arch }})"
+        if [ -n "${{ github.event.inputs.version }}" ]; then
+          echo "📦 Version: ${{ github.event.inputs.version }}"
+        fi
+        if [ -n "${{ github.event.release.tag_name }}" ]; then
+          echo "🏷️  Release tag: ${{ github.event.release.tag_name }}"
+        fi
+
+    - name: Build wheels with cibuildwheel
+      uses: pypa/cibuildwheel@v2.22
+      env:
+        # Build for CPython 3.8-3.13
+        CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
+        CIBW_SKIP: "*-musllinux_*"
+        CIBW_ARCHS: ${{ matrix.arch }}
+        CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+
+        # ── Linux: Build OctoMap C++ ──
+        CIBW_BEFORE_ALL_LINUX: |
+          yum install -y cmake3 make gcc gcc-c++ git
+          cd {project}/src/octomap
+          mkdir -p build && cd build
+          cmake3 .. -DCMAKE_BUILD_TYPE=Release
+          make -j$(nproc)
+          make install
+          cp -a /usr/local/lib64/libocto*.so* /usr/local/lib/ 2>/dev/null || true
+          cp -a /usr/local/lib64/libocto*.a /usr/local/lib/ 2>/dev/null || true
+          ldconfig
+          mkdir -p {project}/src/octomap/lib
+          find /usr/local/lib -maxdepth 1 -name "*.so*" -exec cp {} {project}/src/octomap/lib/ \;
+          find /usr/local/lib -maxdepth 1 -name "*.a" -exec cp {} {project}/src/octomap/lib/ \;
+          echo "Libraries copied:"
+          ls -la {project}/src/octomap/lib/
+
+        CIBW_ENVIRONMENT_LINUX: "LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:{project}/src/octomap/lib"
+
+        CIBW_REPAIR_WHEEL_COMMAND_LINUX: >
+          LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
+          auditwheel repair -w {dest_dir} {wheel}
+
+        # ── macOS: Build OctoMap C++ ──
+        CIBW_BEFORE_ALL_MACOS: |
+          cd {project}/src/octomap
+          mkdir -p build && cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          make -j$(sysctl -n hw.ncpu)
+          sudo make install
+          mkdir -p {project}/src/octomap/lib
+          cp -a /usr/local/lib/liboctomap* {project}/src/octomap/lib/ 2>/dev/null || true
+          cp -a /usr/local/lib/liboctomath* {project}/src/octomap/lib/ 2>/dev/null || true
+          cp -a /usr/local/lib/libdynamicedt3d* {project}/src/octomap/lib/ 2>/dev/null || true
+          echo "Libraries copied:"
+          ls -la {project}/src/octomap/lib/
+
+        CIBW_ENVIRONMENT_MACOS: "DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:{project}/src/octomap/lib"
+
+        CIBW_REPAIR_WHEEL_COMMAND_MACOS: >
+          DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib
+          delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}
+
+        # ── Common ──
+        CIBW_BEFORE_BUILD: >
+          pip install numpy cython &&
+          echo "=== Libraries in src/octomap/lib ===" &&
+          ls -la {project}/src/octomap/lib/
+
+        CIBW_TEST_COMMAND: >
+          python -c "import pyoctomap; print(f'✅ pyoctomap {pyoctomap.__version__} imported successfully')"
+
+    - name: List built wheels
+      run: |
+        echo "✅ Built wheels:"
+        ls -la wheelhouse/
+
+    - name: Upload wheels
+      uses: actions/upload-artifact@v4
+      with:
+        name: wheels-${{ matrix.platform }}-${{ matrix.arch }}
+        path: ./wheelhouse/*.whl
+
+  build-sdist:
+    runs-on: ubuntu-latest
+    environment: release
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    - name: Install build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build setuptools wheel numpy cython
+
+    - name: Generate PyPI README
+      run: |
+        python github2pypi/generate_pypi_readme.py
+
+        if [ -f "README_pypi_preview.md" ]; then
+          echo "✅ PyPI README generated successfully"
+        else
+          echo "❌ PyPI README generation failed"
+          exit 1
+        fi
+
+    - name: Build source distribution
+      run: |
+        python -m build --sdist
+        echo "✅ Built source distribution:"
+        ls -la dist/
+
+    - name: Upload source distribution
+      uses: actions/upload-artifact@v4
+      with:
+        name: sdist
+        path: dist/*.tar.gz
+
+  publish:
+    needs: [build-wheels, build-sdist]
+    runs-on: ubuntu-latest
+    environment: release
+
+    steps:
+    - name: Download all wheel artifacts
+      uses: actions/download-artifact@v4
+      with:
+        pattern: wheels-*
+        path: ./wheels
+        merge-multiple: true
+
+    - name: Download source distribution
+      uses: actions/download-artifact@v4
+      with:
+        name: sdist
+        path: ./dist
+
+    - name: Combine packages for upload
+      run: |
+        echo "📦 Combining wheels and source distribution..."
+        mkdir -p ./packages
+        cp ./wheels/*.whl ./packages/
+        cp ./dist/*.tar.gz ./packages/
+        echo "Packages to upload:"
+        ls -la ./packages/
+
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
+        packages_dir: ./packages
+        skip_existing: true

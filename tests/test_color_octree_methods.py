@@ -114,11 +114,14 @@ def test_utility_methods():
     assert all(l in [-1, 0, 1] for l in labels), "Labels should be -1, 0, or 1"
     
     # Test extractPointCloud
-    occupied, empty = tree.extractPointCloud()
+    occupied, empty, colors = tree.extractPointCloud()
     assert isinstance(occupied, np.ndarray), "extractPointCloud should return numpy array"
     assert isinstance(empty, np.ndarray), "extractPointCloud should return numpy array"
+    assert isinstance(colors, np.ndarray), "extractPointCloud should return colors numpy array"
     assert occupied.shape[1] == 3, "Points should be 3D"
     assert empty.shape[1] == 3, "Points should be 3D"
+    assert colors.shape[1] == 3, "Colors should be RGB"
+    assert len(occupied) == len(colors), "Every occupied point should have a color"
 
 
 def test_iterator_methods():
