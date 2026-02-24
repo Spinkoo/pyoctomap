@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PyOctoMap - Python 3D Occupancy Mapping</title>
-    <meta name="description" content="Modern Python bindings for OctoMap with bundled binaries, vectorized APIs, and robotics-ready tooling." />
+    <meta name="description"
+        content="Modern Python bindings for OctoMap with bundled binaries, vectorized APIs, and robotics-ready tooling." />
     <meta name="keywords" content="octomap, occupancy mapping, robotics, 3d mapping, python, computer vision">
     <meta name="author" content="Spinkoo">
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect x=%2220%22 y=%2220%22 width=%2260%22 height=%2260%22 rx=%2215%22 fill=%22%2306b6d4%22/></svg>">
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect x=%2220%22 y=%2220%22 width=%2260%22 height=%2260%22 rx=%2215%22 fill=%22%2306b6d4%22/></svg>">
 
     <style>
         :root {
@@ -40,7 +43,10 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        a { color: inherit; text-decoration: none; }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
         .container {
             width: min(1200px, 92%);
@@ -86,7 +92,9 @@
             transition: color 0.2s ease;
         }
 
-        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
         /* --- Hero --- */
         .hero {
@@ -135,7 +143,9 @@
             transition: background 0.2s ease;
         }
 
-        .quick-install button:hover { background: rgba(6, 182, 212, 0.45); }
+        .quick-install button:hover {
+            background: rgba(6, 182, 212, 0.45);
+        }
 
         .cta-buttons {
             display: flex;
@@ -152,7 +162,9 @@
             transition: transform 0.2s ease;
         }
 
-        .btn:hover { transform: translateY(-3px); }
+        .btn:hover {
+            transform: translateY(-3px);
+        }
 
         .btn-primary {
             background: linear-gradient(120deg, var(--accent), var(--accent-alt));
@@ -178,7 +190,9 @@
         }
 
         /* --- Sections --- */
-        section { padding: 4rem 0; }
+        section {
+            padding: 4rem 0;
+        }
 
         .section-title {
             text-transform: uppercase;
@@ -186,7 +200,8 @@
             font-size: 0.8rem;
             color: var(--muted);
             margin-bottom: 1.5rem;
-            text-align: center; /* Center section titles generally */
+            text-align: center;
+            /* Center section titles generally */
         }
 
         /* --- Features --- */
@@ -260,8 +275,13 @@
             background: rgba(6, 182, 212, 0.2);
         }
 
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
 
         .code-container {
             background: rgba(15, 23, 42, 0.95);
@@ -269,7 +289,7 @@
             border: 1px solid rgba(148, 163, 184, 0.2);
             padding: 1.5rem;
             box-shadow: var(--shadow);
-            
+
             /* Center and constrain width */
             max-width: 860px;
             margin: 0 auto;
@@ -314,7 +334,7 @@
             border-radius: 28px;
             background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.85));
             border: 1px solid rgba(148, 163, 184, 0.2);
-            
+
             /* Center and constrain width */
             max-width: 860px;
             margin: 0 auto;
@@ -350,7 +370,9 @@
             font-size: 0.95rem;
         }
 
-        .footer-grid a:hover { color: var(--accent); }
+        .footer-grid a:hover {
+            color: var(--accent);
+        }
 
         .footer-bottom {
             border-top: 1px solid rgba(148, 163, 184, 0.1);
@@ -365,14 +387,32 @@
         }
 
         @media (max-width: 768px) {
-            nav { flex-direction: column; gap: 1rem; }
-            .features, .installation { padding: 1.5rem; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero-img { width: 100%; margin-top: 2rem; }
-            .footer-grid { gap: 2rem; }
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .features,
+            .installation {
+                padding: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-img {
+                width: 100%;
+                margin-top: 2rem;
+            }
+
+            .footer-grid {
+                gap: 2rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -391,19 +431,20 @@
     <section class="hero">
         <div class="container">
             <p class="section-title">Octree Mapping for Robotics</p>
-            <h1>Python Bindings for <a href="https://octomap.github.io" target="_blank" rel="noopener">OctoMap</a></h1>     
+            <h1>Python Bindings for <a href="https://octomap.github.io" target="_blank" rel="noopener">OctoMap</a></h1>
 
             <div class="quick-install">
                 <code>pip install pyoctomap</code>
                 <button class="quick-copy" type="button">Copy</button>
             </div>
             <div style="display: flex; justify-content: center;">
-                <img src="images/octomap_core.png" alt="PyOctoMap Core Visualization" class="hero-img" />   
+                <img src="images/octomap_core.png" alt="PyOctoMap Core Visualization" class="hero-img" />
             </div>
             <div style="height: 2rem;"></div>
             <div class="cta-buttons">
                 <a class="btn btn-primary" href="#examples">View Examples</a>
-                <a class="btn btn-secondary" href="https://github.com/Spinkoo/pyoctomap" target="_blank" rel="noreferrer">Visit GitHub</a>
+                <a class="btn btn-secondary" href="https://github.com/Spinkoo/pyoctomap" target="_blank"
+                    rel="noreferrer">Visit GitHub</a>
             </div>
         </div>
     </section>
@@ -413,27 +454,43 @@
             <p class="section-title" style="text-align: left;">Key Capabilities</p>
             <div class="features-grid">
                 <article class="feature-card">
-                    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 16.5C21 16.88 20.79 17.21 20.47 17.38L12.57 21.82C12.41 21.94 12.21 22 12 22C11.79 22 11.59 21.94 11.43 21.82L3.53 17.38C3.21 17.21 3 16.88 3 16.5V7.5C3 7.12 3.21 6.79 3.53 6.62L11.43 2.18C11.59 2.06 11.79 2 12 2C12.21 2 12.41 2.06 12.57 2.18L20.47 6.62C20.79 6.79 21 7.12 21 7.5V16.5ZM12 4.15L6.04 7.5L12 10.85L17.96 7.5L12 4.15ZM5 8.63V15.37L11 18.74V12L5 8.63ZM13 18.74L19 15.37V8.63L13 12V18.74Z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21 16.5C21 16.88 20.79 17.21 20.47 17.38L12.57 21.82C12.41 21.94 12.21 22 12 22C11.79 22 11.59 21.94 11.43 21.82L3.53 17.38C3.21 17.21 3 16.88 3 16.5V7.5C3 7.12 3.21 6.79 3.53 6.62L11.43 2.18C11.59 2.06 11.79 2 12 2C12.21 2 12.41 2.06 12.57 2.18L20.47 6.62C20.79 6.79 21 7.12 21 7.5V16.5ZM12 4.15L6.04 7.5L12 10.85L17.96 7.5L12 4.15ZM5 8.63V15.37L11 18.74V12L5 8.63ZM13 18.74L19 15.37V8.63L13 12V18.74Z" />
+                    </svg>
                     <h3>Rich Tree Families</h3>
-                    <p><code>OcTree</code>, <code>ColorOcTree</code>, <code>CountingOcTree</code> and <code>OcTreeStamped</code> in one coherent Python API.</p>
+                    <p><code>OcTree</code>, <code>ColorOcTree</code>, <code>CountingOcTree</code> and
+                        <code>OcTreeStamped</code> in one coherent Python API.</p>
                 </article>
                 <article class="feature-card">
-                    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 21C6.79 21 6.61 20.89 6.5 20.71C6.38 20.53 6.36 20.31 6.43 20.11L9.12 12H5C4.65 12 4.34 11.8 4.17 11.48C4 11.16 4.02 10.78 4.22 10.48L11.22 1.48C11.38 1.25 11.66 1.1 11.96 1.11C12.25 1.12 12.52 1.29 12.65 1.56L15.65 8H19C19.35 8 19.66 8.2 19.83 8.52C20 8.84 19.98 9.22 19.78 9.52L12.78 19.52C12.59 19.8 12.25 19.95 11.91 19.91C11.57 19.87 11.28 19.64 11.16 19.32L9.17 14H13C13.37 14 13.7 13.77 13.86 13.43C14.03 13.09 13.98 12.68 13.74 12.4L7.86 4.36L6.1 14H11.5L8.5 20.4L7.54 20.83C7.38 20.93 7.19 21 7 21Z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 21C6.79 21 6.61 20.89 6.5 20.71C6.38 20.53 6.36 20.31 6.43 20.11L9.12 12H5C4.65 12 4.34 11.8 4.17 11.48C4 11.16 4.02 10.78 4.22 10.48L11.22 1.48C11.38 1.25 11.66 1.1 11.96 1.11C12.25 1.12 12.52 1.29 12.65 1.56L15.65 8H19C19.35 8 19.66 8.2 19.83 8.52C20 8.84 19.98 9.22 19.78 9.52L12.78 19.52C12.59 19.8 12.25 19.95 11.91 19.91C11.57 19.87 11.28 19.64 11.16 19.32L9.17 14H13C13.37 14 13.7 13.77 13.86 13.43C14.03 13.09 13.98 12.68 13.74 12.4L7.86 4.36L6.1 14H11.5L8.5 20.4L7.54 20.83C7.38 20.93 7.19 21 7 21Z" />
+                    </svg>
                     <h3>Dynamic & Temporal Mapping</h3>
-                    <p>Decay-and-insert helpers and time-stamped trees handle moving sensors and changing scenes.</p>
+                    <p>Time-stamped trees handle moving sensors and changing scenes.</p>
                 </article>
                 <article class="feature-card">
-                    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM7.5 13C8.33 13 9 12.33 9 11.5C9 10.67 8.33 10 7.5 10C6.67 10 6 10.67 6 11.5C6 12.33 6.67 13 7.5 13ZM10.5 9C11.33 9 12 8.33 12 7.5C12 6.67 11.33 6 10.5 6C9.67 6 9 6.67 9 7.5C9 8.33 9.67 9 10.5 9ZM16.5 13C17.33 13 18 12.33 18 11.5C18 10.67 17.33 10 16.5 10C15.67 10 15 10.67 15 11.5C15 12.33 15.67 13 16.5 13ZM13.5 17C14.33 17 15 16.33 15 15.5C15 14.67 14.33 14 13.5 14C12.67 14 12 14.67 12 15.5C12 16.33 12.67 17 13.5 17Z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM7.5 13C8.33 13 9 12.33 9 11.5C9 10.67 8.33 10 7.5 10C6.67 10 6 10.67 6 11.5C6 12.33 6.67 13 7.5 13ZM10.5 9C11.33 9 12 8.33 12 7.5C12 6.67 11.33 6 10.5 6C9.67 6 9 6.67 9 7.5C9 8.33 9.67 9 10.5 9ZM16.5 13C17.33 13 18 12.33 18 11.5C18 10.67 17.33 10 16.5 10C15.67 10 15 10.67 15 11.5C15 12.33 15.67 13 16.5 13ZM13.5 17C14.33 17 15 16.33 15 15.5C15 14.67 14.33 14 13.5 14C12.67 14 12 14.67 12 15.5C12 16.33 12.67 17 13.5 17Z" />
+                    </svg>
                     <h3>Batch & Point Clouds</h3>
                     <p>NumPy point clouds and native C++ batch insertions for high-throughput updates.</p>
                 </article>
                 <article class="feature-card">
-                    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12 7C9.24 7 7 9.24 7 12C7 14.76 9.24 17 12 17C14.76 17 17 14.76 17 12C17 9.24 14.76 7 12 7ZM12 15C10.35 15 9 13.65 9 12C9 10.35 10.35 9 12 9C13.65 9 15 10.35 15 12C15 13.65 13.65 15 12 15Z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12 7C9.24 7 7 9.24 7 12C7 14.76 9.24 17 12 17C14.76 17 17 14.76 17 12C17 9.24 14.76 7 12 7ZM12 15C10.35 15 9 13.65 9 12C9 10.35 10.35 9 12 9C13.65 9 15 10.35 15 12C15 13.65 13.65 15 12 15Z" />
+                    </svg>
                     <h3>Ray Casting & Planning</h3>
                     <p>Ray-based free-space carving, collision checks, and path feasibility queries.</p>
                 </article>
                 <article class="feature-card">
-                    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 2H3C1.9 2 1 2.9 1 4V16C1 17.1 1.9 18 3 18H10V20H8V22H16V20H14V18H21C22.1 18 23 17.1 23 16V4C23 2.9 22.1 2 21 2ZM21 16H3V4H21V16Z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21 2H3C1.9 2 1 2.9 1 4V16C1 17.1 1.9 18 3 18H10V20H8V22H16V20H14V18H21C22.1 18 23 17.1 23 16V4C23 2.9 22.1 2 21 2ZM21 16H3V4H21V16Z" />
+                    </svg>
                     <h3>Bundled Wheels</h3>
                     <p>Pre-built manylinux wheels with bundled C++ libs, tested on Linux and Windows (WSL).</p>
                 </article>
@@ -535,7 +592,7 @@ tree = pom.OcTree(0.1)
 points = np.random.rand(1000, 3) * 10.0
 origin = np.array([0.0, 0.0, 1.5])
 
-# Recommended: decay + insert for moving sensors
+# Insert point cloud (synchronous update inner nodes)
 tree.insertPointCloud(
     points,
     origin,
@@ -543,7 +600,7 @@ tree.insertPointCloud(
     lazy_eval=False
 )
 
-# Simpler: pure batch insertion (no temporal decay)
+# Insert point cloud with lazy evaluation (efficient for multiple scans)
 tree.insertPointCloud(points, origin, lazy_eval=True)
 tree.updateInnerOccupancy()
 
@@ -660,19 +717,22 @@ else:
             </div>
 
             <div id="tab-pip" class="tab-content active">
-                <div class="code-container" style="box-shadow: none; border: none; background: transparent; padding: 0;">
+                <div class="code-container"
+                    style="box-shadow: none; border: none; background: transparent; padding: 0;">
                     <div class="code-header">
                         <span class="code-title">Pre-built Wheel</span>
                         <button class="copy-btn" data-code="code-pip">Copy</button>
                     </div>
                     <pre id="code-pip"><code># manylinux wheels, bundled deps
 pip install pyoctomap</code></pre>
-                    <p style="color: var(--muted); margin-top: 0.8rem; font-size: 0.9rem;">Python 3.8–3.14 · Linux · Windows (WSL)</p>
+                    <p style="color: var(--muted); margin-top: 0.8rem; font-size: 0.9rem;">Python 3.8–3.14 · Linux ·
+                        Windows (WSL)</p>
                 </div>
             </div>
 
             <div id="tab-source" class="tab-content">
-                <div class="code-container" style="box-shadow: none; border: none; background: transparent; padding: 0;">
+                <div class="code-container"
+                    style="box-shadow: none; border: none; background: transparent; padding: 0;">
                     <div class="code-header">
                         <span class="code-title">Build from Source</span>
                         <button class="copy-btn" data-code="code-source">Copy</button>
@@ -690,13 +750,17 @@ chmod +x build.sh && ./build.sh</code></pre>
             <div class="footer-grid">
                 <div>
                     <h3>PyOctoMap</h3>
-                    <p style="color: var(--muted); font-size: 0.9rem;">Efficient 3D occupancy grids powered by OctoMap and ergonomic Python APIs.</p>
+                    <p style="color: var(--muted); font-size: 0.9rem;">Efficient 3D occupancy grids powered by OctoMap
+                        and ergonomic Python APIs.</p>
                 </div>
                 <div>
                     <h3>Documentation</h3>
-                    <a href="https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md" target="_blank" rel="noreferrer">API Reference</a>
-                    <a href="https://github.com/Spinkoo/pyoctomap/blob/main/docs/README.md#examples" target="_blank" rel="noreferrer">Examples</a>
-                    <a href="https://github.com/Spinkoo/pyoctomap/blob/main/docs/performance_guide.md" target="_blank" rel="noreferrer">Performance Guide</a>
+                    <a href="https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md" target="_blank"
+                        rel="noreferrer">API Reference</a>
+                    <a href="https://github.com/Spinkoo/pyoctomap/blob/main/docs/README.md#examples" target="_blank"
+                        rel="noreferrer">Examples</a>
+                    <a href="https://github.com/Spinkoo/pyoctomap/blob/main/docs/performance_guide.md" target="_blank"
+                        rel="noreferrer">Performance Guide</a>
                 </div>
                 <div>
                     <h3>Resources</h3>
@@ -705,10 +769,12 @@ chmod +x build.sh && ./build.sh</code></pre>
                     <a href="https://octomap.github.io/" target="_blank">OctoMap C++</a>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <p>&copy; 2025 PyOctoMap. Built by <a href="https://github.com/Spinkoo" style="color: #38a169;">Spinkoo</a></p>
-                <p>Licensed under MIT License | Supported by French National Research Agency (ANR)</p>            </div>
+                <p>&copy; 2025 PyOctoMap. Built by <a href="https://github.com/Spinkoo"
+                        style="color: #38a169;">Spinkoo</a></p>
+                <p>Licensed under MIT License | Supported by French National Research Agency (ANR)</p>
+            </div>
         </div>
     </footer>
 
@@ -719,7 +785,7 @@ chmod +x build.sh && ./build.sh</code></pre>
             scope.addEventListener('click', (event) => {
                 const tab = event.target.closest('.tab');
                 if (!tab) return;
-                
+
                 // Remove active from all tabs in this scope
                 scope.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
                 tab.classList.add('active');
@@ -728,7 +794,7 @@ chmod +x build.sh && ./build.sh</code></pre>
                 const targetId = tab.dataset.target;
                 const section = scope.closest('section'); // Find parent section
                 section.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-                
+
                 const targetContent = document.getElementById(targetId);
                 if (targetContent) targetContent.classList.add('active');
             });
@@ -742,7 +808,7 @@ chmod +x build.sh && ./build.sh</code></pre>
             document.body.addEventListener('click', (event) => {
                 const copyBtn = event.target.closest('.copy-btn, .quick-copy');
                 if (!copyBtn) return;
-                
+
                 let text = '';
                 if (copyBtn.classList.contains('quick-copy')) {
                     text = 'pip install pyoctomap';
@@ -764,4 +830,5 @@ chmod +x build.sh && ./build.sh</code></pre>
         });
     </script>
 </body>
+
 </html>
