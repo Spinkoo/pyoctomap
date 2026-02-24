@@ -503,7 +503,7 @@ color.setNodeColor(coord, 255, 0, 0)
 # Batch insertion with colors
 points = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=np.float64)
 colors = np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]], dtype=np.float64)  # RGB in [0, 1]
-color.insertPointCloudWithColor(points, colors)
+color.insertPointCloud(points, colors=colors)
 
 # Counting tree - integer hit statistics
 count = pom.CountingOcTree(0.1)
@@ -518,7 +518,7 @@ print("Last update time:", stamped.getLastUpdateTime())
 # Batch insertion with timestamps
 points = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=np.float64)
 timestamp = 12345  # unsigned int
-stamped.insertPointCloudWithTimestamp(points, timestamp)</code></pre>
+stamped.insertPointCloud(points, timestamps=timestamp)</code></pre>
             </div>
         </div>
 
@@ -536,12 +536,11 @@ points = np.random.rand(1000, 3) * 10.0
 origin = np.array([0.0, 0.0, 1.5])
 
 # Recommended: decay + insert for moving sensors
-tree.decayAndInsertPointCloud(
+tree.insertPointCloud(
     points,
     origin,
-    logodd_decay_value=-0.2,   # must be negative
     max_range=50.0,
-    update_inner_occupancy=True,
+    lazy_eval=False
 )
 
 # Simpler: pure batch insertion (no temporal decay)
@@ -551,12 +550,12 @@ tree.updateInnerOccupancy()
 # Color tree: batch insertion with colors
 color_tree = pom.ColorOcTree(0.1)
 colors = np.random.rand(1000, 3)  # RGB in [0, 1] range
-color_tree.insertPointCloudWithColor(points, colors)
+color_tree.insertPointCloud(points, colors=colors)
 
 # Stamped tree: batch insertion with timestamps
 stamped_tree = pom.OcTreeStamped(0.1)
 timestamp = 12345  # unsigned int
-stamped_tree.insertPointCloudWithTimestamp(points, timestamp)</code></pre>
+stamped_tree.insertPointCloud(points, timestamps=timestamp)</code></pre>
             </div>
         </div>
 
