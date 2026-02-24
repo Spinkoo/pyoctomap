@@ -1,0 +1,12 @@
+build/
+.pytest_cache/
+.cursor/
+.pyoctomap.egg-info/
+examples/
+github2pypi/
+docs/
+scripts/
+tests/
+pyoctomap/
+*.egg-info/
+dist/
