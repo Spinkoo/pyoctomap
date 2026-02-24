@@ -154,6 +154,29 @@ cdef class CountingOcTree:
             return result
         return None
     
+    def insertPointCloud(self, double[:,::1] points):
+        """
+        Batch-insert a point cloud, incrementing the count for each point.
+
+        CountingOcTree does not have native C++ insertPointCloud (it inherits
+        from OcTreeBase, not OccupancyOcTreeBase), so this is a Python-level
+        convenience that calls updateNode for every point.
+
+        Args:
+            points: Nx3 array of point coordinates (float64)
+
+        Returns:
+            int: Number of points processed
+        """
+        cdef int i
+        cdef int n_points = points.shape[0]
+        for i in range(n_points):
+            self.thisptr.updateNode(
+                defs.point3d(<float>points[i, 0],
+                             <float>points[i, 1],
+                             <float>points[i, 2]))
+        return n_points
+
     def getCentersMinHits(self, unsigned int min_hits):
         """
         Get centers of nodes with at least min_hits count.

@@ -111,10 +111,11 @@ tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
 
 ### Batch Operations (Summary)
 
-For large point clouds, favor the C++ batch helpers:
+For large point clouds, use the unified `insertPointCloud` method:
 
-- `insertPointCloud(points, origin, lazy_eval=True)` then `updateInnerOccupancy()`
-- `insertPointCloud(points, origin, method="rays_fast", max_range=...)` for maximum speed
+- `OcTree.insertPointCloud(points, origin, max_range=-1.0, lazy_eval=False, discretize=False)`
+- `ColorOcTree.insertPointCloud(points, sensor_origin=None, ..., colors=colors)` — also sets per-point colors
+- `OcTreeStamped.insertPointCloud(points, sensor_origin=None, ..., timestamps=ts)` — also sets per-node timestamps
 
 See the [Performance Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/performance_guide.md) for practical batch sizing and resolution
 recommendations.

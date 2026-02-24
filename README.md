@@ -119,14 +119,11 @@ tree.insertPointCloud(points, sensor_origin=sensor_origin, colors=colors)
 
 ### Batch Operations (Summary)
 
-For large point clouds, favor the C++ batch helpers:
+For large point clouds, use the unified `insertPointCloud` method:
 
-- `insertPointCloud(points, origin, lazy_eval=True)` then `updateInnerOccupancy()`
-- `insertPointCloud(points, origin, method="rays_fast", max_range=...)` for maximum speed
-
-For color and timestamp data:
-- `ColorOcTree.insertPointCloud(points, sensor_origin=None, colors=colors, max_range=-1.0, lazy_eval=True)` - Insert point cloud and set colors in a single operation. Colors should be in [0, 1] range (N×3 array). `sensor_origin` is optional for proper ray casting.
-- `OcTreeStamped.insertPointCloudWithTimestamp(points, timestamp, sensor_origin=None, max_range=-1.0, lazy_eval=True)` - Insert point cloud and set timestamps in a single operation. Timestamp is an unsigned integer. `sensor_origin` is optional for proper ray casting.
+- `OcTree.insertPointCloud(points, origin, max_range=-1.0, lazy_eval=False, discretize=False)`
+- `ColorOcTree.insertPointCloud(points, sensor_origin=None, ..., colors=colors)` — also sets per-point colors
+- `OcTreeStamped.insertPointCloud(points, sensor_origin=None, ..., timestamps=ts)` — also sets per-node timestamps
 
 See the **Performance Guide** for practical batch sizing and resolution
 recommendations.

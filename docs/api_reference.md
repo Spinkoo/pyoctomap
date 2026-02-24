@@ -300,13 +300,13 @@ node = tree.updateNode([x, y, z], -0.4)       # log‑odds update
 node = tree.updateNode(x, y, z, True)        # coordinate triplet
 ```
 
-- **`insertPointCloudWithTimestamp(points, timestamp, sensor_origin=None, max_range=-1.0, lazy_eval=True)`**
-  - Insert a point cloud and set timestamps for all points in a single operation.
-  - `points`: N×3 numpy array of point coordinates.
-  - `timestamp`: Unsigned integer timestamp value to set for all nodes.
+- **`insertPointCloud(points, sensor_origin=None, max_range=-1.0, lazy_eval=False, discretize=False, timestamps=None)`**
+  - Insert a point cloud and optionally set timestamps for all points in a single operation.
+  - `points`: N×3 numpy array of point coordinates (float64).
+  - `timestamps`: Optional unsigned integer timestamp value to set for all inserted nodes.
   - `sensor_origin`: Optional sensor origin [x, y, z] for ray casting. If `None` (default), uses (0, 0, 0). Providing a proper sensor origin enables correct free-space carving along rays from sensor to points.
   - First inserts geometry using batch `insertPointCloud` with ray casting, then updates timestamps using key-based search for efficiency.
-  - Returns the number of points processed.
+  - Returns the number of points processed when `timestamps` is provided.
 
 Other common helpers are inherited:
 

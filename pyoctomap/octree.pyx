@@ -904,33 +904,3 @@ cdef class OcTree:
         self._build_pointcloud_and_insert(point_cloud, sensor_origin, max_range, discretize, lazy_eval)
         
         return num_points if success else 0
-
-    def insertPointCloudRaysFast(self,
-                                np.ndarray[DOUBLE_t, ndim=2] point_cloud,
-                                np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
-                                double max_range=-1.0,
-                                bint lazy_eval=False):
-        """
-        Ultra-fast batch using native insertPointCloudRays (parallel rays, no key sets).
-        Inserts full rays without deduplication—fastest but may over-update.
-        """
-        cdef defs.Pointcloud pc
-        cdef int i, num_points = point_cloud.shape[0]
-        cdef np.ndarray[DOUBLE_t, ndim=1] point
-        cdef defs.point3d origin_c  # C++ type declaration
-        
-        pc = defs.Pointcloud()  # C++ constructor
-        
-        for i in range(num_points):
-            point = point_cloud[i]
-            pc.push_back(<float>point[0], <float>point[1], <float>point[2])
-        
-        # Create C++ origin without Python conversion
-        origin_c = defs.point3d(<float>sensor_origin[0], <float>sensor_origin[1], <float>sensor_origin[2])
-        
-        self.thisptr.insertPointCloudRays(pc, origin_c, <double>max_range, <cppbool>lazy_eval)
-        
-        if not lazy_eval:
-            self.updateInnerOccupancy()
-        
-        return num_points
