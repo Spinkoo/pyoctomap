@@ -110,6 +110,10 @@ tree = OcTree(resolution=0.1)  # 10 cm voxels
 - **`isNodeOccupied(node)` / `isNodeAtThreshold(node)`**
   - Convenience predicates for `OcTreeNode` state.
 
+- **`extractPointCloud()`**
+  - Extremely fast extraction of the entire tree logic into flat numpy arrays.
+  - Returns: `(occupied_points, empty_points)` where each is an N×3 `np.float64` array of voxel center coordinates.
+
 ### Tree Information
 
 - **`size()`** – total number of nodes in the tree.
@@ -189,6 +193,10 @@ Methods match `OcTree` for occupancy, plus color‑specific helpers.
   - First inserts geometry using batch `insertPointCloud` with ray casting, then updates colors using key-based search for efficiency.
   - Returns the number of points processed.
 
+- **`extractPointCloud()`**
+  - Extracts coordinates and RGB colors.
+  - Returns: `(occupied_points, empty_points, colors)` where `colors` is an N×3 `np.uint8` array of RGB values corresponding to the `occupied_points`.
+
 ### Example
 
 ```python
@@ -240,6 +248,10 @@ tree_from_file = CountingOcTree("counts.bt")
 - **`getCentersMinHits(min_hits)`**
   - Returns a list of `[x, y, z]` centers for nodes whose count is at least
     `min_hits`.
+
+- **`extractPointCloud()`**
+  - Extracts coordinates and their hit counts for all nodes (count >= 1).
+  - Returns: `(points, counts)` where `points` is an N×3 `np.float64` array and `counts` is an N-element `np.uint32` array.
 
 - Occupancy helpers for compatibility:
   - `isNodeOccupied(node)` → `True` if `count > 0`.
@@ -314,6 +326,7 @@ Other common helpers are inherited:
 - `search(value, depth=0)` → `OcTreeNodeStamped` or `None`.
 - `isNodeOccupied(node)`, `isNodeAtThreshold(node)`.
 - `castRay(...)` – same semantics as for `OcTree`.
+- `extractPointCloud()` → `(occupied_points, empty_points, timestamps)` where `timestamps` is an N-element `np.uint32` array mapping 1:1 with `occupied_points`.
 
 ---
 

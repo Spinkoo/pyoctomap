@@ -112,6 +112,13 @@ For large point clouds, use the unified `insertPointCloud` method:
 - `ColorOcTree.insertPointCloud(points, sensor_origin=None, ..., colors=colors)` — also sets per-point colors
 - `OcTreeStamped.insertPointCloud(points, sensor_origin=None, ..., timestamps=ts)` — also sets per-node timestamps
 
+For extremely fast readout of the internal state into NumPy arrays without iteration, use `extractPointCloud()`:
+
+- `OcTree.extractPointCloud()` -> `(occupied_points, empty_points)`
+- `ColorOcTree.extractPointCloud()` -> `(occupied_points, empty_points, colors)`
+- `CountingOcTree.extractPointCloud()` -> `(coords, counts)`
+- `OcTreeStamped.extractPointCloud()` -> `(occupied_points, empty_points, timestamps)`
+
 See the [Performance Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/performance_guide.md) for practical batch sizing and resolution
 recommendations.
 

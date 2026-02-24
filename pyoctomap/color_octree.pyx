@@ -883,15 +883,18 @@ cdef class ColorOcTree:
     
     def extractPointCloud(self):
         """
-        Extract point clouds for occupied and free voxels.
-        Returns: (occupied_points, empty_points) as numpy arrays
+        Extract point clouds for occupied and free voxels, along with colors.
+        Returns: (occupied_points, empty_points, colors)
+                 colors is an Nx3 numpy array (uint8) of RGB values for occupied points.
         """
         cdef float resolution = self.getResolution()
         cdef list occupied = []
         cdef list empty = []
+        cdef list colors = []
         cdef object it
         cdef float size
         cdef int is_occupied
+        cdef tuple c
         cdef np.ndarray[DOUBLE_t, ndim=1] center
         cdef np.ndarray[DOUBLE_t, ndim=1] origin
         cdef np.ndarray[np.int64_t, ndim=2] indices
@@ -917,20 +920,25 @@ cdef class ColorOcTree:
             
             if is_occupied:
                 occupied.append(points)
+                c = it.getColor()
+                colors.append(np.tile(np.array(c, dtype=np.uint8), (points.shape[0], 1)))
             else:
                 empty.append(points)
         
         cdef np.ndarray[DOUBLE_t, ndim=2] occupied_arr
         cdef np.ndarray[DOUBLE_t, ndim=2] empty_arr
+        cdef np.ndarray[np.uint8_t, ndim=2] colors_arr
         if len(occupied) == 0:
             occupied_arr = np.zeros((0, 3), dtype=float)
+            colors_arr = np.zeros((0, 3), dtype=np.uint8)
         else:
             occupied_arr = np.concatenate(occupied, axis=0)
+            colors_arr = np.concatenate(colors, axis=0)
         if len(empty) == 0:
             empty_arr = np.zeros((0, 3), dtype=float)
         else:
             empty_arr = np.concatenate(empty, axis=0)
-        return occupied_arr, empty_arr
+        return occupied_arr, empty_arr, colors_arr
     
     # Helper method to get the C++ pointer address (for use in other modules)
     cpdef size_t _get_ptr_addr(self):
