@@ -49,22 +49,25 @@ jobs:
           cmake3 .. -DCMAKE_BUILD_TYPE=Release
           make -j$(nproc)
           make install
+          # cmake may install to lib64 on some distros, copy everything to /usr/local/lib
+          cp -a /usr/local/lib64/libocto*.so* /usr/local/lib/ 2>/dev/null || true
+          cp -a /usr/local/lib64/libocto*.a /usr/local/lib/ 2>/dev/null || true
           ldconfig
           mkdir -p {project}/src/octomap/lib
-          find /usr/local/lib -name "*.so*" -exec cp {} {project}/src/octomap/lib/ \;
-          find /usr/local/lib -name "*.a" -exec cp {} {project}/src/octomap/lib/ \;
+          find /usr/local/lib -maxdepth 1 -name "*.so*" -exec cp {} {project}/src/octomap/lib/ \;
+          find /usr/local/lib -maxdepth 1 -name "*.a" -exec cp {} {project}/src/octomap/lib/ \;
           echo "Libraries copied:"
           ls -la {project}/src/octomap/lib/
 
         # Install Python build deps before each wheel build
         CIBW_BEFORE_BUILD: "pip install numpy cython"
 
-        # Set LD_LIBRARY_PATH so the build, repair, and test steps can find OctoMap libs
-        CIBW_ENVIRONMENT_LINUX: "LD_LIBRARY_PATH=/usr/local/lib:{project}/src/octomap/lib:$LD_LIBRARY_PATH"
+        # Set LD_LIBRARY_PATH so build and test steps can find OctoMap libs
+        CIBW_ENVIRONMENT_LINUX: "LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:{project}/src/octomap/lib"
 
-        # Custom repair command with explicit library path for auditwheel
+        # Custom repair command — {project} is not supported here, use /usr/local/lib directly
         CIBW_REPAIR_WHEEL_COMMAND_LINUX: >
-          LD_LIBRARY_PATH=/usr/local/lib:{project}/src/octomap/lib:$LD_LIBRARY_PATH
+          LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
           auditwheel repair -w {dest_dir} {wheel}
 
         # Smoke test each built wheel
