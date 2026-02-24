@@ -1,9 +1,6 @@
 name: Release to PyPI (cibuildwheel)
 
 on:
-  push:
-    branches:
-      - feat/cibuildwheel
   release:
     types: [published]
   workflow_dispatch:
@@ -11,7 +8,7 @@ on:
       version:
         description: 'Version to build (informational only)'
         required: false
-        default: '0.1.11'
+        default: '1.1.2'
 
 jobs:
   build-wheels:
@@ -48,8 +45,8 @@ jobs:
     - name: Build wheels with cibuildwheel
       uses: pypa/cibuildwheel@v2.22
       env:
-        # Build for CPython 3.10-3.12 (limited for testing)
-        CIBW_BUILD: "cp310-* cp311-* cp312-*"
+        # Build for CPython 3.8-3.13
+        CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
         CIBW_SKIP: "*-musllinux_*"
         CIBW_ARCHS: ${{ matrix.arch }}
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
@@ -98,7 +95,6 @@ jobs:
           delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}
 
         # ── Common ──
-        CIBW_BUILD_VERBOSITY: 1
         CIBW_BEFORE_BUILD: >
           pip install numpy cython &&
           echo "=== Libraries in src/octomap/lib ===" &&
