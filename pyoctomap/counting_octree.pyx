@@ -154,6 +154,29 @@ cdef class CountingOcTree:
             return result
         return None
     
+    def insertPointCloud(self, double[:,::1] points):
+        """
+        Batch-insert a point cloud, incrementing the count for each point.
+
+        CountingOcTree does not have native C++ insertPointCloud (it inherits
+        from OcTreeBase, not OccupancyOcTreeBase), so this is a Python-level
+        convenience that calls updateNode for every point.
+
+        Args:
+            points: Nx3 array of point coordinates (float64)
+
+        Returns:
+            int: Number of points processed
+        """
+        cdef int i
+        cdef int n_points = points.shape[0]
+        for i in range(n_points):
+            self.thisptr.updateNode(
+                defs.point3d(<float>points[i, 0],
+                             <float>points[i, 1],
+                             <float>points[i, 2]))
+        return n_points
+
     def getCentersMinHits(self, unsigned int min_hits):
         """
         Get centers of nodes with at least min_hits count.
@@ -183,6 +206,48 @@ cdef class CountingOcTree:
         
         return result
     
+    def extractPointCloud(self):
+        """
+        Extract all node centres with count >= 1 and their counts.
+
+        Uses the C++ getCentersMinHits for coordinate extraction and then
+        looks up each node to retrieve its count.
+
+        Returns:
+            tuple: (points, counts)
+                - points: Nx3 float64 array of node centre coordinates
+                - counts: N-element uint32 array of hit counts
+        """
+        cdef defs.list[defs.point3d] centers_list
+        cdef defs.list[defs.point3d].iterator it
+        cdef defs.list[defs.point3d].iterator end_it
+        cdef defs.point3d p
+        cdef defs.CountingOcTreeNode* node_ptr
+
+        if self.thisptr.size() == 0:
+            return np.zeros((0, 3), dtype=np.float64), np.zeros(0, dtype=np.uint32)
+
+        self.thisptr.getCentersMinHits(centers_list, 1)
+
+        cdef list pts = []
+        cdef list cts = []
+        it = centers_list.begin()
+        end_it = centers_list.end()
+        while it != end_it:
+            p = deref(it)
+            pts.append([p.x(), p.y(), p.z()])
+            node_ptr = self.thisptr.search(p, 0)
+            if node_ptr != NULL:
+                cts.append(node_ptr.getCount())
+            else:
+                cts.append(0)
+            inc(it)
+
+        if len(pts) == 0:
+            return np.zeros((0, 3), dtype=np.float64), np.zeros(0, dtype=np.uint32)
+
+        return np.array(pts, dtype=np.float64), np.array(cts, dtype=np.uint32)
+
     # Inherit common OcTree methods
     def getResolution(self):
         return self.thisptr.getResolution()

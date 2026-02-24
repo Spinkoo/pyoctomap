@@ -108,38 +108,14 @@ tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
 
 ### Dynamic Mapping and Point Cloud Insertion
 
-PyOctoMap provides efficient helpers for dynamic mapping and probabilistic decay.
-For a deeper discussion and tuning guide, see the [Dynamic Mapping](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md#dynamic-mapping) section in
-the [API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md).
-
-**Decay and Insert Point Cloud (Recommended for Dynamic Environments):**
-```python
-# Recommended function for inserting scans from a moving sensor
-# Solves the occluded-ghost problem by applying temporal decay before insertion
-point_cloud = np.random.rand(1000, 3) * 10
-sensor_origin = np.array([0.0, 0.0, 1.5])
-
-# Tuning the decay value:
-# Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)
-# 
-# Moderate (default: -0.2): ~20 scans for ghost to fade
-# Aggressive (-1.0 to -3.0): 2-4 scans (highly dynamic environments)
-# Weak (-0.05 to -0.1): 40-80 scans (mostly static maps)
-
-tree.decayAndInsertPointCloud(
-    point_cloud,
-    sensor_origin,
-    logodd_decay_value=-0.2,  # Must be negative
-    max_range=50.0
-)
-```
 
 ### Batch Operations (Summary)
 
-For large point clouds, favor the C++ batch helpers:
+For large point clouds, use the unified `insertPointCloud` method:
 
-- `insertPointCloud(points, origin, lazy_eval=True)` then `updateInnerOccupancy()`
-- `insertPointCloudRaysFast(points, origin, max_range=...)` for maximum speed
+- `OcTree.insertPointCloud(points, origin, max_range=-1.0, lazy_eval=False, discretize=False)`
+- `ColorOcTree.insertPointCloud(points, sensor_origin=None, ..., colors=colors)` — also sets per-point colors
+- `OcTreeStamped.insertPointCloud(points, sensor_origin=None, ..., timestamps=ts)` — also sets per-node timestamps
 
 See the [Performance Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/performance_guide.md) for practical batch sizing and resolution
 recommendations.
@@ -284,7 +260,7 @@ else:
 
 For more complete examples on:
 
-- dynamic environment mapping with `decayAndInsertPointCloud`,
+- dynamic environment mapping,
 - iterator usage (`begin_tree`, `begin_leafs`, `begin_leafs_bbx`),
 
 refer to the [API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md) and example scripts in the [examples directory](https://github.com/Spinkoo/pyoctomap/blob/main/examples/).

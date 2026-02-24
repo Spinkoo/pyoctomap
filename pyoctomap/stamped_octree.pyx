@@ -585,46 +585,36 @@ cdef class OcTreeStamped:
     def inBBX(self, np.ndarray[DOUBLE_t, ndim=1] value):
         return self.thisptr.inBBX(defs.point3d(value[0], value[1], value[2]))
     
-    def insertPointCloud(self, np.ndarray[DOUBLE_t, ndim=2] pointcloud,
-                         np.ndarray[DOUBLE_t, ndim=1] sensor_origin,
-                         maxrange=-1., lazy_eval=False, discretize=False):
+    def insertPointCloud(self, double[:,::1] points,
+                         sensor_origin=None, double max_range=-1.0,
+                         bint lazy_eval=False, bint discretize=False,
+                         timestamps=None):
         """
-        Integrate a Pointcloud into the octree.
-        """
-        cdef defs.Pointcloud pc = defs.Pointcloud()
-        for p in pointcloud:
-            pc.push_back(<float>p[0], <float>p[1], <float>p[2])
-        self.thisptr.insertPointCloud(pc,
-                                      defs.point3d(sensor_origin[0], sensor_origin[1], sensor_origin[2]),
-                                      <double?>maxrange, bool(lazy_eval), bool(discretize))
-        # Always call updateInnerOccupancy() when lazy_eval=False to ensure tree consistency
-        if not lazy_eval:
-            self.updateInnerOccupancy()
-    
-    def insertPointCloudWithTimestamp(self, double[:,::1] points, unsigned int timestamp,
-                                      sensor_origin=None, double max_range=-1.0, bint lazy_eval=True):
-        """
-        Inserts points and updates their timestamp to the specified value.
-        This method inserts geometry first, then updates timestamps using key-based search.
-        
+        Insert a point cloud into the octree, optionally setting timestamps.
+
         Args:
-            points: Nx3 array of point coordinates
-            timestamp: Timestamp value to set for all nodes (unsigned int)
-            sensor_origin: Optional sensor origin [x, y, z] for ray casting. If None, uses (0, 0, 0).
+            points: Nx3 array of point coordinates (float64)
+            sensor_origin: Optional sensor origin [x, y, z] for ray casting.
+                           If None, uses (0, 0, 0).
             max_range: Maximum range for ray casting (-1 = unlimited)
             lazy_eval: If True, defer updateInnerOccupancy (call manually later)
-        
+            discretize: If True, discretize points to keys first
+            timestamps: Optional unsigned int timestamp to set for every inserted node.
+                        When provided the method returns the number of points processed.
+
         Returns:
-            int: Number of points processed
+            int: Number of points processed (when timestamps is provided),
+                 None otherwise.
         """
         cdef int i
         cdef int n_points = points.shape[0]
-        cdef double x, y, z
-        cdef defs.OcTreeNodeStamped* node_ptr = NULL
         cdef defs.point3d origin_c
-        
-        # 1. Insert Geometry (Standard C++ Batch)
-        # Use provided sensor origin or default to (0, 0, 0)
+        cdef defs.OcTreeNodeStamped* node_ptr = NULL
+        cdef unsigned int ts
+        cdef defs.OcTreeKey key
+        cdef defs.point3d coord_pt
+
+        # Resolve sensor origin
         if sensor_origin is None:
             origin_c = defs.point3d(0.0, 0.0, 0.0)
         else:
@@ -632,38 +622,94 @@ cdef class OcTreeStamped:
             if len(origin_arr) != 3:
                 raise ValueError("sensor_origin must be a 3-element array [x, y, z]")
             origin_c = defs.point3d(<float>origin_arr[0], <float>origin_arr[1], <float>origin_arr[2])
-        
+
+        # Build C++ Pointcloud
         cdef defs.Pointcloud pc = defs.Pointcloud()
         for i in range(n_points):
             pc.push_back(<float>points[i, 0], <float>points[i, 1], <float>points[i, 2])
-        self.thisptr.insertPointCloud(pc, origin_c, <double>max_range, <cppbool>lazy_eval, <cppbool>False)
-        
-        # 2. Update Timestamps (The "Missing" Batch Loop)
-        # This loop runs at C speed, not Python speed
-        # OPTIMIZATION: Convert coordinates to keys first, then use key-based search
-        # Key-based operations are faster than coordinate-based, and search is fast since nodes exist
-        cdef defs.OcTreeKey key
-        cdef defs.point3d coord_pt
-        for i in range(n_points):
-            x = points[i, 0]
-            y = points[i, 1]
-            z = points[i, 2]
 
-            # Convert coordinate to key once (key-based operations are faster)
-            coord_pt = defs.point3d(<float>x, <float>y, <float>z)
-            key = self.thisptr.coordToKey(coord_pt)
-            
-            # Search for node using key (fast since insertPointCloud just created it)
-            # Then set timestamp directly on node pointer - avoids redundant updateNode call
-            node_ptr = self.thisptr.search(key, 0)
-            if node_ptr != NULL:
-                node_ptr.setTimestamp(timestamp)
+        # Insert geometry
+        self.thisptr.insertPointCloud(pc, origin_c,
+                                      <double>max_range,
+                                      <cppbool>lazy_eval,
+                                      <cppbool>discretize)
+
+        # Optionally stamp every inserted node
+        if timestamps is not None:
+            ts = <unsigned int>timestamps
+            for i in range(n_points):
+                coord_pt = defs.point3d(<float>points[i, 0],
+                                        <float>points[i, 1],
+                                        <float>points[i, 2])
+                key = self.thisptr.coordToKey(coord_pt)
+                node_ptr = self.thisptr.search(key, 0)
+                if node_ptr != NULL:
+                    node_ptr.setTimestamp(ts)
 
         if not lazy_eval:
             self.thisptr.updateInnerOccupancy()
-        
-        return n_points
+
+        if timestamps is not None:
+            return n_points
     
+    def extractPointCloud(self):
+        """
+        Extract point clouds split by occupancy, with per-point timestamps.
+
+        Returns:
+            tuple: (occupied_points, empty_points, occupied_timestamps)
+                - occupied_points:     Nx3 float64 array of occupied voxel centres
+                - empty_points:        Mx3 float64 array of free voxel centres
+                - occupied_timestamps: N-element uint32 array of timestamps
+                  (one per occupied point)
+        """
+        cdef float resolution = self.getResolution()
+        cdef list occupied = []
+        cdef list empty = []
+        cdef list occ_ts = []
+        cdef float size
+        cdef int is_occupied
+        cdef int dimension, raw_dimension
+        cdef np.ndarray[DOUBLE_t, ndim=1] center
+        cdef np.ndarray[DOUBLE_t, ndim=1] origin
+        cdef np.ndarray[np.int64_t, ndim=2] indices
+        cdef np.ndarray[DOUBLE_t, ndim=2] points
+
+        for it in self.begin_leafs():
+            try:
+                is_occupied = self.isNodeOccupied(it)
+            except:
+                is_occupied = True
+
+            center = np.array(it.getCoordinate(), dtype=np.float64)
+            raw_dimension = max(1, round(it.getSize() / resolution))
+            dimension = min(raw_dimension, 100)
+            origin = center - (dimension / 2 - 0.5) * resolution
+            indices = np.column_stack(
+                np.nonzero(np.ones((dimension, dimension, dimension))))
+            points = origin + indices * np.array(resolution)
+
+            if is_occupied:
+                occupied.append(points)
+                ts_val = it.getTimestamp()
+                occ_ts.append(np.full(points.shape[0], ts_val, dtype=np.uint32))
+            else:
+                empty.append(points)
+
+        if len(occupied) == 0:
+            occupied_arr = np.zeros((0, 3), dtype=np.float64)
+            ts_arr = np.zeros(0, dtype=np.uint32)
+        else:
+            occupied_arr = np.concatenate(occupied, axis=0)
+            ts_arr = np.concatenate(occ_ts, axis=0)
+
+        if len(empty) == 0:
+            empty_arr = np.zeros((0, 3), dtype=np.float64)
+        else:
+            empty_arr = np.concatenate(empty, axis=0)
+
+        return occupied_arr, empty_arr, ts_arr
+
     # Helper method to get the C++ pointer address (for use in other modules)
     cpdef size_t _get_ptr_addr(self):
         return <size_t>self.thisptr

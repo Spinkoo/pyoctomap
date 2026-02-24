@@ -878,10 +878,10 @@ class TestUpdateOccupancyChildren:
 
 
 class TestInsertPointCloudWithTimestamp:
-    """Test insertPointCloudWithTimestamp method"""
+    """Test insertPointCloud with timestamps parameter"""
     
-    def test_insertPointCloudWithTimestamp_basic(self, stamped_tree):
-        """Test basic insertPointCloudWithTimestamp functionality"""
+    def test_insertPointCloud_timestamps_basic(self, stamped_tree):
+        """Test basic insertPointCloud with timestamps functionality"""
         points = np.array([
             [1.0, 2.0, 3.0],
             [4.0, 5.0, 6.0],
@@ -891,7 +891,7 @@ class TestInsertPointCloudWithTimestamp:
         timestamp = 12345
         
         # Insert point cloud with timestamp
-        n_processed = stamped_tree.insertPointCloudWithTimestamp(points, timestamp, lazy_eval=False)
+        n_processed = stamped_tree.insertPointCloud(points, timestamps=timestamp, lazy_eval=False)
         assert n_processed == 3, "Should process 3 points"
         
         # Verify timestamps were set
@@ -900,8 +900,8 @@ class TestInsertPointCloudWithTimestamp:
             if node is not None:
                 assert node.getTimestamp() == timestamp, "Timestamp should match"
     
-    def test_insertPointCloudWithTimestamp_lazy_eval(self, stamped_tree):
-        """Test insertPointCloudWithTimestamp with lazy evaluation"""
+    def test_insertPointCloud_timestamps_lazy_eval(self, stamped_tree):
+        """Test insertPointCloud with timestamps and lazy evaluation"""
         points = np.array([
             [1.0, 2.0, 3.0],
             [4.0, 5.0, 6.0]
@@ -910,7 +910,7 @@ class TestInsertPointCloudWithTimestamp:
         timestamp = 99999
         
         # Insert with lazy_eval=True
-        n_processed = stamped_tree.insertPointCloudWithTimestamp(points, timestamp, lazy_eval=True)
+        n_processed = stamped_tree.insertPointCloud(points, timestamps=timestamp, lazy_eval=True)
         assert n_processed == 2, "Should process 2 points"
         
         # Manually update inner occupancy
@@ -922,14 +922,14 @@ class TestInsertPointCloudWithTimestamp:
             if node is not None:
                 assert node.getTimestamp() == timestamp, "Timestamp should match"
     
-    def test_insertPointCloudWithTimestamp_multiple_updates(self, stamped_tree):
-        """Test that insertPointCloudWithTimestamp can update existing nodes"""
+    def test_insertPointCloud_timestamps_multiple_updates(self, stamped_tree):
+        """Test that insertPointCloud with timestamps can update existing nodes"""
         points = np.array([
             [1.0, 2.0, 3.0]
         ], dtype=np.float64)
         
         # First insert with timestamp 100
-        n1 = stamped_tree.insertPointCloudWithTimestamp(points, 100, lazy_eval=False)
+        n1 = stamped_tree.insertPointCloud(points, timestamps=100, lazy_eval=False)
         assert n1 == 1
         
         node1 = stamped_tree.search(points[0])
@@ -937,15 +937,15 @@ class TestInsertPointCloudWithTimestamp:
         assert node1.getTimestamp() == 100
         
         # Second insert with different timestamp 200
-        n2 = stamped_tree.insertPointCloudWithTimestamp(points, 200, lazy_eval=False)
+        n2 = stamped_tree.insertPointCloud(points, timestamps=200, lazy_eval=False)
         assert n2 == 1
         
         node2 = stamped_tree.search(points[0])
         assert node2 is not None
         assert node2.getTimestamp() == 200, "Timestamp should be updated"
     
-    def test_insertPointCloudWithTimestamp_large_batch(self, stamped_tree):
-        """Test insertPointCloudWithTimestamp with a large batch of points"""
+    def test_insertPointCloud_timestamps_large_batch(self, stamped_tree):
+        """Test insertPointCloud with timestamps with a large batch of points"""
         # Create 50 points
         n_points = 50
         points = np.random.rand(n_points, 3) * 10.0  # Random points in [0, 10] range
@@ -954,7 +954,7 @@ class TestInsertPointCloudWithTimestamp:
         timestamp = 50000
         
         # Insert point cloud with timestamp
-        n_processed = stamped_tree.insertPointCloudWithTimestamp(points, timestamp, lazy_eval=False)
+        n_processed = stamped_tree.insertPointCloud(points, timestamps=timestamp, lazy_eval=False)
         assert n_processed == n_points, f"Should process {n_points} points"
         
         # Verify a sample of points have timestamps set
@@ -965,23 +965,23 @@ class TestInsertPointCloudWithTimestamp:
                 assert node.getTimestamp() == timestamp, \
                     f"Timestamp should be {timestamp} for point {idx}"
     
-    def test_insertPointCloudWithTimestamp_zero_timestamp(self, stamped_tree):
-        """Test insertPointCloudWithTimestamp with zero timestamp"""
+    def test_insertPointCloud_timestamps_zero_timestamp(self, stamped_tree):
+        """Test insertPointCloud with zero timestamp"""
         points = np.array([
             [1.0, 2.0, 3.0]
         ], dtype=np.float64)
         
         timestamp = 0
         
-        n_processed = stamped_tree.insertPointCloudWithTimestamp(points, timestamp, lazy_eval=False)
+        n_processed = stamped_tree.insertPointCloud(points, timestamps=timestamp, lazy_eval=False)
         assert n_processed == 1
         
         node = stamped_tree.search(points[0])
         if node is not None:
             assert node.getTimestamp() == 0, "Zero timestamp should be valid"
     
-    def test_insertPointCloudWithTimestamp_max_range(self, stamped_tree):
-        """Test insertPointCloudWithTimestamp with max_range parameter"""
+    def test_insertPointCloud_timestamps_max_range(self, stamped_tree):
+        """Test insertPointCloud with timestamps and max_range parameter"""
         points = np.array([
             [1.0, 2.0, 3.0],
             [10.0, 20.0, 30.0]  # Far point
@@ -990,13 +990,13 @@ class TestInsertPointCloudWithTimestamp:
         timestamp = 12345
         
         # Insert with max_range (though not used in current implementation)
-        n_processed = stamped_tree.insertPointCloudWithTimestamp(
-            points, timestamp, max_range=5.0, lazy_eval=False
+        n_processed = stamped_tree.insertPointCloud(
+            points, timestamps=timestamp, max_range=5.0, lazy_eval=False
         )
         assert n_processed == 2, "Should process all points regardless of max_range"
     
-    def test_insertPointCloudWithTimestamp_sensor_origin(self, stamped_tree):
-        """Test insertPointCloudWithTimestamp with sensor origin for proper ray casting"""
+    def test_insertPointCloud_timestamps_sensor_origin(self, stamped_tree):
+        """Test insertPointCloud with timestamps and sensor origin for proper ray casting"""
         sensor_origin = np.array([0.0, 0.0, 0.0])
         points = np.array([
             [1.0, 0.0, 0.0],  # Point 1m in front
@@ -1006,8 +1006,8 @@ class TestInsertPointCloudWithTimestamp:
         timestamp = 1000
         
         # Insert with sensor origin - should perform proper ray casting
-        n_processed = stamped_tree.insertPointCloudWithTimestamp(
-            points, timestamp, sensor_origin=sensor_origin, lazy_eval=False
+        n_processed = stamped_tree.insertPointCloud(
+            points, timestamps=timestamp, sensor_origin=sensor_origin, lazy_eval=False
         )
         assert n_processed == 2, "Should process all points"
         
@@ -1019,15 +1019,15 @@ class TestInsertPointCloudWithTimestamp:
             assert node.getTimestamp() == timestamp, "Timestamp should be set"
         
         # Test with list origin
-        n_processed2 = stamped_tree.insertPointCloudWithTimestamp(
-            points, timestamp + 1, sensor_origin=[0.0, 0.0, 0.0], lazy_eval=False
+        n_processed2 = stamped_tree.insertPointCloud(
+            points, timestamps=timestamp + 1, sensor_origin=[0.0, 0.0, 0.0], lazy_eval=False
         )
         assert n_processed2 == 2, "Should work with list origin"
         
         # Test invalid origin
         try:
-            stamped_tree.insertPointCloudWithTimestamp(
-                points, timestamp, sensor_origin=[1.0, 2.0], lazy_eval=False
+            stamped_tree.insertPointCloud(
+                points, timestamps=timestamp, sensor_origin=[1.0, 2.0], lazy_eval=False
             )
             assert False, "Should raise ValueError for invalid origin"
         except ValueError:
