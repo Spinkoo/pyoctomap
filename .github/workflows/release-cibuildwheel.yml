@@ -37,8 +37,8 @@ jobs:
     - name: Build wheels with cibuildwheel
       uses: pypa/cibuildwheel@v2.22
       env:
-        # Build for CPython 3.8-3.13 on manylinux x86_64
-        CIBW_BUILD: "cp38-manylinux_x86_64 cp39-manylinux_x86_64 cp310-manylinux_x86_64 cp311-manylinux_x86_64 cp312-manylinux_x86_64 cp313-manylinux_x86_64"
+        # Build for CPython 3.10-3.12 on manylinux x86_64 (limited for testing)
+        CIBW_BUILD: "cp310-manylinux_x86_64 cp311-manylinux_x86_64 cp312-manylinux_x86_64"
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
 
         # Build OctoMap C++ library before any wheel builds
