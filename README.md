@@ -286,7 +286,7 @@ else:
 
 For more complete examples on:
 
-- dynamic environment mapping with `decayAndInsertPointCloud`,
+- dynamic environment mapping,
 - iterator usage (`begin_tree`, `begin_leafs`, `begin_leafs_bbx`),
 
 refer to the **API Reference** and example scripts in `examples/`.

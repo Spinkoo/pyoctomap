@@ -259,7 +259,7 @@ else:
 
 For more complete examples on:
 
-- dynamic environment mapping with `decayAndInsertPointCloud`,
+- dynamic environment mapping,
 - iterator usage (`begin_tree`, `begin_leafs`, `begin_leafs_bbx`),
 
 refer to the [API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md) and example scripts in the [examples directory](https://github.com/Spinkoo/pyoctomap/blob/main/examples/).
