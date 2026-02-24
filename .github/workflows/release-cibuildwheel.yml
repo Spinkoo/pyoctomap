@@ -11,12 +11,22 @@ on:
       version:
         description: 'Version to build (informational only)'
         required: false
-        default: '1.1.2'
+        default: '0.1.11'
 
 jobs:
   build-wheels:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     environment: release
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            arch: x86_64
+            platform: linux
+          - os: macos-14
+            arch: arm64
+            platform: macos
 
     steps:
     - name: Checkout code
@@ -26,7 +36,8 @@ jobs:
 
     - name: Display release info
       run: |
-        echo "🚀 Building manylinux wheels using cibuildwheel"
+        echo "🚀 Building wheels using cibuildwheel"
+        echo "🖥️  Platform: ${{ matrix.platform }} (${{ matrix.arch }})"
         if [ -n "${{ github.event.inputs.version }}" ]; then
           echo "📦 Version: ${{ github.event.inputs.version }}"
         fi
@@ -37,11 +48,12 @@ jobs:
     - name: Build wheels with cibuildwheel
       uses: pypa/cibuildwheel@v2.22
       env:
-        # Build for CPython 3.10-3.12 on manylinux x86_64 (limited for testing)
-        CIBW_BUILD: "cp310-manylinux_x86_64 cp311-manylinux_x86_64 cp312-manylinux_x86_64"
+        # Build for CPython 3.10-3.12 (limited for testing)
+        CIBW_BUILD: "cp310-* cp311-* cp312-*"
+        CIBW_ARCHS: ${{ matrix.arch }}
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
 
-        # Build OctoMap C++ library before any wheel builds
+        # ── Linux: Build OctoMap C++ ──
         CIBW_BEFORE_ALL_LINUX: |
           yum install -y cmake3 make gcc gcc-c++ git
           cd {project}/src/octomap
@@ -49,7 +61,6 @@ jobs:
           cmake3 .. -DCMAKE_BUILD_TYPE=Release
           make -j$(nproc)
           make install
-          # cmake may install to lib64 on some distros, copy everything to /usr/local/lib
           cp -a /usr/local/lib64/libocto*.so* /usr/local/lib/ 2>/dev/null || true
           cp -a /usr/local/lib64/libocto*.a /usr/local/lib/ 2>/dev/null || true
           ldconfig
@@ -59,18 +70,35 @@ jobs:
           echo "Libraries copied:"
           ls -la {project}/src/octomap/lib/
 
-        # Install Python build deps before each wheel build
-        CIBW_BEFORE_BUILD: "pip install numpy cython"
-
-        # Set LD_LIBRARY_PATH so build and test steps can find OctoMap libs
         CIBW_ENVIRONMENT_LINUX: "LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:{project}/src/octomap/lib"
 
-        # Custom repair command — {project} is not supported here, use /usr/local/lib directly
         CIBW_REPAIR_WHEEL_COMMAND_LINUX: >
           LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
           auditwheel repair -w {dest_dir} {wheel}
 
-        # Smoke test each built wheel
+        # ── macOS: Build OctoMap C++ ──
+        CIBW_BEFORE_ALL_MACOS: |
+          cd {project}/src/octomap
+          mkdir -p build && cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          make -j$(sysctl -n hw.ncpu)
+          sudo make install
+          mkdir -p {project}/src/octomap/lib
+          cp -a /usr/local/lib/liboctomap* {project}/src/octomap/lib/ 2>/dev/null || true
+          cp -a /usr/local/lib/liboctomath* {project}/src/octomap/lib/ 2>/dev/null || true
+          cp -a /usr/local/lib/libdynamicedt3d* {project}/src/octomap/lib/ 2>/dev/null || true
+          echo "Libraries copied:"
+          ls -la {project}/src/octomap/lib/
+
+        CIBW_ENVIRONMENT_MACOS: "DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:{project}/src/octomap/lib"
+
+        CIBW_REPAIR_WHEEL_COMMAND_MACOS: >
+          DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib
+          delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}
+
+        # ── Common ──
+        CIBW_BEFORE_BUILD: "pip install numpy cython"
+
         CIBW_TEST_COMMAND: >
           python -c "import pyoctomap; print(f'✅ pyoctomap {pyoctomap.__version__} imported successfully')"
 
@@ -82,7 +110,7 @@ jobs:
     - name: Upload wheels
       uses: actions/upload-artifact@v4
       with:
-        name: wheels-linux
+        name: wheels-${{ matrix.platform }}-${{ matrix.arch }}
         path: ./wheelhouse/*.whl
 
   build-sdist:
@@ -134,11 +162,12 @@ jobs:
     environment: release
 
     steps:
-    - name: Download wheels
+    - name: Download all wheel artifacts
       uses: actions/download-artifact@v4
       with:
-        name: wheels-linux
+        pattern: wheels-*
         path: ./wheels
+        merge-multiple: true
 
     - name: Download source distribution
       uses: actions/download-artifact@v4
