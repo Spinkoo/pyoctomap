@@ -1,6 +1,9 @@
 name: Release to PyPI (cibuildwheel)
 
 on:
+  push:
+    branches:
+      - feat/cibuildwheel
   release:
     types: [published]
   workflow_dispatch:
