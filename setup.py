@@ -170,6 +170,7 @@ def build_extensions():
         extra_link_args = []
     else:
         extra_compile_args = [
+            "-std=c++14",                    # Required for std::move in Cython-generated code (macOS clang defaults to C++98)
             "-O2", "-DNDEBUG", "-fPIC",
             "-Wno-deprecated-declarations",  # Suppress deprecation warnings
             "-Wno-deprecated",               # Suppress all deprecated warnings
