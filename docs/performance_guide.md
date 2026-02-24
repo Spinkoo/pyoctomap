@@ -36,7 +36,7 @@ tree.updateInnerOccupancy()     # once per batch
 ```
 
 For very large clouds where duplicated rays are acceptable, consider
-`insertPointCloudRaysFast(...)` for maximum throughput.
+`insertPointCloud(..., method="rays_fast")` for maximum throughput.
 
 ### 2. Resolution vs. Memory
 
@@ -63,17 +63,7 @@ structure.
 
 ## Dynamic and Streaming Scenarios
 
-### 1. Moving Sensors (LIDAR / Depth Cameras)
 
-The helper `decayAndInsertPointCloud(...)` is designed for dynamic environments:
-
-1. Decays old occupancy inside the scan’s bounding box.
-2. Inserts the new point cloud.
-
-This greatly reduces “ghost” artifacts as obstacles move or disappear.
-
-Key parameter: `logodd_decay_value` (must be negative). See the decay tuning
-formula in `docs/api_reference.md` for guidance.
 
 ### 2. Incremental Batching
 

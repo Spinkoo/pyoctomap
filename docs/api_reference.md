@@ -149,33 +149,11 @@ if hit:
 These helpers are implemented in C++ for performance, and should be preferred
 over Python loops:
 
-- **`insertPointCloud(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False, discretize=False)`**
+- **`insertPointCloud(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False, discretize=False, method="default")`**
   - Batch insertion with optional discretization and lazy inner‑node updates.
+  - Set `method="rays_fast"` for ultra‑fast insertion using independent rays (no deduplication).
 
-- **`insertPointCloudRaysFast(point_cloud, sensor_origin, max_range=-1.0, lazy_eval=False)`**
-  - Ultra‑fast insertion using independent rays (no deduplication).
 
-- **`decayOccupancyInBBX(point_cloud, sensor_origin, logodd_decay_value=-0.2)`**
-  - Apply temporal decay to occupied voxels in the scan’s bounding box.
-
-- **`decayAndInsertPointCloud(point_cloud, sensor_origin, logodd_decay_value=-0.2, max_range=-1.0, update_inner_occupancy=True)`**
-  - Recommended one‑shot helper for moving sensors in dynamic scenes:
-    1. Decays old occupancy inside scan’s bounding box.
-    2. Inserts the new point cloud.
-
-**Decay tuning (rule of thumb)**  
-Let \(d = \lvert\text{logodd\_decay\_value}\rvert\). A fully occupied voxel is
-around log‑odds \(+4.0\).
-
-\[
-\text{Scans to forget} \approx \frac{4.0}{d}
-\]
-
-- `-0.2` (default): ≈ 20 scans to fade a ghost.
-- `-1.0` to `-3.0`: ≈ 2–4 scans (very dynamic).
-- `-0.05` to `-0.1`: ≈ 40–80 scans (mostly static).
-
----
 
 ## `ColorOcTree` – Occupancy + Color
 
@@ -203,10 +181,10 @@ Methods match `OcTree` for occupancy, plus color‑specific helpers.
   - Integrate color weighted by occupancy updates (useful when coupling with
     occupancy updates from sensors).
 
-- **`insertPointCloudWithColor(points, colors, sensor_origin=None, max_range=-1.0, lazy_eval=True)`**
+- **`insertPointCloud(points, sensor_origin=None, max_range=-1.0, lazy_eval=True, colors=None)`**
   - Insert a point cloud and set colors for all points in a single operation.
   - `points`: N×3 numpy array of point coordinates.
-  - `colors`: N×3 numpy array of color values in [0, 1] range (converted to 0–255 internally).
+  - `colors`: Optional N×3 numpy array of color values in [0, 1] range (converted to 0–255 internally).
   - `sensor_origin`: Optional sensor origin [x, y, z] for ray casting. If `None` (default), uses (0, 0, 0). Providing a proper sensor origin enables correct free-space carving along rays from sensor to points.
   - First inserts geometry using batch `insertPointCloud` with ray casting, then updates colors using key-based search for efficiency.
   - Returns the number of points processed.

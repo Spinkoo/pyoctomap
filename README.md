@@ -112,46 +112,20 @@ tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
 points = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=np.float64)
 colors = np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]], dtype=np.float64)  # RGB in [0, 1] range
 sensor_origin = np.array([0.0, 0.0, 0.0])  # Optional: for proper ray casting
-tree.insertPointCloudWithColor(points, colors, sensor_origin=sensor_origin)
+tree.insertPointCloud(points, sensor_origin=sensor_origin, colors=colors)
 ```
 
-### Dynamic Mapping and Point Cloud Insertion
 
-PyOctoMap provides efficient helpers for dynamic mapping and probabilistic decay.
-For a deeper discussion and tuning guide, see the **Dynamic Mapping** section in
-the API Reference.
-
-**Decay and Insert Point Cloud (Recommended for Dynamic Environments):**
-```python
-# Recommended function for inserting scans from a moving sensor
-# Solves the occluded-ghost problem by applying temporal decay before insertion
-point_cloud = np.random.rand(1000, 3) * 10
-sensor_origin = np.array([0.0, 0.0, 1.5])
-
-# Tuning the decay value:
-# Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)
-# 
-# Moderate (default: -0.2): ~20 scans for ghost to fade
-# Aggressive (-1.0 to -3.0): 2-4 scans (highly dynamic environments)
-# Weak (-0.05 to -0.1): 40-80 scans (mostly static maps)
-
-tree.decayAndInsertPointCloud(
-    point_cloud,
-    sensor_origin,
-    logodd_decay_value=-0.2,  # Must be negative
-    max_range=50.0
-)
-```
 
 ### Batch Operations (Summary)
 
 For large point clouds, favor the C++ batch helpers:
 
 - `insertPointCloud(points, origin, lazy_eval=True)` then `updateInnerOccupancy()`
-- `insertPointCloudRaysFast(points, origin, max_range=...)` for maximum speed
+- `insertPointCloud(points, origin, method="rays_fast", max_range=...)` for maximum speed
 
 For color and timestamp data:
-- `ColorOcTree.insertPointCloudWithColor(points, colors, sensor_origin=None, max_range=-1.0, lazy_eval=True)` - Insert point cloud and set colors in a single operation. Colors should be in [0, 1] range (N×3 array). `sensor_origin` is optional for proper ray casting.
+- `ColorOcTree.insertPointCloud(points, sensor_origin=None, colors=colors, max_range=-1.0, lazy_eval=True)` - Insert point cloud and set colors in a single operation. Colors should be in [0, 1] range (N×3 array). `sensor_origin` is optional for proper ray casting.
 - `OcTreeStamped.insertPointCloudWithTimestamp(points, timestamp, sensor_origin=None, max_range=-1.0, lazy_eval=True)` - Insert point cloud and set timestamps in a single operation. Timestamp is an unsigned integer. `sensor_origin` is optional for proper ray casting.
 
 See the **Performance Guide** for practical batch sizing and resolution

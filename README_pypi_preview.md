@@ -108,38 +108,13 @@ tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
 
 ### Dynamic Mapping and Point Cloud Insertion
 
-PyOctoMap provides efficient helpers for dynamic mapping and probabilistic decay.
-For a deeper discussion and tuning guide, see the [Dynamic Mapping](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md#dynamic-mapping) section in
-the [API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md).
-
-**Decay and Insert Point Cloud (Recommended for Dynamic Environments):**
-```python
-# Recommended function for inserting scans from a moving sensor
-# Solves the occluded-ghost problem by applying temporal decay before insertion
-point_cloud = np.random.rand(1000, 3) * 10
-sensor_origin = np.array([0.0, 0.0, 1.5])
-
-# Tuning the decay value:
-# Scans_to_Forget ≈ 4.0 / abs(logodd_decay_value)
-# 
-# Moderate (default: -0.2): ~20 scans for ghost to fade
-# Aggressive (-1.0 to -3.0): 2-4 scans (highly dynamic environments)
-# Weak (-0.05 to -0.1): 40-80 scans (mostly static maps)
-
-tree.decayAndInsertPointCloud(
-    point_cloud,
-    sensor_origin,
-    logodd_decay_value=-0.2,  # Must be negative
-    max_range=50.0
-)
-```
 
 ### Batch Operations (Summary)
 
 For large point clouds, favor the C++ batch helpers:
 
 - `insertPointCloud(points, origin, lazy_eval=True)` then `updateInnerOccupancy()`
-- `insertPointCloudRaysFast(points, origin, max_range=...)` for maximum speed
+- `insertPointCloud(points, origin, method="rays_fast", max_range=...)` for maximum speed
 
 See the [Performance Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/performance_guide.md) for practical batch sizing and resolution
 recommendations.
