@@ -59,6 +59,14 @@ jobs:
         # Install Python build deps before each wheel build
         CIBW_BEFORE_BUILD: "pip install numpy cython"
 
+        # Set LD_LIBRARY_PATH so the build, repair, and test steps can find OctoMap libs
+        CIBW_ENVIRONMENT_LINUX: "LD_LIBRARY_PATH=/usr/local/lib:{project}/src/octomap/lib:$LD_LIBRARY_PATH"
+
+        # Custom repair command with explicit library path for auditwheel
+        CIBW_REPAIR_WHEEL_COMMAND_LINUX: >
+          LD_LIBRARY_PATH=/usr/local/lib:{project}/src/octomap/lib:$LD_LIBRARY_PATH
+          auditwheel repair -w {dest_dir} {wheel}
+
         # Smoke test each built wheel
         CIBW_TEST_COMMAND: >
           python -c "import pyoctomap; print(f'✅ pyoctomap {pyoctomap.__version__} imported successfully')"
