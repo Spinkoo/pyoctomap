@@ -50,6 +50,7 @@ jobs:
       env:
         # Build for CPython 3.10-3.12 (limited for testing)
         CIBW_BUILD: "cp310-* cp311-* cp312-*"
+        CIBW_SKIP: "*-musllinux_*"
         CIBW_ARCHS: ${{ matrix.arch }}
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
 
@@ -97,7 +98,11 @@ jobs:
           delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}
 
         # ── Common ──
-        CIBW_BEFORE_BUILD: "pip install numpy cython"
+        CIBW_BUILD_VERBOSITY: 1
+        CIBW_BEFORE_BUILD: >
+          pip install numpy cython &&
+          echo "=== Libraries in src/octomap/lib ===" &&
+          ls -la {project}/src/octomap/lib/
 
         CIBW_TEST_COMMAND: >
           python -c "import pyoctomap; print(f'✅ pyoctomap {pyoctomap.__version__} imported successfully')"
