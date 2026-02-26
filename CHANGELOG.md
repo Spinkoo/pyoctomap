@@ -66,19 +66,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - None
 
-## [Unreleased]
+## [1.2.0] - 2026-02-26
 
-### Planned
-- ROS/ROS2 integration (in development on `ros` branch)
-- Additional visualization tools
-- Performance optimizations for large-scale maps
-- Extended documentation and tutorials
+### Added
+- **macOS Support**: Official support for macOS (Apple Silicon `arm64`) via new CI pipeline.
+- **Unified Point Cloud Insertion**: Standardized `insertPointCloud()` across all tree types with optional `colors` and `timestamps` parameters.
+- **High-Performance Extraction**: `extractPointCloud()` now uses optimized C++ routines to return NumPy arrays directly, significantly improving performance.
+- **Rich Data Extraction**:
+    - `ColorOcTree.extractPointCloud()` now returns `(occupied, empty, colors)`.
+    - `OcTreeStamped.extractPointCloud()` now returns `(occupied, empty, timestamps)`.
+    - `CountingOcTree.extractPointCloud()` now returns `(coords, counts)`.
+- **cibuildwheel Integration**: Migrated the entire build pipeline to `cibuildwheel` for robust, standardized cross-platform wheels.
+
+### Changed
+- Improved C++ standard compliance (now requires C++14) for better compatibility with modern compilers (especially macOS clang).
+- Updated documentation and API reference to reflect unified insertion and extraction methods.
+- Simplified release workflow – automated wheel building for Linux and macOS.
+
+### Fixed
+- Fixed compilation errors on macOS related to non-copyable C++ objects in Cython.
+- Resolved shared library path issues in manylinux wheels using updated `auditwheel` configuration.
+
+## [1.1.0] - 2026-01-15
+- Incremental improvements and bug fixes.
+- Preparation for cross-platform support.
 
 ---
 
 ## Version History
 
+- **1.2.0** (2026-02-26): macOS support and unified high-performance API
+- **1.1.0** (2026-01-15): Incremental improvements
 - **1.0.0** (2025-12-02): Initial stable release
 
+[1.2.0]: https://github.com/Spinkoo/pyoctomap/releases/tag/v1.2.0
+[1.1.0]: https://github.com/Spinkoo/pyoctomap/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Spinkoo/pyoctomap/releases/tag/v1.0.0
 

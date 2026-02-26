@@ -8,22 +8,12 @@ on:
       version:
         description: 'Version to build (informational only)'
         required: false
-        default: '1.2.0'
+        default: '1.1.2'
 
 jobs:
   build-wheels:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     environment: release
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: ubuntu-latest
-            arch: x86_64
-            platform: linux
-          - os: macos-14
-            arch: arm64
-            platform: macos
 
     steps:
     - name: Checkout code
@@ -33,8 +23,7 @@ jobs:
 
     - name: Display release info
       run: |
-        echo "🚀 Building wheels using cibuildwheel"
-        echo "🖥️  Platform: ${{ matrix.platform }} (${{ matrix.arch }})"
+        echo "🚀 Building manylinux wheels using cibuildwheel"
         if [ -n "${{ github.event.inputs.version }}" ]; then
           echo "📦 Version: ${{ github.event.inputs.version }}"
         fi
@@ -45,13 +34,11 @@ jobs:
     - name: Build wheels with cibuildwheel
       uses: pypa/cibuildwheel@v2.22
       env:
-        # Build for CPython 3.8-3.13
-        CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
-        CIBW_SKIP: "*-musllinux_*"
-        CIBW_ARCHS: ${{ matrix.arch }}
+        # Build for CPython 3.8-3.13 on manylinux x86_64
+        CIBW_BUILD: "cp38-manylinux_x86_64 cp39-manylinux_x86_64 cp310-manylinux_x86_64 cp311-manylinux_x86_64 cp312-manylinux_x86_64 cp313-manylinux_x86_64"
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
 
-        # ── Linux: Build OctoMap C++ ──
+        # Build OctoMap C++ library before any wheel builds
         CIBW_BEFORE_ALL_LINUX: |
           yum install -y cmake3 make gcc gcc-c++ git
           cd {project}/src/octomap
@@ -59,47 +46,17 @@ jobs:
           cmake3 .. -DCMAKE_BUILD_TYPE=Release
           make -j$(nproc)
           make install
-          cp -a /usr/local/lib64/libocto*.so* /usr/local/lib/ 2>/dev/null || true
-          cp -a /usr/local/lib64/libocto*.a /usr/local/lib/ 2>/dev/null || true
           ldconfig
           mkdir -p {project}/src/octomap/lib
-          find /usr/local/lib -maxdepth 1 -name "*.so*" -exec cp {} {project}/src/octomap/lib/ \;
-          find /usr/local/lib -maxdepth 1 -name "*.a" -exec cp {} {project}/src/octomap/lib/ \;
+          find /usr/local/lib -name "*.so*" -exec cp {} {project}/src/octomap/lib/ \;
+          find /usr/local/lib -name "*.a" -exec cp {} {project}/src/octomap/lib/ \;
           echo "Libraries copied:"
           ls -la {project}/src/octomap/lib/
 
-        CIBW_ENVIRONMENT_LINUX: "LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:{project}/src/octomap/lib"
+        # Install Python build deps before each wheel build
+        CIBW_BEFORE_BUILD: "pip install numpy cython"
 
-        CIBW_REPAIR_WHEEL_COMMAND_LINUX: >
-          LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
-          auditwheel repair -w {dest_dir} {wheel}
-
-        # ── macOS: Build OctoMap C++ ──
-        CIBW_BEFORE_ALL_MACOS: |
-          cd {project}/src/octomap
-          mkdir -p build && cd build
-          cmake .. -DCMAKE_BUILD_TYPE=Release
-          make -j$(sysctl -n hw.ncpu)
-          sudo make install
-          mkdir -p {project}/src/octomap/lib
-          cp -a /usr/local/lib/liboctomap* {project}/src/octomap/lib/ 2>/dev/null || true
-          cp -a /usr/local/lib/liboctomath* {project}/src/octomap/lib/ 2>/dev/null || true
-          cp -a /usr/local/lib/libdynamicedt3d* {project}/src/octomap/lib/ 2>/dev/null || true
-          echo "Libraries copied:"
-          ls -la {project}/src/octomap/lib/
-
-        CIBW_ENVIRONMENT_MACOS: "DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:{project}/src/octomap/lib"
-
-        CIBW_REPAIR_WHEEL_COMMAND_MACOS: >
-          DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib
-          delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}
-
-        # ── Common ──
-        CIBW_BEFORE_BUILD: >
-          pip install numpy cython &&
-          echo "=== Libraries in src/octomap/lib ===" &&
-          ls -la {project}/src/octomap/lib/
-
+        # Smoke test each built wheel
         CIBW_TEST_COMMAND: >
           python -c "import pyoctomap; print(f'✅ pyoctomap {pyoctomap.__version__} imported successfully')"
 
@@ -111,7 +68,7 @@ jobs:
     - name: Upload wheels
       uses: actions/upload-artifact@v4
       with:
-        name: wheels-${{ matrix.platform }}-${{ matrix.arch }}
+        name: wheels-linux
         path: ./wheelhouse/*.whl
 
   build-sdist:
@@ -163,12 +120,11 @@ jobs:
     environment: release
 
     steps:
-    - name: Download all wheel artifacts
+    - name: Download wheels
       uses: actions/download-artifact@v4
       with:
-        pattern: wheels-*
+        name: wheels-linux
         path: ./wheels
-        merge-multiple: true
 
     - name: Download source distribution
       uses: actions/download-artifact@v4
