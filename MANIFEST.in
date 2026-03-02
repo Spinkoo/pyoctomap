@@ -1,6 +1,5 @@
 # Include core package files
 include README.md
-include README_pypi_preview.md
 include LICENSE
 include pyproject.toml
 include setup.cfg
@@ -27,7 +26,6 @@ prune src/octomap/build
 prune src/octomap/bin
 prune examples
 prune tests
-prune github2pypi
 prune docker
 prune images
 prune test

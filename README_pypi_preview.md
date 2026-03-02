@@ -9,7 +9,7 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 ## Features
 
 - **3D Occupancy Mapping**: Efficient octree-based 3D occupancy mapping
-- **Probabilistic Updates**: Stochastic occupancy updates with uncertainty handling
+- **Probabilistic Updates**: Stochastic occupanc    y updates with uncertainty handling
 - **Path Planning**: Ray casting and collision detection
 - **File Operations**: Save/load octree data in binary format
 - **Cross-Platform**: Pre-built wheels for Linux (`x86_64`) and macOS (Apple Silicon `arm64`), with Windows compatibility via WSL

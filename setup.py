@@ -364,6 +364,43 @@ def build_extensions():
     )
 
 
+def get_readme():
+    """Dynamically generate PyPI README from main README.md"""
+    readme_path = os.path.join(os.path.dirname(__file__), "README.md")
+    if not os.path.exists(readme_path):
+        return ""
+        
+    with open(readme_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # Add the github2pypi module to the path to use its replacement logic
+    github2pypi_path = os.path.join(os.path.dirname(__file__), "github2pypi")
+    if os.path.exists(github2pypi_path) and github2pypi_path not in sys.path:
+        sys.path.insert(0, github2pypi_path)
+        
+    try:
+        from replace_url import replace_url
+        content = replace_url(
+            slug="Spinkoo/pyoctomap",
+            content=content,
+            branch="main"
+        )
+        
+        # Make some PyPI-specific adjustments
+        content = content.replace(
+            "On PyPI (Linux):\n```bash\npip install pyoctomap\n```",
+            "**PyPI Installation (Recommended):**\n```bash\npip install pyoctomap\n```"
+        )
+        content = content.replace(
+            "**Linux / WSL (Windows Subsystem for Linux):**",
+            "**From Source (Linux / WSL):**"
+        )
+    except ImportError:
+        pass
+        
+    return content
+
+
 def main():
     """Main setup function - minimal since pyproject.toml handles metadata"""
     
@@ -373,6 +410,8 @@ def main():
     setup(
         # Metadata comes from pyproject.toml
         ext_modules=ext_modules,
+        long_description=get_readme(),
+        long_description_content_type="text/markdown",
         
         # Build configuration
         cmdclass={
