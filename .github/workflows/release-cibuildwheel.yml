@@ -91,17 +91,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install build setuptools wheel numpy cython
 
-    - name: Generate PyPI README
-      run: |
-        python github2pypi/generate_pypi_readme.py
-
-        if [ -f "README_pypi_preview.md" ]; then
-          echo "✅ PyPI README generated successfully"
-        else
-          echo "❌ PyPI README generation failed"
-          exit 1
-        fi
-
     - name: Build source distribution
       run: |
         python -m build --sdist
