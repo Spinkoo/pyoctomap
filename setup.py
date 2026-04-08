@@ -52,12 +52,20 @@ def copy_libraries_to_directory(lib_package_dir):
     
     os.makedirs(lib_package_dir, exist_ok=True)
     
-    # First, copy all actual files (not symlinks) - these are the .so.1.10.0 files
+    # First, copy all actual files (not symlinks) - .so/.a on Unix, .dll/.lib on Windows
     actual_files = {}
     for file in os.listdir(lib_dir):
         lib_file = os.path.join(lib_dir, file)
         if os.path.isfile(lib_file) and not os.path.islink(lib_file):
-            if file.endswith('.so') or file.endswith('.a') or '.so.' in file:
+            if platform.system() == "Windows":
+                copy_this = file.endswith(".dll") or file.endswith(".lib")
+            else:
+                copy_this = (
+                    file.endswith(".so")
+                    or file.endswith(".a")
+                    or ".so." in file
+                )
+            if copy_this:
                 dest_file = os.path.join(lib_package_dir, file)
                 shutil.copy2(lib_file, dest_file)
                 actual_files[file] = dest_file

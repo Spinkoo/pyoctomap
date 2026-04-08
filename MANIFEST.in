@@ -1,3 +1,6 @@
+# CI / local OctoMap build helpers (for reproducible src layout)
+recursive-include scripts/ci *.sh *.ps1
+
 # Include core package files
 include README.md
 include LICENSE
