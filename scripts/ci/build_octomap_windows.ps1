@@ -6,6 +6,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+$ProjectRoot = [System.IO.Path]::GetFullPath($ProjectRoot)
 $Octo = Join-Path $ProjectRoot "src\octomap"
 $LibStaging = Join-Path $Octo "lib"
 $InstallPrefix = Join-Path $Octo "install"
@@ -19,11 +20,30 @@ if (-not (Test-Path $Octo)) {
     exit 1
 }
 
+if (-not (Get-Command cmake -ErrorAction SilentlyContinue)) {
+    foreach ($dir in @(
+            "${env:ProgramFiles}\CMake\bin",
+            "${env:ProgramFiles(x86)}\CMake\bin"
+        )) {
+        if (Test-Path (Join-Path $dir "cmake.exe")) {
+            $env:PATH = "$dir;$env:PATH"
+            break
+        }
+    }
+}
+if (-not (Get-Command cmake -ErrorAction SilentlyContinue)) {
+    Write-Error "cmake not found (install CMake or add to PATH)"
+    exit 1
+}
+
 Set-Location $Octo
 foreach ($d in @("build", "install")) {
     if (Test-Path $d) {
         Remove-Item $d -Recurse -Force
     }
+}
+if (Test-Path $LibStaging) {
+    Get-ChildItem -Path $LibStaging -Force -ErrorAction SilentlyContinue | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
 }
 New-Item -ItemType Directory -Force -Path $LibStaging | Out-Null
 
@@ -60,11 +80,12 @@ Copy-Staged (Join-Path $InstallPrefix "lib")
 Write-Host "==> Staged under $LibStaging`:"
 Get-ChildItem $LibStaging
 
-$requiredLibs = @("octomap.lib", "octomath.lib", "dynamicedt3d.lib")
-foreach ($name in $requiredLibs) {
-    $p = Join-Path $LibStaging $name
-    if (-not (Test-Path $p)) {
-        Write-Error "Missing required import library: $name"
+$libs = @(Get-ChildItem -Path $LibStaging -Filter "*.lib" -File -ErrorAction SilentlyContinue)
+foreach ($pat in @("octomap", "octomath", "dynamicedt")) {
+    $hit = $libs | Where-Object { $_.Name -match $pat }
+    if (-not $hit) {
+        Write-Error "No import library matching pattern '$pat' under $LibStaging"
+        Get-ChildItem $LibStaging
         exit 1
     }
 }
@@ -72,6 +93,7 @@ foreach ($name in $requiredLibs) {
 $dllCount = (Get-ChildItem -Path $LibStaging -Filter "*.dll" -File -ErrorAction SilentlyContinue).Count
 if ($dllCount -lt 1) {
     Write-Error "No DLLs in lib — link/runtime will fail (expected octomap, octomath, dynamicEDT3D DLLs)."
+    Get-ChildItem $LibStaging
     exit 1
 }
 

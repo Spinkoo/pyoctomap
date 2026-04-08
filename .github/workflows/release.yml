@@ -63,9 +63,9 @@ jobs:
 
         CIBW_ENVIRONMENT_LINUX: "LD_LIBRARY_PATH={project}/src/octomap/lib:/usr/local/lib:/usr/local/lib64"
 
-        CIBW_REPAIR_WHEEL_COMMAND_LINUX: >
-          LD_LIBRARY_PATH={project}/src/octomap/lib:/usr/local/lib:/usr/local/lib64
-          auditwheel repair -w {dest_dir} {wheel}
+        # Do not use {project} here — cibuildwheel may not substitute it in repair.
+        # build_octomap.sh copies .so into /usr/local/lib on Linux for auditwheel.
+        CIBW_REPAIR_WHEEL_COMMAND_LINUX: auditwheel repair -w {dest_dir} {wheel}
 
         # ── macOS: same OctoMap script (local prefix, no sudo)
         CIBW_BEFORE_ALL_MACOS: |

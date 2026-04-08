@@ -74,4 +74,18 @@ if [[ "${missing}" -ne 0 ]]; then
   exit 1
 fi
 
+# manylinux / Linux CI: put SONAME libs on the loader path so auditwheel repair
+# does not depend on {project} inside CIBW_REPAIR_WHEEL_COMMAND (not substituted there).
+if [[ "$(uname -s)" == "Linux" ]]; then
+  echo "==> Copying staged .so into /usr/local/lib (auditwheel + linker visibility)"
+  mkdir -p /usr/local/lib
+  shopt -s nullglob
+  for f in "${LIB_STAGING}"/liboctomap*.so* "${LIB_STAGING}"/liboctomath*.so* "${LIB_STAGING}"/libdynamicedt3d*.so*; do
+    [[ -f "${f}" ]] || continue
+    cp -av "${f}" /usr/local/lib/
+  done
+  shopt -u nullglob
+  ldconfig 2>/dev/null || true
+fi
+
 echo "==> OctoMap CI build OK"

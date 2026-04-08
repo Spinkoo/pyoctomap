@@ -46,9 +46,8 @@ jobs:
 
         CIBW_ENVIRONMENT_LINUX: "LD_LIBRARY_PATH={project}/src/octomap/lib:/usr/local/lib:/usr/local/lib64"
 
-        CIBW_REPAIR_WHEEL_COMMAND_LINUX: >
-          LD_LIBRARY_PATH={project}/src/octomap/lib:/usr/local/lib:/usr/local/lib64
-          auditwheel repair -w {dest_dir} {wheel}
+        # {project} is not reliably expanded in repair; build_octomap.sh installs .so to /usr/local/lib
+        CIBW_REPAIR_WHEEL_COMMAND_LINUX: auditwheel repair -w {dest_dir} {wheel}
 
         # Install Python build deps before each wheel build
         CIBW_BEFORE_BUILD: "python -m pip install numpy cython"
