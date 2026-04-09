@@ -64,7 +64,8 @@ version = {attr = "pyoctomap.__version__"}
 py-modules = []
 
 [tool.setuptools.package-data]
-pyoctomap = ["lib/*", "lib/*.so*"]
+# Wheels: bundle all native artifacts in pyoctomap/lib (.so/.dll/.dylib and import libs).
+pyoctomap = ["lib/*"]
 
 [tool.black]
 line-length = 88
