@@ -24,7 +24,7 @@ if sys.platform == "win32":
             os.environ["PATH"] = str(_bundled_lib) + os.pathsep + os.environ.get("PATH", "")
 
 # Version information
-__version__ = "1.1.1"
+__version__ = "1.1.0"
 __author__ = "Spinkoo"
 __email__ = "lespinkoo@gmail.com"
 
