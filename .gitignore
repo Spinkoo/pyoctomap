@@ -20,6 +20,7 @@ Lisa/
 unit_test/test_ray_casting.py
 testenv/
 .venv/
+winenv/
 
 # Cursor IDE rules (local development configuration)
 .cursor/

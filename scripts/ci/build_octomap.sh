@@ -29,7 +29,8 @@ mkdir -p "${LIB_STAGING}" "${OCTO}/build"
     -DCMAKE_INSTALL_PREFIX="${INSTALL_PREFIX}" \
     -DCMAKE_CXX_STANDARD=14 \
     -DBUILD_OCTOVIS_SUBPROJECT=OFF \
-    -DBUILD_DYNAMICETD3D_SUBPROJECT=ON
+    -DBUILD_DYNAMICETD3D_SUBPROJECT=ON \
+    -DBUILD_TESTING=OFF
   "${CMAKE_BIN}" --build . --parallel "$(getconf _NPROCESSORS_ONLN 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)"
   "${CMAKE_BIN}" --install .
 )

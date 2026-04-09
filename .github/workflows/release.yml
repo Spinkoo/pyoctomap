@@ -1,3 +1,7 @@
+# Build and publish wheels (Linux / macOS / Windows) + sdist to PyPI on release.
+# Ensure only one workflow in this repo uses `release: [published]` if both this
+# and release-cibuildwheel.yml exist, or you may double-publish (skip_existing helps).
+
 name: Release to PyPI (cibuildwheel)
 
 on:
@@ -6,9 +10,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to build (informational only)'
+        description: "Version to build (informational only)"
         required: false
-        default: '1.2.0'
+        default: "1.2.0"
 
 jobs:
   build-wheels:
@@ -29,108 +33,100 @@ jobs:
             platform: windows
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
-    - name: Display release info
-      shell: bash
-      run: |
-        echo "🚀 Building wheels using cibuildwheel"
-        echo "🖥️  Platform: ${{ matrix.platform }} (${{ matrix.arch }})"
-        if [ -n "${{ github.event.inputs.version }}" ]; then
-          echo "📦 Version: ${{ github.event.inputs.version }}"
-        fi
-        if [ -n "${{ github.event.release.tag_name }}" ]; then
-          echo "🏷️  Release tag: ${{ github.event.release.tag_name }}"
-        fi
+      - name: Display release info
+        shell: bash
+        run: |
+          echo "Building wheels (cibuildwheel)"
+          echo "Platform: ${{ matrix.platform }} (${{ matrix.arch }})"
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            echo "Input version: ${{ github.event.inputs.version }}"
+          fi
+          if [ -n "${{ github.event.release.tag_name }}" ]; then
+            echo "Release tag: ${{ github.event.release.tag_name }}"
+          fi
 
-    - name: Build wheels with cibuildwheel
-      uses: pypa/cibuildwheel@v2.22
-      env:
-        # Build for CPython 3.8-3.13
-        CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
-        CIBW_SKIP: "*-musllinux_*"
-        CIBW_ARCHS: ${{ matrix.arch }}
-        CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+      - name: Build wheels with cibuildwheel
+        uses: pypa/cibuildwheel@v2.22
+        env:
+          CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
+          CIBW_SKIP: "*-musllinux_*"
+          CIBW_ARCHS: ${{ matrix.arch }}
+          CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
 
-        # ── Linux: OctoMap + dynamicEDT3D (local install + staged libs; see scripts/ci/build_octomap.sh)
-        CIBW_BEFORE_ALL_LINUX: |
-          yum install -y cmake3 make gcc gcc-c++ git
-          chmod +x {project}/scripts/ci/build_octomap.sh
-          bash {project}/scripts/ci/build_octomap.sh "{project}"
+          CIBW_BEFORE_ALL_LINUX: |
+            yum install -y cmake3 make gcc gcc-c++ git
+            chmod +x {project}/scripts/ci/build_octomap.sh
+            bash {project}/scripts/ci/build_octomap.sh "{project}"
 
-        CIBW_ENVIRONMENT_LINUX: "LD_LIBRARY_PATH={project}/src/octomap/lib:/usr/local/lib:/usr/local/lib64"
+          CIBW_ENVIRONMENT_LINUX: "LD_LIBRARY_PATH={project}/src/octomap/lib:/usr/local/lib:/usr/local/lib64"
 
-        # Do not use {project} here — cibuildwheel may not substitute it in repair.
-        # build_octomap.sh copies .so into /usr/local/lib on Linux for auditwheel.
-        CIBW_REPAIR_WHEEL_COMMAND_LINUX: auditwheel repair -w {dest_dir} {wheel}
+          CIBW_REPAIR_WHEEL_COMMAND_LINUX: auditwheel repair -w {dest_dir} {wheel}
 
-        # ── macOS: same OctoMap script (local prefix, no sudo)
-        CIBW_BEFORE_ALL_MACOS: |
-          chmod +x {project}/scripts/ci/build_octomap.sh
-          bash {project}/scripts/ci/build_octomap.sh "{project}"
+          CIBW_BEFORE_ALL_MACOS: |
+            chmod +x {project}/scripts/ci/build_octomap.sh
+            bash {project}/scripts/ci/build_octomap.sh "{project}"
 
-        CIBW_ENVIRONMENT_MACOS: "DYLD_FALLBACK_LIBRARY_PATH={project}/src/octomap/lib:/usr/local/lib"
+          CIBW_ENVIRONMENT_MACOS: "DYLD_FALLBACK_LIBRARY_PATH={project}/src/octomap/lib:/usr/local/lib"
 
-        CIBW_REPAIR_WHEEL_COMMAND_MACOS: >
-          DYLD_FALLBACK_LIBRARY_PATH={project}/src/octomap/lib:/usr/local/lib
-          delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}
+          CIBW_REPAIR_WHEEL_COMMAND_MACOS: >
+            DYLD_FALLBACK_LIBRARY_PATH={project}/src/octomap/lib:/usr/local/lib
+            delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}
 
-        # ── Windows x64: OctoMap + dynamicEDT3D (see scripts/ci/build_octomap_windows.ps1)
-        CIBW_BEFORE_ALL_WINDOWS: >
-          powershell -NoProfile -ExecutionPolicy Bypass -File "{project}/scripts/ci/build_octomap_windows.ps1" -ProjectRoot "{project}"
+          CIBW_BEFORE_ALL_WINDOWS: >
+            powershell -NoProfile -ExecutionPolicy Bypass -File "{project}/scripts/ci/build_octomap_windows.ps1" -ProjectRoot "{project}"
 
-        # ── Common ──
-        CIBW_BEFORE_BUILD: "python -m pip install numpy cython"
+          CIBW_BEFORE_BUILD: "python -m pip install numpy cython"
 
-        CIBW_TEST_COMMAND: >
-          python -c "import pyoctomap; print(f'✅ pyoctomap {pyoctomap.__version__} imported successfully')"
+          CIBW_TEST_COMMAND: python -c "import pyoctomap; from pyoctomap import OcTree; OcTree(0.1)"
 
-    - name: List built wheels
-      shell: bash
-      run: |
-        echo "✅ Built wheels:"
-        ls -la wheelhouse/
+      - name: List built wheels
+        shell: bash
+        run: |
+          echo "Built wheels:"
+          ls -la wheelhouse/
 
-    - name: Upload wheels
-      uses: actions/upload-artifact@v4
-      with:
-        name: wheels-${{ matrix.platform }}-${{ matrix.arch }}
-        path: ./wheelhouse/*.whl
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheels-${{ matrix.platform }}-${{ matrix.arch }}
+          path: ./wheelhouse/*.whl
 
   build-sdist:
     runs-on: ubuntu-latest
     environment: release
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.11"
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
 
-    - name: Install build dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install build setuptools wheel numpy cython
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build setuptools wheel numpy cython
 
-    - name: Build source distribution
-      run: |
-        python -m build --sdist
-        echo "✅ Built source distribution:"
-        ls -la dist/
+      - name: Build source distribution
+        run: |
+          python -m build --sdist
+          echo "Source distribution:"
+          ls -la dist/
 
-    - name: Upload source distribution
-      uses: actions/upload-artifact@v4
-      with:
-        name: sdist
-        path: dist/*.tar.gz
+      - name: Upload source distribution
+        uses: actions/upload-artifact@v4
+        with:
+          name: sdist
+          path: dist/*.tar.gz
 
   publish:
     needs: [build-wheels, build-sdist]
@@ -138,32 +134,32 @@ jobs:
     environment: release
 
     steps:
-    - name: Download all wheel artifacts
-      uses: actions/download-artifact@v4
-      with:
-        pattern: wheels-*
-        path: ./wheels
-        merge-multiple: true
+      - name: Download all wheel artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: wheels-*
+          path: ./wheels
+          merge-multiple: true
 
-    - name: Download source distribution
-      uses: actions/download-artifact@v4
-      with:
-        name: sdist
-        path: ./dist
+      - name: Download source distribution
+        uses: actions/download-artifact@v4
+        with:
+          name: sdist
+          path: ./dist
 
-    - name: Combine packages for upload
-      run: |
-        echo "📦 Combining wheels and source distribution..."
-        mkdir -p ./packages
-        find ./wheels -type f -name '*.whl' -exec cp {} ./packages/ \;
-        cp ./dist/*.tar.gz ./packages/
-        echo "Packages to upload:"
-        ls -la ./packages/
+      - name: Combine packages for upload
+        run: |
+          echo "Combining wheels and sdist for upload"
+          mkdir -p ./packages
+          find ./wheels -type f -name '*.whl' -exec cp {} ./packages/ \;
+          cp ./dist/*.tar.gz ./packages/
+          echo "Packages:"
+          ls -la ./packages/
 
-    - name: Publish to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
-        packages_dir: ./packages
-        skip_existing: true
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          packages_dir: ./packages
+          skip_existing: true
