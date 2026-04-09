@@ -19,7 +19,7 @@ octomap2python.egg-info/
 Lisa/
 unit_test/test_ray_casting.py
 testenv/
-
+*env*/
 # Cursor IDE rules (local development configuration)
 .cursor/
 unit_test/precomit_test.py
