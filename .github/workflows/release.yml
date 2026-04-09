@@ -51,9 +51,11 @@ jobs:
           fi
 
       - name: Build wheels with cibuildwheel
-        uses: pypa/cibuildwheel@v2.22
+        # v3.x includes current CPython builds (e.g. cp314) used on PyPI.
+        uses: pypa/cibuildwheel@v3.4
         env:
-          CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
+          # Without cp314-*, pip on Python 3.14 only gets the sdist and tries to compile OctoMap + Cython locally.
+          CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-* cp314-*"
           CIBW_SKIP: "*-musllinux_*"
           CIBW_ARCHS: ${{ matrix.arch }}
           CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
