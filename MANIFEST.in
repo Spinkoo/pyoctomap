@@ -1,6 +1,8 @@
+# CI / local OctoMap build helpers (for reproducible src layout)
+recursive-include scripts/ci *.sh *.ps1
+
 # Include core package files
 include README.md
-include README_pypi_preview.md
 include LICENSE
 include pyproject.toml
 include setup.cfg
@@ -8,7 +10,7 @@ include setup.py
 
 # Include core Python package files
 recursive-include pyoctomap *.pyx *.pxd *.cpp *.h
-recursive-include pyoctomap/lib *.so *.so.* *.a *.dll *.dylib
+recursive-include pyoctomap/lib *.so *.so.* *.a *.dll *.dylib *.lib
 
 # Include documentation
 recursive-include docs *.md
@@ -17,7 +19,7 @@ recursive-include docs *.md
 recursive-include src/octomap/octomap/include *.h *.hpp *.hxx
 recursive-include src/octomap/dynamicEDT3D/include *.h *.hpp *.hxx
 recursive-include src/octomap/octovis/include *.h *.hpp *.hxx
-recursive-include src/octomap/lib *.so *.so.* *.a *.dll *.dylib
+recursive-include src/octomap/lib *.so *.so.* *.a *.dll *.dylib *.lib
 
 # Exclude build artifacts and external dependencies
 prune build
@@ -27,7 +29,6 @@ prune src/octomap/build
 prune src/octomap/bin
 prune examples
 prune tests
-prune github2pypi
 prune docker
 prune images
 prune test

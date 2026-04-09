@@ -5,29 +5,35 @@ This package provides Python bindings for the OctoMap library with bundled
 shared libraries to avoid dependency issues.
 """
 
+import logging
+import os
 import sys
+import traceback
 from pathlib import Path
 
+_logger = logging.getLogger(__name__)
+
+# Bundled native deps: Linux/macOS use rpath on the extension; Windows needs an
+# explicit DLL search path (Python 3.8+) before loading .pyd modules.
+if sys.platform == "win32":
+    _bundled_lib = Path(__file__).resolve().parent / "lib"
+    if _bundled_lib.is_dir():
+        if hasattr(os, "add_dll_directory"):
+            os.add_dll_directory(str(_bundled_lib))
+        else:
+            os.environ["PATH"] = str(_bundled_lib) + os.pathsep + os.environ.get("PATH", "")
+
 # Version information
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 __author__ = "Spinkoo"
 __email__ = "lespinkoo@gmail.com"
 
-# Note: Library paths are handled via rpath in compiled extensions
-# No runtime setup required
-
-# Import the main module first
-try:
-    from .octomap import *
-    __all__ = [
-        "OcTree", "OcTreeNode", "OcTreeKey",
-        "SimpleTreeIterator", "SimpleLeafIterator",
-        "NullPointerException"
-    ]
-except ImportError as e:
-    print(f"Error importing octomap module: {e}")
-    print("This might be due to missing shared libraries or compilation issues.")
-    raise
+from .octomap import *
+__all__ = [
+    "OcTree", "OcTreeNode", "OcTreeKey",
+    "SimpleTreeIterator", "SimpleLeafIterator",
+    "NullPointerException",
+]
 
 # Import Pointcloud (after octomap to avoid conflicts)
 _has_pointcloud = False
@@ -38,27 +44,14 @@ try:
 except ImportError as e:
     _has_pointcloud = False
     Pointcloud = None
-    # Print warning to help with debugging
-    import os
-    verbose = os.environ.get('PYOCTOMAP_VERBOSE', '').lower() in ('1', 'true', 'yes')
-    if verbose:
-        import traceback
-        print(f"⚠️ Pointcloud module not available: {e}")
-        traceback.print_exc()
-        print("Pointcloud features will not be available.")
-        print("To compile pointcloud module, run: python setup.py build_ext --inplace")
+    if os.environ.get("PYOCTOMAP_VERBOSE", "").lower() in ("1", "true", "yes"):
+        _logger.debug("Pointcloud not available: %s", e)
 except Exception as e:
-    # Catch any other errors (compilation errors, etc.)
     _has_pointcloud = False
     Pointcloud = None
-    import os
-    verbose = os.environ.get('PYOCTOMAP_VERBOSE', '').lower() in ('1', 'true', 'yes')
-    if verbose:
-        import traceback
-        print(f"⚠️ Error loading Pointcloud module: {e}")
+    if os.environ.get("PYOCTOMAP_VERBOSE", "").lower() in ("1", "true", "yes"):
+        _logger.debug("Pointcloud load error: %s", e)
         traceback.print_exc()
-        print("Pointcloud features will not be available.")
-        print("To compile pointcloud module, run: python setup.py build_ext --inplace")
 
 # Add ColorOcTree if available
 try:
@@ -103,44 +96,24 @@ def get_package_info():
     
     return info
 
-# Example usage and testing
 def test_installation():
-    """Test if the installation is working correctly"""
-    print("Testing OctoMap Python installation...")
-    
+    """Return True if core OcTree operations work, else False."""
     try:
-        # Test basic import
         from .octomap import OcTree
-        print("✅ OcTree import successful")
-        
-        # Test creating an octree
+
         tree = OcTree(0.1)
-        print("✅ OcTree creation successful")
-        
-        # Test basic operations
         tree.updateNode(1.0, 2.0, 3.0, True)
-        print("✅ Basic operations successful")
-        
-        print("🎉 Installation test passed!")
         return True
-        
-    except Exception as e:
-        print(f"❌ Installation test failed: {e}")
+    except Exception:
         return False
 
+
 if __name__ == "__main__":
-    # Print package information
     info = get_package_info()
-    print("OctoMap Python Package Information:")
-    print(f"  Version: {info['version']}")
-    print(f"  Package Directory: {info['package_dir']}")
-    print(f"  Library Directory: {info['lib_dir']}")
-    print(f"  Library Directory Exists: {info['lib_dir_exists']}")
-    
-    if 'lib_files' in info:
-        print(f"  Library Files ({info['lib_count']}):")
-        for lib_file in info['lib_files']:
-            print(f"    - {lib_file}")
-    
-    # Run installation test
-    test_installation()
+    for k in ("version", "package_dir", "lib_dir", "lib_dir_exists"):
+        print(f"{k}: {info.get(k)}")
+    if "lib_files" in info:
+        print("lib_files:")
+        for name in info["lib_files"]:
+            print(f"  {name}")
+    print("test_installation:", test_installation())
