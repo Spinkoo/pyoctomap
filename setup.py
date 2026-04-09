@@ -12,10 +12,15 @@ from setuptools.command.build_ext import build_ext
 from setuptools.command.install import install
 from setuptools.command.develop import develop
 
+# Paths must be absolute: isolated / PEP 517 builds do not guarantee cwd == project root.
+_ROOT = os.path.abspath(os.path.dirname(__file__))
+_SRC_OCTO_LIB = os.path.join(_ROOT, "src", "octomap", "lib")
+_PYOCTOMAP_LIB = os.path.join(_ROOT, "pyoctomap", "lib")
+
 
 def get_lib_files():
     """Get the appropriate library files for the current platform"""
-    lib_dir = "src/octomap/lib"
+    lib_dir = _SRC_OCTO_LIB
     
     if not os.path.exists(lib_dir):
         return []
@@ -45,19 +50,27 @@ def get_lib_files():
 
 def copy_libraries_to_directory(lib_package_dir):
     """Copy libraries to a target directory, preserving symlink structure"""
-    lib_dir = "src/octomap/lib"
+    lib_dir = _SRC_OCTO_LIB
     
     if not os.path.exists(lib_dir):
         return
     
     os.makedirs(lib_package_dir, exist_ok=True)
     
-    # First, copy all actual files (not symlinks) - these are the .so.1.10.0 files
+    # First, copy all actual files (not symlinks) - .so/.a on Unix, .dll/.lib on Windows
     actual_files = {}
     for file in os.listdir(lib_dir):
         lib_file = os.path.join(lib_dir, file)
         if os.path.isfile(lib_file) and not os.path.islink(lib_file):
-            if file.endswith('.so') or file.endswith('.a') or '.so.' in file:
+            if platform.system() == "Windows":
+                copy_this = file.endswith(".dll") or file.endswith(".lib")
+            else:
+                copy_this = (
+                    file.endswith(".so")
+                    or file.endswith(".a")
+                    or ".so." in file
+                )
+            if copy_this:
                 dest_file = os.path.join(lib_package_dir, file)
                 shutil.copy2(lib_file, dest_file)
                 actual_files[file] = dest_file
@@ -98,14 +111,20 @@ class CustomBuildExt(build_ext):
     """Custom build extension that copies libraries to the package"""
     
     def run(self):
-        # Copy libraries to source directory first (for MANIFEST.in)
-        copy_libraries_to_source()
-        
-        # Run the normal build
-        super().run()
-        
-        # Copy libraries to the build directory
-        self.copy_libraries()
+        # PEP 517 / pip may run the build with cwd != project root; compile/link need project-relative paths.
+        prev_cwd = os.getcwd()
+        os.chdir(_ROOT)
+        try:
+            # Copy libraries to source directory first (for MANIFEST.in)
+            copy_libraries_to_source()
+
+            # Run the normal build
+            super().run()
+
+            # Copy libraries to the build directory
+            self.copy_libraries()
+        finally:
+            os.chdir(prev_cwd)
     
     def copy_libraries(self):
         """Copy shared libraries to the build package directory"""
@@ -166,7 +185,8 @@ def build_extensions():
     rpath_args = []
     
     if platform.system() == "Windows":
-        extra_compile_args = ["/O2", "/DNDEBUG", "/wd4996"]  # Suppress deprecation warnings
+        # C++17: generated code / headers use std::string_view; OctoMap is C++14 but MSVC needs /std:c++17 for <string_view>.
+        extra_compile_args = ["/O2", "/DNDEBUG", "/wd4996", "/std:c++17"]
         extra_link_args = []
     else:
         extra_compile_args = [
@@ -208,11 +228,12 @@ def build_extensions():
     
     for module_name, paths in possible_paths.items():
         for path in paths:
-            if os.path.exists(path):
+            if os.path.exists(os.path.join(_ROOT, path)):
+                # setuptools requires sources relative to setup.py, not absolute paths
                 pyx_files[module_name] = path
                 break
-    
-    # Common extension configuration
+
+    # Paths here must be relative to setup.py (setuptools / egg_info); use chdir in CustomBuildExt.run.
     common_include_dirs = [
         "pyoctomap",
         "src/octomap/octomap/include",
@@ -220,9 +241,34 @@ def build_extensions():
         "src/octomap/dynamicEDT3D/include",
         numpy_include,
     ]
-    
-    common_library_dirs = ["src/octomap/lib"]
-    
+
+    win_import_libs = ("dynamicedt3d.lib", "octomap.lib", "octomath.lib")
+    if platform.system() == "Windows":
+        common_library_dirs = [
+            d
+            for d in ("src/octomap/lib", "pyoctomap/lib")
+            if os.path.isdir(os.path.join(_ROOT, d))
+        ]
+        if not common_library_dirs:
+            sys.exit(
+                "Windows build: expected library directories missing. "
+                f"Neither src/octomap/lib nor pyoctomap/lib exists under {_ROOT}."
+            )
+        if not any(
+            all(os.path.isfile(os.path.join(_ROOT, d, f)) for f in win_import_libs)
+            for d in common_library_dirs
+        ):
+            sys.exit(
+                "Windows build: link against OctoMap requires these import libraries in "
+                "src/octomap/lib (or a full set in pyoctomap/lib):\n  "
+                + "\n  ".join(win_import_libs)
+                + "\nBuild native libs first, e.g.:\n"
+                '  powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ci/build_octomap_windows.ps1 '
+                f'-ProjectRoot "{_ROOT}"'
+            )
+    else:
+        common_library_dirs = ["src/octomap/lib"]
+
     common_libraries = ["dynamicedt3d", "octomap", "octomath"]
     
     common_macros = [("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")]
@@ -358,7 +404,7 @@ def build_extensions():
         )
     
     return cythonize(
-        ext_modules, 
+        ext_modules,
         include_path=["pyoctomap"],
         compiler_directives={'language_level': 3}  # Ensure Python 3 syntax
     )
