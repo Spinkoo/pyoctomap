@@ -5,6 +5,7 @@ This package provides Python bindings for the OctoMap library with bundled
 shared libraries to avoid dependency issues.
 """
 
+import os
 import sys
 from pathlib import Path
 
@@ -13,8 +14,14 @@ __version__ = "1.2.1"
 __author__ = "Spinkoo"
 __email__ = "lespinkoo@gmail.com"
 
-# Note: Library paths are handled via rpath in compiled extensions
-# No runtime setup required
+# On Windows, ensure bundled DLLs are discoverable before importing .pyd modules.
+if sys.platform == "win32":
+    _bundled_lib = Path(__file__).resolve().parent / "lib"
+    if _bundled_lib.is_dir():
+        if hasattr(os, "add_dll_directory"):
+            os.add_dll_directory(str(_bundled_lib))
+        else:
+            os.environ["PATH"] = str(_bundled_lib) + os.pathsep + os.environ.get("PATH", "")
 
 # Import the main module first
 try:
