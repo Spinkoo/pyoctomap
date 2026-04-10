@@ -12,7 +12,7 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 - **Probabilistic Updates**: Stochastic occupancy updates with uncertainty handling
 - **Path Planning**: Ray casting and collision detection
 - **File Operations**: Save/load octree data in binary format
-- **Cross-Platform**: Pre-built wheels for Linux (`x86_64`) and macOS (Apple Silicon `arm64`), with Windows compatibility via WSL
+- **Cross-Platform**: Pre-built wheels for Linux (`x86_64`), macOS (Apple Silicon `arm64`), and Windows (`AMD64`)
 
 ## Installation
 
@@ -32,7 +32,7 @@ pip install pyoctomap
 
 If you need to build from source or create custom wheels locally, we provide a `cibuildwheel` setup. First, ensure you have the repository cloned:
 
-**Linux / WSL / macOS:**
+**Linux / WSL / macOS / Windows:**
 ```bash
 # Clone the repository with submodules
 git clone --recursive https://github.com/Spinkoo/pyoctomap.git
@@ -42,10 +42,12 @@ cd pyoctomap
 To build locally using `cibuildwheel`:
 ```bash
 pip install cibuildwheel
-cibuildwheel --platform linux  # or macos
+cibuildwheel --platform linux    # or macos / windows
 ```
 
-The CI build automatically creates wheels for Python 3.8-3.13 (`cp38`–`cp313`), properly bundling all required C++ libraries.
+Native Windows is fully supported. If you are performance-focused, WSL often benchmarks faster for OctoMap-heavy loops due to Linux toolchain/runtime characteristics in the upstream C++ stack.
+
+The CI build automatically creates wheels for Python 3.8-3.14 (`cp38`–`cp314`), properly bundling all required C++ libraries.
 
 > **📋 Google Colab Users**: See [Build System Documentation](https://github.com/Spinkoo/pyoctomap/blob/main/docs/build_system.md) for detailed Colab installation instructions.
 

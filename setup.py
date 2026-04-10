@@ -12,35 +12,9 @@ from setuptools.command.build_ext import build_ext
 from setuptools.command.install import install
 from setuptools.command.develop import develop
 
-
-def get_lib_files():
-    """Get the appropriate library files for the current platform"""
-    lib_dir = "src/octomap/lib"
-    
-    if not os.path.exists(lib_dir):
-        return []
-    
-    lib_files = []
-    
-    # Get platform-specific library extensions
-    if platform.system() == "Windows":
-        lib_extensions = [".dll", ".lib"]
-    elif platform.system() == "Darwin":  # macOS
-        lib_extensions = [".dylib", ".a"]
-    else:  # Linux and others
-        lib_extensions = [".so", ".a"]
-    
-    # Find all library files (including versioned ones like .so.1.10, .so.1.10.0)
-    for file in os.listdir(lib_dir):
-        file_path = os.path.join(lib_dir, file)
-        # Include files that match extensions or contain versioned patterns
-        # Skip symlinks - we'll copy the actual files they point to
-        if not os.path.islink(file_path):
-            if (any(file.endswith(ext) for ext in lib_extensions) or 
-                ('.so.' in file and platform.system() != "Windows")):
-                lib_files.append(file_path)
-    
-    return lib_files
+ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
+# Ensure all relative paths in setup/egg_info/cythonize are rooted at project.
+os.chdir(ROOT_DIR)
 
 
 def copy_libraries_to_directory(lib_package_dir):
@@ -52,15 +26,19 @@ def copy_libraries_to_directory(lib_package_dir):
     
     os.makedirs(lib_package_dir, exist_ok=True)
     
-    # First, copy all actual files (not symlinks) - these are the .so.1.10.0 files
-    actual_files = {}
+    # First, copy all actual files (not symlinks)
     for file in os.listdir(lib_dir):
         lib_file = os.path.join(lib_dir, file)
         if os.path.isfile(lib_file) and not os.path.islink(lib_file):
-            if file.endswith('.so') or file.endswith('.a') or '.so.' in file:
+            if platform.system() == "Windows":
+                copy_this = file.endswith(".dll") or file.endswith(".lib")
+            elif platform.system() == "Darwin":
+                copy_this = file.endswith(".dylib") or file.endswith(".a")
+            else:
+                copy_this = file.endswith(".so") or file.endswith(".a") or ".so." in file
+            if copy_this:
                 dest_file = os.path.join(lib_package_dir, file)
                 shutil.copy2(lib_file, dest_file)
-                actual_files[file] = dest_file
     
     # Then, resolve and copy symlinks by copying their targets with the symlink name
     for file in os.listdir(lib_dir):
@@ -98,20 +76,48 @@ class CustomBuildExt(build_ext):
     """Custom build extension that copies libraries to the package"""
     
     def run(self):
-        # Copy libraries to source directory first (for MANIFEST.in)
-        copy_libraries_to_source()
-        
-        # Run the normal build
-        super().run()
-        
-        # Copy libraries to the build directory
-        self.copy_libraries()
+        prev_cwd = os.getcwd()
+        os.chdir(ROOT_DIR)
+        try:
+            # Copy libraries to source directory first (for MANIFEST.in)
+            copy_libraries_to_source()
+            
+            # Run the normal build
+            super().run()
+            
+            # Copy libraries to the build directory
+            self.copy_libraries()
+        finally:
+            os.chdir(prev_cwd)
     
     def copy_libraries(self):
         """Copy shared libraries to the build package directory"""
         package_dir = os.path.join(self.build_lib, "pyoctomap")
         lib_package_dir = os.path.join(package_dir, "lib")
         copy_libraries_to_directory(lib_package_dir)
+
+    def get_source_files(self):
+        """
+        setuptools egg_info/manifest generation calls this and rejects absolute
+        project-local paths. Normalize to repo-relative here as a final guard.
+        """
+        files = super().get_source_files()
+        out = []
+        for f in files:
+            try:
+                p = os.fspath(f)
+            except TypeError:
+                out.append(f)
+                continue
+            if isinstance(p, str) and os.path.isabs(p):
+                try:
+                    common = os.path.commonpath([ROOT_DIR, p])
+                except ValueError:
+                    common = ""
+                if os.path.normcase(common) == os.path.normcase(ROOT_DIR):
+                    p = os.path.relpath(p, ROOT_DIR)
+            out.append(p.replace("\\", "/") if isinstance(p, str) else p)
+        return out
 
 
 class CustomInstall(install):
@@ -183,34 +189,16 @@ def build_extensions():
         elif platform.system() == "Darwin":
             rpath_args = ["-Wl,-rpath,@loader_path/lib"]
 
-    # Find all .pyx files
-    pyx_files = {
-        "pyoctomap.octree_base": None,
-        "pyoctomap.octree_iterators": None,
-        "pyoctomap.octree": None,
-        "pyoctomap.octomap": None,
-        "pyoctomap.color_octree": None,
-        "pyoctomap.counting_octree": None,
-        "pyoctomap.stamped_octree": None,
-        "pyoctomap.pointcloud": None,
+    module_to_pyx = {
+        "pyoctomap.octree_base": "pyoctomap/octree_base.pyx",
+        "pyoctomap.octree_iterators": "pyoctomap/octree_iterators.pyx",
+        "pyoctomap.octree": "pyoctomap/octree.pyx",
+        "pyoctomap.octomap": "pyoctomap/octomap.pyx",
+        "pyoctomap.color_octree": "pyoctomap/color_octree.pyx",
+        "pyoctomap.counting_octree": "pyoctomap/counting_octree.pyx",
+        "pyoctomap.stamped_octree": "pyoctomap/stamped_octree.pyx",
+        "pyoctomap.pointcloud": "pyoctomap/pointcloud.pyx",
     }
-    
-    possible_paths = {
-        "pyoctomap.octree_base": ["pyoctomap/octree_base.pyx"],
-        "pyoctomap.octree_iterators": ["pyoctomap/octree_iterators.pyx"],
-        "pyoctomap.octree": ["pyoctomap/octree.pyx"],
-        "pyoctomap.octomap": ["pyoctomap/octomap.pyx"],
-        "pyoctomap.color_octree": ["pyoctomap/color_octree.pyx"],
-        "pyoctomap.counting_octree": ["pyoctomap/counting_octree.pyx"],
-        "pyoctomap.stamped_octree": ["pyoctomap/stamped_octree.pyx"],
-        "pyoctomap.pointcloud": ["pyoctomap/pointcloud.pyx"],
-    }
-    
-    for module_name, paths in possible_paths.items():
-        for path in paths:
-            if os.path.exists(path):
-                pyx_files[module_name] = path
-                break
     
     # Common extension configuration
     common_include_dirs = [
@@ -228,125 +216,13 @@ def build_extensions():
     common_macros = [("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")]
     
     ext_modules = []
-    
-    # Build octree_base extension
-    if pyx_files["pyoctomap.octree_base"]:
+    for module_name, pyx_path in module_to_pyx.items():
+        if not os.path.exists(pyx_path):
+            continue
         ext_modules.append(
             Extension(
-                "pyoctomap.octree_base",
-                [pyx_files["pyoctomap.octree_base"]],
-                include_dirs=common_include_dirs,
-                library_dirs=common_library_dirs,
-                libraries=common_libraries,
-                define_macros=common_macros,
-                language="c++",
-                extra_compile_args=extra_compile_args,
-                extra_link_args=extra_link_args + rpath_args,
-            )
-        )
-    
-    # Build octree_iterators extension
-    if pyx_files["pyoctomap.octree_iterators"]:
-        ext_modules.append(
-            Extension(
-                "pyoctomap.octree_iterators",
-                [pyx_files["pyoctomap.octree_iterators"]],
-                include_dirs=common_include_dirs,
-                library_dirs=common_library_dirs,
-                libraries=common_libraries,
-                define_macros=common_macros,
-                language="c++",
-                extra_compile_args=extra_compile_args,
-                extra_link_args=extra_link_args + rpath_args,
-            )
-        )
-    
-    # Build octree extension
-    if pyx_files["pyoctomap.octree"]:
-        ext_modules.append(
-            Extension(
-                "pyoctomap.octree",
-                [pyx_files["pyoctomap.octree"]],
-                include_dirs=common_include_dirs,
-                library_dirs=common_library_dirs,
-                libraries=common_libraries,
-                define_macros=common_macros,
-                language="c++",
-                extra_compile_args=extra_compile_args,
-                extra_link_args=extra_link_args + rpath_args,
-            )
-        )
-    
-    # Build octomap wrapper extension
-    if pyx_files["pyoctomap.octomap"]:
-        ext_modules.append(
-            Extension(
-                "pyoctomap.octomap",
-                [pyx_files["pyoctomap.octomap"]],
-                include_dirs=common_include_dirs,
-                library_dirs=common_library_dirs,
-                libraries=common_libraries,
-                define_macros=common_macros,
-                language="c++",
-                extra_compile_args=extra_compile_args,
-                extra_link_args=extra_link_args + rpath_args,
-            )
-        )
-    
-    # Build color_octree extension
-    if pyx_files["pyoctomap.color_octree"]:
-        ext_modules.append(
-            Extension(
-                "pyoctomap.color_octree",
-                [pyx_files["pyoctomap.color_octree"]],
-                include_dirs=common_include_dirs,
-                library_dirs=common_library_dirs,
-                libraries=common_libraries,
-                define_macros=common_macros,
-                language="c++",
-                extra_compile_args=extra_compile_args,
-                extra_link_args=extra_link_args + rpath_args,
-            )
-        )
-    
-    # Build counting_octree extension
-    if pyx_files["pyoctomap.counting_octree"]:
-        ext_modules.append(
-            Extension(
-                "pyoctomap.counting_octree",
-                [pyx_files["pyoctomap.counting_octree"]],
-                include_dirs=common_include_dirs,
-                library_dirs=common_library_dirs,
-                libraries=common_libraries,
-                define_macros=common_macros,
-                language="c++",
-                extra_compile_args=extra_compile_args,
-                extra_link_args=extra_link_args + rpath_args,
-            )
-        )
-    
-    # Build stamped_octree extension
-    if pyx_files["pyoctomap.stamped_octree"]:
-        ext_modules.append(
-            Extension(
-                "pyoctomap.stamped_octree",
-                [pyx_files["pyoctomap.stamped_octree"]],
-                include_dirs=common_include_dirs,
-                library_dirs=common_library_dirs,
-                libraries=common_libraries,
-                define_macros=common_macros,
-                language="c++",
-                extra_compile_args=extra_compile_args,
-                extra_link_args=extra_link_args + rpath_args,
-            )
-        )
-    
-    # Build pointcloud extension
-    if pyx_files["pyoctomap.pointcloud"]:
-        ext_modules.append(
-            Extension(
-                "pyoctomap.pointcloud",
-                [pyx_files["pyoctomap.pointcloud"]],
+                module_name,
+                [pyx_path],
                 include_dirs=common_include_dirs,
                 library_dirs=common_library_dirs,
                 libraries=common_libraries,
