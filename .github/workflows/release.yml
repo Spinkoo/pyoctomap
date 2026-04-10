@@ -35,6 +35,7 @@ jobs:
         submodules: recursive
 
     - name: Display release info
+      shell: bash
       run: |
         echo "🚀 Building wheels using cibuildwheel"
         echo "🖥️  Platform: ${{ matrix.platform }} (${{ matrix.arch }})"
@@ -86,6 +87,7 @@ jobs:
           python -c "import pyoctomap; from pyoctomap import OcTree; OcTree(0.1)"
 
     - name: List built wheels
+      shell: bash
       run: |
         echo "✅ Built wheels:"
         ls -la wheelhouse/
