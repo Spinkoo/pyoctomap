@@ -10,6 +10,9 @@ on:
         required: false
         default: '1.1.2'
 
+permissions:
+  contents: read
+
 jobs:
   build-wheels:
     runs-on: ${{ matrix.os }}
@@ -145,6 +148,8 @@ jobs:
     needs: [build-wheels, build-sdist]
     runs-on: ubuntu-latest
     environment: release
+    permissions:
+      contents: read
 
     steps:
     - name: Download all wheel artifacts
