@@ -6,6 +6,8 @@
 
 A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 3D occupancy mapping capabilities for robotics and computer vision applications. This modernized binding offers enhanced performance, bundled shared libraries for easy deployment, and seamless integration with the Python scientific ecosystem.
 
+> **⚡ Need GPU speed?** Try **[pyoctomapRT](https://github.com/Spinkoo/pyoctomapRT)** — our companion library that mirrors this API on NVIDIA GPUs with OptiX ray-tracing for real-time volumetric mapping at scale.
+
 ## Features
 
 - **3D Occupancy Mapping**: Efficient octree-based 3D occupancy mapping
