@@ -131,6 +131,21 @@ def vendored_octomap_available():
     )
 
 
+def _skip_native_build():
+    """True for sdist / PEP 517 metadata collection (no compile, no OctoMap libs)."""
+    setup_cmds = {arg for arg in sys.argv if not str(arg).startswith("-")}
+    compiling = {
+        "build_ext",
+        "build",
+        "bdist_wheel",
+        "bdist_egg",
+        "install",
+        "develop",
+        "editable_wheel",
+    }
+    return compiling.isdisjoint(setup_cmds)
+
+
 def resolve_octomap():
     """Choose system/conda OctoMap vs the vendored tree."""
     global USE_SYSTEM_OCTOMAP
@@ -330,9 +345,37 @@ class CustomDevelop(develop):
         copy_libraries_to_directory(lib_package_dir)
 
 
-def build_extensions():
+def _extension_sources():
+    """Map extension module names to .pyx paths that exist on disk."""
+    possible_paths = {
+        "pyoctomap.octree_base": "pyoctomap/octree_base.pyx",
+        "pyoctomap.octree_iterators": "pyoctomap/octree_iterators.pyx",
+        "pyoctomap.octree": "pyoctomap/octree.pyx",
+        "pyoctomap.octomap": "pyoctomap/octomap.pyx",
+        "pyoctomap.color_octree": "pyoctomap/color_octree.pyx",
+        "pyoctomap.counting_octree": "pyoctomap/counting_octree.pyx",
+        "pyoctomap.stamped_octree": "pyoctomap/stamped_octree.pyx",
+        "pyoctomap.pointcloud": "pyoctomap/pointcloud.pyx",
+    }
+    found = {}
+    for module_name, path in possible_paths.items():
+        if os.path.exists(os.path.join(_ROOT, path)):
+            found[module_name] = path
+    return found
+
+
+def build_extensions(require_native=True):
     """Build the Cython extensions with proper configuration"""
-    
+
+    pyx_files = _extension_sources()
+
+    # sdist / egg_info only need to declare sources; do not locate or compile OctoMap.
+    if not require_native:
+        return [
+            Extension(name, [path], language="c++")
+            for name, path in pyx_files.items()
+        ]
+
     # Import required modules - these should be available as build dependencies
     try:
         import numpy
@@ -364,36 +407,6 @@ def build_extensions():
         ]
         extra_link_args = ["-fPIC"]
         # Bundled-lib rpath is added only in vendored mode below.
-
-    # Find all .pyx files
-    pyx_files = {
-        "pyoctomap.octree_base": None,
-        "pyoctomap.octree_iterators": None,
-        "pyoctomap.octree": None,
-        "pyoctomap.octomap": None,
-        "pyoctomap.color_octree": None,
-        "pyoctomap.counting_octree": None,
-        "pyoctomap.stamped_octree": None,
-        "pyoctomap.pointcloud": None,
-    }
-    
-    possible_paths = {
-        "pyoctomap.octree_base": ["pyoctomap/octree_base.pyx"],
-        "pyoctomap.octree_iterators": ["pyoctomap/octree_iterators.pyx"],
-        "pyoctomap.octree": ["pyoctomap/octree.pyx"],
-        "pyoctomap.octomap": ["pyoctomap/octomap.pyx"],
-        "pyoctomap.color_octree": ["pyoctomap/color_octree.pyx"],
-        "pyoctomap.counting_octree": ["pyoctomap/counting_octree.pyx"],
-        "pyoctomap.stamped_octree": ["pyoctomap/stamped_octree.pyx"],
-        "pyoctomap.pointcloud": ["pyoctomap/pointcloud.pyx"],
-    }
-    
-    for module_name, paths in possible_paths.items():
-        for path in paths:
-            if os.path.exists(os.path.join(_ROOT, path)):
-                # setuptools requires sources relative to setup.py, not absolute paths
-                pyx_files[module_name] = path
-                break
 
     octomap_includes, octomap_lib_dirs, octomap_libs, has_dynamic_edt = resolve_octomap()
     if USE_SYSTEM_OCTOMAP:
@@ -439,7 +452,7 @@ def build_extensions():
     ext_modules = []
     
     # Build octree_base extension
-    if pyx_files["pyoctomap.octree_base"]:
+    if pyx_files.get("pyoctomap.octree_base"):
         ext_modules.append(
             Extension(
                 "pyoctomap.octree_base",
@@ -455,7 +468,7 @@ def build_extensions():
         )
     
     # Build octree_iterators extension
-    if pyx_files["pyoctomap.octree_iterators"]:
+    if pyx_files.get("pyoctomap.octree_iterators"):
         ext_modules.append(
             Extension(
                 "pyoctomap.octree_iterators",
@@ -471,7 +484,7 @@ def build_extensions():
         )
     
     # Build octree extension
-    if pyx_files["pyoctomap.octree"]:
+    if pyx_files.get("pyoctomap.octree"):
         ext_modules.append(
             Extension(
                 "pyoctomap.octree",
@@ -487,7 +500,7 @@ def build_extensions():
         )
     
     # Build octomap wrapper extension
-    if pyx_files["pyoctomap.octomap"]:
+    if pyx_files.get("pyoctomap.octomap"):
         ext_modules.append(
             Extension(
                 "pyoctomap.octomap",
@@ -503,7 +516,7 @@ def build_extensions():
         )
     
     # Build color_octree extension
-    if pyx_files["pyoctomap.color_octree"]:
+    if pyx_files.get("pyoctomap.color_octree"):
         ext_modules.append(
             Extension(
                 "pyoctomap.color_octree",
@@ -519,7 +532,7 @@ def build_extensions():
         )
     
     # Build counting_octree extension
-    if pyx_files["pyoctomap.counting_octree"]:
+    if pyx_files.get("pyoctomap.counting_octree"):
         ext_modules.append(
             Extension(
                 "pyoctomap.counting_octree",
@@ -535,7 +548,7 @@ def build_extensions():
         )
     
     # Build stamped_octree extension
-    if pyx_files["pyoctomap.stamped_octree"]:
+    if pyx_files.get("pyoctomap.stamped_octree"):
         ext_modules.append(
             Extension(
                 "pyoctomap.stamped_octree",
@@ -551,7 +564,7 @@ def build_extensions():
         )
     
     # Build pointcloud extension
-    if pyx_files["pyoctomap.pointcloud"]:
+    if pyx_files.get("pyoctomap.pointcloud"):
         ext_modules.append(
             Extension(
                 "pyoctomap.pointcloud",
@@ -613,9 +626,8 @@ def get_readme():
 
 def main():
     """Main setup function - minimal since pyproject.toml handles metadata"""
-    
-    # Build extensions
-    ext_modules = build_extensions()
+
+    ext_modules = build_extensions(require_native=not _skip_native_build())
 
     setup(
         # Metadata comes from pyproject.toml
