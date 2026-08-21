@@ -89,7 +89,7 @@ cdef class OcTree:
         key_in.k[1] = key[1]
         key_in.k[2] = key[2]
         cdef defs.OcTreeKey key_out = self.thisptr.adjustKeyAtDepth(key_in, <int?>depth)
-        res = OcTreeKey()
+        cdef octree_base.OcTreeKey res = octree_base.OcTreeKey()
         res.thisptr.k[0] = key_out.k[0]
         res.thisptr.k[1] = key_out.k[1]
         res.thisptr.k[2] = key_out.k[2]
@@ -115,15 +115,17 @@ cdef class OcTree:
                                                        coord[1],
                                                        coord[2]),
                                           <unsigned int?>depth)
-        # Create OcTreeKey using Cython type directly, then convert to Python object
-        cdef octree_base.OcTreeKey res_cython = octree_base.OcTreeKey(key.k[0], key.k[1], key.k[2])
-        # Convert to Python object by creating new one with same values
-        res = OcTreeKey(res_cython[0], res_cython[1], res_cython[2])
-        return res
+        # Use the Cython type directly to avoid Python wrapper issues
+        cdef octree_base.OcTreeKey res_cython = octree_base.OcTreeKey()
+        res_cython.thisptr.k[0] = key.k[0]
+        res_cython.thisptr.k[1] = key.k[1]
+        res_cython.thisptr.k[2] = key.k[2]
+        return res_cython
 
     def coordToKeyChecked(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):
         cdef defs.OcTreeKey key
         cdef cppbool chk
+        cdef octree_base.OcTreeKey res_cython
         if depth is None:
             chk = self.thisptr.coordToKeyChecked(defs.point3d(coord[0],
                                                               coord[1],
@@ -136,11 +138,12 @@ cdef class OcTree:
                                                  <unsigned int?>depth,
                                                  key)
         if chk:
-            res = OcTreeKey()
-            res.thisptr.k[0] = key.k[0]
-            res.thisptr.k[1] = key.k[1]
-            res.thisptr.k[2] = key.k[2]
-            return chk, res
+            # Use the Cython type directly to avoid Python wrapper issues
+            res_cython = octree_base.OcTreeKey()
+            res_cython.thisptr.k[0] = key.k[0]
+            res_cython.thisptr.k[1] = key.k[1]
+            res_cython.thisptr.k[2] = key.k[2]
+            return chk, res_cython
         else:
             return chk, None
 
@@ -816,27 +819,29 @@ cdef class OcTree:
         Internal helper for faster insertion.
         """
         cdef int i, num_points = point_cloud.shape[0]
-        cdef np.ndarray[DOUBLE_t, ndim=1] point
+        cdef defs.OcTreeKey key
+        cdef cppbool chk
         cdef set unique_keys = set()
         cdef list discrete_points = []
-        cdef object key
-        
+
         for i in range(num_points):
-            point = point_cloud[i]
             if checked:
-                key = self.coordToKeyChecked(point)[1]  # Returns key if in bounds
-                if key is not None:
-                    key_tuple = (key[0], key[1], key[2])
-                    if key_tuple not in unique_keys:
-                        unique_keys.add(key_tuple)
-                        discrete_points.append(point)
+                chk = self.thisptr.coordToKeyChecked(
+                    defs.point3d(point_cloud[i, 0], point_cloud[i, 1], point_cloud[i, 2]),
+                    key)
+                if not chk:
+                    continue
             else:
-                key = self.coordToKey(point)
-                key_tuple = (key[0], key[1], key[2])
-                if key_tuple not in unique_keys:
-                    unique_keys.add(key_tuple)
-                    discrete_points.append(point)
-        
+                key = self.thisptr.coordToKey(
+                    defs.point3d(point_cloud[i, 0], point_cloud[i, 1], point_cloud[i, 2]))
+            key_tuple = (key.k[0], key.k[1], key.k[2])
+            if key_tuple not in unique_keys:
+                unique_keys.add(key_tuple)
+                discrete_points.append(
+                    (point_cloud[i, 0], point_cloud[i, 1], point_cloud[i, 2]))
+
+        if not discrete_points:
+            return np.empty((0, 3), dtype=np.float64)
         return np.array(discrete_points, dtype=np.float64)
 
     cdef void _build_pointcloud_and_insert(self, np.ndarray[DOUBLE_t, ndim=2] point_cloud,
