@@ -9,6 +9,8 @@ from libcpp cimport bool as cppbool
 from libc.stddef cimport size_t
 from cython.operator cimport dereference as deref, preincrement as inc
 cimport octomap_defs as defs
+IF HAS_DYNAMIC_EDT:
+    cimport dynamicEDT3D_defs as edt
 import numpy as np
 cimport numpy as np
 # Note: DOUBLE_t is declared in octree.pxd, not here
@@ -73,10 +75,13 @@ cdef class OcTree:
             self.thisptr = new defs.OcTree(string(<char*?>arg))
 
     def __dealloc__(self):
-        # Clean up DynamicEDT first (it may reference the tree)
-        if self.edtptr != NULL:
-            del self.edtptr
-            self.edtptr = NULL
+        IF HAS_DYNAMIC_EDT:
+            cdef edt.DynamicEDTOctomap *edt_obj
+            # Clean up DynamicEDT first (it may reference the tree)
+            if self.edtptr != NULL:
+                edt_obj = <edt.DynamicEDTOctomap*>self.edtptr
+                del edt_obj
+                self.edtptr = NULL
 
         # Then clean up the OcTree itself
         if self.owner and self.thisptr != NULL:
@@ -89,7 +94,7 @@ cdef class OcTree:
         key_in.k[1] = key[1]
         key_in.k[2] = key[2]
         cdef defs.OcTreeKey key_out = self.thisptr.adjustKeyAtDepth(key_in, <int?>depth)
-        res = OcTreeKey()
+        cdef octree_base.OcTreeKey res = octree_base.OcTreeKey()
         res.thisptr.k[0] = key_out.k[0]
         res.thisptr.k[1] = key_out.k[1]
         res.thisptr.k[2] = key_out.k[2]
@@ -115,15 +120,17 @@ cdef class OcTree:
                                                        coord[1],
                                                        coord[2]),
                                           <unsigned int?>depth)
-        # Create OcTreeKey using Cython type directly, then convert to Python object
-        cdef octree_base.OcTreeKey res_cython = octree_base.OcTreeKey(key.k[0], key.k[1], key.k[2])
-        # Convert to Python object by creating new one with same values
-        res = OcTreeKey(res_cython[0], res_cython[1], res_cython[2])
-        return res
+        # Use the Cython type directly to avoid Python wrapper issues
+        cdef octree_base.OcTreeKey res_cython = octree_base.OcTreeKey()
+        res_cython.thisptr.k[0] = key.k[0]
+        res_cython.thisptr.k[1] = key.k[1]
+        res_cython.thisptr.k[2] = key.k[2]
+        return res_cython
 
     def coordToKeyChecked(self, np.ndarray[DOUBLE_t, ndim=1] coord, depth=None):
         cdef defs.OcTreeKey key
         cdef cppbool chk
+        cdef octree_base.OcTreeKey res_cython
         if depth is None:
             chk = self.thisptr.coordToKeyChecked(defs.point3d(coord[0],
                                                               coord[1],
@@ -136,11 +143,12 @@ cdef class OcTree:
                                                  <unsigned int?>depth,
                                                  key)
         if chk:
-            res = OcTreeKey()
-            res.thisptr.k[0] = key.k[0]
-            res.thisptr.k[1] = key.k[1]
-            res.thisptr.k[2] = key.k[2]
-            return chk, res
+            # Use the Cython type directly to avoid Python wrapper issues
+            res_cython = octree_base.OcTreeKey()
+            res_cython.thisptr.k[0] = key.k[0]
+            res_cython.thisptr.k[1] = key.k[1]
+            res_cython.thisptr.k[2] = key.k[2]
+            return chk, res_cython
         else:
             return chk, None
 
@@ -761,51 +769,55 @@ cdef class OcTree:
         else:
             raise TypeError("Expected OcTreeNode")
     
-    def dynamicEDT_generate(self, maxdist,
-                            np.ndarray[DOUBLE_t, ndim=1] bbx_min,
-                            np.ndarray[DOUBLE_t, ndim=1] bbx_max,
-                            treatUnknownAsOccupied=False):
-        # Clean up existing DynamicEDT if it exists
-        if self.edtptr != NULL:
-            del self.edtptr
-            self.edtptr = NULL
-        
-        self.edtptr = new edt.DynamicEDTOctomap(<float?>maxdist,
+    IF HAS_DYNAMIC_EDT:
+        def dynamicEDT_generate(self, maxdist,
+                                np.ndarray[DOUBLE_t, ndim=1] bbx_min,
+                                np.ndarray[DOUBLE_t, ndim=1] bbx_max,
+                                treatUnknownAsOccupied=False):
+            cdef edt.DynamicEDTOctomap *edt_obj
+            # Clean up existing DynamicEDT if it exists
+            if self.edtptr != NULL:
+                edt_obj = <edt.DynamicEDTOctomap*>self.edtptr
+                del edt_obj
+                self.edtptr = NULL
+
+            edt_obj = new edt.DynamicEDTOctomap(<float?>maxdist,
                                                 self.thisptr,
                                                 defs.point3d(bbx_min[0], bbx_min[1], bbx_min[2]),
                                                 defs.point3d(bbx_max[0], bbx_max[1], bbx_max[2]),
                                                 <cppbool?>treatUnknownAsOccupied)
+            self.edtptr = <void*>edt_obj
 
-    def dynamicEDT_checkConsistency(self):
-        if self.edtptr:
-            return self.edtptr.checkConsistency()
-        else:
-            raise NullPointerException
-
-    def dynamicEDT_update(self, updateRealDist):
-        if self.edtptr:
-            self.edtptr.update(<cppbool?>updateRealDist)
-        else:
-            raise NullPointerException
-
-    def dynamicEDT_getMaxDist(self):
-        if self.edtptr:
-            return self.edtptr.getMaxDist()
-        else:
-            raise NullPointerException
-
-    def dynamicEDT_getDistance(self, p):
-        if self.edtptr:
-            if isinstance(p, OcTreeKey):
-                return self.edtptr.getDistance(edt.OcTreeKey(<unsigned short int>p[0],
-                                                             <unsigned short int>p[1],
-                                                             <unsigned short int>p[2]))
+        def dynamicEDT_checkConsistency(self):
+            if self.edtptr:
+                return (<edt.DynamicEDTOctomap*>self.edtptr).checkConsistency()
             else:
-                return self.edtptr.getDistance(edt.point3d(<float?>p[0],
-                                                           <float?>p[1],
-                                                           <float?>p[2]))
-        else:
-            raise NullPointerException
+                raise NullPointerException
+
+        def dynamicEDT_update(self, updateRealDist):
+            if self.edtptr:
+                (<edt.DynamicEDTOctomap*>self.edtptr).update(<cppbool?>updateRealDist)
+            else:
+                raise NullPointerException
+
+        def dynamicEDT_getMaxDist(self):
+            if self.edtptr:
+                return (<edt.DynamicEDTOctomap*>self.edtptr).getMaxDist()
+            else:
+                raise NullPointerException
+
+        def dynamicEDT_getDistance(self, p):
+            if self.edtptr:
+                if isinstance(p, OcTreeKey):
+                    return (<edt.DynamicEDTOctomap*>self.edtptr).getDistance(
+                        edt.OcTreeKey(<unsigned short int>p[0],
+                                      <unsigned short int>p[1],
+                                      <unsigned short int>p[2]))
+                else:
+                    return (<edt.DynamicEDTOctomap*>self.edtptr).getDistance(
+                        edt.point3d(<float?>p[0], <float?>p[1], <float?>p[2]))
+            else:
+                raise NullPointerException
 
 
 
@@ -816,27 +828,29 @@ cdef class OcTree:
         Internal helper for faster insertion.
         """
         cdef int i, num_points = point_cloud.shape[0]
-        cdef np.ndarray[DOUBLE_t, ndim=1] point
+        cdef defs.OcTreeKey key
+        cdef cppbool chk
         cdef set unique_keys = set()
         cdef list discrete_points = []
-        cdef object key
-        
+
         for i in range(num_points):
-            point = point_cloud[i]
             if checked:
-                key = self.coordToKeyChecked(point)[1]  # Returns key if in bounds
-                if key is not None:
-                    key_tuple = (key[0], key[1], key[2])
-                    if key_tuple not in unique_keys:
-                        unique_keys.add(key_tuple)
-                        discrete_points.append(point)
+                chk = self.thisptr.coordToKeyChecked(
+                    defs.point3d(point_cloud[i, 0], point_cloud[i, 1], point_cloud[i, 2]),
+                    key)
+                if not chk:
+                    continue
             else:
-                key = self.coordToKey(point)
-                key_tuple = (key[0], key[1], key[2])
-                if key_tuple not in unique_keys:
-                    unique_keys.add(key_tuple)
-                    discrete_points.append(point)
-        
+                key = self.thisptr.coordToKey(
+                    defs.point3d(point_cloud[i, 0], point_cloud[i, 1], point_cloud[i, 2]))
+            key_tuple = (key.k[0], key.k[1], key.k[2])
+            if key_tuple not in unique_keys:
+                unique_keys.add(key_tuple)
+                discrete_points.append(
+                    (point_cloud[i, 0], point_cloud[i, 1], point_cloud[i, 2]))
+
+        if not discrete_points:
+            return np.empty((0, 3), dtype=np.float64)
         return np.array(discrete_points, dtype=np.float64)
 
     cdef void _build_pointcloud_and_insert(self, np.ndarray[DOUBLE_t, ndim=2] point_cloud,

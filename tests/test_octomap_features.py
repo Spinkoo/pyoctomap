@@ -68,6 +68,10 @@ def main():
     tree.insertPointCloud(pc, origin)
     print("pointcloud inserted -> size:", tree.size())
 
+    # Regression: discretize=True used to crash on OcTree (issue #47)
+    tree.insertPointCloud(pc, origin, max_range=-1.0, lazy_eval=True, discretize=True)
+    print("pointcloud inserted with discretize=True -> size:", tree.size())
+
     # Ray casting
     section("Ray Casting")
     end = np.zeros(3, dtype=np.float64)

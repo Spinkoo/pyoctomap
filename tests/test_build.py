@@ -31,6 +31,40 @@ def test_basic_functionality():
     print("✅ Basic OctoMap functionality working!")
     print(f"✅ Tree has {tree.size()} nodes")
 
+
+def test_coord_to_key_checked():
+    import numpy as np
+    import pyoctomap
+
+    tree = pyoctomap.OcTree(0.1)
+    coord = np.array([1.5, 2.5, 3.5], dtype=np.float64)
+    ok, key = tree.coordToKeyChecked(coord)
+    assert ok is True
+    assert key is not None
+    assert len(key) == 3
+    direct = tree.coordToKey(coord)
+    assert (key[0], key[1], key[2]) == (direct[0], direct[1], direct[2])
+    back = tree.keyToCoord(key)
+    assert np.allclose(back, coord, atol=tree.getResolution())
+    adjusted = tree.adjustKeyAtDepth(key, tree.getTreeDepth())
+    assert len(adjusted) == 3
+
+
+def test_insert_point_cloud_discretize():
+    import numpy as np
+    import pyoctomap
+
+    tree = pyoctomap.OcTree(0.1)
+    rng = np.random.default_rng(47)
+    points = rng.uniform(-5, 5, size=(1000, 3)).astype(np.float64)
+    sensor_origin = np.array([0.0, 0.0, 0.0], dtype=np.float64)
+    n = tree.insertPointCloud(
+        points, sensor_origin, max_range=-1.0, lazy_eval=True, discretize=True
+    )
+    assert n == 1000
+    tree.updateInnerOccupancy()
+    assert tree.size() > 0
+
 def test_github2pypi():
     """Test github2pypi URL conversion."""
     import sys
