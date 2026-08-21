@@ -1,0 +1,59 @@
+{% set name = "pyoctomap" %}
+{% set version = "1.2.2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  # After v1.2.2 is on PyPI, prefer the sdist (conda-forge requirement):
+  # url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  # sha256: <sha256sum of the sdist>
+  git_url: https://github.com/Spinkoo/pyoctomap.git
+  git_rev: v{{ version }}
+
+build:
+  number: 0
+  skip: true  # [py<38]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
+  host:
+    - python
+    - pip
+    - setuptools
+    - cython
+    - numpy
+    # Reuse conda-forge octomap instead of vendoring:
+    # https://github.com/conda-forge/octomap-feedstock
+    - octomap
+  run:
+    - python
+    - {{ pin_compatible('numpy') }}
+    - octomap
+
+test:
+  imports:
+    - pyoctomap
+  commands:
+    - python -c "import pyoctomap as m; print(getattr(m, '__version__', 'unknown'))"
+    - python -c "from pyoctomap import OcTree; t = OcTree(0.1); t.updateNode([1.0, 2.0, 3.0], True); n = t.search([1.0, 2.0, 3.0]); assert n is not None and t.isNodeOccupied(n)"
+
+about:
+  home: https://github.com/Spinkoo/pyoctomap
+  license: MIT
+  license_file: LICENSE
+  summary: Python bindings for the OctoMap 3D mapping library.
+  description: |
+    PyOctoMap provides Python bindings for the OctoMap library, a probabilistic
+    3D mapping framework. The conda package links against the conda-forge
+    octomap C++ library rather than bundling a private copy.
+  doc_url: https://github.com/Spinkoo/pyoctomap#readme
+  dev_url: https://github.com/Spinkoo/pyoctomap
+
+extra:
+  recipe-maintainers:
+    - Spinkoo
