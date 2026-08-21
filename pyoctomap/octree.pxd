@@ -4,13 +4,13 @@
 from libcpp cimport bool as cppbool
 from libc.stddef cimport size_t
 cimport octomap_defs as defs
-cimport dynamicEDT3D_defs as edt
 cimport numpy as np
 ctypedef np.float64_t DOUBLE_t
 
 cdef class OcTree:
     cdef defs.OcTree *thisptr
-    cdef edt.DynamicEDTOctomap *edtptr
+    # Opaque so conda-forge octomap (no dynamicEDT3D) can still compile this module.
+    cdef void *edtptr
     cdef bint owner
     
     # Helper method to get the C++ pointer (for use in other modules)

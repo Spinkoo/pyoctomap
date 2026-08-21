@@ -3,19 +3,177 @@ Simplified setup.py that focuses only on custom build logic.
 Metadata is now handled by pyproject.toml to avoid duplication.
 """
 
-import sys
+import glob
 import os
-import shutil
 import platform
+import shutil
+import sys
 from setuptools import Extension, setup
 from setuptools.command.build_ext import build_ext
-from setuptools.command.install import install
 from setuptools.command.develop import develop
+from setuptools.command.install import install
 
 # Paths must be absolute: isolated / PEP 517 builds do not guarantee cwd == project root.
 _ROOT = os.path.abspath(os.path.dirname(__file__))
 _SRC_OCTO_LIB = os.path.join(_ROOT, "src", "octomap", "lib")
 _PYOCTOMAP_LIB = os.path.join(_ROOT, "pyoctomap", "lib")
+
+# Set by resolve_octomap(); CustomBuildExt skips bundling in system/conda mode.
+USE_SYSTEM_OCTOMAP = False
+
+
+def _env_flag(name):
+    return os.environ.get(name, "").strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _unique(seq):
+    seen = set()
+    out = []
+    for item in seq:
+        if item and item not in seen:
+            seen.add(item)
+            out.append(item)
+    return out
+
+
+def _prefix_candidates():
+    prefixes = []
+    for key in ("PREFIX", "CONDA_PREFIX"):
+        value = os.environ.get(key)
+        if value:
+            prefixes.append(value)
+    prefixes.append(sys.prefix)
+    if platform.system() == "Windows":
+        for key in ("LIBRARY_PREFIX", "LIBRARY_INC"):
+            value = os.environ.get(key)
+            if value:
+                prefixes.append(
+                    os.path.dirname(value) if key == "LIBRARY_INC" else value
+                )
+    return _unique(prefixes)
+
+
+def _include_dir(prefix):
+    if platform.system() == "Windows":
+        for candidate in (
+            os.environ.get("LIBRARY_INC"),
+            os.path.join(prefix, "include"),
+            os.path.join(prefix, "Library", "include"),
+        ):
+            if candidate and os.path.isdir(candidate):
+                return candidate
+    return os.path.join(prefix, "include")
+
+
+def _lib_dir(prefix):
+    if platform.system() == "Windows":
+        for candidate in (
+            os.environ.get("LIBRARY_LIB"),
+            os.path.join(prefix, "lib"),
+            os.path.join(prefix, "Library", "lib"),
+        ):
+            if candidate and os.path.isdir(candidate):
+                return candidate
+        return os.path.join(prefix, "lib")
+    for candidate in (os.path.join(prefix, "lib"), os.path.join(prefix, "lib64")):
+        if os.path.isdir(candidate):
+            return candidate
+    return os.path.join(prefix, "lib")
+
+
+def _has_library(lib_dir, name):
+    if not os.path.isdir(lib_dir):
+        return False
+    patterns = [
+        f"lib{name}.so",
+        f"lib{name}.so.*",
+        f"lib{name}.dylib",
+        f"lib{name}.*.dylib",
+        f"{name}.lib",
+        f"lib{name}.dll.a",
+        f"lib{name}.dll",
+        f"{name}.dll",
+    ]
+    return any(glob.glob(os.path.join(lib_dir, pattern)) for pattern in patterns)
+
+
+def find_system_octomap():
+    """Locate a preinstalled OctoMap (conda-forge or system).
+
+    Returns (include_dirs, library_dirs, libraries, has_dynamic_edt) or None.
+    """
+    for prefix in _prefix_candidates():
+        include_root = _include_dir(prefix)
+        header = os.path.join(include_root, "octomap", "octomap.h")
+        if not os.path.exists(header):
+            continue
+        lib_dir = _lib_dir(prefix)
+        if not _has_library(lib_dir, "octomap"):
+            continue
+        include_dirs = [include_root, os.path.join(include_root, "octomap")]
+        libraries = ["octomap", "octomath"]
+        edt_header = os.path.join(include_root, "dynamicEDT3D", "dynamicEDTOctomap.h")
+        has_dynamic_edt = os.path.exists(edt_header) and _has_library(
+            lib_dir, "dynamicedt3d"
+        )
+        if has_dynamic_edt:
+            libraries.insert(0, "dynamicedt3d")
+        return include_dirs, [lib_dir], libraries, has_dynamic_edt
+    return None
+
+
+def vendored_octomap_available():
+    header = os.path.join(
+        _ROOT, "src", "octomap", "octomap", "include", "octomap", "octomap.h"
+    )
+    return os.path.exists(header) and os.path.isdir(_SRC_OCTO_LIB) and os.listdir(
+        _SRC_OCTO_LIB
+    )
+
+
+def resolve_octomap():
+    """Choose system/conda OctoMap vs the vendored tree."""
+    global USE_SYSTEM_OCTOMAP
+    want_system = _env_flag("PYOCTOMAP_SYSTEM_OCTOMAP")
+    system = find_system_octomap()
+
+    if want_system:
+        if system is None:
+            prefixes = ", ".join(_prefix_candidates()) or "(none)"
+            raise RuntimeError(
+                "PYOCTOMAP_SYSTEM_OCTOMAP is set, but no octomap install was found. "
+                f"Searched prefixes: {prefixes}"
+            )
+        USE_SYSTEM_OCTOMAP = True
+        return system
+
+    if vendored_octomap_available():
+        include_dirs = [
+            "src/octomap/octomap/include",
+            "src/octomap/octomap/include/octomap",
+            "src/octomap/dynamicEDT3D/include",
+        ]
+        if platform.system() == "Windows":
+            library_dirs = [
+                d
+                for d in ("src/octomap/lib", "pyoctomap/lib")
+                if os.path.isdir(os.path.join(_ROOT, d))
+            ]
+        else:
+            library_dirs = ["src/octomap/lib"]
+        USE_SYSTEM_OCTOMAP = False
+        return include_dirs, library_dirs, ["dynamicedt3d", "octomap", "octomath"], True
+
+    if system is not None:
+        print("Vendored OctoMap not found; falling back to system/conda octomap")
+        USE_SYSTEM_OCTOMAP = True
+        return system
+
+    raise RuntimeError(
+        "OctoMap headers/libraries not found. Either build the vendored copy "
+        "(scripts/ci/build_octomap.sh) or install octomap and set "
+        "PYOCTOMAP_SYSTEM_OCTOMAP=1."
+    )
 
 
 def get_lib_files():
@@ -115,14 +273,18 @@ class CustomBuildExt(build_ext):
         prev_cwd = os.getcwd()
         os.chdir(_ROOT)
         try:
-            # Copy libraries to source directory first (for MANIFEST.in)
-            copy_libraries_to_source()
+            if USE_SYSTEM_OCTOMAP:
+                print("System/conda octomap requested; not bundling shared libraries")
+            else:
+                # Copy libraries to source directory first (for MANIFEST.in)
+                copy_libraries_to_source()
 
             # Run the normal build
             super().run()
 
-            # Copy libraries to the build directory
-            self.copy_libraries()
+            if not USE_SYSTEM_OCTOMAP:
+                # Copy libraries to the build directory
+                self.copy_libraries()
         finally:
             os.chdir(prev_cwd)
     
@@ -143,6 +305,8 @@ class CustomInstall(install):
     
     def copy_libraries_to_installed(self):
         """Copy libraries to the installed package directory"""
+        if USE_SYSTEM_OCTOMAP:
+            return
         install_lib = self.install_lib
         package_dir = os.path.join(install_lib, "pyoctomap")
         lib_package_dir = os.path.join(package_dir, "lib")
@@ -159,6 +323,8 @@ class CustomDevelop(develop):
     
     def copy_libraries_to_installed(self):
         """Copy libraries to the development package directory"""
+        if USE_SYSTEM_OCTOMAP:
+            return
         package_dir = "pyoctomap"
         lib_package_dir = os.path.join(package_dir, "lib")
         copy_libraries_to_directory(lib_package_dir)
@@ -197,11 +363,7 @@ def build_extensions():
             "-Wno-unused-function"           # Suppress unused function warnings
         ]
         extra_link_args = ["-fPIC"]
-        # Ensure extension finds bundled libs at runtime without LD_LIBRARY_PATH
-        if platform.system() == "Linux":
-            rpath_args = ["-Wl,-rpath,$ORIGIN/lib"]
-        elif platform.system() == "Darwin":
-            rpath_args = ["-Wl,-rpath,@loader_path/lib"]
+        # Bundled-lib rpath is added only in vendored mode below.
 
     # Find all .pyx files
     pyx_files = {
@@ -233,22 +395,27 @@ def build_extensions():
                 pyx_files[module_name] = path
                 break
 
-    # Paths here must be relative to setup.py (setuptools / egg_info); use chdir in CustomBuildExt.run.
-    common_include_dirs = [
-        "pyoctomap",
-        "src/octomap/octomap/include",
-        "src/octomap/octomap/include/octomap",
-        "src/octomap/dynamicEDT3D/include",
-        numpy_include,
-    ]
+    octomap_includes, octomap_lib_dirs, octomap_libs, has_dynamic_edt = resolve_octomap()
+    if USE_SYSTEM_OCTOMAP:
+        print(
+            "Linking against system/conda octomap "
+            f"(dynamicEDT3D={'yes' if has_dynamic_edt else 'no'})"
+        )
+        rpath_args = []
+    else:
+        print("Linking against vendored OctoMap and bundling shared libraries")
+        if platform.system() == "Linux":
+            rpath_args = ["-Wl,-rpath,$ORIGIN/lib"]
+        elif platform.system() == "Darwin":
+            rpath_args = ["-Wl,-rpath,@loader_path/lib"]
 
-    win_import_libs = ("dynamicedt3d.lib", "octomap.lib", "octomath.lib")
-    if platform.system() == "Windows":
-        common_library_dirs = [
-            d
-            for d in ("src/octomap/lib", "pyoctomap/lib")
-            if os.path.isdir(os.path.join(_ROOT, d))
-        ]
+    # Paths here must be relative to setup.py (setuptools / egg_info); use chdir in CustomBuildExt.run.
+    common_include_dirs = ["pyoctomap", *octomap_includes, numpy_include]
+    common_library_dirs = octomap_lib_dirs
+    common_libraries = octomap_libs
+
+    if not USE_SYSTEM_OCTOMAP and platform.system() == "Windows":
+        win_import_libs = ("dynamicedt3d.lib", "octomap.lib", "octomath.lib")
         if not common_library_dirs:
             sys.exit(
                 "Windows build: expected library directories missing. "
@@ -266,11 +433,7 @@ def build_extensions():
                 '  powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ci/build_octomap_windows.ps1 '
                 f'-ProjectRoot "{_ROOT}"'
             )
-    else:
-        common_library_dirs = ["src/octomap/lib"]
 
-    common_libraries = ["dynamicedt3d", "octomap", "octomath"]
-    
     common_macros = [("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")]
     
     ext_modules = []
@@ -406,7 +569,8 @@ def build_extensions():
     return cythonize(
         ext_modules,
         include_path=["pyoctomap"],
-        compiler_directives={'language_level': 3}  # Ensure Python 3 syntax
+        compiler_directives={'language_level': 3},
+        compile_time_env={"HAS_DYNAMIC_EDT": bool(has_dynamic_edt)},
     )
 
 

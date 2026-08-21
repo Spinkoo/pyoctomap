@@ -9,6 +9,8 @@ from libcpp cimport bool as cppbool
 from libc.stddef cimport size_t
 from cython.operator cimport dereference as deref, preincrement as inc
 cimport octomap_defs as defs
+IF HAS_DYNAMIC_EDT:
+    cimport dynamicEDT3D_defs as edt
 import numpy as np
 cimport numpy as np
 # Note: DOUBLE_t is declared in octree.pxd, not here
@@ -73,10 +75,13 @@ cdef class OcTree:
             self.thisptr = new defs.OcTree(string(<char*?>arg))
 
     def __dealloc__(self):
-        # Clean up DynamicEDT first (it may reference the tree)
-        if self.edtptr != NULL:
-            del self.edtptr
-            self.edtptr = NULL
+        IF HAS_DYNAMIC_EDT:
+            cdef edt.DynamicEDTOctomap *edt_obj
+            # Clean up DynamicEDT first (it may reference the tree)
+            if self.edtptr != NULL:
+                edt_obj = <edt.DynamicEDTOctomap*>self.edtptr
+                del edt_obj
+                self.edtptr = NULL
 
         # Then clean up the OcTree itself
         if self.owner and self.thisptr != NULL:
@@ -764,51 +769,55 @@ cdef class OcTree:
         else:
             raise TypeError("Expected OcTreeNode")
     
-    def dynamicEDT_generate(self, maxdist,
-                            np.ndarray[DOUBLE_t, ndim=1] bbx_min,
-                            np.ndarray[DOUBLE_t, ndim=1] bbx_max,
-                            treatUnknownAsOccupied=False):
-        # Clean up existing DynamicEDT if it exists
-        if self.edtptr != NULL:
-            del self.edtptr
-            self.edtptr = NULL
-        
-        self.edtptr = new edt.DynamicEDTOctomap(<float?>maxdist,
+    IF HAS_DYNAMIC_EDT:
+        def dynamicEDT_generate(self, maxdist,
+                                np.ndarray[DOUBLE_t, ndim=1] bbx_min,
+                                np.ndarray[DOUBLE_t, ndim=1] bbx_max,
+                                treatUnknownAsOccupied=False):
+            cdef edt.DynamicEDTOctomap *edt_obj
+            # Clean up existing DynamicEDT if it exists
+            if self.edtptr != NULL:
+                edt_obj = <edt.DynamicEDTOctomap*>self.edtptr
+                del edt_obj
+                self.edtptr = NULL
+
+            edt_obj = new edt.DynamicEDTOctomap(<float?>maxdist,
                                                 self.thisptr,
                                                 defs.point3d(bbx_min[0], bbx_min[1], bbx_min[2]),
                                                 defs.point3d(bbx_max[0], bbx_max[1], bbx_max[2]),
                                                 <cppbool?>treatUnknownAsOccupied)
+            self.edtptr = <void*>edt_obj
 
-    def dynamicEDT_checkConsistency(self):
-        if self.edtptr:
-            return self.edtptr.checkConsistency()
-        else:
-            raise NullPointerException
-
-    def dynamicEDT_update(self, updateRealDist):
-        if self.edtptr:
-            self.edtptr.update(<cppbool?>updateRealDist)
-        else:
-            raise NullPointerException
-
-    def dynamicEDT_getMaxDist(self):
-        if self.edtptr:
-            return self.edtptr.getMaxDist()
-        else:
-            raise NullPointerException
-
-    def dynamicEDT_getDistance(self, p):
-        if self.edtptr:
-            if isinstance(p, OcTreeKey):
-                return self.edtptr.getDistance(edt.OcTreeKey(<unsigned short int>p[0],
-                                                             <unsigned short int>p[1],
-                                                             <unsigned short int>p[2]))
+        def dynamicEDT_checkConsistency(self):
+            if self.edtptr:
+                return (<edt.DynamicEDTOctomap*>self.edtptr).checkConsistency()
             else:
-                return self.edtptr.getDistance(edt.point3d(<float?>p[0],
-                                                           <float?>p[1],
-                                                           <float?>p[2]))
-        else:
-            raise NullPointerException
+                raise NullPointerException
+
+        def dynamicEDT_update(self, updateRealDist):
+            if self.edtptr:
+                (<edt.DynamicEDTOctomap*>self.edtptr).update(<cppbool?>updateRealDist)
+            else:
+                raise NullPointerException
+
+        def dynamicEDT_getMaxDist(self):
+            if self.edtptr:
+                return (<edt.DynamicEDTOctomap*>self.edtptr).getMaxDist()
+            else:
+                raise NullPointerException
+
+        def dynamicEDT_getDistance(self, p):
+            if self.edtptr:
+                if isinstance(p, OcTreeKey):
+                    return (<edt.DynamicEDTOctomap*>self.edtptr).getDistance(
+                        edt.OcTreeKey(<unsigned short int>p[0],
+                                      <unsigned short int>p[1],
+                                      <unsigned short int>p[2]))
+                else:
+                    return (<edt.DynamicEDTOctomap*>self.edtptr).getDistance(
+                        edt.point3d(<float?>p[0], <float?>p[1], <float?>p[2]))
+            else:
+                raise NullPointerException
 
 
 
