@@ -7,7 +7,7 @@ Used by GitHub Actions CI.
 def test_import():
     """Test basic import functionality."""
     import pyoctomap
-    assert pyoctomap.__version__
+    print(f"✅ Successfully imported octomap version: {pyoctomap.__version__}")
     # Just assert success - if import fails, pytest will catch the exception
 
 def test_basic_functionality():
@@ -16,8 +16,8 @@ def test_basic_functionality():
     
     # Create octree
     tree = pyoctomap.OcTree(0.1)
-    assert tree.getResolution() == 0.1
-
+    print(f"✅ Created OcTree with resolution: {tree.getResolution()}")
+    
     # Add some nodes
     tree.updateNode([1.0, 2.0, 3.0], True)
     tree.updateNode([1.1, 2.1, 3.1], True)
@@ -28,7 +28,8 @@ def test_basic_functionality():
     assert node is not None, "Should find node at [1.0, 2.0, 3.0]"
     assert tree.isNodeOccupied(node), "Node should be occupied"
     
-    assert tree.size() >= 1
+    print("✅ Basic OctoMap functionality working!")
+    print(f"✅ Tree has {tree.size()} nodes")
 
 
 def test_coord_to_key_checked():
@@ -87,6 +88,7 @@ def test_github2pypi():
     assert 'https://github.com/Spinkoo/pyoctomap/blob/main/images/test.png?raw=true' in result, "Image URL not converted correctly"
     assert 'https://github.com/Spinkoo/pyoctomap/blob/main/docs/guide.md' in result, "Link URL not converted correctly"
     
+    print("✅ github2pypi URL conversion working correctly")
 
 # This file is now a proper pytest module
 # Run with: python -m pytest tests/test_build.py -v

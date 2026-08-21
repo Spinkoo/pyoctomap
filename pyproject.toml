@@ -10,8 +10,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyoctomap"
-dynamic = ["version", "readme"]
+dynamic = ["version"]
 description = "Python binding of the OctoMap library with bundled shared libraries."
+readme = "README_pypi_preview.md"
 license = {file = "LICENSE"}
 authors = [
     {name = "Spinkoo", email = "lespinkoo@gmail.com"}
@@ -52,6 +53,9 @@ Repository = "https://github.com/Spinkoo/pyoctomap"
 Documentation = "https://github.com/Spinkoo/pyoctomap/tree/main/docs"
 "Bug Tracker" = "https://github.com/Spinkoo/pyoctomap/issues"
 
+[project.scripts]
+generate-pypi-readme = "github2pypi.generate_pypi_readme:main"
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["pyoctomap*", "github2pypi*"]
@@ -64,8 +68,7 @@ version = {attr = "pyoctomap.__version__"}
 py-modules = []
 
 [tool.setuptools.package-data]
-# Wheels: bundle all native artifacts in pyoctomap/lib (.so/.dll/.dylib and import libs).
-pyoctomap = ["lib/*"]
+pyoctomap = ["lib/*", "lib/*.so*"]
 
 [tool.black]
 line-length = 88

@@ -223,30 +223,26 @@ def get_lib_files():
 
 def copy_libraries_to_directory(lib_package_dir):
     """Copy libraries to a target directory, preserving symlink structure"""
-    lib_dir = _SRC_OCTO_LIB
+    lib_dir = "src/octomap/lib"
     
     if not os.path.exists(lib_dir):
         return
     
     os.makedirs(lib_package_dir, exist_ok=True)
     
-    # First, copy all actual files (not symlinks) - .so/.a on Unix, .dll/.lib on Windows
-    actual_files = {}
+    # First, copy all actual files (not symlinks)
     for file in os.listdir(lib_dir):
         lib_file = os.path.join(lib_dir, file)
         if os.path.isfile(lib_file) and not os.path.islink(lib_file):
             if platform.system() == "Windows":
                 copy_this = file.endswith(".dll") or file.endswith(".lib")
+            elif platform.system() == "Darwin":
+                copy_this = file.endswith(".dylib") or file.endswith(".a")
             else:
-                copy_this = (
-                    file.endswith(".so")
-                    or file.endswith(".a")
-                    or ".so." in file
-                )
+                copy_this = file.endswith(".so") or file.endswith(".a") or ".so." in file
             if copy_this:
                 dest_file = os.path.join(lib_package_dir, file)
                 shutil.copy2(lib_file, dest_file)
-                actual_files[file] = dest_file
     
     # Then, resolve and copy symlinks by copying their targets with the symlink name
     for file in os.listdir(lib_dir):
@@ -284,9 +280,8 @@ class CustomBuildExt(build_ext):
     """Custom build extension that copies libraries to the package"""
     
     def run(self):
-        # PEP 517 / pip may run the build with cwd != project root; compile/link need project-relative paths.
         prev_cwd = os.getcwd()
-        os.chdir(_ROOT)
+        os.chdir(ROOT_DIR)
         try:
             if USE_SYSTEM_OCTOMAP:
                 print("System/conda octomap requested; not bundling shared libraries")
@@ -308,6 +303,29 @@ class CustomBuildExt(build_ext):
         package_dir = os.path.join(self.build_lib, "pyoctomap")
         lib_package_dir = os.path.join(package_dir, "lib")
         copy_libraries_to_directory(lib_package_dir)
+
+    def get_source_files(self):
+        """
+        setuptools egg_info/manifest generation calls this and rejects absolute
+        project-local paths. Normalize to repo-relative here as a final guard.
+        """
+        files = super().get_source_files()
+        out = []
+        for f in files:
+            try:
+                p = os.fspath(f)
+            except TypeError:
+                out.append(f)
+                continue
+            if isinstance(p, str) and os.path.isabs(p):
+                try:
+                    common = os.path.commonpath([ROOT_DIR, p])
+                except ValueError:
+                    common = ""
+                if os.path.normcase(common) == os.path.normcase(ROOT_DIR):
+                    p = os.path.relpath(p, ROOT_DIR)
+            out.append(p.replace("\\", "/") if isinstance(p, str) else p)
+        return out
 
 
 class CustomInstall(install):
@@ -394,8 +412,7 @@ def build_extensions(require_native=True):
     rpath_args = []
     
     if platform.system() == "Windows":
-        # C++17: generated code / headers use std::string_view; OctoMap is C++14 but MSVC needs /std:c++17 for <string_view>.
-        extra_compile_args = ["/O2", "/DNDEBUG", "/wd4996", "/std:c++17"]
+        extra_compile_args = ["/O2", "/DNDEBUG", "/wd4996"]  # Suppress deprecation warnings
         extra_link_args = []
     else:
         extra_compile_args = [
@@ -580,48 +597,11 @@ def build_extensions(require_native=True):
         )
     
     return cythonize(
-        ext_modules,
+        ext_modules, 
         include_path=["pyoctomap"],
         compiler_directives={'language_level': 3},
         compile_time_env={"HAS_DYNAMIC_EDT": bool(has_dynamic_edt)},
     )
-
-
-def get_readme():
-    """Dynamically generate PyPI README from main README.md"""
-    readme_path = os.path.join(os.path.dirname(__file__), "README.md")
-    if not os.path.exists(readme_path):
-        return ""
-        
-    with open(readme_path, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    # Add the github2pypi module to the path to use its replacement logic
-    github2pypi_path = os.path.join(os.path.dirname(__file__), "github2pypi")
-    if os.path.exists(github2pypi_path) and github2pypi_path not in sys.path:
-        sys.path.insert(0, github2pypi_path)
-        
-    try:
-        from replace_url import replace_url
-        content = replace_url(
-            slug="Spinkoo/pyoctomap",
-            content=content,
-            branch="main"
-        )
-        
-        # Make some PyPI-specific adjustments
-        content = content.replace(
-            "On PyPI (Linux):\n```bash\npip install pyoctomap\n```",
-            "**PyPI Installation (Recommended):**\n```bash\npip install pyoctomap\n```"
-        )
-        content = content.replace(
-            "**Linux / WSL (Windows Subsystem for Linux):**",
-            "**From Source (Linux / WSL):**"
-        )
-    except ImportError:
-        pass
-        
-    return content
 
 
 def main():
@@ -632,8 +612,6 @@ def main():
     setup(
         # Metadata comes from pyproject.toml
         ext_modules=ext_modules,
-        long_description=get_readme(),
-        long_description_content_type="text/markdown",
         
         # Build configuration
         cmdclass={

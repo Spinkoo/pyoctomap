@@ -21,6 +21,10 @@ This directory contains comprehensive documentation for the PyOctoMap library.
 
 - **[pyocto-map-anything](https://github.com/Spinkoo/pyocto-map-anything)** - Transform photos into 3D voxel scenes using AI depth estimation and PyOctoMap's `ColorOcTree`. A great example of combining modern depth estimation models with efficient octree-based mapping.
 
+## Related Libraries
+
+- **[pyoctomapRT](https://github.com/Spinkoo/pyoctomapRT)** - GPU-accelerated OctoMap for Python. Mirrors the PyOctoMap API on NVIDIA hardware via OptiX ray-tracing; ideal for real-time mapping on large point clouds. See the [For Developers](api_reference.md#for-developers) section in the API reference for ecosystem notes and benchmarking tips.
+
 ## Getting Help
 
 If you can't find what you're looking for in the documentation:

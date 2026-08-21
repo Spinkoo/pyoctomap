@@ -1,12 +1,10 @@
 # PyOctoMap
 
 <div align="center">
-<img src="images/octomap_core.png" alt="OctoMap Core" width="900">
+<img src="https://github.com/Spinkoo/pyoctomap/blob/main/images/octomap_core.png?raw=true" alt="OctoMap Core" width="900">
 </div>
 
 A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 3D occupancy mapping capabilities for robotics and computer vision applications. This modernized binding offers enhanced performance, bundled shared libraries for easy deployment, and seamless integration with the Python scientific ecosystem.
-
-> **⚡ Need GPU speed?** Try **[pyoctomapRT](https://github.com/Spinkoo/pyoctomapRT)** — our companion library that mirrors this API on NVIDIA GPUs with OptiX ray-tracing for real-time volumetric mapping at scale.
 
 ## Features
 
@@ -30,7 +28,7 @@ pip install pyoctomap
 
 ### Building from Source
 
-> **📋 Prerequisites**: See [Build System Documentation](docs/build_system.md) for detailed system dependencies and troubleshooting guide.
+> **📋 Prerequisites**: See [Build System Documentation](https://github.com/Spinkoo/pyoctomap/blob/main/docs/build_system.md) for detailed system dependencies and troubleshooting guide.
 
 If you need to build from source or create custom wheels locally, we provide a `cibuildwheel` setup. First, ensure you have the repository cloned:
 
@@ -51,7 +49,7 @@ Native Windows is fully supported. If you are performance-focused, WSL often ben
 
 The CI build automatically creates wheels for Python 3.8-3.14 (`cp38`–`cp314`), properly bundling all required C++ libraries.
 
-> **📋 Google Colab Users**: See [Build System Documentation](docs/build_system.md) for detailed Colab installation instructions.
+> **📋 Google Colab Users**: See [Build System Documentation](https://github.com/Spinkoo/pyoctomap/blob/main/docs/build_system.md) for detailed Colab installation instructions.
 
 ## Quick Start
 
@@ -89,7 +87,7 @@ PyOctoMap provides multiple octree variants from a single package:
 - `CountingOcTree` – integer hit counters per voxel
 - `OcTreeStamped` – occupancy with per-node timestamps for temporal mapping
 
-See the **[API Reference](docs/api_reference.md)** for a detailed comparison
+See the **[API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md)** for a detailed comparison
 table and full method documentation.
 
 ### Color Occupancy Mapping (ColorOcTree)
@@ -105,15 +103,7 @@ tree.updateNode(coord, True)
 tree.setNodeColor(coord, 255, 0, 0)  # R, G, B (0-255)
 ```
 
-**Batch insertion with colors:**
-```python
-# Insert point cloud with colors in a single operation
-points = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=np.float64)
-colors = np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]], dtype=np.float64)  # RGB in [0, 1] range
-sensor_origin = np.array([0.0, 0.0, 0.0])  # Optional: for proper ray casting
-tree.insertPointCloud(points, sensor_origin=sensor_origin, colors=colors)
-```
-
+### Dynamic Mapping and Point Cloud Insertion
 
 
 ### Batch Operations (Summary)
@@ -131,44 +121,29 @@ For extremely fast readout of the internal state into NumPy arrays without itera
 - `CountingOcTree.extractPointCloud()` -> `(coords, counts)`
 - `OcTreeStamped.extractPointCloud()` -> `(occupied_points, empty_points, timestamps)`
 
-See the **Performance Guide** for practical batch sizing and resolution
+See the [Performance Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/performance_guide.md) for practical batch sizing and resolution
 recommendations.
 
 ## Examples
 
-See runnable demos in `examples/`:
-- `examples/basic_test.py` — smoke test for core API
-- `examples/demo_occupancy_grid.py` — build and visualize a 2D occupancy grid
-- `examples/demo_octomap_open3d.py` — visualize octomap data with Open3D
-- `examples/sequential_occupancy_grid_demo.py` — comprehensive sequential occupancy grid with Open3D visualization
-- `examples/test_sequential_occupancy_grid.py` — comprehensive test suite for all occupancy grid methods
+See runnable demos in the [examples directory](https://github.com/Spinkoo/pyoctomap/blob/main/examples/):
+- [examples/basic_test.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/basic_test.py) — smoke test for core API
+- [examples/demo_occupancy_grid.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/demo_occupancy_grid.py) — build and visualize a 2D occupancy grid
+- [examples/demo_octomap_open3d.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/demo_octomap_open3d.py) — visualize octomap data with Open3D
+- [examples/sequential_occupancy_grid_demo.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/sequential_occupancy_grid_demo.py) — comprehensive sequential occupancy grid with Open3D visualization
+- [examples/test_sequential_occupancy_grid.py](https://github.com/Spinkoo/pyoctomap/blob/main/examples/test_sequential_occupancy_grid.py) — comprehensive test suite for all occupancy grid methods
 
 ### Demo Visualizations
 
 **3D OctoMap Scene Visualization:**
 <div align="center">
-<img src="images/octomap_demo_scene.png" alt="OctoMap Demo Scene" width="700">
+<img src="https://github.com/Spinkoo/pyoctomap/blob/main/images/octomap_demo_scene.png?raw=true" alt="OctoMap Demo Scene" width="700">
 </div>
 
 **Occupancy Grid Visualization:**
 <div align="center">
-<img src="images/occupancy_grid.png" alt="Occupancy Grid" width="700">
+<img src="https://github.com/Spinkoo/pyoctomap/blob/main/images/occupancy_grid.png?raw=true" alt="Occupancy Grid" width="700">
 </div>
-
-## Showcase
-
-### 🎨 Photo to 3D Voxel Scene
-
-**[pyocto-map-anything](https://github.com/Spinkoo/pyocto-map-anything)** - Transform single photos into vibrant 3D voxel scenes using AI depth estimation (Depth Anything 3) and PyOctoMap's `ColorOcTree`. This showcase demonstrates the power of combining modern depth estimation models with efficient octree-based mapping, enabling instant 3D reconstruction from 2D images.
-
-**Features:**
-- AI-powered depth estimation from single images
-- Automatic camera intrinsics estimation (DA3 models)
-- Color-integrated voxel mapping with `ColorOcTree`
-- Support for multiple depth models (Depth Anything v3, ZoeDepth, DPT)
-- High-resolution 3D reconstruction with configurable voxel resolution
-
-Perfect for exploring PyOctoMap's color mapping capabilities and seeing how it integrates with modern computer vision pipelines.
 
 ## Advanced Usage
 
@@ -292,7 +267,7 @@ For more complete examples on:
 - dynamic environment mapping,
 - iterator usage (`begin_tree`, `begin_leafs`, `begin_leafs_bbx`),
 
-refer to the **API Reference** and example scripts in `examples/`.
+refer to the [API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md) and example scripts in the [examples directory](https://github.com/Spinkoo/pyoctomap/blob/main/examples/).
 
 ## Requirements
 
@@ -306,16 +281,16 @@ refer to the **API Reference** and example scripts in `examples/`.
 
 ## Documentation
 
-- **[Complete API Reference](docs/api_reference.md)** - Detailed API documentation
-- **[Build System](docs/build_system.md)** - Prerequisites, build process, and troubleshooting
-- **[File Format Guide](docs/file_format.md)** - Supported file formats
-- **[Performance Guide](docs/performance_guide.md)** - Optimization tips and benchmarks
-- **[Troubleshooting](docs/troubleshooting.md)** - Common issues and solutions
-- **[Wheel Technology](docs/wheel_technology.md)** - Library bundling details
+- **[Complete API Reference](https://github.com/Spinkoo/pyoctomap/blob/main/docs/api_reference.md)** - Detailed API documentation
+- **[Build System](https://github.com/Spinkoo/pyoctomap/blob/main/docs/build_system.md)** - Prerequisites, build process, and troubleshooting
+- **[File Format Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/file_format.md)** - Supported file formats
+- **[Performance Guide](https://github.com/Spinkoo/pyoctomap/blob/main/docs/performance_guide.md)** - Optimization tips and benchmarks
+- **[Troubleshooting](https://github.com/Spinkoo/pyoctomap/blob/main/docs/troubleshooting.md)** - Common issues and solutions
+- **[Wheel Technology](https://github.com/Spinkoo/pyoctomap/blob/main/docs/wheel_technology.md)** - Library bundling details
 
 ## License
 
-MIT License - see [LICENSE](./LICENSE) file for details.
+MIT License - see [LICENSE](https://github.com/Spinkoo/pyoctomap/blob/main/LICENSE) file for details.
 
 ## Contributing
 

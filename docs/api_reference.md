@@ -6,6 +6,7 @@ the different **tree types**, how they differ, and when to use each one.
 - For installation & quick-start examples, see the main `README.md`.
 - For build details, see `docs/build_system.md`.
 - For file formats, see `docs/file_format.md`.
+- For GPU-accelerated mapping with the same API surface, see [pyoctomapRT](https://github.com/Spinkoo/pyoctomapRT).
 
 ---
 
@@ -410,5 +411,21 @@ for leaf in tree.begin_leafs():
 
 For more complete examples (path planning, dynamic mapping, visualization),
 see the **Examples** section of `README.md` and the scripts in `examples/`.
+
+---
+
+## For Developers
+
+### pyoctomapRT (GPU counterpart)
+
+[pyoctomapRT](https://github.com/Spinkoo/pyoctomapRT) is maintained alongside PyOctoMap as a drop-in GPU alternative. It exposes the same `OcTree` workflow documented here (`insertPointCloud`, `castRay`, and related helpers) while offloading ray-shooting and voxel intersection to the GPU via NVIDIA OptiX.
+
+Useful when profiling or extending the ecosystem:
+
+- Install both packages and run `python -m pyoctomaprt.benchmark --compare-insert` for a direct CPU vs GPU insertion benchmark.
+- `MapSession` in pyoctomapRT adds a progressive mapping path for batched scans with 6D poses.
+- Setup requires CUDA and the OptiX SDK; see the pyoctomapRT repository for build instructions.
+
+When contributing API changes here, consider whether the same surface should stay aligned in pyoctomapRT so users can switch between CPU and GPU backends with minimal code changes.
 
 
