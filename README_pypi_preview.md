@@ -16,12 +16,16 @@ A comprehensive Python wrapper for the OctoMap C++ library, providing efficient 
 
 ## Installation
 
-### Quick Install (Recommended)
-
-Install from PyPI (pre-built manylinux wheel when available):
+### PyPI
 
 ```bash
 pip install pyoctomap
+```
+
+### conda-forge
+
+```bash
+conda install -c conda-forge pyoctomap
 ```
 
 > **🚀 ROS Integration**: ROS/ROS2 integration is currently being developed on the [`ros` branch](https://github.com/Spinkoo/pyoctomap/tree/ros), featuring ROS2 message support and real-time point cloud processing.
